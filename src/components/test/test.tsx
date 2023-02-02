@@ -1,8 +1,10 @@
 import React from 'react'
 import styles from './test.module.scss'
 
-export default function test() {
+const Test = () => {
   return (
     <div className={styles.container}>test</div>
   )
 }
+
+export default Test
