@@ -1,5 +1,6 @@
 import path from "path";
 import webpack from "webpack"
+import buildDevServer from "./buildDevServer";
 import buildLoaders from "./buildLoaders";
 import buildPlugins from "./buildPlugins";
 import buildResolvers from "./buildResolvers";
@@ -23,6 +24,8 @@ export default (options: BuildOptions): webpack.Configuration => {
     plugins: buildPlugins(paths.html),
     stats: {
       errorDetails: true
-    }
+    },
+    devtool: 'inline-source-map',
+    devServer: buildDevServer(options)
   };
 }
