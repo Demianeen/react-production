@@ -18,10 +18,10 @@ export default (options: BuildOptions): webpack.Configuration => {
       clean: true,
     },
     module: {
-      rules: buildLoaders(),
+      rules: buildLoaders(options),
     },
     resolve: buildResolvers(),
-    plugins: buildPlugins(paths.html),
+    plugins: buildPlugins(options),
     stats: {
       errorDetails: true,
     },
