@@ -1,9 +1,9 @@
-import { BuildPath, BuildOptions } from './types/config';
-import HTMLWebpackPlugin from 'html-webpack-plugin';
-import { ProgressPlugin, WebpackPluginInstance } from 'webpack';
-import MiniCSSExtractPlugin from 'mini-css-extract-plugin'
+import { BuildOptions } from "./types/config";
+import HTMLWebpackPlugin from "html-webpack-plugin";
+import webpack, { ProgressPlugin, WebpackPluginInstance } from "webpack";
+import MiniCSSExtractPlugin from "mini-css-extract-plugin";
 
-export default ({ paths }: BuildOptions): WebpackPluginInstance[] => {
+export default ({ paths, isDev }: BuildOptions): WebpackPluginInstance[] => {
   return [
     new HTMLWebpackPlugin({
       template: paths.html,
@@ -12,6 +12,9 @@ export default ({ paths }: BuildOptions): WebpackPluginInstance[] => {
     new MiniCSSExtractPlugin({
       filename: "css/[name].[contenthash:8]",
       chunkFilename: "css/[name].[contenthash:8]",
+    }),
+    new webpack.DefinePlugin({
+      __IS_DEV__: JSON.stringify(isDev),
     }),
   ];
 };
