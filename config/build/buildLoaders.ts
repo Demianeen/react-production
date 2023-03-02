@@ -1,11 +1,31 @@
-import { BuildOptions } from "./types/config";
 import MiniCSSExtractPlugin from "mini-css-extract-plugin";
-import { RuleSetRule } from "webpack";
+import webpack from "webpack";
+import { BuildOptions } from "./types/config";
 
-export default ({ isDev }: BuildOptions): RuleSetRule[] => {
+export default ({ isDev }: BuildOptions): webpack.RuleSetRule[] => {
   const svgLoader = {
     test: /\.svg$/,
     use: ["@svgr/webpack"],
+  };
+
+  const babelLoader = {
+    test: /\.(js|jsx|ts|tsx)$/,
+    exclude: /node_modules/,
+    use: {
+      loader: "babel-loader",
+      options: {
+        presets: ["@babel/preset-env"],
+        plugins: [
+          [
+            "i18next-extract",
+            {
+              locales: ["en", "ua"],
+              keyAsDefaultValue: true,
+            },
+          ],
+        ],
+      },
+    },
   };
 
   const cssLoader = {
@@ -36,7 +56,7 @@ export default ({ isDev }: BuildOptions): RuleSetRule[] => {
   };
 
   const fileLoader = {
-    test: /\.(png|jpe?g|gif|woff|woff2)$/i,
+    test: /\.(png|jpe?g|gif|woff2|woff)$/i,
     use: [
       {
         loader: "file-loader",
@@ -44,5 +64,5 @@ export default ({ isDev }: BuildOptions): RuleSetRule[] => {
     ],
   };
 
-  return [fileLoader, svgLoader, typescriptLoader, cssLoader];
+  return [fileLoader, svgLoader, babelLoader, typescriptLoader, cssLoader];
 };

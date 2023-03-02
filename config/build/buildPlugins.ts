@@ -1,12 +1,15 @@
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import webpack, { ProgressPlugin } from "webpack";
 import { BuildOptions } from "./types/config";
-import HTMLWebpackPlugin from "html-webpack-plugin";
-import webpack, { ProgressPlugin, WebpackPluginInstance } from "webpack";
-import MiniCSSExtractPlugin from "mini-css-extract-plugin";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
+import MiniCSSExtractPlugin from "mini-css-extract-plugin";
 
-export default ({ paths, isDev }: BuildOptions): WebpackPluginInstance[] => {
+export default ({
+  paths,
+  isDev,
+}: BuildOptions): webpack.WebpackPluginInstance[] => {
   return [
-    new HTMLWebpackPlugin({
+    new HtmlWebpackPlugin({
       template: paths.html,
     }),
     new ProgressPlugin(),
