@@ -1,5 +1,3 @@
-import { HomePageAsync } from './ui/HomePage.async';
+import { HomePageAsync } from './ui/HomePage.async'
 
-export {
-  HomePageAsync as HomePage
-}
+export { HomePageAsync as HomePage }
