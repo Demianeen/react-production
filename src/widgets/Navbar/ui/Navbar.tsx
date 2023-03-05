@@ -4,6 +4,7 @@ import {
   AppLink,
   AppLinkTheme,
 } from 'shared/ui/AppLink/AppLink'
+import { useTranslation } from 'react-i18next'
 import styles from './Navbar.module.scss'
 
 interface NavbarProps {
@@ -11,6 +12,7 @@ interface NavbarProps {
 }
 
 export const Navbar = ({ className }: NavbarProps) => {
+  const { t } = useTranslation()
   return (
     <div
       className={classNames(styles.navbar, {}, [className])}
@@ -21,10 +23,10 @@ export const Navbar = ({ className }: NavbarProps) => {
           to='/'
           className={styles.homeAppLink}
         >
-          Home
+          {t('Home')}
         </AppLink>
         <AppLink theme={AppLinkTheme.INVERTED} to='/about'>
-          About
+          {t('About')}
         </AppLink>
       </div>
     </div>

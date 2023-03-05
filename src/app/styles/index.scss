@@ -1,15 +1,13 @@
 @import 'reset';
-@import 'variables/global.scss';
-@import 'themes/dark.scss';
-@import 'themes/light.scss';
+@import 'variables/global';
+@import 'themes/dark';
+@import 'themes/light';
 
 .app {
-  font: var(--font-m);
-
-  background: var(--bg-color);
-  color: var(--primary-color);
-
   min-height: 100vh;
+  font: var(--font-m);
+  color: var(--primary-color);
+  background: var(--bg-color);
 }
 
 .contentPage {

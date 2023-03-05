@@ -1,0 +1,11 @@
+{
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-prettier-scss", "stylelint-config-recess-order"],
+  "rules": {
+    "selector-class-pattern": [
+      "^[a-zA-Z]+$",
+      {
+        "message": "Class names should use camel case."
+      }
+    ]
+  }
+}

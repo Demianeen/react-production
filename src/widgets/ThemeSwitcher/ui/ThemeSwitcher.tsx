@@ -8,7 +8,6 @@ import {
   Button,
   ThemeButton,
 } from 'shared/ui/Button/Button'
-import styles from './ThemeSwitcher.module.scss'
 
 interface ThemeSwitcherProps {
   className?: string
@@ -22,9 +21,7 @@ export const ThemeSwitcher = ({
     <Button
       theme={ThemeButton.CLEAR}
       onClick={toggleTheme}
-      className={classNames(styles.themeSwitcher, {}, [
-        className,
-      ])}
+      className={classNames('', {}, [className])}
     >
       {theme === Theme.LIGHT ? <LightIcon /> : <DarkIcon />}
     </Button>
