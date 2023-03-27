@@ -1,7 +1,10 @@
 {
-  "Language": "English",
-  "Toggle": "Toggle",
   "About": "About",
   "Home": "Home",
-  "Page not found": "Page not found"
+  "Language": "English",
+  "Page not found": "Page not found",
+  "Toggle": "Toggle",
+  "Unexpected error": "Unexpected error",
+  "Reload page": "Reload page",
+  "Throw error": "Throw error"
 }

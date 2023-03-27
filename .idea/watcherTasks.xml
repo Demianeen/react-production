@@ -8,7 +8,7 @@
       <option name="exitCodeBehavior" value="ERROR" />
       <option name="fileExtension" value="scss" />
       <option name="immediateSync" value="true" />
-      <option name="name" value="SCSS" />
+      <option name="name" value="Stylelint" />
       <option name="output" value="$FileName$" />
       <option name="outputFilters">
         <array />

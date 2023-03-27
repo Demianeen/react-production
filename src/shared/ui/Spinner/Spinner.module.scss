@@ -7,7 +7,7 @@ $spinner-size: 40px;
   display: inline-block;
   width: $spinner-size;
   height: $spinner-size;
-  color: var(--inverted-bg-color);
+  color: var(--yn-primary-color);
 
   div {
     transform-origin: math.div($spinner-size, 2) math.div($spinner-size, 2);
@@ -21,7 +21,7 @@ $spinner-size: 40px;
       width: 4px;
       height: 12px;
       content: " ";
-      background: var(--inverted-bg-color);
+      background: var(--yn-primary-color);
       border-radius: 20%;
     }
   }
