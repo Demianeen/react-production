@@ -73,6 +73,25 @@ module.exports = {
         trailingUnderscore: 'allowDouble',
       },
     ],
+    // to import dev dependencies in some files
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: [
+          '**/test/**', // tape, common npm pattern
+          '**/tests/**', // also common npm pattern
+          'spec/**', // mocha, rspec-like pattern
+          '**/__tests__/**', // jest pattern
+          '**/__mocks__/**', // jest pattern
+          '**/*{.,_}{test,spec}.{ts,tsx}', // tests where the extension or filename suffix denotes that it is a test
+          '.eslintrc.js', // eslint config
+          '**/webpack.config.ts', // webpack config
+          'config/**', // project configuration
+        ],
+      },
+    ],
+    // we can stop importing React after version 17
+    'react/jsx-no-undef': 0,
   },
   settings: {
     react: {
@@ -87,15 +106,9 @@ module.exports = {
   },
   overrides: [
     {
-      // we import webpack and webpack plugins only during build
-      files: ['config/build/*.ts'],
+      files: ['**/src/**/*.test.{ts,tsx}'],
       rules: {
-        'import/no-extraneous-dependencies': [
-          2,
-          {
-            devDependencies: true,
-          },
-        ],
+        'i18next/no-literal-string': 0,
       },
     },
   ],

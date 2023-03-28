@@ -15,7 +15,7 @@ interface SidebarProps {
 
 export const Sidebar = ({ className }: SidebarProps) => {
   const { t } = useTranslation()
-  const [isCollapsed, setIsCollapsed] = useState(true)
+  const [isCollapsed, setIsCollapsed] = useState(false)
 
   const onToggle = () => {
     setIsCollapsed((prev) => !prev)
@@ -30,8 +30,13 @@ export const Sidebar = ({ className }: SidebarProps) => {
         },
         [className]
       )}
+      data-testid='sidebar'
     >
-      <Button theme={ThemeButton.CLEAR} onClick={onToggle}>
+      <Button
+        data-testid='sidebar-toggle'
+        theme={ThemeButton.CLEAR}
+        onClick={onToggle}
+      >
         {t('Toggle')}
       </Button>
       <div className={styles.switchers}>
