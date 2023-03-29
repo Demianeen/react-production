@@ -17,6 +17,7 @@ module.exports = {
     'plugin:import/recommended',
     'plugin:import/typescript',
     'plugin:i18next/recommended',
+    'plugin:storybook/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -60,7 +61,9 @@ module.exports = {
     // we can use @ts-expect-error with description
     '@typescript-eslint/ban-ts-comment': [
       2,
-      { 'ts-expect-error': 'allow-with-description' },
+      {
+        'ts-expect-error': 'allow-with-description',
+      },
     ],
     // we use underlines for webpack env variables
     'no-underscore-dangle': 0,
@@ -83,13 +86,15 @@ module.exports = {
           'spec/**', // mocha, rspec-like pattern
           '**/__tests__/**', // jest pattern
           '**/__mocks__/**', // jest pattern
-          '**/*{.,_}{test,spec}.{ts,tsx}', // tests where the extension or filename suffix denotes that it is a test
+          '**/*{.,_}{test,stories}.{ts,tsx}', // tests and stories where the extension or filename suffix denotes that it is a test
           '.eslintrc.js', // eslint config
           '**/webpack.config.ts', // webpack config
           'config/**', // project configuration
+          '**/storybook/**', // storybook configuration
         ],
       },
     ],
+
     // we can stop importing React after version 17
     'react/jsx-no-undef': 0,
   },
@@ -106,9 +111,13 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['**/src/**/*.test.{ts,tsx}'],
+      files: [
+        '**/src/**/*.{stories,test}.{ts,tsx}',
+        '**/storybook/**/*.{ts,tsx}',
+      ],
       rules: {
         'i18next/no-literal-string': 0,
+        'react/jsx-props-no-spreading': 0,
       },
     },
   ],

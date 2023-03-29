@@ -4,6 +4,7 @@ import styles from './Button.module.scss'
 
 export enum ThemeButton {
   CLEAR = 'clear',
+  OUTLINE = 'outline',
 }
 
 interface ButtonProps
@@ -15,7 +16,7 @@ interface ButtonProps
 export const Button: FC<ButtonProps> = ({
   className,
   children,
-  theme = ThemeButton.CLEAR,
+  theme = '',
   ...props
 }) => {
   return (

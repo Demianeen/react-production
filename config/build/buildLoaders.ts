@@ -1,14 +1,12 @@
-import MiniCSSExtractPlugin from 'mini-css-extract-plugin'
 import webpack from 'webpack'
 import { BuildOptions } from './types/config'
+import { buildCssLoader } from './loaders/buildCssLoader'
+import { buildSvgLoader } from './loaders/buildSvgLoader'
 
 export default ({
   isDev,
 }: BuildOptions): webpack.RuleSetRule[] => {
-  const svgLoader = {
-    test: /\.svg$/,
-    use: ['@svgr/webpack'],
-  }
+  const svgLoader = buildSvgLoader()
 
   const babelLoader = {
     test: /\.(js|jsx|ts|tsx)$/,
@@ -30,28 +28,7 @@ export default ({
     },
   }
 
-  const cssLoader = {
-    test: /\.s[ac]ss$/i,
-    use: [
-      // Creates `style` nodes from JS strings
-      isDev ? 'style-loader' : MiniCSSExtractPlugin.loader,
-      // Translates CSS into CommonJS
-      {
-        loader: 'css-loader',
-        options: {
-          modules: {
-            auto: (resolvePath: string) =>
-              resolvePath.includes('.module.'),
-            localIdentName: isDev
-              ? '[path][name]__[local]'
-              : '[hash:base64:8]',
-          },
-        },
-      },
-      // Compiles Sass to CSS
-      'sass-loader',
-    ],
-  }
+  const cssLoader = buildCssLoader(isDev)
 
   // if we use ts-loader we already don't need to use babel
   const typescriptLoader = {

@@ -1,0 +1,44 @@
+import webpack from 'webpack'
+import path from 'path'
+import { BuildPath } from '../build/types/config'
+import { buildCssLoader } from '../build/loaders/buildCssLoader'
+import { buildSvgLoader } from '../build/loaders/buildSvgLoader'
+
+export default ({
+  config,
+}: {
+  config: webpack.Configuration
+}) => {
+  const paths: BuildPath = {
+    build: '',
+    entry: '',
+    html: '',
+    src: path.resolve(__dirname, '..', '..', 'src'),
+  }
+  config.resolve?.modules?.push(paths.src)
+  config.resolve?.extensions?.push('.ts', '.tsx')
+
+  if (!config.module)
+    throw new Error('config.module not found')
+
+  // because we modify storybook configuration
+  // eslint-disable-next-line no-param-reassign
+  config.module.rules = config.module?.rules?.map(
+    (rule) => {
+      if (rule === '...') return rule
+
+      const isSvgLoader = rule.test
+        ?.toString()
+        .includes('svg')
+      if (!isSvgLoader) return rule
+
+      return { ...rule, exclude: /.svg$/i }
+    }
+  )
+
+  config.module?.rules?.push(buildSvgLoader())
+
+  config.module?.rules?.push(buildCssLoader(true))
+
+  return config
+}
