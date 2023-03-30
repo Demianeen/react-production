@@ -1,5 +1,6 @@
 /build
 /extractedTranslations
+/storybook-static
 ### macOS ###
 # General
 .DS_Store
