@@ -1,18 +1,28 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+name: Linting, tesing and building
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 jobs:
-  Explore-GitHub-Actions:
+  pipeline:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 17.x ]
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - name: Check out repository code
-        uses: actions/checkout@v3
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+      - uses: actions/checkout@v3
+      - name: Starting Node.js {{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: {{ matrix.node-version }}
+      - name: Install dependencies
+        run: npm install
+      - name: Build production project
+        run: npm run build:prod
+      - name: Linting typescript
+        run: npm run lint:ts
+      - name: Linting scss
+        run: npm run lint:scss
+      - name: Unit testing
+        run: npm run test:unit
