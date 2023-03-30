@@ -5,16 +5,12 @@
   height: var(--navbar-height);
   padding: 0 1rem;
   background-color: var(--inverted-bg-color);
-}
 
-.links {
-  margin-left: auto;
-}
+  .links {
+    margin-left: auto;
 
-.links a {
-  margin: 0.4rem;
-}
-
-.mainLink {
-  padding-right: 15px;
+    a {
+      margin: 0.4rem;
+    }
+  }
 }

@@ -23,8 +23,8 @@ export const Button: FC<ButtonProps> = ({
     <button
       type='button'
       className={classNames(styles.button, {}, [
-        className,
         styles[theme],
+        className,
       ])}
       {...props}
     >
