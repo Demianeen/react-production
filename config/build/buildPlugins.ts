@@ -9,7 +9,7 @@ export default ({
   paths,
   isDev,
 }: BuildOptions): webpack.WebpackPluginInstance[] => {
-  return [
+  const plugins: webpack.WebpackPluginInstance[] = [
     new HtmlWebpackPlugin({
       template: paths.html,
     }),
@@ -21,10 +21,19 @@ export default ({
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
     }),
-    new ReactRefreshWebpackPlugin(),
+  ]
+
+  const devPlugins = [
     new webpack.HotModuleReplacementPlugin(),
     new BundleAnalyzerPlugin({
       openAnalyzer: false,
     }),
+    new ReactRefreshWebpackPlugin(),
   ]
+
+  if (isDev) {
+    plugins.push(...devPlugins)
+  }
+
+  return plugins
 }
