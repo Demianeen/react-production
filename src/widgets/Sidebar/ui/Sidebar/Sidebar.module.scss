@@ -5,25 +5,60 @@
   background: var(--inverted-bg-color);
   transition: width 0.3s;
 
-  .collapsed {
-    width: var(--sidebar-width-collapsed);
-  }
-
   .collapsedBtn {
     position: absolute;
-    right: -40px;
-    bottom: 40px;
+    right: calc(var(--font-line-l) * -1);
+    bottom: var(--font-line-l);
+  }
+
+  .items {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1.85rem;
+    margin-top: 1.25rem;
+
+    .item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.25rem;
+
+      .icon {
+        margin-right: 1.25rem;
+        fill: var(--inverted-primary-color);
+      }
+    }
   }
 
   .switchers {
     position: absolute;
-    bottom: 20px;
+    bottom: 1.25rem;
     display: flex;
     justify-content: center;
     width: 100%;
 
     .lang {
-      margin-left: 20px;
+      margin-left: 1.25rem;
+    }
+  }
+  
+  &.collapsed {
+    width: var(--sidebar-width-collapsed);
+
+    .link {
+      // text hiding animation
+      width: 0;
+      overflow: hidden;
+      transition: 0.3s opacity;
+    }
+
+    .switchers {
+      flex-direction: column;
+      align-items: center;
+
+      .lang {
+        margin-top: 1.25rem;
+        margin-left: 0;
+      }
     }
   }
 }

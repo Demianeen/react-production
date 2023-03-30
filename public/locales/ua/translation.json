@@ -1,10 +1,10 @@
 {
-  "About": "Про нас",
+  "About us": "Про нас",
   "Home": "Головна сторінка",
   "Language": "Українська",
   "Page not found": "Сторінка не найдена",
-  "Toggle": "Перемикнути",
   "Unexpected error": "Неочікувана помилка",
   "Reload page": "Перезавантажити сторінку",
-  "Throw error": "Кинути помилку"
+  "Throw error": "Кинути помилку",
+  "Short language": "Укр"
 }

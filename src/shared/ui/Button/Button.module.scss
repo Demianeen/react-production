@@ -1,7 +1,9 @@
 .button {
+  padding: 8px 15px;
   color: var(--primary-color);
   cursor: pointer;
 
+  // themes
   &.clear {
     padding: 0;
     background: none;
@@ -10,9 +12,54 @@
   }
 
   &.outline {
-    padding: 10px 15px;
     background: none;
     border: 1px solid var(--primary-color);
+  }
+
+  &.background {
+    background: var(--bg-color);
+    border: none;
+  }
+  
+  &.backgroundInverted {
+    background: var(--inverted-bg-color);
+    border: none;
+  }
+
+  // sizes
+  &.medium {
+    font: var(--font-m);
+  }
+
+  &.large {
+    font: var(--font-l);
+  }
+
+  &.extraLarge {
+    font: var(--font-xl);
+  }
+  
+  // square button
+  &.square {
+    padding: 0;
+
+    // square button sizes
+    &.medium {
+      width: var(--font-line-m);
+      height: var(--font-line-m);
+    }
+
+    &.large {
+      width: var(--font-line-l);
+      height: var(--font-line-l);
+      font: var(--font-l);
+    }
+
+    &.extraLarge {
+      width: var(--font-line-xl);
+      height: var(--font-line-xl);
+      font: var(--font-xl);
+    }
   }
 }
 

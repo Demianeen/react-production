@@ -2,11 +2,19 @@ import React, { useState } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher'
 import { LangSwitcher } from 'widgets/LangSwitcher'
-import { useTranslation } from 'react-i18next'
 import {
   Button,
-  ThemeButton,
+  ButtonSize,
+  ButtonTheme,
 } from 'shared/ui/Button/Button'
+import { t } from 'i18next'
+import {
+  AppLink,
+  AppLinkTheme,
+} from 'shared/ui/AppLink/AppLink'
+import { RoutePath } from 'shared/config/routeConfig/routeConfig'
+import AboutIcon from 'shared/assets/icons/about-us.svg'
+import HomeIcon from 'shared/assets/icons/home.svg'
 import styles from './Sidebar.module.scss'
 
 interface SidebarProps {
@@ -14,7 +22,6 @@ interface SidebarProps {
 }
 
 export const Sidebar = ({ className }: SidebarProps) => {
-  const { t } = useTranslation()
   const [isCollapsed, setIsCollapsed] = useState(false)
 
   const onToggle = () => {
@@ -34,14 +41,41 @@ export const Sidebar = ({ className }: SidebarProps) => {
     >
       <Button
         data-testid='sidebar-toggle'
-        theme={ThemeButton.CLEAR}
+        theme={ButtonTheme.BACKGROUND_INVERTED}
+        className={styles.collapsedBtn}
         onClick={onToggle}
+        square
+        size={ButtonSize.L}
       >
-        {t('Toggle')}
+        {isCollapsed ? '>' : '<'}
       </Button>
+      <div className={styles.items}>
+        <AppLink
+          theme={AppLinkTheme.INVERTED}
+          to={RoutePath.home}
+          className={styles.item}
+        >
+          <HomeIcon className={styles.icon} />
+          <span className={styles.link}>{t('Home')}</span>
+        </AppLink>
+
+        <AppLink
+          theme={AppLinkTheme.INVERTED}
+          to={RoutePath.about}
+          className={styles.item}
+        >
+          <AboutIcon className={styles.icon} />
+          <span className={styles.link}>
+            {t('About us')}
+          </span>
+        </AppLink>
+      </div>
       <div className={styles.switchers}>
         <ThemeSwitcher />
-        <LangSwitcher className={styles.lang} />
+        <LangSwitcher
+          short={isCollapsed}
+          className={styles.lang}
+        />
       </div>
     </div>
   )
