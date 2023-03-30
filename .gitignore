@@ -1,6 +1,8 @@
 /build
 /extractedTranslations
 /storybook-static
+/.loki/report.json
+/.loki/report.html
 ### macOS ###
 # General
 .DS_Store
