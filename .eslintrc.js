@@ -97,6 +97,10 @@ module.exports = {
 
     // we can stop importing React after version 17
     'react/jsx-no-undef': 0,
+
+    // temporary disabled rules, should be enabled later
+    'jsx-a11y/click-events-have-key-events': 0,
+    'jsx-a11y/no-static-element-interactions': 0,
   },
   settings: {
     react: {

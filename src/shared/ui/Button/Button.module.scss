@@ -4,11 +4,15 @@
   cursor: pointer;
 
   // themes
-  &.clear {
+  &.clear, &.clearInverted {
     padding: 0;
     background: none;
     border: none;
     outline: none;
+  }
+
+  &.clearInverted {
+    color: var(--inverted-primary-color);
   }
 
   &.outline {
@@ -20,7 +24,7 @@
     background: var(--bg-color);
     border: none;
   }
-  
+
   &.backgroundInverted {
     background: var(--inverted-bg-color);
     border: none;
@@ -38,7 +42,7 @@
   &.extraLarge {
     font: var(--font-xl);
   }
-  
+
   // square button
   &.square {
     padding: 0;
