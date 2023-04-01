@@ -1,8 +1,5 @@
-import React, {
-  ErrorInfo,
-  ReactNode,
-  Suspense,
-} from 'react'
+import type { ErrorInfo, ReactNode } from 'react'
+import React, { Suspense } from 'react'
 import { PageError } from 'widgets/PageError/ui/PageError'
 import { Spinner } from 'shared/ui/Spinner/Spinner'
 
@@ -30,6 +27,7 @@ class ErrorBoundary extends React.Component<
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     // You can also log the error to an error reporting service
+    // eslint-disable-next-line no-console
     console.log(error, errorInfo)
   }
 

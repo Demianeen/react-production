@@ -1,6 +1,6 @@
-import webpack from 'webpack'
+import type webpack from 'webpack'
 import path from 'path'
-import { BuildPath } from '../build/types/config'
+import type { BuildPath } from '../build/types/config'
 import { buildCssLoader } from '../build/loaders/buildCssLoader'
 import { buildSvgLoader } from '../build/loaders/buildSvgLoader'
 

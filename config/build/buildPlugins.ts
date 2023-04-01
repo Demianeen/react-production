@@ -3,7 +3,7 @@ import webpack, { ProgressPlugin } from 'webpack'
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
 import MiniCSSExtractPlugin from 'mini-css-extract-plugin'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
-import { BuildOptions } from './types/config'
+import type { BuildOptions } from './types/config'
 
 export default ({
   paths,
@@ -24,7 +24,6 @@ export default ({
   ]
 
   const devPlugins = [
-    new webpack.HotModuleReplacementPlugin(),
     new BundleAnalyzerPlugin({
       openAnalyzer: false,
     }),

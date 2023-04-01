@@ -1,3 +1,5 @@
 {
-  "Home": "Home"
+  "Home": "Home",
+  "Increment": "Increment",
+  "Decrement": "Decrement"
 }

@@ -1,5 +1,5 @@
-import webpack from 'webpack'
-import { BuildOptions } from './types/config'
+import type webpack from 'webpack'
+import type { BuildOptions } from './types/config'
 import { buildCssLoader } from './loaders/buildCssLoader'
 import { buildSvgLoader } from './loaders/buildSvgLoader'
 

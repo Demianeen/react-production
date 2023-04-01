@@ -5,6 +5,7 @@ module.exports = {
     jest: true,
     node: false,
   },
+  root: true,
   extends: [
     'airbnb',
     'plugin:react/recommended',
@@ -27,6 +28,7 @@ module.exports = {
     useJSXTextNode: true,
     project: './tsconfig.json',
   },
+  plugins: ['@typescript-eslint'],
   rules: {
     // ensures that we can handle undefined straight in the component if needed
     'react/require-default-props': 0,
@@ -101,6 +103,15 @@ module.exports = {
     // temporary disabled rules, should be enabled later
     'jsx-a11y/click-events-have-key-events': 0,
     'jsx-a11y/no-static-element-interactions': 0,
+
+    // enforces to use type imports when importing types
+    '@typescript-eslint/consistent-type-imports': [
+      2,
+      {
+        prefer: 'type-imports',
+        fixStyle: 'separate-type-imports',
+      },
+    ],
   },
   settings: {
     react: {
@@ -115,13 +126,27 @@ module.exports = {
   },
   overrides: [
     {
+      // override rules for development environment
       files: [
         '**/src/**/*.{stories,test}.{ts,tsx}',
         '**/storybook/**/*.{ts,tsx}',
+        '**/tests/**/*.{ts,tsx}',
       ],
       rules: {
+        // we don't need internalization in tests
         'i18next/no-literal-string': 0,
+        // we use props spreading in stories
         'react/jsx-props-no-spreading': 0,
+        // we can use dev dependencies in development
+        'import/no-extraneous-dependencies': 0,
+      },
+    },
+    {
+      // override rules for redux slices
+      files: ['src/**/*Slice.ts'],
+      // we can use props reassignments in redux slices like this: state.counter += 1
+      rules: {
+        'no-param-reassign': ['error', { props: false }],
       },
     },
   ],

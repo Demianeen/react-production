@@ -36,6 +36,7 @@ export const Navbar = ({ className }: NavbarProps) => {
       <Modal
         isOpen={isAuthModalOpened}
         onClose={onToggleAuthModal}
+        /* eslint-disable-next-line */
       >
         Lorem ipsum dolor sit amet consectetur adipisicing
         elit. Quisquam quae quod, voluptas, quibusdam,
