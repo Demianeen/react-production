@@ -6,7 +6,6 @@ import React, {
 } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { Portal } from 'shared/ui/Portal/Portal'
-import { useTheme } from 'app/providers/ThemeProvider'
 import styles from './Modal.module.scss'
 
 interface ModalProps {
@@ -27,7 +26,6 @@ export const Modal = ({
   const [isClosing, setIsClosing] = useState(false)
   const timeRef =
     React.useRef<ReturnType<typeof setTimeout>>()
-  const { theme } = useTheme()
 
   const closeHandler = useCallback(() => {
     if (!onClose) return
@@ -74,7 +72,6 @@ export const Modal = ({
     <Portal>
       <div
         className={classNames(styles.modal, mods, [
-          styles[theme],
           className,
         ])}
       >

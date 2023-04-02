@@ -5,15 +5,6 @@
   pointer-events: none;
   opacity: 0;
 
-  &.dark {
-    --bg-color: #1c1b1f;
-    --inverted-bg-color: #fffbfe;
-    --primary-color: #d0bcff;
-    --secondary-color: #ccc2dc;
-    --inverted-primary-color: #6750a4;
-    --inverted-secondary-color: #625b71;
-  }
-
   .overlay {
     display: flex;
     align-items: center;
