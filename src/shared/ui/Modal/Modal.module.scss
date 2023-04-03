@@ -1,9 +1,7 @@
 .modal {
   position: fixed;
   inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  opacity: 0;
+  z-index: var(--modal-z-index);
 
   .overlay {
     display: flex;
@@ -14,29 +12,37 @@
     background-color: var(--overlay-color);
 
     .content {
-      width: 60%;
+      max-width: 60%;
       padding: 1.25rem;
       background: var(--bg-color);
       border-radius: 0.5rem;
-      transition: transform 0.3s ease-in-out;
-      transform: scale(0.5);
-    }
-  }
-
-  &.opened {
-    z-index: var(--modal-z-index);
-    pointer-events: auto;
-    opacity: 1;
-
-    .content {
-      transform: scale(1);
+      animation: modal-appear 0.3s ease-in-out;
     }
   }
 
   &.isClosing {
     .content {
-      transform: scale(0.5);
+      animation: model-disappear 0.3s ease-in-out;
     }
   }
 }
 
+@keyframes modal-appear {
+  0% {
+    transform: scale(0.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes model-disappear {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0.5);
+  }
+}

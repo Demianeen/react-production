@@ -1,4 +1,4 @@
-import type webpack from 'webpack'
+import webpack from 'webpack'
 import path from 'path'
 import type { BuildPath } from '../build/types/config'
 import { buildCssLoader } from '../build/loaders/buildCssLoader'
@@ -17,6 +17,12 @@ export default ({
   }
   config.resolve?.modules?.push(paths.src)
   config.resolve?.extensions?.push('.ts', '.tsx')
+
+  config.plugins?.push(
+    new webpack.DefinePlugin({
+      __IS_DEV__: true,
+    })
+  )
 
   if (!config.module)
     throw new Error('config.module not found')

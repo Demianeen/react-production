@@ -7,5 +7,8 @@
   "Reload page": "Перезавантажити сторінку",
   "Throw error": "Кинути помилку",
   "Short language": "Укр",
-  "Login": "Увійти"
+  "Login": "Увійти",
+  "Enter": "Введіть",
+  "username": "ім'я користувача",
+  "password": "пароль"
 }

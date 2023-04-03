@@ -13,6 +13,7 @@ interface ModalProps {
   children?: ReactNode
   isOpen: boolean
   onClose?: () => void
+  lazy?: boolean
 }
 
 const ANIMATION_TIME = 300
@@ -22,6 +23,7 @@ export const Modal = ({
   children,
   isOpen,
   onClose,
+  lazy = false,
 }: ModalProps) => {
   const [isClosing, setIsClosing] = useState(false)
   const timeRef =
@@ -64,8 +66,11 @@ export const Modal = ({
   }, [isOpen, onKeyDown])
 
   const mods = {
-    [styles.opened]: isOpen,
     [styles.isClosing]: isClosing,
+  }
+
+  if (lazy && !isOpen) {
+    return null
   }
 
   return (

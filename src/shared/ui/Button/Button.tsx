@@ -31,6 +31,7 @@ export const Button: FC<ButtonProps> = ({
   theme = '',
   square = false,
   size = ButtonSize.M,
+  type = 'button',
   ...props
 }) => {
   const mods = {
@@ -38,12 +39,14 @@ export const Button: FC<ButtonProps> = ({
   }
   return (
     <button
-      type='button'
       className={classNames(styles.button, mods, [
         styles[theme],
         styles[size],
         className,
       ])}
+      /* we have type button by default as button */
+      /* eslint-disable-next-line react/button-has-type */
+      type={type}
       {...props}
     >
       {children}

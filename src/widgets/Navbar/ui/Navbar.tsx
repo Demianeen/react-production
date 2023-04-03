@@ -1,11 +1,11 @@
 import React, { useCallback, useState } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
-import { Modal } from 'shared/ui/Modal/Modal'
 import { useTranslation } from 'react-i18next'
 import {
   Button,
   ButtonTheme,
 } from 'shared/ui/Button/Button'
+import { LoginModal } from 'features/AuthByUsername'
 import styles from './Navbar.module.scss'
 
 interface NavbarProps {
@@ -17,8 +17,12 @@ export const Navbar = ({ className }: NavbarProps) => {
   const [isAuthModalOpened, setIsAuthModalOpened] =
     useState(false)
 
-  const onToggleAuthModal = useCallback(() => {
-    setIsAuthModalOpened((prev) => !prev)
+  const onOpenModal = useCallback(() => {
+    setIsAuthModalOpened(true)
+  }, [])
+
+  const onCloseModal = useCallback(() => {
+    setIsAuthModalOpened(false)
   }, [])
 
   return (
@@ -29,27 +33,14 @@ export const Navbar = ({ className }: NavbarProps) => {
       <Button
         type='button'
         theme={ButtonTheme.CLEAR_INVERTED}
-        onClick={onToggleAuthModal}
+        onClick={onOpenModal}
       >
         {t('Login')}
       </Button>
-      <Modal
+      <LoginModal
         isOpen={isAuthModalOpened}
-        onClose={onToggleAuthModal}
-        /* eslint-disable-next-line */
-      >
-        Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Quisquam quae quod, voluptas, quibusdam,
-        voluptates voluptatibus quidem quos v oluptatum quia
-        quod. Quisquam quae quod, voluptas, quibusdam,
-        voluptates voluptatibus quidem quos v oluptatum quia
-        quod. Quisquam quae quod, voluptas, quibusdam,
-        voluptates voluptatibus quidem quos v oluptatum quia
-        quod. Quisquam quae quod, voluptas, quibusdam,
-        voluptates voluptatibus quidem quos v oluptatum quia
-        quod. Quisquam quae quod, voluptas, quibusdam,
-        voluptates voluptatibus quidem quos v
-      </Modal>
+        onClose={onCloseModal}
+      />
     </div>
   )
 }
