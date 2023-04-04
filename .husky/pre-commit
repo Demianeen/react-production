@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# run all linters before each commit
+npm run lint:ts:fix
+npm run lint:scss:fix
