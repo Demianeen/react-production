@@ -6,6 +6,7 @@ import React from 'react'
 import { Counter } from 'entities/Counter'
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator'
 
 export default {
   title: 'entities/Counter',
@@ -13,6 +14,7 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  decorators: [StoreDecorator()],
 } as ComponentMeta<typeof Counter>
 
 const Template: ComponentStory<typeof Counter> = (

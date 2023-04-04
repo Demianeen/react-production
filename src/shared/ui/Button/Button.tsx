@@ -23,6 +23,7 @@ interface ButtonProps
   theme?: ButtonTheme
   square?: boolean
   size?: ButtonSize
+  disabled?: boolean
 }
 
 export const Button: FC<ButtonProps> = ({
@@ -32,10 +33,12 @@ export const Button: FC<ButtonProps> = ({
   square = false,
   size = ButtonSize.M,
   type = 'button',
+  disabled = false,
   ...props
 }) => {
   const mods = {
     [styles.square]: square,
+    [styles.disabled]: disabled,
   }
   return (
     <button
@@ -47,6 +50,7 @@ export const Button: FC<ButtonProps> = ({
       /* we have type button by default as button */
       /* eslint-disable-next-line react/button-has-type */
       type={type}
+      disabled={disabled}
       {...props}
     >
       {children}
