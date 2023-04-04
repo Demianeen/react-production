@@ -65,5 +65,11 @@
       font: var(--font-xl);
     }
   }
+
+  // button statuses
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
 }
 
