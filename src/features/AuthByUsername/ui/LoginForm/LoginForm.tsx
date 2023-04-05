@@ -9,86 +9,103 @@ import { Input } from 'shared/ui/Input/Input'
 import { useDispatch, useSelector } from 'react-redux'
 import { Text, TextTheme } from 'shared/ui/Text/Text'
 import { Spinner } from 'shared/ui/Spinner/Spinner'
-import { loginByUsername } from '../../modal/services/loginByUsername/loginByUsername'
-import { getLoginFormState } from '../../modal/selectors/getLoginState/getLoginFormState'
-import { loginActions } from '../../modal/slice/loginSlice'
+import type { ReducersList } from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader'
+import { useDynamicModuleLoader } from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader'
+import { getLoginFormPassword } from '../../modal/selectors/getLoginFormPassword/getLoginFormPassword'
+import { getLoginFormError } from '../../modal/selectors/getLoginFormError/getLoginFormError'
+import { getLoginFormUsername } from '../../modal/selectors/getLoginFormUsername/getLoginFormUsername'
+import { getLoginFormIsLoading } from '../../modal/selectors/getLoginFormIsLoading/getLoginFormIsLoading'
 import styles from './LoginForm.module.scss'
+import {
+  loginActions,
+  loginFormSliceName,
+  loginReducer,
+} from '../../modal/slice/loginSlice'
+import { loginByUsername } from '../../modal/services/loginByUsername/loginByUsername'
 
 interface LoginFormProps {
   className?: string
 }
 
-export const LoginForm = memo(
-  ({ className }: LoginFormProps) => {
-    const { t } = useTranslation()
-    const dispatch = useDispatch()
-    const { username, password, error, isLoading } =
-      useSelector(getLoginFormState)
+const reducersList: ReducersList = {
+  [loginFormSliceName]: loginReducer,
+}
 
-    const onChangeUsername = useCallback(
-      (value: string) => {
-        dispatch(loginActions.setUsername(value))
-      },
-      [dispatch]
-    )
+const LoginForm = memo(({ className }: LoginFormProps) => {
+  useDynamicModuleLoader(reducersList)
+  const { t } = useTranslation()
+  const dispatch = useDispatch()
 
-    const onChangePassword = useCallback(
-      (value: string) => {
-        dispatch(loginActions.setPassword(value))
-      },
-      [dispatch]
-    )
+  const username = useSelector(getLoginFormUsername) ?? ''
+  const password = useSelector(getLoginFormPassword) ?? ''
+  const error = useSelector(getLoginFormError)
+  const isLoading = useSelector(getLoginFormIsLoading)
 
-    const onLogin = useCallback(
-      (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault()
+  const onChangeUsername = useCallback(
+    (value: string) => {
+      dispatch(loginActions.setUsername(value))
+    },
+    [dispatch]
+  )
 
-        dispatch(loginByUsername({ username, password }))
-      },
-      [dispatch, password, username]
-    )
+  const onChangePassword = useCallback(
+    (value: string) => {
+      dispatch(loginActions.setPassword(value))
+    },
+    [dispatch]
+  )
 
-    return (
-      <form
-        onSubmit={onLogin}
-        className={classNames(styles.loginForm, {}, [
-          className,
-        ])}
+  const onLogin = useCallback(
+    (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault()
+
+      dispatch(loginByUsername({ username, password }))
+    },
+    [dispatch, password, username]
+  )
+
+  return (
+    <form
+      onSubmit={onLogin}
+      className={classNames(styles.loginForm, {}, [
+        className,
+      ])}
+    >
+      <Text title={t('Login form')} />
+      {error && (
+        <Text
+          theme={TextTheme.ERROR}
+          text={t('Username or password is incorrect')}
+        />
+      )}
+      <Input
+        autoFocus
+        type='text'
+        placeholder={t('Enter username')}
+        className={styles.input}
+        onChange={onChangeUsername}
+        value={username}
+      />
+      <Input
+        type='password'
+        placeholder={t('Enter password')}
+        className={styles.input}
+        onChange={onChangePassword}
+        value={password}
+      />
+      {isLoading && <Spinner />}
+      <Button
+        theme={ButtonTheme.OUTLINE}
+        className={styles.loginBtn}
+        type='submit'
+        disabled={isLoading}
       >
-        <Text title={t('Login form')} />
-        {error && (
-          <Text
-            theme={TextTheme.ERROR}
-            text={t('Username or password is incorrect')}
-          />
-        )}
-        <Input
-          autoFocus
-          type='text'
-          placeholder={t('Enter username')}
-          className={styles.input}
-          onChange={onChangeUsername}
-          value={username}
-        />
-        <Input
-          type='password'
-          placeholder={t('Enter password')}
-          className={styles.input}
-          onChange={onChangePassword}
-          value={password}
-        />
-        {isLoading && <Spinner />}
-        <Button
-          theme={ButtonTheme.OUTLINE}
-          className={styles.loginBtn}
-          type='submit'
-          disabled={isLoading}
-        >
-          {t('Login')}
-        </Button>
-      </form>
-    )
-  }
-)
+        {t('Login')}
+      </Button>
+    </form>
+  )
+})
 
 LoginForm.displayName = 'LoginForm'
+
+export default LoginForm
