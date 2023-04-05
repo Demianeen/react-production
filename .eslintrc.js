@@ -112,6 +112,12 @@ module.exports = {
         fixStyle: 'separate-type-imports',
       },
     ],
+
+    // allow us to use expressions in fragments top level
+    'react/jsx-no-useless-fragment': [
+      2,
+      { allowExpressions: true },
+    ],
   },
   settings: {
     react: {
@@ -147,6 +153,16 @@ module.exports = {
       // we can use props reassignments in redux slices like this: state.counter += 1
       rules: {
         'no-param-reassign': ['error', { props: false }],
+      },
+    },
+    {
+      // override rules for reducerManager
+      files: [
+        'src/app/providers/StoreProvider/config/reducerManager.ts',
+      ],
+      rules: {
+        // we need to it inside reducerManager
+        'no-param-reassign': 0,
       },
     },
   ],

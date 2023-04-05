@@ -5,6 +5,7 @@ import { Navbar } from 'widgets/Navbar'
 import { Sidebar } from 'widgets/Sidebar'
 import { useDispatch } from 'react-redux'
 import { userActions } from 'entities/User'
+import { PageLoader } from 'widgets/PageLoader/ui/PageLoader'
 
 const App = () => {
   const dispatch = useDispatch()
@@ -15,7 +16,7 @@ const App = () => {
 
   return (
     <div className={classNames('app', {}, [])}>
-      <Suspense fallback='loading'>
+      <Suspense fallback={PageLoader}>
         <Navbar />
         <div className='contentPage'>
           <Sidebar />

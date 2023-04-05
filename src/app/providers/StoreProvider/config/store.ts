@@ -5,24 +5,34 @@ import {
   counterSliceName,
 } from 'entities/Counter'
 import { userReducer, userSliceName } from 'entities/User'
-import {
-  loginReducer,
-  loginSliceName,
-} from 'features/AuthByUsername'
-import type { StateSchema } from './StateSchema'
+import { createReducerManager } from 'app/providers/StoreProvider/config/reducerManager'
+import type { ReducersList } from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader'
+import type {
+  ReduxStoreWithReducerManager,
+  StateSchema,
+} from './StateSchema'
 
 export const createReduxStore = (
-  preloadedState?: StateSchema
+  preloadedState?: StateSchema,
+  asyncReducers?: ReducersList
 ) => {
-  const rootReducer: ReducersMapObject<StateSchema> = {
+  const staticReducers: ReducersMapObject<StateSchema> = {
+    ...asyncReducers,
     [counterSliceName]: counterReducer,
     [userSliceName]: userReducer,
-    [loginSliceName]: loginReducer,
   }
 
-  return configureStore<StateSchema>({
-    reducer: rootReducer,
+  const reducerManager =
+    createReducerManager(staticReducers)
+
+  const store = configureStore<StateSchema>({
+    reducer: reducerManager.reduce,
     devTools: __IS_DEV__,
     preloadedState,
   })
+
+  // @ts-expect-error we will create type for this later
+  store.reducerManager = reducerManager
+
+  return store as ReduxStoreWithReducerManager
 }
