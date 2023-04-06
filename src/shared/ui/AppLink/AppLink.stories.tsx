@@ -8,7 +8,7 @@ import {
   AppLinkTheme,
 } from 'shared/ui/AppLink/AppLink'
 import { Theme } from 'app/providers/ThemeProvider'
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator'
+import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 
 export default {
   title: 'shared/AppLink',

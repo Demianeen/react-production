@@ -3,5 +3,5 @@ import { getLoginFormState } from 'features/AuthByUsername/modal/selectors/getLo
 
 export const getLoginFormIsLoading = createSelector(
   getLoginFormState,
-  (state) => state?.isLoading
+  (state) => state?.isLoading ?? false
 )
