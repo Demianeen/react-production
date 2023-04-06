@@ -4,9 +4,9 @@ import type {
 } from '@storybook/react'
 import React from 'react'
 import { Counter } from 'entities/Counter'
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator'
+import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator'
+import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
 
 export default {
   title: 'entities/Counter',

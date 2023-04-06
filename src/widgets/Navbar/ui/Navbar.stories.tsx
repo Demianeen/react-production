@@ -3,10 +3,10 @@ import type {
   ComponentMeta,
   ComponentStory,
 } from '@storybook/react'
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator'
+import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { Navbar } from 'widgets/Navbar'
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator'
+import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
 
 export default {
   title: 'widget/Navbar',

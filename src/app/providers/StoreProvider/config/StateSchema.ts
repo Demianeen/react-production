@@ -7,8 +7,8 @@ import type {
   userSliceName,
 } from 'entities/User'
 import type {
+  LoginFormSchema,
   loginFormSliceName,
-  LoginSchema,
 } from 'features/AuthByUsername'
 import type {
   EnhancedStore,
@@ -21,7 +21,7 @@ export interface StateSchema {
   [userSliceName]: UserSchema
 
   // Async reducers
-  [loginFormSliceName]?: LoginSchema
+  [loginFormSliceName]?: LoginFormSchema
 }
 
 export type StateSchemaKey = keyof StateSchema

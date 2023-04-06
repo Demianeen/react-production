@@ -3,5 +3,5 @@ import { getLoginFormState } from 'features/AuthByUsername/modal/selectors/getLo
 
 export const getLoginFormPassword = createSelector(
   getLoginFormState,
-  (state) => state?.password
+  (state) => state?.password ?? ''
 )

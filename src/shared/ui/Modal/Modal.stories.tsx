@@ -4,7 +4,7 @@ import type {
   ComponentStory,
 } from '@storybook/react'
 import { Modal } from 'shared/ui/Modal/Modal'
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator'
+import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 
 export default {
