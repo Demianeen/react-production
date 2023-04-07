@@ -1,5 +1,5 @@
-import type { ButtonHTMLAttributes, FC } from 'react'
-import React from 'react'
+import type { ButtonHTMLAttributes } from 'react'
+import React, { memo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import styles from './Button.module.scss'
 
@@ -26,34 +26,38 @@ interface ButtonProps
   disabled?: boolean
 }
 
-export const Button: FC<ButtonProps> = ({
-  className,
-  children,
-  theme = '',
-  square = false,
-  size = ButtonSize.M,
-  type = 'button',
-  disabled = false,
-  ...props
-}) => {
-  const mods = {
-    [styles.square]: square,
-    [styles.disabled]: disabled,
+export const Button = memo(
+  ({
+    className,
+    children,
+    theme,
+    square = false,
+    size = ButtonSize.M,
+    type = 'button',
+    disabled = false,
+    ...props
+  }: ButtonProps) => {
+    const mods = {
+      [styles.square]: square,
+      [styles.disabled]: disabled,
+    }
+    return (
+      <button
+        className={classNames(styles.button, mods, [
+          styles[theme ?? ''],
+          styles[size],
+          className,
+        ])}
+        /* we have type button by default as button */
+        /* eslint-disable-next-line react/button-has-type */
+        type={type}
+        disabled={disabled}
+        {...props}
+      >
+        {children}
+      </button>
+    )
   }
-  return (
-    <button
-      className={classNames(styles.button, mods, [
-        styles[theme],
-        styles[size],
-        className,
-      ])}
-      /* we have type button by default as button */
-      /* eslint-disable-next-line react/button-has-type */
-      type={type}
-      disabled={disabled}
-      {...props}
-    >
-      {children}
-    </button>
-  )
-}
+)
+
+Button.displayName = 'Button'

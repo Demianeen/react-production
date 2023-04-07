@@ -4,10 +4,15 @@ import { StoreProvider } from 'app/providers/StoreProvider'
 import type { DeepPartial } from '@reduxjs/toolkit'
 import { loginFormSliceName } from 'features/AuthByUsername'
 import { loginReducer } from 'features/AuthByUsername/modal/slice/loginSlice'
-import type { ReducersList } from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader'
+import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
+import {
+  profileReducer,
+  profileSliceName,
+} from 'entities/Profile/model/slice/profileSlice'
 
 const defaultAsyncReducers: ReducersList = {
   [loginFormSliceName]: loginReducer,
+  [profileSliceName]: profileReducer,
 }
 
 export const StoreDecorator = (

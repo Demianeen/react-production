@@ -6,7 +6,7 @@ import {
 } from 'entities/Counter'
 import { userReducer, userSliceName } from 'entities/User'
 import { createReducerManager } from 'app/providers/StoreProvider/config/reducerManager'
-import type { ReducersList } from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader'
+import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import type {
   ReduxStoreWithReducerManager,
   StateSchema,
