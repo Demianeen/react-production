@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import styles from './Text.module.scss'
 
@@ -14,21 +14,25 @@ interface TextProps {
   theme?: TextTheme
 }
 
-export const Text = ({
-  className,
-  title,
-  text,
-  theme = TextTheme.NORMAL,
-}: TextProps) => {
-  return (
-    <div
-      className={classNames(styles.textContainer, {}, [
-        styles[theme],
-        className,
-      ])}
-    >
-      {title && <p className={styles.title}>{title}</p>}
-      {text && <p className={styles.text}>{text}</p>}
-    </div>
-  )
-}
+export const Text = memo(
+  ({
+    className,
+    title,
+    text,
+    theme = TextTheme.NORMAL,
+  }: TextProps) => {
+    return (
+      <div
+        className={classNames(styles.textContainer, {}, [
+          styles[theme],
+          className,
+        ])}
+      >
+        {title && <p className={styles.title}>{title}</p>}
+        {text && <p className={styles.text}>{text}</p>}
+      </div>
+    )
+  }
+)
+
+Text.displayName = 'Text'

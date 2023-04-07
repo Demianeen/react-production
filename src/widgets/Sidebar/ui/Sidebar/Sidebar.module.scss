@@ -16,17 +16,6 @@
     flex-direction: column;
     padding-left: 1.85rem;
     margin-top: 1.25rem;
-
-    .item {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1.25rem;
-
-      .icon {
-        margin-right: 1.25rem;
-        fill: var(--inverted-primary-color);
-      }
-    }
   }
 
   .switchers {
@@ -40,16 +29,9 @@
       margin-left: 1.25rem;
     }
   }
-  
+
   &.collapsed {
     width: var(--sidebar-width-collapsed);
-
-    .link {
-      // text hiding animation
-      width: 0;
-      overflow: hidden;
-      transition: 0.3s opacity;
-    }
 
     .switchers {
       flex-direction: column;

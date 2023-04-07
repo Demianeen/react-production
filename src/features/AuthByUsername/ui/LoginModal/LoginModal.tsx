@@ -1,5 +1,4 @@
 import React from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
 import { Modal } from 'shared/ui/Modal/Modal'
 import { SuspenseWithSpinner } from 'shared/ui/SuspenseWithSpinner/SuspenseWithSpinner'
 import { LoginFormAsync } from '../LoginForm/LoginForm.async'
@@ -19,11 +18,11 @@ export const LoginModal = ({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      className={classNames(className ?? '')}
+      className={className}
       lazy
     >
       <SuspenseWithSpinner>
-        <LoginFormAsync />
+        <LoginFormAsync onSuccess={onClose} />
       </SuspenseWithSpinner>
     </Modal>
   )

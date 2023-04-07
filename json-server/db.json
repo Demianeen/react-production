@@ -46,6 +46,13 @@
     }
   ],
   "profile": {
-    "name": "typicode"
+    "firstName": "Demian",
+    "lastName": "Netliukh",
+    "age": 30,
+    "currency": "GBP",
+    "country": "UK",
+    "city": "London",
+    "username": "admin",
+    "profilePicture": "https://scontent-lcy1-1.cdninstagram.com/v/t51.2885-19/210524727_135821275300556_4358686441303680151_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent-lcy1-1.cdninstagram.com&_nc_cat=108&_nc_ohc=jbau73uvK2oAX9FYtHU&edm=ACWDqb8BAAAA&ccb=7-5&oh=00_AfBl0F86J9cfXEDIOriixXt7iwtVwpd1Cp76-MBI_ERqIQ&oe=64352E23&_nc_sid=1527a3"
   }
 }
