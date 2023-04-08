@@ -1,7 +1,7 @@
 import {
   loginActions,
   loginReducer,
-} from 'features/AuthByUsername/modal/slice/loginSlice'
+} from 'features/AuthByUsername/modal/slice/loginFormSlice'
 import type { DeepPartial } from '@reduxjs/toolkit'
 import type { LoginFormSchema } from 'features/AuthByUsername'
 

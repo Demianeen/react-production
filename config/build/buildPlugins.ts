@@ -8,6 +8,7 @@ import type { BuildOptions } from './types/config'
 export default ({
   paths,
   isDev,
+  apiURL,
 }: BuildOptions): webpack.WebpackPluginInstance[] => {
   const plugins: webpack.WebpackPluginInstance[] = [
     new HtmlWebpackPlugin({
@@ -20,6 +21,7 @@ export default ({
     }),
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
+      __API__: JSON.stringify(apiURL),
     }),
   ]
 

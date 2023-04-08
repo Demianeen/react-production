@@ -4,6 +4,7 @@ import type { StateSchema } from 'app/providers/StoreProvider/config/StateSchema
 import type { ReactNode } from 'react'
 import type { DeepPartial } from '@reduxjs/toolkit'
 import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
+import { useNavigate } from 'react-router-dom'
 
 interface StoreProviderProps {
   children: ReactNode
@@ -16,9 +17,13 @@ export const StoreProvider = ({
   initialState,
   asyncReducers,
 }: StoreProviderProps) => {
+  const navigate = useNavigate()
+
   const store = createReduxStore(
     initialState as StateSchema,
-    asyncReducers
+    asyncReducers,
+    navigate
   )
+
   return <Provider store={store}>{children}</Provider>
 }

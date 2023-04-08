@@ -21,7 +21,7 @@ import {
   loginActions,
   loginFormSliceName,
   loginReducer,
-} from '../../modal/slice/loginSlice'
+} from '../../modal/slice/loginFormSlice'
 import { loginByUsername } from '../../modal/services/loginByUsername/loginByUsername'
 
 interface LoginFormProps {

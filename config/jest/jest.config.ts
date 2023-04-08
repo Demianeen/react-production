@@ -6,14 +6,11 @@
 import path from 'path'
 
 export default {
-  // All imported modules in your tests should be mocked automatically
-  // automock: false,
-
-  // Stop running tests after `n` failures
-  // bail: 0,
-
-  // The directory where Jest should store its cached dependency information
-  // cacheDirectory: "/private/var/folders/1b/wrjh6hrn5zqgnrsh2nv8kh380000gn/T/jest_dx",
+  // A set of global variables that need to be available in all test environments
+  globals: {
+    __IS_DEV__: true,
+    __API__: '',
+  },
 
   // Automatically clear mock calls, instances and results before every test
   clearMocks: true,
@@ -63,12 +60,20 @@ export default {
     ),
   },
 
+  // All imported modules in your tests should be mocked automatically
+  // automock: false,
+
+  // Stop running tests after `n` failures
+  // bail: 0,
+
+  // The directory where Jest should store its cached dependency information
+  // cacheDirectory: "/private/var/folders/1b/wrjh6hrn5zqgnrsh2nv8kh380000gn/T/jest_dx",
+
   // Indicates whether the coverage information should be collected while executing the test
   // collectCoverage: false,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
   // collectCoverageFrom: undefined,
-
   // The directory where Jest should output its coverage files
   // coverageDirectory: undefined,
 
@@ -100,11 +105,6 @@ export default {
 
   // A path to a module which exports an async function that is triggered once after all test suites
   // globalTeardown: undefined,
-
-  // A set of global variables that need to be available in all test environments
-  globals: {
-    __IS_DEV__: true,
-  },
 
   // The maximum amount of workers used to run your tests. Can be specified as % or a number. E.g. maxWorkers: 10% will use 10% of your CPU amount + 1 as the maximum worker number. maxWorkers: 2 will use a maximum of 2 workers.
   // maxWorkers: "50%",

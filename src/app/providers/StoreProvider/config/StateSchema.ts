@@ -18,6 +18,8 @@ import type {
 import type { createReduxStore } from 'app/providers/StoreProvider'
 import type { profileSliceName } from 'entities/Profile/model/slice/profileSlice'
 import type { ProfileSchema } from 'entities/Profile'
+import type { AxiosInstance } from 'axios'
+import type { NavigateFunction } from 'react-router/dist/lib/hooks'
 
 export interface StateSchema {
   [counterSliceName]: CounterSchema
@@ -46,3 +48,13 @@ export interface ReduxStoreWithReducerManager
 export type AppDispatch = ReturnType<
   typeof createReduxStore
 >['dispatch']
+
+export interface ThunkExtraArgument {
+  api: AxiosInstance
+  navigate: NavigateFunction
+}
+
+export interface ThunkConfig<E> {
+  rejectValue: E
+  extra: ThunkExtraArgument
+}
