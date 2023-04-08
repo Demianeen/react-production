@@ -9,7 +9,7 @@ const initialState: LoginFormSchema = {
   username: '',
 }
 
-export const loginSlice = createSlice({
+export const loginFormSlice = createSlice({
   name: 'loginForm',
   initialState,
   reducers: {
@@ -41,6 +41,6 @@ export const loginSlice = createSlice({
   },
 })
 
-export const { actions: loginActions } = loginSlice
-export const { reducer: loginReducer } = loginSlice
-export const { name: loginFormSliceName } = loginSlice
+export const { actions: loginActions } = loginFormSlice
+export const { reducer: loginReducer } = loginFormSlice
+export const { name: loginFormSliceName } = loginFormSlice

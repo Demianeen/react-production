@@ -1,0 +1,21 @@
+.profileCard {
+  padding: 20px;
+  border: 2px solid var(--inverted-bg-color);
+
+  .header {
+    display: flex;
+
+    .editBtn {
+      margin-left: auto;
+    }
+  }
+
+  .content {
+    margin-top: 1.5rem;
+
+    .input {
+      display: block;
+      margin-bottom: 1rem;
+    }
+  }
+}

@@ -166,4 +166,8 @@ module.exports = {
       },
     },
   ],
+  globals: {
+    __IS_DEV__: false,
+    __API__: false,
+  },
 }

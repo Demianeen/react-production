@@ -1,9 +1,13 @@
-import React, { memo } from 'react'
-import { useTranslation } from 'react-i18next'
+import React, { memo, useEffect } from 'react'
 import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
-import { profileReducer } from 'entities/Profile'
+import {
+  fetchProfileData,
+  ProfileCard,
+  profileReducer,
+} from 'entities/Profile'
 import { profileSliceName } from 'entities/Profile/model/slice/profileSlice'
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 
 const reducersList: ReducersList = {
   [profileSliceName]: profileReducer,
@@ -11,9 +15,18 @@ const reducersList: ReducersList = {
 
 const ProfilePage = memo(() => {
   useDynamicModuleLoader(reducersList)
-  const { t } = useTranslation()
+  const dispatch = useAppDispatch()
 
-  return <div>{t('BOBOB')}</div>
+  useEffect(() => {
+    // @ts-expect-error TODO: fix this
+    dispatch(fetchProfileData())
+  }, [dispatch])
+
+  return (
+    <div>
+      <ProfileCard />
+    </div>
+  )
 })
 
 ProfilePage.displayName = 'ProfilePage'

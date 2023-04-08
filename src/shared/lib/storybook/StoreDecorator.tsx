@@ -3,7 +3,7 @@ import type { StateSchema } from 'app/providers/StoreProvider'
 import { StoreProvider } from 'app/providers/StoreProvider'
 import type { DeepPartial } from '@reduxjs/toolkit'
 import { loginFormSliceName } from 'features/AuthByUsername'
-import { loginReducer } from 'features/AuthByUsername/modal/slice/loginSlice'
+import { loginReducer } from 'features/AuthByUsername/modal/slice/loginFormSlice'
 import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import {
   profileReducer,
