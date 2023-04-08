@@ -49,12 +49,12 @@ export type AppDispatch = ReturnType<
   typeof createReduxStore
 >['dispatch']
 
-export interface ThunkExtraArgument {
+export interface ThunkExtraArg {
   api: AxiosInstance
   navigate: NavigateFunction
 }
 
 export interface ThunkConfig<E> {
   rejectValue: E
-  extra: ThunkExtraArgument
+  extra: ThunkExtraArg
 }

@@ -1,7 +1,6 @@
 import type { Story } from '@storybook/react'
 import type { StateSchema } from 'app/providers/StoreProvider'
 import { StoreProvider } from 'app/providers/StoreProvider'
-import type { DeepPartial } from '@reduxjs/toolkit'
 import { loginFormSliceName } from 'features/AuthByUsername'
 import { loginReducer } from 'features/AuthByUsername/modal/slice/loginFormSlice'
 import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
@@ -22,8 +21,8 @@ export const StoreDecorator = (
   function decorator(StoryComponent: Story) {
     return (
       <StoreProvider
-        initialState={initialState}
-        asyncReducers={{
+        preloadedState={initialState}
+        preloadedAsyncReducers={{
           ...defaultAsyncReducers,
           ...asyncReducers,
         }}

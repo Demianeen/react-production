@@ -17,9 +17,9 @@ export default {
   decorators: [StoreDecorator()],
 } as ComponentMeta<typeof ProfilePage>
 
-const Template: ComponentStory<typeof ProfilePage> = (
-  _args
-) => <ProfilePage />
+const Template: ComponentStory<typeof ProfilePage> = () => (
+  <ProfilePage />
+)
 
 export const Light = Template.bind({})
 Light.args = {}

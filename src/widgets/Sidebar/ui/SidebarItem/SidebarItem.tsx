@@ -3,6 +3,7 @@ import {
   AppLink,
   AppLinkTheme,
 } from 'shared/ui/AppLink/AppLink'
+import type { Mods } from 'shared/lib/classNames/classNames'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { useTranslation } from 'react-i18next'
 import type { SidebarItemArgs } from '../../model/items'
@@ -16,7 +17,7 @@ interface SidebarItemProps {
 export const SidebarItem = memo(
   ({ item, isCollapsed }: SidebarItemProps) => {
     const { t } = useTranslation()
-    const mods = {
+    const mods: Mods = {
       [styles.collapsed]: isCollapsed,
     }
 

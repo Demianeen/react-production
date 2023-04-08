@@ -4,6 +4,7 @@ import React, {
   useEffect,
   useState,
 } from 'react'
+import type { Mods } from 'shared/lib/classNames/classNames'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { Portal } from 'shared/ui/Portal/Portal'
 import styles from './Modal.module.scss'
@@ -27,7 +28,7 @@ export const Modal = ({
 }: ModalProps) => {
   const [isClosing, setIsClosing] = useState(false)
   const timeRef =
-    React.useRef<ReturnType<typeof setTimeout>>()
+    React.useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const closeHandler = useCallback(() => {
     if (!onClose) return
@@ -58,14 +59,14 @@ export const Modal = ({
     }
 
     return () => {
-      if (timeRef.current) {
+      if (timeRef.current !== null) {
         clearTimeout(timeRef.current)
       }
       window.removeEventListener('keydown', onKeyDown)
     }
   }, [isOpen, onKeyDown])
 
-  const mods = {
+  const mods: Mods = {
     [styles.isClosing]: isClosing,
   }
 
