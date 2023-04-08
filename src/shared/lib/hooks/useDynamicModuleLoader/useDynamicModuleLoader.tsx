@@ -8,7 +8,6 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 export type ReducersList = Partial<
   Record<StateSchemaKey, Reducer>
 >
-type ReducerListEntry = [StateSchemaKey, Reducer]
 
 interface DynamicModuleLoaderOptions {
   removeOnUnmount?: boolean
@@ -24,27 +23,26 @@ export const useDynamicModuleLoader = (
   const store = useStore() as ReduxStoreWithReducerManager
 
   useEffect(() => {
-    Object.entries(reducers).forEach(
-      // @ts-expect-error TODO: fix this
-      ([name, reducer]: ReducerListEntry) => {
-        store.reducerManager.add(name, reducer)
-        dispatch({
-          type: `@INIT ${name} reducer`,
-        })
-      }
-    )
+    Object.entries(reducers).forEach(([name, reducer]) => {
+      store.reducerManager.add(
+        // reducers list type had StateSchemaKey as a name
+        name as StateSchemaKey,
+        reducer
+      )
+      dispatch({
+        type: `@INIT ${name} reducer`,
+      })
+    })
 
     return () => {
       if (!removeOnUnmount) return
-      Object.entries(reducers).forEach(
-        // @ts-expect-error TODO: fix this
-        ([name]: ReducerListEntry) => {
-          store.reducerManager.remove(name)
-          dispatch({
-            type: `@DESTROY ${name} reducer`,
-          })
-        }
-      )
+      Object.entries(reducers).forEach(([name]) => {
+        // reducers list type had StateSchemaKey as a name
+        store.reducerManager.remove(name as StateSchemaKey)
+        dispatch({
+          type: `@DESTROY ${name} reducer`,
+        })
+      })
     }
     // useEffect should be called only once when component is mounted
     // eslint-disable-next-line react-hooks/exhaustive-deps

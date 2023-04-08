@@ -1,4 +1,3 @@
-import type { DeepPartial } from '@reduxjs/toolkit'
 import { getLoginFormPassword } from 'features/AuthByUsername/modal/selectors/getLoginFormPassword/getLoginFormPassword'
 import type { StateSchema } from 'app/providers/StoreProvider'
 

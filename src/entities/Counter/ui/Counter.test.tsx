@@ -5,7 +5,7 @@ import { screen } from '@testing-library/react'
 describe('Counter', () => {
   it('should render', () => {
     componentRender(<Counter />, {
-      initialState: {
+      preloadedState: {
         counter: {
           value: 10,
         },
@@ -25,7 +25,7 @@ describe('Counter', () => {
 
   it('should increment value', async () => {
     const { user } = componentRender(<Counter />, {
-      initialState: {
+      preloadedState: {
         counter: {
           value: 10,
         },
@@ -40,7 +40,7 @@ describe('Counter', () => {
 
   it('should decrement value', async () => {
     const { user } = componentRender(<Counter />, {
-      initialState: {
+      preloadedState: {
         counter: {
           value: 10,
         },

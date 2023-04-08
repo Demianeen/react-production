@@ -1,5 +1,5 @@
 import { getLoginFormError } from 'features/AuthByUsername/modal/selectors/getLoginFormError/getLoginFormError'
-import type { DeepPartial } from '@reduxjs/toolkit'
+
 import type { StateSchema } from 'app/providers/StoreProvider'
 import { getLoginFormIsLoading } from 'features/AuthByUsername/modal/selectors/getLoginFormIsLoading/getLoginFormIsLoading'
 

@@ -17,9 +17,9 @@ export default {
   decorators: [StoreDecorator()],
 } as ComponentMeta<typeof Counter>
 
-const Template: ComponentStory<typeof Counter> = (
-  _args
-) => <Counter />
+const Template: ComponentStory<typeof Counter> = () => (
+  <Counter />
+)
 
 export const Light = Template.bind({})
 Light.args = {}

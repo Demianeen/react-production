@@ -18,7 +18,6 @@ const ProfilePage = memo(() => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    // @ts-expect-error TODO: fix this
     dispatch(fetchProfileData())
   }, [dispatch])
 

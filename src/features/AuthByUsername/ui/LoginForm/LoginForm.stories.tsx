@@ -34,7 +34,6 @@ WithValue.decorators = [
     loginForm: {
       username: 'username',
       password: 'password',
-      isLoading: false,
     },
   }),
 ]
@@ -45,9 +44,6 @@ Error.decorators = [
   StoreDecorator({
     loginForm: {
       error: 'Error',
-      username: '',
-      password: '',
-      isLoading: false,
     },
   }),
 ]
@@ -58,8 +54,6 @@ Loading.decorators = [
   StoreDecorator({
     loginForm: {
       isLoading: true,
-      username: '',
-      password: '',
     },
   }),
 ]

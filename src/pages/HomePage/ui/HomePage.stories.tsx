@@ -15,9 +15,9 @@ export default {
   },
 } as ComponentMeta<typeof HomePage>
 
-const Template: ComponentStory<typeof HomePage> = (
-  _args
-) => <HomePage />
+const Template: ComponentStory<typeof HomePage> = () => (
+  <HomePage />
+)
 
 export const Light = Template.bind({})
 Light.args = {}

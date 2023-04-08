@@ -1,4 +1,3 @@
-import type { DeepPartial } from '@reduxjs/toolkit'
 import { getLoginFormIsLoading } from 'features/AuthByUsername/modal/selectors/getLoginFormIsLoading/getLoginFormIsLoading'
 import type { StateSchema } from 'app/providers/StoreProvider'
 

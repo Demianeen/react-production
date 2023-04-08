@@ -63,7 +63,6 @@ const LoginForm = memo(
         event.preventDefault()
 
         const result = await dispatch(
-          // @ts-expect-error TODO: fix this
           loginByUsername({ username, password })
         )
         if (result.meta.requestStatus === 'fulfilled') {
