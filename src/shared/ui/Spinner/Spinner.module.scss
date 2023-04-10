@@ -1,6 +1,6 @@
 @use "sass:math";
 
-$spinner-size: 40px;
+$spinner-size: 2.5rem;
 
 .ldsSpinner {
   position: relative;
@@ -16,10 +16,10 @@ $spinner-size: 40px;
     &::after {
       position: absolute;
       top: 0;
-      left: calc($spinner-size / 2 - 3px);
+      left: calc($spinner-size / 2 - 0.188rem);
       display: block;
-      width: 4px;
-      height: 12px;
+      width: 0.25rem;
+      height: 0.75rem;
       content: " ";
       background: var(--primary-color);
       border-radius: 20%;
