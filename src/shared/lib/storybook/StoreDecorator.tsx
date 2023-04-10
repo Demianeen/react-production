@@ -7,7 +7,7 @@ import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDy
 import {
   profileReducer,
   profileSliceName,
-} from 'entities/Profile/model/slice/profileSlice'
+} from 'pages/ProfilePage/model/slice/profileSlice'
 
 const defaultAsyncReducers: ReducersList = {
   [loginFormSliceName]: loginReducer,

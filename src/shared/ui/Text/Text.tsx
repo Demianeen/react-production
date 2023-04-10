@@ -7,11 +7,18 @@ export enum TextTheme {
   ERROR = 'error',
 }
 
+export enum TextAlign {
+  LEFT = 'left',
+  CENTER = 'center',
+  RIGHT = 'right',
+}
+
 interface TextProps {
   className?: string
   text?: React.ReactNode
   title?: string
   theme?: TextTheme
+  align?: TextAlign
 }
 
 export const Text = memo(
@@ -20,11 +27,13 @@ export const Text = memo(
     title,
     text,
     theme = TextTheme.NORMAL,
+    align = TextAlign.LEFT,
   }: TextProps) => {
     return (
       <div
         className={classNames(styles.textContainer, {}, [
           styles[theme],
+          styles[align],
           className,
         ])}
       >

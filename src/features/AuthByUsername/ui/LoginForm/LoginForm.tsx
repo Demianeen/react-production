@@ -89,17 +89,21 @@ const LoginForm = memo(
         <Input
           autoFocus
           type='text'
-          placeholder={t('Enter username')}
+          placeholder={t('Your username')}
           className={styles.input}
           onChange={onChangeUsername}
           value={username}
+          labelText={t('Enter username')}
+          autoComplete='username'
         />
         <Input
           type='password'
-          placeholder={t('Enter password')}
+          placeholder={t('Your password')}
           className={styles.input}
           onChange={onChangePassword}
           value={password}
+          labelText={t('Enter password')}
+          autoComplete='current-password'
         />
         {isLoading && <Spinner />}
         <Button

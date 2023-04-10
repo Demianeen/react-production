@@ -5,7 +5,7 @@ import type {
 } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
-import { ThemeSwitcher } from 'widgets/ThemeSwitcher'
+import { ThemeSwitcher } from './ThemeSwitcher'
 
 export default {
   title: 'widget/ThemeSwitcher',

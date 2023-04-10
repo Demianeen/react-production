@@ -5,7 +5,7 @@ import type {
 } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
-import AboutPage from 'pages/AboutPage/ui/AboutPage'
+import AboutPage from './AboutPage'
 
 export default {
   title: 'pages/AboutPage',

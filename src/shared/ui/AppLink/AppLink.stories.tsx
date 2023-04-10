@@ -3,12 +3,9 @@ import type {
   ComponentMeta,
   ComponentStory,
 } from '@storybook/react'
-import {
-  AppLink,
-  AppLinkTheme,
-} from 'shared/ui/AppLink/AppLink'
 import { Theme } from 'app/providers/ThemeProvider'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
+import { AppLink, AppLinkTheme } from './AppLink'
 
 export default {
   title: 'shared/AppLink',

@@ -5,9 +5,9 @@ import type {
 } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
-import { SidebarItem } from 'widgets/Sidebar/ui/SidebarItem/SidebarItem'
 import { RoutePath } from 'shared/config/routeConfig/routeConfig'
 import AboutIcon from 'shared/assets/icons/about-us.svg'
+import { SidebarItem } from './SidebarItem'
 
 export default {
   title: 'features/SidebarItem',

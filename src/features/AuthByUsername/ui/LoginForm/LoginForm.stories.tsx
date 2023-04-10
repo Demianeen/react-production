@@ -5,8 +5,8 @@ import type {
 } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
-import LoginForm from 'features/AuthByUsername/ui/LoginForm/LoginForm'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
+import LoginForm from './LoginForm'
 
 export default {
   title: 'features/LoginForm',

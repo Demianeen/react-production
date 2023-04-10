@@ -5,7 +5,7 @@ import type {
 } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
-import { PageError } from 'widgets/PageError/ui/PageError'
+import { PageError } from './PageError'
 
 export default {
   title: 'widget/PageError',
