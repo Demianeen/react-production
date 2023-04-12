@@ -126,7 +126,7 @@ export const ProfileCard = ({
         />
         <Input
           value={data?.username}
-          placeholder='30'
+          placeholder={t('Your creative username')}
           className={styles.input}
           label={t('Username')}
           onChange={onChangeUsername}

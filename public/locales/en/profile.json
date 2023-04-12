@@ -10,5 +10,18 @@
   "Cancel": "Cancel",
   "Save": "Save",
   "Link to new picture": "Link to new picture",
-  "Avatar": "Avatar"
+  "Avatar": "Avatar",
+  "Profile data is missing": "Profile data is missing",
+  "Unknown server error happened": "Unknown server error happened",
+  "City is required": "City is required",
+  "You need to be at least 18 years old": "You need to be at least 18 years old",
+  "Age is required": "Age is required",
+  "Last name is required": "Last name is required",
+  "First name is required": "First name is required",
+  "Username is required": "Username is required",
+  "Age": "Age",
+  "London": "London",
+  "City": "City",
+  "Username": "Username",
+  "Your creative username": "Your creative username"
 }

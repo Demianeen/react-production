@@ -10,5 +10,18 @@
   "Cancel": "Скасувати",
   "Save": "Зберегти",
   "Link to new picture": "Посилання на нове зображення",
-  "Avatar": "Аватарка"
+  "Avatar": "Аватарка",
+  "Profile data is missing": "Дані профілю відсутні",
+  "Unknown server error happened": "Невідома помилка сервера",
+  "City is required": "Місто обов'язкове",
+  "You need to be at least 18 years old": "Вам повинно бути щонайменше 18 років",
+  "Age is required": "Вік обов'язковий",
+  "Last name is required": "Прізвище обов'язкове",
+  "First name is required": "Ім'я обов'язкове",
+  "Username is required": "Ім'я користувача обов'язкове",
+  "Age": "Вік",
+  "London": "Київ",
+  "City": "Місто",
+  "Username": "Ім'я користувача",
+  "Your creative username": "Ваше творче ім'я користувача"
 }

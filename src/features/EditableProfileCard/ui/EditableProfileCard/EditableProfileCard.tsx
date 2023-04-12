@@ -14,6 +14,11 @@ import {
 import type { Currency } from 'entities/Currency'
 import type { Country } from 'entities/Country'
 // eslint-disable-next-line import/no-cycle
+import { Text, TextTheme } from 'shared/ui/Text/Text'
+import { ProfileValidationError } from 'features/EditableProfileCard/model/types/profileSchema'
+import { useTranslation } from 'react-i18next'
+import { getProfileValidationErrors } from '../../model/selectors/getProfileValidationErrors/getProfileValidationErrors'
+// eslint-disable-next-line import/no-cycle
 import { EditableProfileCardHeader } from '../EditableProfileCardHeader/EditableProfileCardHeader'
 import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading'
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError'
@@ -25,11 +30,47 @@ const reducersList: ReducersList = {
 
 export const EditableProfileCard = memo(() => {
   useDynamicModuleLoader(reducersList)
+
+  const { t } = useTranslation('profile')
+
   const dispatch = useAppDispatch()
   const formData = useSelector(getProfileForm)
   const isLoading = useSelector(getProfileIsLoading)
   const error = useSelector(getProfileError)
   const isReadonly = useSelector(getProfileIsReadonly)
+  const validationErrors = useSelector(
+    getProfileValidationErrors
+  )
+
+  const validationErrorMessage: Record<
+    ProfileValidationError,
+    string
+  > = {
+    [ProfileValidationError.MISSING_FIRST_NAME]: t(
+      'First name is required'
+    ),
+    [ProfileValidationError.MISSING_LAST_NAME]: t(
+      'Last name is required'
+    ),
+    [ProfileValidationError.MISSING_AGE]: t(
+      'Age is required'
+    ),
+    [ProfileValidationError.INCORRECT_AGE]: t(
+      'You need to be at least 18 years old'
+    ),
+    [ProfileValidationError.MISSING_CITY]: t(
+      'City is required'
+    ),
+    [ProfileValidationError.MISSING_USERNAME]: t(
+      'Username is required'
+    ),
+    [ProfileValidationError.NO_DATA]: t(
+      'Profile data is missing'
+    ),
+    [ProfileValidationError.UNKNOWN_SERVER_ERROR]: t(
+      'Unknown server error happened'
+    ),
+  }
 
   useEffect(() => {
     dispatch(fetchProfileData())
@@ -127,6 +168,14 @@ export const EditableProfileCard = memo(() => {
   return (
     <>
       <EditableProfileCardHeader />
+      {validationErrors &&
+        validationErrors.map((errCode) => (
+          <Text
+            key={errCode}
+            theme={TextTheme.ERROR}
+            text={validationErrorMessage[errCode]}
+          />
+        ))}
       <ProfileCard
         data={formData}
         isLoading={isLoading}
