@@ -2,8 +2,8 @@ import type {
   ComponentMeta,
   ComponentStory,
 } from '@storybook/react'
-import AvatarImg from 'shared/assets/tests/storybook.jpeg'
 import { Avatar } from './Avatar'
+import AvatarImg from './storybook.jpeg'
 
 export default {
   title: 'shared/Avatar',

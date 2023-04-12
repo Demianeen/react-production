@@ -1,19 +1,22 @@
 import type { InputHTMLAttributes } from 'react'
 import React, { memo, useEffect } from 'react'
+import type { Mods } from 'shared/lib/classNames/classNames'
 import { classNames } from 'shared/lib/classNames/classNames'
+import { WithLabel } from 'shared/ui/WithLabel/WithLabel'
 import styles from './Input.module.scss'
 
 type HTMLInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
-  'value' | 'onChange'
+  'value' | 'onChange' | 'readonly'
 >
 
 interface InputProps extends HTMLInputProps {
+  label: string
   className?: string
-  value?: string
+  value?: string | number
   onChange?: (value: string) => void
   autoFocus?: boolean
-  labelText: string
+  readonly?: boolean
 }
 
 export const Input = memo(
@@ -23,7 +26,8 @@ export const Input = memo(
     onChange,
     type = 'text',
     autoFocus,
-    labelText,
+    label,
+    readonly,
     ...props
   }: InputProps) => {
     const handleChange = (
@@ -39,17 +43,17 @@ export const Input = memo(
       }
     }, [autoFocus])
 
+    const mods: Mods = {
+      [styles.readonly]: readonly,
+    }
+
     return (
-      <div
-        className={classNames(styles.inputContainer, {}, [
-          className,
-        ])}
-      >
-        {/* eslint-disable-next-line i18next/no-literal-string */}
-        <label htmlFor={labelText}>{labelText}: </label>
+      <WithLabel label={label}>
         <input
-          id={labelText}
-          className={styles.input}
+          id={label}
+          className={classNames(styles.input, mods, [
+            className,
+          ])}
           value={value}
           type={type}
           onChange={handleChange}
@@ -57,9 +61,10 @@ export const Input = memo(
           /* I decided to use autofocus for forms */
           /* eslint-disable-next-line jsx-a11y/no-autofocus */
           autoFocus={autoFocus}
+          readOnly={readonly}
           {...props}
         />
-      </div>
+      </WithLabel>
     )
   }
 )

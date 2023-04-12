@@ -3,13 +3,18 @@
   "Home": "Home",
   "Language": "English",
   "Page not found": "Page not found",
-  "Unexpected error": "Unexpected error",
   "Reload page": "Reload page",
   "Throw error": "Throw error",
   "Short language": "En",
   "Login": "Login",
+  "Logout": "Logout",
   "Enter username": "Enter username",
   "Enter password": "Enter password",
   "Login form": "Login form",
-  "Username or password is incorrect": "Username or password is incorrect"
+  "Username or password is incorrect": "Username or password is incorrect",
+  "Your password": "Your password",
+  "Your username": "Your username",
+  "Something went wrong": "Something went wrong",
+  "Currency": "Currency",
+  "Country": "Country"
 }

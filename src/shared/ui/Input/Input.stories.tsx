@@ -13,7 +13,7 @@ export default {
   },
   args: {
     placeholder: 'Placeholder',
-    labelText: 'Label',
+    label: 'Label',
   },
 } as ComponentMeta<typeof Input>
 
