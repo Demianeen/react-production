@@ -16,10 +16,12 @@ import type {
   ReducersMapObject,
 } from '@reduxjs/toolkit'
 import type { createReduxStore } from 'app/providers/StoreProvider'
-import type { profileSliceName } from 'entities/Profile/model/slice/profileSlice'
-import type { ProfileSchema } from 'entities/Profile'
 import type { AxiosInstance } from 'axios'
 import type { NavigateFunction } from 'react-router/dist/lib/hooks'
+import type {
+  ProfileSchema,
+  profileSliceName,
+} from 'features/EditableProfileCard'
 
 export interface StateSchema {
   [counterSliceName]: CounterSchema
@@ -57,4 +59,5 @@ export interface ThunkExtraArg {
 export interface ThunkConfig<E> {
   rejectValue: E
   extra: ThunkExtraArg
+  state: StateSchema
 }

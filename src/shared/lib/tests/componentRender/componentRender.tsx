@@ -8,7 +8,7 @@ import { StoreProvider } from 'app/providers/StoreProvider'
 
 import userEvent from '@testing-library/user-event'
 
-export interface IComponentRenderOptions {
+export interface ComponentRenderOptions {
   route?: string
   preloadedState?: DeepPartial<StateSchema>
 }
@@ -18,7 +18,7 @@ export const componentRender = (
   {
     route = '/',
     preloadedState,
-  }: IComponentRenderOptions = {}
+  }: ComponentRenderOptions = {}
 ) => {
   return {
     user: userEvent.setup(),
