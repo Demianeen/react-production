@@ -2,5 +2,13 @@
   "Profile": "Profile",
   "Edit": "Edit",
   "First name": "First name",
-  "Last name": "Last name"
+  "Last name": "Last name",
+  "John": "John",
+  "Doe": "Doe",
+  "Something went wrong": "Something went wrong",
+  "Try to reload the page": "Try to reload the page",
+  "Cancel": "Cancel",
+  "Save": "Save",
+  "Link to new picture": "Link to new picture",
+  "Avatar": "Avatar"
 }

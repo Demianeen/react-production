@@ -2,5 +2,13 @@
   "Profile": "Профіль",
   "Edit": "Редагувати",
   "First name": "Ім'я",
-  "Last name": "Прізвище"
+  "Last name": "Прізвище",
+  "John": "Вася",
+  "Doe": "Пупкін",
+  "Something went wrong": "Щось пішло не так",
+  "Try to reload the page": "Спробуйте перезавантажити сторінку",
+  "Cancel": "Скасувати",
+  "Save": "Зберегти",
+  "Link to new picture": "Посилання на нове зображення",
+  "Avatar": "Аватарка"
 }

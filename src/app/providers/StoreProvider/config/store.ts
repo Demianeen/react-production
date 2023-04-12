@@ -1,7 +1,10 @@
 import type { ReducersMapObject } from '@reduxjs/toolkit'
 import { configureStore } from '@reduxjs/toolkit'
-import { counterReducer } from 'entities/Counter'
-import { userReducer } from 'entities/User'
+import {
+  counterReducer,
+  counterSliceName,
+} from 'entities/Counter'
+import { userReducer, userSliceName } from 'entities/User'
 import { $api } from 'shared/api/api'
 import type { CombinedState, Reducer } from 'redux'
 import type { NavigateFunction } from 'react-router/dist/lib/hooks'
@@ -25,8 +28,8 @@ export function createReduxStore({
 }: CreateReduxStoreProps) {
   const rootReducers: ReducersMapObject<StateSchema> = {
     ...preloadedAsyncReducers,
-    counter: counterReducer,
-    user: userReducer,
+    [counterSliceName]: counterReducer,
+    [userSliceName]: userReducer,
   }
 
   const reducerManager = createReducerManager(rootReducers)

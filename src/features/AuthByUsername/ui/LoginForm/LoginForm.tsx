@@ -93,7 +93,7 @@ const LoginForm = memo(
           className={styles.input}
           onChange={onChangeUsername}
           value={username}
-          labelText={t('Enter username')}
+          label={t('Enter username')}
           autoComplete='username'
         />
         <Input
@@ -102,7 +102,7 @@ const LoginForm = memo(
           className={styles.input}
           onChange={onChangePassword}
           value={password}
-          labelText={t('Enter password')}
+          label={t('Enter password')}
           autoComplete='current-password'
         />
         {isLoading && <Spinner />}
