@@ -1,7 +1,5 @@
-import { getLoginFormError } from 'features/AuthByUsername/modal/selectors/getLoginFormError/getLoginFormError'
-
 import type { StateSchema } from 'app/providers/StoreProvider'
-import { getLoginFormIsLoading } from 'features/AuthByUsername/modal/selectors/getLoginFormIsLoading/getLoginFormIsLoading'
+import { getLoginFormError } from './getLoginFormError'
 
 describe('getLoginFormError', () => {
   it('should return error', () => {
@@ -20,8 +18,8 @@ describe('getLoginFormError', () => {
 
   it('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {}
-    expect(
-      getLoginFormIsLoading(state as StateSchema)
-    ).toEqual(false)
+    expect(getLoginFormError(state as StateSchema)).toEqual(
+      undefined
+    )
   })
 })

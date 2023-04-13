@@ -3,7 +3,7 @@ import type {
   ComponentMeta,
   ComponentStory,
 } from '@storybook/react'
-import { Input } from 'shared/ui/Input/Input'
+import { Input } from './Input'
 
 export default {
   title: 'shared/Input',
@@ -11,7 +11,10 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  args: {},
+  args: {
+    placeholder: 'Placeholder',
+    labelText: 'Label',
+  },
 } as ComponentMeta<typeof Input>
 
 const Template: ComponentStory<typeof Input> = (args) => (
@@ -19,12 +22,9 @@ const Template: ComponentStory<typeof Input> = (args) => (
 )
 
 export const WithPlaceholder = Template.bind({})
-WithPlaceholder.args = {
-  placeholder: 'Placeholder',
-}
+WithPlaceholder.args = {}
 
 export const WithValue = Template.bind({})
 WithValue.args = {
-  placeholder: 'Placeholder',
   value: 'Value',
 }

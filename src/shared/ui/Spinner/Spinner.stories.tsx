@@ -5,7 +5,7 @@ import type {
 } from '@storybook/react'
 import { Theme } from 'app/providers/ThemeProvider'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
-import { Spinner } from 'shared/ui/Spinner/Spinner'
+import { Spinner } from './Spinner'
 
 export default {
   title: 'shared/Spinner',

@@ -3,10 +3,10 @@ import type {
   ComponentStory,
 } from '@storybook/react'
 import React from 'react'
-import { Counter } from 'entities/Counter'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
+import { Counter } from './Counter'
 
 export default {
   title: 'entities/Counter',
