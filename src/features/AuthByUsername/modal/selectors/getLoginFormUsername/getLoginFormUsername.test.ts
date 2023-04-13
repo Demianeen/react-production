@@ -1,5 +1,5 @@
 import type { StateSchema } from 'app/providers/StoreProvider'
-import { getLoginFormUsername } from 'features/AuthByUsername/modal/selectors/getLoginFormUsername/getLoginFormUsername'
+import { getLoginFormUsername } from './getLoginFormUsername'
 
 describe('getLoginFormUsername', () => {
   it('should return the username', () => {

@@ -1,9 +1,8 @@
+import type { LoginFormSchema } from '../types/loginFormSchema'
 import {
   loginActions,
   loginReducer,
-} from 'features/AuthByUsername/modal/slice/loginFormSlice'
-
-import type { LoginFormSchema } from 'features/AuthByUsername'
+} from './loginFormSlice'
 
 describe('loginSlice', () => {
   test('setUsername', () => {

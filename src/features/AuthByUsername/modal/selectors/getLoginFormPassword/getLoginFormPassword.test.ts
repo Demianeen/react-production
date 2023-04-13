@@ -1,5 +1,5 @@
-import { getLoginFormPassword } from 'features/AuthByUsername/modal/selectors/getLoginFormPassword/getLoginFormPassword'
 import type { StateSchema } from 'app/providers/StoreProvider'
+import { getLoginFormPassword } from './getLoginFormPassword'
 
 describe('getLoginFormPassword', () => {
   it('should return password', () => {

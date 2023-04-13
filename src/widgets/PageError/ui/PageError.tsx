@@ -22,7 +22,7 @@ export const PageError = memo(
           className,
         ])}
       >
-        <h1>{t('Unexpected error')}</h1>
+        <h1>{t('Something went wrong')}</h1>
         <Button onClick={reloadPage}>
           {t('Reload page')}
         </Button>

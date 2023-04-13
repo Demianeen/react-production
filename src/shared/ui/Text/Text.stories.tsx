@@ -5,7 +5,7 @@ import type {
 } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
-import { Text, TextTheme } from './Text'
+import { Text, TextAlign, TextTheme } from './Text'
 
 export default {
   title: 'shared/Text',
@@ -41,6 +41,20 @@ Error.args = {
   title: 'Title',
   text: 'Text',
   theme: TextTheme.ERROR,
+}
+
+export const AlignCenter = Template.bind({})
+AlignCenter.args = {
+  title: 'Title',
+  text: 'Text',
+  align: TextAlign.CENTER,
+}
+
+export const AlignRight = Template.bind({})
+AlignRight.args = {
+  title: 'Title',
+  text: 'Text',
+  align: TextAlign.RIGHT,
 }
 
 export const Dark = Template.bind({})

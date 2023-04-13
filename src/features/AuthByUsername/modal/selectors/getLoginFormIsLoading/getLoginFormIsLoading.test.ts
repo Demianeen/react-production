@@ -1,5 +1,5 @@
-import { getLoginFormIsLoading } from 'features/AuthByUsername/modal/selectors/getLoginFormIsLoading/getLoginFormIsLoading'
 import type { StateSchema } from 'app/providers/StoreProvider'
+import { getLoginFormIsLoading } from './getLoginFormIsLoading'
 
 describe('getLoginFormIsLoading', () => {
   it('should return isLoading', () => {

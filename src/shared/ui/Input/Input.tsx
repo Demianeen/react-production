@@ -13,6 +13,7 @@ interface InputProps extends HTMLInputProps {
   value?: string
   onChange?: (value: string) => void
   autoFocus?: boolean
+  labelText: string
 }
 
 export const Input = memo(
@@ -22,6 +23,7 @@ export const Input = memo(
     onChange,
     type = 'text',
     autoFocus,
+    labelText,
     ...props
   }: InputProps) => {
     const handleChange = (
@@ -38,19 +40,26 @@ export const Input = memo(
     }, [autoFocus])
 
     return (
-      <input
-        className={classNames(styles.input, {}, [
+      <div
+        className={classNames(styles.inputContainer, {}, [
           className,
         ])}
-        value={value}
-        type={type}
-        onChange={handleChange}
-        ref={inputRef}
-        /* I decided to use autofocus for forms */
-        /* eslint-disable-next-line jsx-a11y/no-autofocus */
-        autoFocus={autoFocus}
-        {...props}
-      />
+      >
+        {/* eslint-disable-next-line i18next/no-literal-string */}
+        <label htmlFor={labelText}>{labelText}: </label>
+        <input
+          id={labelText}
+          className={styles.input}
+          value={value}
+          type={type}
+          onChange={handleChange}
+          ref={inputRef}
+          /* I decided to use autofocus for forms */
+          /* eslint-disable-next-line jsx-a11y/no-autofocus */
+          autoFocus={autoFocus}
+          {...props}
+        />
+      </div>
     )
   }
 )

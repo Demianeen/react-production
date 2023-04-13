@@ -5,7 +5,7 @@ import type {
 } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
-import { Sidebar } from 'widgets/Sidebar'
+import { Sidebar } from './Sidebar'
 
 export default {
   title: 'widget/Sidebar',

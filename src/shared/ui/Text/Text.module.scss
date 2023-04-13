@@ -8,6 +8,20 @@
     color: var(--secondary-color)
   }
 
+  // Text alignment
+  &.left {
+    text-align: left;
+  }
+
+  &.center {
+    text-align: center;
+  }
+
+  &.right {
+    text-align: right;
+  }
+
+  // Text theme
   &.error {
     .title {
       color: var(--red-light)

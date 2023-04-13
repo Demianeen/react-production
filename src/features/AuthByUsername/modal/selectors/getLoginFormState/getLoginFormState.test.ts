@@ -1,5 +1,5 @@
 import type { StateSchema } from 'app/providers/StoreProvider'
-import { getLoginFormState } from 'features/AuthByUsername/modal/selectors/getLoginFormState/getLoginFormState'
+import { getLoginFormState } from './getLoginFormState'
 
 describe('getLoginFormState', () => {
   it('should return the login form state', () => {
