@@ -64,14 +64,9 @@ Dark.args = {
 }
 Dark.decorators = [ThemeDecorator(Theme.DARK)]
 
-export const OnlyTitleDark = Template.bind({})
-OnlyTitleDark.args = {
+export const Red = Template.bind({})
+Red.args = {
   title: 'Title',
-}
-OnlyTitleDark.decorators = [ThemeDecorator(Theme.DARK)]
-
-export const OnlyTextDark = Template.bind({})
-OnlyTextDark.args = {
   text: 'Text',
 }
-OnlyTextDark.decorators = [ThemeDecorator(Theme.DARK)]
+Red.decorators = [ThemeDecorator(Theme.RED)]

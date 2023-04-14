@@ -51,3 +51,19 @@ RedDark.args = {
   theme: AppLinkTheme.RED,
 }
 RedDark.decorators = [ThemeDecorator(Theme.DARK)]
+
+export const PrimaryRed = Template.bind({})
+PrimaryRed.args = {}
+PrimaryRed.decorators = [ThemeDecorator(Theme.RED)]
+
+export const InvertedRed = Template.bind({})
+InvertedRed.args = {
+  theme: AppLinkTheme.INVERTED,
+}
+InvertedRed.decorators = [ThemeDecorator(Theme.RED)]
+
+export const RedRed = Template.bind({})
+RedRed.args = {
+  theme: AppLinkTheme.RED,
+}
+RedRed.decorators = [ThemeDecorator(Theme.RED)]

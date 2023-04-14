@@ -40,12 +40,6 @@ Outline.args = {
   theme: ButtonTheme.OUTLINE,
 }
 
-export const OutlineDark = Template.bind({})
-OutlineDark.args = {
-  theme: ButtonTheme.OUTLINE,
-}
-OutlineDark.decorators = [ThemeDecorator(Theme.DARK)]
-
 export const OutlineSizeL = Template.bind({})
 OutlineSizeL.args = {
   theme: ButtonTheme.OUTLINE,
@@ -96,3 +90,11 @@ Disabled.args = {
   disabled: true,
   theme: ButtonTheme.OUTLINE,
 }
+
+export const Dark = Template.bind({})
+Dark.args = {}
+Dark.decorators = [ThemeDecorator(Theme.DARK)]
+
+export const Red = Template.bind({})
+Red.args = {}
+Red.decorators = [ThemeDecorator(Theme.RED)]

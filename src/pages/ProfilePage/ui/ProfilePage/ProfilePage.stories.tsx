@@ -54,3 +54,14 @@ Dark.decorators = [
     },
   }),
 ]
+
+export const Red = Template.bind({})
+Red.args = {}
+Red.decorators = [
+  ThemeDecorator(Theme.RED),
+  StoreDecorator({
+    profile: {
+      data,
+    },
+  }),
+]
