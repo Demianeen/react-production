@@ -7,10 +7,11 @@ import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { RoutePath } from 'shared/config/routeConfig/routeConfig'
 import AboutIcon from 'shared/assets/icons/about-us.svg'
+import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
 import { SidebarItem } from './SidebarItem'
 
 export default {
-  title: 'features/SidebarItem',
+  title: 'widgets/SidebarItem',
   component: SidebarItem,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -22,6 +23,7 @@ export default {
       Icon: AboutIcon,
     },
   },
+  decorators: [StoreDecorator()],
 } as ComponentMeta<typeof SidebarItem>
 
 const Template: ComponentStory<typeof SidebarItem> = (

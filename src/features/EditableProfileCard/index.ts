@@ -7,5 +7,4 @@ export type {
 export {
   profileActions,
   profileReducer,
-  profileSliceName,
 } from './model/slice/profileSlice'

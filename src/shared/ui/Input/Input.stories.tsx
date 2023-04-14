@@ -3,6 +3,8 @@ import type {
   ComponentMeta,
   ComponentStory,
 } from '@storybook/react'
+import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
+import { Theme } from 'app/providers/ThemeProvider'
 import { Input } from './Input'
 
 export default {
@@ -28,3 +30,9 @@ export const WithValue = Template.bind({})
 WithValue.args = {
   value: 'Value',
 }
+
+export const Dark = Template.bind({})
+Dark.args = {
+  value: 'Value',
+}
+Dark.decorators = [ThemeDecorator(Theme.DARK)]

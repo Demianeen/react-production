@@ -31,7 +31,7 @@ const data = {
   city: 'London',
   username: 'admin',
   avatar:
-    'https://scontent-lcy1-1.cdninstagram.com/v/t51.2885-19/210524727_135821275300556_4358686441303680151_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent-lcy1-1.cdninstagram.com&_nc_cat=108&_nc_ohc=jbau73uvK2oAX9FYtHU&edm=ACWDqb8BAAAA&ccb=7-5&oh=00_AfBl0F86J9cfXEDIOriixXt7iwtVwpd1Cp76-MBI_ERqIQ&oe=64352E23&_nc_sid=1527a3',
+    'https://lablab.ai/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Flablab-static-eu%2Fimages%252Fusers%252Fcldzwest200dfb70s3i8pc564_5w13le5_picture.jpg&w=256&q=75',
 }
 
 export const Light = Template.bind({})
@@ -40,26 +40,6 @@ Light.decorators = [
   StoreDecorator({
     profile: {
       data,
-    },
-  }),
-]
-
-export const IsLoading = Template.bind({})
-IsLoading.args = {}
-IsLoading.decorators = [
-  StoreDecorator({
-    profile: {
-      isLoading: true,
-    },
-  }),
-]
-
-export const Error = Template.bind({})
-Error.args = {}
-Error.decorators = [
-  StoreDecorator({
-    profile: {
-      error: 'Error',
     },
   }),
 ]
