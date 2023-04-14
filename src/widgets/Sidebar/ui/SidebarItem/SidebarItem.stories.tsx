@@ -45,3 +45,9 @@ Dark.args = {
   isCollapsed: false,
 }
 Dark.decorators = [ThemeDecorator(Theme.DARK)]
+
+export const Red = Template.bind({})
+Red.args = {
+  isCollapsed: false,
+}
+Red.decorators = [ThemeDecorator(Theme.RED)]

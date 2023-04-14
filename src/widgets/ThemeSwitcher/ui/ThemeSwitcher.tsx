@@ -16,13 +16,14 @@ interface ThemeSwitcherProps {
 export const ThemeSwitcher = memo(
   ({ className }: ThemeSwitcherProps) => {
     const { theme, toggleTheme } = useTheme()
+
     return (
       <Button
         onClick={toggleTheme}
         theme={ButtonTheme.CLEAR}
         className={classNames('', {}, [className])}
       >
-        {theme === Theme.LIGHT ? (
+        {theme === Theme.LIGHT || theme === Theme.RED ? (
           <LightIcon />
         ) : (
           <DarkIcon />

@@ -36,3 +36,9 @@ Dark.args = {
   value: 'Value',
 }
 Dark.decorators = [ThemeDecorator(Theme.DARK)]
+
+export const Red = Template.bind({})
+Red.args = {
+  value: 'Value',
+}
+Red.decorators = [ThemeDecorator(Theme.RED)]
