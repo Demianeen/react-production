@@ -7,8 +7,8 @@ import {
   ButtonSize,
   ButtonTheme,
 } from 'shared/ui/Button/Button'
-import { SidebarItemList } from 'widgets/Sidebar/model/items'
-import { SidebarItem } from 'widgets/Sidebar/ui/SidebarItem/SidebarItem'
+import { SidebarItemList } from '../../model/items'
+import { SidebarItem } from '../SidebarItem/SidebarItem'
 import styles from './Sidebar.module.scss'
 
 interface SidebarProps {

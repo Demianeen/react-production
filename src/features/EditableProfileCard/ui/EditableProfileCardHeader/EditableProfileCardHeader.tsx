@@ -7,11 +7,10 @@ import {
 import { Text } from 'shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
-import { getProfileIsReadonly } from 'features/EditableProfileCard/model/selectors/getProfileIsReadonly/getProfileIsReadonly'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { updateProfileData } from 'features/EditableProfileCard/model/services/updateProfileData/updateProfileData'
-// eslint-disable-next-line import/no-cycle
-import { profileActions } from 'features/EditableProfileCard'
+import { getProfileIsReadonly } from '../../model/selectors/getProfileIsReadonly/getProfileIsReadonly'
+import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData'
+import { profileActions } from '../../model/slice/profileSlice'
 import styles from './EditableProfileCardHeader.module.scss'
 
 interface ProfilePageHeaderProps {

@@ -18,10 +18,7 @@ import type {
 import type { createReduxStore } from 'app/providers/StoreProvider'
 import type { AxiosInstance } from 'axios'
 import type { NavigateFunction } from 'react-router/dist/lib/hooks'
-import type {
-  ProfileSchema,
-  profileSliceName,
-} from 'features/EditableProfileCard'
+import type { ProfileSchema } from 'features/EditableProfileCard'
 
 export interface StateSchema {
   [counterSliceName]: CounterSchema
@@ -29,7 +26,7 @@ export interface StateSchema {
 
   // Async reducers
   [loginFormSliceName]?: LoginFormSchema
-  [profileSliceName]?: ProfileSchema
+  profile?: ProfileSchema
 }
 
 export type StateSchemaKey = keyof StateSchema

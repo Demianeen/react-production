@@ -13,6 +13,7 @@ const initialState: ProfileSchema = {
   error: undefined,
   data: undefined,
   form: undefined,
+  validationErrors: undefined,
 }
 
 export const profileSlice = createSlice({
@@ -91,4 +92,3 @@ export const profileSlice = createSlice({
 
 export const { actions: profileActions } = profileSlice
 export const { reducer: profileReducer } = profileSlice
-export const { name: profileSliceName } = profileSlice

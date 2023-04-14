@@ -1,10 +1,11 @@
 import type { StateSchema } from 'app/providers/StoreProvider'
+import { loginFormSliceName } from 'features/AuthByUsername'
 import { getLoginFormUsername } from './getLoginFormUsername'
 
 describe('getLoginFormUsername', () => {
   it('should return the username', () => {
     const state: DeepPartial<StateSchema> = {
-      loginForm: {
+      [loginFormSliceName]: {
         isLoading: false,
         username: 'username',
         password: '',

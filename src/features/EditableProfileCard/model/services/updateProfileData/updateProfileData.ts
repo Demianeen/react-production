@@ -25,6 +25,12 @@ export const updateProfileData = createAsyncThunk<
       formData
     )
 
+    if (response.data == null) {
+      return rejectWithValue([
+        ProfileValidationError.UNKNOWN_SERVER_ERROR,
+      ])
+    }
+
     return response.data
   } catch (e) {
     return rejectWithValue([

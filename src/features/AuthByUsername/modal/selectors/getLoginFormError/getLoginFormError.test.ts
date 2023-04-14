@@ -1,10 +1,11 @@
 import type { StateSchema } from 'app/providers/StoreProvider'
+import { loginFormSliceName } from 'features/AuthByUsername'
 import { getLoginFormError } from './getLoginFormError'
 
 describe('getLoginFormError', () => {
   it('should return error', () => {
     const state: DeepPartial<StateSchema> = {
-      loginForm: {
+      [loginFormSliceName]: {
         error: 'error',
         isLoading: false,
         username: '',

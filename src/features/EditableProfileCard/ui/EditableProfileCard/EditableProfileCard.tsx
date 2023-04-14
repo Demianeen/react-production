@@ -4,28 +4,25 @@ import { useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader/
 import { ProfileCard } from 'entities/Profile'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useSelector } from 'react-redux'
-import { getProfileIsReadonly } from 'features/EditableProfileCard/model/selectors/getProfileIsReadonly/getProfileIsReadonly'
-import { getProfileForm } from 'features/EditableProfileCard/model/selectors/getProfileForm/getProfileForm'
+import type { Currency } from 'entities/Currency'
+import type { Country } from 'entities/Country'
+import { Text, TextTheme } from 'shared/ui/Text/Text'
+import { useTranslation } from 'react-i18next'
+import { ProfileValidationError } from '../../model/types/profileSchema'
 import {
   profileActions,
   profileReducer,
-  profileSliceName,
-} from 'features/EditableProfileCard/model/slice/profileSlice'
-import type { Currency } from 'entities/Currency'
-import type { Country } from 'entities/Country'
-// eslint-disable-next-line import/no-cycle
-import { Text, TextTheme } from 'shared/ui/Text/Text'
-import { ProfileValidationError } from 'features/EditableProfileCard/model/types/profileSchema'
-import { useTranslation } from 'react-i18next'
+} from '../../model/slice/profileSlice'
+import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm'
+import { getProfileIsReadonly } from '../../model/selectors/getProfileIsReadonly/getProfileIsReadonly'
 import { getProfileValidationErrors } from '../../model/selectors/getProfileValidationErrors/getProfileValidationErrors'
-// eslint-disable-next-line import/no-cycle
 import { EditableProfileCardHeader } from '../EditableProfileCardHeader/EditableProfileCardHeader'
 import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading'
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError'
 import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData'
 
 const reducersList: ReducersList = {
-  [profileSliceName]: profileReducer,
+  profile: profileReducer,
 }
 
 export const EditableProfileCard = memo(() => {
@@ -73,7 +70,9 @@ export const EditableProfileCard = memo(() => {
   }
 
   useEffect(() => {
-    dispatch(fetchProfileData())
+    if (__PROJECT__ !== 'storybook') {
+      dispatch(fetchProfileData())
+    }
   }, [dispatch])
 
   const onChangeFirstName = useCallback(
