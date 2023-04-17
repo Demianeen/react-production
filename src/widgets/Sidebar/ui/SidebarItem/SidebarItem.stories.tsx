@@ -6,7 +6,7 @@ import type {
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { RoutePath } from 'shared/config/routeConfig/routeConfig'
-import AboutIcon from 'shared/assets/icons/about-us.svg'
+import AboutIcon from 'shared/assets/icons/about-us-20-20.svg'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
 import { SidebarItem } from './SidebarItem'
 

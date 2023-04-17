@@ -1,22 +1,22 @@
-import React from 'react'
 import type {
   ComponentMeta,
   ComponentStory,
 } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
-import NotFoundPage from './NotFoundPage'
+import ArticlesPage from './ArticlesPage'
 
 export default {
-  title: 'pages/NotFoundPage',
-  component: NotFoundPage,
+  title: '$1$/ArticlesPage',
+  component: ArticlesPage,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof NotFoundPage>
+} as ComponentMeta<typeof ArticlesPage>
 
-const Template: ComponentStory<typeof NotFoundPage> =
-  () => <NotFoundPage />
+const Template: ComponentStory<typeof ArticlesPage> = (
+  args
+) => <ArticlesPage {...args} />
 
 export const Light = Template.bind({})
 Light.args = {}

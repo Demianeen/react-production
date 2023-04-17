@@ -1,14 +1,12 @@
 import React, { memo } from 'react'
 import { EditableProfileCard } from 'features/EditableProfileCard'
 
-const ProfilePage = memo(() => {
+const ProfilePage = () => {
   return (
     <div>
       <EditableProfileCard />
     </div>
   )
-})
+}
 
-ProfilePage.displayName = 'ProfilePage'
-
-export default ProfilePage
+export default memo(ProfilePage)
