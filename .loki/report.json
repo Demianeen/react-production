@@ -1,0 +1,12 @@
+{
+  "newItems": [],
+  "deletedItems": [],
+  "passedItems": [],
+  "failedItems": [],
+  "expectedItems": [],
+  "actualItems": [],
+  "diffItems": [],
+  "actualDir": "current",
+  "expectedDir": "reference",
+  "diffDir": "difference"
+}
