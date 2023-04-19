@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect } from 'react'
+import React, { memo, useCallback } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
@@ -15,6 +15,10 @@ import { Avatar } from 'shared/ui/Avatar/Avatar'
 import EyeIcon from 'shared/assets/icons/eye-20-20.svg'
 import CalendarIcon from 'shared/assets/icons/calendar-20-20.svg'
 import { Icon } from 'shared/ui/Icon/Icon'
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
+import { getArticleDetailsIsLoading } from 'entities/Article/model/selectors/getArticleDetailsIsLoading/getArticleDetailsIsLoading'
+import { getArticleDetailsError } from 'entities/Article/model/selectors/getArticleDetailsError/getArticleDetailsError'
+import { getArticleDetailsData } from 'entities/Article/model/selectors/getArticleDetailsData/getArticleDetailsData'
 import type { ArticleBlock } from '../../model/types/article'
 import { ArticleBlockType } from '../../model/types/article'
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent'
@@ -22,11 +26,6 @@ import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleT
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent'
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice'
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById'
-import {
-  getArticleDetailsData,
-  getArticleDetailsError,
-  getArticleDetailsIsLoading,
-} from '../../model/selectors/articleDetails'
 import styles from './ArticleDetails.module.scss'
 
 interface ArticleDetailsProps {
@@ -83,11 +82,7 @@ export const ArticleDetails = memo(
       []
     )
 
-    useEffect(() => {
-      if (__PROJECT__ !== 'storybook') {
-        dispatch(fetchArticleById(id))
-      }
-    }, [dispatch, id])
+    useInitialEffect(() => dispatch(fetchArticleById(id)))
 
     if (isLoading) {
       return (
@@ -151,9 +146,11 @@ export const ArticleDetails = memo(
           className,
         ])}
       >
-        <div className={styles.avatarWrapper}>
-          <Avatar size='12.5rem' src={article?.img} />
-        </div>
+        {article?.img && (
+          <div className={styles.avatarWrapper}>
+            <Avatar size='12.5rem' src={article.img} />
+          </div>
+        )}
         <Text
           className={styles.title}
           title={article?.title}
