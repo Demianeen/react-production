@@ -13,12 +13,18 @@ export enum TextAlign {
   RIGHT = 'right',
 }
 
+export enum TextSize {
+  M = 'medium',
+  L = 'large',
+}
+
 interface TextProps {
   className?: string
-  text?: React.ReactNode
+  text?: string
   title?: string
   theme?: TextTheme
   align?: TextAlign
+  size?: TextSize
 }
 
 export const Text = memo(
@@ -28,12 +34,14 @@ export const Text = memo(
     text,
     theme = TextTheme.NORMAL,
     align = TextAlign.LEFT,
+    size = TextSize.M,
   }: TextProps) => {
     return (
       <div
         className={classNames(styles.textContainer, {}, [
           styles[theme],
           styles[align],
+          styles[size],
           className,
         ])}
       >

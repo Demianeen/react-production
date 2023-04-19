@@ -3,7 +3,7 @@ import React, { useMemo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import styles from './Avatar.module.scss'
 
-interface AvatarProps {
+export interface AvatarProps {
   className?: string
   src?: string
   size?: string

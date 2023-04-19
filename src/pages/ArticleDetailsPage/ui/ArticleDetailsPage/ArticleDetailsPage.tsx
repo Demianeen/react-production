@@ -1,6 +1,8 @@
 import React, { memo } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
-import styles from './ArticleDetailsPage.module.scss'
+import { ArticleDetails } from 'entities/Article'
+import { useParams } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import { Text } from 'shared/ui/Text/Text'
 
 interface ArticleDetailsPageProps {
   className?: string
@@ -9,12 +11,21 @@ interface ArticleDetailsPageProps {
 const ArticleDetailsPage = ({
   className,
 }: ArticleDetailsPageProps) => {
+  const { id } = useParams()
+  const { t } = useTranslation('article-details')
+
+  if (id === undefined) {
+    return (
+      <div>
+        <Text title={t('Article not found')} />
+      </div>
+    )
+  }
+
   return (
-    <div
-      className={classNames(styles.articleDetailsPage, {}, [
-        className,
-      ])}
-    />
+    <article>
+      <ArticleDetails id={Number(id)} />
+    </article>
   )
 }
 

@@ -5,7 +5,12 @@ import type {
 } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
-import { Text, TextAlign, TextTheme } from './Text'
+import {
+  Text,
+  TextAlign,
+  TextSize,
+  TextTheme,
+} from './Text'
 
 export default {
   title: 'shared/Text',
@@ -55,6 +60,13 @@ AlignRight.args = {
   title: 'Title',
   text: 'Text',
   align: TextAlign.RIGHT,
+}
+
+export const Large = Template.bind({})
+Large.args = {
+  title: 'Title',
+  text: 'Text',
+  size: TextSize.L,
 }
 
 export const Dark = Template.bind({})

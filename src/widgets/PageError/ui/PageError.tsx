@@ -2,6 +2,7 @@ import React, { memo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { useTranslation } from 'react-i18next'
 import { Button } from 'shared/ui/Button/Button'
+import { Text } from 'shared/ui/Text/Text'
 import styles from './PageError.module.scss'
 
 interface PageErrorProps {
@@ -22,7 +23,7 @@ export const PageError = memo(
           className,
         ])}
       >
-        <h1>{t('Something went wrong')}</h1>
+        <Text title={t('Something went wrong')} />
         <Button onClick={reloadPage}>
           {t('Reload page')}
         </Button>

@@ -1,11 +1,18 @@
-.primary {
-  color: var(--primary-color);
-}
+.appLink {
+  &:hover {
+    opacity: 0.8;
+  }
 
-.inverted {
-  color: var(--inverted-primary-color);
-}
+  // themes
+  &.primary {
+    color: var(--primary-color);
+  }
 
-.red {
-  color: darkred;
+  &.inverted {
+    color: var(--inverted-primary-color);
+  }
+
+  &.red {
+    color: darkred;
+  }
 }

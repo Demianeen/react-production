@@ -5,10 +5,12 @@ import { loginFormSliceName } from 'features/AuthByUsername'
 import { loginReducer } from 'features/AuthByUsername/modal/slice/loginFormSlice'
 import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { profileReducer } from 'features/EditableProfileCard/model/slice/profileSlice'
+import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice'
 
 const defaultAsyncReducers: ReducersList = {
   [loginFormSliceName]: loginReducer,
   profile: profileReducer,
+  articleDetails: articleDetailsReducer,
 }
 
 export const StoreDecorator = (

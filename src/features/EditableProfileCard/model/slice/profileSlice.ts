@@ -60,9 +60,7 @@ export const profileSlice = createSlice({
         fetchProfileData.rejected,
         (state, action) => {
           state.isLoading = false
-          if (typeof action.payload === 'string') {
-            state.error = action.payload
-          }
+          state.error = action.payload
         }
       )
       // updateProfileData

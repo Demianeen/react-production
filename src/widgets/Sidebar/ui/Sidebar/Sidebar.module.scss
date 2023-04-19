@@ -10,6 +10,7 @@
     position: absolute;
     right: calc(var(--font-line-l) * -1);
     bottom: var(--font-line-l);
+    color: var(--inverted-primary-color);
   }
 
   .items {

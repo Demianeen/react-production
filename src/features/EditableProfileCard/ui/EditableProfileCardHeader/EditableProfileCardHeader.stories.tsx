@@ -9,7 +9,7 @@ import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
 import { EditableProfileCardHeader } from './EditableProfileCardHeader'
 
 export default {
-  title: 'pages/EditableProfileCardHeader',
+  title: 'features/EditableProfileCardHeader',
   component: EditableProfileCardHeader,
   argTypes: {
     backgroundColor: { control: 'color' },

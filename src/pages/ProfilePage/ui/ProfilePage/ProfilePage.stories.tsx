@@ -11,7 +11,7 @@ import { Country } from 'entities/Country'
 import ProfilePage from './ProfilePage'
 
 export default {
-  title: 'pages/EditableProfileCard',
+  title: 'pages/ProfilePage',
   component: ProfilePage,
   argTypes: {
     backgroundColor: { control: 'color' },

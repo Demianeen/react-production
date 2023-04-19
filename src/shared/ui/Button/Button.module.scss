@@ -3,6 +3,11 @@
   color: var(--primary-color);
   cursor: pointer;
 
+  // states
+  &:hover {
+    opacity: 0.8;
+  }
+
   // themes
   &.clear, &.clearInverted {
     padding: 0;

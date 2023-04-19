@@ -4,10 +4,12 @@ import type {
 } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
+import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
 import ArticleDetailsPage from './ArticleDetailsPage'
+import { article } from '../../../../entities/Article/model/const/tests'
 
 export default {
-  title: '$1$/ArticleDetailsPage',
+  title: 'pages/ArticleDetailsPage',
   component: ArticleDetailsPage,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -19,6 +21,13 @@ const Template: ComponentStory<typeof ArticleDetailsPage> =
 
 export const Light = Template.bind({})
 Light.args = {}
+Light.decorators = [
+  StoreDecorator({
+    articleDetails: {
+      data: article,
+    },
+  }),
+]
 
 export const Dark = Template.bind({})
 Dark.args = {}

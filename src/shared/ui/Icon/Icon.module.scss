@@ -1,0 +1,10 @@
+.icon {
+  &.fill {
+    fill: var(--primary-color);
+  }
+
+  &.stroke {
+    fill: none;
+    stroke: var(--primary-color);
+  }
+}

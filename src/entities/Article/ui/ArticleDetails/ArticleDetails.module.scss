@@ -1,0 +1,30 @@
+.articleDetails {
+  .avatarWrapper {
+    display: flex;
+    justify-content: center;
+
+    .avatar {
+      margin: 0 auto;
+    }
+  }
+
+  .title {
+    margin: 2.75rem 0 0.75rem;
+  }
+
+  .skeletonTextBlock {
+    margin-top: 1.5rem;
+  }
+
+  .block {
+    margin-top: 1rem;
+  }
+
+  .articleInfo {
+    display: flex;
+
+    .icon {
+      margin-right: 0.5rem;
+    }
+  }
+}

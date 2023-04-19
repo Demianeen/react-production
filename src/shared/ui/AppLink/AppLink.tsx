@@ -24,7 +24,7 @@ export const AppLink = memo(
   }: AppLinkProps) => {
     return (
       <Link
-        className={classNames(styles.navbar, {}, [
+        className={classNames(styles.appLink, {}, [
           className,
           styles[theme],
         ])}

@@ -6,7 +6,7 @@ import {
   getUserIsInitialized,
   userActions,
 } from 'entities/User'
-import { PageLoader } from 'widgets/PageLoader/ui/PageLoader'
+import { PageLoader } from 'widgets/PageLoader'
 import { AppRouter } from 'app/providers/router'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useSelector } from 'react-redux'
