@@ -4,7 +4,8 @@
 @import 'themes/light';
 @import 'themes/red';
 
-body {
+.app,
+.appStyles {
   font: var(--font-m);
   color: var(--primary-color);
 }

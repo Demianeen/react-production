@@ -3,6 +3,8 @@ import { ArticleDetails } from 'entities/Article'
 import { useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Text } from 'shared/ui/Text/Text'
+import { ArticleCommentList } from 'features/ArticleCommentList/ui/ArticleCommentList/ArticleCommentList'
+import styles from './ArticleDetailsPage.module.scss'
 
 interface ArticleDetailsPageProps {
   className?: string
@@ -17,7 +19,10 @@ const ArticleDetailsPage = ({
   if (id === undefined) {
     return (
       <div>
-        <Text title={t('Article not found')} />
+        <Text
+          className={styles.commentTitle}
+          title={t('Article not found')}
+        />
       </div>
     )
   }
@@ -25,6 +30,8 @@ const ArticleDetailsPage = ({
   return (
     <article>
       <ArticleDetails id={Number(id)} />
+      <Text title={t('Comments')} />
+      <ArticleCommentList articleId={Number(id)} />
     </article>
   )
 }

@@ -15,7 +15,7 @@ const block: ArticleImageBlock = {
 }
 
 export default {
-  title: 'entities/ArticleImageBlockComponent',
+  title: 'entities/Article/ArticleImageBlockComponent',
   component: ArticleImageBlockComponent,
   argTypes: {
     backgroundColor: { control: 'color' },

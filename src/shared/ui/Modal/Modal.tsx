@@ -79,6 +79,7 @@ export const Modal = ({
       <div
         className={classNames(styles.modal, mods, [
           className,
+          'appStyles',
         ])}
       >
         <div

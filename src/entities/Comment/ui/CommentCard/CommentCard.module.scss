@@ -1,0 +1,15 @@
+.commentCard {
+  padding: 1rem;
+  border: 1px solid var(--primary-color);
+
+  .header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+
+    .avatar {
+      margin-right: 0.5rem;
+    }
+  }
+
+}

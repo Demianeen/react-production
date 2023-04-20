@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect } from 'react'
+import React, { memo, useCallback } from 'react'
 import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { ProfileCard } from 'entities/Profile'
@@ -8,6 +8,7 @@ import type { Currency } from 'entities/Currency'
 import type { Country } from 'entities/Country'
 import { Text, TextTheme } from 'shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next'
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
 import { ProfileValidationError } from '../../model/types/profileSchema'
 import {
   profileActions,
@@ -69,11 +70,9 @@ export const EditableProfileCard = memo(() => {
     ),
   }
 
-  useEffect(() => {
-    if (__PROJECT__ !== 'storybook') {
-      dispatch(fetchProfileData())
-    }
-  }, [dispatch])
+  useInitialEffect(() => {
+    dispatch(fetchProfileData())
+  })
 
   const onChangeFirstName = useCallback(
     (value: string) => {

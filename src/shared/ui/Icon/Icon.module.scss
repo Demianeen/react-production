@@ -1,10 +1,12 @@
 .icon {
   &.fill {
-    fill: var(--primary-color);
+    // because we set currentColour to fill or stroke to icons
+    // we can now just use color property to change both
+    fill: currentcolor;
   }
 
   &.stroke {
     fill: none;
-    stroke: var(--primary-color);
+    stroke: currentcolor;
   }
 }

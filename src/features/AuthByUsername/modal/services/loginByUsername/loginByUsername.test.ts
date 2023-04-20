@@ -1,16 +1,19 @@
+import type { User } from 'entities/User'
 import { userActions } from 'entities/User'
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk'
 import { loginByUsername } from './loginByUsername'
 
 describe('loginByUsername', () => {
   test('fulfilled login', async () => {
-    const returnValue = {
-      data: { id: 1, username: 'username' },
+    const data: User = {
+      id: 1,
+      username: 'username',
+      role: 'USER',
     }
 
     const thunk = new TestAsyncThunk(loginByUsername)
     thunk.api.post.mockReturnValue(
-      Promise.resolve(returnValue)
+      Promise.resolve({ data })
     )
     const result = await thunk.call({
       username: 'username',
@@ -18,12 +21,12 @@ describe('loginByUsername', () => {
     })
 
     expect(thunk.dispatch).toHaveBeenCalledWith(
-      userActions.setAuthData(returnValue.data)
+      userActions.setAuthData(data)
     )
     expect(thunk.dispatch).toHaveBeenCalledTimes(3)
     expect(thunk.api.post).toHaveBeenCalled()
     expect(result.meta.requestStatus).toEqual('fulfilled')
-    expect(result.payload).toEqual(returnValue.data)
+    expect(result.payload).toEqual(data)
   })
 
   test('rejected login', async () => {

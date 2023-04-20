@@ -8,7 +8,7 @@ import { ArticleBlockType } from '../../model/types/article'
 import { ArticleCodeBlockComponent } from './ArticleCodeBlockComponent'
 
 export default {
-  title: 'entities/ArticleCodeBlockComponent',
+  title: 'entities/Article/ArticleCodeBlockComponent',
   component: ArticleCodeBlockComponent,
   argTypes: {
     backgroundColor: { control: 'color' },
