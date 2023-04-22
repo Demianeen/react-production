@@ -7,7 +7,7 @@ import { Theme } from 'app/providers/ThemeProvider'
 import { SelectCurrency } from './SelectCurrency'
 
 export default {
-  title: 'entities/SelectCountry',
+  title: 'entities/SelectCurrency',
   component: SelectCurrency,
   argTypes: {
     backgroundColor: { control: 'color' },
