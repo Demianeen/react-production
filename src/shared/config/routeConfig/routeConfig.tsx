@@ -24,9 +24,9 @@ export enum AppRoutes {
 export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.HOME]: '/',
   [AppRoutes.ABOUT]: '/about',
-  [AppRoutes.PROFILE]: '/profile',
+  [AppRoutes.PROFILE]: '/profile/', // + :id
   [AppRoutes.ARTICLES]: '/articles',
-  [AppRoutes.ARTICLE_DETAILS]: '/articles/', // +id
+  [AppRoutes.ARTICLE_DETAILS]: '/articles/', // + :id
 
   // always keep this last
   [AppRoutes.NOT_FOUND]: '*',
@@ -43,7 +43,7 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> =
       element: <AboutPage />,
     },
     [AppRoutes.PROFILE]: {
-      path: RoutePath.profile,
+      path: `${RoutePath.profile}:id`,
       element: <ProfilePage />,
       authOnly: true,
     },

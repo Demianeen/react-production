@@ -126,6 +126,66 @@
       "body": "some comment 2",
       "articleId": 1,
       "userId": 2
+    },
+    {
+      "body": "postman",
+      "articleId": 1,
+      "userId": 1,
+      "id": 5
+    },
+    {
+      "body": "new comment",
+      "articleId": 1,
+      "userId": 1,
+      "id": 6
+    },
+    {
+      "body": "new comment",
+      "articleId": 1,
+      "userId": 1,
+      "id": 7
+    },
+    {
+      "body": "hello world",
+      "articleId": 1,
+      "userId": 1,
+      "id": 8
+    },
+    {
+      "body": "hell",
+      "articleId": 1,
+      "userId": 1,
+      "id": 9
+    },
+    {
+      "body": "dfsfds",
+      "articleId": 1,
+      "userId": 1,
+      "id": 10
+    },
+    {
+      "body": "postman",
+      "articleId": 1,
+      "userId": 1,
+      "id": 11
+    },
+    {
+      "body": "jdsfkds",
+      "articleId": 1,
+      "userId": 1,
+      "id": 12
+    },
+    {
+      "body": "sads",
+      "articleId": 1,
+      "userId": 1,
+      "id": 13
+    },
+    {
+      "body": "new comment new ",
+      "articleId": 1,
+      "userId": 1,
+      "id": 14
     }
   ],
   "users": [
@@ -138,20 +198,34 @@
     },
     {
       "id": 2,
-      "username": "user",
+      "username": "Ukrainer",
       "password": "123",
       "role": "USER",
       "avatar": "https://i.pinimg.com/564x/db/6b/a8/db6ba8c0e0244f71230e6aae953e57be.jpg"
     }
   ],
-  "profile": {
-    "firstName": "Demian",
-    "lastName": "Netliukh",
-    "age": 30,
-    "currency": "GBP",
-    "country": "UK",
-    "city": "London",
-    "username": "admin",
-    "avatar": "https://lablab.ai/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Flablab-static-eu%2Fimages%252Fusers%252Fcldzwest200dfb70s3i8pc564_5w13le5_picture.jpg&w=256&q=75"
-  }
+  "profile": [
+    {
+      "id": 1,
+      "firstName": "Demian",
+      "lastName": "Netliukh",
+      "age": 30,
+      "currency": "GBP",
+      "country": "UK",
+      "city": "London",
+      "username": "admin",
+      "avatar": "https://lablab.ai/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Flablab-static-eu%2Fimages%252Fusers%252Fcldzwest200dfb70s3i8pc564_5w13le5_picture.jpg&w=256&q=75"
+    },
+    {
+      "id": 2,
+      "firstName": "Other Demian",
+      "lastName": "Other Netliukh",
+      "age": 14,
+      "currency": "UAH",
+      "country": "Ukraine",
+      "city": "Kyiv",
+      "username": "Ukrainer",
+      "avatar": "https://i.pinimg.com/564x/db/6b/a8/db6ba8c0e0244f71230e6aae953e57be.jpg"
+    }
+  ]
 }

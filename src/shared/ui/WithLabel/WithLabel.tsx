@@ -11,8 +11,8 @@ type HTMLLabelProps = Omit<
 interface WithLabelProps extends HTMLLabelProps {
   label?: string
   className?: string
-  wrapperClassName?: string
   children: ReactNode
+  wrapperClassName?: string
 }
 
 export const WithLabel = memo(

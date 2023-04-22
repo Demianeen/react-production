@@ -8,6 +8,7 @@ import { Text } from 'shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { getProfileCanEdit } from 'features/EditableProfileCard/model/selectors/getProfileCanEdit/getProfileCanEdit'
 import { getProfileIsReadonly } from '../../model/selectors/getProfileIsReadonly/getProfileIsReadonly'
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData'
 import { profileActions } from '../../model/slice/profileSlice'
@@ -21,8 +22,9 @@ export const EditableProfileCardHeader = memo(
   ({ className }: ProfilePageHeaderProps) => {
     const { t } = useTranslation('profile')
 
-    const isReadonly = useSelector(getProfileIsReadonly)
     const dispatch = useAppDispatch()
+    const isReadonly = useSelector(getProfileIsReadonly)
+    const canEdit = useSelector(getProfileCanEdit)
 
     const onEdit = useCallback(() => {
       dispatch(profileActions.setIsReadonly(false))
@@ -47,30 +49,38 @@ export const EditableProfileCardHeader = memo(
         )}
       >
         <Text title={t('Profile')} />
-        {isReadonly ? (
-          <Button
-            className={styles.editBtn}
-            theme={ButtonTheme.OUTLINE}
-            onClick={onEdit}
-          >
-            {t('Edit')}
-          </Button>
-        ) : (
+        {canEdit && (
           <>
-            <Button
-              className={styles.editBtn}
-              theme={ButtonTheme.OUTLINE_RED}
-              onClick={onCancel}
-            >
-              {t('Cancel')}
-            </Button>
-            <Button
-              className={styles.editBtn}
-              theme={ButtonTheme.OUTLINE}
-              onClick={onSave}
-            >
-              {t('Save')}
-            </Button>
+            {isReadonly ? (
+              <Button
+                className={styles.editBtn}
+                theme={ButtonTheme.OUTLINE}
+                onClick={onEdit}
+                type='button'
+              >
+                {t('Edit')}
+              </Button>
+            ) : (
+              <>
+                <Button
+                  className={styles.editBtn}
+                  theme={ButtonTheme.OUTLINE_RED}
+                  onClick={onCancel}
+                  type='button'
+                >
+                  {t('Cancel')}
+                </Button>
+                <Button
+                  form='editable-profile-card'
+                  type='submit'
+                  className={styles.editBtn}
+                  theme={ButtonTheme.OUTLINE}
+                  onClick={onSave}
+                >
+                  {t('Save')}
+                </Button>
+              </>
+            )}
           </>
         )}
       </div>

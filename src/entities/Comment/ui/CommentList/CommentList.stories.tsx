@@ -5,6 +5,7 @@ import type {
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { CommentList } from './CommentList'
+import { comments } from '../../model/const/tests'
 
 export default {
   title: 'entities/Comment/CommentList',
@@ -18,13 +19,27 @@ const Template: ComponentStory<typeof CommentList> = (
   args
 ) => <CommentList {...args} />
 
-export const Light = Template.bind({})
-Light.args = {}
+export const WithoutComments = Template.bind({})
+WithoutComments.args = {}
+
+export const WithComments = Template.bind({})
+WithComments.args = {
+  comments,
+}
+
+export const IsLoading = Template.bind({})
+IsLoading.args = {
+  isLoading: true,
+}
 
 export const Dark = Template.bind({})
-Dark.args = {}
+Dark.args = {
+  comments,
+}
 Dark.decorators = [ThemeDecorator(Theme.DARK)]
 
 export const Red = Template.bind({})
-Red.args = {}
+Red.args = {
+  comments,
+}
 Red.decorators = [ThemeDecorator(Theme.RED)]

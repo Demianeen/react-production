@@ -22,7 +22,9 @@ const initialState =
 const articleCommentListSlice = createSlice({
   name: 'articleCommentList',
   initialState,
-  reducers: {},
+  reducers: {
+    addComment: articleCommentsAdapter.addOne,
+  },
   extraReducers: (builder) => {
     builder
       .addCase(
@@ -53,6 +55,8 @@ const articleCommentListSlice = createSlice({
 })
 
 export const { reducer: articleCommentListReducer } =
+  articleCommentListSlice
+export const { actions: articleCommentListActions } =
   articleCommentListSlice
 
 export const getArticleCommentList =

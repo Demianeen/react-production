@@ -5,12 +5,16 @@ import type {
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { CommentCard } from './CommentCard'
+import { comments } from '../../model/const/tests'
 
 export default {
   title: 'entities/Comment/CommentCard',
   component: CommentCard,
   argTypes: {
     backgroundColor: { control: 'color' },
+  },
+  args: {
+    comment: comments[0],
   },
 } as ComponentMeta<typeof CommentCard>
 

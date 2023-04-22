@@ -8,12 +8,12 @@ import {
 } from 'shared/ui/Text/Text'
 import { Input } from 'shared/ui/Input/Input'
 import type { Profile } from 'features/EditableProfileCard/model/types/profileSchema'
-import { Spinner } from 'shared/ui/Spinner/Spinner'
 import { Avatar } from 'shared/ui/Avatar/Avatar'
 import type { Currency } from 'entities/Currency'
 import { SelectCurrency } from 'entities/Currency'
 import type { Country } from 'entities/Country'
 import { SelectCountry } from 'entities/Country'
+import { Skeleton } from 'shared/ui/Skeleton/Skeleton'
 import styles from './ProfileCard.module.scss'
 
 interface ProfileCardProps {
@@ -30,6 +30,7 @@ interface ProfileCardProps {
   onChangeAvatar?: (value: string) => void
   onChangeCurrency?: (value: Currency) => void
   onChangeCountry?: (value: Country) => void
+  formId?: string
 }
 
 export const ProfileCard = ({
@@ -46,6 +47,7 @@ export const ProfileCard = ({
   onChangeAvatar,
   onChangeCurrency,
   onChangeCountry,
+  formId = 'profile-card',
 }: ProfileCardProps) => {
   const { t } = useTranslation('profile')
 
@@ -57,7 +59,23 @@ export const ProfileCard = ({
           styles.loading,
         ])}
       >
-        <Spinner />
+        <div className={styles.content}>
+          <div className={styles.avatarWrapper}>
+            <Skeleton
+              width='8rem'
+              height='8rem'
+              borderRadius='50%'
+            />
+          </div>
+          <Skeleton className={styles.input} />
+          <Skeleton className={styles.input} />
+          <Skeleton className={styles.input} />
+          <Skeleton className={styles.input} />
+          <Skeleton className={styles.input} />
+          <Skeleton className={styles.input} />
+          <Skeleton className={styles.input} />
+          <Skeleton className={styles.input} />
+        </div>
       </div>
     )
   }
@@ -72,8 +90,7 @@ export const ProfileCard = ({
       >
         <Text
           theme={TextTheme.ERROR}
-          title={t('Something went wrong')}
-          text={t('Try to reload the page')}
+          title={t('Profile not found')}
           align={TextAlign.CENTER}
         />
       </div>
@@ -86,7 +103,7 @@ export const ProfileCard = ({
         className,
       ])}
     >
-      <div className={styles.content}>
+      <form className={styles.content} id={formId}>
         {data?.avatar && (
           <div className={styles.avatarWrapper}>
             <Avatar src={data?.avatar} />
@@ -150,7 +167,7 @@ export const ProfileCard = ({
           onChange={onChangeCountry}
           readonly={readonly}
         />
-      </div>
+      </form>
     </div>
   )
 }

@@ -1,18 +1,7 @@
-import { Currency } from 'entities/Currency'
-import { Country } from 'entities/Country'
 import { validateAge } from 'features/EditableProfileCard/lib/validate/validateAge'
+import { profile } from 'features/EditableProfileCard/model/const/tests'
 import { validateProfileForm } from './validateProfileForm'
 import { ProfileValidationError } from '../../types/profileSchema'
-
-const data = {
-  firstName: 'Demian',
-  lastName: 'Netliukh',
-  age: 30,
-  currency: Currency.USD,
-  country: Country.UK,
-  city: 'London',
-  username: 'admin',
-}
 
 jest.mock('../../../lib/validate/validateAge', () => ({
   __esModule: true,
@@ -26,14 +15,25 @@ describe('validateProfileForm', () => {
   })
 
   test('success', () => {
-    const result = validateProfileForm(data)
+    const result = validateProfileForm(profile)
 
     expect(result).toEqual([])
   })
 
+  test('missing id', () => {
+    const result = validateProfileForm({
+      ...profile,
+      id: undefined,
+    })
+
+    expect(result).toEqual([
+      ProfileValidationError.UNKNOWN_SERVER_ERROR,
+    ])
+  })
+
   test('missing first name', () => {
     const result = validateProfileForm({
-      ...data,
+      ...profile,
       firstName: undefined,
     })
 
@@ -44,7 +44,7 @@ describe('validateProfileForm', () => {
 
   test('missing last name', () => {
     const result = validateProfileForm({
-      ...data,
+      ...profile,
       lastName: undefined,
     })
 
@@ -54,13 +54,13 @@ describe('validateProfileForm', () => {
   })
 
   test('age is validated', () => {
-    validateProfileForm(data)
+    validateProfileForm(profile)
     expect(mockedValidateAge).toHaveBeenCalled()
   })
 
   test('missing city', () => {
     const result = validateProfileForm({
-      ...data,
+      ...profile,
       city: undefined,
     })
 
@@ -71,7 +71,7 @@ describe('validateProfileForm', () => {
 
   test('missing username', () => {
     const result = validateProfileForm({
-      ...data,
+      ...profile,
       username: undefined,
     })
 

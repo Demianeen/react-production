@@ -22,12 +22,14 @@ export const Counter = () => {
     <div>
       <h1 data-testid='value-title'>{counterValue}</h1>
       <Button
+        type='button'
         onClick={increment}
         data-testid='increment-btn'
       >
         {t('Increment')}
       </Button>
       <Button
+        type='button'
         onClick={decrement}
         data-testid='decrement-btn'
       >

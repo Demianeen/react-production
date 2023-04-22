@@ -15,6 +15,7 @@ export default {
   },
   args: {
     children: 'Text',
+    type: 'button',
   },
 } as ComponentMeta<typeof Button>
 

@@ -51,6 +51,7 @@ export const Sidebar = memo(
           onClick={onToggle}
           square
           size={ButtonSize.L}
+          type='button'
         >
           {isCollapsed ? '>' : '<'}
         </Button>

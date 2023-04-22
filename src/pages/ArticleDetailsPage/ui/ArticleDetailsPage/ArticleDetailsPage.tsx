@@ -28,9 +28,12 @@ const ArticleDetailsPage = ({
   }
 
   return (
-    <article>
+    <article className={className}>
       <ArticleDetails id={Number(id)} />
-      <Text title={t('Comments')} />
+      <Text
+        title={t('Comments')}
+        className={styles.commentTitle}
+      />
       <ArticleCommentList articleId={Number(id)} />
     </article>
   )

@@ -1,6 +1,5 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk'
-import { Currency } from 'entities/Currency'
-import { Country } from 'entities/Country'
+import { profile } from '../../const/tests'
 import { ProfileValidationError } from '../../types/profileSchema'
 import { validateProfileForm } from '../validateProfileForm/validateProfileForm'
 import { updateProfileData } from './updateProfileData'
@@ -16,25 +15,15 @@ const mockedValidateProfileForm = jest.mocked(
   validateProfileForm
 )
 
-const data = {
-  firstName: 'Demian',
-  lastName: 'Netliukh',
-  age: 30,
-  currency: Currency.USD,
-  country: Country.UK,
-  city: 'London',
-  username: 'admin',
-}
-
 describe('updateProfileData', () => {
   test('fulfilled', async () => {
     const returnValue = {
-      data,
+      data: profile,
     }
 
     const thunk = new TestAsyncThunk(updateProfileData, {
       profile: {
-        form: data,
+        form: profile,
       },
     })
 
@@ -43,7 +32,7 @@ describe('updateProfileData', () => {
     )
     const result = await thunk.call()
 
-    expect(result.payload).toEqual(data)
+    expect(result.payload).toEqual(profile)
     expect(thunk.api.put).toHaveBeenCalled()
     expect(result.meta.requestStatus).toEqual('fulfilled')
   })
@@ -71,7 +60,7 @@ describe('updateProfileData', () => {
     const thunk = new TestAsyncThunk(updateProfileData, {
       profile: {
         form: {
-          ...data,
+          ...profile,
           age: undefined,
         },
       },

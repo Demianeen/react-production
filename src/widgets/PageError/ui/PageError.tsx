@@ -24,7 +24,7 @@ export const PageError = memo(
         ])}
       >
         <Text title={t('Something went wrong')} />
-        <Button onClick={reloadPage}>
+        <Button type='button' onClick={reloadPage}>
           {t('Reload page')}
         </Button>
       </div>

@@ -95,6 +95,7 @@ const LoginForm = memo(
           value={username}
           label={t('Enter username')}
           autoComplete='username'
+          wrapperClassName={styles.inputWrapper}
         />
         <Input
           type='password'
@@ -104,6 +105,7 @@ const LoginForm = memo(
           value={password}
           label={t('Enter password')}
           autoComplete='current-password'
+          wrapperClassName={styles.inputWrapper}
         />
         {isLoading && <Spinner />}
         <Button

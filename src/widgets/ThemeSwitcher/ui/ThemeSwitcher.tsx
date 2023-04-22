@@ -19,6 +19,7 @@ export const ThemeSwitcher = memo(
 
     return (
       <Button
+        type='button'
         onClick={toggleTheme}
         theme={ButtonTheme.CLEAR}
         className={classNames('', {}, [className])}

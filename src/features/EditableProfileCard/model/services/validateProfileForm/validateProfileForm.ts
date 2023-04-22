@@ -9,6 +9,10 @@ export const validateProfileForm = (profile?: Profile) => {
     return [ProfileValidationError.NO_DATA]
   }
 
+  if (!profile.id) {
+    errors.push(ProfileValidationError.UNKNOWN_SERVER_ERROR)
+  }
+
   if (!profile.firstName) {
     errors.push(ProfileValidationError.MISSING_FIRST_NAME)
   }

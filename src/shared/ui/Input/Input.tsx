@@ -17,6 +17,7 @@ interface InputProps extends HTMLInputProps {
   onChange?: (value: string) => void
   autoFocus?: boolean
   readonly?: boolean
+  wrapperClassName?: string
 }
 
 export const Input = memo(
@@ -28,6 +29,7 @@ export const Input = memo(
     autoFocus,
     label,
     readonly,
+    wrapperClassName,
     ...props
   }: InputProps) => {
     const handleChange = (
@@ -48,7 +50,10 @@ export const Input = memo(
     }
 
     return (
-      <WithLabel label={label}>
+      <WithLabel
+        label={label}
+        wrapperClassName={wrapperClassName}
+      >
         <input
           id={label}
           className={classNames(styles.input, mods, [

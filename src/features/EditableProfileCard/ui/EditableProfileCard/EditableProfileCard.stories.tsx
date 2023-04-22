@@ -17,11 +17,15 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  args: {
+    id: 1,
+  },
   decorators: [StoreDecorator()],
 } as ComponentMeta<typeof EditableProfileCard>
 
-const Template: ComponentStory<typeof EditableProfileCard> =
-  () => <EditableProfileCard />
+const Template: ComponentStory<
+  typeof EditableProfileCard
+> = (args) => <EditableProfileCard {...args} />
 
 const data = {
   firstName: 'Demian',

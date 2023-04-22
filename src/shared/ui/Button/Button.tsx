@@ -26,6 +26,7 @@ interface ButtonProps
   square?: boolean
   size?: ButtonSize
   disabled?: boolean
+  type: 'button' | 'submit' | 'reset'
 }
 
 export const Button = memo(
@@ -35,7 +36,7 @@ export const Button = memo(
     theme = ButtonTheme.OUTLINE,
     square = false,
     size = ButtonSize.M,
-    type = 'button',
+    type,
     disabled = false,
     ...props
   }: ButtonProps) => {
@@ -50,7 +51,6 @@ export const Button = memo(
           styles[size],
           className,
         ])}
-        /* we have type button by default as button */
         /* eslint-disable-next-line react/button-has-type */
         type={type}
         disabled={disabled}

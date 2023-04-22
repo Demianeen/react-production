@@ -5,7 +5,8 @@
   .content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    gap: 1rem 3rem;
+    width: 100%;
 
     .avatarWrapper {
       display: flex;
@@ -22,7 +23,6 @@
     }
   }
 
-  &.loading,
   &.error {
     display: flex;
     align-items: center;

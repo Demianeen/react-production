@@ -5,7 +5,6 @@
   "Last name": "Прізвище",
   "John": "Вася",
   "Doe": "Пупкін",
-  "Something went wrong": "Щось пішло не так",
   "Try to reload the page": "Спробуйте перезавантажити сторінку",
   "Cancel": "Скасувати",
   "Save": "Зберегти",
@@ -23,5 +22,6 @@
   "London": "Київ",
   "City": "Місто",
   "Username": "Ім'я користувача",
-  "Your creative username": "Ваше творче ім'я користувача"
+  "Your creative username": "Ваше творче ім'я користувача",
+  "Profile not found": "Профіль не знайдено"
 }

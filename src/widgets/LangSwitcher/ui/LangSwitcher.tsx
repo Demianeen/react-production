@@ -24,6 +24,7 @@ export const LangSwitcher = memo(
 
     return (
       <Button
+        type='button'
         className={classNames(styles.langSwitcher, {}, [
           className,
         ])}

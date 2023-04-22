@@ -5,7 +5,6 @@
   "Last name": "Last name",
   "John": "John",
   "Doe": "Doe",
-  "Something went wrong": "Something went wrong",
   "Try to reload the page": "Try to reload the page",
   "Cancel": "Cancel",
   "Save": "Save",
@@ -23,5 +22,6 @@
   "London": "London",
   "City": "City",
   "Username": "Username",
-  "Your creative username": "Your creative username"
+  "Your creative username": "Your creative username",
+  "Profile not found": "Profile not found"
 }

@@ -24,6 +24,7 @@ export const Code = memo(
         className={classNames(styles.code, {}, [className])}
       >
         <Button
+          type='button'
           className={styles.copyBtn}
           theme={ButtonTheme.CLEAR}
           onClick={onCopy}

@@ -1,6 +1,7 @@
 .sidebar {
   position: relative;
-  min-width: var(--sidebar-width);
+  flex-shrink: 0;
+  width: var(--sidebar-width);
   height: calc(100vh - var(--navbar-height));
   color: var(--inverted-primary-color);
   background: var(--inverted-bg-color);

@@ -118,6 +118,9 @@ module.exports = {
       2,
       { allowExpressions: true },
     ],
+
+    // we always need to add deps to useEffect
+    'react-hooks/exhaustive-deps': 2,
   },
   settings: {
     react: {
