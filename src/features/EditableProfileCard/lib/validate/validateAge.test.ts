@@ -1,22 +1,11 @@
 import { validateProfileForm } from 'features/EditableProfileCard/model/services/validateProfileForm/validateProfileForm'
 import { ProfileValidationError } from 'features/EditableProfileCard/model/types/profileSchema'
-import { Currency } from 'entities/Currency'
-import { Country } from 'entities/Country'
-
-const data = {
-  firstName: 'Demian',
-  lastName: 'Netliukh',
-  age: 30,
-  currency: Currency.USD,
-  country: Country.UK,
-  city: 'London',
-  username: 'admin',
-}
+import { profile } from '../../model/const/tests'
 
 describe('validateAge', () => {
   test('success', () => {
     const result = validateProfileForm({
-      ...data,
+      ...profile,
       age: 30,
     })
 
@@ -25,7 +14,7 @@ describe('validateAge', () => {
 
   test('missing age', () => {
     const result = validateProfileForm({
-      ...data,
+      ...profile,
       age: undefined,
     })
 
@@ -36,7 +25,7 @@ describe('validateAge', () => {
 
   test('incorrect age', () => {
     const result = validateProfileForm({
-      ...data,
+      ...profile,
       age: 1,
     })
 
