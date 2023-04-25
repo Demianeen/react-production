@@ -45,10 +45,14 @@ export const Text = memo(
           className,
         ])}
       >
-        {title && size === TextSize.L ? (
-          <h1 className={styles.title}>{title}</h1>
-        ) : (
-          <h2 className={styles.title}>{title}</h2>
+        {title && (
+          <>
+            {size === TextSize.L ? (
+              <h1 className={styles.title}>{title}</h1>
+            ) : (
+              <h2 className={styles.title}>{title}</h2>
+            )}
+          </>
         )}
         {text && <p className={styles.text}>{text}</p>}
       </div>

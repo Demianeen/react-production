@@ -1,6 +1,6 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk'
+import { comments } from 'features/ArticleCommentList/model/mocks/data'
 import { fetchCommentsByArticleId } from './fetchCommentsByArticleId'
-import { comments } from '../../const/tests'
 
 describe('fetchCommentsByArticleId.test', () => {
   test('fulfilled', async () => {

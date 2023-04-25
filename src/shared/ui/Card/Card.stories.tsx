@@ -4,30 +4,26 @@ import type {
 } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
-import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
-import { article } from 'entities/Article/model/mocks/tests'
-import ArticleDetailsPage from './ArticleDetailsPage'
+import { Text } from 'shared/ui/Text/Text'
+import { Card } from './Card'
 
 export default {
-  title: 'pages/ArticleDetailsPage',
-  component: ArticleDetailsPage,
+  title: 'shared/Card',
+  component: Card,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof ArticleDetailsPage>
+  args: {
+    children: <Text title='Title' text='Text' />,
+  },
+} as ComponentMeta<typeof Card>
 
-const Template: ComponentStory<typeof ArticleDetailsPage> =
-  (args) => <ArticleDetailsPage {...args} />
+const Template: ComponentStory<typeof Card> = (args) => (
+  <Card {...args} />
+)
 
 export const Light = Template.bind({})
 Light.args = {}
-Light.decorators = [
-  StoreDecorator({
-    articleDetails: {
-      data: article,
-    },
-  }),
-]
 
 export const Dark = Template.bind({})
 Dark.args = {}

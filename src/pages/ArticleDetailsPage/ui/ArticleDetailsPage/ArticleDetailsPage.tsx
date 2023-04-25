@@ -1,9 +1,13 @@
 import React, { memo } from 'react'
-import { ArticleDetails } from 'entities/Article'
+import {
+  ArticleDetails,
+  getArticleDetailsError,
+} from 'entities/Article'
 import { useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Text } from 'shared/ui/Text/Text'
 import { ArticleCommentList } from 'features/ArticleCommentList/ui/ArticleCommentList/ArticleCommentList'
+import { useSelector } from 'react-redux'
 import styles from './ArticleDetailsPage.module.scss'
 
 interface ArticleDetailsPageProps {
@@ -15,6 +19,8 @@ const ArticleDetailsPage = ({
 }: ArticleDetailsPageProps) => {
   const { id } = useParams()
   const { t } = useTranslation('article-details')
+  const error = useSelector(getArticleDetailsError)
+  console.log('error', error)
 
   if (id === undefined) {
     return (

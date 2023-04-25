@@ -16,7 +16,7 @@ export const CommentCardIsLoading = memo(
           styles.isLoading,
         ])}
       >
-        <div className={styles.header}>
+        <header className={styles.header}>
           <Skeleton
             width='2rem'
             height='2rem'
@@ -28,7 +28,7 @@ export const CommentCardIsLoading = memo(
             width='6rem'
             className={styles.username}
           />
-        </div>
+        </header>
         <Skeleton height='4rem' width='100%' />
       </div>
     )

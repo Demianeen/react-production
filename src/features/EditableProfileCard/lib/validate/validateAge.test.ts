@@ -1,6 +1,6 @@
 import { validateProfileForm } from 'features/EditableProfileCard/model/services/validateProfileForm/validateProfileForm'
 import { ProfileValidationError } from 'features/EditableProfileCard/model/types/profileSchema'
-import { profile } from '../../model/const/tests'
+import { profile } from 'features/EditableProfileCard/model/mocks/data'
 
 describe('validateAge', () => {
   test('success', () => {

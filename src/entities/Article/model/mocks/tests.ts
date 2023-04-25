@@ -6,12 +6,23 @@ import {
 
 export const article: Article = {
   id: 1,
-  title: 'Javascript news',
+  title: 'Javascript news - what is new in JS for 2023?',
   subtitle: 'Что нового в JS за 2022 год?',
   img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
   views: 1022,
+  user: {
+    id: 1,
+    username: 'user1',
+    role: 'USER',
+    avatar:
+      'https://lablab.ai/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Flablab-static-eu%2Fimages%252Fusers%252Fcldzwest200dfb70s3i8pc564_5w13le5_picture.jpg&w=256&q=75',
+  },
   createdAt: '26.02.2022',
-  type: [ArticleType.IT],
+  types: [
+    ArticleType.IT,
+    ArticleType.SCIENCE,
+    ArticleType.ECONOMICS,
+  ],
   blocks: [
     {
       id: 1,
@@ -46,7 +57,7 @@ export const article: Article = {
     {
       id: 3,
       type: ArticleBlockType.CODE,
-      code: "const path = require('path');\n\nconst server = jsonServer.create();\n\nconst router = jsonServer.router(path.resolve(__dirname, 'db.json'));\n\nserver.use(jsonServer.defaults({}));\nserver.use(jsonServer.bodyParser);",
+      code: "mocks path = require('path');\n\nmocks server = jsonServer.create();\n\nmocks router = jsonServer.router(path.resolve(__dirname, 'db.json'));\n\nserver.use(jsonServer.defaults({}));\nserver.use(jsonServer.bodyParser);",
     },
     {
       id: 7,

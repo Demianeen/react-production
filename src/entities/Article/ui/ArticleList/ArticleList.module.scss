@@ -1,0 +1,23 @@
+.articleList {
+  &.list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  &.grid {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr));
+    gap: 3rem;
+    max-width: 100%;
+    padding: 1.5rem 0;
+
+    &::after {
+      width: 1px;
+      margin-right: -1px;
+      content: "";
+    }
+  }
+
+}

@@ -1,4 +1,4 @@
-import { article } from 'entities/Article/model/const/tests'
+import { article } from 'entities/Article/model/mocks/tests'
 import type { StateSchema } from 'app/providers/StoreProvider'
 import { getArticleDetailsData } from './getArticleDetailsData'
 

@@ -16,9 +16,12 @@ import EyeIcon from 'shared/assets/icons/eye-20-20.svg'
 import CalendarIcon from 'shared/assets/icons/calendar-20-20.svg'
 import { Icon } from 'shared/ui/Icon/Icon'
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
-import { getArticleDetailsIsLoading } from 'entities/Article/model/selectors/getArticleDetailsIsLoading/getArticleDetailsIsLoading'
-import { getArticleDetailsError } from 'entities/Article/model/selectors/getArticleDetailsError/getArticleDetailsError'
-import { getArticleDetailsData } from 'entities/Article/model/selectors/getArticleDetailsData/getArticleDetailsData'
+import { Button } from 'shared/ui/Button/Button'
+import { useNavigate } from 'react-router-dom'
+import { RoutePath } from 'shared/config/routeConfig/routeConfig'
+import { getArticleDetailsIsLoading } from '../../model/selectors/getArticleDetailsIsLoading/getArticleDetailsIsLoading'
+import { getArticleDetailsError } from '../../model/selectors/getArticleDetailsError/getArticleDetailsError'
+import { getArticleDetailsData } from '../../model/selectors/getArticleDetailsData/getArticleDetailsData'
 import type { ArticleBlock } from '../../model/types/article'
 import { ArticleBlockType } from '../../model/types/article'
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent'
@@ -47,6 +50,8 @@ export const ArticleDetails = memo(
     )
     const error = useSelector(getArticleDetailsError)
     const article = useSelector(getArticleDetailsData)
+
+    const navigate = useNavigate()
 
     const renderBlock = useCallback(
       (block: ArticleBlock) => {
@@ -84,13 +89,15 @@ export const ArticleDetails = memo(
 
     useInitialEffect(() => dispatch(fetchArticleById(id)))
 
+    const onBackToList = useCallback(() => {
+      navigate(RoutePath.articles)
+    }, [navigate])
+
+    let content = null
+
     if (isLoading) {
-      return (
-        <div
-          className={classNames(styles.articleDetails, {}, [
-            className,
-          ])}
-        >
+      content = (
+        <>
           <div className={styles.avatarWrapper}>
             <Skeleton
               className={styles.avatar}
@@ -119,24 +126,44 @@ export const ArticleDetails = memo(
             width='68rem'
             height='14rem'
           />
-        </div>
+        </>
       )
-    }
-
-    if (error) {
-      return (
-        <div
-          className={classNames(styles.articleDetails, {}, [
-            className,
-          ])}
-        >
+    } else if (error) {
+      content = (
+        <Text
+          title={t(
+            'An error occurred while loading article'
+          )}
+          align={TextAlign.CENTER}
+        />
+      )
+    } else {
+      content = (
+        <>
+          {article?.img && (
+            <div className={styles.avatarWrapper}>
+              <Avatar size='12.5rem' src={article.img} />
+            </div>
+          )}
           <Text
-            title={t(
-              'An error occurred while loading article'
-            )}
-            align={TextAlign.CENTER}
+            className={styles.title}
+            title={article?.title}
+            text={article?.subtitle}
+            size={TextSize.L}
           />
-        </div>
+          <div className={styles.articleInfo}>
+            <Icon className={styles.icon} Svg={EyeIcon} />
+            <Text text={String(article?.views)} />
+          </div>
+          <div className={styles.articleInfo}>
+            <Icon
+              className={styles.icon}
+              Svg={CalendarIcon}
+            />
+            <Text text={article?.createdAt} />
+          </div>
+          {article?.blocks.map(renderBlock)}
+        </>
       )
     }
 
@@ -146,29 +173,14 @@ export const ArticleDetails = memo(
           className,
         ])}
       >
-        {article?.img && (
-          <div className={styles.avatarWrapper}>
-            <Avatar size='12.5rem' src={article.img} />
-          </div>
-        )}
-        <Text
-          className={styles.title}
-          title={article?.title}
-          text={article?.subtitle}
-          size={TextSize.L}
-        />
-        <div className={styles.articleInfo}>
-          <Icon className={styles.icon} Svg={EyeIcon} />
-          <Text text={String(article?.views)} />
-        </div>
-        <div className={styles.articleInfo}>
-          <Icon
-            className={styles.icon}
-            Svg={CalendarIcon}
-          />
-          <Text text={article?.createdAt} />
-        </div>
-        {article?.blocks.map(renderBlock)}
+        <Button
+          type='button'
+          role='link'
+          onClick={onBackToList}
+        >
+          {t('Back to list')}
+        </Button>
+        {content}
       </div>
     )
   }

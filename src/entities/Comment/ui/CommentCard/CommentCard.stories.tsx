@@ -4,8 +4,8 @@ import type {
 } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
+import { comments } from 'entities/Comment/model/mocks/data'
 import { CommentCard } from './CommentCard'
-import { comments } from '../../model/const/tests'
 
 export default {
   title: 'entities/Comment/CommentCard',
