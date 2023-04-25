@@ -1,14 +1,13 @@
+import React from 'react'
 import type {
   ComponentMeta,
   ComponentStory,
 } from '@storybook/react'
-import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
-import { Theme } from 'app/providers/ThemeProvider'
-import { comments } from 'entities/Comment/model/mocks/data'
+
 import { CommentList } from './CommentList'
 
 export default {
-  title: 'entities/Comment/CommentList',
+  title: 'shared/CommentList',
   component: CommentList,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -19,27 +18,31 @@ const Template: ComponentStory<typeof CommentList> = (
   args
 ) => <CommentList {...args} />
 
-export const WithoutComments = Template.bind({})
-WithoutComments.args = {}
-
-export const WithComments = Template.bind({})
-WithComments.args = {
-  comments,
+export const Normal = Template.bind({})
+Normal.args = {
+  comments: [
+    {
+      id: '1',
+      text: 'hello world',
+      user: { id: '1', username: 'Vasya' },
+    },
+    {
+      id: '2',
+      text: 'Comment 2',
+      user: { id: '1', username: 'Petya' },
+    },
+  ],
+  isLoading: false,
 }
 
-export const IsLoading = Template.bind({})
-IsLoading.args = {
+export const Loading = Template.bind({})
+
+Loading.parameters = {
+  loki: {
+    skip: true,
+  },
+}
+Loading.args = {
+  comments: [],
   isLoading: true,
 }
-
-export const Dark = Template.bind({})
-Dark.args = {
-  comments,
-}
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
-
-export const Red = Template.bind({})
-Red.args = {
-  comments,
-}
-Red.decorators = [ThemeDecorator(Theme.RED)]

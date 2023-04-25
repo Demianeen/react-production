@@ -1,9 +1,8 @@
-import React, { memo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
+import { memo } from 'react'
 import { Text } from 'shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next'
-import { CommentCardIsLoading } from '../CommentCardIsLoading/CommentCardIsLoading'
-import styles from './CommentList.module.scss'
+import cls from './CommentList.module.scss'
 import { CommentCard } from '../CommentCard/CommentCard'
 import type { Comment } from '../../model/types/comment'
 
@@ -14,53 +13,43 @@ interface CommentListProps {
 }
 
 export const CommentList = memo(
-  ({
-    className,
-    comments,
-    isLoading,
-  }: CommentListProps) => {
+  (props: CommentListProps) => {
+    const { className, isLoading, comments } = props
     const { t } = useTranslation()
+
     if (isLoading) {
       return (
-        <section
-          className={classNames(styles.commentList, {}, [
+        <div
+          className={classNames(cls.CommentList, {}, [
             className,
-            styles.isLoading,
           ])}
         >
-          <CommentCardIsLoading
-            className={styles.comment}
-          />
-          <CommentCardIsLoading
-            className={styles.comment}
-          />
-          <CommentCardIsLoading
-            className={styles.comment}
-          />
-        </section>
+          <CommentCard isLoading />
+          <CommentCard isLoading />
+          <CommentCard isLoading />
+        </div>
       )
     }
 
     return (
-      <section
-        className={classNames(styles.commentList, {}, [
+      <div
+        className={classNames(cls.CommentList, {}, [
           className,
         ])}
       >
-        {comments ? (
-          comments.map((comment) => (
+        {comments?.length && !isLoading ? (
+          comments?.map((comment) => (
             <CommentCard
-              className={styles.comment}
+              isLoading={isLoading}
+              className={cls.comment}
               comment={comment}
               key={comment.id}
             />
           ))
         ) : (
-          <Text text={t('No comments yet')} />
+          <Text text={t('Комментарии отсутствуют')} />
         )}
-      </section>
+      </div>
     )
   }
 )
-
-CommentList.displayName = 'CommentList'

@@ -1,5 +1,3 @@
-import React from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
 import { useTranslation } from 'react-i18next'
 import {
   Text,
@@ -7,75 +5,61 @@ import {
   TextTheme,
 } from 'shared/ui/Text/Text'
 import { Input } from 'shared/ui/Input/Input'
-import type { Profile } from 'features/EditableProfileCard/model/types/profileSchema'
-import { Avatar } from 'shared/ui/Avatar/Avatar'
+import { Loader } from 'shared/ui/Loader/Loader'
+import type { Profile } from 'entities/Profile/model/types/profile.types'
 import type { Currency } from 'entities/Currency'
-import { SelectCurrency } from 'entities/Currency'
+import { CurrencySelect } from 'entities/Currency'
 import type { Country } from 'entities/Country'
-import { SelectCountry } from 'entities/Country'
-import { Skeleton } from 'shared/ui/Skeleton/Skeleton'
-import styles from './ProfileCard.module.scss'
+import { CountrySelect } from 'entities/Country'
+import type { Mods } from 'shared/libs'
+import { classNames } from 'shared/libs'
+import { Avatar } from 'shared/ui/Avatar/Avatar'
+import cls from './ProfileCard.module.scss'
 
 interface ProfileCardProps {
   className?: string
   data?: Profile
+  error?: string
   isLoading?: boolean
   readonly?: boolean
-  error?: string
-  onChangeFirstName?: (value: string) => void
-  onChangeLastName?: (value: string) => void
-  onChangeAge?: (value: string) => void
-  onChangeCity?: (value: string) => void
-  onChangeUsername?: (value: string) => void
-  onChangeAvatar?: (value: string) => void
-  onChangeCurrency?: (value: Currency) => void
-  onChangeCountry?: (value: Country) => void
-  formId?: string
+  onChangeLastname?: (value?: string) => void
+  onChangeFirstname?: (value?: string) => void
+  onChangeCity?: (value?: string) => void
+  onChangeAge?: (value?: string) => void
+  onChangeUsername?: (value?: string) => void
+  onChangeAvatar?: (value?: string) => void
+  onChangeCurrency?: (currency: Currency) => void
+  onChangeCountry?: (country: Country) => void
 }
 
-export const ProfileCard = ({
-  className,
-  data,
-  isLoading = false,
-  readonly = false,
-  error,
-  onChangeFirstName,
-  onChangeLastName,
-  onChangeAge,
-  onChangeCity,
-  onChangeUsername,
-  onChangeAvatar,
-  onChangeCurrency,
-  onChangeCountry,
-  formId = 'profile-card',
-}: ProfileCardProps) => {
+export const ProfileCard = (props: ProfileCardProps) => {
+  const {
+    className,
+    data,
+    isLoading,
+    error,
+    readonly,
+    onChangeFirstname,
+    onChangeLastname,
+    onChangeAge,
+    onChangeCity,
+    onChangeAvatar,
+    onChangeUsername,
+    onChangeCountry,
+    onChangeCurrency,
+  } = props
   const { t } = useTranslation('profile')
 
   if (isLoading) {
     return (
       <div
-        className={classNames(styles.profileCard, {}, [
-          className,
-          styles.loading,
-        ])}
+        className={classNames(
+          cls.ProfileCard,
+          { [cls.loading]: true },
+          [className]
+        )}
       >
-        <div className={styles.content}>
-          <div className={styles.avatarWrapper}>
-            <Skeleton
-              width='8rem'
-              height='8rem'
-              borderRadius='50%'
-            />
-          </div>
-          <Skeleton className={styles.input} />
-          <Skeleton className={styles.input} />
-          <Skeleton className={styles.input} />
-          <Skeleton className={styles.input} />
-          <Skeleton className={styles.input} />
-          <Skeleton className={styles.input} />
-          <Skeleton className={styles.input} />
-          <Skeleton className={styles.input} />
-        </div>
+        <Loader />
       </div>
     )
   }
@@ -83,91 +67,101 @@ export const ProfileCard = ({
   if (error) {
     return (
       <div
-        className={classNames(styles.profileCard, {}, [
+        className={classNames(cls.ProfileCard, {}, [
           className,
-          styles.error,
+          cls.error,
         ])}
       >
         <Text
           theme={TextTheme.ERROR}
-          title={t('Profile not found')}
+          title={t(
+            'Произошла ошибка при загрузке профиля',
+            { ns: 'profile' }
+          )}
+          text={t('Попробуйте обновить страницу', {
+            ns: 'profile',
+          })}
           align={TextAlign.CENTER}
         />
       </div>
     )
   }
 
+  const mods: Mods = {
+    [cls.editing]: !readonly,
+  }
+
   return (
     <div
-      className={classNames(styles.profileCard, {}, [
+      className={classNames(cls.ProfileCard, mods, [
         className,
       ])}
     >
-      <form className={styles.content} id={formId}>
+      <div className={cls.data}>
         {data?.avatar && (
-          <div className={styles.avatarWrapper}>
+          <div className={cls.avatarWrapper}>
             <Avatar src={data?.avatar} />
           </div>
         )}
         <Input
-          value={data?.firstName}
-          placeholder={t('John')}
-          className={styles.input}
-          label={t('First name')}
-          onChange={onChangeFirstName}
+          value={data?.first}
+          placeholder={t('Ваше имя', { ns: 'profile' })}
+          className={cls.input}
+          onChange={onChangeFirstname}
           readonly={readonly}
         />
         <Input
-          value={data?.lastName}
-          placeholder={t('Doe')}
-          className={styles.input}
-          label={t('Last name')}
-          onChange={onChangeLastName}
+          value={data?.lastname}
+          placeholder={t('Ваша фамилия', { ns: 'profile' })}
+          className={cls.input}
+          onChange={onChangeLastname}
           readonly={readonly}
         />
         <Input
           value={data?.age}
-          placeholder='30'
-          className={styles.input}
-          label={t('Age')}
+          placeholder={t('Ваш возраст', { ns: 'profile' })}
+          className={cls.input}
           onChange={onChangeAge}
           readonly={readonly}
         />
         <Input
           value={data?.city}
-          placeholder={t('London')}
-          className={styles.input}
-          label={t('City')}
+          placeholder={t('Город', { ns: 'profile' })}
+          className={cls.input}
           onChange={onChangeCity}
           readonly={readonly}
         />
         <Input
           value={data?.username}
-          placeholder={t('Your creative username')}
-          className={styles.input}
-          label={t('Username')}
+          placeholder={t('Введите имя пользователя', {
+            ns: 'profile',
+          })}
+          className={cls.input}
           onChange={onChangeUsername}
           readonly={readonly}
         />
         <Input
           value={data?.avatar}
-          placeholder={t('Link to new picture')}
-          className={styles.input}
-          label={t('Avatar')}
+          placeholder={t('Введите ссылку на аватар', {
+            ns: 'profile',
+          })}
+          className={cls.input}
           onChange={onChangeAvatar}
           readonly={readonly}
         />
-        <SelectCurrency
+        <CurrencySelect
+          className={cls.input}
           value={data?.currency}
           onChange={onChangeCurrency}
           readonly={readonly}
         />
-        <SelectCountry
+        <CountrySelect
+          className={cls.input}
           value={data?.country}
           onChange={onChangeCountry}
           readonly={readonly}
         />
-      </form>
+      </div>
     </div>
   )
 }

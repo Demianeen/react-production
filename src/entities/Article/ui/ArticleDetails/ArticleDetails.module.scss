@@ -1,31 +1,34 @@
-.articleDetails {
-  .avatarWrapper {
+.ArticleDetails {
+    min-height: 100%;
+}
+
+.avatar {
+    margin: 0 auto;
+}
+
+.title {
+    margin-top: 20px;
+}
+
+.skeleton {
+    margin-top: 15px;
+}
+
+.articleInfo {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    margin-right: 8px;
+}
+
+.avatarWrapper {
     display: flex;
     justify-content: center;
+    width: 100%;
+}
 
-    .avatar {
-      margin: 0 auto;
-    }
-  }
-
-  .title {
-    margin: 2.75rem 0 0.75rem;
-  }
-
-  .skeletonTextBlock {
-    margin-top: 1.5rem;
-  }
-
-  .block {
-    margin-top: 1rem;
-  }
-
-  .articleInfo {
-    display: flex;
-
-    .icon {
-      margin-right: 0.5rem;
-      color: var(--secondary-color);
-    }
-  }
+.block {
+    margin-top: 16px;
 }

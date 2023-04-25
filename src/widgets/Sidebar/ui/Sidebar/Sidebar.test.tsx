@@ -1,22 +1,22 @@
 import { fireEvent, screen } from '@testing-library/react'
-import { componentRender } from 'shared/lib/tests/componentRender/componentRender'
+import { componentRender } from 'shared/libs/tests/componentRender'
 import { Sidebar } from './Sidebar'
 
 describe('Sidebar', () => {
-  test('render', () => {
+  test('Sidebar to be correctly rendered', () => {
     componentRender(<Sidebar />)
     expect(
       screen.getByTestId('sidebar')
     ).toBeInTheDocument()
   })
 
-  test('toggle', () => {
+  test('Sidebar to be correctly collapsed', () => {
     componentRender(<Sidebar />)
-    const toggleBtn = screen.getByTestId('sidebar-toggle')
+    const button = screen.getByTestId('sidebar-toggle')
     expect(
       screen.getByTestId('sidebar')
     ).toBeInTheDocument()
-    fireEvent.click(toggleBtn)
+    fireEvent.click(button)
     expect(screen.getByTestId('sidebar')).toHaveClass(
       'collapsed'
     )

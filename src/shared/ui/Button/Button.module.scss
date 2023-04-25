@@ -1,86 +1,85 @@
-.button {
-  padding: 0.5rem 1rem;
-  color: var(--primary-color);
-  cursor: pointer;
+.Button {
+    padding: 6px 15px;
+    color: var(--primary-color);
+    cursor: pointer;
 
-  // states
-  &:hover {
-    opacity: 0.8;
-  }
+    &:hover {
+        opacity: 0.8;
+        fill-opacity: 0.8;
+        stroke-opacity: 0.8;
+    }
+}
 
-  // themes
-  &.clear, &.clearInverted {
+.clear {
     padding: 0;
     background: none;
     border: none;
     outline: none;
-  }
+}
 
-  &.clearInverted {
+.clearInverted {
+    padding: 0;
     color: var(--inverted-primary-color);
-  }
+    background: none;
+    border: none;
+    outline: none;
+}
 
-  &.outline {
+.outline {
+    color: var(--primary-color);
     background: none;
     border: 1px solid var(--primary-color);
-  }
+}
 
-  &.outlineRed {
+.outline_red {
     color: var(--red-light);
     background: none;
     border: 1px solid var(--red-light);
-  }
-
-  &.background {
-    background: var(--bg-color);
-    border: none;
-  }
-
-  &.backgroundInverted {
-    background: var(--inverted-bg-color);
-    border: none;
-  }
-
-  // sizes
-  &.medium {
-    font: var(--font-m);
-  }
-
-  &.large {
-    font: var(--font-l);
-  }
-
-  &.extraLarge {
-    font: var(--font-xl);
-  }
-
-  // square button
-  &.square {
-    padding: 0;
-
-    // square button sizes
-    &.medium {
-      width: var(--font-line-m);
-      height: var(--font-line-m);
-    }
-
-    &.large {
-      width: var(--font-line-l);
-      height: var(--font-line-l);
-      font: var(--font-l);
-    }
-
-    &.extraLarge {
-      width: var(--font-line-xl);
-      height: var(--font-line-xl);
-      font: var(--font-xl);
-    }
-  }
-
-  // button statuses
-  &.disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
 }
 
+.background {
+    color: var(--primary-color);
+    background: var(--bg-color);
+    border: none;
+}
+
+.backgroundInverted {
+    color: var(--inverted-primary-color);
+    background: var(--inverted-bg-color);
+    border: none;
+}
+
+.square {
+    padding: 0;
+}
+
+.square.size_m {
+    width: var(--font-line-m);
+    height: var(--font-line-m);
+}
+
+.square.size_l {
+    width: var(--font-line-l);
+    height: var(--font-line-l);
+}
+
+.square.size_xl {
+    width: var(--font-line-xl);
+    height: var(--font-line-xl);
+}
+
+.size_m {
+    font: var(--font-m);
+}
+
+.size_l {
+    font: var(--font-l);
+}
+
+.size_xl {
+    font: var(--font-xl);
+}
+
+.disabled {
+    opacity: 0.5;
+}

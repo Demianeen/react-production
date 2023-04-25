@@ -1,65 +1,67 @@
-import React, { memo, useCallback } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
-import { ArticleListItem } from 'entities/Article/ui/ArticleListItem/ArticleListItem'
+import { useTranslation } from 'react-i18next'
+import { memo } from 'react'
+import { ArticleListItemSkeleton } from 'entities/Article/ui/ArticleListItem/ArticleListItemSkeleton'
+import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
+import cls from './ArticleList.module.scss'
 import type { Article } from '../../model/types/article'
 import { ArticleView } from '../../model/types/article'
-import styles from './ArticleList.module.scss'
-import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton'
 
 interface ArticleListProps {
   className?: string
   articles: Article[]
-  isLoading: boolean
+  isLoading?: boolean
   view?: ArticleView
 }
 
+const getSkeletons = (view: ArticleView) =>
+  new Array(view === ArticleView.SMALL ? 9 : 3)
+    .fill(0)
+    .map((item, index) => (
+      <ArticleListItemSkeleton
+        className={cls.card}
+        key={index}
+        view={view}
+      />
+    ))
+
 export const ArticleList = memo(
-  ({
-    className,
-    articles,
-    isLoading,
-    view = ArticleView.GRID,
-  }: ArticleListProps) => {
-    const renderArticle = useCallback(
-      (article: Article) => (
-        <ArticleListItem
-          article={article}
-          view={view}
-          key={article.id}
-        />
-      ),
-      [view]
-    )
+  (props: ArticleListProps) => {
+    const {
+      className,
+      articles,
+      view = ArticleView.SMALL,
+      isLoading,
+    } = props
+    const { t } = useTranslation()
 
     if (isLoading) {
-      const skeletonArticles =
-        view === ArticleView.GRID
-          ? new Array(9).fill(null)
-          : new Array(3).fill(null)
-
       return (
         <div
-          className={classNames(styles.articleList, {}, [
+          className={classNames(cls.ArticleList, {}, [
             className,
-            styles[view],
+            cls[view],
           ])}
         >
-          {skeletonArticles.map((_, index) => (
-            <ArticleListItemSkeleton
-              /* eslint-disable-next-line react/no-array-index-key */
-              key={index}
-              view={view}
-            />
-          ))}
+          {getSkeletons(view)}
         </div>
       )
     }
 
+    const renderArticle = (article: Article) => (
+      <ArticleListItem
+        article={article}
+        view={view}
+        className={cls.card}
+        key={article.id}
+      />
+    )
+
     return (
       <div
-        className={classNames(styles.articleList, {}, [
+        className={classNames(cls.ArticleList, {}, [
           className,
-          styles[view],
+          cls[view],
         ])}
       >
         {articles.length > 0
@@ -69,5 +71,3 @@ export const ArticleList = memo(
     )
   }
 )
-
-ArticleList.displayName = 'ArticleList'

@@ -1,43 +1,37 @@
-import type { ArticleDetailsSchema } from 'entities/Article'
-import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice'
-import { fetchArticleById } from 'entities/Article/model/services/fetchArticleById/fetchArticleById'
-import { article } from 'entities/Article/model/mocks/tests'
+import { article } from 'shared/const/article'
+import { fetchArticleById } from '../services/fetchArticleById'
+import type { ArticleDetailsSchema } from '../types/articleDetailsSchema'
+import { articleDetailsReducer } from './articleDetailsSlice'
 
-describe('articleDetailsSlice', () => {
-  test('fetchArticleById service pending', () => {
+describe('articleDetailslice.test', () => {
+  test('get article by id pending', () => {
     const state: DeepPartial<ArticleDetailsSchema> = {
       isLoading: false,
-      error: 'error',
     }
+
     expect(
       articleDetailsReducer(
         state as ArticleDetailsSchema,
         fetchArticleById.pending
       )
-    ).toEqual({ isLoading: true })
+    ).toEqual({
+      isLoading: true,
+    })
   })
 
-  test('fetchArticleById service fulfilled', () => {
+  test('get article by id fullfilled', () => {
     const state: DeepPartial<ArticleDetailsSchema> = {
       isLoading: true,
     }
-    expect(
-      articleDetailsReducer(
-        state as ArticleDetailsSchema,
-        fetchArticleById.fulfilled(article, '', 1)
-      )
-    ).toEqual({ isLoading: false, data: article })
-  })
 
-  test('fetchArticleById service rejected', () => {
-    const state: DeepPartial<ArticleDetailsSchema> = {
-      isLoading: true,
-    }
     expect(
       articleDetailsReducer(
         state as ArticleDetailsSchema,
-        fetchArticleById.rejected(null, '', 1, 'error')
+        fetchArticleById.fulfilled(article, '', '')
       )
-    ).toEqual({ error: 'error', isLoading: false })
+    ).toEqual({
+      isLoading: false,
+      data: article,
+    })
   })
 })

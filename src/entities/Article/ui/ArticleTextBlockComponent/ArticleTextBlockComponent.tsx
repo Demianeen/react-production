@@ -1,8 +1,8 @@
-import React, { memo } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
+import { memo } from 'react'
 import { Text } from 'shared/ui/Text/Text'
+import { classNames } from 'shared/libs'
+import cls from './ArticleTextBlockComponent.module.scss'
 import type { ArticleTextBlock } from '../../model/types/article'
-import styles from './ArticleTextBlockComponent.module.scss'
 
 interface ArticleTextBlockComponentProps {
   className?: string
@@ -10,35 +10,28 @@ interface ArticleTextBlockComponentProps {
 }
 
 export const ArticleTextBlockComponent = memo(
-  ({
-    className,
-    block,
-  }: ArticleTextBlockComponentProps) => {
+  (props: ArticleTextBlockComponentProps) => {
+    const { className, block } = props
+
     return (
-      <section
+      <div
         className={classNames(
-          styles.articleTextBlockComponent,
+          cls.ArticleTextBlockComponent,
           {},
           [className]
         )}
       >
         {block.title && (
-          <Text
-            className={styles.title}
-            title={block.title}
-          />
+          <Text title={block.title} className={cls.title} />
         )}
-        {block.paragraphs.map((paragraph) => (
+        {block.paragraphs.map((paragraph, index) => (
           <Text
             key={paragraph}
-            className={styles.paragraph}
             text={paragraph}
+            className={cls.paragraph}
           />
         ))}
-      </section>
+      </div>
     )
   }
 )
-
-ArticleTextBlockComponent.displayName =
-  'ArticleTextBlockComponent'

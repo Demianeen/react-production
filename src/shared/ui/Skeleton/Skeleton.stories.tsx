@@ -1,9 +1,11 @@
+import React from 'react'
 import type {
   ComponentMeta,
   ComponentStory,
 } from '@storybook/react'
-import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
-import { Theme } from 'app/providers/ThemeProvider'
+
+import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator'
+import { Theme } from 'shared/contexts/theme-context'
 import { Skeleton } from './Skeleton'
 
 export default {
@@ -12,9 +14,10 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  args: {
-    width: '100%',
-    height: '13rem',
+  parameters: {
+    loki: {
+      skip: true,
+    },
   },
 } as ComponentMeta<typeof Skeleton>
 
@@ -22,36 +25,29 @@ const Template: ComponentStory<typeof Skeleton> = (
   args
 ) => <Skeleton {...args} />
 
-export const Light = Template.bind({})
-Light.args = {}
+export const Normal = Template.bind({})
+Normal.args = {
+  width: '100%',
+  height: 200,
+}
 
 export const Circle = Template.bind({})
 Circle.args = {
-  width: '7rem',
-  height: '7rem',
-  borderRadius: '50%',
+  border: '50%',
+  width: 100,
+  height: 100,
 }
 
-export const Dark = Template.bind({})
-Dark.args = {}
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
-
-export const DarkCircle = Template.bind({})
-DarkCircle.args = {
-  width: '7rem',
-  height: '7rem',
-  borderRadius: '50%',
+export const NormalDark = Template.bind({})
+NormalDark.args = {
+  width: '100%',
+  height: 200,
 }
-DarkCircle.decorators = [ThemeDecorator(Theme.DARK)]
-
-export const Red = Template.bind({})
-Red.args = {}
-Red.decorators = [ThemeDecorator(Theme.RED)]
-
-export const RedCircle = Template.bind({})
-RedCircle.args = {
-  width: '7rem',
-  height: '7rem',
-  borderRadius: '50%',
+NormalDark.decorators = [ThemeDecorator(Theme.DARK)]
+export const CircleDark = Template.bind({})
+CircleDark.args = {
+  border: '50%',
+  width: 100,
+  height: 100,
 }
-RedCircle.decorators = [ThemeDecorator(Theme.RED)]
+CircleDark.decorators = [ThemeDecorator(Theme.DARK)]

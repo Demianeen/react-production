@@ -1,66 +1,72 @@
-import { WithLabel } from 'shared/ui/WithLabel/WithLabel'
-import { classNames } from 'shared/lib/classNames/classNames'
+import type { Mods } from 'shared/libs'
+import { classNames } from 'shared/libs'
 import type { ChangeEvent } from 'react'
 import { memo, useMemo } from 'react'
-import styles from './Select.module.scss'
+import cls from './Select.module.scss'
 
 export interface SelectOption {
   value: string
-  label: string
+  content: string
 }
 
-interface SpinnerProps {
+interface SelectProps {
   className?: string
   label?: string
-  options: SelectOption[]
+  options?: SelectOption[]
   value?: string
   onChange?: (value: string) => void
   readonly?: boolean
 }
 
-export const Select = memo(
-  ({
+export const Select = memo((props: SelectProps) => {
+  const {
     className,
     label,
     options,
-    value,
     onChange,
+    value,
     readonly,
-  }: SpinnerProps) => {
-    const optionsList = useMemo(() => {
-      return options.map((opt) => (
-        <option
-          key={opt.value}
-          value={opt.value}
-          className={styles.option}
-        >
-          {opt.label}
-        </option>
-      ))
-    }, [options])
+  } = props
 
-    const handleChange = (
-      e: ChangeEvent<HTMLSelectElement>
-    ) => {
-      onChange?.(e.target.value)
+  const onChangeHandler = (
+    e: ChangeEvent<HTMLSelectElement>
+  ) => {
+    if (onChange) {
+      onChange(e.target.value)
     }
-
-    return (
-      <WithLabel label={label}>
-        <select
-          id={label}
-          className={classNames(styles.select, {}, [
-            className,
-          ])}
-          value={value}
-          onChange={handleChange}
-          disabled={readonly}
-        >
-          {optionsList}
-        </select>
-      </WithLabel>
-    )
   }
-)
 
-Select.displayName = 'Select'
+  const optionsList = useMemo(
+    () =>
+      options?.map((opt) => (
+        <option
+          className={cls.option}
+          value={opt.value}
+          key={opt.value}
+        >
+          {opt.content}
+        </option>
+      )),
+    [options]
+  )
+
+  const mods: Mods = {}
+
+  return (
+    <div
+      className={classNames(cls.Wrapper, mods, [className])}
+    >
+      {label && (
+        <span className={cls.label}>{`${label}>`}</span>
+      )}
+      <select
+        disabled={readonly}
+        className={cls.select}
+        value={value}
+        onChange={onChangeHandler}
+      >
+        {optionsList}
+      </select>
+    </div>
+  )
+})

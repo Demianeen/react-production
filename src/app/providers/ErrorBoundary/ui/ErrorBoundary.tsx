@@ -1,7 +1,6 @@
 import type { ErrorInfo, ReactNode } from 'react'
-import React from 'react'
-import { PageError } from 'widgets/PageError/ui/PageError'
-import { SuspenseWithSpinner } from 'shared/ui/SuspenseWithSpinner/SuspenseWithSpinner'
+import React, { Suspense } from 'react'
+import { ErrorPage } from 'widgets/ErrorPage/ui/ErrorPage'
 
 interface ErrorBoundaryProps {
   children: ReactNode
@@ -10,6 +9,8 @@ interface ErrorBoundaryProps {
 interface ErrorBoundaryState {
   hasError: boolean
 }
+
+// better way of using Errorboundary - https://www.youtube.com/watch?v=gyqAW0--0Tc&t=2s
 
 class ErrorBoundary extends React.Component<
   ErrorBoundaryProps,
@@ -20,12 +21,13 @@ class ErrorBoundary extends React.Component<
     this.state = { hasError: false }
   }
 
-  static getDerivedStateFromError(_error: Error) {
+  static getDerivedStateFromError(error: Error) {
+    // Update state so the next render will show the fallback UI.
     return { hasError: true }
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    // eslint-disable-next-line no-console
+    // You can also log the error to an error reporting service
     console.log(error, errorInfo)
   }
 
@@ -34,10 +36,11 @@ class ErrorBoundary extends React.Component<
     const { children } = this.props
 
     if (hasError) {
+      // You can render any custom fallback UI
       return (
-        <SuspenseWithSpinner>
-          <PageError />
-        </SuspenseWithSpinner>
+        <Suspense fallback=''>
+          <ErrorPage />
+        </Suspense>
       )
     }
 

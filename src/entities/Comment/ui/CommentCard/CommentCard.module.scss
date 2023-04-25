@@ -1,18 +1,21 @@
-.commentCard {
-  padding: 1rem;
-  border: 1px solid var(--primary-color);
+.CommentCard {
+    padding: 10px;
+    border: 1px solid var(--primary-color);
+}
 
-  .header {
+.header {
     display: flex;
     align-items: center;
-    margin-bottom: 0.5rem;
+}
 
-    .avatar {
-      margin-right: 0.5rem;
-    }
-  }
+.text {
+    margin-top: 10px;
+}
 
-  &.isLoading {
+.username {
+    margin-left: 10px;
+}
+
+.loading {
     border: none;
-  }
 }

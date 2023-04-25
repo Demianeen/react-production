@@ -1,29 +1,25 @@
-import React, { memo } from 'react'
+import { useTranslation } from 'react-i18next'
 import {
   AppLink,
   AppLinkTheme,
 } from 'shared/ui/AppLink/AppLink'
-import type { Mods } from 'shared/lib/classNames/classNames'
-import { classNames } from 'shared/lib/classNames/classNames'
-import { useTranslation } from 'react-i18next'
+import { memo } from 'react'
+import { classNames } from 'shared/libs'
 import { useSelector } from 'react-redux'
 import { getUserAuthData } from 'entities/User'
-import type { SidebarItemArgs } from 'widgets/Sidebar/model/types/sidebar'
-import styles from './SidebarItem.module.scss'
+import type { SidebarItemType } from '../../model/types/sidebar'
+import cls from './SidebarItem.module.scss'
 
 interface SidebarItemProps {
-  item: SidebarItemArgs
-  isCollapsed: boolean
+  item: SidebarItemType
+  collapsed: boolean
 }
 
 export const SidebarItem = memo(
-  ({ item, isCollapsed }: SidebarItemProps) => {
+  ({ item, collapsed }: SidebarItemProps) => {
     const { t } = useTranslation()
-    const isAuth = useSelector(getUserAuthData)
 
-    const mods: Mods = {
-      [styles.collapsed]: isCollapsed,
-    }
+    const isAuth = useSelector(getUserAuthData)
 
     if (item.authOnly && !isAuth) {
       return null
@@ -31,15 +27,15 @@ export const SidebarItem = memo(
 
     return (
       <AppLink
-        theme={AppLinkTheme.INVERTED}
+        theme={AppLinkTheme.SECONDARY}
         to={item.path}
-        className={classNames(styles.item, mods)}
+        className={classNames(cls.item, {
+          [cls.collapsed]: collapsed,
+        })}
       >
-        <item.Icon className={styles.icon} />
-        <span className={styles.text}>{t(item.text)}</span>
+        <item.Icon className={cls.icon} />
+        <span className={cls.link}>{t(item.text)}</span>
       </AppLink>
     )
   }
 )
-
-SidebarItem.displayName = 'SidebarItem'

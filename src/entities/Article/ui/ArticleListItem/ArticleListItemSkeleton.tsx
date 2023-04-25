@@ -1,9 +1,8 @@
-import React, { memo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
+import { memo } from 'react'
 import { Card } from 'shared/ui/Card/Card'
-import { ArticleListItem } from 'entities/Article/ui/ArticleListItem/ArticleListItem'
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton'
-import styles from './ArticleListItem.module.scss'
+import cls from './ArticleListItem.module.scss'
 import { ArticleView } from '../../model/types/article'
 
 interface ArticleListItemSkeletonProps {
@@ -12,80 +11,74 @@ interface ArticleListItemSkeletonProps {
 }
 
 export const ArticleListItemSkeleton = memo(
-  ({ className, view }: ArticleListItemSkeletonProps) => {
-    if (view === ArticleView.LIST) {
+  (props: ArticleListItemSkeletonProps) => {
+    const { className, view } = props
+
+    if (view === ArticleView.BIG) {
       return (
-        <Card
-          className={classNames(
-            styles.articleListItem,
-            {},
-            [className, styles[view]]
-          )}
-          aria-busy
+        <div
+          className={classNames(cls.ArticleListItem, {}, [
+            className,
+            cls[view],
+          ])}
         >
-          <header className={styles.header}>
+          <Card className={cls.card}>
+            <div className={cls.header}>
+              <Skeleton
+                border='50%'
+                height={30}
+                width={30}
+              />
+              <Skeleton
+                width={150}
+                height={16}
+                className={cls.username}
+              />
+              <Skeleton
+                width={150}
+                height={16}
+                className={cls.date}
+              />
+            </div>
             <Skeleton
-              width='2rem'
-              height='2rem'
-              borderRadius='50%'
+              width={250}
+              height={24}
+              className={cls.title}
             />
-            <Skeleton
-              height='var(--font-size-m)'
-              width='15rem'
-              className={styles.username}
-            />
-            <Skeleton
-              height='var(--font-size-m)'
-              width='7rem'
-              className={styles.date}
-            />
-          </header>
-          <Skeleton
-            height='var(--font-size-l)'
-            width='15rem'
-            className={styles.title}
-          />
-          <Skeleton
-            height='var(--font-size-m)'
-            width='7rem'
-            className={styles.types}
-          />
-          <Skeleton className={styles.img} />
-          <Skeleton
-            className={styles.skeleton}
-            height='4rem'
-          />
-          <Skeleton className={styles.textBlock} />
-          <footer className={styles.footer}>
-            <Skeleton height='2rem' width='10rem' />
-          </footer>
-        </Card>
+            <Skeleton height={200} className={cls.img} />
+            <div className={cls.footer}>
+              <Skeleton height={36} width={200} />
+            </div>
+          </Card>
+        </div>
       )
     }
+
     return (
-      <Card
-        className={classNames(styles.articleListItem, {}, [
+      <div
+        className={classNames(cls.ArticleListItem, {}, [
           className,
-          styles[view],
+          cls[view],
         ])}
-        aria-busy
       >
-        <div className={styles.imageWrapper}>
-          <Skeleton className={styles.img} />
-        </div>
-        <div className={styles.infoWrapper}>
+        <Card className={cls.card}>
+          <div className={cls.imageWrapper}>
+            <Skeleton
+              width={200}
+              height={200}
+              className={cls.img}
+            />
+          </div>
+          <div className={cls.infoWrapper}>
+            <Skeleton width={130} height={16} />
+          </div>
           <Skeleton
-            height='var(--font-size-m)'
-            className={styles.types}
+            width={150}
+            height={16}
+            className={cls.title}
           />
-        </div>
-        <Skeleton
-          className={styles.title}
-          height='var(--font-size-l)'
-        />
-      </Card>
+        </Card>
+      </div>
     )
   }
 )
-
-ArticleListItemSkeleton.displayName = 'ArticleListItem'

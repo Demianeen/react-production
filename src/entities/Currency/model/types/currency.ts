@@ -1,10 +1,5 @@
 export enum Currency {
-  USD = 'USD',
+  RUB = 'RUB',
   EUR = 'EUR',
-  GBP = 'GBP',
-  JPY = 'JPY',
-  CNY = 'CNY',
-  AUD = 'AUD',
-  CAD = 'CAD',
-  UAH = 'UAH',
+  USD = 'USD',
 }

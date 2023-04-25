@@ -1,17 +1,13 @@
-import { getCounterValue } from 'entities/Counter/model/selectors/getCounterValue/getCounterValue'
-
 import type { StateSchema } from 'app/providers/StoreProvider'
+import { getCounterValue } from './getCounterValue'
 
-describe('getCounterValue', () => {
-  it('should return the counter value', () => {
+describe('getCounterValue.test', () => {
+  test('', () => {
     const state: DeepPartial<StateSchema> = {
-      counter: {
-        value: 10,
-      },
+      counter: { value: 10 },
     }
-
     expect(getCounterValue(state as StateSchema)).toEqual(
-      state.counter?.value
+      10
     )
   })
 })

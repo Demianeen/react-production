@@ -1,37 +1,28 @@
 import type { CSSProperties } from 'react'
-import React, { memo } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
-import styles from './Skeleton.module.scss'
+import { memo } from 'react'
+import { classNames } from 'shared/libs'
+import cls from './Skeleton.module.scss'
 
 interface SkeletonProps {
   className?: string
-  height?: string
-  width?: string
-  borderRadius?: string
+  height?: string | number
+  width?: string | number
+  border?: string
 }
 
-export const Skeleton = memo(
-  ({
-    className,
-    height,
+export const Skeleton = memo((props: SkeletonProps) => {
+  const { className, height, width, border } = props
+
+  const styles: CSSProperties = {
     width,
-    borderRadius,
-  }: SkeletonProps) => {
-    const style: CSSProperties = {
-      height,
-      width,
-      borderRadius,
-    }
-
-    return (
-      <div
-        className={classNames(styles.skeleton, {}, [
-          className,
-        ])}
-        style={style}
-      />
-    )
+    height,
+    borderRadius: border,
   }
-)
 
-Skeleton.displayName = 'Skeleton'
+  return (
+    <div
+      className={classNames(cls.Skeleton, {}, [className])}
+      style={styles}
+    />
+  )
+})

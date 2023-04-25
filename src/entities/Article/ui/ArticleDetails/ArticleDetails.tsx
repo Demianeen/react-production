@@ -1,10 +1,5 @@
-import React, { memo, useCallback } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
-import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
-import { useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { memo, useCallback, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { useTranslation } from 'react-i18next'
 import {
   Text,
   TextAlign,
@@ -15,25 +10,28 @@ import { Avatar } from 'shared/ui/Avatar/Avatar'
 import EyeIcon from 'shared/assets/icons/eye-20-20.svg'
 import CalendarIcon from 'shared/assets/icons/calendar-20-20.svg'
 import { Icon } from 'shared/ui/Icon/Icon'
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
-import { Button } from 'shared/ui/Button/Button'
-import { useNavigate } from 'react-router-dom'
-import { RoutePath } from 'shared/config/routeConfig/routeConfig'
-import { getArticleDetailsIsLoading } from '../../model/selectors/getArticleDetailsIsLoading/getArticleDetailsIsLoading'
-import { getArticleDetailsError } from '../../model/selectors/getArticleDetailsError/getArticleDetailsError'
-import { getArticleDetailsData } from '../../model/selectors/getArticleDetailsData/getArticleDetailsData'
+import { ArticleCodeBlockComponent } from 'entities/Article/ui/ArticleCodeBlockComponent/ArticleCodeBlockComponent'
+import { ArticleImageBlockComponent } from 'entities/Article/ui/ArticleImageBlockComponent/ArticleImageBlockComponent'
+import { ArticleTextBlockComponent } from 'entities/Article/ui/ArticleTextBlockComponent/ArticleTextBlockComponent'
+import { useAppDispatch } from 'shared/libs/hooks/useAppDispatch'
+import { useTranslation } from 'react-i18next'
+import type { ReducersList } from 'shared/libs/components/DynamicModuleLoader/DynamicModuleLoader'
+import { DynamicModuleLoader } from 'shared/libs/components/DynamicModuleLoader/DynamicModuleLoader'
+import { classNames } from 'shared/libs'
+import { fetchArticleById } from '../../model/services/fetchArticleById'
+import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice'
+import cls from './ArticleDetails.module.scss'
+import {
+  getArticleDetailsData,
+  getArticleDetailsError,
+  getArticleDetailsIsLoading,
+} from '../../model/selectors/articleDetails'
 import type { ArticleBlock } from '../../model/types/article'
 import { ArticleBlockType } from '../../model/types/article'
-import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent'
-import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent'
-import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent'
-import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice'
-import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById'
-import styles from './ArticleDetails.module.scss'
 
 interface ArticleDetailsProps {
   className?: string
-  id: number
+  id: string
 }
 
 const reducers: ReducersList = {
@@ -41,17 +39,15 @@ const reducers: ReducersList = {
 }
 
 export const ArticleDetails = memo(
-  ({ className, id }: ArticleDetailsProps) => {
-    useDynamicModuleLoader(reducers)
-    const { t } = useTranslation('article-details')
+  (props: ArticleDetailsProps) => {
+    const { className, id } = props
+    const { t } = useTranslation()
     const dispatch = useAppDispatch()
     const isLoading = useSelector(
       getArticleDetailsIsLoading
     )
-    const error = useSelector(getArticleDetailsError)
     const article = useSelector(getArticleDetailsData)
-
-    const navigate = useNavigate()
+    const error = useSelector(getArticleDetailsError)
 
     const renderBlock = useCallback(
       (block: ArticleBlock) => {
@@ -60,23 +56,23 @@ export const ArticleDetails = memo(
             return (
               <ArticleCodeBlockComponent
                 key={block.id}
-                className={styles.block}
                 block={block}
+                className={cls.block}
               />
             )
           case ArticleBlockType.IMAGE:
             return (
               <ArticleImageBlockComponent
                 key={block.id}
-                className={styles.block}
                 block={block}
+                className={cls.block}
               />
             )
           case ArticleBlockType.TEXT:
             return (
               <ArticleTextBlockComponent
                 key={block.id}
-                className={styles.block}
+                className={cls.block}
                 block={block}
               />
             )
@@ -87,79 +83,74 @@ export const ArticleDetails = memo(
       []
     )
 
-    useInitialEffect(() => dispatch(fetchArticleById(id)))
+    useEffect(() => {
+      if (__PROJECT__ !== 'storybook') {
+        dispatch(fetchArticleById(id))
+      }
+    }, [dispatch, id])
 
-    const onBackToList = useCallback(() => {
-      navigate(RoutePath.articles)
-    }, [navigate])
-
-    let content = null
+    let content
 
     if (isLoading) {
       content = (
         <>
-          <div className={styles.avatarWrapper}>
-            <Skeleton
-              className={styles.avatar}
-              width='12.5rem'
-              height='12.5rem'
-              borderRadius='50%'
-            />
-          </div>
           <Skeleton
-            className={styles.title}
-            width='41.8rem'
-            height='2rem'
+            className={cls.avatar}
+            width={200}
+            height={200}
+            border='50%'
           />
           <Skeleton
-            className={styles.skeletonTextBlock}
-            width='25rem'
-            height='2rem'
+            className={cls.title}
+            width={300}
+            height={32}
           />
           <Skeleton
-            className={styles.skeletonTextBlock}
-            width='68rem'
-            height='14rem'
+            className={cls.skeleton}
+            width={600}
+            height={24}
           />
           <Skeleton
-            className={styles.skeletonTextBlock}
-            width='68rem'
-            height='14rem'
+            className={cls.skeleton}
+            width='100%'
+            height={200}
+          />
+          <Skeleton
+            className={cls.skeleton}
+            width='100%'
+            height={200}
           />
         </>
       )
     } else if (error) {
       content = (
         <Text
-          title={t(
-            'An error occurred while loading article'
-          )}
           align={TextAlign.CENTER}
+          title={t('Произошла ошибка при загрузке статьи.')}
         />
       )
     } else {
       content = (
         <>
-          {article?.img && (
-            <div className={styles.avatarWrapper}>
-              <Avatar size='12.5rem' src={article.img} />
-            </div>
-          )}
+          <div className={cls.avatarWrapper}>
+            <Avatar
+              size={200}
+              src={article?.img}
+              className={cls.avatar}
+            />
+          </div>
           <Text
-            className={styles.title}
+            className={cls.title}
             title={article?.title}
             text={article?.subtitle}
             size={TextSize.L}
           />
-          <div className={styles.articleInfo}>
-            <Icon className={styles.icon} Svg={EyeIcon} />
+          <div className={cls.articleInfo}>
+            <Icon className={cls.icon} Svg={EyeIcon} />
             <Text text={String(article?.views)} />
           </div>
-          <div className={styles.articleInfo}>
-            <Icon
-              className={styles.icon}
-              Svg={CalendarIcon}
-            />
+          <div className={cls.articleInfo}>
+            <Icon className={cls.icon} Svg={CalendarIcon} />
             <Text text={article?.createdAt} />
           </div>
           {article?.blocks.map(renderBlock)}
@@ -168,22 +159,18 @@ export const ArticleDetails = memo(
     }
 
     return (
-      <div
-        className={classNames(styles.articleDetails, {}, [
-          className,
-        ])}
+      <DynamicModuleLoader
+        reducers={reducers}
+        removeAfterUnmount
       >
-        <Button
-          type='button'
-          role='link'
-          onClick={onBackToList}
+        <div
+          className={classNames(cls.ArticleDetails, {}, [
+            className,
+          ])}
         >
-          {t('Back to list')}
-        </Button>
-        {content}
-      </div>
+          {content}
+        </div>
+      </DynamicModuleLoader>
     )
   }
 )
-
-ArticleDetails.displayName = 'ArticleDetails'

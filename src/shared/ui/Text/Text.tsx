@@ -1,63 +1,55 @@
-import React, { memo } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
-import styles from './Text.module.scss'
+import { memo } from 'react'
+import type { Mods } from 'shared/libs'
+import { classNames } from 'shared/libs'
+import cls from './Text.module.scss'
 
 export enum TextTheme {
-  NORMAL = 'normal',
+  PRIMARY = 'primary',
   ERROR = 'error',
 }
 
 export enum TextAlign {
+  RIGHT = 'right',
   LEFT = 'left',
   CENTER = 'center',
-  RIGHT = 'right',
 }
 
 export enum TextSize {
-  M = 'medium',
-  L = 'large',
+  M = 'size_m',
+  L = 'size_l',
 }
 
 interface TextProps {
   className?: string
-  text?: string
   title?: string
+  text?: string
   theme?: TextTheme
   align?: TextAlign
   size?: TextSize
 }
 
-export const Text = memo(
-  ({
+export const Text = memo((props: TextProps) => {
+  const {
     className,
-    title,
     text,
-    theme = TextTheme.NORMAL,
+    title,
+    theme = TextTheme.PRIMARY,
     align = TextAlign.LEFT,
     size = TextSize.M,
-  }: TextProps) => {
-    return (
-      <div
-        className={classNames(styles.textContainer, {}, [
-          styles[theme],
-          styles[align],
-          styles[size],
-          className,
-        ])}
-      >
-        {title && (
-          <>
-            {size === TextSize.L ? (
-              <h1 className={styles.title}>{title}</h1>
-            ) : (
-              <h2 className={styles.title}>{title}</h2>
-            )}
-          </>
-        )}
-        {text && <p className={styles.text}>{text}</p>}
-      </div>
-    )
-  }
-)
+  } = props
 
-Text.displayName = 'Text'
+  const mods: Mods = {
+    [cls[theme]]: true,
+    [cls[align]]: true,
+    [cls[size]]: true,
+  }
+
+  return (
+    <div
+      className={classNames(cls.Text, mods, [className])}
+    >
+      {title && <p className={cls.title}>{title}</p>}
+      {text && <p className={cls.text}>{text}</p>}
+    </div>
+  )
+})

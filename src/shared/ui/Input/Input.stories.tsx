@@ -1,10 +1,7 @@
-import React from 'react'
 import type {
   ComponentMeta,
   ComponentStory,
 } from '@storybook/react'
-import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
-import { Theme } from 'app/providers/ThemeProvider'
 import { Input } from './Input'
 
 export default {
@@ -13,32 +10,14 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  args: {
-    placeholder: 'Placeholder',
-    label: 'Label',
-  },
 } as ComponentMeta<typeof Input>
 
 const Template: ComponentStory<typeof Input> = (args) => (
   <Input {...args} />
 )
 
-export const WithPlaceholder = Template.bind({})
-WithPlaceholder.args = {}
-
-export const WithValue = Template.bind({})
-WithValue.args = {
-  value: 'Value',
+export const Primary = Template.bind({})
+Primary.args = {
+  placeholder: 'Type text',
+  value: '123123',
 }
-
-export const Dark = Template.bind({})
-Dark.args = {
-  value: 'Value',
-}
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
-
-export const Red = Template.bind({})
-Red.args = {
-  value: 'Value',
-}
-Red.decorators = [ThemeDecorator(Theme.RED)]

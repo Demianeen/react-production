@@ -1,6 +1,7 @@
-import React from 'react'
 import { Modal } from 'shared/ui/Modal/Modal'
-import { SuspenseWithSpinner } from 'shared/ui/SuspenseWithSpinner/SuspenseWithSpinner'
+import { classNames } from 'shared/libs'
+import { Loader } from 'shared/ui/Loader/Loader'
+import { Suspense } from 'react'
 import { LoginFormAsync } from '../LoginForm/LoginForm.async'
 
 interface LoginModalProps {
@@ -13,17 +14,15 @@ export const LoginModal = ({
   className,
   isOpen,
   onClose,
-}: LoginModalProps) => {
-  return (
-    <Modal
-      isOpen={isOpen}
-      onClose={onClose}
-      className={className}
-      lazy
-    >
-      <SuspenseWithSpinner>
-        <LoginFormAsync onSuccess={onClose} />
-      </SuspenseWithSpinner>
-    </Modal>
-  )
-}
+}: LoginModalProps) => (
+  <Modal
+    className={classNames('', {}, [className])}
+    isOpen={isOpen}
+    onClose={onClose}
+    lazy
+  >
+    <Suspense fallback={<Loader />}>
+      <LoginFormAsync onSuccess={onClose} />
+    </Suspense>
+  </Modal>
+)

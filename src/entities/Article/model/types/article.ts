@@ -7,7 +7,7 @@ export enum ArticleBlockType {
 }
 
 export interface ArticleBlockBase {
-  id: number
+  id: string
   type: ArticleBlockType
 }
 
@@ -20,19 +20,24 @@ export interface ArticleImageBlock
   extends ArticleBlockBase {
   type: ArticleBlockType.IMAGE
   src: string
-  title?: string
+  title: string
 }
 
 export interface ArticleTextBlock extends ArticleBlockBase {
   type: ArticleBlockType.TEXT
-  title?: string
   paragraphs: string[]
+  title?: string
 }
 
 export type ArticleBlock =
   | ArticleCodeBlock
   | ArticleImageBlock
   | ArticleTextBlock
+
+export enum ArticleView {
+  BIG = 'BIG',
+  SMALL = 'SMALL',
+}
 
 export enum ArticleType {
   IT = 'IT',
@@ -41,19 +46,13 @@ export enum ArticleType {
 }
 
 export interface Article {
-  id: number
-  user: User
+  id: string
   title: string
+  user: User
   subtitle: string
   img: string
-  views: 1022
+  views: number
   createdAt: string
-  types: ArticleType[]
+  type: ArticleType[]
   blocks: ArticleBlock[]
-}
-
-// articleList
-export enum ArticleView {
-  LIST = 'list',
-  GRID = 'grid',
 }

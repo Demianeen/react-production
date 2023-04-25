@@ -1,68 +1,56 @@
 import type {
-  CounterSchema,
-  counterSliceName,
-} from 'entities/Counter'
-import type {
-  UserSchema,
-  userSliceName,
-} from 'entities/User'
-import type {
-  LoginFormSchema,
-  loginFormSliceName,
-} from 'features/AuthByUsername'
-import type {
+  AnyAction,
+  CombinedState,
   EnhancedStore,
   Reducer,
   ReducersMapObject,
 } from '@reduxjs/toolkit'
-import type { createReduxStore } from 'app/providers/StoreProvider'
+import type { CounterSchema } from 'entities/Counter/model/types/counterSchema'
+import type { UserSchema } from 'entities/User/model/types/user.types'
+import type { LoginSchema } from 'features/AuthByUsername'
+import type { ProfileSchema } from 'entities/Profile'
 import type { AxiosInstance } from 'axios'
-import type { NavigateFunction } from 'react-router/dist/lib/hooks'
-import type { ProfileSchema } from 'features/EditableProfileCard'
+import type { NavigateOptions, To } from 'react-router-dom'
 import type { ArticleDetailsSchema } from 'entities/Article'
-import type { ArticleCommentListSliceSchema } from 'features/ArticleCommentList'
-import type { AddCommentFormSchema } from 'features/AddCommentForm'
-import type { ArticlesPageSchema } from 'pages/ArticlesPage'
+import type { ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage'
+import type { AddCommentFormSchema } from 'features/addCommentForm'
 
 export interface StateSchema {
-  [counterSliceName]: CounterSchema
-  [userSliceName]: UserSchema
+  counter: CounterSchema
+  user: UserSchema
 
-  // Async reducers
-  [loginFormSliceName]?: LoginFormSchema
+  // Async Reducers
+  loginForm?: LoginSchema
   profile?: ProfileSchema
   articleDetails?: ArticleDetailsSchema
-  articleCommentList?: ArticleCommentListSliceSchema
+  articleDetailsComments?: ArticleDetailsCommentsSchema
   addCommentForm?: AddCommentFormSchema
-  articlesPage?: ArticlesPageSchema
 }
 
 export type StateSchemaKey = keyof StateSchema
-export type StateReducer = Reducer<StateSchema>
 
 export interface ReducerManager {
   getReducerMap: () => ReducersMapObject<StateSchema>
-  reduce: StateReducer
+  reduce: (
+    state: StateSchema,
+    action: AnyAction
+  ) => CombinedState<StateSchema>
   add: (key: StateSchemaKey, reducer: Reducer) => void
   remove: (key: StateSchemaKey) => void
 }
 
-export interface ReduxStoreWithReducerManager
+export interface ReduxStoreWithManager
   extends EnhancedStore<StateSchema> {
   reducerManager: ReducerManager
 }
 
-export type AppDispatch = ReturnType<
-  typeof createReduxStore
->['dispatch']
-
 export interface ThunkExtraArg {
   api: AxiosInstance
-  navigate: NavigateFunction
+  navigate?: (to: To, options?: NavigateOptions) => void
 }
 
-export interface ThunkConfig<E> {
-  rejectValue: E
+export interface ThunkConfig<T> {
+  rejectValue: T
   extra: ThunkExtraArg
   state: StateSchema
 }

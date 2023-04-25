@@ -1,77 +1,105 @@
 import type { InputHTMLAttributes } from 'react'
-import React, { memo, useEffect } from 'react'
-import type { Mods } from 'shared/lib/classNames/classNames'
-import { classNames } from 'shared/lib/classNames/classNames'
-import { WithLabel } from 'shared/ui/WithLabel/WithLabel'
-import styles from './Input.module.scss'
+import React, {
+  memo,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
+import type { Mods } from 'shared/libs'
+import { classNames } from 'shared/libs'
+import cls from './Input.module.scss'
 
 type HTMLInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
-  'value' | 'onChange' | 'readonly'
+  'value' | 'onChange' | 'readOnly'
 >
 
 interface InputProps extends HTMLInputProps {
-  label: string
   className?: string
   value?: string | number
   onChange?: (value: string) => void
-  autoFocus?: boolean
+  autofocus?: boolean
   readonly?: boolean
-  wrapperClassName?: string
 }
 
-export const Input = memo(
-  ({
+export const Input = memo((props: InputProps) => {
+  const {
     className,
     value,
     onChange,
     type = 'text',
-    autoFocus,
-    label,
+    placeholder,
+    autofocus,
     readonly,
-    wrapperClassName,
-    ...props
-  }: InputProps) => {
-    const handleChange = (
-      e: React.ChangeEvent<HTMLInputElement>
-    ) => {
-      onChange?.(e.target.value)
+    ...otherProps
+  } = props
+  const ref = useRef<HTMLInputElement>(null)
+  const [isFocused, setIsFocused] = useState(false)
+  const [caretPosition, setCaretPosition] = useState(0)
+
+  const isCaretVisible = isFocused && !readonly
+
+  useEffect(() => {
+    if (autofocus) {
+      setIsFocused(true)
+      ref.current?.focus()
     }
-    const inputRef = React.useRef<HTMLInputElement>(null)
+  }, [autofocus])
 
-    useEffect(() => {
-      if (autoFocus) {
-        inputRef.current?.focus()
-      }
-    }, [autoFocus])
-
-    const mods: Mods = {
-      [styles.readonly]: readonly,
-    }
-
-    return (
-      <WithLabel
-        label={label}
-        wrapperClassName={wrapperClassName}
-      >
-        <input
-          id={label}
-          className={classNames(styles.input, mods, [
-            className,
-          ])}
-          value={value}
-          type={type}
-          onChange={handleChange}
-          ref={inputRef}
-          /* I decided to use autofocus for forms */
-          /* eslint-disable-next-line jsx-a11y/no-autofocus */
-          autoFocus={autoFocus}
-          readOnly={readonly}
-          {...props}
-        />
-      </WithLabel>
-    )
+  const onChangeHandler = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    onChange?.(e.target.value)
+    setCaretPosition(e.target.value.length)
   }
-)
 
-Input.displayName = 'Input'
+  const onBlur = () => {
+    setIsFocused(false)
+  }
+
+  const onFocus = () => {
+    setIsFocused(true)
+  }
+
+  const onSelect = (e: any) => {
+    setCaretPosition(e?.target?.selectionStart || 0)
+  }
+
+  const mods: Mods = {
+    [cls.readonly]: readonly,
+  }
+
+  return (
+    <div
+      className={classNames(cls.InputWrapper, {}, [
+        className,
+      ])}
+    >
+      {placeholder && (
+        <div className={cls.placeholder}>
+          {`${placeholder}>`}
+        </div>
+      )}
+      <div className={cls.caretWrapper}>
+        <input
+          ref={ref}
+          type={type}
+          value={value}
+          onChange={onChangeHandler}
+          className={cls.input}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          onSelect={onSelect}
+          readOnly={readonly}
+          {...otherProps}
+        />
+        {isCaretVisible && (
+          <span
+            className={cls.caret}
+            style={{ left: `${caretPosition * 9}px` }}
+          />
+        )}
+      </div>
+    </div>
+  )
+})

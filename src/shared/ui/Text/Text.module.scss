@@ -1,50 +1,51 @@
-.textContainer {
-  .text {
-    color: var(--secondary-color)
-  }
+.title {
+    font: var(--font-l);
+    color: var(--primary-color);
+}
 
-  // Text alignment
-  &.left {
+.text {
+    font: var(--font-m);
+    color: var(--secondary-color);
+}
+
+.error {
+    .title {
+        color: var(--red-light);
+    }
+
+    .text {
+        color: var(--red-dark);
+    }
+}
+
+.left {
     text-align: left;
-  }
+}
 
-  &.center {
-    text-align: center;
-  }
-
-  &.right {
+.right {
     text-align: right;
-  }
+}
 
-  // Text size
-  &.medium {
+.center {
+    text-align: center;
+}
+
+.size_m {
     .title {
-      font: var(--font-l);
+        font: var(--font-l);
     }
 
     .text {
-      font: var(--font-m);
+        font: var(--font-m);
     }
-  }
+}
 
-  &.large {
+.size_l {
     .title {
-      font: var(--font-xl);
+        font: var(--font-xl);
     }
 
     .text {
-      font: var(--font-l);
+        font: var(--font-l);
     }
-  }
-
-  // Text theme
-  &.error {
-    .title {
-      color: var(--red-light)
-    }
-
-    .text {
-      color: var(--red-dark)
-    }
-  }
 }

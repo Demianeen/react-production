@@ -1,15 +1,15 @@
-import React from 'react'
 import type {
   ComponentMeta,
   ComponentStory,
 } from '@storybook/react'
-import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
-import { Theme } from 'app/providers/ThemeProvider'
-import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator'
+
+import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator'
+import { Theme } from 'shared/contexts/theme-context'
 import { Sidebar } from './Sidebar'
 
 export default {
-  title: 'widgets/Sidebar',
+  title: 'widget/Sidebar',
   component: Sidebar,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -24,34 +24,21 @@ export const Light = Template.bind({})
 Light.args = {}
 Light.decorators = [
   StoreDecorator({
-    user: {
-      authData: {},
-    },
+    user: { authData: {} },
   }),
 ]
-
-export const NoAuth = Template.bind({})
-NoAuth.args = {}
-NoAuth.decorators = [StoreDecorator()]
 
 export const Dark = Template.bind({})
 Dark.args = {}
 Dark.decorators = [
   ThemeDecorator(Theme.DARK),
-  StoreDecorator({
-    user: {
-      authData: {},
-    },
-  }),
+  StoreDecorator({ user: { authData: {} } }),
 ]
 
-export const Red = Template.bind({})
-Red.args = {}
-Red.decorators = [
-  ThemeDecorator(Theme.RED),
+export const NoAuth = Template.bind({})
+NoAuth.args = {}
+NoAuth.decorators = [
   StoreDecorator({
-    user: {
-      authData: {},
-    },
+    user: {},
   }),
 ]

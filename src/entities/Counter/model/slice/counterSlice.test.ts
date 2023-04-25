@@ -5,41 +5,25 @@ import {
 } from './counterSlice'
 
 describe('counterSlice', () => {
-  test('increment', () => {
-    const state: DeepPartial<CounterSchema> = {
-      value: 10,
-    }
-
-    expect(
-      counterReducer(
-        state as CounterSchema,
-        counterActions.increment
-      )
-    ).toEqual({
-      value: 11,
-    })
-  })
-
   test('decrement', () => {
-    const state: DeepPartial<CounterSchema> = {
-      value: 10,
-    }
+    const state: CounterSchema = { value: 10 }
 
     expect(
-      counterReducer(
-        state as CounterSchema,
-        counterActions.decrement
-      )
-    ).toEqual({
-      value: 9,
-    })
+      counterReducer(state, counterActions.decrement())
+    ).toEqual({ value: 9 })
   })
 
-  it('should work with empty state', () => {
+  test('increment', () => {
+    const state: CounterSchema = { value: 10 }
+
     expect(
-      counterReducer(undefined, counterActions.increment)
-    ).toEqual({
-      value: 1,
-    })
+      counterReducer(state, counterActions.increment())
+    ).toEqual({ value: 11 })
+  })
+
+  test('should work with empty statw', () => {
+    expect(
+      counterReducer(undefined, counterActions.increment())
+    ).toEqual({ value: 1 })
   })
 })

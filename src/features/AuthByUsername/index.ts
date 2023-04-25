@@ -1,3 +1,3 @@
 export { LoginModal } from './ui/LoginModal/LoginModal'
-export { LoginFormSchema } from './modal/types/loginFormSchema'
-export { loginFormSliceName } from './modal/slice/loginFormSlice'
+export type { LoginSchema } from './model/types/loginSchema.types'
+export { loginReducer } from './model/slice/loginSlice'

@@ -1,15 +1,14 @@
-import React, { memo, useCallback, useState } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
+import { getUserAuthData, userActions } from 'entities/User'
+import { LoginModal } from 'features/AuthByUsername'
+import { memo, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useDispatch, useSelector } from 'react-redux'
+import { classNames } from 'shared/libs'
 import {
   Button,
   ButtonTheme,
 } from 'shared/ui/Button/Button'
-import { LoginModal } from 'features/AuthByUsername'
-import { useSelector } from 'react-redux'
-import { getUserAuthData, userActions } from 'entities/User'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
-import styles from './Navbar.module.scss'
+import cls from './Navbar.module.scss'
 
 interface NavbarProps {
   className?: string
@@ -17,62 +16,39 @@ interface NavbarProps {
 
 export const Navbar = memo(({ className }: NavbarProps) => {
   const { t } = useTranslation()
-  const [isAuthModalOpened, setIsAuthModalOpened] =
-    useState(false)
+  const [isAuthModal, setIsAuthModal] = useState(false)
   const authData = useSelector(getUserAuthData)
-  const dispatch = useAppDispatch()
-
-  const onOpenModal = useCallback(() => {
-    setIsAuthModalOpened(true)
-  }, [])
+  const dispatch = useDispatch()
 
   const onCloseModal = useCallback(() => {
-    setIsAuthModalOpened(false)
+    setIsAuthModal(false)
+  }, [])
+
+  const onShowModal = useCallback(() => {
+    setIsAuthModal(true)
   }, [])
 
   const onLogout = useCallback(() => {
     dispatch(userActions.logout())
   }, [dispatch])
 
-  if (authData) {
-    return (
-      <div
-        className={classNames(styles.navbar, {}, [
-          className,
-        ])}
-      >
-        <div className={styles.links} />
-        <Button
-          type='button'
-          theme={ButtonTheme.CLEAR_INVERTED}
-          onClick={onLogout}
-        >
-          {t('Logout')}
-        </Button>
-      </div>
-    )
-  }
-
   return (
     <div
-      className={classNames(styles.navbar, {}, [className])}
+      className={classNames(cls.navbar, {}, [className])}
     >
-      <div className={styles.links} />
       <Button
-        type='button'
         theme={ButtonTheme.CLEAR_INVERTED}
-        onClick={onOpenModal}
+        className={cls.links}
+        onClick={authData ? onLogout : onShowModal}
       >
-        {t('Login')}
+        {t(`${authData ? 'Выйти' : 'Войти'}`)}
       </Button>
-      {isAuthModalOpened && (
+      {!authData && (
         <LoginModal
-          isOpen={isAuthModalOpened}
+          isOpen={isAuthModal}
           onClose={onCloseModal}
         />
       )}
     </div>
   )
 })
-
-Navbar.displayName = 'Navbar'

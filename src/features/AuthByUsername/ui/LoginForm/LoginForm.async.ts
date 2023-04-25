@@ -1,9 +1,12 @@
+import type { FC } from 'react'
 import { lazy } from 'react'
+import type { LoginFormProps } from './LoginForm'
 
-export const LoginFormAsync = lazy(
+export const LoginFormAsync = lazy<FC<LoginFormProps>>(
   () =>
     new Promise((resolve) => {
-      // @ts-expect-error it is just for the purpose of the course
-      setTimeout(() => resolve(import('./LoginForm')), 1000)
+      // @ts-ignore
+      // ТАК В РЕАЛЬНЫХ ПРОЕКТАХ НЕ ДЕЛАТЬ!!!!! ДЕЛАЕМ ДЛЯ КУРСА!
+      setTimeout(() => resolve(import('./LoginForm')), 1500)
     })
 )

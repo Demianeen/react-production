@@ -1,35 +1,28 @@
-import type { ReducersMapObject } from '@reduxjs/toolkit'
+import type {
+  CombinedState,
+  Reducer,
+  ReducersMapObject,
+} from '@reduxjs/toolkit'
 import { configureStore } from '@reduxjs/toolkit'
-import {
-  counterReducer,
-  counterSliceName,
-} from 'entities/Counter'
-import { userReducer, userSliceName } from 'entities/User'
+import { userReducer } from 'entities/User/model/slice/userSlice'
+import { counterReducer } from 'entities/Counter/model/slice/counterSlice'
+import type { NavigateOptions, To } from 'react-router-dom'
 import { $api } from 'shared/api/api'
-import type { CombinedState, Reducer } from 'redux'
-import type { NavigateFunction } from 'react-router/dist/lib/hooks'
-import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import type {
   StateSchema,
   ThunkExtraArg,
 } from './StateSchema'
 import { createReducerManager } from './reducerManager'
 
-interface CreateReduxStoreProps {
-  preloadedState?: StateSchema
-  preloadedAsyncReducers?: ReducersList
-  navigate: NavigateFunction
-}
-
-export function createReduxStore({
-  preloadedState,
-  preloadedAsyncReducers,
-  navigate,
-}: CreateReduxStoreProps) {
+export function createReduxStore(
+  initialState?: StateSchema,
+  asyncReducers?: ReducersMapObject<StateSchema>,
+  navigate?: (to: To, options?: NavigateOptions) => void
+) {
   const rootReducers: ReducersMapObject<StateSchema> = {
-    ...preloadedAsyncReducers,
-    [counterSliceName]: counterReducer,
-    [userSliceName]: userReducer,
+    ...asyncReducers,
+    counter: counterReducer,
+    user: userReducer,
   }
 
   const reducerManager = createReducerManager(rootReducers)
@@ -44,7 +37,7 @@ export function createReduxStore({
       CombinedState<StateSchema>
     >,
     devTools: __IS_DEV__,
-    preloadedState,
+    preloadedState: initialState,
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         thunk: {
@@ -53,7 +46,7 @@ export function createReduxStore({
       }),
   })
 
-  // @ts-expect-error there is no such property in the store types definition
+  // @ts-ignore
   store.reducerManager = reducerManager
 
   return store

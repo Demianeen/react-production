@@ -1,12 +1,8 @@
-import React from 'react'
 import type {
   ComponentMeta,
   ComponentStory,
 } from '@storybook/react'
-import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
-import { Theme } from 'app/providers/ThemeProvider'
-import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
-import { loginFormSliceName } from 'features/AuthByUsername'
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator'
 import LoginForm from './LoginForm'
 
 export default {
@@ -15,36 +11,28 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  args: {
-    children: 'Text',
-  },
 } as ComponentMeta<typeof LoginForm>
 
 const Template: ComponentStory<typeof LoginForm> = (
   args
 ) => <LoginForm {...args} />
 
-export const Light = Template.bind({})
-Light.args = {}
-Light.decorators = [StoreDecorator()]
-
-export const WithValue = Template.bind({})
-WithValue.args = {}
-WithValue.decorators = [
+export const Primary = Template.bind({})
+Primary.args = {}
+Primary.decorators = [
   StoreDecorator({
-    [loginFormSliceName]: {
-      username: 'username',
-      password: 'password',
-    },
+    loginForm: { username: '123', password: 'asd' },
   }),
 ]
 
-export const Error = Template.bind({})
-Error.args = {}
-Error.decorators = [
+export const withError = Template.bind({})
+withError.args = {}
+withError.decorators = [
   StoreDecorator({
-    [loginFormSliceName]: {
-      error: 'Error',
+    loginForm: {
+      username: '123',
+      password: 'asd',
+      error: 'ERROR',
     },
   }),
 ]
@@ -53,22 +41,6 @@ export const Loading = Template.bind({})
 Loading.args = {}
 Loading.decorators = [
   StoreDecorator({
-    [loginFormSliceName]: {
-      isLoading: true,
-    },
+    loginForm: { isLoading: true },
   }),
-]
-
-export const Dark = Template.bind({})
-Dark.args = {}
-Dark.decorators = [
-  ThemeDecorator(Theme.DARK),
-  StoreDecorator(),
-]
-
-export const Red = Template.bind({})
-Red.args = {}
-Red.decorators = [
-  ThemeDecorator(Theme.RED),
-  StoreDecorator(),
 ]

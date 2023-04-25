@@ -1,30 +1,45 @@
-import type webpack from 'webpack'
-import type { BuildOptions } from './types/config'
-import { buildCssLoader } from './loaders/buildCssLoader'
-import { buildSvgLoader } from './loaders/buildSvgLoader'
-import { buildBabelLoader } from './loaders/buildBabelLoader'
+import webpack from 'webpack'
+import ReactRefreshTypeScript from 'react-refresh-typescript'
+import { buildBabelLoaders } from './loaders/buildBabelLoaders'
+import { buildCssLoaders } from './loaders/buildCssLoaders'
+import { BuildOptions } from './types/config'
 
-export default ({
-  isDev,
-}: BuildOptions): webpack.RuleSetRule[] => {
-  const svgLoader = buildSvgLoader()
-
-  const babelLoader = buildBabelLoader(isDev)
-
-  const cssLoader = buildCssLoader(isDev)
-
-  // if we use ts-loader we already don't need to use babel
-  const typescriptLoader = {
-    test: /\.tsx?$/,
-    use: 'ts-loader',
-    exclude: /node_modules/,
+export function buildLoaders(
+  options: BuildOptions
+): webpack.RuleSetRule[] {
+  const { isDev } = options
+  const svgLoader = {
+    test: /\.svg$/,
+    use: ['@svgr/webpack'],
   }
 
   const fileLoader = {
-    test: /\.(png|jpe?g|gif|woff2|woff)$/i,
+    test: /\.(png|jpe?g|gif)$/i,
     use: [
       {
         loader: 'file-loader',
+      },
+    ],
+  }
+
+  const babelLoader = buildBabelLoaders(options)
+
+  const scssLoaders = buildCssLoaders(isDev)
+
+  const typescriptLoaders = {
+    test: /\.tsx?$/,
+    exclude: /node_modules/,
+    use: [
+      {
+        loader: require.resolve('ts-loader'),
+        options: {
+          getCustomTransformers: () => ({
+            before: [
+              isDev && ReactRefreshTypeScript(),
+            ].filter(Boolean),
+          }),
+          transpileOnly: isDev,
+        },
       },
     ],
   }
@@ -33,7 +48,7 @@ export default ({
     fileLoader,
     svgLoader,
     babelLoader,
-    typescriptLoader,
-    cssLoader,
+    typescriptLoaders,
+    scssLoaders,
   ]
 }

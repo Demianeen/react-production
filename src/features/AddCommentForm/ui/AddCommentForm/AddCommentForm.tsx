@@ -1,75 +1,77 @@
-import type { FormEvent } from 'react'
-import React, { memo, useCallback } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
-import { Input } from 'shared/ui/Input/Input'
 import { useTranslation } from 'react-i18next'
-import { Button } from 'shared/ui/Button/Button'
+import { memo, useCallback } from 'react'
+import { Input } from 'shared/ui/Input/Input'
+import {
+  Button,
+  ButtonTheme,
+} from 'shared/ui/Button/Button'
 import { useSelector } from 'react-redux'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
-import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
-import { useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
+import { useAppDispatch } from 'shared/libs/hooks/useAppDispatch'
+import type { ReducersList } from 'shared/libs/components/DynamicModuleLoader/DynamicModuleLoader'
+import { DynamicModuleLoader } from 'shared/libs/components/DynamicModuleLoader/DynamicModuleLoader'
 import {
   addCommentFormActions,
   addCommentFormReducer,
-} from '../../model/slice/addCommentFormSlice'
-import { getAddCommentFormBody } from '../../model/selectors/getAddCommentFormBody/getAddCommentFormBody'
-import styles from './AddCommentForm.module.scss'
+} from '../../model/slices/addCommentFormSlice'
+import {
+  getAddCommentFormError,
+  getAddCommentFormText,
+} from '../../model/selectors/addCommentFormSelectors'
+import cls from './AddCommentForm.module.scss'
 
 export interface AddCommentFormProps {
   className?: string
-  onSendComment: (body: string) => void
+  onSendComment: (text: string) => void
 }
 
 const reducers: ReducersList = {
   addCommentForm: addCommentFormReducer,
 }
 
-const AddCommentForm = ({
-  className,
-  onSendComment,
-}: AddCommentFormProps) => {
-  useDynamicModuleLoader(reducers)
-  const { t } = useTranslation('article-details')
+const AddCommentForm = memo(
+  (props: AddCommentFormProps) => {
+    const { className, onSendComment } = props
+    const { t } = useTranslation()
+    const text = useSelector(getAddCommentFormText)
+    const error = useSelector(getAddCommentFormError)
+    const dispatch = useAppDispatch()
 
-  const dispatch = useAppDispatch()
-  const commentBody = useSelector(getAddCommentFormBody)
+    const onCommentTextChange = useCallback(
+      (value: string) => {
+        dispatch(addCommentFormActions.setText(value))
+      },
+      [dispatch]
+    )
 
-  const onCommentBodyChange = useCallback(
-    (value: string) => {
-      dispatch(addCommentFormActions.setBody(value))
-    },
-    [dispatch]
-  )
+    const onSendHandler = useCallback(() => {
+      onSendComment(text || '')
+      onCommentTextChange('')
+    }, [onCommentTextChange, onSendComment, text])
 
-  const onSubmit = useCallback(
-    (e: FormEvent) => {
-      e.preventDefault()
-      onSendComment(commentBody)
+    return (
+      <DynamicModuleLoader reducers={reducers}>
+        <div
+          className={classNames(cls.AddCommentForm, {}, [
+            className,
+          ])}
+        >
+          <Input
+            className={cls.input}
+            placeholder={t('Введите текст комментария')}
+            value={text || ''}
+            onChange={onCommentTextChange}
+          />
+          <Button
+            theme={ButtonTheme.OUTLINE}
+            onClick={onSendHandler}
+          >
+            {t('Отправить')}
+          </Button>
+        </div>
+      </DynamicModuleLoader>
+    )
+  }
+)
 
-      // clear form
-      dispatch(addCommentFormActions.setBody(''))
-    },
-    [commentBody, dispatch, onSendComment]
-  )
-
-  return (
-    <form
-      className={classNames(styles.addCommentForm, {}, [
-        className,
-      ])}
-      onSubmit={onSubmit}
-    >
-      <Input
-        label={t('Add new comment')}
-        placeholder={t('Comment body')}
-        value={commentBody}
-        onChange={onCommentBodyChange}
-        className={styles.input}
-        wrapperClassName={styles.inputWrapper}
-      />
-      <Button type='submit'>{t('Send')}</Button>
-    </form>
-  )
-}
-
-export default memo(AddCommentForm)
+export default AddCommentForm
