@@ -22,6 +22,7 @@ import type { ProfileSchema } from 'features/EditableProfileCard'
 import type { ArticleDetailsSchema } from 'entities/Article'
 import type { ArticleCommentListSliceSchema } from 'features/ArticleCommentList'
 import type { AddCommentFormSchema } from 'features/AddCommentForm'
+import type { ArticlesPageSchema } from 'pages/ArticlesPage'
 
 export interface StateSchema {
   [counterSliceName]: CounterSchema
@@ -33,6 +34,7 @@ export interface StateSchema {
   articleDetails?: ArticleDetailsSchema
   articleCommentList?: ArticleCommentListSliceSchema
   addCommentForm?: AddCommentFormSchema
+  articlesPage?: ArticlesPageSchema
 }
 
 export type StateSchemaKey = keyof StateSchema
