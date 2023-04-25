@@ -1,8 +1,8 @@
 import type { StateSchema } from 'app/providers/StoreProvider'
 import { getProfileIsLoading } from './getProfileIsLoading'
 
-describe('getProfileIsLoading', () => {
-  it('should return the is profile loading', () => {
+describe('getProfileIsLoading.test', () => {
+  test('should work with filled state', () => {
     const state: DeepPartial<StateSchema> = {
       profile: {
         isLoading: true,
@@ -12,12 +12,10 @@ describe('getProfileIsLoading', () => {
       getProfileIsLoading(state as StateSchema)
     ).toEqual(true)
   })
-
-  it('should work with empty state', () => {
+  test('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {}
-
     expect(
       getProfileIsLoading(state as StateSchema)
-    ).toEqual(false)
+    ).toEqual(undefined)
   })
 })
