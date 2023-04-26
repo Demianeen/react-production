@@ -1,18 +1,15 @@
-.appLink {
-  &:hover {
-    opacity: 0.8;
-  }
-
-  // themes
-  &.primary {
+.AppLink {
     color: var(--primary-color);
-  }
+}
 
-  &.inverted {
+.primary {
+    color: var(--primary-color);
+}
+
+.secondary {
     color: var(--inverted-primary-color);
-  }
+}
 
-  &.red {
-    color: darkred;
-  }
+.red {
+    color: red;
 }

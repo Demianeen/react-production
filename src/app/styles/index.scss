@@ -1,30 +1,27 @@
-@import 'reset';
-@import 'variables/global';
-@import 'themes/dark';
-@import 'themes/light';
-@import 'themes/red';
+@import "reset";
+@import "variables/global";
+@import "themes/normal";
+@import "themes/dark";
+@import "themes/orange";
 
-.app,
-.appStyles {
-  font: var(--font-m);
-  color: var(--primary-color);
+body {
+    font: var(--font-m);
+    color: var(--primary-color);
 }
 
 .app {
-  min-height: 100vh;
-  background: var(--bg-color);
+    background: var(--bg-color);
+    min-height: 100vh;
 }
 
-.contentPage {
-  display: flex;
+.content-page {
+    display: flex;
 }
 
-.pageWrapper {
-  flex-grow: 1;
-  width: 100%;
-  height: calc(100vh - var(--navbar-height));
-
-  // padding left equal to toggle sidebar button width
-  padding: 1.25rem 1.25rem 1.25rem calc(var(--font-line-l) + 0.1rem);
-  overflow-y: auto;
+.page-wrapper {
+    flex-grow: 1;
+    padding: 20px 20px 20px 45px;
+    height: calc(100vh - var(--navbar-height));
+    overflow-y: auto;
+    width: 100%;
 }

@@ -1,15 +1,11 @@
-.addCommentForm {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  padding: 1rem;
-  border: 1px solid var(--primary-color);
+.AddCommentForm {
+    border: 1px solid var(--primary-color);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-  .inputWrapper {
+.input {
     flex-grow: 1;
-
-    .input {
-      margin-right: 1rem;
-    }
-  }
 }

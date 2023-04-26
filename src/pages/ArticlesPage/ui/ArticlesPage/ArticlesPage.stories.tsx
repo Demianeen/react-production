@@ -1,30 +1,18 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
-import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
-import { Theme } from 'app/providers/ThemeProvider'
-import ArticlesPage from './ArticlesPage'
+// template-folder-name -> ArticlesPage.stories.tsx
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import ArticlesPage from './ArticlesPage';
 
 export default {
-  title: 'pages/ArticlesPage',
-  component: ArticlesPage,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-} as ComponentMeta<typeof ArticlesPage>
+    title: 'pages/ArticlesPage',
+    component: ArticlesPage,
+    argTypes: {
+        backgroundColor: { control: 'color' },
+    },
+} as ComponentMeta<typeof ArticlesPage>;
 
-const Template: ComponentStory<typeof ArticlesPage> = (
-  args
-) => <ArticlesPage {...args} />
+const Template: ComponentStory<typeof ArticlesPage> = (args) => <ArticlesPage {...args} />;
 
-export const Light = Template.bind({})
-Light.args = {}
+export const Normal = Template.bind({});
+Normal.args = {
 
-export const Dark = Template.bind({})
-Dark.args = {}
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
-
-export const Red = Template.bind({})
-Red.args = {}
-Red.decorators = [ThemeDecorator(Theme.RED)]
+};
