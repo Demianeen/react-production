@@ -1,37 +1,31 @@
-import React, { Suspense, useEffect } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
-import { Navbar } from 'widgets/Navbar'
-import { Sidebar } from 'widgets/Sidebar'
-import {
-  getUserIsInitialized,
-  userActions,
-} from 'entities/User'
-import { PageLoader } from 'widgets/PageLoader'
-import { AppRouter } from 'app/providers/router'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { useSelector } from 'react-redux'
+import AppRouter from 'app/providers/router';
+import { Navbar } from 'widgets';
+import { classNames } from 'shared/libs';
+import { Sidebar } from 'widgets/Sidebar';
+import { Suspense, useEffect } from 'react';
+import { useTheme } from 'shared/contexts/theme-context';
+import { useAppDispatch } from 'shared/libs/hooks/useAppDispatch';
+import { useSelector } from 'react-redux';
+import { getUserInited, userActions } from 'entities/User';
 
-const App = () => {
-  const dispatch = useAppDispatch()
-  const isUserInitialized = useSelector(
-    getUserIsInitialized
-  )
+export default function App() {
+    const { theme } = useTheme();
+    const dispatch = useAppDispatch();
+    const inited = useSelector(getUserInited);
 
-  useEffect(() => {
-    dispatch(userActions.setAuthDataFromLocalStorage())
-  }, [dispatch])
+    useEffect(() => {
+        dispatch(userActions.initAuthData());
+    }, [dispatch]);
 
-  return (
-    <div className={classNames('app', {}, [])}>
-      <Suspense fallback={<PageLoader />}>
-        <Navbar />
-        <div className='contentPage'>
-          <Sidebar />
-          {isUserInitialized && <AppRouter />}
+    return (
+        <div className={classNames('app', {}, [theme])}>
+            <Suspense fallback="">
+                <Navbar />
+                <div className="content-page">
+                    <Sidebar />
+                    {inited && <AppRouter />}
+                </div>
+            </Suspense>
         </div>
-      </Suspense>
-    </div>
-  )
+    );
 }
-
-export default App

@@ -31,7 +31,7 @@ jobs:
         run: npm run test:unit
         if: always()
       - name: Build storybook
-        run: npm run build:storybook
+        run: npm run storybook:build
         if: always()
       - name: Screenshot testing
         run: npm run test:ui:ci

@@ -1,24 +1,21 @@
-import type { HTMLAttributes, ReactNode } from 'react'
-import React, { memo } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
-import styles from './Card.module.scss'
+import { classNames } from 'shared/lib/classNames/classNames';
+import { HTMLAttributes, memo, ReactNode } from 'react';
+import cls from './Card.module.scss';
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
-  className?: string
-  children: ReactNode
+    className?: string;
+    children: ReactNode;
 }
 
-export const Card = memo(
-  ({ className, children, ...props }: CardProps) => {
-    return (
-      <article
-        className={classNames(styles.card, {}, [className])}
-        {...props}
-      >
-        {children}
-      </article>
-    )
-  }
-)
+export const Card = memo((props: CardProps) => {
+    const { className, children, ...otherProps } = props;
 
-Card.displayName = 'Card'
+    return (
+        <div
+            className={classNames(cls.Card, {}, [className])}
+            {...otherProps}
+        >
+            {children}
+        </div>
+    );
+});

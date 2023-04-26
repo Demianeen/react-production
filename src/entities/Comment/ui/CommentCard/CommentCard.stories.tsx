@@ -1,34 +1,41 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
-import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
-import { Theme } from 'app/providers/ThemeProvider'
-import { comments } from 'entities/Comment/model/mocks/data'
-import { CommentCard } from './CommentCard'
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+
+import { CommentCard } from './CommentCard';
 
 export default {
-  title: 'entities/Comment/CommentCard',
-  component: CommentCard,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-  args: {
-    comment: comments[0],
-  },
-} as ComponentMeta<typeof CommentCard>
+    title: 'entities/CommentCard',
+    component: CommentCard,
+    argTypes: {
+        backgroundColor: { control: 'color' },
+    },
+} as ComponentMeta<typeof CommentCard>;
 
-const Template: ComponentStory<typeof CommentCard> = (
-  args
-) => <CommentCard {...args} />
+const Template: ComponentStory<typeof CommentCard> = (args) => <CommentCard {...args} />;
 
-export const Light = Template.bind({})
-Light.args = {}
+export const Normal = Template.bind({});
+Normal.args = {
+    comment: {
+        id: '1',
+        text: 'some comment',
+        user: {
+            id: '1',
+            username: 'admin',
+            avatar: 'https://assets-global.website-files.com/60f0542421b57f4ec3190525/6104197948e0bced6ded4481_cybersecurity-1.png',
+        },
+    },
+};
 
-export const Dark = Template.bind({})
-Dark.args = {}
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
-
-export const Red = Template.bind({})
-Red.args = {}
-Red.decorators = [ThemeDecorator(Theme.RED)]
+export const Loading = Template.bind({});
+Loading.parameters = {
+    loki: {
+        skip: true,
+    },
+};
+Loading.args = {
+    comment: {
+        id: '1',
+        text: 'hello world',
+        user: { id: '1', username: 'Vasya' },
+    },
+    isLoading: true,
+};

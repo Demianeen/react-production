@@ -1,29 +1,16 @@
-import React, { memo } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
-import styles from './Icon.module.scss'
-
-export enum IconType {
-  FILL = 'fill',
-  STROKE = 'stroke',
-}
+import React, { memo } from 'react';
+import { classNames } from 'shared/libs';
+import cls from './Icon.module.scss';
 
 interface IconProps {
-  className?: string
-  Svg: React.VFC<React.SVGProps<SVGSVGElement>>
-  type?: IconType
+    className?: string;
+    Svg: React.VFC<React.SVGProps<SVGSVGElement>>;
 }
 
-export const Icon = memo(
-  ({ className, Svg, type = IconType.FILL }: IconProps) => {
-    return (
-      <Svg
-        className={classNames(styles.icon, {}, [
-          className,
-          styles[type],
-        ])}
-      />
-    )
-  }
-)
+export const Icon = memo((props: IconProps) => {
+    const { className, Svg } = props;
 
-Icon.displayName = 'Icon'
+    return (
+        <Svg className={classNames(cls.Icon, {}, [className])} />
+    );
+});
