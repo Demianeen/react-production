@@ -1,12 +1,12 @@
 name: linting, testing, building
 on:
   push:
-    branches: [main,8_module/profile_infinite_scr]
+    branches: [main]
   pull_request:
     branches: [main]
 defaults:
   run:
-    working-directory: ./next_react_project
+    working-directory: .
 jobs:
   typescript:
     runs-on: ubuntu-latest
