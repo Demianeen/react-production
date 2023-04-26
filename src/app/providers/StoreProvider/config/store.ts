@@ -1,64 +1,45 @@
-import type { ReducersMapObject } from '@reduxjs/toolkit'
-import { configureStore } from '@reduxjs/toolkit'
 import {
-  counterReducer,
-  counterSliceName,
-} from 'entities/Counter'
-import { userReducer, userSliceName } from 'entities/User'
-import { $api } from 'shared/api/api'
-import type { CombinedState, Reducer } from 'redux'
-import type { NavigateFunction } from 'react-router/dist/lib/hooks'
-import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
-import type {
-  StateSchema,
-  ThunkExtraArg,
-} from './StateSchema'
-import { createReducerManager } from './reducerManager'
+    CombinedState, configureStore, Reducer, ReducersMapObject,
+} from '@reduxjs/toolkit';
+import { userReducer } from 'entities/User/model/slice/userSlice';
+import { counterReducer } from 'entities/Counter/model/slice/counterSlice';
+import { $api } from 'shared/api/api';
+import { uiReducer } from 'features/UI';
+import { StateSchema, ThunkExtraArg } from './StateSchema';
+import { createReducerManager } from './reducerManager';
 
-interface CreateReduxStoreProps {
-  preloadedState?: StateSchema
-  preloadedAsyncReducers?: ReducersList
-  navigate: NavigateFunction
+export function createReduxStore(
+    initialState?: StateSchema,
+    asyncReducers?: ReducersMapObject<StateSchema>,
+) {
+    const rootReducers: ReducersMapObject<StateSchema> = {
+        ...asyncReducers,
+        counter: counterReducer,
+        user: userReducer,
+        ui: uiReducer,
+    };
+
+    const reducerManager = createReducerManager(rootReducers);
+
+    const extraArg: ThunkExtraArg = {
+        api: $api,
+    };
+
+    const store = configureStore({
+        reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
+        devTools: __IS_DEV__,
+        preloadedState: initialState,
+        middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+            thunk: {
+                extraArgument: extraArg,
+            },
+        }),
+    });
+
+    // @ts-ignore
+    store.reducerManager = reducerManager;
+
+    return store;
 }
 
-export function createReduxStore({
-  preloadedState,
-  preloadedAsyncReducers,
-  navigate,
-}: CreateReduxStoreProps) {
-  const rootReducers: ReducersMapObject<StateSchema> = {
-    ...preloadedAsyncReducers,
-    [counterSliceName]: counterReducer,
-    [userSliceName]: userReducer,
-  }
-
-  const reducerManager = createReducerManager(rootReducers)
-
-  const extraArg: ThunkExtraArg = {
-    api: $api,
-    navigate,
-  }
-
-  const store = configureStore({
-    reducer: reducerManager.reduce as Reducer<
-      CombinedState<StateSchema>
-    >,
-    devTools: __IS_DEV__,
-    preloadedState,
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({
-        thunk: {
-          extraArgument: extraArg,
-        },
-      }),
-  })
-
-  // @ts-expect-error there is no such property in the store types definition
-  store.reducerManager = reducerManager
-
-  return store
-}
-
-export type AppDispatch = ReturnType<
-  typeof createReduxStore
->['dispatch']
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];

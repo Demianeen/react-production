@@ -1,30 +1,34 @@
-@import 'reset';
-@import 'variables/global';
-@import 'themes/dark';
-@import 'themes/light';
-@import 'themes/red';
+@import "reset";
+@import "variables/global";
+@import "themes/normal";
+@import "themes/dark";
+@import "themes/orange";
 
-.app,
-.appStyles {
-  font: var(--font-m);
-  color: var(--primary-color);
+body {
+    font: var(--font-m);
+    color: var(--primary-color);
 }
 
 .app {
-  min-height: 100vh;
-  background: var(--bg-color);
+    background: var(--bg-color);
+    min-height: 100vh;
 }
 
-.contentPage {
-  display: flex;
+.content-page {
+    display: flex;
 }
 
-.pageWrapper {
-  flex-grow: 1;
-  width: 100%;
-  height: calc(100vh - var(--navbar-height));
+*::-webkit-scrollbar {
+    width: 12px;               /* ширина scrollbar */
+    height: 8px;
+}
 
-  // padding left equal to toggle sidebar button width
-  padding: 1.25rem 1.25rem 1.25rem calc(var(--font-line-l) + 0.1rem);
-  overflow-y: auto;
+*::-webkit-scrollbar-track {
+    background: var(--card-bg);        /* цвет дорожки */
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--inverted-primary-color);    /* цвет плашки */
+    border-radius: 20px;       /* закругления плашки */
+    border: 2px solid var(--primary-color);  /* padding вокруг плашки */
 }

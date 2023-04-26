@@ -1,52 +1,56 @@
-import webpack from 'webpack'
-import path from 'path'
-import type { BuildPath } from '../build/types/config'
-import { buildCssLoader } from '../build/loaders/buildCssLoader'
-import { buildSvgLoader } from '../build/loaders/buildSvgLoader'
+import { WebpackConfiguration } from 'webpack-dev-server';
+import path from 'path';
+import { DefinePlugin, RuleSetRule } from 'webpack';
+import { BuildPaths } from '../build';
+import { buildCssLoaders } from '../build/loaders/buildCssLoaders';
 
-export default ({
-  config,
-}: {
-  config: webpack.Configuration
-}) => {
-  const paths: BuildPath = {
-    build: '',
-    entry: '',
-    html: '',
-    src: path.resolve(__dirname, '..', '..', 'src'),
-  }
-  config.resolve?.modules?.push(paths.src)
-  config.resolve?.extensions?.push('.ts', '.tsx')
+export default ({ config }: {config: WebpackConfiguration}) => {
+    const paths: BuildPaths = {
+        build: '',
+        html: '',
+        entry: '',
+        src: path.resolve(__dirname, '..', '..', 'src'),
+        locales: '',
+        buildLocales: '',
+    };
 
-  config.plugins?.push(
-    new webpack.DefinePlugin({
-      __IS_DEV__: true,
-      __API__: JSON.stringify(''),
-      __PROJECT__: JSON.stringify('storybook'),
-    })
-  )
+    // config.resolve?.modules?.push(paths.src);
+    config!.resolve!.modules = [paths.src, 'node_modules'];
+    config!.resolve!.extensions!.push('.ts', '.tsx');
 
-  if (!config.module)
-    throw new Error('config.module not found')
+    // eslint-disable-next-line no-param-reassign
+    const rules = config.module!.rules as RuleSetRule[];
+    config!.module!.rules = rules.map((rule: RuleSetRule) => {
+        if (/svg/.test(rule.test as string)) {
+            return { ...rule, exclude: /\.svg$/i };
+        }
 
-  // because we modify storybook configuration
-  // eslint-disable-next-line no-param-reassign
-  config.module.rules = config.module?.rules?.map(
-    (rule) => {
-      if (rule === '...') return rule
+        return rule;
+    });
+    // if (config.module?.rules) {
+    //     let { rules } = config.module;
 
-      const isSvgLoader = rule.test
-        ?.toString()
-        .includes('svg')
-      if (!isSvgLoader) return rule
+    //     rules = rules.map((rule: RuleSetRule | '...') => {
+    //         if (rule !== '...' && /svg/.test(rule.test as string)) {
+    //             return { ...rule, exclude: /\.svg$/i };
+    //         }
 
-      return { ...rule, exclude: /.svg$/i }
-    }
-  )
+    //         return rule;
+    //     });
+    // }
 
-  config.module?.rules?.push(buildSvgLoader())
+    config!.module!.rules!.push({
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+    });
 
-  config.module?.rules?.push(buildCssLoader(true))
+    config!.module!.rules!.push(buildCssLoaders(true));
 
-  return config
-}
+    config!.plugins!.push(new DefinePlugin({
+        __IS_DEV__: true,
+        __API__: JSON.stringify(''),
+        __PROJECT__: JSON.stringify('storybook'),
+    }));
+
+    return config;
+};

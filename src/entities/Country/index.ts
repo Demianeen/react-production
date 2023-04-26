@@ -1,2 +1,2 @@
-export { Country } from './model/types/country'
-export { SelectCountry } from './ui/SelectCountry'
+export { Country } from './model/types/country';
+export { CountrySelect } from './ui/CountrySelect/CountrySelect';

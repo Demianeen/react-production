@@ -1,14 +1,14 @@
-.loginForm {
-  display: flex;
-  flex-direction: column;
-  width: 25rem;
+.LoginForm {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
 
-  .inputWrapper {
-    margin-top: 1rem;
-  }
+.input {
+    margin-top: 10px;
+}
 
-  .loginBtn {
-    margin-top: 0.938rem;
+.loginBtn {
+    margin-top: 15px;
     margin-left: auto;
-  }
 }

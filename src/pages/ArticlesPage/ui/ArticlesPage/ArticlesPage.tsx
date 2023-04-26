@@ -1,66 +1,64 @@
-import React, { memo, useCallback } from 'react'
-import type { ArticleView } from 'entities/Article'
+// template-folder-name -> ArticlesPage.tsx
+import { ArticleList, ArticleView } from 'entities/Article';
+import { memo, useCallback } from 'react';
+import { useSelector } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
+import { classNames } from 'shared/libs';
+import { DynamicModuleLoader, ReducersList } from 'shared/libs/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from 'shared/libs/hooks/useAppDispatch';
+import { useInitialEffect } from 'shared/libs/hooks/useInitialEffect';
+import { Page } from 'widgets/Page/Page';
+import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
+import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import {
-  ArticleList,
-  ArticleSelectView,
-} from 'entities/Article'
-import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
-import { useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { fetchArticles } from 'pages/ArticlesPage/model/services/fetchArticles/fetchArticles'
-import { useSelector } from 'react-redux'
-import { getArticlesPageIsLoading } from 'pages/ArticlesPage/model/selectors/getArticlesPageIsLoading/getArticlesPageIsLoading'
-import { getArticlesPageError } from 'pages/ArticlesPage/model/selectors/getArticlesPageError/getArticlesPageError'
-import { getArticlesPageView } from 'pages/ArticlesPage/model/selectors/getArticlesPageView/getArticlesPageView'
-import {
-  articlesPageActions,
-  articlesPageReducer,
-  getArticles,
-} from '../../model/slice/articlesPageSlice'
+    getArticlesPageIsLoading,
+    getArticlesPageView,
+} from '../../model/selectors/articlesPageSelectors';
+import { articlesPageActions, articlesPageReducer, getArticles } from '../../model/slices/articlesPageSlice';
+import cls from './ArticlesPage.module.scss';
+import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
 
 interface ArticlesPageProps {
-  className?: string
+  className?: string;
 }
 
 const reducers: ReducersList = {
-  articlesPage: articlesPageReducer,
-}
+    articlesPage: articlesPageReducer,
+};
 
-const ArticlesPage = ({ className }: ArticlesPageProps) => {
-  useDynamicModuleLoader(reducers)
-  const dispatch = useAppDispatch()
+const ArticlesPage = (props:ArticlesPageProps) => {
+    const { className } = props;
+    const dispatch = useAppDispatch();
+    const articles = useSelector(getArticles.selectAll);
+    const isLoading = useSelector(getArticlesPageIsLoading);
+    const view = useSelector(getArticlesPageView);
+    const [searchParams] = useSearchParams();
 
-  const articles = useSelector(getArticles.selectAll)
-  const isLoading = useSelector(getArticlesPageIsLoading)
-  const error = useSelector(getArticlesPageError)
-  const view = useSelector(getArticlesPageView)
+    const onChangeView = useCallback((view: ArticleView) => {
+        dispatch(articlesPageActions.setView(view));
+    }, [dispatch]);
 
-  const onChangeView = useCallback(
-    (newView: ArticleView) => {
-      dispatch(articlesPageActions.setView(newView))
-    },
-    [dispatch]
-  )
+    const onLoadNextPart = useCallback(() => {
+        dispatch(fetchNextArticlesPage());
+    }, [dispatch]);
 
-  useInitialEffect(() => {
-    dispatch(fetchArticles())
-    dispatch(articlesPageActions.initView())
-  })
+    useInitialEffect(() => {
+        dispatch(initArticlesPage(searchParams));
+    });
 
-  return (
-    <div className={className}>
-      <ArticleSelectView
-        selectedView={view}
-        onChangeView={onChangeView}
-      />
-      <ArticleList
-        articles={articles}
-        isLoading={isLoading}
-        view={view}
-      />
-    </div>
-  )
-}
+    return (
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
+            <Page onScrollEnd={onLoadNextPart} className={classNames(cls.articlesPage, {}, [className])}>
+                <ArticlesPageFilters />
+                <ArticleList
+                    isLoading={isLoading}
+                    view={view}
+                    articles={articles}
+                    className={cls.list}
+                />
+            </Page>
+        </DynamicModuleLoader>
+    );
+};
 
-export default memo(ArticlesPage)
+export default memo(ArticlesPage);

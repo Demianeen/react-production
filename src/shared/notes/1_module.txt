@@ -1,0 +1,17 @@
+About integrating FSD to next project
+1) Нашёл решение на форуме FSD. Можно использовать как входную точку /src, а сами /pages расположить в корне проекта. В таком случае /pages в корне перекрывают /src/pages и можно со спокойной душой реализовывать всё.
+
+Вот такая структура в итоге получается в /src
+├───app
+│ └───components
+│ ├───App
+│ └───Document
+├───entities
+├───features
+├───pages
+│ └───components
+│ └───Home
+├───shared
+└───widgets
+
+Вот само сообщение с идеей. https://t.me/feature_sliced/3626

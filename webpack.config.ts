@@ -1,32 +1,31 @@
-import path from 'path'
-import type {
-  BuildEnv,
-  BuildOptions,
-  BuildPath,
-} from './config/build/types/config'
-import buildWebpackConfig from './config/build/buildWebpackConfig'
+import path, { resolve } from 'path';
+import { Configuration } from 'webpack';
+import { BuildPaths, buildWebpackConfigs, BuildEnv } from './config/build';
 
-export default (env: BuildEnv) => {
-  const paths: BuildPath = {
-    entry: path.resolve(__dirname, 'src', 'index.tsx'),
-    build: path.resolve(__dirname, 'build'),
-    html: path.resolve(__dirname, 'public', 'index.html'),
-    src: path.resolve(__dirname, 'src'),
-  }
+export default (env:BuildEnv) => {
+    const paths:BuildPaths = {
+        entry: path.resolve(__dirname, 'src', 'index.tsx'),
+        html: path.resolve(__dirname, 'public', 'index.html'),
+        build: path.resolve(__dirname, 'build'),
+        src: path.resolve(__dirname, 'src'),
+        locales: resolve(__dirname, 'public', 'locales'),
+        buildLocales: resolve(__dirname, 'build', 'locales'),
+    };
 
-  const mode: BuildOptions['mode'] =
-    env.mode ?? 'development'
-  const PORT = env.port ?? 3000
-  const apiURL = env.apiURL ?? 'http://localhost:8000'
+    const mode = env.mode || 'development';
 
-  const isDev = mode === 'development'
+    const isDev = mode === 'development';
+    const PORT = env.port || 3003;
+    const apiUrl = env.apiUrl || 'http://localhost:8000';
 
-  return buildWebpackConfig({
-    mode,
-    paths,
-    isDev,
-    port: PORT,
-    apiURL,
-    project: 'frontend',
-  })
-}
+    const config:Configuration = buildWebpackConfigs({
+        mode,
+        paths,
+        isDev,
+        port: PORT,
+        apiUrl,
+        project: 'frontend',
+    });
+
+    return config;
+};

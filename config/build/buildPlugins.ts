@@ -1,42 +1,42 @@
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import webpack, { ProgressPlugin } from 'webpack'
-import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
-import MiniCSSExtractPlugin from 'mini-css-extract-plugin'
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
-import type { BuildOptions } from './types/config'
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import { ProgressPlugin, DefinePlugin, HotModuleReplacementPlugin } from 'webpack';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import CopyPlugin from 'copy-webpack-plugin';
+import { BuildOptions } from './types/config';
 
-export default ({
-  paths,
-  isDev,
-  apiURL,
-  project,
-}: BuildOptions): webpack.WebpackPluginInstance[] => {
-  const plugins: webpack.WebpackPluginInstance[] = [
-    new HtmlWebpackPlugin({
-      template: paths.html,
-    }),
-    new ProgressPlugin(),
-    new MiniCSSExtractPlugin({
-      filename: 'css/[name].[contenthash:8]',
-      chunkFilename: 'css/[name].[contenthash:8]',
-    }),
-    new webpack.DefinePlugin({
-      __IS_DEV__: JSON.stringify(isDev),
-      __API__: JSON.stringify(apiURL),
-      __PROJECT__: JSON.stringify(project),
-    }),
-  ]
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
-  const devPlugins = [
-    new BundleAnalyzerPlugin({
-      openAnalyzer: false,
-    }),
-    new ReactRefreshWebpackPlugin(),
-  ]
+export function buildPlugins({
+    paths, isDev, apiUrl, project,
+}:BuildOptions) {
+    const plugins = [
+        new HtmlWebpackPlugin({
+            template: paths.html,
+        }),
+        new ProgressPlugin(),
+        new MiniCssExtractPlugin({
+            filename: 'css/[name].[contenthash:8].css',
+            chunkFilename: 'css/[name].[contenthash:8].css',
+        }),
+        new DefinePlugin({
+            __IS_DEV__: JSON.stringify(isDev),
+            __API__: JSON.stringify(apiUrl),
+            __PROJECT__: JSON.stringify(project),
+        }),
+        new BundleAnalyzerPlugin(
+            { analyzerMode: process.env.STATS as 'server' || 'disabled' },
+        ),
+        new CopyPlugin({
+            patterns: [
+                { from: paths.locales, to: paths.buildLocales },
+            ],
+        }),
+    ];
 
-  if (isDev) {
-    plugins.push(...devPlugins)
-  }
+    if (isDev) {
+        plugins.push(new ReactRefreshWebpackPlugin(), new HotModuleReplacementPlugin());
+    }
 
-  return plugins
+    return plugins;
 }
