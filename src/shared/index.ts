@@ -1,1 +1,1 @@
-export { lazyLoadingTimeout } from './libs/lazyLoadingTimeout'
+export { lazyLoadingTimeout } from './libs/lazyLoadingTimeout';

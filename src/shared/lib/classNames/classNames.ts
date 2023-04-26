@@ -1,3 +1,3 @@
-import { classNames } from 'shared/libs'
+import { classNames } from 'shared/libs';
 
-export { classNames }
+export { classNames };

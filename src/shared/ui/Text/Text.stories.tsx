@@ -1,68 +1,63 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator'
-import { Theme } from 'shared/contexts/theme-context'
-import { Text, TextSize, TextTheme } from './Text'
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
+import { Theme } from 'shared/contexts/theme-context';
+import { TextTheme, Text, TextSize } from './Text';
 
 export default {
-  title: 'shared/Text',
-  component: Text,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-} as ComponentMeta<typeof Text>
+    title: 'shared/Text',
+    component: Text,
+    argTypes: {
+        backgroundColor: { control: 'color' },
+    },
+} as ComponentMeta<typeof Text>;
 
-const Template: ComponentStory<typeof Text> = (args) => (
-  <Text {...args} />
-)
+const Template: ComponentStory<typeof Text> = (args) => <Text {...args} />;
 
-export const Primary = Template.bind({})
+export const Primary = Template.bind({});
 Primary.args = {
-  title: 'Title lorem ipsun',
-  text: 'Description Description Description Description',
-}
+    title: 'Title lorem ipsun',
+    text: 'Description Description Description Description',
+};
 
-export const Error = Template.bind({})
+export const Error = Template.bind({});
 Error.args = {
-  title: 'Title lorem ipsun',
-  text: 'Description Description Description Description',
-  theme: TextTheme.ERROR,
-}
+    title: 'Title lorem ipsun',
+    text: 'Description Description Description Description',
+    theme: TextTheme.ERROR,
+};
 
-export const onlyTitle = Template.bind({})
+export const onlyTitle = Template.bind({});
 onlyTitle.args = {
-  title: 'Title lorem ipsun',
-}
+    title: 'Title lorem ipsun',
+};
 
-export const onlyText = Template.bind({})
+export const onlyText = Template.bind({});
 onlyText.args = {
-  text: 'Description Description Description Description',
-}
+    text: 'Description Description Description Description',
+};
 
-export const PrimaryDark = Template.bind({})
+export const PrimaryDark = Template.bind({});
 PrimaryDark.args = {
-  title: 'Title lorem ipsun',
-  text: 'Description Description Description Description',
-}
-PrimaryDark.decorators = [ThemeDecorator(Theme.DARK)]
+    title: 'Title lorem ipsun',
+    text: 'Description Description Description Description',
+};
+PrimaryDark.decorators = [ThemeDecorator(Theme.DARK)];
 
-export const onlyTitleDark = Template.bind({})
+export const onlyTitleDark = Template.bind({});
 onlyTitleDark.args = {
-  title: 'Title lorem ipsun',
-}
-onlyTitleDark.decorators = [ThemeDecorator(Theme.DARK)]
+    title: 'Title lorem ipsun',
+};
+onlyTitleDark.decorators = [ThemeDecorator(Theme.DARK)];
 
-export const onlyTextDark = Template.bind({})
+export const onlyTextDark = Template.bind({});
 onlyTextDark.args = {
-  text: 'Description Description Description Description',
-}
-onlyTextDark.decorators = [ThemeDecorator(Theme.DARK)]
+    text: 'Description Description Description Description',
+};
+onlyTextDark.decorators = [ThemeDecorator(Theme.DARK)];
 
-export const SizeL = Template.bind({})
+export const SizeL = Template.bind({});
 SizeL.args = {
-  title: 'Title lorem ipsun',
-  text: 'Description Description Description Description',
-  size: TextSize.L,
-}
+    title: 'Title lorem ipsun',
+    text: 'Description Description Description Description',
+    size: TextSize.L,
+};

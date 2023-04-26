@@ -1,13 +1,9 @@
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import {
-  DefinePlugin,
-  HotModuleReplacementPlugin,
-  ProgressPlugin,
-} from 'webpack'
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
-import { BuildOptions } from './types/config'
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import { ProgressPlugin, DefinePlugin, HotModuleReplacementPlugin } from 'webpack';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import { BuildOptions } from './types/config';
 
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 export function buildPlugins({
