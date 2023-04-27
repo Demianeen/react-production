@@ -7,8 +7,15 @@ import { ArticleView } from 'entities/Article'
 import { ARTICLE_VIEW_LOCALSTORAGE_KEY } from 'shared/const/localstorage'
 
 describe('articlesPageSlice', () => {
+  beforeEach(() => {
+    localStorage.clear()
+  })
+
   test('setView', () => {
-    const state: DeepPartial<ArticlesPageSchema> = {}
+    const state: DeepPartial<ArticlesPageSchema> = {
+      view: ArticleView.GRID,
+      limit: 12,
+    }
     expect(
       articlesPageReducer(
         state as ArticlesPageSchema,
@@ -16,6 +23,7 @@ describe('articlesPageSlice', () => {
       )
     ).toEqual({
       view: ArticleView.LIST,
+      limit: 4,
     })
   })
 
@@ -33,10 +41,22 @@ describe('articlesPageSlice', () => {
     })
   })
 
-  test('initState', () => {
-    const state: DeepPartial<ArticlesPageSchema> = {
+  test('initState with localstorage view value empty', () => {
+    const state: DeepPartial<ArticlesPageSchema> = {}
+    expect(
+      articlesPageReducer(
+        state as ArticlesPageSchema,
+        articlesPageActions.initState()
+      )
+    ).toEqual({
       view: ArticleView.GRID,
-    }
+      limit: 12,
+      _isInitialized: true,
+    })
+  })
+
+  test('initState with localstorage view value', () => {
+    const state: DeepPartial<ArticlesPageSchema> = {}
     localStorage.setItem(
       ARTICLE_VIEW_LOCALSTORAGE_KEY,
       ArticleView.LIST
@@ -46,6 +66,10 @@ describe('articlesPageSlice', () => {
         state as ArticlesPageSchema,
         articlesPageActions.initState()
       )
-    ).toEqual({ view: ArticleView.LIST, limit: 12 })
+    ).toEqual({
+      view: ArticleView.LIST,
+      limit: 4,
+      _isInitialized: true,
+    })
   })
 })

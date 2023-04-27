@@ -17,7 +17,6 @@ import type {
 } from '@reduxjs/toolkit'
 import type { createReduxStore } from 'app/providers/StoreProvider'
 import type { AxiosInstance } from 'axios'
-import type { NavigateFunction } from 'react-router/dist/lib/hooks'
 import type { ProfileSchema } from 'features/EditableProfileCard'
 import type { ArticleDetailsSchema } from 'entities/Article'
 import type { ArticleCommentListSliceSchema } from 'features/ArticleCommentList'
@@ -58,7 +57,6 @@ export type AppDispatch = ReturnType<
 
 export interface ThunkExtraArg {
   api: AxiosInstance
-  navigate: NavigateFunction
 }
 
 export interface ThunkConfig<E> {

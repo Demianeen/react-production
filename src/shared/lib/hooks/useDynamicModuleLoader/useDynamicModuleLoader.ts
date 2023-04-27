@@ -23,7 +23,12 @@ export const useDynamicModuleLoader = (
   const store = useStore() as ReduxStoreWithReducerManager
 
   useEffect(() => {
+    const mountedReducers =
+      store.reducerManager.getReducerMap()
+
     Object.entries(reducers).forEach(([name, reducer]) => {
+      if (mountedReducers[name as StateSchemaKey]) return
+      // init reducer only if it is not mounted yet
       store.reducerManager.add(
         // reducers list type had StateSchemaKey as a name
         name as StateSchemaKey,

@@ -8,15 +8,15 @@ import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDy
 import { useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { fetchArticles } from 'pages/ArticlesPage/model/services/fetchArticles/fetchArticles'
 import { useSelector } from 'react-redux'
-import { getArticlesPageIsLoading } from 'pages/ArticlesPage/model/selectors/getArticlesPageIsLoading/getArticlesPageIsLoading'
-import { getArticlesPageError } from 'pages/ArticlesPage/model/selectors/getArticlesPageError/getArticlesPageError'
-import { getArticlesPageView } from 'pages/ArticlesPage/model/selectors/getArticlesPageView/getArticlesPageView'
 import { Page } from 'shared/ui/Page/Page'
-import { fetchArticlesNextPage } from 'pages/ArticlesPage/model/services/fetchArticlesNextPage/fetchArticlesNextPage'
 import { useTranslation } from 'react-i18next'
 import { Text, TextAlign } from 'shared/ui/Text/Text'
+import { getArticlesPageIsLoading } from '../../model/selectors/getArticlesPageIsLoading/getArticlesPageIsLoading'
+import { getArticlesPageError } from '../../model/selectors/getArticlesPageError/getArticlesPageError'
+import { getArticlesPageView } from '../../model/selectors/getArticlesPageView/getArticlesPageView'
+import { fetchArticlesNextPage } from '../../model/services/fetchArticlesNextPage/fetchArticlesNextPage'
+import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage'
 import {
   articlesPageActions,
   articlesPageReducer,
@@ -32,7 +32,9 @@ const reducers: ReducersList = {
 }
 
 const ArticlesPage = ({ className }: ArticlesPageProps) => {
-  useDynamicModuleLoader(reducers)
+  useDynamicModuleLoader(reducers, {
+    removeOnUnmount: false,
+  })
   const dispatch = useAppDispatch()
   const { t } = useTranslation('articles')
 
@@ -53,8 +55,7 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
   }, [dispatch])
 
   useInitialEffect(() => {
-    dispatch(articlesPageActions.initState())
-    dispatch(fetchArticles())
+    dispatch(initArticlesPage())
   })
 
   if (error) {

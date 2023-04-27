@@ -7,7 +7,6 @@ import {
 import { userReducer, userSliceName } from 'entities/User'
 import { $api } from 'shared/api/api'
 import type { CombinedState, Reducer } from 'redux'
-import type { NavigateFunction } from 'react-router/dist/lib/hooks'
 import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import type {
   StateSchema,
@@ -18,13 +17,11 @@ import { createReducerManager } from './reducerManager'
 interface CreateReduxStoreProps {
   preloadedState?: StateSchema
   preloadedAsyncReducers?: ReducersList
-  navigate: NavigateFunction
 }
 
 export function createReduxStore({
   preloadedState,
   preloadedAsyncReducers,
-  navigate,
 }: CreateReduxStoreProps) {
   const rootReducers: ReducersMapObject<StateSchema> = {
     ...preloadedAsyncReducers,
@@ -36,7 +33,6 @@ export function createReduxStore({
 
   const extraArg: ThunkExtraArg = {
     api: $api,
-    navigate,
   }
 
   const store = configureStore({
