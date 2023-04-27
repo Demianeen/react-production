@@ -4,7 +4,11 @@ import { articles } from '../../mocks/data'
 
 describe('fetchArticles', () => {
   test('fulfilled', async () => {
-    const thunk = new TestAsyncThunk(fetchArticles)
+    const thunk = new TestAsyncThunk(fetchArticles, {
+      articlesPage: {
+        page: 1,
+      },
+    })
     thunk.api.get.mockReturnValue(
       Promise.resolve({ data: articles })
     )
@@ -16,7 +20,11 @@ describe('fetchArticles', () => {
   })
 
   test('rejected', async () => {
-    const thunk = new TestAsyncThunk(fetchArticles)
+    const thunk = new TestAsyncThunk(fetchArticles, {
+      articlesPage: {
+        page: 1,
+      },
+    })
     thunk.api.get.mockReturnValue(
       Promise.resolve({
         status: 403,
@@ -30,7 +38,11 @@ describe('fetchArticles', () => {
   })
 
   test('no data', async () => {
-    const thunk = new TestAsyncThunk(fetchArticles)
+    const thunk = new TestAsyncThunk(fetchArticles, {
+      articlesPage: {
+        page: 1,
+      },
+    })
     thunk.api.get.mockReturnValue(
       Promise.resolve({
         data: undefined,

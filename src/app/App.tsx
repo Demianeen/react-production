@@ -1,15 +1,14 @@
-import React, { Suspense, useEffect } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
+import React, { useEffect } from 'react'
 import { Navbar } from 'widgets/Navbar'
 import { Sidebar } from 'widgets/Sidebar'
 import {
   getUserIsInitialized,
   userActions,
 } from 'entities/User'
-import { PageLoader } from 'widgets/PageLoader'
 import { AppRouter } from 'app/providers/router'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useSelector } from 'react-redux'
+import { SuspenseWithSpinner } from 'shared/ui/SuspenseWithSpinner/SuspenseWithSpinner'
 
 const App = () => {
   const dispatch = useAppDispatch()
@@ -22,14 +21,16 @@ const App = () => {
   }, [dispatch])
 
   return (
-    <div className={classNames('app', {}, [])}>
-      <Suspense fallback={<PageLoader />}>
+    <div className='app'>
+      <SuspenseWithSpinner>
         <Navbar />
-        <div className='contentPage'>
+      </SuspenseWithSpinner>
+      <div className='contentPage'>
+        <SuspenseWithSpinner>
           <Sidebar />
-          {isUserInitialized && <AppRouter />}
-        </div>
-      </Suspense>
+        </SuspenseWithSpinner>
+        {isUserInitialized && <AppRouter />}
+      </div>
     </div>
   )
 }

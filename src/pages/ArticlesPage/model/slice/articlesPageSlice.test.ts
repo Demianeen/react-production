@@ -19,7 +19,21 @@ describe('articlesPageSlice', () => {
     })
   })
 
-  test('initView', () => {
+  test('setPage', () => {
+    const state: DeepPartial<ArticlesPageSchema> = {
+      page: 1,
+    }
+    expect(
+      articlesPageReducer(
+        state as ArticlesPageSchema,
+        articlesPageActions.setPage(2)
+      )
+    ).toEqual({
+      page: 2,
+    })
+  })
+
+  test('initState', () => {
     const state: DeepPartial<ArticlesPageSchema> = {
       view: ArticleView.GRID,
     }
@@ -30,8 +44,8 @@ describe('articlesPageSlice', () => {
     expect(
       articlesPageReducer(
         state as ArticlesPageSchema,
-        articlesPageActions.initView()
+        articlesPageActions.initState()
       )
-    ).toEqual({ view: ArticleView.LIST })
+    ).toEqual({ view: ArticleView.LIST, limit: 12 })
   })
 })

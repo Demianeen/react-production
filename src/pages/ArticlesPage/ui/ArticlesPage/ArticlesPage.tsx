@@ -13,6 +13,10 @@ import { useSelector } from 'react-redux'
 import { getArticlesPageIsLoading } from 'pages/ArticlesPage/model/selectors/getArticlesPageIsLoading/getArticlesPageIsLoading'
 import { getArticlesPageError } from 'pages/ArticlesPage/model/selectors/getArticlesPageError/getArticlesPageError'
 import { getArticlesPageView } from 'pages/ArticlesPage/model/selectors/getArticlesPageView/getArticlesPageView'
+import { Page } from 'shared/ui/Page/Page'
+import { fetchArticlesNextPage } from 'pages/ArticlesPage/model/services/fetchArticlesNextPage/fetchArticlesNextPage'
+import { useTranslation } from 'react-i18next'
+import { Text, TextAlign } from 'shared/ui/Text/Text'
 import {
   articlesPageActions,
   articlesPageReducer,
@@ -30,6 +34,7 @@ const reducers: ReducersList = {
 const ArticlesPage = ({ className }: ArticlesPageProps) => {
   useDynamicModuleLoader(reducers)
   const dispatch = useAppDispatch()
+  const { t } = useTranslation('articles')
 
   const articles = useSelector(getArticles.selectAll)
   const isLoading = useSelector(getArticlesPageIsLoading)
@@ -43,13 +48,31 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
     [dispatch]
   )
 
+  const onLoadNextPart = useCallback(() => {
+    dispatch(fetchArticlesNextPage())
+  }, [dispatch])
+
   useInitialEffect(() => {
+    dispatch(articlesPageActions.initState())
     dispatch(fetchArticles())
-    dispatch(articlesPageActions.initView())
   })
 
+  if (error) {
+    return (
+      <Page>
+        <Text
+          title={t('Failed to load articles')}
+          align={TextAlign.CENTER}
+        />
+      </Page>
+    )
+  }
+
   return (
-    <div className={className}>
+    <Page
+      className={className}
+      onScrollEnd={onLoadNextPart}
+    >
       <ArticleSelectView
         selectedView={view}
         onChangeView={onChangeView}
@@ -59,7 +82,7 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
         isLoading={isLoading}
         view={view}
       />
-    </div>
+    </Page>
   )
 }
 

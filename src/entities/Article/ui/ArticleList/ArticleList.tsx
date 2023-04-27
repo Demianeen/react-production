@@ -13,6 +13,20 @@ interface ArticleListProps {
   view?: ArticleView
 }
 
+const getArticleSkeletons = (view: ArticleView) => {
+  const articleSkeletons = new Array(
+    view === ArticleView.GRID ? 12 : 4
+  ).fill(null)
+
+  return articleSkeletons.map((_, index) => (
+    <ArticleListItemSkeleton
+      /* eslint-disable-next-line react/no-array-index-key */
+      key={index}
+      view={view}
+    />
+  ))
+}
+
 export const ArticleList = memo(
   ({
     className,
@@ -31,30 +45,6 @@ export const ArticleList = memo(
       [view]
     )
 
-    if (isLoading) {
-      const skeletonArticles =
-        view === ArticleView.GRID
-          ? new Array(9).fill(null)
-          : new Array(3).fill(null)
-
-      return (
-        <div
-          className={classNames(styles.articleList, {}, [
-            className,
-            styles[view],
-          ])}
-        >
-          {skeletonArticles.map((_, index) => (
-            <ArticleListItemSkeleton
-              /* eslint-disable-next-line react/no-array-index-key */
-              key={index}
-              view={view}
-            />
-          ))}
-        </div>
-      )
-    }
-
     return (
       <div
         className={classNames(styles.articleList, {}, [
@@ -65,6 +55,7 @@ export const ArticleList = memo(
         {articles.length > 0
           ? articles.map(renderArticle)
           : null}
+        {isLoading && getArticleSkeletons(view)}
       </div>
     )
   }

@@ -16,6 +16,7 @@ interface SidebarProps {
   className?: string
 }
 
+// TODO: sidebar is rerendering after page route change
 export const Sidebar = memo(
   ({ className }: SidebarProps) => {
     const [isCollapsed, setIsCollapsed] = useState(false)
@@ -36,7 +37,7 @@ export const Sidebar = memo(
     }, [isCollapsed, sidebarItems])
 
     return (
-      <div
+      <menu
         className={classNames(
           styles.sidebar,
           {
@@ -57,7 +58,9 @@ export const Sidebar = memo(
         >
           {isCollapsed ? '>' : '<'}
         </Button>
-        <div className={styles.items}>{itemsList}</div>
+        <nav className={styles.itemsContainer}>
+          <ul className={styles.items}>{itemsList}</ul>
+        </nav>
         <div className={styles.switchers}>
           <ThemeSwitcher />
           <LangSwitcher
@@ -65,7 +68,7 @@ export const Sidebar = memo(
             className={styles.lang}
           />
         </div>
-      </div>
+      </menu>
     )
   }
 )

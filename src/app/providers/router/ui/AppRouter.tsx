@@ -10,8 +10,11 @@ export const AppRouter = memo(() => {
     return Object.values(routeConfig).map(
       (route: AppRouteProps) => {
         const wrappedElement = (
-          <div className='pageWrapper'>{route.element}</div>
+          <Suspense fallback={<PageLoader />}>
+            {route.element}
+          </Suspense>
         )
+
         return (
           <Route
             key={route.path}

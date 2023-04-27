@@ -30,14 +30,18 @@ export const SidebarItem = memo(
     }
 
     return (
-      <AppLink
-        theme={AppLinkTheme.INVERTED}
-        to={item.path}
-        className={classNames(styles.item, mods)}
-      >
-        <item.Icon className={styles.icon} />
-        <span className={styles.text}>{t(item.text)}</span>
-      </AppLink>
+      <li>
+        <AppLink
+          theme={AppLinkTheme.INVERTED}
+          to={item.path}
+          className={classNames(styles.item, mods)}
+        >
+          <item.Icon className={styles.icon} />
+          <span className={styles.text}>
+            {t(item.text)}
+          </span>
+        </AppLink>
+      </li>
     )
   }
 )
