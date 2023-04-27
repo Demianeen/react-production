@@ -8,6 +8,7 @@ import { userReducer, userSliceName } from 'entities/User'
 import { $api } from 'shared/api/api'
 import type { CombinedState, Reducer } from 'redux'
 import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
+import { pageReducer } from 'widgets/Page'
 import type {
   StateSchema,
   ThunkExtraArg,
@@ -27,6 +28,7 @@ export function createReduxStore({
     ...preloadedAsyncReducers,
     [counterSliceName]: counterReducer,
     [userSliceName]: userReducer,
+    page: pageReducer,
   }
 
   const reducerManager = createReducerManager(rootReducers)

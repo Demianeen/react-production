@@ -9,7 +9,7 @@ import { useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader/
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useSelector } from 'react-redux'
-import { Page } from 'shared/ui/Page/Page'
+import { Page } from 'widgets/Page/ui/Page/Page'
 import { useTranslation } from 'react-i18next'
 import { Text, TextAlign } from 'shared/ui/Text/Text'
 import { getArticlesPageIsLoading } from '../../model/selectors/getArticlesPageIsLoading/getArticlesPageIsLoading'

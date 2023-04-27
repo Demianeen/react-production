@@ -22,10 +22,12 @@ import type { ArticleDetailsSchema } from 'entities/Article'
 import type { ArticleCommentListSliceSchema } from 'features/ArticleCommentList'
 import type { AddCommentFormSchema } from 'features/AddCommentForm'
 import type { ArticlesPageSchema } from 'pages/ArticlesPage'
+import type { PageSchema } from 'widgets/Page'
 
 export interface StateSchema {
   [counterSliceName]: CounterSchema
   [userSliceName]: UserSchema
+  page: PageSchema
 
   // Async reducers
   [loginFormSliceName]?: LoginFormSchema
