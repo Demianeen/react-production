@@ -5,7 +5,7 @@ import type {
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { article } from 'entities/Article/model/mocks/tests'
-import { ArticleView } from 'entities/Article'
+import { View } from 'entities/View'
 import { ArticleListItem } from './ArticleListItem'
 
 export default {
@@ -25,34 +25,34 @@ const Template: ComponentStory<typeof ArticleListItem> = (
 
 export const List = Template.bind({})
 List.args = {
-  view: ArticleView.LIST,
+  view: View.LIST,
 }
 
 export const Grid = Template.bind({})
 Grid.args = {
-  view: ArticleView.GRID,
+  view: View.GRID,
 }
 
 export const DarkList = Template.bind({})
 DarkList.args = {
-  view: ArticleView.LIST,
+  view: View.LIST,
 }
 DarkList.decorators = [ThemeDecorator(Theme.DARK)]
 
 export const DarkGrid = Template.bind({})
 DarkGrid.args = {
-  view: ArticleView.GRID,
+  view: View.GRID,
 }
 DarkGrid.decorators = [ThemeDecorator(Theme.DARK)]
 
 export const RedList = Template.bind({})
 RedList.args = {
-  view: ArticleView.LIST,
+  view: View.LIST,
 }
 RedList.decorators = [ThemeDecorator(Theme.RED)]
 
 export const RedGrid = Template.bind({})
 RedGrid.args = {
-  view: ArticleView.GRID,
+  view: View.GRID,
 }
 RedGrid.decorators = [ThemeDecorator(Theme.RED)]

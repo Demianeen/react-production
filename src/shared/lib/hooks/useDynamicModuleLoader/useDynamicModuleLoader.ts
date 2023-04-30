@@ -1,13 +1,18 @@
 import { useEffect } from 'react'
 import { useStore } from 'react-redux'
-import type { ReduxStoreWithReducerManager } from 'app/providers/StoreProvider'
-import type { StateSchemaKey } from 'app/providers/StoreProvider/config/StateSchema'
+import type {
+  ReduxStoreWithReducerManager,
+  StateSchema,
+} from 'app/providers/StoreProvider'
+import type { StateSchemaKey } from 'app/providers/StoreProvider/config/stateSchema'
 import type { Reducer } from '@reduxjs/toolkit'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 
-export type ReducersList = Partial<
-  Record<StateSchemaKey, Reducer>
->
+export type ReducersList = {
+  [name in StateSchemaKey]?: Reducer<
+    NonNullable<StateSchema[name]>
+  >
+}
 
 interface DynamicModuleLoaderOptions {
   removeOnUnmount?: boolean

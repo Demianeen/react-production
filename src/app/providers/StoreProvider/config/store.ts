@@ -7,17 +7,17 @@ import {
 import { userReducer, userSliceName } from 'entities/User'
 import { $api } from 'shared/api/api'
 import type { CombinedState, Reducer } from 'redux'
-import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { pageReducer } from 'widgets/Page'
 import type {
   StateSchema,
+  StateSchemaKey,
   ThunkExtraArg,
-} from './StateSchema'
+} from './stateSchema'
 import { createReducerManager } from './reducerManager'
 
 interface CreateReduxStoreProps {
   preloadedState?: StateSchema
-  preloadedAsyncReducers?: ReducersList
+  preloadedAsyncReducers?: Record<StateSchemaKey, Reducer>
 }
 
 export function createReduxStore({

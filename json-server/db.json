@@ -39,7 +39,7 @@
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
       "userId": 1,
-      "createdAt": "26.02.2022",
+      "createdAt": "30.02.2022",
       "types": [
         "IT"
       ],
@@ -104,12 +104,12 @@
     },
     {
       "id": 2,
-      "title": "Kotlin news",
-      "subtitle": "Что нового в Kotlin за 2022 год?",
+      "title": "Kotlin news 2013",
+      "subtitle": "Что нового в Kotlin за 2013 год?",
       "img": "https://blog.jetbrains.com/wp-content/uploads/2023/03/DSGN-16128-1.8.20-Release_Blog-Featured-image-1280x600-1.png",
       "views": 1022,
       "userId": 1,
-      "createdAt": "26.02.2022",
+      "createdAt": "26.02.2013",
       "types": [
         "IT"
       ],
@@ -128,12 +128,12 @@
     },
     {
       "id": 3,
-      "title": "Python news",
-      "subtitle": "Что нового в Python за 2022 год?",
+      "title": "Python news 2014",
+      "subtitle": "Что нового в Python за 2014 год?",
       "img": "https://realpython.com/cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Monthly-Python-News_Yellow_Watermarked.e93be1baed14.jpg",
       "views": 1022,
       "userId": 1,
-      "createdAt": "26.02.2022",
+      "createdAt": "26.02.2014",
       "types": [
         "IT"
       ],
@@ -152,12 +152,12 @@
     },
     {
       "id": 4,
-      "title": "Kotlin news",
-      "subtitle": "Что нового в Kotlin за 2022 год?",
-      "img": "https://blog.jetbrains.com/wp-content/uploads/2023/03/DSGN-16128-1.8.20-Release_Blog-Featured-image-1280x600-1.png",
+      "title": "What's new in JS in 2022?",
+      "subtitle": "JavaScript updates and how to run JS code in a browser",
+      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
       "userId": 1,
-      "createdAt": "26.02.2022",
+      "createdAt": "22.02.2022",
       "types": [
         "IT"
       ],
@@ -165,23 +165,27 @@
         {
           "id": 1,
           "type": "TEXT",
-          "title": "Заголовок этого блока",
+          "title": "Introduction to JavaScript",
           "paragraphs": [
-            "Программа, которую по традиции называют «Hello, world!», очень проста. Она выводит куда-либо фразу «Hello, world!», или другую подобную, средствами некоего языка.",
-            "JavaScript — это язык, программы на котором можно выполнять в разных средах. В нашем случае речь идёт о браузерах и о серверной платформе Node.js. Если до сих пор вы не написали ни строчки кода на JS и читаете этот текст в браузере, на настольном компьютере, это значит, что вы буквально в считанных секундах от своей первой JavaScript-программы.",
-            "Существуют и другие способы запуска JS-кода в браузере. Так, если говорить об обычном использовании программ на JavaScript, они загружаются в браузер для обеспечения работы веб-страниц. Как правило, код оформляют в виде отдельных файлов с расширением .js, которые подключают к веб-страницам, но программный код можно включать и непосредственно в код страницы. Всё это делается с помощью тега <script>. Когда браузер обнаруживает такой код, он выполняет его. Подробности о теге script можно посмотреть на сайте w3school.com. В частности, рассмотрим пример, демонстрирующий работу с веб-страницей средствами JavaScript, приведённый на этом ресурсе. Этот пример можно запустить и средствами данного ресурса (ищите кнопку Try it Yourself), но мы поступим немного иначе. А именно, создадим в каком-нибудь текстовом редакторе (например — в VS Code или в Notepad++) новый файл, который назовём hello.html, и добавим в него следующий код:"
+            "JavaScript is a language that can be run in different environments, such as web browsers and Node.js. If you've never written JS code before, you can get started with a simple 'Hello, world!' program.",
+            "To run JS code in a browser, you can include it in a separate .js file or directly in an HTML page using the <script> tag. When the browser encounters this code, it executes it."
           ]
+        },
+        {
+          "id": 2,
+          "type": "CODE",
+          "code": "<!DOCTYPE html>\n<html>\n  <body>\n    <p id=\"hello\"></p>\n\n    <script>\n      document.getElementById(\"hello\").innerHTML = \"Hello, world!\";\n    </script>\n  </body>\n</html>;"
         }
       ]
     },
     {
       "id": 5,
-      "title": "Python news",
-      "subtitle": "Что нового в Python за 2022 год?",
+      "title": "Python news 2015",
+      "subtitle": "Что нового в Python за 2015 год?",
       "img": "https://realpython.com/cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Monthly-Python-News_Yellow_Watermarked.e93be1baed14.jpg",
       "views": 1022,
       "userId": 1,
-      "createdAt": "26.02.2022",
+      "createdAt": "26.02.2015",
       "types": [
         "IT"
       ],
@@ -200,12 +204,12 @@
     },
     {
       "id": 6,
-      "title": "Kotlin news",
-      "subtitle": "Что нового в Kotlin за 2022 год?",
+      "title": "Kotlin news 2016",
+      "subtitle": "Что нового в Kotlin за 2016 год?",
       "img": "https://blog.jetbrains.com/wp-content/uploads/2023/03/DSGN-16128-1.8.20-Release_Blog-Featured-image-1280x600-1.png",
       "views": 1022,
       "userId": 1,
-      "createdAt": "26.02.2022",
+      "createdAt": "26.02.2016",
       "types": [
         "IT"
       ],
@@ -224,12 +228,12 @@
     },
     {
       "id": 7,
-      "title": "Python news",
-      "subtitle": "Что нового в Python за 2022 год?",
+      "title": "Python news 2016",
+      "subtitle": "Что нового в Python за 2016 год?",
       "img": "https://realpython.com/cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Monthly-Python-News_Yellow_Watermarked.e93be1baed14.jpg",
       "views": 1022,
       "userId": 1,
-      "createdAt": "26.02.2022",
+      "createdAt": "24.02.2016",
       "types": [
         "IT"
       ],
@@ -248,12 +252,12 @@
     },
     {
       "id": 8,
-      "title": "Kotlin news",
-      "subtitle": "Что нового в Kotlin за 2022 год?",
+      "title": "Kotlin news 2017",
+      "subtitle": "Что нового в Kotlin за 2017 год?",
       "img": "https://blog.jetbrains.com/wp-content/uploads/2023/03/DSGN-16128-1.8.20-Release_Blog-Featured-image-1280x600-1.png",
-      "views": 1022,
+      "views": 7422,
       "userId": 1,
-      "createdAt": "26.02.2022",
+      "createdAt": "26.02.2017",
       "types": [
         "IT"
       ],
@@ -273,11 +277,11 @@
     {
       "id": 9,
       "title": "Python news",
-      "subtitle": "Что нового в Python за 2022 год?",
+      "subtitle": "Что нового в Python за 2017 год?",
       "img": "https://realpython.com/cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Monthly-Python-News_Yellow_Watermarked.e93be1baed14.jpg",
-      "views": 1022,
+      "views": 1722,
       "userId": 1,
-      "createdAt": "26.02.2022",
+      "createdAt": "26.02.2017",
       "types": [
         "IT"
       ],
@@ -296,12 +300,12 @@
     },
     {
       "id": 10,
-      "title": "Python news",
-      "subtitle": "Что нового в Python за 2022 год?",
+      "title": "Python news 2018",
+      "subtitle": "Что нового в Python за 2018 год?",
       "img": "https://realpython.com/cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Monthly-Python-News_Yellow_Watermarked.e93be1baed14.jpg",
-      "views": 1022,
+      "views": 1922,
       "userId": 1,
-      "createdAt": "26.02.2022",
+      "createdAt": "26.02.2018",
       "types": [
         "IT"
       ],
@@ -320,12 +324,12 @@
     },
     {
       "id": 11,
-      "title": "Kotlin news",
-      "subtitle": "Что нового в Kotlin за 2022 год?",
+      "title": "Kotlin news 2018",
+      "subtitle": "Что нового в Kotlin за 2018 год?",
       "img": "https://blog.jetbrains.com/wp-content/uploads/2023/03/DSGN-16128-1.8.20-Release_Blog-Featured-image-1280x600-1.png",
       "views": 1022,
       "userId": 1,
-      "createdAt": "26.02.2022",
+      "createdAt": "26.02.2018",
       "types": [
         "IT"
       ],
@@ -344,12 +348,12 @@
     },
     {
       "id": 12,
-      "title": "Python news",
-      "subtitle": "Что нового в Python за 2022 год?",
+      "title": "Python news 2019",
+      "subtitle": "Что нового в Python за 2019 год?",
       "img": "https://realpython.com/cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Monthly-Python-News_Yellow_Watermarked.e93be1baed14.jpg",
       "views": 1022,
       "userId": 1,
-      "createdAt": "26.02.2022",
+      "createdAt": "26.02.2019",
       "types": [
         "IT"
       ],
@@ -368,12 +372,12 @@
     },
     {
       "id": 13,
-      "title": "Kotlin news",
-      "subtitle": "Что нового в Kotlin за 2022 год?",
+      "title": "Kotlin news 2019",
+      "subtitle": "Что нового в Kotlin за 2019 год?",
       "img": "https://blog.jetbrains.com/wp-content/uploads/2023/03/DSGN-16128-1.8.20-Release_Blog-Featured-image-1280x600-1.png",
       "views": 1022,
       "userId": 1,
-      "createdAt": "26.02.2022",
+      "createdAt": "26.02.2019",
       "types": [
         "IT"
       ],
@@ -392,12 +396,12 @@
     },
     {
       "id": 14,
-      "title": "Python news",
-      "subtitle": "Что нового в Python за 2022 год?",
+      "title": "Python news 2020",
+      "subtitle": "Что нового в Python за 2020 год?",
       "img": "https://realpython.com/cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Monthly-Python-News_Yellow_Watermarked.e93be1baed14.jpg",
       "views": 1022,
       "userId": 1,
-      "createdAt": "26.02.2022",
+      "createdAt": "25.02.2020",
       "types": [
         "IT"
       ],
@@ -416,12 +420,12 @@
     },
     {
       "id": 15,
-      "title": "Kotlin news",
-      "subtitle": "Что нового в Kotlin за 2022 год?",
+      "title": "Kotlin news 2020",
+      "subtitle": "Что нового в Kotlin за 2020 год?",
       "img": "https://blog.jetbrains.com/wp-content/uploads/2023/03/DSGN-16128-1.8.20-Release_Blog-Featured-image-1280x600-1.png",
-      "views": 1022,
+      "views": 1848,
       "userId": 1,
-      "createdAt": "26.02.2022",
+      "createdAt": "28.02.2020",
       "types": [
         "IT"
       ],
@@ -440,12 +444,12 @@
     },
     {
       "id": 16,
-      "title": "Python news",
-      "subtitle": "Что нового в Python за 2022 год?",
+      "title": "Python news 2021",
+      "subtitle": "Что нового в Python за 2021 год?",
       "img": "https://realpython.com/cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Monthly-Python-News_Yellow_Watermarked.e93be1baed14.jpg",
-      "views": 1022,
+      "views": 1544,
       "userId": 1,
-      "createdAt": "26.02.2022",
+      "createdAt": "26.02.2021",
       "types": [
         "IT"
       ],
@@ -464,12 +468,12 @@
     },
     {
       "id": 17,
-      "title": "Kotlin news",
-      "subtitle": "Что нового в Kotlin за 2022 год?",
+      "title": "Kotlin news 2021",
+      "subtitle": "Что нового в Kotlin за 2021 год?",
       "img": "https://blog.jetbrains.com/wp-content/uploads/2023/03/DSGN-16128-1.8.20-Release_Blog-Featured-image-1280x600-1.png",
-      "views": 1022,
+      "views": 1234,
       "userId": 1,
-      "createdAt": "26.02.2022",
+      "createdAt": "26.02.2021",
       "types": [
         "IT"
       ],
@@ -488,12 +492,12 @@
     },
     {
       "id": 18,
-      "title": "Python news",
-      "subtitle": "Что нового в Python за 2022 год?",
+      "title": "Python news 2023",
+      "subtitle": "Что нового в Python за 2023 год?",
       "img": "https://realpython.com/cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Monthly-Python-News_Yellow_Watermarked.e93be1baed14.jpg",
       "views": 1022,
       "userId": 1,
-      "createdAt": "26.02.2022",
+      "createdAt": "26.02.2023",
       "types": [
         "IT"
       ],
@@ -512,7 +516,7 @@
     },
     {
       "id": 19,
-      "title": "Kotlin news",
+      "title": "Kotlin news 2022",
       "subtitle": "Что нового в Kotlin за 2022 год?",
       "img": "https://blog.jetbrains.com/wp-content/uploads/2023/03/DSGN-16128-1.8.20-Release_Blog-Featured-image-1280x600-1.png",
       "views": 1022,
@@ -536,12 +540,12 @@
     },
     {
       "id": 20,
-      "title": "Python news",
-      "subtitle": "Что нового в Python за 2022 год?",
+      "title": "Python news 2021",
+      "subtitle": "Что нового в Python за 2021 год?",
       "img": "https://realpython.com/cdn-cgi/image/width=1920,format=auto/https://files.realpython.com/media/Monthly-Python-News_Yellow_Watermarked.e93be1baed14.jpg",
       "views": 1022,
       "userId": 1,
-      "createdAt": "26.02.2022",
+      "createdAt": "26.02.2021",
       "types": [
         "IT"
       ],
@@ -560,12 +564,12 @@
     },
     {
       "id": 21,
-      "title": "Kotlin news",
-      "subtitle": "Что нового в Kotlin за 2022 год?",
+      "title": "Kotlin news 2023",
+      "subtitle": "Что нового в Kotlin за 2023 год?",
       "img": "https://blog.jetbrains.com/wp-content/uploads/2023/03/DSGN-16128-1.8.20-Release_Blog-Featured-image-1280x600-1.png",
-      "views": 1022,
+      "views": 1048,
       "userId": 1,
-      "createdAt": "26.02.2022",
+      "createdAt": "26.02.2023",
       "types": [
         "IT"
       ],
@@ -578,6 +582,161 @@
             "Программа, которую по традиции называют «Hello, world!», очень проста. Она выводит куда-либо фразу «Hello, world!», или другую подобную, средствами некоего языка.",
             "JavaScript — это язык, программы на котором можно выполнять в разных средах. В нашем случае речь идёт о браузерах и о серверной платформе Node.js. Если до сих пор вы не написали ни строчки кода на JS и читаете этот текст в браузере, на настольном компьютере, это значит, что вы буквально в считанных секундах от своей первой JavaScript-программы.",
             "Существуют и другие способы запуска JS-кода в браузере. Так, если говорить об обычном использовании программ на JavaScript, они загружаются в браузер для обеспечения работы веб-страниц. Как правило, код оформляют в виде отдельных файлов с расширением .js, которые подключают к веб-страницам, но программный код можно включать и непосредственно в код страницы. Всё это делается с помощью тега <script>. Когда браузер обнаруживает такой код, он выполняет его. Подробности о теге script можно посмотреть на сайте w3school.com. В частности, рассмотрим пример, демонстрирующий работу с веб-страницей средствами JavaScript, приведённый на этом ресурсе. Этот пример можно запустить и средствами данного ресурса (ищите кнопку Try it Yourself), но мы поступим немного иначе. А именно, создадим в каком-нибудь текстовом редакторе (например — в VS Code или в Notepad++) новый файл, который назовём hello.html, и добавим в него следующий код:"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "title": "The Future of Space Exploration: Advancements in Technology and Discoveries",
+      "subtitle": "What we can expect from the next era of space exploration",
+      "img": "https://www.nasa.gov/sites/default/files/thumbnails/image/pia23378-16.jpg",
+      "views": 3824,
+      "userId": 2,
+      "createdAt": "26.02.2023",
+      "types": [
+        "SCIENCE"
+      ],
+      "blocks": [
+        {
+          "id": 1,
+          "type": "TEXT",
+          "title": "Introduction",
+          "paragraphs": [
+            "Space exploration has always been a fascinating subject for scientists and enthusiasts alike. With the rapid advancements in technology, we are now at the cusp of a new era of space exploration. In this article, we will explore the latest technological advancements and discoveries that are shaping the future of space exploration.",
+            "From finding new exoplanets to sending humans to Mars, the possibilities of space exploration are endless. Let's dive in and explore what the future holds for space exploration."
+          ]
+        },
+        {
+          "id": 2,
+          "type": "IMAGE",
+          "url": "https://www.jpl.nasa.gov/images/cassini/20090202/pia03883-full.jpg",
+          "caption": "Saturn's moon Enceladus, as seen by the Cassini spacecraft"
+        },
+        {
+          "id": 3,
+          "type": "TEXT",
+          "title": "Exoplanet Discoveries",
+          "paragraphs": [
+            "Over the past few decades, astronomers have discovered thousands of exoplanets – planets that orbit stars outside our solar system. These discoveries have given us a glimpse into the diversity of planets in the universe and have opened up new avenues for space exploration.",
+            "In the future, we can expect more advanced telescopes and observation techniques that will allow us to discover even more exoplanets and study them in greater detail. The James Webb Space Telescope, set to launch in 2021, will be a game-changer in this regard, with its advanced capabilities to observe exoplanets."
+          ]
+        },
+        {
+          "id": 4,
+          "type": "TEXT",
+          "title": "Mars Exploration",
+          "paragraphs": [
+            "Mars has always been a focus of space exploration, and in recent years, there have been numerous missions to explore the red planet. In 2021, NASA's Perseverance rover landed on Mars, carrying with it the first helicopter to fly on another planet.",
+            "In the future, we can expect more ambitious missions to Mars, with the ultimate goal of sending humans to the planet. Elon Musk's SpaceX is already working on plans to send humans to Mars by the mid-2020s, with the aim of establishing a permanent human settlement on the planet."
+          ]
+        },
+        {
+          "id": 5,
+          "type": "CODE",
+          "code": "function calculateOrbit(planet) {\n // code to calculate the orbit of the planet\n return orbit;\n}"
+        },
+        {
+          "id": 6,
+          "type": "TEXT",
+          "title": "Conclusion",
+          "paragraphs": [
+            "The future of space exploration is an exciting and promising one. With advancements in technology, we will be able to discover more about our universe and our place in it. The possibilities are endless, and we can expect to see more ambitious missions to explore our solar system and beyond."
+          ]
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "title": "How to create a blog with React and Node.js",
+      "subtitle": "A step-by-step guide to creating a blog with React and Node.js",
+      "img": "https://vegibit.com/wp-content/uploads/2018/07/Nodejs-Blog-Tutorial.png",
+      "views": 3824,
+      "userId": 2,
+      "createdAt": "26.02.2023",
+      "types": [
+        "IT"
+      ],
+      "blocks": [
+        {
+          "id": 1,
+          "type": "TEXT",
+          "title": "Introduction",
+          "paragraphs": [
+            "In this tutorial, we will create a blog with React and Node.js. We will use the following technologies:",
+            "React: A JavaScript library for building user interfaces",
+            "Node.js: A JavaScript runtime environment for building server-side applications",
+            "Express: A Node.js web application framework for building web applications",
+            "MongoDB: A NoSQL database for storing data"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "IMAGE",
+          "url": "https://vegibit.com/wp-content/uploads/2018/07/Nodejs-Blog-Tutorial.png",
+          "title": "Saturn's moon Enceladus, as seen by the Cassini spacecraft"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "title": "The Impact of Cryptocurrencies on the Global Economy",
+      "subtitle": "Exploring the Pros and Cons of Digital Currency",
+      "img": "https://images.pexels.com/photos/730564/pexels-photo-730564.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "views": 1820,
+      "userId": 3,
+      "createdAt": "28.12.2020",
+      "types": [
+        "ECONOMICS"
+      ],
+      "blocks": [
+        {
+          "id": 1,
+          "type": "TEXT",
+          "title": "Introduction",
+          "paragraphs": [
+            "Cryptocurrencies have been a hot topic in recent years, with Bitcoin and other digital currencies gaining mainstream attention. While some view them as a promising new form of currency and investment, others are skeptical about their impact on the global economy.",
+            "In this article, we will explore the pros and cons of cryptocurrencies and their potential impact on the global economy."
+          ]
+        },
+        {
+          "id": 2,
+          "type": "TEXT",
+          "title": "Pros of Cryptocurrencies",
+          "paragraphs": [
+            "One of the biggest advantages of cryptocurrencies is that they operate independently of traditional banking systems, making transactions faster and cheaper. They also offer greater privacy and security, with transactions recorded on a blockchain ledger that is difficult to hack or alter.",
+            "Another benefit of cryptocurrencies is that they are decentralized, meaning that they are not controlled by any central authority or government. This makes them immune to political and economic turmoil that can impact traditional currencies.",
+            "Cryptocurrencies also offer new investment opportunities, with many investors seeing them as a promising asset class that can offer high returns."
+          ]
+        },
+        {
+          "id": 3,
+          "type": "IMAGE",
+          "url": "https://images.pexels.com/photos/5849696/pexels-photo-5849696.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+          "caption": "Cryptocurrencies offer new investment opportunities"
+        },
+        {
+          "id": 4,
+          "type": "TEXT",
+          "title": "Cons of Cryptocurrencies",
+          "paragraphs": [
+            "Despite their potential benefits, cryptocurrencies also come with some drawbacks. One of the biggest concerns is their volatility, with prices fluctuating wildly and often unpredictably.",
+            "Cryptocurrencies are also vulnerable to fraud and scams, with many investors falling victim to Ponzi schemes and other fraudulent activities.",
+            "Another challenge with cryptocurrencies is their lack of regulation, which can make them attractive to criminals and money launderers."
+          ]
+        },
+        {
+          "id": 5,
+          "type": "CODE",
+          "code": "function calculateCryptoValue(crypto, amount) {\n // code to calculate the value of a cryptocurrency\n return value;\n}"
+        },
+        {
+          "id": 6,
+          "type": "TEXT",
+          "title": "Conclusion",
+          "paragraphs": [
+            "Cryptocurrencies are a new and exciting development in the world of finance, offering new opportunities and challenges. While they offer the potential for faster, cheaper, and more secure transactions, they also come with risks and uncertainties.",
+            "As the use of cryptocurrencies continues to grow, it will be important for governments and regulators to strike a balance between encouraging innovation and protecting consumers and investors."
           ]
         }
       ]

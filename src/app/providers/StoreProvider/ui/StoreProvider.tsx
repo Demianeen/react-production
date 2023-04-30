@@ -1,14 +1,17 @@
 import { Provider } from 'react-redux'
 import { createReduxStore } from 'app/providers/StoreProvider/config/store'
-import type { StateSchema } from 'app/providers/StoreProvider/config/StateSchema'
+import type {
+  StateSchema,
+  StateSchemaKey,
+} from 'app/providers/StoreProvider/config/stateSchema'
 import type { ReactNode } from 'react'
 import { useMemo } from 'react'
-import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
+import type { Reducer } from 'redux'
 
 interface StoreProviderProps {
   children: ReactNode
   preloadedState?: DeepPartial<StateSchema>
-  preloadedAsyncReducers?: ReducersList
+  preloadedAsyncReducers?: Record<StateSchemaKey, Reducer>
 }
 
 export const StoreProvider = ({

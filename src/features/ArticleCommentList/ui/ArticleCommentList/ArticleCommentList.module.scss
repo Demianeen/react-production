@@ -1,0 +1,11 @@
+.recommendations {
+  grid-template-columns: repeat(4, 20rem) !important;
+  gap: 0 3rem !important;
+  padding: 1.5rem 0 0.5rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.sectionTitle {
+  margin: 1.25rem 0;
+}

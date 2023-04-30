@@ -4,6 +4,11 @@ import type {
 } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
+import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
+import {
+  articleIds,
+  getArticleEntities,
+} from '../../model/mocks/data'
 import ArticlesPage from './ArticlesPage'
 
 export default {
@@ -12,6 +17,14 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  decorators: [
+    StoreDecorator({
+      articlesPage: {
+        ids: articleIds,
+        entities: getArticleEntities(),
+      },
+    }),
+  ],
 } as ComponentMeta<typeof ArticlesPage>
 
 const Template: ComponentStory<typeof ArticlesPage> = (

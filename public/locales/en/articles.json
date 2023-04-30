@@ -1,4 +1,16 @@
 {
   "Read more...": "Read more...",
-  "Failed to load articles": "Failed to load articles"
+  "Failed to load articles": "Failed to load articles",
+  "Sort by": "Sort by",
+  "Sort order": "Sort order",
+  "Ascending": "Ascending",
+  "Descending": "Descending",
+  "Date created": "Date created",
+  "Title": "Title",
+  "Views": "Views",
+  "ALL": "All articles",
+  "IT": "IT",
+  "ECONOMICS": "Economics",
+  "SCIENCE": "Science",
+  "Articles not found": "Articles not found"
 }

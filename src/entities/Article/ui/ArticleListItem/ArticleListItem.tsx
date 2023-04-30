@@ -1,4 +1,5 @@
-import React, { memo, useCallback, useMemo } from 'react'
+import type { HTMLAttributeAnchorTarget } from 'react'
+import React, { memo, useMemo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import type { Article } from 'entities/Article'
 import { Text } from 'shared/ui/Text/Text'
@@ -8,26 +9,29 @@ import { Card } from 'shared/ui/Card/Card'
 import { Avatar } from 'shared/ui/Avatar/Avatar'
 import { useTranslation } from 'react-i18next'
 import { Button } from 'shared/ui/Button/Button'
-import { useNavigate } from 'react-router-dom'
+import { View } from 'entities/View'
 import { RoutePath } from 'shared/config/routeConfig/routeConfig'
+import { AppLink } from 'shared/ui/AppLink/AppLink'
 import type { ArticleTextBlock } from '../../model/types/article'
-import {
-  ArticleBlockType,
-  ArticleView,
-} from '../../model/types/article'
+import { ArticleBlockType } from '../../model/types/article'
 import styles from './ArticleListItem.module.scss'
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent'
 
 interface ArticleListItemProps {
   className?: string
   article: Article
-  view: ArticleView
+  view: View
+  target?: HTMLAttributeAnchorTarget
 }
 
 export const ArticleListItem = memo(
-  ({ className, view, article }: ArticleListItemProps) => {
+  ({
+    className,
+    view,
+    article,
+    target,
+  }: ArticleListItemProps) => {
     const { t } = useTranslation('articles')
-    const navigate = useNavigate()
 
     const image = useMemo(
       () => (
@@ -63,12 +67,8 @@ export const ArticleListItem = memo(
       [article.views]
     )
 
-    const onOpenArticle = useCallback(() => {
-      navigate(RoutePath.article_details + article.id)
-    }, [article.id, navigate])
-
     const textBlock = useMemo(() => {
-      if (view === ArticleView.LIST) {
+      if (view === View.LIST) {
         return article.blocks.find(
           (block) => block.type === ArticleBlockType.TEXT
         ) as ArticleTextBlock | undefined
@@ -76,7 +76,7 @@ export const ArticleListItem = memo(
       return undefined
     }, [article.blocks, view])
 
-    if (view === ArticleView.LIST) {
+    if (view === View.LIST) {
       return (
         <Card
           className={classNames(
@@ -114,13 +114,15 @@ export const ArticleListItem = memo(
             />
           )}
           <footer className={styles.footer}>
-            <Button
-              onClick={onOpenArticle}
-              type='button'
-              role='link'
+            <AppLink
+              to={RoutePath.article_details + article.id}
+              target={target}
             >
-              {t('Read more...')}
-            </Button>
+              {/* TODO: Button can't be inside link */}
+              <Button type='button' role='link'>
+                {t('Read more...')}
+              </Button>
+            </AppLink>
             {views}
           </footer>
         </Card>
@@ -128,30 +130,35 @@ export const ArticleListItem = memo(
     }
 
     return (
-      <Card
-        className={classNames(styles.articleListItem, {}, [
-          className,
-          styles[view],
-        ])}
-        onClick={onOpenArticle}
-        role='link'
+      <AppLink
+        to={RoutePath.article_details + article.id}
+        target={target}
       >
-        <div className={styles.imageWrapper}>
-          {image}
+        <Card
+          className={classNames(
+            styles.articleListItem,
+            {},
+            [className, styles[view]]
+          )}
+          role='link'
+        >
+          <div className={styles.imageWrapper}>
+            {image}
+            <Text
+              text={article.createdAt}
+              className={styles.date}
+            />
+          </div>
+          <div className={styles.infoWrapper}>
+            {types}
+            {views}
+          </div>
           <Text
-            text={article.createdAt}
-            className={styles.date}
+            text={article.title}
+            className={styles.title}
           />
-        </div>
-        <div className={styles.infoWrapper}>
-          {types}
-          {views}
-        </div>
-        <Text
-          text={article.title}
-          className={styles.title}
-        />
-      </Card>
+        </Card>
+      </AppLink>
     )
   }
 )

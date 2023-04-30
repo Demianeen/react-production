@@ -5,9 +5,11 @@ import {
 } from '@reduxjs/toolkit'
 import type { StateSchema } from 'app/providers/StoreProvider'
 import type { Article } from 'entities/Article'
-import { ArticleView } from 'entities/Article'
 import { fetchArticles } from 'pages/ArticlesPage/model/services/fetchArticles/fetchArticles'
 import { ARTICLE_VIEW_LOCALSTORAGE_KEY } from 'shared/const/localstorage'
+import { View } from 'entities/View'
+import { INITIAL_ARTICLE_VIEW } from 'features/SortedArticlesList/model/const/view'
+import { sortedArticleListActions } from 'features/SortedArticlesList'
 import type { ArticlesPageSchema } from '../types/articlesPageSchema'
 
 const articlesAdapter = createEntityAdapter<Article>()
@@ -15,28 +17,17 @@ const articlesAdapter = createEntityAdapter<Article>()
 const initialState: ArticlesPageSchema =
   articlesAdapter.getInitialState({
     isLoading: false,
-    view: ArticleView.GRID,
     page: 1,
     hasMore: true,
     _isInitialized: false,
+    view: View.GRID,
+    limit: 12,
   })
 
 export const articlesPageSlice = createSlice({
   name: 'articlesPage',
   initialState,
   reducers: {
-    setView: (
-      state,
-      action: PayloadAction<ArticleView>
-    ) => {
-      state.view = action.payload
-      localStorage.setItem(
-        ARTICLE_VIEW_LOCALSTORAGE_KEY,
-        action.payload
-      )
-      state.limit =
-        action.payload === ArticleView.GRID ? 12 : 4
-    },
     setPage: (state, action: PayloadAction<number>) => {
       state.page = action.payload
     },
@@ -44,23 +35,40 @@ export const articlesPageSlice = createSlice({
       const view =
         (localStorage.getItem(
           ARTICLE_VIEW_LOCALSTORAGE_KEY
-        ) as ArticleView) ?? ArticleView.GRID
-      state.view = view
-      state.limit = view === ArticleView.GRID ? 12 : 4
+        ) as View) ?? INITIAL_ARTICLE_VIEW
+      state.limit = view === View.GRID ? 12 : 4
       state._isInitialized = true
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchArticles.pending, (state) => {
+      // selectArticleView
+      .addCase(
+        sortedArticleListActions.setView,
+        (state, action) => {
+          state.limit =
+            action.payload === View.GRID ? 12 : 4
+        }
+      )
+      // fetchArticles
+      .addCase(fetchArticles.pending, (state, action) => {
         state.error = undefined
         state.isLoading = true
+
+        if (action?.meta?.arg?.replace === true) {
+          articlesAdapter.removeAll(state)
+        }
       })
       .addCase(fetchArticles.fulfilled, (state, action) => {
         state.isLoading = false
-        articlesAdapter.addMany(state, action.payload)
         state.hasMore =
           action.payload.length === state.limit
+
+        if (action?.meta?.arg?.replace === true) {
+          articlesAdapter.setAll(state, action.payload)
+        } else {
+          articlesAdapter.addMany(state, action.payload)
+        }
       })
       .addCase(fetchArticles.rejected, (state, action) => {
         state.isLoading = false

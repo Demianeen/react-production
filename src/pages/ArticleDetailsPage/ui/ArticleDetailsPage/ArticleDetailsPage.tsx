@@ -31,10 +31,10 @@ const ArticleDetailsPage = ({
   return (
     <Page className={className}>
       <ArticleDetails id={Number(id)} />
-      <Text
-        title={t('Comments')}
-        className={styles.commentTitle}
-      />
+      {/* <Text */}
+      {/*   title={t('Comments')} */}
+      {/*   className={styles.commentTitle} */}
+      {/* /> */}
       <ArticleCommentList articleId={Number(id)} />
     </Page>
   )

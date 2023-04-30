@@ -168,6 +168,14 @@ module.exports = {
         'no-param-reassign': 0,
       },
     },
+    {
+      // override rules for slice services
+      files: ['src/**/model/services/**/*.ts'],
+      rules: {
+        // we can make props not required in redux services
+        '@typescript-eslint/default-param-last': 0,
+      },
+    },
   ],
   globals: {
     __IS_DEV__: false,

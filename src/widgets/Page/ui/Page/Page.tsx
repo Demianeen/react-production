@@ -64,7 +64,7 @@ export const Page = ({
       onScroll={onScroll}
     >
       {children}
-      <div ref={triggerRef} />
+      {onScrollEnd && <div ref={triggerRef} />}
     </section>
   )
 }

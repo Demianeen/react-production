@@ -1,0 +1,16 @@
+.articlePageFilters {
+  .sortWrapper {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .search {
+    margin-top: 1.5rem;
+  }
+  
+  .tabs {
+    margin-top: 1.5rem;
+  }
+}

@@ -1,32 +1,33 @@
 import { WithLabel } from 'shared/ui/WithLabel/WithLabel'
 import { classNames } from 'shared/lib/classNames/classNames'
 import type { ChangeEvent } from 'react'
-import { memo, useMemo } from 'react'
+import { useMemo } from 'react'
+import { typedMemo } from 'shared/lib/typedMemo/typedMemo'
 import styles from './Select.module.scss'
 
-export interface SelectOption {
-  value: string
+export interface SelectOption<T extends string> {
+  value: T
   label: string
 }
 
-interface SpinnerProps {
+interface SpinnerProps<T extends string> {
   className?: string
   label?: string
-  options: SelectOption[]
-  value?: string
-  onChange?: (value: string) => void
+  options: SelectOption<T>[]
+  value?: T
+  onChange?: (value: T) => void
   readonly?: boolean
 }
 
-export const Select = memo(
-  ({
+export const Select = typedMemo(
+  <T extends string>({
     className,
     label,
     options,
     value,
     onChange,
     readonly,
-  }: SpinnerProps) => {
+  }: SpinnerProps<T>) => {
     const optionsList = useMemo(() => {
       return options.map((opt) => (
         <option
@@ -42,7 +43,7 @@ export const Select = memo(
     const handleChange = (
       e: ChangeEvent<HTMLSelectElement>
     ) => {
-      onChange?.(e.target.value)
+      onChange?.(e.target.value as T)
     }
 
     return (
@@ -62,5 +63,3 @@ export const Select = memo(
     )
   }
 )
-
-Select.displayName = 'Select'

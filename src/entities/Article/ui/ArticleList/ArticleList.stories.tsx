@@ -5,7 +5,7 @@ import type {
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { article } from 'entities/Article/model/mocks/tests'
-import { ArticleView } from 'entities/Article'
+import { View } from 'entities/View'
 import { ArticleList } from './ArticleList'
 
 export default {
@@ -30,53 +30,53 @@ const articles = new Array(16)
 export const List = Template.bind({})
 List.args = {
   articles,
-  view: ArticleView.LIST,
+  view: View.LIST,
 }
 
 export const Grid = Template.bind({})
 Grid.args = {
   articles,
-  view: ArticleView.GRID,
+  view: View.GRID,
 }
 
 export const IsLoadingList = Template.bind({})
 IsLoadingList.args = {
   articles: [],
   isLoading: true,
-  view: ArticleView.LIST,
+  view: View.LIST,
 }
 
 export const IsLoadingGrid = Template.bind({})
 IsLoadingGrid.args = {
   articles: [],
   isLoading: true,
-  view: ArticleView.GRID,
+  view: View.GRID,
 }
 
 export const DarkList = Template.bind({})
 DarkList.args = {
   articles,
-  view: ArticleView.LIST,
+  view: View.LIST,
 }
 DarkList.decorators = [ThemeDecorator(Theme.DARK)]
 
 export const DarkGrid = Template.bind({})
 DarkGrid.args = {
   articles,
-  view: ArticleView.GRID,
+  view: View.GRID,
 }
 DarkGrid.decorators = [ThemeDecorator(Theme.DARK)]
 
 export const RedList = Template.bind({})
 RedList.args = {
   articles,
-  view: ArticleView.LIST,
+  view: View.LIST,
 }
 RedList.decorators = [ThemeDecorator(Theme.RED)]
 
 export const RedGrid = Template.bind({})
 RedGrid.args = {
   articles,
-  view: ArticleView.GRID,
+  view: View.GRID,
 }
 RedGrid.decorators = [ThemeDecorator(Theme.RED)]

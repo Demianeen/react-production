@@ -3,16 +3,21 @@ import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDy
 import { useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useSelector } from 'react-redux'
 import { CommentList } from 'entities/Comment'
-import { getArticleCommentListIsLoading } from 'features/ArticleCommentList/model/selectors/getArticleCommentListIsLoading/getArticleCommentListIsLoading'
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
-import { fetchCommentsByArticleId } from 'features/ArticleCommentList/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { sendArticleComment } from 'features/ArticleCommentList/model/services/sendArticleComment/sendArticleComment'
 import { AddCommentForm } from 'features/AddCommentForm'
-import {
-  articleCommentListReducer,
-  getArticleCommentList,
-} from '../../model/slice/articleCommentListSlice'
+import { Text } from 'shared/ui/Text/Text'
+import { useTranslation } from 'react-i18next'
+import { ArticleList } from 'entities/Article'
+import { articleDetailsFooterReducer } from 'features/ArticleCommentList/model/slice'
+import { getArticleRecommendations } from '../../model/slice/articleDetailsRecommendations'
+import { fetchArticleRecommendations } from '../../model/services/fetchArticleRecommendations/fetchArticleRecommendations'
+import { sendArticleComment } from '../../model/services/sendArticleComment/sendArticleComment'
+import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId'
+import { getArticleCommentListIsLoading } from '../../model/selectors/getArticleCommentListIsLoading/getArticleCommentListIsLoading'
+import { getArticleDetailsRecommendationsIsLoading } from '../../model/selectors/recommendations/getArticleDetailsRecommendationsIsLoading/getArticleDetailsRecommendationsIsLoading'
+import { getArticleCommentList } from '../../model/slice/articleCommentListSlice'
+import styles from './ArticleCommentList.module.scss'
 
 export interface ArticleCommentListProps {
   className?: string
@@ -20,12 +25,14 @@ export interface ArticleCommentListProps {
 }
 
 const reducers: ReducersList = {
-  articleCommentList: articleCommentListReducer,
+  articleDetailsFooter: articleDetailsFooterReducer,
 }
 
 export const ArticleCommentList = memo(
   ({ className, articleId }: ArticleCommentListProps) => {
     useDynamicModuleLoader(reducers)
+    const { t } = useTranslation('article-details')
+
     const comments = useSelector(
       getArticleCommentList.selectAll
     )
@@ -43,11 +50,33 @@ export const ArticleCommentList = memo(
 
     useInitialEffect(() => {
       dispatch(fetchCommentsByArticleId(articleId))
+      dispatch(fetchArticleRecommendations())
     })
+
+    const recommendations = useSelector(
+      getArticleRecommendations.selectAll
+    )
+    const isRecommendationsLoading = useSelector(
+      getArticleDetailsRecommendationsIsLoading
+    )
 
     return (
       <>
+        <Text
+          title={t('Recommend next')}
+          className={styles.sectionTitle}
+        />
+        <ArticleList
+          articles={recommendations}
+          isLoading={isRecommendationsLoading}
+          className={styles.recommendations}
+          target='_blank'
+        />
         {/* we pass onSendComment here to make addCommentForm independent feature that can be used elsewhere. */}
+        <Text
+          title={t('Comments')}
+          className={styles.sectionTitle}
+        />
         <AddCommentForm onSendComment={onSendComment} />
         <CommentList
           className={className}

@@ -5,6 +5,7 @@ import {
 import type { Comment } from 'entities/Comment'
 import type { StateSchema } from 'app/providers/StoreProvider'
 import { fetchCommentsByArticleId } from 'features/ArticleCommentList/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId'
+import { getArticleCommentListState } from 'features/ArticleCommentList/model/selectors/getArticleCommentListState/getArticleCommentListState'
 import type { ArticleCommentListSliceSchema } from '../types/articleCommentListSliceSchema'
 
 const articleCommentsAdapter =
@@ -61,5 +62,6 @@ export const { actions: articleCommentListActions } =
 
 export const getArticleCommentList =
   articleCommentsAdapter.getSelectors<StateSchema>(
-    (state) => state.articleCommentList ?? initialState
+    (state) =>
+      getArticleCommentListState(state) ?? initialState
   )

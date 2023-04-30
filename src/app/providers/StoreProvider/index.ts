@@ -5,4 +5,4 @@ export {
   ReduxStoreWithReducerManager,
   AppDispatch,
   ThunkConfig,
-} from './config/StateSchema'
+} from './config/stateSchema'

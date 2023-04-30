@@ -83,10 +83,31 @@ export const article: Article = {
   ],
 }
 
-export const articles: Article[] = new Array(10)
+export const articles: Article[] = new Array(12)
   .fill(null)
   .map((_, index) => ({
-    // @ts-expect-error we use ids as keys
-    id: index,
     ...article,
+    id: index,
   }))
+
+export const anotherArticles: Article[] = new Array(12)
+  .fill(null)
+  .map((_, index) => ({
+    ...article,
+    id: index + 12,
+  }))
+
+export const articleIds = articles.map((art) => art.id)
+export const anotherArticleIds = anotherArticles.map(
+  (art) => art.id
+)
+
+export const getArticleEntities = (
+  articlesToTransfrom: Article[] = articles
+): Record<number, Article> => {
+  const entities: Record<number, Article> = {}
+  articlesToTransfrom.forEach((art) => {
+    entities[art.id] = art
+  })
+  return entities
+}

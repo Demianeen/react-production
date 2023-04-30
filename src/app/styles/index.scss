@@ -18,3 +18,24 @@
 .contentPage {
   display: flex;
 }
+
+// scrollbar
+
+/* width */
+::-webkit-scrollbar {
+  width: 0.55rem;
+  height: 0.6rem;
+  scroll-behavior: smooth;
+  scroll-padding: 0.5rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--card-bg);
+  border-radius: 0.6rem;
+}

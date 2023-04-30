@@ -1,4 +1,16 @@
 {
   "Read more...": "Читати далі...",
-  "Failed to load articles": "Не вдалося завантажити статті"
+  "Failed to load articles": "Не вдалося завантажити статті",
+  "Sort by": "Сортувати за",
+  "Sort order": "Порядок сортування",
+  "Ascending": "Зростаючий",
+  "Descending": "Спадаючий",
+  "Date created": "Датою створення",
+  "Title": "Заголовками",
+  "Views": "Переглядами",
+  "ALL": "Всі статті",
+  "IT": "Айті",
+  "ECONOMICS": "Економіка",
+  "SCIENCE": "Наука",
+  "Articles not found": "Статей не знайдено"
 }

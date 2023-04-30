@@ -19,10 +19,11 @@ import type { createReduxStore } from 'app/providers/StoreProvider'
 import type { AxiosInstance } from 'axios'
 import type { ProfileSchema } from 'features/EditableProfileCard'
 import type { ArticleDetailsSchema } from 'entities/Article'
-import type { ArticleCommentListSliceSchema } from 'features/ArticleCommentList'
 import type { AddCommentFormSchema } from 'features/AddCommentForm'
 import type { ArticlesPageSchema } from 'pages/ArticlesPage'
 import type { PageSchema } from 'widgets/Page'
+import type { ArticleDetailsFooterSchema } from 'features/ArticleCommentList'
+import type { SortedArticleListSchema } from 'features/SortedArticlesList'
 
 export interface StateSchema {
   [counterSliceName]: CounterSchema
@@ -33,9 +34,10 @@ export interface StateSchema {
   [loginFormSliceName]?: LoginFormSchema
   profile?: ProfileSchema
   articleDetails?: ArticleDetailsSchema
-  articleCommentList?: ArticleCommentListSliceSchema
+  articleDetailsFooter?: ArticleDetailsFooterSchema
   addCommentForm?: AddCommentFormSchema
   articlesPage?: ArticlesPageSchema
+  sortedArticleList?: SortedArticleListSchema
 }
 
 export type StateSchemaKey = keyof StateSchema

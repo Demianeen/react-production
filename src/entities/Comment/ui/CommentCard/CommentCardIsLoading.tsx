@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton'
-import styles from '../CommentCard/CommentCard.module.scss'
+import styles from './CommentCard.module.scss'
 
 interface CommentCardProps {
   className?: string

@@ -1,9 +1,4 @@
 import React, { memo, useCallback } from 'react'
-import type { ArticleView } from 'entities/Article'
-import {
-  ArticleList,
-  ArticleSelectView,
-} from 'entities/Article'
 import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
@@ -12,13 +7,12 @@ import { useSelector } from 'react-redux'
 import { Page } from 'widgets/Page/ui/Page/Page'
 import { useTranslation } from 'react-i18next'
 import { Text, TextAlign } from 'shared/ui/Text/Text'
+import { SortedArticleList } from 'features/SortedArticlesList'
 import { getArticlesPageIsLoading } from '../../model/selectors/getArticlesPageIsLoading/getArticlesPageIsLoading'
 import { getArticlesPageError } from '../../model/selectors/getArticlesPageError/getArticlesPageError'
-import { getArticlesPageView } from '../../model/selectors/getArticlesPageView/getArticlesPageView'
 import { fetchArticlesNextPage } from '../../model/services/fetchArticlesNextPage/fetchArticlesNextPage'
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage'
 import {
-  articlesPageActions,
   articlesPageReducer,
   getArticles,
 } from '../../model/slice/articlesPageSlice'
@@ -41,14 +35,6 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
   const articles = useSelector(getArticles.selectAll)
   const isLoading = useSelector(getArticlesPageIsLoading)
   const error = useSelector(getArticlesPageError)
-  const view = useSelector(getArticlesPageView)
-
-  const onChangeView = useCallback(
-    (newView: ArticleView) => {
-      dispatch(articlesPageActions.setView(newView))
-    },
-    [dispatch]
-  )
 
   const onLoadNextPart = useCallback(() => {
     dispatch(fetchArticlesNextPage())
@@ -74,14 +60,9 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
       className={className}
       onScrollEnd={onLoadNextPart}
     >
-      <ArticleSelectView
-        selectedView={view}
-        onChangeView={onChangeView}
-      />
-      <ArticleList
+      <SortedArticleList
         articles={articles}
         isLoading={isLoading}
-        view={view}
       />
     </Page>
   )

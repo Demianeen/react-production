@@ -3,17 +3,17 @@ import { classNames } from 'shared/lib/classNames/classNames'
 import { Card } from 'shared/ui/Card/Card'
 import { ArticleListItem } from 'entities/Article/ui/ArticleListItem/ArticleListItem'
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton'
+import { View } from 'entities/View'
 import styles from './ArticleListItem.module.scss'
-import { ArticleView } from '../../model/types/article'
 
 interface ArticleListItemSkeletonProps {
   className?: string
-  view: ArticleView
+  view: View
 }
 
 export const ArticleListItemSkeleton = memo(
   ({ className, view }: ArticleListItemSkeletonProps) => {
-    if (view === ArticleView.LIST) {
+    if (view === View.LIST) {
       return (
         <Card
           className={classNames(

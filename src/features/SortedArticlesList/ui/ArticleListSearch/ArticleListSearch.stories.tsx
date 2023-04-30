@@ -4,19 +4,19 @@ import type {
 } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
-import { ArticleSelectView } from './ArticleSelectView'
+import { ArticleListSearch } from './ArticleListSearch'
 
 export default {
-  title: 'Article/ArticleSelectView',
-  component: ArticleSelectView,
+  title: 'features/SortedArticleList/ArticleListSearch',
+  component: ArticleListSearch,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof ArticleSelectView>
+} as ComponentMeta<typeof ArticleListSearch>
 
-const Template: ComponentStory<typeof ArticleSelectView> = (
+const Template: ComponentStory<typeof ArticleListSearch> = (
   args
-) => <ArticleSelectView {...args} />
+) => <ArticleListSearch {...args} />
 
 export const Light = Template.bind({})
 Light.args = {}
