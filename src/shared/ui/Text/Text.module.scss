@@ -3,7 +3,7 @@
     color: var(--secondary-color)
   }
 
-  // Text alignment
+  // Text alignments
   &.left {
     text-align: left;
   }
@@ -16,7 +16,7 @@
     text-align: right;
   }
 
-  // Text size
+  // Text sizes
   &.medium {
     .title {
       font: var(--font-l);
@@ -37,7 +37,7 @@
     }
   }
 
-  // Text theme
+  // Text themes
   &.error {
     .title {
       color: var(--red-light)
@@ -45,6 +45,16 @@
 
     .text {
       color: var(--red-dark)
+    }
+  }
+
+  &.inverted {
+    .title {
+      color: var(--inverted-primary-color);
+    }
+
+    .text {
+      color: var(--inverted-secondary-color);
     }
   }
 }

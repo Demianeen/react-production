@@ -14,6 +14,7 @@ interface SortedArticlesListProps {
   articles: Article[]
   isLoading: boolean
   className?: string
+  limit: number
 }
 
 const reducers: ReducersList = {
@@ -25,6 +26,7 @@ export const SortedArticleList = memo(
     articles,
     isLoading,
     className,
+    limit,
   }: SortedArticlesListProps) => {
     useDynamicModuleLoader(reducers, {
       removeOnUnmount: false,
@@ -45,6 +47,7 @@ export const SortedArticleList = memo(
           isLoading={isLoading}
           view={view}
           className={styles.articleList}
+          limit={limit}
         />
       </div>
     )

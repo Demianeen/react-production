@@ -121,6 +121,9 @@ module.exports = {
 
     // we always need to add deps to useEffect
     'react-hooks/exhaustive-deps': 2,
+
+    // TODO: enable later
+    'import/no-cycle': 0,
   },
   settings: {
     react: {

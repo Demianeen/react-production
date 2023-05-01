@@ -1,15 +1,6 @@
-import type {
-  CounterSchema,
-  counterSliceName,
-} from 'entities/Counter'
-import type {
-  UserSchema,
-  userSliceName,
-} from 'entities/User'
-import type {
-  LoginFormSchema,
-  loginFormSliceName,
-} from 'features/AuthByUsername'
+import type { CounterSchema } from 'entities/Counter'
+import type { UserSchema } from 'entities/User'
+import type { LoginFormSchema } from 'features/AuthByUsername'
 import type {
   EnhancedStore,
   Reducer,
@@ -26,12 +17,12 @@ import type { ArticleDetailsFooterSchema } from 'features/ArticleCommentList'
 import type { SortedArticleListSchema } from 'features/SortedArticlesList'
 
 export interface StateSchema {
-  [counterSliceName]: CounterSchema
-  [userSliceName]: UserSchema
+  counter: CounterSchema
+  user: UserSchema
   page: PageSchema
 
   // Async reducers
-  [loginFormSliceName]?: LoginFormSchema
+  loginForm?: LoginFormSchema
   profile?: ProfileSchema
   articleDetails?: ArticleDetailsSchema
   articleDetailsFooter?: ArticleDetailsFooterSchema

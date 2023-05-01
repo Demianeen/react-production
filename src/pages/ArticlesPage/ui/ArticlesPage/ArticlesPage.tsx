@@ -8,6 +8,7 @@ import { Page } from 'widgets/Page/ui/Page/Page'
 import { useTranslation } from 'react-i18next'
 import { Text, TextAlign } from 'shared/ui/Text/Text'
 import { SortedArticleList } from 'features/SortedArticlesList'
+import { getArticlesPageLimit } from '../../model/selectors/getArticlesPageLimit/getArticlesPageLimit'
 import { getArticlesPageIsLoading } from '../../model/selectors/getArticlesPageIsLoading/getArticlesPageIsLoading'
 import { getArticlesPageError } from '../../model/selectors/getArticlesPageError/getArticlesPageError'
 import { fetchArticlesNextPage } from '../../model/services/fetchArticlesNextPage/fetchArticlesNextPage'
@@ -35,6 +36,7 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
   const articles = useSelector(getArticles.selectAll)
   const isLoading = useSelector(getArticlesPageIsLoading)
   const error = useSelector(getArticlesPageError)
+  const limit = useSelector(getArticlesPageLimit)
 
   const onLoadNextPart = useCallback(() => {
     dispatch(fetchArticlesNextPage())
@@ -63,6 +65,7 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
       <SortedArticleList
         articles={articles}
         isLoading={isLoading}
+        limit={limit}
       />
     </Page>
   )

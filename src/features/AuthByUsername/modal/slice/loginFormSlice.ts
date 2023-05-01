@@ -43,4 +43,3 @@ export const loginFormSlice = createSlice({
 
 export const { actions: loginActions } = loginFormSlice
 export const { reducer: loginReducer } = loginFormSlice
-export const { name: loginFormSliceName } = loginFormSlice

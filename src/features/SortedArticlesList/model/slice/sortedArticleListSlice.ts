@@ -3,11 +3,9 @@ import { createSlice } from '@reduxjs/toolkit'
 import { SortOrder } from 'shared/types/sort'
 import type { View } from 'entities/View'
 import { ARTICLE_VIEW_LOCALSTORAGE_KEY } from 'shared/const/localstorage'
-import {
-  ArticleSortField,
-  ArticleType,
-} from 'entities/Article'
+import type { ArticleType } from 'entities/Article'
 import type { SortedArticleListSchema } from '../types/sortedArticleListSchema'
+import { ArticleSortField } from '../types/sortedArticleListSchema'
 import { INITIAL_ARTICLE_VIEW } from '../const/view'
 
 const initialState: SortedArticleListSchema = {
@@ -15,7 +13,8 @@ const initialState: SortedArticleListSchema = {
   order: SortOrder.ASC,
   search: '',
   sort: ArticleSortField.CREATED_AT,
-  type: ArticleType.ALL,
+  // FIXME: resolve dependency cycle
+  type: 'all' as ArticleType.ALL,
 }
 
 export const sortedArticleListSlice = createSlice({

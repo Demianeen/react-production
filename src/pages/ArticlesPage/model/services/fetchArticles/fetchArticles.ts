@@ -55,7 +55,8 @@ export const fetchArticles = createAsyncThunk<
             _order: order,
             _sort: sortField,
             q: search,
-            types:
+            // eslint-disable-next-line @typescript-eslint/naming-convention
+            types_like:
               type === ArticleType.ALL ? undefined : type,
           },
         }

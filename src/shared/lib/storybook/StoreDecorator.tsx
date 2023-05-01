@@ -1,7 +1,6 @@
 import type { Story } from '@storybook/react'
 import type { StateSchema } from 'app/providers/StoreProvider'
 import { StoreProvider } from 'app/providers/StoreProvider'
-import { loginFormSliceName } from 'features/AuthByUsername'
 import { loginReducer } from 'features/AuthByUsername/modal/slice/loginFormSlice'
 import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 // that's okay that we import this not from sort.ts because we use it only in storybook
@@ -15,7 +14,7 @@ import type { Reducer } from 'redux'
 import { articleDetailsFooterReducer } from 'features/ArticleCommentList/model/slice'
 
 const defaultAsyncReducers: ReducersList = {
-  [loginFormSliceName]: loginReducer,
+  loginForm: loginReducer,
   profile: profileReducer,
   articleDetails: articleDetailsReducer,
   addCommentForm: addCommentFormReducer,

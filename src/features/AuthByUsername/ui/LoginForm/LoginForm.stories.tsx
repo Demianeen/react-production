@@ -6,7 +6,6 @@ import type {
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
-import { loginFormSliceName } from 'features/AuthByUsername'
 import LoginForm from './LoginForm'
 
 export default {
@@ -32,7 +31,7 @@ export const WithValue = Template.bind({})
 WithValue.args = {}
 WithValue.decorators = [
   StoreDecorator({
-    [loginFormSliceName]: {
+    loginForm: {
       username: 'username',
       password: 'password',
     },
@@ -43,7 +42,7 @@ export const Error = Template.bind({})
 Error.args = {}
 Error.decorators = [
   StoreDecorator({
-    [loginFormSliceName]: {
+    loginForm: {
       error: 'Error',
     },
   }),
@@ -53,7 +52,7 @@ export const Loading = Template.bind({})
 Loading.args = {}
 Loading.decorators = [
   StoreDecorator({
-    [loginFormSliceName]: {
+    loginForm: {
       isLoading: true,
     },
   }),

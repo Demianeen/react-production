@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import React, { memo, useCallback } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
@@ -16,12 +17,9 @@ import EyeIcon from 'shared/assets/icons/eye-20-20.svg'
 import CalendarIcon from 'shared/assets/icons/calendar-20-20.svg'
 import { Icon } from 'shared/ui/Icon/Icon'
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
-import { Button } from 'shared/ui/Button/Button'
-import { useNavigate } from 'react-router-dom'
-import { RoutePath } from 'shared/config/routeConfig/routeConfig'
-import { getArticleDetailsIsLoading } from 'entities/Article/model/selectors/getArticleDetailsIsLoading/getArticleDetailsIsLoading'
-import { getArticleDetailsError } from 'entities/Article/model/selectors/getArticleDetailsError/getArticleDetailsError'
-import { getArticleDetailsData } from 'entities/Article/model/selectors/getArticleDetailsData/getArticleDetailsData'
+import { getArticleDetailsIsLoading } from '../../model/selectors/getArticleDetailsIsLoading/getArticleDetailsIsLoading'
+import { getArticleDetailsError } from '../../model/selectors/getArticleDetailsError/getArticleDetailsError'
+import { getArticleDetailsData } from '../../model/selectors/getArticleDetailsData/getArticleDetailsData'
 import type { ArticleBlock } from '../../model/types/article'
 import { ArticleBlockType } from '../../model/types/article'
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent'
@@ -30,6 +28,7 @@ import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleC
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice'
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById'
 import styles from './ArticleDetails.module.scss'
+import { ArticleDetailsHeader } from '../ArticleDetailsHeader/ArticleDetailsHeader'
 
 interface ArticleDetailsProps {
   className?: string
@@ -50,8 +49,6 @@ export const ArticleDetails = memo(
     )
     const error = useSelector(getArticleDetailsError)
     const article = useSelector(getArticleDetailsData)
-
-    const navigate = useNavigate()
 
     const renderBlock = useCallback(
       (block: ArticleBlock) => {
@@ -89,11 +86,7 @@ export const ArticleDetails = memo(
 
     useInitialEffect(() => dispatch(fetchArticleById(id)))
 
-    const onBackToList = useCallback(() => {
-      navigate(RoutePath.articles)
-    }, [navigate])
-
-    let content = null
+    let content: ReactNode
 
     if (isLoading) {
       content = (
@@ -173,13 +166,7 @@ export const ArticleDetails = memo(
           className,
         ])}
       >
-        <Button
-          type='button'
-          role='link'
-          onClick={onBackToList}
-        >
-          {t('Back to list')}
-        </Button>
+        {article && <ArticleDetailsHeader id={id} />}
         {content}
       </div>
     )

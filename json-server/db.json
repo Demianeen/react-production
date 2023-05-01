@@ -684,10 +684,11 @@
       "subtitle": "Exploring the Pros and Cons of Digital Currency",
       "img": "https://images.pexels.com/photos/730564/pexels-photo-730564.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       "views": 1820,
-      "userId": 3,
+      "userId": 1,
       "createdAt": "28.12.2020",
       "types": [
-        "ECONOMICS"
+        "ECONOMICS",
+        "IT"
       ],
       "blocks": [
         {
@@ -826,6 +827,12 @@
       "articleId": 1,
       "userId": 1,
       "id": 14
+    },
+    {
+      "body": "mlkmlk",
+      "articleId": 4,
+      "userId": 1,
+      "id": 15
     }
   ],
   "users": [

@@ -19,7 +19,6 @@ import { getLoginFormIsLoading } from '../../modal/selectors/getLoginFormIsLoadi
 import styles from './LoginForm.module.scss'
 import {
   loginActions,
-  loginFormSliceName,
   loginReducer,
 } from '../../modal/slice/loginFormSlice'
 import { loginByUsername } from '../../modal/services/loginByUsername/loginByUsername'
@@ -30,7 +29,7 @@ interface LoginFormProps {
 }
 
 const reducersList: ReducersList = {
-  [loginFormSliceName]: loginReducer,
+  loginForm: loginReducer,
 }
 
 const LoginForm = memo(

@@ -25,8 +25,8 @@ const Template: ComponentStory<typeof Text> = (args) => (
   <Text {...args} />
 )
 
-export const Normal = Template.bind({})
-Normal.args = {
+export const Default = Template.bind({})
+Default.args = {
   title: 'Title',
   text: 'Text',
 }
@@ -46,6 +46,13 @@ Error.args = {
   title: 'Title',
   text: 'Text',
   theme: TextTheme.ERROR,
+}
+
+export const Inverted = Template.bind({})
+Inverted.args = {
+  title: 'Title',
+  text: 'Text',
+  theme: TextTheme.INVERTED,
 }
 
 export const AlignCenter = Template.bind({})

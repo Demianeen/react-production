@@ -1,7 +1,6 @@
 export {
   userReducer,
   userActions,
-  userSliceName,
 } from './model/slice/userSlice'
 
 export type {
@@ -10,3 +9,4 @@ export type {
 } from './model/types/userSchema'
 export { getUserAuthData } from './model/selectors/getUserAuthData/getUserAuthData'
 export { getUserIsInitialized } from './model/selectors/getUserIsInitialized/getUserIsInitialized'
+export { getUserId } from './model/selectors/getUserId/getUserId'

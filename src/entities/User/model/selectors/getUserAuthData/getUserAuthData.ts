@@ -1,7 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit'
-import { getUser } from 'entities/User/model/selectors/getUser/getUser'
+import { getUserState } from 'entities/User/model/selectors/getUserState/getUserState'
 
 export const getUserAuthData = createSelector(
-  getUser,
+  getUserState,
   (user) => user?.authData
 )

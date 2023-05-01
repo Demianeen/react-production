@@ -1,7 +1,6 @@
 import React, { memo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { Card } from 'shared/ui/Card/Card'
-import { ArticleListItem } from 'entities/Article/ui/ArticleListItem/ArticleListItem'
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton'
 import { View } from 'entities/View'
 import styles from './ArticleListItem.module.scss'

@@ -1,13 +1,10 @@
-import type { ReducersMapObject } from '@reduxjs/toolkit'
 import { configureStore } from '@reduxjs/toolkit'
-import {
-  counterReducer,
-  counterSliceName,
-} from 'entities/Counter'
-import { userReducer, userSliceName } from 'entities/User'
+import { counterReducer } from 'entities/Counter'
+import { userReducer } from 'entities/User'
 import { $api } from 'shared/api/api'
 import type { CombinedState, Reducer } from 'redux'
 import { pageReducer } from 'widgets/Page'
+import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import type {
   StateSchema,
   StateSchemaKey,
@@ -24,14 +21,16 @@ export function createReduxStore({
   preloadedState,
   preloadedAsyncReducers,
 }: CreateReduxStoreProps) {
-  const rootReducers: ReducersMapObject<StateSchema> = {
+  const rootReducers: ReducersList = {
     ...preloadedAsyncReducers,
-    [counterSliceName]: counterReducer,
-    [userSliceName]: userReducer,
+    counter: counterReducer,
+    user: userReducer,
     page: pageReducer,
   }
 
-  const reducerManager = createReducerManager(rootReducers)
+  const reducerManager = createReducerManager(
+    rootReducers as Record<StateSchemaKey, Reducer>
+  )
 
   const extraArg: ThunkExtraArg = {
     api: $api,

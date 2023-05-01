@@ -36,7 +36,7 @@ export const ArticleListSearch = memo(
         dispatch(articlesPageActions.setPage(1))
         debouncedFetchArticles()
       },
-      [dispatch]
+      [debouncedFetchArticles, dispatch]
     )
 
     return (

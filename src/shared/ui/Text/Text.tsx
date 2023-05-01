@@ -3,7 +3,8 @@ import { classNames } from 'shared/lib/classNames/classNames'
 import styles from './Text.module.scss'
 
 export enum TextTheme {
-  NORMAL = 'normal',
+  DEFAULT = 'normal',
+  INVERTED = 'inverted',
   ERROR = 'error',
 }
 
@@ -32,7 +33,7 @@ export const Text = memo(
     className,
     title,
     text,
-    theme = TextTheme.NORMAL,
+    theme = TextTheme.DEFAULT,
     align = TextAlign.LEFT,
     size = TextSize.M,
   }: TextProps) => {

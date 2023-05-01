@@ -4,9 +4,11 @@ import type { SelectOption } from 'shared/ui/Select/Select'
 import { Select } from 'shared/ui/Select/Select'
 import { useTranslation } from 'react-i18next'
 import { SortOrder } from 'shared/types/sort'
-import { ArticleSortField } from 'entities/Article/model/types/article'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { sortedArticleListActions } from 'features/SortedArticlesList'
+import {
+  ArticleSortField,
+  sortedArticleListActions,
+} from 'features/SortedArticlesList'
 import { useSelector } from 'react-redux'
 import { getSortedArticleListOrder } from 'features/SortedArticlesList/model/selectors/getSortedArticleListOrder/getSortedArticleListOrder'
 import { getSortedArticleListSortField } from 'features/SortedArticlesList/model/selectors/getSortedArticleListSortField/getSortedArticleListSortField'

@@ -1,5 +1,5 @@
-import { ArticleSortField } from 'entities/Article/model/types/article'
 import type { StateSchema } from 'app/providers/StoreProvider'
+import { ArticleSortField } from 'features/SortedArticlesList'
 import { getSortedArticleListSortField } from './getSortedArticleListSortField'
 
 describe('getSortedArticleListSortField', () => {

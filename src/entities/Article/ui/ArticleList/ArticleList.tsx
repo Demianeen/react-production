@@ -14,14 +14,13 @@ interface ArticleListProps {
   className?: string
   articles: Article[]
   isLoading: boolean
+  limit: number
   view?: View
   target?: HTMLAttributeAnchorTarget
 }
 
-const getArticleSkeletons = (view: View) => {
-  const articleSkeletons = new Array(
-    view === View.GRID ? 12 : 4
-  ).fill(null)
+const getArticleSkeletons = (view: View, limit: number) => {
+  const articleSkeletons = new Array(limit).fill(null)
 
   return articleSkeletons.map((_, index) => (
     <ArticleListItemSkeleton
@@ -39,8 +38,10 @@ export const ArticleList = memo(
     isLoading,
     view = View.GRID,
     target,
+    limit,
   }: ArticleListProps) => {
     const { t } = useTranslation('articles')
+
     const renderArticle = useCallback(
       (article: Article) => (
         <ArticleListItem
@@ -50,7 +51,7 @@ export const ArticleList = memo(
           target={target}
         />
       ),
-      [view]
+      [target, view]
     )
 
     if (!isLoading && !articles.length) {
@@ -74,7 +75,8 @@ export const ArticleList = memo(
         {articles.length > 0
           ? articles.map(renderArticle)
           : null}
-        {isLoading && getArticleSkeletons(view)}
+        {isLoading && getArticleSkeletons(view, limit)}
+        {/* TODO: Loading stuck while you already waiting for next portion */}
       </div>
     )
   }

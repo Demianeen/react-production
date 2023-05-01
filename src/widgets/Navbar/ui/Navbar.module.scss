@@ -1,12 +1,17 @@
 .navbar {
   display: flex;
+  gap: 1rem;
   align-items: center;
   width: 100%;
   height: var(--navbar-height);
   padding: 0 1rem;
   background-color: var(--inverted-bg-color);
 
-  .links {
+  .appName {
+    width: var(--sidebar-width);
+  }
+
+  .loginBtn {
     margin-left: auto;
   }
 }

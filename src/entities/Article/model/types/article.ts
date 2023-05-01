@@ -52,9 +52,3 @@ export interface Article {
   types: ArticleType[]
   blocks: ArticleBlock[]
 }
-
-export enum ArticleSortField {
-  VIEWS = 'views',
-  TITLE = 'title',
-  CREATED_AT = 'createdAt',
-}
