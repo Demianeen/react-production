@@ -18,8 +18,8 @@ export default ({
     }),
     new ProgressPlugin(),
     new MiniCSSExtractPlugin({
-      filename: 'css/[name].[contenthash:8]',
-      chunkFilename: 'css/[name].[contenthash:8]',
+      filename: 'css/[name].[contenthash:8].css',
+      chunkFilename: 'css/[name].[contenthash:8].css',
     }),
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
