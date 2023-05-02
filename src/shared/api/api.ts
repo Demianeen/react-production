@@ -6,17 +6,14 @@ export const $api = axios.create({
 })
 
 // set authorization header on each request
-const updateAuthorizationHeader = () => {
-  $api.defaults.headers.common.authorization =
-    localStorage.getItem(AUTH_DATA_LOCALSTORAGE_KEY) ?? ''
-}
-
-// call the function initially to set the authorization header
-updateAuthorizationHeader()
-
-// listen for changes in the local storage and update the authorization header accordingly
-window.addEventListener('storage', (e) => {
-  if (e.key === AUTH_DATA_LOCALSTORAGE_KEY) {
-    updateAuthorizationHeader()
+$api.interceptors.request.use((config) => {
+  if (config.headers) {
+    const token = localStorage.getItem(
+      AUTH_DATA_LOCALSTORAGE_KEY
+    )
+    if (token === null) return config
+    // eslint-disable-next-line no-param-reassign
+    config.headers.Authorization = token
   }
+  return config
 })
