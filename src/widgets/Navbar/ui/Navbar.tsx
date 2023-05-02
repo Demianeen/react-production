@@ -79,7 +79,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
         type='button'
         theme={ButtonTheme.CLEAR_INVERTED}
         onClick={onOpenModal}
-        className={styles.links}
+        className={styles.loginBtn}
       >
         {t('Login')}
       </Button>
