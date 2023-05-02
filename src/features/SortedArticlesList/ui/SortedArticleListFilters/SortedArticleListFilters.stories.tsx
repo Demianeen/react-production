@@ -4,6 +4,7 @@ import type {
 } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
+import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
 import { SortedArticleListFilters } from './SortedArticleListFilters'
 
 export default {
@@ -13,6 +14,7 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  decorators: [StoreDecorator()],
 } as ComponentMeta<typeof SortedArticleListFilters>
 
 const Template: ComponentStory<

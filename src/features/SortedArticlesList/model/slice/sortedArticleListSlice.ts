@@ -14,7 +14,7 @@ const initialState: SortedArticleListSchema = {
   search: '',
   sort: ArticleSortField.CREATED_AT,
   // FIXME: resolve dependency cycle
-  type: 'all' as ArticleType.ALL,
+  type: 'ALL' as ArticleType.ALL,
 }
 
 export const sortedArticleListSlice = createSlice({

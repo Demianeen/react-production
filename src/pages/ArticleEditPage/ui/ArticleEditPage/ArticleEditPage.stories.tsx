@@ -4,14 +4,16 @@ import type {
 } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
+import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
 import ArticleEditPage from './ArticleEditPage'
 
 export default {
-  title: 'ArticleEditPage/ArticleEditPage',
+  title: 'pages/ArticleEditPage',
   component: ArticleEditPage,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  decorators: [StoreDecorator()],
 } as ComponentMeta<typeof ArticleEditPage>
 
 const Template: ComponentStory<typeof ArticleEditPage> = (

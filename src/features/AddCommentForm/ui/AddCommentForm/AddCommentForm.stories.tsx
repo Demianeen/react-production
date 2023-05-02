@@ -9,7 +9,7 @@ import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
 import AddCommentForm from './AddCommentForm'
 
 export default {
-  title: 'AddCommentForm/AddCommentForm',
+  title: 'features/AddCommentForm',
   component: AddCommentForm,
   argTypes: {
     backgroundColor: { control: 'color' },

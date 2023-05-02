@@ -7,7 +7,7 @@ import { Theme } from 'app/providers/ThemeProvider'
 import { ArticleDetailsHeader } from './ArticleDetailsHeader'
 
 export default {
-  title: 'Article/ArticleDetailsHeader',
+  title: 'entities/Article/ArticleDetailsHeader',
   component: ArticleDetailsHeader,
   argTypes: {
     backgroundColor: { control: 'color' },

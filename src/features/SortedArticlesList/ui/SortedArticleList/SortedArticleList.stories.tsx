@@ -4,7 +4,9 @@ import type {
 } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
+import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
 import { SortedArticleList } from './SortedArticleList'
+import { articles } from '../../model/mocks/data'
 
 export default {
   title: 'features/SortedArticleList/SortedArticleList',
@@ -12,6 +14,10 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  args: {
+    articles,
+  },
+  decorators: [StoreDecorator()],
 } as ComponentMeta<typeof SortedArticleList>
 
 const Template: ComponentStory<typeof SortedArticleList> = (
