@@ -31,6 +31,14 @@ export interface StateSchema {
   sortedArticleList?: SortedArticleListSchema
 }
 
+export type OptionalStateSchema = {
+  [K in keyof StateSchema extends undefined
+    ? K
+    : never]?: StateSchema[K]
+}
+
+export const optionalStateSchema: OptionalStateSchema = {}
+
 export type StateSchemaKey = keyof StateSchema
 export type StateReducer = Reducer<StateSchema>
 

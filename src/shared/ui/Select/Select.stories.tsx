@@ -4,6 +4,7 @@ import type {
 } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
+import { action } from '@storybook/addon-actions'
 import { Select } from './Select'
 
 export default {
@@ -18,6 +19,7 @@ export default {
       { value: '2', label: 'Option 2' },
       { value: '3', label: 'Option 3' },
     ],
+    onChange: action('onChange'),
   },
 } as ComponentMeta<typeof Select>
 
@@ -36,6 +38,11 @@ WithoutLabel.args = {}
 export const WithSelectedValue = Template.bind({})
 WithSelectedValue.args = {
   value: '2',
+}
+
+export const Readonly = Template.bind({})
+Readonly.args = {
+  readonly: true,
 }
 
 export const Dark = Template.bind({})

@@ -1,12 +1,13 @@
 import type { Article } from 'entities/Article'
 import { ArticleType } from 'entities/Article'
 import { ArticleBlockType } from 'entities/Article/model/types/article'
+import StoryBookImage from 'shared/assets/tests/storybook-js.png'
 
 export const article: Article = {
   id: 1,
   title: 'Javascript news - what is new in JS for 2023?',
   subtitle: 'Что нового в JS за 2022 год?',
-  img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
+  img: StoryBookImage,
   views: 1022,
   user: {
     id: 1,

@@ -127,8 +127,6 @@ export const VirtualizedArticleList = ({
 
   const isArticlesNotFound = !isLoading && !articles.length
 
-  console.log('scrollParent', scrollParent)
-
   if (view === View.LIST) {
     return (
       <Virtuoso<Article, VirtualizedArticleListContext>

@@ -74,6 +74,7 @@ describe('articlesPageSlice', () => {
       )
     ).toEqual({
       limit: 4,
+      startIndex: 0,
     })
   })
 

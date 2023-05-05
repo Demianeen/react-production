@@ -12,6 +12,14 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  parameters: {
+    loki: {
+      delayCapture: 1000,
+    },
+  },
+  loki: {
+    delayCapture: 1000,
+  },
 }
 
 addDecorator(StyleDecorator)

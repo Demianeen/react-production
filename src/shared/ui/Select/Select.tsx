@@ -10,7 +10,7 @@ export interface SelectOption<T extends string> {
   label: string
 }
 
-interface SpinnerProps<T extends string> {
+interface SelectProps<T extends string> {
   className?: string
   label?: string
   options: SelectOption<T>[]
@@ -27,7 +27,7 @@ export const Select = typedMemo(
     value,
     onChange,
     readonly,
-  }: SpinnerProps<T>) => {
+  }: SelectProps<T>) => {
     const optionsList = useMemo(() => {
       return options.map((opt) => (
         <option

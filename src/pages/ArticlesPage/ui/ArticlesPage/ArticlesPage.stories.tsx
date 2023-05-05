@@ -17,6 +17,12 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  parameters: {
+    loki: {
+      // storybook throws an error when rendering this component because of virtuoso
+      skip: true,
+    },
+  },
   decorators: [
     StoreDecorator({
       articlesPage: {

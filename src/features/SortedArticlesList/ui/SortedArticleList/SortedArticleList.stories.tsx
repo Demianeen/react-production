@@ -5,6 +5,8 @@ import type {
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
+import { action } from '@storybook/addon-actions'
+import { View } from 'entities/View'
 import { SortedArticleList } from './SortedArticleList'
 import { articles } from '../../model/mocks/data'
 
@@ -16,8 +18,22 @@ export default {
   },
   args: {
     articles,
+    isLoading: false,
+    onLoadNextPart: action('onLoadNextPart'),
   },
-  decorators: [StoreDecorator()],
+  parameters: {
+    loki: {
+      // storybook throws an error when rendering this component because of virtuoso
+      skip: true,
+    },
+  },
+  decorators: [
+    StoreDecorator({
+      sortedArticleList: {
+        view: View.GRID,
+      },
+    }),
+  ],
 } as ComponentMeta<typeof SortedArticleList>
 
 const Template: ComponentStory<typeof SortedArticleList> = (
