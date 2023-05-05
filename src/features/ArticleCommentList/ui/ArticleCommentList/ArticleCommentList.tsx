@@ -10,6 +10,7 @@ import { Text } from 'shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next'
 import { ArticleList } from 'entities/Article'
 import { articleDetailsFooterReducer } from 'features/ArticleCommentList/model/slice'
+import { View } from 'entities/View'
 import { getArticleRecommendations } from '../../model/slice/articleDetailsRecommendationsSlice'
 import { fetchArticleRecommendations } from '../../model/services/fetchArticleRecommendations/fetchArticleRecommendations'
 import { sendArticleComment } from '../../model/services/sendArticleComment/sendArticleComment'
@@ -72,6 +73,7 @@ export const ArticleCommentList = memo(
           className={styles.recommendations}
           target='_blank'
           limit={4}
+          view={View.GRID}
         />
         {/* we pass onSendComment here to make addCommentForm independent feature that can be used elsewhere. */}
         <Text

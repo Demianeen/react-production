@@ -2,9 +2,9 @@ import type {
   ComponentMeta,
   ComponentStory,
 } from '@storybook/react'
+import { View } from 'entities/View'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
-import { View } from 'entities/View'
 import { ArticleListItemSkeleton } from './ArticleListItemSkeleton'
 
 export default {

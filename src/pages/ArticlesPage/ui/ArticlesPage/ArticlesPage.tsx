@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react'
+import React, { memo, useCallback, useRef } from 'react'
 import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
@@ -8,12 +8,14 @@ import { Page } from 'widgets/Page/ui/Page/Page'
 import { useTranslation } from 'react-i18next'
 import { Text, TextAlign } from 'shared/ui/Text/Text'
 import { SortedArticleList } from 'features/SortedArticlesList'
-import { getArticlesPageLimit } from '../../model/selectors/getArticlesPageLimit/getArticlesPageLimit'
+import type { OnOpenArticle } from 'entities/Article'
+import { getArticlesPageStartIndex } from 'pages/ArticlesPage/model/selectors/getArticlesPageStartIndex/getArticlesPageStartIndex'
 import { getArticlesPageIsLoading } from '../../model/selectors/getArticlesPageIsLoading/getArticlesPageIsLoading'
 import { getArticlesPageError } from '../../model/selectors/getArticlesPageError/getArticlesPageError'
 import { fetchArticlesNextPage } from '../../model/services/fetchArticlesNextPage/fetchArticlesNextPage'
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage'
 import {
+  articlesPageActions,
   articlesPageReducer,
   getArticles,
 } from '../../model/slice/articlesPageSlice'
@@ -36,11 +38,20 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
   const articles = useSelector(getArticles.selectAll)
   const isLoading = useSelector(getArticlesPageIsLoading)
   const error = useSelector(getArticlesPageError)
-  const limit = useSelector(getArticlesPageLimit)
+  const startIndex = useSelector(getArticlesPageStartIndex)
+
+  const pageRef = useRef<HTMLDivElement>(null)
 
   const onLoadNextPart = useCallback(() => {
     dispatch(fetchArticlesNextPage())
   }, [dispatch])
+
+  const onOpenArticle = useCallback<OnOpenArticle>(
+    ({ index }) => {
+      dispatch(articlesPageActions.setStartIndex(index))
+    },
+    [dispatch]
+  )
 
   useInitialEffect(() => {
     dispatch(initArticlesPage())
@@ -58,14 +69,14 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
   }
 
   return (
-    <Page
-      className={className}
-      onScrollEnd={onLoadNextPart}
-    >
+    <Page ref={pageRef} className={className}>
       <SortedArticleList
         articles={articles}
         isLoading={isLoading}
-        limit={limit}
+        onLoadNextPart={onLoadNextPart}
+        scrollParent={pageRef ?? undefined}
+        onOpenArticle={onOpenArticle}
+        startIndex={startIndex}
       />
     </Page>
   )

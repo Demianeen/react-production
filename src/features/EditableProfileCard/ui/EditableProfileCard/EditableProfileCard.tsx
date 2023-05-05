@@ -30,6 +30,7 @@ const reducersList: ReducersList = {
   profile: profileReducer,
 }
 
+// FIXME: json server not working in prod
 export const EditableProfileCard = memo(
   ({ id }: EditableProfileCardProps) => {
     useDynamicModuleLoader(reducersList)

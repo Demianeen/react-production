@@ -22,6 +22,7 @@ const initialState: ArticlesPageSchema =
     _isInitialized: false,
     view: View.GRID,
     limit: 12,
+    startIndex: 0,
   })
 
 export const articlesPageSlice = createSlice({
@@ -30,6 +31,12 @@ export const articlesPageSlice = createSlice({
   reducers: {
     setPage: (state, action: PayloadAction<number>) => {
       state.page = action.payload
+    },
+    setStartIndex: (
+      state,
+      action: PayloadAction<number>
+    ) => {
+      state.startIndex = action.payload
     },
     initState: (state) => {
       const view =
@@ -48,6 +55,7 @@ export const articlesPageSlice = createSlice({
         (state, action) => {
           state.limit =
             action.payload === View.GRID ? 12 : 4
+          state.startIndex = 0
         }
       )
       // fetchArticles

@@ -1,12 +1,12 @@
-import {
-  articlesPageActions,
-  articlesPageReducer,
-} from 'pages/ArticlesPage/model/slice/articlesPageSlice'
-import type { ArticlesPageSchema } from 'pages/ArticlesPage'
 import { fetchArticles } from 'pages/ArticlesPage'
 import { ARTICLE_VIEW_LOCALSTORAGE_KEY } from 'shared/const/localstorage'
 import { View } from 'entities/View'
 import { sortedArticleListActions } from 'features/SortedArticlesList'
+import type { ArticlesPageSchema } from '../types/articlesPageSchema'
+import {
+  articlesPageActions,
+  articlesPageReducer,
+} from './articlesPageSlice'
 import {
   anotherArticleIds,
   anotherArticles,

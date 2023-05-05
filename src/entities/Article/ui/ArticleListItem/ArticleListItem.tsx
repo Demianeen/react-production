@@ -1,7 +1,6 @@
 import type { HTMLAttributeAnchorTarget } from 'react'
 import React, { memo, useMemo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
-import type { Article } from 'entities/Article'
 import { Text } from 'shared/ui/Text/Text'
 import { Icon } from 'shared/ui/Icon/Icon'
 import EyeIcon from 'shared/assets/icons/eye-20-20.svg'
@@ -12,7 +11,11 @@ import { Button } from 'shared/ui/Button/Button'
 import { View } from 'entities/View'
 import { RoutePath } from 'shared/config/routeConfig/routeConfig'
 import { AppLink } from 'shared/ui/AppLink/AppLink'
-import type { ArticleTextBlock } from '../../model/types/article'
+import type { OnOpenArticle } from '../ArticleList/VirtualizedArticleList'
+import type {
+  Article,
+  ArticleTextBlock,
+} from '../../model/types/article'
 import { ArticleBlockType } from '../../model/types/article'
 import styles from './ArticleListItem.module.scss'
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent'
@@ -22,6 +25,8 @@ interface ArticleListItemProps {
   article: Article
   view: View
   target?: HTMLAttributeAnchorTarget
+  onOpenArticle?: OnOpenArticle
+  index?: number
 }
 
 export const ArticleListItem = memo(
@@ -30,6 +35,8 @@ export const ArticleListItem = memo(
     view,
     article,
     target,
+    onOpenArticle,
+    index = 0,
   }: ArticleListItemProps) => {
     const { t } = useTranslation('articles')
 
@@ -66,6 +73,10 @@ export const ArticleListItem = memo(
       ),
       [article.views]
     )
+
+    const onClick = () => {
+      return () => onOpenArticle?.({ article, index })
+    }
 
     const textBlock = useMemo(() => {
       if (view === View.LIST) {
@@ -117,6 +128,7 @@ export const ArticleListItem = memo(
             <AppLink
               to={RoutePath.article_details + article.id}
               target={target}
+              onClick={onClick()}
             >
               {/* TODO: Button can't be inside link */}
               <Button type='button' role='link'>
@@ -133,6 +145,7 @@ export const ArticleListItem = memo(
       <AppLink
         to={RoutePath.article_details + article.id}
         target={target}
+        onClick={onClick()}
       >
         <Card
           className={classNames(
@@ -155,6 +168,7 @@ export const ArticleListItem = memo(
           </div>
           <Text
             text={article.title}
+            textTitle={article.title}
             className={styles.title}
           />
         </Card>

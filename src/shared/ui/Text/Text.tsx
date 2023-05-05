@@ -22,7 +22,9 @@ export enum TextSize {
 interface TextProps {
   className?: string
   text?: string
+  textTitle?: string
   title?: string
+  titleTitle?: string
   theme?: TextTheme
   align?: TextAlign
   size?: TextSize
@@ -32,7 +34,9 @@ export const Text = memo(
   ({
     className,
     title,
+    titleTitle,
     text,
+    textTitle,
     theme = TextTheme.DEFAULT,
     align = TextAlign.LEFT,
     size = TextSize.M,
@@ -49,13 +53,27 @@ export const Text = memo(
         {title && (
           <>
             {size === TextSize.L ? (
-              <h1 className={styles.title}>{title}</h1>
+              <h1
+                title={titleTitle}
+                className={styles.title}
+              >
+                {title}
+              </h1>
             ) : (
-              <h2 className={styles.title}>{title}</h2>
+              <h2
+                title={titleTitle}
+                className={styles.title}
+              >
+                {title}
+              </h2>
             )}
           </>
         )}
-        {text && <p className={styles.text}>{text}</p>}
+        {text && (
+          <p title={textTitle} className={styles.text}>
+            {text}
+          </p>
+        )}
       </div>
     )
   }

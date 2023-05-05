@@ -20,7 +20,14 @@ const Template: ComponentStory<typeof ArticleList> = (
   args
 ) => <ArticleList {...args} />
 
-const articles = new Array(16)
+const articlesGrid = new Array(12)
+  .fill(null)
+  .map((array, index) => ({
+    ...article,
+    id: index,
+  }))
+
+const articlesList = new Array(2)
   .fill(null)
   .map((array, index) => ({
     ...article,
@@ -29,54 +36,62 @@ const articles = new Array(16)
 
 export const List = Template.bind({})
 List.args = {
-  articles,
+  articles: articlesList,
   view: View.LIST,
+  limit: 4,
 }
 
 export const Grid = Template.bind({})
 Grid.args = {
-  articles,
+  articles: articlesGrid,
   view: View.GRID,
+  limit: 12,
 }
 
 export const IsLoadingList = Template.bind({})
 IsLoadingList.args = {
-  articles: [],
+  articles: articlesList,
   isLoading: true,
   view: View.LIST,
+  limit: 4,
 }
 
 export const IsLoadingGrid = Template.bind({})
 IsLoadingGrid.args = {
-  articles: [],
+  articles: articlesGrid,
   isLoading: true,
   view: View.GRID,
+  limit: 12,
 }
 
 export const DarkList = Template.bind({})
 DarkList.args = {
-  articles,
+  articles: articlesList,
   view: View.LIST,
+  limit: 4,
 }
 DarkList.decorators = [ThemeDecorator(Theme.DARK)]
 
 export const DarkGrid = Template.bind({})
 DarkGrid.args = {
-  articles,
+  articles: articlesGrid,
   view: View.GRID,
+  limit: 12,
 }
 DarkGrid.decorators = [ThemeDecorator(Theme.DARK)]
 
 export const RedList = Template.bind({})
 RedList.args = {
-  articles,
+  articles: articlesList,
   view: View.LIST,
+  limit: 4,
 }
 RedList.decorators = [ThemeDecorator(Theme.RED)]
 
 export const RedGrid = Template.bind({})
 RedGrid.args = {
-  articles,
+  articles: articlesGrid,
   view: View.GRID,
+  limit: 12,
 }
 RedGrid.decorators = [ThemeDecorator(Theme.RED)]

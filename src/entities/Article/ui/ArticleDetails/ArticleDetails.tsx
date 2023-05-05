@@ -166,7 +166,7 @@ export const ArticleDetails = memo(
           className,
         ])}
       >
-        {article && <ArticleDetailsHeader id={id} />}
+        <ArticleDetailsHeader id={id} />
         {content}
       </div>
     )

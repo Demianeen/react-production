@@ -1,7 +1,6 @@
 import type { ReactNode, UIEvent } from 'react'
-import React, { useRef } from 'react'
+import React, { forwardRef, useRef } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
-import { useInfiniteScroll } from 'shared/lib/hooks/useInfiniteScroll/useInfiniteScroll'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { pageActions } from 'widgets/Page/model/slice/pageSlice'
 import { useLocation } from 'react-router-dom'
@@ -15,61 +14,60 @@ import styles from './Page.module.scss'
 interface PageProps {
   className?: string
   children?: ReactNode
-  onScrollEnd?: () => void
 }
 
-export const Page = ({
-  className,
-  children,
-  onScrollEnd,
-}: PageProps) => {
-  const wrapperRef = useRef<HTMLElement | null>(null)
-  const triggerRef = useRef<HTMLDivElement | null>(null)
+// FIXME: Scroll position is not restored
+export const Page = forwardRef<HTMLDivElement, PageProps>(
+  ({ className, children }, forwardedRef) => {
+    const wrapperRef = useRef<HTMLElement | null>(null)
 
-  useInfiniteScroll({
-    wrapperRef,
-    triggerRef,
-    callback: onScrollEnd,
-  })
+    const { pathname } = useLocation()
 
-  const { pathname } = useLocation()
+    const dispatch = useAppDispatch()
+    const scrollPosition = useSelector(
+      (state: StateSchema) =>
+        getPageScrollPositionByPath(state, pathname)
+    )
 
-  const dispatch = useAppDispatch()
-  const scrollPosition = useSelector((state: StateSchema) =>
-    getPageScrollPositionByPath(state, pathname)
-  )
-
-  useInitialEffect(() => {
-    if (wrapperRef.current !== null) {
-      wrapperRef.current.scrollTop = scrollPosition
+    const mergedRef = (ref: HTMLDivElement | null) => {
+      if (
+        typeof forwardedRef !== 'function' &&
+        forwardedRef !== null
+      ) {
+        // eslint-disable-next-line no-param-reassign
+        forwardedRef.current = ref
+      }
+      wrapperRef.current = ref
     }
-  })
 
-  const onScroll = useThrottle(
-    (e: UIEvent<HTMLElement>) => {
-      dispatch(
-        pageActions.setScrollPosition({
-          path: pathname,
-          position: e.currentTarget.scrollTop,
-        })
-      )
-    },
-    500
-  )
+    useInitialEffect(() => {
+      if (wrapperRef.current !== null) {
+        wrapperRef.current.scrollTop = scrollPosition
+      }
+    })
 
-  return (
-    <section
-      ref={wrapperRef}
-      className={classNames(styles.page, {}, [className])}
-      onScroll={onScroll}
-    >
-      {children}
-      {onScrollEnd && (
-        <div
-          ref={triggerRef}
-          className={styles.scrollTrigger}
-        />
-      )}
-    </section>
-  )
-}
+    const onScroll = useThrottle(
+      (e: UIEvent<HTMLElement>) => {
+        dispatch(
+          pageActions.setScrollPosition({
+            path: pathname,
+            position: e.currentTarget.scrollTop,
+          })
+        )
+      },
+      500
+    )
+
+    return (
+      <section
+        ref={mergedRef}
+        className={classNames(styles.page, {}, [className])}
+        onScroll={onScroll}
+      >
+        {children}
+      </section>
+    )
+  }
+)
+
+Page.displayName = 'Page'

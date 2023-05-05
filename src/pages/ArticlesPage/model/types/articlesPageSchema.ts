@@ -11,5 +11,8 @@ export interface ArticlesPageSchema
   limit: number
   hasMore: boolean
 
+  // preserve scroll position
+  startIndex: number
+
   _isInitialized: boolean
 }

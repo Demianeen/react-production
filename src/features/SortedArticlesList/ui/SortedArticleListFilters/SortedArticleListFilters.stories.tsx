@@ -19,7 +19,7 @@ export default {
 
 const Template: ComponentStory<
   typeof SortedArticleListFilters
-> = (args) => <SortedArticleListFilters {...args} />
+> = () => <SortedArticleListFilters />
 
 export const Light = Template.bind({})
 Light.args = {}

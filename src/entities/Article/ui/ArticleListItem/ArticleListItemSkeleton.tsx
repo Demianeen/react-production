@@ -8,10 +8,15 @@ import styles from './ArticleListItem.module.scss'
 interface ArticleListItemSkeletonProps {
   className?: string
   view: View
+  index?: number
 }
 
 export const ArticleListItemSkeleton = memo(
-  ({ className, view }: ArticleListItemSkeletonProps) => {
+  ({
+    className,
+    view,
+    index,
+  }: ArticleListItemSkeletonProps) => {
     if (view === View.LIST) {
       return (
         <Card

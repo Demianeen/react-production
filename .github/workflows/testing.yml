@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [main]
 jobs:
-  testing:
+  unit:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -25,4 +25,28 @@ jobs:
         run: npm i
       - name: unit testing
         run: npm run test:unit
+
+  ui:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [17.x]
+    steps:
+      - name: Cache deps
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+      - uses: actions/checkout@v2
+      - name: Starting Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: install modules
+        run: npm i
+      - name: build storybook
+        run: npm run build:storybook
+      - name: screenshot testing
+        run: npm run test:ui:ci
+
 

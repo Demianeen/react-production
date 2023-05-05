@@ -1,21 +1,22 @@
-.articleList {
-  &.list {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
+.list {
+  height: 100%;
 
-  &.grid {
-    box-sizing: border-box;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr));
-    gap: 3rem;
-    max-width: 100%;
-
-    &::after {
-      width: 1px;
-      margin-right: -1px;
-      content: "";
-    }
+  .item {
+    margin-top: 1.5rem;
   }
 }
+
+.grid {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr));
+  gap: 3rem;
+  max-width: 100%;
+
+  // footer
+  &.notEmpty + div {
+    margin-top: 3rem;
+  }
+}
+
+
