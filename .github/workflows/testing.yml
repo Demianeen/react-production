@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [17.x]
+        node-version: ${{ secrets.NODE_VERSION }}
     steps:
       - name: Cache deps
         uses: actions/cache@v3
@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [17.x]
+        node-version: ${{ secrets.NODE_VERSION }}
     steps:
       - name: Cache deps
         uses: actions/cache@v3
@@ -48,5 +48,9 @@ jobs:
         run: npm run build:storybook
       - name: screenshot testing
         run: npm run test:ui:ci
-
-
+      - name: Upload difference folder
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: difference
+          path: .loki/difference
