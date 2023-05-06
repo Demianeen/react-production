@@ -9,7 +9,7 @@ jobs:
      runs-on: ubuntu-latest
      strategy:
        matrix:
-         node-version: ${{ vars.NODE_VERSION }}
+         node-version: ${{ env.NODE_VERSION }}
      steps:
        - name: Cache deps
          uses: actions/cache@v3
