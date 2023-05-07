@@ -14,9 +14,9 @@
     "lint:scss": "npx stylelint \"**/*.scss\"",
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
     "test:unit": "jest --config ./config/jest/jest.config.ts",
-    "test:ui": "npx loki test --chromeLoadTimeout 10000 --chromeRetries 3",
+    "test:ui": "npx loki test --chromeConcurrency 10",
     "test:ui:ok": "npx loki approve",
-    "test:ui:ci": "npx loki --chromeLoadTimeout 10000 --chromeRetries 3 --requireReference --reactUri file:./storybook-static",
+    "test:ui:ci": "npx loki --chromeConcurrency 10 --requireReference --reactUri file:./storybook-static",
     "test:ui:json": "node scripts/generate-visual-json-report.js",
     "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
     "test:ui:report": "npm run test:ui:json && npm run test:ui:html && open -a 'Google Chrome' .loki/report.html",
@@ -32,6 +32,7 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
+    "@loki/create-async-callback": "^0.31.1",
     "@loki/is-loki-running": "^0.31.1",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
     "@storybook/addon-actions": "^6.5.16",
@@ -116,6 +117,7 @@
     "react-virtuoso": "^4.3.5"
   },
   "loki": {
+    "gm": {},
     "configurations": {
       "chrome.laptop": {
         "target": "chrome.docker",
