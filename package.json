@@ -117,7 +117,11 @@
     "react-virtuoso": "^4.3.5"
   },
   "loki": {
-    "gm": {},
+    "diffingEngine": "gm",
+    "gm": {
+      "tolerance": 0.00024
+    },
+    "verboseRenderer": true,
     "configurations": {
       "chrome.laptop": {
         "target": "chrome.docker",

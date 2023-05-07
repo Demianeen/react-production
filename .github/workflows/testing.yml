@@ -54,5 +54,5 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v3
         with:
-          name: difference
+          name: .loki
           path: .loki
