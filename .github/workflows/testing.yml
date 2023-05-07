@@ -44,9 +44,15 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: install modules
         run: npm i
+      - name: Install GraphicsMagick Engine
+        run: sudo apt-get install -y graphicsmagick
       - name: build storybook
         run: npm run build:storybook
       - name: screenshot testing
         run: npm run test:ui:ci
-
-
+      - name: Upload difference folder
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: .loki
+          path: .loki

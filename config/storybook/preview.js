@@ -12,16 +12,41 @@ export const parameters = {
       date: /Date$/,
     },
   },
-  parameters: {
-    loki: {
-      delayCapture: 1000,
-    },
-  },
-  loki: {
-    delayCapture: 1000,
-  },
 }
 
 addDecorator(StyleDecorator)
 addDecorator(ThemeDecorator(Theme.LIGHT))
 addDecorator(RouterDecorator)
+
+// load fonts
+const links = [
+  {
+    rel: 'stylesheet',
+    href: 'https://fonts.googleapis.com/css2?family=Fira+Code&display=swap',
+  },
+]
+
+// to prevent duplication with HMR
+function isLinkExist(option) {
+  return !!document.querySelector(
+    `link[href='${option.href}']`
+  )
+}
+
+function insertLink(options) {
+  const link = document.createElement('link')
+  Object.assign(link, options)
+
+  document.head.insertBefore(
+    link,
+    document.head.firstElementChild
+  )
+}
+
+export function loadGlobalStyles() {
+  links.forEach((link) =>
+    isLinkExist(link) ? null : insertLink(link)
+  )
+}
+
+loadGlobalStyles()

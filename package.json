@@ -14,9 +14,9 @@
     "lint:scss": "npx stylelint \"**/*.scss\"",
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
     "test:unit": "jest --config ./config/jest/jest.config.ts",
-    "test:ui": "npx loki test --chromeLoadTimeout 10000 --chromeRetries 3",
+    "test:ui": "npx loki test --chromeConcurrency 10",
     "test:ui:ok": "npx loki approve",
-    "test:ui:ci": "npx loki --chromeLoadTimeout 10000 --chromeRetries 3 --requireReference --reactUri file:./storybook-static",
+    "test:ui:ci": "npx loki --chromeConcurrency 10 --requireReference --reactUri file:./storybook-static",
     "test:ui:json": "node scripts/generate-visual-json-report.js",
     "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
     "test:ui:report": "npm run test:ui:json && npm run test:ui:html && open -a 'Google Chrome' .loki/report.html",
@@ -82,7 +82,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
     "json-server": "^0.17.0",
-    "loki": "^0.30.0",
+    "loki": "^0.31.1",
     "mini-css-extract-plugin": "^2.5.3",
     "react-refresh": "^0.14.0",
     "reg-cli": "^0.17.6",
@@ -117,6 +117,11 @@
     "react-virtuoso": "^4.3.5"
   },
   "loki": {
+    "diffingEngine": "gm",
+    "gm": {
+      "tolerance": 0.00024
+    },
+    "verboseRenderer": true,
     "configurations": {
       "chrome.laptop": {
         "target": "chrome.docker",
