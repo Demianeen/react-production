@@ -6,6 +6,7 @@ import React, {
 } from 'react'
 import type { Mods } from 'shared/lib/classNames/classNames'
 import { classNames } from 'shared/lib/classNames/classNames'
+import { HStack } from '../Stack'
 import { Portal } from '../Portal/Portal'
 import styles from './Modal.module.scss'
 
@@ -82,7 +83,12 @@ export const Modal = ({
           'appStyles',
         ])}
       >
-        <div
+        {/* TODO: add hstack */}
+        <HStack
+          justify='center'
+          align='center'
+          maxWidth
+          maxHeight
           className={styles.overlay}
           onClick={closeHandler}
         >
@@ -92,7 +98,7 @@ export const Modal = ({
           >
             {children}
           </div>
-        </div>
+        </HStack>
       </div>
     </Portal>
   )

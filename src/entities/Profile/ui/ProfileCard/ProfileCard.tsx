@@ -14,6 +14,7 @@ import { SelectCurrency } from 'entities/Currency'
 import type { Country } from 'entities/Country'
 import { SelectCountry } from 'entities/Country'
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton'
+import { HStack } from 'shared/ui/Stack'
 import styles from './ProfileCard.module.scss'
 
 interface ProfileCardProps {
@@ -53,20 +54,18 @@ export const ProfileCard = ({
 
   if (isLoading) {
     return (
-      <div
-        className={classNames(styles.profileCard, {}, [
-          className,
-          styles.loading,
-        ])}
-      >
+      <HStack className={styles.profileCard} maxWidth>
         <div className={styles.content}>
-          <div className={styles.avatarWrapper}>
+          <HStack
+            justify='center'
+            className={styles.avatarWrapper}
+          >
             <Skeleton
               width='8rem'
               height='8rem'
               borderRadius='50%'
             />
-          </div>
+          </HStack>
           <Skeleton className={styles.input} />
           <Skeleton className={styles.input} />
           <Skeleton className={styles.input} />
@@ -76,38 +75,42 @@ export const ProfileCard = ({
           <Skeleton className={styles.input} />
           <Skeleton className={styles.input} />
         </div>
-      </div>
+      </HStack>
     )
   }
 
   if (error) {
     return (
-      <div
-        className={classNames(styles.profileCard, {}, [
-          className,
-          styles.error,
-        ])}
+      <HStack
+        height='15rem'
+        justify='center'
+        maxWidth
+        className={styles.profileCard}
       >
         <Text
           theme={TextTheme.ERROR}
           title={t('Profile not found')}
           align={TextAlign.CENTER}
         />
-      </div>
+      </HStack>
     )
   }
 
   return (
-    <div
+    <HStack
       className={classNames(styles.profileCard, {}, [
         className,
       ])}
+      maxWidth
     >
       <form className={styles.content} id={formId}>
         {data?.avatar && (
-          <div className={styles.avatarWrapper}>
+          <HStack
+            justify='center'
+            className={styles.avatarWrapper}
+          >
             <Avatar src={data?.avatar} />
-          </div>
+          </HStack>
         )}
         <Input
           value={data?.firstName}
@@ -168,6 +171,6 @@ export const ProfileCard = ({
           readonly={readonly}
         />
       </form>
-    </div>
+    </HStack>
   )
 }

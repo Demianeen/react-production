@@ -1,4 +1,5 @@
 import React, { memo } from 'react'
+import { HStack, VStack } from 'shared/ui/Stack'
 import { SelectArticleListFilters } from '../SelectArticleListFilters/SelectArticleListFilters'
 import { SelectArticleListView } from '../SelectArticleListView/SelectArticleListView'
 import { ArticleListSearch } from '../ArticleListSearch/ArticleListSearch'
@@ -7,14 +8,22 @@ import { SortedArticleListTabs } from '../SortedArticleListTabs/SortedArticleLis
 
 export const SortedArticleListFilters = memo(() => {
   return (
-    <div className={styles.articlePageFilters}>
-      <div className={styles.sortWrapper}>
+    <VStack
+      gap={1.25}
+      className={styles.articlePageFilters}
+    >
+      <HStack
+        justify='between'
+        align='center'
+        gap={1}
+        maxWidth
+      >
         <SelectArticleListFilters />
         <SelectArticleListView />
-      </div>
-      <ArticleListSearch className={styles.search} />
-      <SortedArticleListTabs className={styles.tabs} />
-    </div>
+      </HStack>
+      <ArticleListSearch />
+      <SortedArticleListTabs />
+    </VStack>
   )
 })
 

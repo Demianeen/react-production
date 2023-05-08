@@ -1,6 +1,7 @@
 import React, { memo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { Spinner } from 'shared/ui/Spinner/Spinner'
+import { HStack } from 'shared/ui/Stack'
 import styles from './PageLoader.module.scss'
 
 interface PageLoaderProps {
@@ -10,13 +11,16 @@ interface PageLoaderProps {
 export const PageLoader = memo(
   ({ className }: PageLoaderProps) => {
     return (
-      <div
+      <HStack
         className={classNames(styles.pageLoader, {}, [
           className,
         ])}
+        justify='center'
+        align='center'
+        maxWidth
       >
         <Spinner />
-      </div>
+      </HStack>
     )
   }
 )

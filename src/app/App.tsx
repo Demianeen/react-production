@@ -9,6 +9,7 @@ import { AppRouter } from 'app/providers/router'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useSelector } from 'react-redux'
 import { PageLoader } from 'widgets/PageLoader'
+import { HStack } from 'shared/ui/Stack'
 
 const App = () => {
   const dispatch = useAppDispatch()
@@ -24,10 +25,10 @@ const App = () => {
     <div className='app'>
       <Suspense fallback={<PageLoader />}>
         <Navbar />
-        <div className='contentPage'>
+        <HStack>
           <Sidebar />
           {isUserInitialized && <AppRouter />}
-        </div>
+        </HStack>
       </Suspense>
     </div>
   )

@@ -9,6 +9,7 @@ import type { Country } from 'entities/Country'
 import { Text, TextTheme } from 'shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next'
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
+import { VStack } from 'shared/ui/Stack'
 import { fetchProfileDataById } from '../../model/services/fetchProfileDataById/fetchProfileDataById'
 import { ProfileValidationError } from '../../model/types/profileSchema'
 import {
@@ -169,7 +170,7 @@ export const EditableProfileCard = memo(
     )
 
     return (
-      <>
+      <VStack gap={1.25} maxWidth>
         <EditableProfileCardHeader />
         {validationErrors &&
           validationErrors.map((errCode) => (
@@ -194,7 +195,7 @@ export const EditableProfileCard = memo(
           readonly={isReadonly}
           formId='editable-profile-card'
         />
-      </>
+      </VStack>
     )
   }
 )

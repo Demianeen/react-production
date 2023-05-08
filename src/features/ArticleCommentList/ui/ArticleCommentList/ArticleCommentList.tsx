@@ -10,6 +10,7 @@ import { Text } from 'shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next'
 import { ArticleList } from 'entities/Article'
 import { View } from 'entities/View'
+import { VStack } from 'shared/ui/Stack'
 import { articleDetailsFooterReducer } from '../../model/slice'
 import { getArticleRecommendations } from '../../model/slice/articleDetailsRecommendationsSlice'
 import { fetchArticleRecommendations } from '../../model/services/fetchArticleRecommendations/fetchArticleRecommendations'
@@ -62,11 +63,11 @@ export const ArticleCommentList = memo(
     )
 
     return (
-      <>
-        <Text
-          title={t('Recommend next')}
-          className={styles.sectionTitle}
-        />
+      <VStack
+        gap={1.25}
+        className={styles.articleCommentList}
+      >
+        <Text title={t('Recommend next')} />
         <ArticleList
           articles={recommendations}
           isLoading={isRecommendationsLoading}
@@ -76,17 +77,14 @@ export const ArticleCommentList = memo(
           view={View.GRID}
         />
         {/* we pass onSendComment here to make addCommentForm independent feature that can be used elsewhere. */}
-        <Text
-          title={t('Comments')}
-          className={styles.sectionTitle}
-        />
+        <Text title={t('Comments')} />
         <AddCommentForm onSendComment={onSendComment} />
         <CommentList
           className={className}
           comments={comments}
           isLoading={isLoading}
         />
-      </>
+      </VStack>
     )
   }
 )

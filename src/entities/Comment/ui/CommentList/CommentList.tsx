@@ -2,6 +2,7 @@ import React, { memo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { Text } from 'shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next'
+import { VStack } from 'shared/ui/Stack'
 import styles from './CommentList.module.scss'
 import { CommentCard } from '../CommentCard/CommentCard'
 import type { Comment } from '../../model/types/comment'
@@ -42,11 +43,8 @@ export const CommentList = memo(
     }
 
     return (
-      <section
-        className={classNames(styles.commentList, {}, [
-          className,
-        ])}
-      >
+      // FIXME: section
+      <VStack gap={1.25} maxWidth className={className}>
         {comments ? (
           comments.map((comment) => (
             <CommentCard
@@ -58,7 +56,7 @@ export const CommentList = memo(
         ) : (
           <Text text={t('No comments yet')} />
         )}
-      </section>
+      </VStack>
     )
   }
 )
