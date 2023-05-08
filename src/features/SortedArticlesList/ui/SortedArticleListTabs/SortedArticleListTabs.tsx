@@ -2,15 +2,15 @@ import React, { memo, useCallback, useMemo } from 'react'
 import type { TabItem } from 'shared/ui/Tabs/Tabs'
 import { Tabs } from 'shared/ui/Tabs/Tabs'
 import { useSelector } from 'react-redux'
-import { getSortedArticleListType } from 'features/SortedArticlesList/model/selectors/getSortedArticleListType/getSortedArticleListType'
 import { ArticleType } from 'entities/Article'
 import { useTranslation } from 'react-i18next'
 import {
   articlesPageActions,
   fetchArticles,
 } from 'pages/ArticlesPage'
-import { sortedArticleListActions } from 'features/SortedArticlesList'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { getSortedArticleListType } from '../../model/selectors/getSortedArticleListType/getSortedArticleListType'
+import { sortedArticleListActions } from '../../model/slice/sortedArticleListSlice'
 
 interface SortedArticleListTabsProps {
   className?: string

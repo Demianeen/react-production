@@ -1,5 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit'
-import { getProfileState } from 'features/EditableProfileCard/model/selectors/getProfileState/getProfileState'
+import { getProfileState } from '../getProfileState/getProfileState'
 
 export const getProfileValidationErrors = createSelector(
   getProfileState,

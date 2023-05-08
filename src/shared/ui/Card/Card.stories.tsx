@@ -4,7 +4,7 @@ import type {
 } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
-import { Text } from 'shared/ui/Text/Text'
+import { Text } from '../Text/Text'
 import { Card } from './Card'
 
 export default {

@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit'
-import { getPageScrollPosition } from 'widgets/Page/selectors/getPageScrollPosition/getPageScrollPosition'
 import type { StateSchema } from 'app/providers/StoreProvider'
+import { getPageScrollPosition } from '../getPageScrollPosition/getPageScrollPosition'
 
 export const getPageScrollPositionByPath = createSelector(
   getPageScrollPosition,

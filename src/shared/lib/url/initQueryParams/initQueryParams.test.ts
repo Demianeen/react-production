@@ -1,5 +1,5 @@
-import { initQueryParams } from 'shared/lib/url/initQueryParams/initQueryParams'
-import { getQueryParams } from 'shared/lib/url/getQueryParams/getQueryParams'
+import { initQueryParams } from './initQueryParams'
+import { getQueryParams } from '../getQueryParams/getQueryParams'
 
 jest.mock(
   'shared/lib/url/getQueryParams/getQueryParams',

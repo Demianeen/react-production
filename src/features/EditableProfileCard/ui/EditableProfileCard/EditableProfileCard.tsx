@@ -9,7 +9,7 @@ import type { Country } from 'entities/Country'
 import { Text, TextTheme } from 'shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next'
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
-import { fetchProfileDataById } from 'features/EditableProfileCard/model/services/fetchProfileDataById/fetchProfileDataById'
+import { fetchProfileDataById } from '../../model/services/fetchProfileDataById/fetchProfileDataById'
 import { ProfileValidationError } from '../../model/types/profileSchema'
 import {
   profileActions,

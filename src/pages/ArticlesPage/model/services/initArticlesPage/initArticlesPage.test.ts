@@ -1,6 +1,6 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk'
-import { fetchArticles } from 'pages/ArticlesPage/model/services/fetchArticles/fetchArticles'
-import { articlesPageActions } from 'pages/ArticlesPage/model/slice/articlesPageSlice'
+import { fetchArticles } from '../fetchArticles/fetchArticles'
+import { articlesPageActions } from '../../slice/articlesPageSlice'
 import { initArticlesPage } from './initArticlesPage'
 
 jest.mock('../../slice/articlesPageSlice', () => ({

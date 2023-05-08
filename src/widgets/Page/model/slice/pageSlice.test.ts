@@ -1,7 +1,6 @@
-import type { PageSchema } from 'widgets/Page'
-import { pageReducer } from 'widgets/Page'
-import { pageActions } from 'widgets/Page/model/slice/pageSlice'
 import { RoutePath } from 'shared/config/routeConfig/routeConfig'
+import type { PageSchema } from '../types/PageSchema'
+import { pageActions, pageReducer } from './pageSlice'
 
 describe('pageSlice', () => {
   test('setScrollPosition', () => {

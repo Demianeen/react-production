@@ -6,9 +6,9 @@ import type {
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
-import { ProfileValidationError } from 'features/EditableProfileCard/model/types/profileSchema'
 import { Currency } from 'entities/Currency'
 import { Country } from 'entities/Country'
+import { ProfileValidationError } from '../../model/types/profileSchema'
 import { EditableProfileCard } from './EditableProfileCard'
 
 export default {

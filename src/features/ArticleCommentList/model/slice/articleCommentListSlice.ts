@@ -4,8 +4,8 @@ import {
 } from '@reduxjs/toolkit'
 import type { Comment } from 'entities/Comment'
 import type { StateSchema } from 'app/providers/StoreProvider'
-import { fetchCommentsByArticleId } from 'features/ArticleCommentList/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId'
-import { getArticleCommentListState } from 'features/ArticleCommentList/model/selectors/getArticleCommentListState/getArticleCommentListState'
+import { fetchCommentsByArticleId } from '../services/fetchCommentsByArticleId/fetchCommentsByArticleId'
+import { getArticleCommentListState } from '../selectors/getArticleCommentListState/getArticleCommentListState'
 import type { ArticleCommentListSliceSchema } from '../types/articleCommentListSliceSchema'
 
 const articleCommentsAdapter =

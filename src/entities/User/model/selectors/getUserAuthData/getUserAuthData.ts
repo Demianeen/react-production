@@ -1,5 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit'
-import { getUserState } from 'entities/User/model/selectors/getUserState/getUserState'
+import { getUserState } from '../getUserState/getUserState'
 
 export const getUserAuthData = createSelector(
   getUserState,

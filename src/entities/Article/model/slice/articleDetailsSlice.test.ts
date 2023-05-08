@@ -1,7 +1,7 @@
-import type { ArticleDetailsSchema } from 'entities/Article'
-import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice'
-import { fetchArticleById } from 'entities/Article/model/services/fetchArticleById/fetchArticleById'
-import { article } from 'entities/Article/model/mocks/tests'
+import type { ArticleDetailsSchema } from '../types/articleDetailsSchema'
+import { articleDetailsReducer } from './articleDetailsSlice'
+import { fetchArticleById } from '../services/fetchArticleById/fetchArticleById'
+import { article } from '../mocks/tests'
 
 describe('articleDetailsSlice', () => {
   test('fetchArticleById service pending', () => {

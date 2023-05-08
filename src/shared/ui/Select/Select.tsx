@@ -1,8 +1,8 @@
-import { WithLabel } from 'shared/ui/WithLabel/WithLabel'
 import { classNames } from 'shared/lib/classNames/classNames'
 import type { ChangeEvent } from 'react'
 import { useMemo } from 'react'
 import { typedMemo } from 'shared/lib/typedMemo/typedMemo'
+import { WithLabel } from '../WithLabel/WithLabel'
 import styles from './Select.module.scss'
 
 export interface SelectOption<T extends string> {

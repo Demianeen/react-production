@@ -2,7 +2,7 @@ import type { InputHTMLAttributes } from 'react'
 import React, { memo, useEffect } from 'react'
 import type { Mods } from 'shared/lib/classNames/classNames'
 import { classNames } from 'shared/lib/classNames/classNames'
-import { WithLabel } from 'shared/ui/WithLabel/WithLabel'
+import { WithLabel } from '../WithLabel/WithLabel'
 import styles from './Input.module.scss'
 
 type HTMLInputProps = Omit<

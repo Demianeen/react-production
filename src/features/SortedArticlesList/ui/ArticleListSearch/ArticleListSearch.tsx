@@ -1,15 +1,15 @@
 import React, { memo, useCallback } from 'react'
-import { sortedArticleListActions } from 'features/SortedArticlesList'
 import { useTranslation } from 'react-i18next'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useSelector } from 'react-redux'
-import { getSortedArticleListSearch } from 'features/SortedArticlesList/model/selectors/getSortedArticleListSearch/getSortedArticleListSearch'
 import { Input } from 'shared/ui/Input/Input'
 import {
   articlesPageActions,
   fetchArticles,
 } from 'pages/ArticlesPage'
 import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce'
+import { getSortedArticleListSearch } from '../../model/selectors/getSortedArticleListSearch/getSortedArticleListSearch'
+import { sortedArticleListActions } from '../../model/slice/sortedArticleListSlice'
 
 interface SelectArticleListSearchProps {
   className?: string

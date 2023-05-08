@@ -3,7 +3,7 @@ import type { ThunkConfig } from 'app/providers/StoreProvider'
 import type { Comment } from 'entities/Comment'
 import { getUserAuthData } from 'entities/User'
 import { getArticleDetailsData } from 'entities/Article'
-import { articleCommentListActions } from 'features/ArticleCommentList/model/slice/articleCommentListSlice'
+import { articleCommentListActions } from '../../slice/articleCommentListSlice'
 
 export const sendArticleComment = createAsyncThunk<
   Comment,

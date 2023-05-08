@@ -1,5 +1,5 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk'
-import { article } from 'entities/Article/model/mocks/tests'
+import { article } from '../../mocks/tests'
 import { fetchArticleById } from './fetchArticleById'
 
 describe('fetchArticleById', () => {

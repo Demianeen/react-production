@@ -4,8 +4,8 @@ import {
 } from '@reduxjs/toolkit'
 import type { Article } from 'entities/Article'
 import type { StateSchema } from 'app/providers/StoreProvider'
-import { fetchArticleRecommendations } from 'features/ArticleCommentList/model/services/fetchArticleRecommendations/fetchArticleRecommendations'
-import { getArticleDetailsRecommendationsState } from 'features/ArticleCommentList/model/selectors/recommendations/getArticleDetailsRecommendationsState/getArticleDetailsRecommendationsState'
+import { fetchArticleRecommendations } from '../services/fetchArticleRecommendations/fetchArticleRecommendations'
+import { getArticleDetailsRecommendationsState } from '../selectors/recommendations/getArticleDetailsRecommendationsState/getArticleDetailsRecommendationsState'
 import type { ArticleDetailsRecommendationsSchema } from '../types/articleDetailsRecommendationsSchema'
 
 const recommendationsAdapter =

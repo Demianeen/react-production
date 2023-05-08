@@ -4,7 +4,7 @@ import type {
 } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
-import { comments } from 'entities/Comment/model/mocks/data'
+import { comments } from '../../model/mocks/data'
 import { CommentList } from './CommentList'
 
 export default {

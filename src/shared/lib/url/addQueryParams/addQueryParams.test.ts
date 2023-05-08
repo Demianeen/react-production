@@ -1,7 +1,7 @@
 import {
   addQueryParams,
   getNewQueryParamsString,
-} from 'shared/lib/url/addQueryParams/addQueryParams'
+} from './addQueryParams'
 
 describe('addQueryParams', () => {
   test('with one param', () => {

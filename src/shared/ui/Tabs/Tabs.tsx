@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { typedMemo } from 'shared/lib/typedMemo/typedMemo'
-import { Card, CardTheme } from 'shared/ui/Card/Card'
+import { Card, CardTheme } from '../Card/Card'
 import styles from './Tabs.module.scss'
 
 export interface TabItem<T extends string> {

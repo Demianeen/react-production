@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import { Suspense } from 'react'
-import { Spinner } from 'shared/ui/Spinner/Spinner'
+import { Spinner } from '../Spinner/Spinner'
 
 interface SpinnerProps {
   children?: ReactNode

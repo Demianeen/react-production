@@ -1,4 +1,4 @@
-import { getQueryParams } from 'shared/lib/url/getQueryParams/getQueryParams'
+import { getQueryParams } from '../getQueryParams/getQueryParams'
 
 type InitQueryParams<T extends Record<string, string>> = {
   [K in keyof T]: (param: T[K]) => void

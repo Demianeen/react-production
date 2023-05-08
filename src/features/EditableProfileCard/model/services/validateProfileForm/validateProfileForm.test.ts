@@ -1,5 +1,5 @@
-import { validateAge } from 'features/EditableProfileCard/lib/validate/validateAge'
-import { profile } from 'features/EditableProfileCard/model/mocks/data'
+import { validateAge } from '../../../lib/validate/validateAge'
+import { profile } from '../../mocks/data'
 import { validateProfileForm } from './validateProfileForm'
 import { ProfileValidationError } from '../../types/profileSchema'
 

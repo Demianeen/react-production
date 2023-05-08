@@ -28,7 +28,10 @@ module.exports = {
     useJSXTextNode: true,
     project: './tsconfig.json',
   },
-  plugins: ['@typescript-eslint'],
+  plugins: [
+    '@typescript-eslint',
+    'netliukh-demian-fsd-plugin',
+  ],
   rules: {
     // ensures that we can handle undefined straight in the component if needed
     'react/require-default-props': 0,
@@ -124,6 +127,9 @@ module.exports = {
 
     // TODO: enable later
     'import/no-cycle': 0,
+
+    // checks path for fsd violations
+    'netliukh-demian-fsd-plugin/check-path': 2,
   },
   settings: {
     react: {

@@ -1,8 +1,4 @@
-import {
-  comments,
-  entities,
-  ids,
-} from 'features/ArticleCommentList/model/mocks/data'
+import { comments, entities, ids } from '../mocks/data'
 import { articleCommentListReducer } from './articleCommentListSlice'
 import type { ArticleCommentListSliceSchema } from '../types/articleCommentListSliceSchema'
 import { fetchCommentsByArticleId } from '../services/fetchCommentsByArticleId/fetchCommentsByArticleId'

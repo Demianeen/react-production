@@ -9,18 +9,18 @@ import type {
 } from 'entities/Article'
 import { VirtualizedArticleList } from 'entities/Article'
 import { useSelector } from 'react-redux'
-import { getSortedArticleListView } from 'features/SortedArticlesList/model/selectors/getSortedArticleListView/getSortedArticleListView'
 import { classNames } from 'shared/lib/classNames/classNames'
 import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
-import {
-  sortedArticleListActions,
-  sortedArticleListReducer,
-} from 'features/SortedArticlesList/model/slice/sortedArticleListSlice'
-import { SortedArticleListFilters } from 'features/SortedArticlesList/ui/SortedArticleListFilters/SortedArticleListFilters'
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { View } from 'entities/View'
+import { getSortedArticleListView } from '../../model/selectors/getSortedArticleListView/getSortedArticleListView'
+import { SortedArticleListFilters } from '../SortedArticleListFilters/SortedArticleListFilters'
+import {
+  sortedArticleListActions,
+  sortedArticleListReducer,
+} from '../../model/slice/sortedArticleListSlice'
 import styles from './SortedArticleList.module.scss'
 
 interface SortedArticlesListProps {

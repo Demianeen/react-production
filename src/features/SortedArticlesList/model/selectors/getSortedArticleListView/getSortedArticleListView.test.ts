@@ -1,6 +1,6 @@
 import type { StateSchema } from 'app/providers/StoreProvider'
 import { View } from 'entities/View'
-import { INITIAL_ARTICLE_VIEW } from 'features/SortedArticlesList/model/const/view'
+import { INITIAL_ARTICLE_VIEW } from '../../const/view'
 import { getSortedArticleListView } from './getSortedArticleListView'
 
 describe('getSortedArticleListView', () => {

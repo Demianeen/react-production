@@ -5,11 +5,11 @@ import {
 } from '@reduxjs/toolkit'
 import type { StateSchema } from 'app/providers/StoreProvider'
 import type { Article } from 'entities/Article'
-import { fetchArticles } from 'pages/ArticlesPage/model/services/fetchArticles/fetchArticles'
 import { ARTICLE_VIEW_LOCALSTORAGE_KEY } from 'shared/const/localstorage'
 import { View } from 'entities/View'
 import { INITIAL_ARTICLE_VIEW } from 'features/SortedArticlesList/model/const/view'
 import { sortedArticleListActions } from 'features/SortedArticlesList'
+import { fetchArticles } from '../services/fetchArticles/fetchArticles'
 import type { ArticlesPageSchema } from '../types/articlesPageSchema'
 
 const articlesAdapter = createEntityAdapter<Article>()

@@ -3,7 +3,7 @@ import type { View } from 'entities/View'
 import { SelectView } from 'entities/View'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useSelector } from 'react-redux'
-import { getSortedArticleListView } from 'features/SortedArticlesList/model/selectors/getSortedArticleListView/getSortedArticleListView'
+import { getSortedArticleListView } from '../../model/selectors/getSortedArticleListView/getSortedArticleListView'
 import { sortedArticleListActions } from '../../model/slice/sortedArticleListSlice'
 
 interface SelectArticleViewProps {

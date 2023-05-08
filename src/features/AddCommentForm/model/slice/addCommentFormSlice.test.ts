@@ -1,8 +1,8 @@
-import type { AddCommentFormSchema } from 'features/AddCommentForm'
+import type { AddCommentFormSchema } from '../types/addCommentFormSchema'
 import {
   addCommentFormActions,
   addCommentFormReducer,
-} from 'features/AddCommentForm/model/slice/addCommentFormSlice'
+} from './addCommentFormSlice'
 
 describe('addCommentFormSlice', () => {
   test('setBody', () => {

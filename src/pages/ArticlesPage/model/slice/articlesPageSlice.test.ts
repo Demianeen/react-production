@@ -1,7 +1,7 @@
-import { fetchArticles } from 'pages/ArticlesPage'
 import { ARTICLE_VIEW_LOCALSTORAGE_KEY } from 'shared/const/localstorage'
 import { View } from 'entities/View'
 import { sortedArticleListActions } from 'features/SortedArticlesList'
+import { fetchArticles } from '../services/fetchArticles/fetchArticles'
 import type { ArticlesPageSchema } from '../types/articlesPageSchema'
 import {
   articlesPageActions,

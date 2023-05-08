@@ -6,7 +6,7 @@ import React, {
 } from 'react'
 import type { Mods } from 'shared/lib/classNames/classNames'
 import { classNames } from 'shared/lib/classNames/classNames'
-import { Portal } from 'shared/ui/Portal/Portal'
+import { Portal } from '../Portal/Portal'
 import styles from './Modal.module.scss'
 
 interface ModalProps {

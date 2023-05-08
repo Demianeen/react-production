@@ -5,17 +5,15 @@ import { Select } from 'shared/ui/Select/Select'
 import { useTranslation } from 'react-i18next'
 import { SortOrder } from 'shared/types/sort'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
-import {
-  ArticleSortField,
-  sortedArticleListActions,
-} from 'features/SortedArticlesList'
 import { useSelector } from 'react-redux'
-import { getSortedArticleListOrder } from 'features/SortedArticlesList/model/selectors/getSortedArticleListOrder/getSortedArticleListOrder'
-import { getSortedArticleListSortField } from 'features/SortedArticlesList/model/selectors/getSortedArticleListSortField/getSortedArticleListSortField'
 import {
   articlesPageActions,
   fetchArticles,
 } from 'pages/ArticlesPage'
+import { sortedArticleListActions } from '../../model/slice/sortedArticleListSlice'
+import { ArticleSortField } from '../../model/types/sortedArticleListSchema'
+import { getSortedArticleListOrder } from '../../model/selectors/getSortedArticleListOrder/getSortedArticleListOrder'
+import { getSortedArticleListSortField } from '../../model/selectors/getSortedArticleListSortField/getSortedArticleListSortField'
 import styles from './SelectArticleListFilters.module.scss'
 
 interface SelectArticleSortProps {
