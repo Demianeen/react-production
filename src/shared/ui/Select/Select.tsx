@@ -47,7 +47,10 @@ export const Select = typedMemo(
     }
 
     return (
-      <WithLabel label={label}>
+      <WithLabel
+        wrapperClassName={styles.wrapper}
+        label={label}
+      >
         <select
           id={label}
           className={classNames(styles.select, {}, [

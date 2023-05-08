@@ -1,6 +1,7 @@
 import type { LabelHTMLAttributes, ReactNode } from 'react'
 import React, { memo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
+import { VStack } from '../Stack'
 import styles from './WithLabel.module.scss'
 
 type HTMLLabelProps = Omit<
@@ -24,11 +25,7 @@ export const WithLabel = memo(
     ...props
   }: WithLabelProps) => {
     return (
-      <div
-        className={classNames(styles.container, {}, [
-          wrapperClassName,
-        ])}
-      >
+      <VStack className={wrapperClassName} maxWidth>
         {label && (
           <label
             htmlFor={label}
@@ -41,7 +38,7 @@ export const WithLabel = memo(
           </label>
         )}
         {children}
-      </div>
+      </VStack>
     )
   }
 )

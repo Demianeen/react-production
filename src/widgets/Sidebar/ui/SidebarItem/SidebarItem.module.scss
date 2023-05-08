@@ -2,7 +2,6 @@
   display: flex;
   align-items: center;
   height: var(--font-line-l);
-  margin-bottom: 1.25rem;
 
   .icon {
     margin-right: 1.25rem;
@@ -15,6 +14,11 @@
       width: 0;
       overflow: hidden;
       transition: 0.3s opacity;
+    }
+
+    .icon {
+      margin-right: 0;
+      fill: var(--inverted-primary-color);
     }
   }
 }

@@ -14,10 +14,11 @@ import styles from './SidebarItem.module.scss'
 interface SidebarItemProps {
   item: SidebarItemArgs
   isCollapsed: boolean
+  className?: string
 }
 
 export const SidebarItem = memo(
-  ({ item, isCollapsed }: SidebarItemProps) => {
+  ({ item, isCollapsed, className }: SidebarItemProps) => {
     const { t } = useTranslation()
     const isAuth = useSelector(getUserAuthData)
 
@@ -31,10 +32,13 @@ export const SidebarItem = memo(
 
     return (
       <li>
+        {/* TODO: Add vstack */}
         <AppLink
           theme={AppLinkTheme.INVERTED}
           to={item.path}
-          className={classNames(styles.item, mods)}
+          className={classNames(styles.item, mods, [
+            className,
+          ])}
         >
           <item.Icon className={styles.icon} />
           <span className={styles.text}>

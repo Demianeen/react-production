@@ -8,6 +8,7 @@ import {
   ButtonTheme,
 } from 'shared/ui/Button/Button'
 import { useSelector } from 'react-redux'
+import { HStack, VStack } from 'shared/ui/Stack'
 import { getSidebarItems } from '../../model/selectors/getSidebarItems/getSidebarItems'
 import { SidebarItem } from '../SidebarItem/SidebarItem'
 import styles from './Sidebar.module.scss'
@@ -37,7 +38,8 @@ export const Sidebar = memo(
     }, [isCollapsed, sidebarItems])
 
     return (
-      <menu
+      // FIXME: menu
+      <VStack
         className={classNames(
           styles.sidebar,
           {
@@ -46,11 +48,13 @@ export const Sidebar = memo(
           [className]
         )}
         data-testid='sidebar'
+        // justify={isCollapsed ? 'center' : 'flex-start'}
+        justify='between'
       >
         <Button
           data-testid='sidebar-toggle'
           theme={ButtonTheme.BACKGROUND_INVERTED}
-          className={styles.collapsedBtn}
+          className={styles.toggleBtn}
           onClick={onToggle}
           square
           size={ButtonSize.L}
@@ -59,16 +63,21 @@ export const Sidebar = memo(
           {isCollapsed ? '>' : '<'}
         </Button>
         <nav className={styles.itemsContainer}>
-          <ul className={styles.items}>{itemsList}</ul>
+          {/* FIXME: here need to be ul, not div */}
+          <VStack gap={1} className={styles.items}>
+            {itemsList}
+          </VStack>
         </nav>
-        <div className={styles.switchers}>
+        <HStack
+          justify='center'
+          gap={1.25}
+          maxWidth
+          className={styles.switchers}
+        >
           <ThemeSwitcher />
-          <LangSwitcher
-            short={isCollapsed}
-            className={styles.lang}
-          />
-        </div>
-      </menu>
+          <LangSwitcher short={isCollapsed} />
+        </HStack>
+      </VStack>
     )
   }
 )

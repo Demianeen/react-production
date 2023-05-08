@@ -1,5 +1,4 @@
 import React, { memo, useCallback, useMemo } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
 import type { SelectOption } from 'shared/ui/Select/Select'
 import { Select } from 'shared/ui/Select/Select'
 import { useTranslation } from 'react-i18next'
@@ -10,11 +9,11 @@ import {
   articlesPageActions,
   fetchArticles,
 } from 'pages/ArticlesPage'
+import { HStack } from 'shared/ui/Stack'
 import { sortedArticleListActions } from '../../model/slice/sortedArticleListSlice'
 import { ArticleSortField } from '../../model/types/sortedArticleListSchema'
 import { getSortedArticleListOrder } from '../../model/selectors/getSortedArticleListOrder/getSortedArticleListOrder'
 import { getSortedArticleListSortField } from '../../model/selectors/getSortedArticleListSortField/getSortedArticleListSortField'
-import styles from './SelectArticleListFilters.module.scss'
 
 interface SelectArticleSortProps {
   className?: string
@@ -88,12 +87,11 @@ export const SelectArticleListFilters = memo(
     )
 
     return (
-      <div
-        className={classNames(
-          styles.selectArticleSort,
-          {},
-          [className]
-        )}
+      <HStack
+        align='center'
+        gap={1}
+        className={className}
+        wrap='nowrap'
       >
         <Select
           options={sortOptions}
@@ -107,7 +105,7 @@ export const SelectArticleListFilters = memo(
           onChange={onChangeOrder}
           value={order}
         />
-      </div>
+      </HStack>
     )
   }
 )
