@@ -1,6 +1,7 @@
 import React, { memo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { Text } from 'shared/ui/Text/Text'
+import { VStack } from 'shared/ui/Stack'
 import type { ArticleTextBlock } from '../../model/types/article'
 import styles from './ArticleTextBlockComponent.module.scss'
 
@@ -15,7 +16,9 @@ export const ArticleTextBlockComponent = memo(
     block,
   }: ArticleTextBlockComponentProps) => {
     return (
-      <section
+      // FIXME: Section
+      <VStack
+        gap={0.5}
         className={classNames(
           styles.articleTextBlockComponent,
           {},
@@ -35,7 +38,7 @@ export const ArticleTextBlockComponent = memo(
             text={paragraph}
           />
         ))}
-      </section>
+      </VStack>
     )
   }
 )

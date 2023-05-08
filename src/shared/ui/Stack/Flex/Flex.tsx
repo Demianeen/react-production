@@ -1,0 +1,104 @@
+import type { ReactNode } from 'react'
+import React from 'react'
+import type { Mods } from 'shared/lib/classNames/classNames'
+import { classNames } from 'shared/lib/classNames/classNames'
+import styles from './Flex.module.scss'
+
+type FlexJustify =
+  | 'start'
+  | 'center'
+  | 'end'
+  | 'between'
+  | 'around'
+type FlexAlign = 'start' | 'center' | 'end' | 'stretch'
+type FlexDirection = 'row' | 'column'
+type FlexWrap = 'wrap' | 'nowrap'
+type FlexGap = 0.25 | 0.5 | 1 | 1.25 | 2
+
+const justifyMap: Record<FlexJustify, string> = {
+  start: styles.justifyStart,
+  center: styles.justifyCenter,
+  end: styles.justifyEnd,
+  between: styles.justifySpaceBetween,
+  around: styles.justifySpaceAround,
+}
+
+const alignMap: Record<FlexAlign, string> = {
+  start: styles.alignStart,
+  center: styles.alignCenter,
+  end: styles.alignEnd,
+  stretch: styles.alignStretch,
+}
+
+const directionMap: Record<FlexDirection, string> = {
+  row: styles.directionRow,
+  column: styles.directionColumn,
+}
+
+const wrapMap: Record<FlexWrap, string> = {
+  wrap: styles.wrap,
+  nowrap: styles.nowrap,
+}
+
+/* eslint-disable @typescript-eslint/naming-convention */
+const gapMap: Record<FlexGap, string> = {
+  0.25: styles.gap025,
+  0.5: styles.gap05,
+  1: styles.gap1,
+  1.25: styles.gap125,
+  2: styles.gap2,
+}
+
+/* eslint-enable @typescript-eslint/naming-convention */
+
+export interface FlexProps
+  extends React.HTMLAttributes<HTMLDivElement> {
+  className?: string
+  children?: ReactNode
+  justify?: FlexJustify
+  align?: FlexAlign
+  direction?: FlexDirection
+  wrap?: FlexWrap
+  gap?: FlexGap
+  height?: string
+  maxWidth?: boolean
+  maxHeight?: boolean
+}
+
+export const Flex = ({
+  className,
+  children,
+  justify = 'start',
+  align = 'start',
+  direction = 'row',
+  wrap,
+  gap,
+  height,
+  maxWidth = false,
+  maxHeight = false,
+  ...props
+}: FlexProps) => {
+  const classes = [
+    justifyMap[justify],
+    alignMap[align],
+    directionMap[direction],
+    wrap && wrapMap[wrap],
+    gap && gapMap[gap],
+    className,
+  ]
+
+  const mods: Mods = {
+    [styles.maxWidth]: maxWidth,
+    [styles.maxHeight]: maxHeight,
+  }
+
+  return (
+    <div
+      style={{ height }}
+      className={classNames(styles.flex, mods, classes)}
+      {...props}
+    >
+      {children}
+    </div>
+  )
+}

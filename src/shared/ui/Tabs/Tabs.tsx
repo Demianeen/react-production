@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
 import { typedMemo } from 'shared/lib/typedMemo/typedMemo'
+import { HStack } from '../Stack'
+import { Button, ButtonTheme } from '../Button/Button'
 import { Card, CardTheme } from '../Card/Card'
 import styles from './Tabs.module.scss'
 
@@ -31,9 +32,7 @@ export const Tabs = typedMemo(
     )
 
     return (
-      <div
-        className={classNames(styles.tabs, {}, [className])}
-      >
+      <HStack className={className} gap={1.25}>
         {tabs.map((tab) => (
           <Card
             key={tab.value}
@@ -46,10 +45,12 @@ export const Tabs = typedMemo(
             }
             className={styles.tab}
           >
-            {tab.label}
+            <Button type='button' theme={ButtonTheme.CLEAR}>
+              {tab.label}
+            </Button>
           </Card>
         ))}
-      </div>
+      </HStack>
     )
   }
 )

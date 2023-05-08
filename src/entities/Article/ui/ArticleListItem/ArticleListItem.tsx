@@ -11,6 +11,7 @@ import { Button } from 'shared/ui/Button/Button'
 import { View } from 'entities/View'
 import { RoutePath } from 'shared/config/routeConfig/routeConfig'
 import { AppLink } from 'shared/ui/AppLink/AppLink'
+import { VStack } from 'shared/ui/Stack'
 import type { OnOpenArticle } from '../ArticleList/VirtualizedArticleList'
 import type {
   Article,
@@ -96,47 +97,47 @@ export const ArticleListItem = memo(
             [className, styles[view]]
           )}
         >
-          <header className={styles.header}>
-            {article.user.avatar && (
-              <Avatar
-                size='2rem'
-                src={article.user.avatar}
+          <VStack gap={1}>
+            {/* add hstack */}
+            <header className={styles.header}>
+              {article.user.avatar && (
+                <Avatar
+                  size='2rem'
+                  src={article.user.avatar}
+                />
+              )}
+              <Text
+                text={article.user.username}
+                className={styles.username}
+              />
+              <Text
+                className={styles.date}
+                text={article.createdAt}
+              />
+            </header>
+            <Text title={article.title} />
+            {types}
+            {image}
+            {textBlock !== undefined && (
+              <ArticleTextBlockComponent
+                block={textBlock}
+                className={styles.textBlock}
               />
             )}
-            <Text
-              text={article.user.username}
-              className={styles.username}
-            />
-            <Text
-              className={styles.date}
-              text={article.createdAt}
-            />
-          </header>
-          <Text
-            title={article.title}
-            className={styles.title}
-          />
-          {types}
-          {image}
-          {textBlock !== undefined && (
-            <ArticleTextBlockComponent
-              block={textBlock}
-              className={styles.textBlock}
-            />
-          )}
-          <footer className={styles.footer}>
-            <AppLink
-              to={RoutePath.article_details + article.id}
-              target={target}
-              onClick={onClick()}
-            >
-              {/* TODO: Button can't be inside link */}
-              <Button type='button' role='link'>
-                {t('Read more...')}
-              </Button>
-            </AppLink>
-            {views}
-          </footer>
+            <footer className={styles.footer}>
+              <AppLink
+                to={RoutePath.article_details + article.id}
+                target={target}
+                onClick={onClick()}
+              >
+                {/* TODO: Button can't be inside link */}
+                <Button type='button' role='link'>
+                  {t('Read more...')}
+                </Button>
+              </AppLink>
+              {views}
+            </footer>
+          </VStack>
         </Card>
       )
     }

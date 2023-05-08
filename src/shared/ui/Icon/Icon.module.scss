@@ -1,4 +1,5 @@
 .icon {
+  // type
   &.fill {
     // because we set currentColour to fill or stroke to icons
     // we can now just use color property to change both
@@ -8,5 +9,14 @@
   &.stroke {
     fill: none;
     stroke: currentcolor;
+  }
+
+  // color
+  &.primary {
+    color: var(--primary-color);
+  }
+
+  &.secondary {
+    color: var(--secondary-color);
   }
 }

@@ -17,6 +17,7 @@ import EyeIcon from 'shared/assets/icons/eye-20-20.svg'
 import CalendarIcon from 'shared/assets/icons/calendar-20-20.svg'
 import { Icon } from 'shared/ui/Icon/Icon'
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
+import { HStack } from 'shared/ui/Stack'
 import { getArticleDetailsIsLoading } from '../../model/selectors/getArticleDetailsIsLoading/getArticleDetailsIsLoading'
 import { getArticleDetailsError } from '../../model/selectors/getArticleDetailsError/getArticleDetailsError'
 import { getArticleDetailsData } from '../../model/selectors/getArticleDetailsData/getArticleDetailsData'
@@ -91,14 +92,14 @@ export const ArticleDetails = memo(
     if (isLoading) {
       content = (
         <>
-          <div className={styles.avatarWrapper}>
+          <HStack justify='center' maxWidth>
             <Skeleton
               className={styles.avatar}
               width='12.5rem'
               height='12.5rem'
               borderRadius='50%'
             />
-          </div>
+          </HStack>
           <Skeleton
             className={styles.title}
             width='41.8rem'
@@ -134,9 +135,9 @@ export const ArticleDetails = memo(
       content = (
         <>
           {article?.img && (
-            <div className={styles.avatarWrapper}>
+            <HStack justify='center' maxWidth>
               <Avatar size='12.5rem' src={article.img} />
-            </div>
+            </HStack>
           )}
           <Text
             className={styles.title}
@@ -144,17 +145,14 @@ export const ArticleDetails = memo(
             text={article?.subtitle}
             size={TextSize.L}
           />
-          <div className={styles.articleInfo}>
-            <Icon className={styles.icon} Svg={EyeIcon} />
+          <HStack gap={0.5}>
+            <Icon color='primary' Svg={EyeIcon} />
             <Text text={String(article?.views)} />
-          </div>
-          <div className={styles.articleInfo}>
-            <Icon
-              className={styles.icon}
-              Svg={CalendarIcon}
-            />
+          </HStack>
+          <HStack gap={0.5}>
+            <Icon color='primary' Svg={CalendarIcon} />
             <Text text={article?.createdAt} />
-          </div>
+          </HStack>
           {article?.blocks.map(renderBlock)}
         </>
       )

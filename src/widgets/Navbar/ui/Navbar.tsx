@@ -42,6 +42,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 
   if (authData) {
     return (
+      // TODO: add hstack
       <header
         className={classNames(styles.navbar, {}, [
           className,

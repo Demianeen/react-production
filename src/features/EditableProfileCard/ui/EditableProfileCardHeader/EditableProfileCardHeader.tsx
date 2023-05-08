@@ -1,5 +1,4 @@
 import React, { memo, useCallback } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
 import {
   Button,
   ButtonTheme,
@@ -8,11 +7,11 @@ import { Text } from 'shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { HStack } from 'shared/ui/Stack'
 import { getProfileCanEdit } from '../../model/selectors/getProfileCanEdit/getProfileCanEdit'
 import { getProfileIsReadonly } from '../../model/selectors/getProfileIsReadonly/getProfileIsReadonly'
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData'
 import { profileActions } from '../../model/slice/profileSlice'
-import styles from './EditableProfileCardHeader.module.scss'
 
 interface ProfilePageHeaderProps {
   className?: string
@@ -41,19 +40,16 @@ export const EditableProfileCardHeader = memo(
     )
 
     return (
-      <div
-        className={classNames(
-          styles.profilePageHeader,
-          {},
-          [className]
-        )}
+      <HStack
+        justify='between'
+        className={className}
+        maxWidth
       >
         <Text title={t('Profile')} />
         {canEdit && (
           <>
             {isReadonly ? (
               <Button
-                className={styles.editBtn}
                 theme={ButtonTheme.OUTLINE}
                 onClick={onEdit}
                 type='button'
@@ -61,9 +57,8 @@ export const EditableProfileCardHeader = memo(
                 {t('Edit')}
               </Button>
             ) : (
-              <>
+              <HStack gap={1}>
                 <Button
-                  className={styles.editBtn}
                   theme={ButtonTheme.OUTLINE_RED}
                   onClick={onCancel}
                   type='button'
@@ -73,17 +68,16 @@ export const EditableProfileCardHeader = memo(
                 <Button
                   form='editable-profile-card'
                   type='submit'
-                  className={styles.editBtn}
                   theme={ButtonTheme.OUTLINE}
                   onClick={onSave}
                 >
                   {t('Save')}
                 </Button>
-              </>
+              </HStack>
             )}
           </>
         )}
-      </div>
+      </HStack>
     )
   }
 )
