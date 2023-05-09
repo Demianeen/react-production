@@ -20,6 +20,7 @@ export default {
       { value: '3', label: 'Option 3' },
     ],
     onChange: action('onChange'),
+    defaultValue: 'default value',
   },
 } as ComponentMeta<typeof Select>
 
