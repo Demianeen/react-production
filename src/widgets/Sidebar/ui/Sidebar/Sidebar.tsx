@@ -48,7 +48,6 @@ export const Sidebar = memo(
           [className]
         )}
         data-testid='sidebar'
-        // justify={isCollapsed ? 'center' : 'flex-start'}
         justify='between'
       >
         <Button

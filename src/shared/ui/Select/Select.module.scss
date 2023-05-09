@@ -1,19 +1,77 @@
+$option-padding: 0.6rem;
+
 .wrapper {
-  width: 100%;
+  position: relative;
   min-width: max-content;
 
-  .select {
+  .buttonWrapper {
     width: 100%;
-    padding: 0.5rem;
-    margin: 0;
-    color: var(--primary-color);
-    background: none;
-    border: 1px solid var(--primary-color);
-    outline: none;
+
+    .button {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      padding: 0.5rem;
+
+      .label {
+        margin-right: 1rem;
+      }
+
+      .icon {
+        margin-left: auto;
+      }
+    }
+  }
+
+  .options {
+    position: absolute;
+    top: 100%;
+    z-index: 1;
+    width: 100%;
+    min-width: max-content;
+    padding: 0.5rem 0;
+    background: var(--select-bg);
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0/30%), 0 4px 6px -4px rgb(0 0 0/30%);
+    animation: open 0.2s ease-in-out;
 
     .option {
-      color: var(--inverted-primary-color);
-      background: var(--inverted-bg-color);
+      padding: $option-padding calc(20px + ($option-padding * 2));
+      cursor: pointer;
+
+      .icon {
+        margin-right: $option-padding;
+      }
+
+      &.selected {
+        display: flex;
+        align-items: center;
+        padding-left: $option-padding;
+      }
+
+      &.active {
+        color: var(--inverted-primary-color);
+        background: var(--inverted-bg-color);
+      }
+
+      &.disabled {
+        opacity: 0.5;
+      }
     }
+
+    &.up {
+      top: auto;
+      bottom: 100%;
+    }
+  }
+}
+
+@keyframes open {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }

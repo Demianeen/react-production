@@ -164,11 +164,13 @@ export const ProfileCard = ({
           value={data?.currency}
           onChange={onChangeCurrency}
           readonly={readonly}
+          direction='up'
         />
         <SelectCountry
           value={data?.country}
           onChange={onChangeCountry}
           readonly={readonly}
+          direction='up'
         />
       </form>
     </HStack>
