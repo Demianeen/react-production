@@ -1,6 +1,11 @@
 :root {
   --font-family-main: 'Fira Code', monospace;
 
+  // small font
+  --font-size-s: 0.75rem;
+  --font-line-s: 1rem;
+  --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-main);
+
   // medium font
   --font-size-m: 1rem;
   --font-line-m: 1.5rem;

@@ -59,13 +59,13 @@ export const Page = forwardRef<HTMLDivElement, PageProps>(
     )
 
     return (
-      <section
+      <main
         ref={mergedRef}
         className={classNames(styles.page, {}, [className])}
         onScroll={onScroll}
       >
         {children}
-      </section>
+      </main>
     )
   }
 )
