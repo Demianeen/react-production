@@ -38,7 +38,7 @@ export const Sidebar = memo(
     }, [isCollapsed, sidebarItems])
 
     return (
-      // FIXME: menu
+      // FIXME: section
       <VStack
         className={classNames(
           styles.sidebar,

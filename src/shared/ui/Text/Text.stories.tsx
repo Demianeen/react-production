@@ -25,10 +25,24 @@ const Template: ComponentStory<typeof Text> = (args) => (
   <Text {...args} />
 )
 
-export const Default = Template.bind({})
-Default.args = {
+export const Small = Template.bind({})
+Small.args = {
   title: 'Title',
   text: 'Text',
+  size: TextSize.S,
+}
+
+export const Medium = Template.bind({})
+Medium.args = {
+  title: 'Title',
+  text: 'Text',
+}
+
+export const Large = Template.bind({})
+Large.args = {
+  title: 'Title',
+  text: 'Text',
+  size: TextSize.L,
 }
 
 export const OnlyTitle = Template.bind({})
@@ -67,13 +81,6 @@ AlignRight.args = {
   title: 'Title',
   text: 'Text',
   align: TextAlign.RIGHT,
-}
-
-export const Large = Template.bind({})
-Large.args = {
-  title: 'Title',
-  text: 'Text',
-  size: TextSize.L,
 }
 
 export const Dark = Template.bind({})
