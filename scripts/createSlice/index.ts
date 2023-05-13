@@ -1,5 +1,5 @@
 import { createSlice } from './generators'
-import type { Layer } from './types/createSlice'
+import type { Layer } from '../../types/featureSlicedDesign'
 
 const layer = process.argv[2]
 const sliceName = process.argv[3]

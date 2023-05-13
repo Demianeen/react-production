@@ -1,7 +1,7 @@
 import fs from 'fs'
+import { resolveRoot } from '../../../../utils/resolveRoot'
+import { capitalize } from '../../../../utils/capitalize'
 import type { Layer } from '../../types/createSlice'
-import { resolveRoot } from '../../utils/resolveRoot'
-import { capitalize } from '../../utils/capitalize'
 
 export const createPublicApi = (
   layer: Layer,
