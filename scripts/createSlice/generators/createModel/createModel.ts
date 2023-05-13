@@ -1,9 +1,9 @@
 import fs from 'fs'
-import { resolveRoot } from '../../utils/resolveRoot'
+import { resolveRoot } from '../../../../utils/resolveRoot'
 import { reduxSliceTemplate } from './templates/reduxSlice.template'
-import type { Layer } from '../../types/createSlice'
-import { capitalize } from '../../utils/capitalize'
+import { capitalize } from '../../../../utils/capitalize'
 import { reduxSchemaTemplate } from './templates/reduxSchema.template'
+import type { Layer } from '../../types/createSlice'
 
 export const createModel = (
   layer: Layer,
