@@ -5,6 +5,7 @@ import type {
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { action } from '@storybook/addon-actions'
+import { LayoutDecorator } from 'shared/lib/storybook/LayoutDecorator'
 import { Select } from './Select'
 
 export default {
@@ -28,10 +29,33 @@ const Template: ComponentStory<typeof Select> = (args) => (
   <Select {...args} />
 )
 
-export const Light = Template.bind({})
-Light.args = {
+export const Default = Template.bind({})
+Default.args = {
   label: 'label',
 }
+
+export const DirectionDownRight = Template.bind({})
+DirectionDownRight.args = {
+  label: 'label',
+  direction: 'down-right',
+}
+DirectionDownRight.decorators = [
+  LayoutDecorator('centered'),
+]
+
+export const DirectionUpLeft = Template.bind({})
+DirectionUpLeft.args = {
+  label: 'label',
+  direction: 'up-left',
+}
+DirectionUpLeft.decorators = [LayoutDecorator('centered')]
+
+export const DirectionUpRight = Template.bind({})
+DirectionUpRight.args = {
+  label: 'label',
+  direction: 'up-right',
+}
+DirectionUpRight.decorators = [LayoutDecorator('centered')]
 
 export const WithoutLabel = Template.bind({})
 WithoutLabel.args = {}

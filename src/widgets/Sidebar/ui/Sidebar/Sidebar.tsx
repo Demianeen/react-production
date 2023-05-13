@@ -38,7 +38,6 @@ export const Sidebar = memo(
     }, [isCollapsed, sidebarItems])
 
     return (
-      // FIXME: section
       <VStack
         className={classNames(
           styles.sidebar,
@@ -49,6 +48,7 @@ export const Sidebar = memo(
         )}
         data-testid='sidebar'
         justify='between'
+        as='section'
       >
         <Button
           data-testid='sidebar-toggle'
@@ -62,8 +62,7 @@ export const Sidebar = memo(
           {isCollapsed ? '>' : '<'}
         </Button>
         <nav className={styles.itemsContainer}>
-          {/* FIXME: here need to be ul, not div */}
-          <VStack gap={1} className={styles.items}>
+          <VStack gap={1} className={styles.items} as='ul'>
             {itemsList}
           </VStack>
         </nav>

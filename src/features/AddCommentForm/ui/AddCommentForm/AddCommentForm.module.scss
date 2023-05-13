@@ -1,16 +1,4 @@
 .addCommentForm {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  width: 100%;
   padding: 1rem;
   border: 1px solid var(--primary-color);
-
-  .inputWrapper {
-    flex-grow: 1;
-
-    .input {
-      margin-right: 1rem;
-    }
-  }
 }

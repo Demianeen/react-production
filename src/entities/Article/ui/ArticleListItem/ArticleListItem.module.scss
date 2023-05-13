@@ -1,17 +1,7 @@
 .articleListItem {
   &.list {
-    .header {
-      display: flex;
-      align-items: center;
-      width: 100%;
-
-      .username {
-        margin-left: 0.5rem;
-      }
-
-      .date {
-        margin-left: auto;
-      }
+    .date {
+      margin-left: auto;
     }
 
     .img {
@@ -27,15 +17,8 @@
       overflow-y: hidden;
     }
 
-    .footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-
-      .views {
-        margin-left: auto;
-      }
+    .views {
+      margin-left: auto;
     }
 
     .skeleton {
@@ -69,9 +52,6 @@
     }
 
     .infoWrapper {
-      display: flex;
-      align-items: center;
-      max-width: 100%;
       margin-top: 1rem;
 
       .types {

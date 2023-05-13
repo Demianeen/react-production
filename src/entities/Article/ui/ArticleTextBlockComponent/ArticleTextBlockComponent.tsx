@@ -16,7 +16,6 @@ export const ArticleTextBlockComponent = memo(
     block,
   }: ArticleTextBlockComponentProps) => {
     return (
-      // FIXME: Section
       <VStack
         gap={0.5}
         className={classNames(
@@ -24,6 +23,7 @@ export const ArticleTextBlockComponent = memo(
           {},
           [className]
         )}
+        as='section'
       >
         {block.title && (
           <Text

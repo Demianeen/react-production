@@ -18,6 +18,7 @@ interface InputProps extends HTMLInputProps {
   autoFocus?: boolean
   readonly?: boolean
   wrapperClassName?: string
+  maxWidth?: boolean
 }
 
 export const Input = memo(
@@ -30,6 +31,7 @@ export const Input = memo(
     label,
     readonly,
     wrapperClassName,
+    maxWidth,
     ...props
   }: InputProps) => {
     const handleChange = (
@@ -53,6 +55,7 @@ export const Input = memo(
       <WithLabel
         label={label}
         wrapperClassName={wrapperClassName}
+        maxWidth={maxWidth}
       >
         <input
           id={label}

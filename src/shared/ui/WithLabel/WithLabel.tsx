@@ -14,6 +14,7 @@ interface WithLabelProps extends HTMLLabelProps {
   className?: string
   children: ReactNode
   wrapperClassName?: string
+  maxWidth?: boolean
 }
 
 export const WithLabel = memo(
@@ -22,10 +23,14 @@ export const WithLabel = memo(
     wrapperClassName,
     label,
     children,
+    maxWidth,
     ...props
   }: WithLabelProps) => {
     return (
-      <VStack className={wrapperClassName} maxWidth>
+      <VStack
+        className={wrapperClassName}
+        maxWidth={maxWidth}
+      >
         {label && (
           <label
             htmlFor={label}

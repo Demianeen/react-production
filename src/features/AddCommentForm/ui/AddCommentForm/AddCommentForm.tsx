@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
+import { HStack } from 'shared/ui/Stack'
 import {
   addCommentFormActions,
   addCommentFormReducer,
@@ -53,11 +54,15 @@ const AddCommentForm = ({
   )
 
   return (
-    <form
+    <HStack
+      as='form'
       className={classNames(styles.addCommentForm, {}, [
         className,
       ])}
       onSubmit={onSubmit}
+      align='end'
+      gap={1}
+      maxWidth
     >
       <Input
         label={t('Add new comment')}
@@ -65,10 +70,10 @@ const AddCommentForm = ({
         value={commentBody}
         onChange={onCommentBodyChange}
         className={styles.input}
-        wrapperClassName={styles.inputWrapper}
+        maxWidth
       />
       <Button type='submit'>{t('Send')}</Button>
-    </form>
+    </HStack>
   )
 }
 

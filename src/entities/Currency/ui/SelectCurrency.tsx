@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useMemo } from 'react'
-import type { SelectDirection } from 'shared/ui/Select/Select'
 import { Select } from 'shared/ui/Select/Select'
 import { useTranslation } from 'react-i18next'
+import type { Direction } from 'shared/types/ui'
 import { Currency } from '../model/types/currency'
 
 interface SelectCurrencyProps {
@@ -9,7 +9,8 @@ interface SelectCurrencyProps {
   value?: Currency
   onChange?: (value: Currency) => void
   readonly?: boolean
-  direction?: SelectDirection
+  direction?: Direction
+  maxWidth?: boolean
 }
 
 export const SelectCurrency = memo(
@@ -19,6 +20,7 @@ export const SelectCurrency = memo(
     onChange,
     readonly,
     direction,
+    maxWidth,
   }: SelectCurrencyProps) => {
     const { t } = useTranslation()
 
@@ -49,6 +51,7 @@ export const SelectCurrency = memo(
         readonly={readonly}
         defaultValue={t('Your currency')}
         direction={direction}
+        maxWidth={maxWidth}
       />
     )
   }

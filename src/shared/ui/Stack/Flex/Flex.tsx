@@ -1,7 +1,8 @@
-import type { ReactNode } from 'react'
+import type { ElementType, ReactNode } from 'react'
 import React from 'react'
 import type { Mods } from 'shared/lib/classNames/classNames'
 import { classNames } from 'shared/lib/classNames/classNames'
+import type { Props } from 'shared/types/ui'
 import styles from './Flex.module.scss'
 
 type FlexJustify =
@@ -51,8 +52,7 @@ const gapMap: Record<FlexGap, string> = {
 
 /* eslint-enable @typescript-eslint/naming-convention */
 
-export interface FlexProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface FlexOwnProps<TTag extends ElementType> {
   className?: string
   children?: ReactNode
   justify?: FlexJustify
@@ -63,9 +63,20 @@ export interface FlexProps
   height?: string
   maxWidth?: boolean
   maxHeight?: boolean
+  as?: TTag
 }
 
-export const Flex = ({
+export type FlexProps<TTag extends ElementType> = Props<
+  TTag,
+  keyof FlexOwnProps<TTag>
+> &
+  FlexOwnProps<TTag>
+
+const DEFAULT_TAG = 'div'
+
+export const Flex = <
+  TTag extends ElementType = typeof DEFAULT_TAG
+>({
   className,
   children,
   justify = 'start',
@@ -76,8 +87,9 @@ export const Flex = ({
   height,
   maxWidth = false,
   maxHeight = false,
+  as,
   ...props
-}: FlexProps) => {
+}: FlexProps<TTag>) => {
   const classes = [
     justifyMap[justify],
     alignMap[align],
@@ -92,13 +104,18 @@ export const Flex = ({
     [styles.maxHeight]: maxHeight,
   }
 
+  // TTag has default tag, but we still can't pass it to "as", so we pass it here
+  const Tag = as ?? (DEFAULT_TAG as TTag)
+
   return (
-    <div
+    // @ts-expect-error FIXME
+    <Tag
       style={{ height }}
       className={classNames(styles.flex, mods, classes)}
+      /* eslint-disable-next-line react/jsx-props-no-spreading */
       {...props}
     >
       {children}
-    </div>
+    </Tag>
   )
 }

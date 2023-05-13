@@ -50,12 +50,10 @@ export interface VirtualizedArticleListContext {
 const ArticlesNotFound = memo(() => {
   const { t } = useTranslation('articles')
   return (
-    <div>
-      <Text
-        title={t('Articles not found')}
-        size={TextSize.L}
-      />
-    </div>
+    <Text
+      title={t('Articles not found')}
+      size={TextSize.L}
+    />
   )
 })
 ArticlesNotFound.displayName = 'ArticlesNotFound'
@@ -146,6 +144,7 @@ export const VirtualizedArticleList = ({
           scrollParent?.current ?? undefined
         }
         initialTopMostItemIndex={startIndex}
+        role='feed'
       />
     )
   }
@@ -178,6 +177,7 @@ export const VirtualizedArticleList = ({
       customScrollParent={
         scrollParent?.current ?? undefined
       }
+      role='feed'
     />
   )
 }

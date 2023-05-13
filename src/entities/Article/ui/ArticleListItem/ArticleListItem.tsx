@@ -11,7 +11,7 @@ import { Button } from 'shared/ui/Button/Button'
 import { View } from 'entities/View'
 import { RoutePath } from 'shared/config/routeConfig/routeConfig'
 import { AppLink } from 'shared/ui/AppLink/AppLink'
-import { VStack } from 'shared/ui/Stack'
+import { HStack, VStack } from 'shared/ui/Stack'
 import type { OnOpenArticle } from '../ArticleList/VirtualizedArticleList'
 import type {
   Article,
@@ -98,23 +98,19 @@ export const ArticleListItem = memo(
           )}
         >
           <VStack gap={1}>
-            {/* add hstack */}
-            <header className={styles.header}>
+            <HStack as='header' gap={0.5} maxWidth>
               {article.user.avatar && (
                 <Avatar
                   size='2rem'
                   src={article.user.avatar}
                 />
               )}
-              <Text
-                text={article.user.username}
-                className={styles.username}
-              />
+              <Text text={article.user.username} />
               <Text
                 className={styles.date}
                 text={article.createdAt}
               />
-            </header>
+            </HStack>
             <Text title={article.title} />
             {types}
             {image}
@@ -124,19 +120,23 @@ export const ArticleListItem = memo(
                 className={styles.textBlock}
               />
             )}
-            <footer className={styles.footer}>
-              <AppLink
+            <HStack
+              as='footer'
+              justify='between'
+              className={styles.footer}
+              maxWidth
+            >
+              <Button
+                as={AppLink}
+                role='link'
                 to={RoutePath.article_details + article.id}
                 target={target}
                 onClick={onClick()}
               >
-                {/* TODO: Button can't be inside link */}
-                <Button type='button' role='link'>
-                  {t('Read more...')}
-                </Button>
-              </AppLink>
+                {t('Read more...')}
+              </Button>
               {views}
-            </footer>
+            </HStack>
           </VStack>
         </Card>
       )
@@ -163,10 +163,10 @@ export const ArticleListItem = memo(
               className={styles.date}
             />
           </div>
-          <div className={styles.infoWrapper}>
+          <HStack className={styles.infoWrapper} maxWidth>
             {types}
             {views}
-          </div>
+          </HStack>
           <Text
             text={article.title}
             textTitle={article.title}
