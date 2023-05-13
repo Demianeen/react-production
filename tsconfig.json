@@ -117,6 +117,7 @@
     "src/**/*.tsx",
     "config/**/*",
     "./config/jest/setupTests.ts",
-    "webpack.config.ts"
+    "webpack.config.ts",
+    "scripts/**/*.ts",
   ]
 }
