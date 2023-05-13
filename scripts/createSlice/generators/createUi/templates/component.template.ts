@@ -1,4 +1,4 @@
-import { capitalize } from '../../../../../utils/capitalize'
+import { capitalize } from '../../../utils/capitalize'
 
 export const componentTemplate = (sliceName: string) => {
   const capitalizedSliceName = capitalize(sliceName)

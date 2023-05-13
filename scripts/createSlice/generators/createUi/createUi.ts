@@ -1,10 +1,10 @@
 import fs from 'fs'
-import { resolveRoot } from '../../../../utils/resolveRoot'
+import { resolveRoot } from '../../utils/resolveRoot'
 import { componentTemplate } from './templates/component.template'
 import { styleTemplate } from './templates/style.template'
 import { storiesTemplate } from './templates/stories.template'
-import { capitalize } from '../../../../utils/capitalize'
 import type { Layer } from '../../types/createSlice'
+import { capitalize } from '../../utils/capitalize'
 
 export const createUi = (
   layer: Layer,

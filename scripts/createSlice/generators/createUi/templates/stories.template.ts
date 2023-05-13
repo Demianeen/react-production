@@ -1,4 +1,4 @@
-import type { Layer } from '../../../../../types/featureSlicedDesign'
+import type { Layer } from '../../../types/createSlice'
 
 export const storiesTemplate = (
   layer: Layer,
