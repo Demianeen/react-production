@@ -1,5 +1,4 @@
 import React, { memo } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
 import { Text } from 'shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next'
 import { VStack } from 'shared/ui/Stack'
@@ -23,11 +22,11 @@ export const CommentList = memo(
     const { t } = useTranslation()
     if (isLoading) {
       return (
-        <section
-          className={classNames(styles.commentList, {}, [
-            className,
-            styles.isLoading,
-          ])}
+        <VStack
+          as='section'
+          gap={1.25}
+          maxWidth
+          className={className}
         >
           <CommentCardIsLoading
             className={styles.comment}
@@ -38,13 +37,17 @@ export const CommentList = memo(
           <CommentCardIsLoading
             className={styles.comment}
           />
-        </section>
+        </VStack>
       )
     }
 
     return (
-      // FIXME: section
-      <VStack gap={1.25} maxWidth className={className}>
+      <VStack
+        as='section'
+        gap={1.25}
+        maxWidth
+        className={className}
+      >
         {comments ? (
           comments.map((comment) => (
             <CommentCard

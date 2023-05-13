@@ -1,6 +1,7 @@
 import React, { memo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton'
+import { HStack } from 'shared/ui/Stack'
 import styles from './CommentCard.module.scss'
 
 interface CommentCardProps {
@@ -15,8 +16,9 @@ export const CommentCardIsLoading = memo(
           className,
           styles.isLoading,
         ])}
+        aria-busy
       >
-        <header className={styles.header}>
+        <HStack as='header' className={styles.header}>
           <Skeleton
             width='2rem'
             height='2rem'
@@ -28,7 +30,7 @@ export const CommentCardIsLoading = memo(
             width='6rem'
             className={styles.username}
           />
-        </header>
+        </HStack>
         <Skeleton height='4rem' width='100%' />
       </div>
     )

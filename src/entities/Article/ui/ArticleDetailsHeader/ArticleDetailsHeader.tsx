@@ -20,12 +20,14 @@ export const ArticleDetailsHeader = memo(
     const error = useSelector(getArticleDetailsError)
 
     return (
-      // FIXME: Need to be header here
-      <HStack justify='between' className={className}>
-        {/* FIXME: Button inside link */}
-        <AppLink to={RoutePath.articles}>
-          <Button type='button'>{t('Back to list')}</Button>
-        </AppLink>
+      <HStack
+        justify='between'
+        className={className}
+        as='header'
+      >
+        <Button as={AppLink} to={RoutePath.articles}>
+          {t('Back to list')}
+        </Button>
         {canEdit && error === undefined && (
           <AppLink
             to={`${RoutePath.article_details + id}/edit`}

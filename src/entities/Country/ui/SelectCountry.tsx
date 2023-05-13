@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useMemo } from 'react'
-import type { SelectDirection } from 'shared/ui/Select/Select'
 import { Select } from 'shared/ui/Select/Select'
 import { useTranslation } from 'react-i18next'
+import type { Direction } from 'shared/types/ui'
 import { Country } from '../model/types/country'
 
 interface SelectCountryProps {
@@ -9,7 +9,8 @@ interface SelectCountryProps {
   value?: Country
   onChange?: (value: Country) => void
   readonly?: boolean
-  direction?: SelectDirection
+  direction?: Direction
+  maxWidth?: boolean
 }
 
 export const SelectCountry = memo(
@@ -19,6 +20,7 @@ export const SelectCountry = memo(
     onChange,
     readonly,
     direction,
+    maxWidth,
   }: SelectCountryProps) => {
     const { t } = useTranslation()
 
@@ -49,6 +51,7 @@ export const SelectCountry = memo(
         readonly={readonly}
         defaultValue={t('Your country')}
         direction={direction}
+        maxWidth={maxWidth}
       />
     )
   }

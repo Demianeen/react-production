@@ -4,30 +4,23 @@ $option-padding: 0.6rem;
   position: relative;
   min-width: max-content;
 
-  .buttonWrapper {
-    width: 100%;
+  .button {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
 
-    .button {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      padding: 0.5rem;
+    .label {
+      margin-right: 1rem;
+    }
 
-      .label {
-        margin-right: 1rem;
-      }
-
-      .icon {
-        margin-left: auto;
-      }
+    .icon {
+      margin-left: auto;
     }
   }
 
   .options {
     position: absolute;
-    top: 100%;
     z-index: 1;
-    width: 100%;
     min-width: max-content;
     padding: 0.5rem 0;
     background: var(--select-bg);
@@ -59,11 +52,23 @@ $option-padding: 0.6rem;
       }
     }
 
+    // directions
     &.up {
-      top: auto;
       bottom: 100%;
     }
+
+    &.down {
+      top: 100%;
+    }
+
+    &.left {
+      right: 0;
+    }
   }
+}
+
+.maxWidth {
+  width: 100%;
 }
 
 @keyframes open {

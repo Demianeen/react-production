@@ -1,0 +1,56 @@
+$item-padding: 0.5rem;
+$border-radius: 0.375rem;
+
+.dropdown {
+  position: relative;
+
+  .menu {
+    position: absolute;
+    z-index: 1;
+    min-width: max-content;
+    padding: 0.25rem;
+    background: var(--select-bg);
+    border-radius: $border-radius;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0/30%), 0 4px 6px -4px rgb(0 0 0/30%);
+    animation: open 0.2s ease-in-out;
+
+    .item {
+      min-width: 100%;
+      padding: $item-padding 2rem $item-padding $item-padding;
+      cursor: pointer;
+      border-radius: $border-radius;
+
+      &.active {
+        background: var(--inverted-bg-color);
+      }
+
+      &.disabled {
+        opacity: 0.5;
+      }
+    }
+
+    // directions
+    &.up {
+      bottom: 100%;
+    }
+
+    &.down {
+      top: 100%;
+    }
+
+    &.left {
+      right: 0;
+    }
+  }
+
+}
+
+@keyframes open {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
