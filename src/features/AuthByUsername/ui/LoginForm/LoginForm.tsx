@@ -12,6 +12,7 @@ import { Spinner } from 'shared/ui/Spinner/Spinner'
 import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { VStack } from 'shared/ui/Stack'
 import { getLoginFormPassword } from '../../modal/selectors/getLoginFormPassword/getLoginFormPassword'
 import { getLoginFormError } from '../../modal/selectors/getLoginFormError/getLoginFormError'
 import { getLoginFormUsername } from '../../modal/selectors/getLoginFormUsername/getLoginFormUsername'
@@ -72,7 +73,8 @@ const LoginForm = memo(
     )
 
     return (
-      <form
+      <VStack
+        as='form'
         onSubmit={onLogin}
         className={classNames(styles.loginForm, {}, [
           className,
@@ -95,6 +97,7 @@ const LoginForm = memo(
           label={t('Enter username')}
           autoComplete='username'
           wrapperClassName={styles.inputWrapper}
+          maxWidth
         />
         <Input
           type='password'
@@ -105,6 +108,7 @@ const LoginForm = memo(
           label={t('Enter password')}
           autoComplete='current-password'
           wrapperClassName={styles.inputWrapper}
+          maxWidth
         />
         {isLoading && <Spinner />}
         <Button
@@ -115,7 +119,7 @@ const LoginForm = memo(
         >
           {t('Login')}
         </Button>
-      </form>
+      </VStack>
     )
   }
 )

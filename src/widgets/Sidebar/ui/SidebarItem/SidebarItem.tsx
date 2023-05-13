@@ -8,6 +8,13 @@ import { classNames } from 'shared/lib/classNames/classNames'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { getUserAuthData } from 'entities/User'
+import { HStack } from 'shared/ui/Stack'
+import { Icon } from 'shared/ui/Icon/Icon'
+import {
+  Text,
+  TextSize,
+  TextTheme,
+} from 'shared/ui/Text/Text'
 import type { SidebarItemArgs } from '../../model/types/sidebar'
 import styles from './SidebarItem.module.scss'
 
@@ -32,19 +39,22 @@ export const SidebarItem = memo(
 
     return (
       <li>
-        {/* TODO: Add vstack */}
-        <AppLink
+        <HStack
+          as={AppLink}
           theme={AppLinkTheme.INVERTED}
           to={item.path}
-          className={classNames(styles.item, mods, [
-            className,
-          ])}
+          className={classNames('', mods, [className])}
+          gap={1.25}
         >
-          <item.Icon className={styles.icon} />
-          <span className={styles.text}>
-            {t(item.text)}
-          </span>
-        </AppLink>
+          <Icon Svg={item.Icon} className={styles.icon} />
+          <Text
+            TitleTag='span'
+            title={t(item.text)}
+            className={styles.text}
+            size={TextSize.S}
+            theme={TextTheme.INVERTED}
+          />
+        </HStack>
       </li>
     )
   }

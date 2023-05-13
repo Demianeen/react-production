@@ -164,13 +164,17 @@ export const ProfileCard = ({
           value={data?.currency}
           onChange={onChangeCurrency}
           readonly={readonly}
-          direction='up'
+          className={styles.select}
+          direction='up-left'
+          maxWidth
         />
         <SelectCountry
           value={data?.country}
           onChange={onChangeCountry}
           readonly={readonly}
-          direction='up'
+          className={styles.select}
+          direction='up-left'
+          maxWidth
         />
       </form>
     </HStack>

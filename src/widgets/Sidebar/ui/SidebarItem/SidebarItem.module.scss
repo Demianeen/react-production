@@ -1,24 +1,13 @@
-.item {
-  display: flex;
-  align-items: center;
-  height: var(--font-line-l);
-
-  .icon {
-    margin-right: 1.25rem;
-    fill: var(--inverted-primary-color);
+.collapsed {
+  .text {
+    // text hiding animation
+    width: 0;
+    overflow: hidden;
+    transition: 0.3s opacity;
   }
 
-  &.collapsed {
-    .text {
-      // text hiding animation
-      width: 0;
-      overflow: hidden;
-      transition: 0.3s opacity;
-    }
-
-    .icon {
-      margin-right: 0;
-      fill: var(--inverted-primary-color);
-    }
+  .icon {
+    margin-right: 0;
+    fill: var(--inverted-primary-color);
   }
 }

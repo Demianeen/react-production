@@ -24,15 +24,20 @@ interface TextProps {
   className?: string
   text?: string
   textTitle?: string
+  TextTag?: 'p' | 'span'
   title?: string
   titleTitle?: string
+  TitleTag?: 'h1' | 'h2' | 'h3' | 'p' | 'span'
   theme?: TextTheme
   align?: TextAlign
   size?: TextSize
 }
 
 type HeaderTag = 'h1' | 'h2' | 'h3'
-const mapSizeToHeaderTag: Record<TextSize, HeaderTag> = {
+const mapSizeToDefaultHeaderTag: Record<
+  TextSize,
+  HeaderTag
+> = {
   [TextSize.S]: 'h3',
   [TextSize.M]: 'h2',
   [TextSize.L]: 'h1',
@@ -43,13 +48,16 @@ export const Text = memo(
     className,
     title,
     titleTitle,
+    TitleTag,
     text,
     textTitle,
+    TextTag = 'p',
     theme = TextTheme.DEFAULT,
     align = TextAlign.LEFT,
     size = TextSize.M,
   }: TextProps) => {
-    const HeaderTag = mapSizeToHeaderTag[size]
+    const HeaderTag =
+      TitleTag ?? mapSizeToDefaultHeaderTag[size]
 
     return (
       <div
@@ -69,9 +77,12 @@ export const Text = memo(
           </HeaderTag>
         )}
         {text && (
-          <p title={textTitle} className={styles.text}>
+          <TextTag
+            title={textTitle}
+            className={styles.text}
+          >
             {text}
-          </p>
+          </TextTag>
         )}
       </div>
     )

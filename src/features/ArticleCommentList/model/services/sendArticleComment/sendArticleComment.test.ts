@@ -24,10 +24,11 @@ describe('sendArticleComment', () => {
       body: 'new comment body',
       id: 4,
     }
-    thunk.api.post.mockReturnValue({
-      // @ts-expect-error TODO: fix
-      data: newComment,
-    })
+    thunk.api.post.mockReturnValue(
+      Promise.resolve({
+        data: newComment,
+      })
+    )
     const result = await thunk.call('new comment body')
 
     expect(result.payload).toEqual(newComment)

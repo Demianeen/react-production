@@ -15,6 +15,9 @@ import {
   AppLinkTheme,
 } from 'shared/ui/AppLink/AppLink'
 import { RoutePath } from 'shared/config/routeConfig/routeConfig'
+import { Dropdown } from 'shared/ui/Dropdown/Dropdown'
+import { Avatar } from 'shared/ui/Avatar/Avatar'
+import { HStack } from 'shared/ui/Stack'
 import styles from './Navbar.module.scss'
 
 interface NavbarProps {
@@ -40,57 +43,65 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     dispatch(userActions.logout())
   }, [dispatch])
 
-  if (authData) {
-    return (
-      // TODO: add hstack
-      <header
-        className={classNames(styles.navbar, {}, [
-          className,
-        ])}
-      >
-        <Text
-          className={styles.appName}
-          theme={TextTheme.INVERTED}
-          title={t('Netliukh Demian')}
-        />
-        <AppLink
-          to={RoutePath.article_create}
-          className={styles.createLink}
-          theme={AppLinkTheme.INVERTED}
-        >
-          {t('Create article')}
-        </AppLink>
+  return (
+    <HStack
+      as='header'
+      gap={1}
+      className={classNames(styles.navbar, {}, [className])}
+      maxWidth
+    >
+      <Text
+        className={styles.appName}
+        theme={TextTheme.INVERTED}
+        title={t('Netliukh Demian')}
+      />
+      {authData ? (
+        <>
+          <AppLink
+            to={RoutePath.article_create}
+            className={styles.createLink}
+            theme={AppLinkTheme.INVERTED}
+          >
+            {t('Create article')}
+          </AppLink>
+          <Dropdown
+            className={styles.loginBtn}
+            items={[
+              {
+                label: t('Profile'),
+                href: RoutePath.profile + authData.id,
+              },
+              {
+                label: t('Logout'),
+                onClick: onLogout,
+              },
+            ]}
+            triggerChildren={
+              authData?.avatar ? (
+                <Avatar size='2rem' src={authData.avatar} />
+              ) : (
+                t('Account')
+              )
+            }
+          />
+        </>
+      ) : (
         <Button
           type='button'
           theme={ButtonTheme.CLEAR_INVERTED}
+          onClick={onOpenModal}
           className={styles.loginBtn}
-          onClick={onLogout}
         >
-          {t('Logout')}
+          {t('Login')}
         </Button>
-      </header>
-    )
-  }
-
-  return (
-    <header
-      className={classNames(styles.navbar, {}, [className])}
-    >
-      <Button
-        type='button'
-        theme={ButtonTheme.CLEAR_INVERTED}
-        onClick={onOpenModal}
-        className={styles.loginBtn}
-      >
-        {t('Login')}
-      </Button>
+      )}
       {isAuthModalOpened && (
         <LoginModal
           isOpen={isAuthModalOpened}
           onClose={onCloseModal}
         />
       )}
-    </header>
+    </HStack>
   )
 })
 

@@ -3,7 +3,7 @@ import { classNames } from 'shared/lib/classNames/classNames'
 import { Card } from 'shared/ui/Card/Card'
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton'
 import { View } from 'entities/View'
-import { VStack } from 'shared/ui/Stack'
+import { HStack, VStack } from 'shared/ui/Stack'
 import styles from './ArticleListItem.module.scss'
 
 interface ArticleListItemSkeletonProps {
@@ -24,7 +24,7 @@ export const ArticleListItemSkeleton = memo(
           aria-busy
         >
           <VStack gap={0.5}>
-            <header className={styles.header}>
+            <HStack as='header' gap={0.5} maxWidth>
               <Skeleton
                 width='2rem'
                 height='2rem'
@@ -40,7 +40,7 @@ export const ArticleListItemSkeleton = memo(
                 width='7rem'
                 className={styles.date}
               />
-            </header>
+            </HStack>
             <Skeleton
               height='var(--font-size-l)'
               width='15rem'
@@ -57,9 +57,14 @@ export const ArticleListItemSkeleton = memo(
               height='4rem'
             />
             <Skeleton className={styles.textBlock} />
-            <footer className={styles.footer}>
+            <HStack
+              as='footer'
+              justify='between'
+              className={styles.footer}
+              maxWidth
+            >
               <Skeleton height='2rem' width='10rem' />
-            </footer>
+            </HStack>
           </VStack>
         </Card>
       )
@@ -76,12 +81,12 @@ export const ArticleListItemSkeleton = memo(
         <div className={styles.imageWrapper}>
           <Skeleton className={styles.img} />
         </div>
-        <div className={styles.infoWrapper}>
+        <HStack className={styles.infoWrapper} maxWidth>
           <Skeleton
             height='var(--font-size-m)'
             className={styles.types}
           />
-        </div>
+        </HStack>
         <Skeleton
           className={styles.title}
           height='var(--font-size-l)'

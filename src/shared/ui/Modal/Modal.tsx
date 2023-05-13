@@ -83,7 +83,6 @@ export const Modal = ({
           'appStyles',
         ])}
       >
-        {/* TODO: add hstack */}
         <HStack
           justify='center'
           align='center'
