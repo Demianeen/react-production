@@ -9,6 +9,7 @@ import type { BuildOptions } from './types/config'
 export default ({
   paths,
   isDev,
+  isAnalyze,
   apiURL,
   project,
 }: BuildOptions): webpack.WebpackPluginInstance[] => {
@@ -36,15 +37,14 @@ export default ({
     }),
   ]
 
-  const devPlugins = [
-    new BundleAnalyzerPlugin({
-      openAnalyzer: false,
-    }),
-    new ReactRefreshWebpackPlugin(),
-  ]
+  const devPlugins = [new ReactRefreshWebpackPlugin()]
 
   if (isDev) {
     plugins.push(...devPlugins)
+  }
+
+  if (isAnalyze) {
+    plugins.push(new BundleAnalyzerPlugin())
   }
 
   return plugins

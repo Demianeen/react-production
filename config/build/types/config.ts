@@ -13,12 +13,14 @@ export interface BuildEnv {
   mode?: BuildMode
   port?: number
   apiUrl?: string
+  analyze?: boolean
 }
 
 export interface BuildOptions {
   mode: BuildMode
   paths: BuildPath
   isDev: boolean
+  isAnalyze: boolean
   port: number
   apiURL: string
   project: 'storybook' | 'frontend' | 'jest'

@@ -119,5 +119,6 @@
     "./config/jest/setupTests.ts",
     "webpack.config.ts",
     "scripts/**/*.ts",
+    "utils/**/*.ts",
   ]
 }

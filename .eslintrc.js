@@ -96,6 +96,8 @@ module.exports = {
           '**/webpack.config.ts', // webpack config
           'config/**', // project configuration
           '**/storybook/**', // storybook configuration
+          'utils/**', // project utils
+          'scripts/**', // project scripts
         ],
       },
     ],
@@ -130,6 +132,9 @@ module.exports = {
 
     // checks path for fsd violations
     'netliukh-demian-fsd-plugin/check-path': 2,
+
+    // we use only Button component where type is required
+    'react/button-has-type': 0,
   },
   settings: {
     react: {
