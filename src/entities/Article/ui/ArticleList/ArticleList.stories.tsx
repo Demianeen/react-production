@@ -4,7 +4,7 @@ import type {
 } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
-import { View } from 'entities/View'
+import { View } from 'entities/ListFilters'
 import { article } from '../../model/mocks/tests'
 import { ArticleList } from './ArticleList'
 

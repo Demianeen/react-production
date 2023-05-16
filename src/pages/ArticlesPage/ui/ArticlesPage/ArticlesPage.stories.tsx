@@ -8,7 +8,7 @@ import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
 import {
   articleIds,
   getArticleEntities,
-} from '../../model/mocks/data'
+} from 'features/ArticleInfiniteList/model/mocks/data'
 import ArticlesPage from './ArticlesPage'
 
 export default {
@@ -25,7 +25,7 @@ export default {
   },
   decorators: [
     StoreDecorator({
-      articlesPage: {
+      articleInfiniteList: {
         ids: articleIds,
         entities: getArticleEntities(),
       },

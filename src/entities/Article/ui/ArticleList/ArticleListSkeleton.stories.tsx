@@ -4,7 +4,7 @@ import type {
 } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
-import { View } from 'entities/View'
+import { View } from 'entities/ListFilters'
 import { ArticleListSkeleton } from './ArticleListSkeleton'
 
 export default {
@@ -24,13 +24,13 @@ const Template: ComponentStory<typeof ArticleListSkeleton> =
 const listContext = {
   isLoading: true,
   view: View.LIST,
-  limit: 4,
+  skeletonsLimit: 4,
 }
 
 const gridContext = {
   isLoading: true,
   view: View.GRID,
-  limit: 12,
+  skeletonsLimit: 12,
 }
 
 export const List = Template.bind({})

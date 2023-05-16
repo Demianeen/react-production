@@ -5,6 +5,7 @@ import { $api } from 'shared/api/api'
 import type { CombinedState, Reducer } from 'redux'
 import { pageReducer } from 'widgets/Page'
 import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
+import { rtkApi } from 'shared/api/rtkApi'
 import type {
   StateSchema,
   StateSchemaKey,
@@ -26,6 +27,7 @@ export function createReduxStore({
     counter: counterReducer,
     user: userReducer,
     page: pageReducer,
+    [rtkApi.reducerPath]: rtkApi.reducer,
   }
 
   const reducerManager = createReducerManager(
@@ -47,7 +49,7 @@ export function createReduxStore({
         thunk: {
           extraArgument: extraArg,
         },
-      }),
+      }).concat(rtkApi.middleware),
   })
 
   // @ts-expect-error there is no such property in the store types definition

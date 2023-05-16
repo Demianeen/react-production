@@ -9,7 +9,7 @@ import { article } from 'entities/Article/model/mocks/tests'
 import ArticleDetailsPage from './ArticleDetailsPage'
 
 export default {
-  title: 'pages/ArticleDetailsPage',
+  title: 'pages/ArticleDetailsPage/ArticleDetailsPage',
   component: ArticleDetailsPage,
   argTypes: {
     backgroundColor: { control: 'color' },

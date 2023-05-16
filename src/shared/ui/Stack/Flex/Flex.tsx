@@ -2,7 +2,7 @@ import type { ElementType, ReactNode } from 'react'
 import React from 'react'
 import type { Mods } from 'shared/lib/classNames/classNames'
 import { classNames } from 'shared/lib/classNames/classNames'
-import type { Props } from 'shared/types/ui'
+import type { Props, WithDefaultTag } from 'shared/types/ui'
 import styles from './Flex.module.scss'
 
 type FlexJustify =
@@ -89,7 +89,7 @@ export const Flex = <
   maxHeight = false,
   as,
   ...props
-}: FlexProps<TTag>) => {
+}: FlexProps<WithDefaultTag<TTag, typeof DEFAULT_TAG>>) => {
   const classes = [
     justifyMap[justify],
     alignMap[align],
@@ -104,11 +104,9 @@ export const Flex = <
     [styles.maxHeight]: maxHeight,
   }
 
-  // TTag has default tag, but we still can't pass it to "as", so we pass it here
-  const Tag = as ?? (DEFAULT_TAG as TTag)
+  const Tag = as ?? DEFAULT_TAG
 
   return (
-    // @ts-expect-error FIXME
     <Tag
       style={{ height }}
       className={classNames(styles.flex, mods, classes)}

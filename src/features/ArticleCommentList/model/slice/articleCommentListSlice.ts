@@ -6,13 +6,13 @@ import type { Comment } from 'entities/Comment'
 import type { StateSchema } from 'app/providers/StoreProvider'
 import { fetchCommentsByArticleId } from '../services/fetchCommentsByArticleId/fetchCommentsByArticleId'
 import { getArticleCommentListState } from '../selectors/getArticleCommentListState/getArticleCommentListState'
-import type { ArticleCommentListSliceSchema } from '../types/articleCommentListSliceSchema'
+import type { ArticleCommentListSchema } from '../types/articleCommentListSchema'
 
 const articleCommentsAdapter =
   createEntityAdapter<Comment>()
 
 const initialState =
-  articleCommentsAdapter.getInitialState<ArticleCommentListSliceSchema>(
+  articleCommentsAdapter.getInitialState<ArticleCommentListSchema>(
     {
       isLoading: true,
       ids: [],

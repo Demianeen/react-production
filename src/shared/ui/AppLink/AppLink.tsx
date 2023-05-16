@@ -3,7 +3,7 @@ import React, { forwardRef } from 'react'
 import type { LinkProps } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { classNames } from 'shared/lib/classNames/classNames'
-import { typedMemo } from 'shared/lib/typedMemo/typedMemo'
+import { typedMemo } from 'shared/lib/react/typedMemo/typedMemo'
 import styles from './AppLink.module.scss'
 
 export enum AppLinkTheme {

@@ -5,22 +5,20 @@ import { loginReducer } from 'features/AuthByUsername/modal/slice/loginFormSlice
 // that's okay that we import this not from sort.ts because we use it only in storybook
 import { profileReducer } from 'features/EditableProfileCard/model/slice/profileSlice'
 import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice'
-import { addCommentFormReducer } from 'features/AddCommentForm/model/slice/addCommentFormSlice'
-import { articlesPageReducer } from 'pages/ArticlesPage/model/slice/articlesPageSlice'
-import { sortedArticleListReducer } from 'features/SortedArticlesList/model/slice/sortedArticleListSlice'
 import type { StateSchemaKey } from 'app/providers/StoreProvider/config/stateSchema'
 import type { Reducer } from 'redux'
-import { articleDetailsFooterReducer } from 'features/ArticleCommentList/model/slice'
+import { commentFormReducer } from 'entities/CommentForm/model/slice/commentFormSlice'
+import { articleCommentListReducer } from 'features/ArticleCommentList/model/slice/articleCommentListSlice'
+import { articleInfiniteListReducer } from 'features/ArticleInfiniteList/model/slice/articleInfiniteListSlice'
 import type { ReducersList } from '../hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 
 const defaultAsyncReducers: ReducersList = {
   loginForm: loginReducer,
   profile: profileReducer,
   articleDetails: articleDetailsReducer,
-  addCommentForm: addCommentFormReducer,
-  articlesPage: articlesPageReducer,
-  sortedArticleList: sortedArticleListReducer,
-  articleDetailsFooter: articleDetailsFooterReducer,
+  commentForm: commentFormReducer,
+  articleCommentList: articleCommentListReducer,
+  articleInfiniteList: articleInfiniteListReducer,
 }
 
 export const StoreDecorator = (

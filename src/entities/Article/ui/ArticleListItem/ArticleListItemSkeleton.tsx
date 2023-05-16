@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { Card } from 'shared/ui/Card/Card'
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton'
-import { View } from 'entities/View'
+import { View } from 'entities/ListFilters'
 import { HStack, VStack } from 'shared/ui/Stack'
 import styles from './ArticleListItem.module.scss'
 

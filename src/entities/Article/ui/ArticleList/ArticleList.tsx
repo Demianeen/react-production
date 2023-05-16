@@ -1,8 +1,11 @@
 import type { HTMLAttributeAnchorTarget } from 'react'
 import React, { memo, useCallback } from 'react'
-import { View } from 'entities/View'
 import { classNames } from 'shared/lib/classNames/classNames'
-import { getArticleListSkeletons } from './ArticleListSkeleton'
+import { View } from 'entities/ListFilters'
+import {
+  ArticleListSkeleton,
+  getArticleListSkeletons,
+} from './ArticleListSkeleton'
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
 import type { Article } from '../../model/types/article'
 import styles from './ArticleList.module.scss'
@@ -37,6 +40,19 @@ export const ArticleList = memo(
       ),
       [target, view]
     )
+
+    if (isLoading) {
+      return (
+        <ArticleListSkeleton
+          context={{
+            isLoading: true,
+            view,
+            skeletonsLimit: limit,
+          }}
+          className={className}
+        />
+      )
+    }
 
     return (
       <div

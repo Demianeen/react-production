@@ -4,8 +4,8 @@ import { getArticleCommentListIsLoading } from './getArticleCommentListIsLoading
 describe('getArticleCommentsIsLoading', () => {
   it('should return the isLoading', () => {
     const state: DeepPartial<StateSchema> = {
-      articleDetailsFooter: {
-        comments: { isLoading: true },
+      articleCommentList: {
+        isLoading: true,
       },
     }
     expect(

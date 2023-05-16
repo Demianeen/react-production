@@ -1,14 +1,16 @@
 import type {
-  ButtonHTMLAttributes,
+  ElementType,
   ForwardedRef,
+  ReactNode,
 } from 'react'
-import React, { forwardRef } from 'react'
+import React from 'react'
 import type { Mods } from 'shared/lib/classNames/classNames'
 import { classNames } from 'shared/lib/classNames/classNames'
-import { typedMemo } from 'shared/lib/typedMemo/typedMemo'
+import { typedMemo } from 'shared/lib/react/typedMemo/typedMemo'
+import { typedForwardRef } from 'shared/lib/react/typedForwardRef/typedForwardRef'
+import type { Props, WithDefaultTag } from 'shared/types/ui'
+import type { AppLink } from '../AppLink/AppLink'
 import styles from './Button.module.scss'
-import type { AppLinkProps } from '../AppLink/AppLink'
-import { AppLink } from '../AppLink/AppLink'
 
 export enum ButtonTheme {
   CLEAR = 'clear',
@@ -25,56 +27,51 @@ export enum ButtonSize {
   XL = 'extraLarge',
 }
 
-interface ButtonOwnProps {
+type OnlyButtonProps = {
+  type: 'button' | 'submit' | 'reset'
+}
+
+type NeverButtonProps = {
+  [K in keyof OnlyButtonProps]?: never
+}
+
+type AdditionalProps<TTag extends ElementType> =
+  TTag extends 'button' ? OnlyButtonProps : NeverButtonProps
+
+type ButtonOwnProps<TTag extends ElementType> = {
   className?: string
+  children?: ReactNode
   theme?: ButtonTheme
   square?: boolean
   size?: ButtonSize
   disabled?: boolean
   // in case we need to disable the button when we pass it as another component's prop (e.g. Dropdown) where we don't have access to the button's disabled prop
   disabledButton?: boolean
-}
+  as?: TTag
+} & AdditionalProps<TTag>
 
-interface ButtonOwnPropsButton extends ButtonOwnProps {
-  type: 'button' | 'submit' | 'reset'
-  // button is default tag
-  as?: never
-}
-
-type OmittedButtonProps = Omit<
-  ButtonHTMLAttributes<HTMLButtonElement>,
-  keyof ButtonOwnPropsButton
+export type ButtonProps<
+  TTag extends ElementType = typeof DEFAULT_TAG
+> = Props<
+  TTag,
+  keyof ButtonOwnProps<TTag>,
+  ButtonOwnProps<TTag>
 >
 
-type ButtonPropsButton = ButtonOwnPropsButton &
-  OmittedButtonProps
-
-interface ButtonOwnPropsAppLink extends ButtonOwnProps {
-  type?: never
-  as: typeof AppLink
+const isButton = (
+  Component: ElementType
+): Component is 'button' => {
+  return Component === 'button'
 }
 
-type OmittedAppLinkProps = Omit<
-  AppLinkProps,
-  keyof ButtonOwnPropsAppLink
->
-type ButtonPropsAppLink = ButtonOwnPropsAppLink &
-  OmittedAppLinkProps
+const DEFAULT_TAG = 'button'
 
-export type ButtonProps =
-  | ButtonPropsButton
-  | ButtonPropsAppLink
-
-const isAppLink = (
-  Component: typeof AppLink | undefined,
-  _props: OmittedAppLinkProps | OmittedButtonProps
-): _props is OmittedAppLinkProps => {
-  return Component === AppLink
-}
-
-// TODO: remake with generic type
 export const Button = typedMemo(
-  forwardRef(function Button(
+  typedForwardRef(function Button<
+    TTag extends
+      | typeof AppLink
+      | 'button' = typeof DEFAULT_TAG
+  >(
     {
       className,
       children,
@@ -83,13 +80,14 @@ export const Button = typedMemo(
       size = ButtonSize.M,
       disabled = false,
       disabledButton = false,
-      type,
       as,
       ...props
-    }: ButtonProps,
-    ref:
-      | ForwardedRef<HTMLButtonElement>
-      | ForwardedRef<HTMLAnchorElement>
+    }: ButtonProps<
+      WithDefaultTag<TTag, typeof DEFAULT_TAG>
+    >,
+    ref: ForwardedRef<
+      WithDefaultTag<TTag, typeof DEFAULT_TAG>
+    >
   ) {
     const isDisabled = disabled ?? disabledButton
     const mods: Mods = {
@@ -102,30 +100,32 @@ export const Button = typedMemo(
       className,
     ])
 
-    if (isAppLink(as, props)) {
+    const Tag = as ?? DEFAULT_TAG
+
+    if (isButton(Tag)) {
       return (
-        <AppLink
+        <button
           className={classes}
-          ref={ref as ForwardedRef<HTMLAnchorElement>}
-          /* eslint-disable-next-line react/jsx-props-no-spreading */
+          ref={ref as ForwardedRef<HTMLButtonElement>}
+          disabled={isDisabled}
+          /* eslint-disable-next-line react/button-has-type */
           {...props}
         >
           {children}
-        </AppLink>
+        </button>
       )
     }
 
     return (
-      <button
+      // @ts-expect-error FIXME: fix typing
+      <Tag
         className={classes}
-        ref={ref as ForwardedRef<HTMLButtonElement>}
-        disabled={isDisabled}
-        /* eslint-disable-next-line react/button-has-type */
-        type={type}
-        {...(props as OmittedButtonProps)}
+        ref={ref}
+        /* eslint-disable-next-line react/jsx-props-no-spreading */
+        {...props}
       >
         {children}
-      </button>
+      </Tag>
     )
   })
 )

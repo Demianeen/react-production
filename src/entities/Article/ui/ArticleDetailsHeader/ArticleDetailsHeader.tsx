@@ -29,11 +29,12 @@ export const ArticleDetailsHeader = memo(
           {t('Back to list')}
         </Button>
         {canEdit && error === undefined && (
-          <AppLink
+          <Button
+            as={AppLink}
             to={`${RoutePath.article_details + id}/edit`}
           >
-            <Button type='button'>{t('Edit')}</Button>
-          </AppLink>
+            {t('Edit')}
+          </Button>
         )}
       </HStack>
     )

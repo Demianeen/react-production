@@ -1,4 +1,4 @@
-import { typedMemo } from 'shared/lib/typedMemo/typedMemo'
+import { typedMemo } from 'shared/lib/react/typedMemo/typedMemo'
 import { Listbox } from '@headlessui/react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { Fragment, useMemo } from 'react'

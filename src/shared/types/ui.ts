@@ -24,14 +24,10 @@ export type PropsOf<TTag extends ReactTag> =
     ? Omit<ComponentProps<TTag>, 'ref'>
     : never
 
-type PropsWeControl =
-  | 'as'
-  | 'children'
-  | 'refName'
-  | 'className'
+type PropsWeControl = 'as' | 'children' | 'className'
 
 // Resolve the props of the component, but ensure to omit certain props that we control
-type CleanProps<
+export type CleanProps<
   TTag extends ReactTag,
   TOmitableProps extends PropertyKey = never
 > = Omit<PropsOf<TTag>, TOmitableProps | PropsWeControl>
@@ -51,3 +47,8 @@ export type Props<
 > = CleanProps<TTag, TOmitableProps | keyof Overrides> &
   OurProps<TTag> &
   Overrides
+
+export type WithDefaultTag<
+  TTag extends ElementType | undefined,
+  DefaultTag extends ElementType
+> = TTag extends ElementType ? TTag : DefaultTag

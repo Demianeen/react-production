@@ -2,7 +2,7 @@ import type {
   ComponentMeta,
   ComponentStory,
 } from '@storybook/react'
-import { View } from 'entities/View'
+import { View } from 'entities/ListFilters'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { ArticleListItemSkeleton } from './ArticleListItemSkeleton'
