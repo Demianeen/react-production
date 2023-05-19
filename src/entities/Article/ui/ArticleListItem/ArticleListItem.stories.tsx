@@ -5,7 +5,7 @@ import type {
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { View } from 'entities/ListFilters'
-import { article } from '../../model/mocks/tests'
+import { article } from '../../model/mocks/data'
 import { ArticleListItem } from './ArticleListItem'
 
 export default {

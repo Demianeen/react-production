@@ -4,6 +4,7 @@ import type { AppRouteProps } from 'shared/config/routeConfig/routeConfig'
 import { routeConfig } from 'shared/config/routeConfig/routeConfig'
 import { PageLoader } from 'widgets/PageLoader'
 import { RequireAuth } from 'app/providers/router/ui/RequireAuth'
+import { RequireRoles } from 'app/providers/router/ui/RequireRoles'
 
 export const AppRouter = memo(() => {
   const routes = useMemo(() => {
@@ -21,7 +22,11 @@ export const AppRouter = memo(() => {
             path={route.path}
             element={
               route.authOnly ? (
-                <RequireAuth>{wrappedElement}</RequireAuth>
+                <RequireAuth>
+                  <RequireRoles requiredRoles={route.roles}>
+                    {wrappedElement}
+                  </RequireRoles>
+                </RequireAuth>
               ) : (
                 wrappedElement
               )

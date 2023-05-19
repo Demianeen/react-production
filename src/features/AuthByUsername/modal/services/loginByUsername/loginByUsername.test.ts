@@ -1,14 +1,15 @@
 import type { User } from 'entities/User'
-import { userActions } from 'entities/User'
+import { userActions, UserRole } from 'entities/User'
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk'
 import { loginByUsername } from './loginByUsername'
 
+// TODO: refactor tests with msw
 describe('loginByUsername', () => {
   test('fulfilled login', async () => {
     const data: User = {
       id: 1,
       username: 'username',
-      role: 'USER',
+      roles: [UserRole.USER],
     }
 
     const thunk = new TestAsyncThunk(loginByUsername)

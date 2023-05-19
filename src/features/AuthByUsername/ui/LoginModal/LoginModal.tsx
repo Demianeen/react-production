@@ -9,6 +9,7 @@ interface LoginModalProps {
   onClose: () => void
 }
 
+// TODO: remake it with redux
 export const LoginModal = ({
   className,
   isOpen,

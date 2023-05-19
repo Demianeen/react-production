@@ -7,7 +7,12 @@ import {
 } from 'shared/ui/Button/Button'
 import { LoginModal } from 'features/AuthByUsername'
 import { useSelector } from 'react-redux'
-import { getUserAuthData, userActions } from 'entities/User'
+import {
+  getIsUserAdmin,
+  getIsUserManager,
+  getUserAuthData,
+  userActions,
+} from 'entities/User'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { Text, TextTheme } from 'shared/ui/Text/Text'
 import {
@@ -30,6 +35,10 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     useState(false)
   const authData = useSelector(getUserAuthData)
   const dispatch = useAppDispatch()
+
+  const isAdmin = useSelector(getIsUserAdmin)
+  const isManager = useSelector(getIsUserManager)
+  const isAdminPanelAvailable = isAdmin || isManager
 
   const onOpenModal = useCallback(() => {
     setIsAuthModalOpened(true)
@@ -67,6 +76,14 @@ export const Navbar = memo(({ className }: NavbarProps) => {
           <Dropdown
             className={styles.loginBtn}
             items={[
+              ...(isAdminPanelAvailable
+                ? [
+                    {
+                      label: t('Admin panel'),
+                      href: RoutePath.admin_panel,
+                    },
+                  ]
+                : []),
               {
                 label: t('Profile'),
                 href: RoutePath.profile + authData.id,

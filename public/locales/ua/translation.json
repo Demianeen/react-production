@@ -19,10 +19,12 @@
   "Country": "Країна",
   "Profile": "Профіль",
   "Articles": "Статті",
-  "No comments yet": "No comments yet",
+  "No comments yet": "Коментарів поки немає",
   "Netliukh Demian": "Нетлюх Дем'ян",
   "Create article": "Створити статтю",
   "Your currency": "Ваша валюта",
   "Your country": "Ваша країна",
-  "Account": "Акаунт"
+  "Account": "Акаунт",
+  "Admin panel": "Панель адміністратора",
+  "You don't have access to this page": "У вас немає доступу до цієї сторінки"
 }

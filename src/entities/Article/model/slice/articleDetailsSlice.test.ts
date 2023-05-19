@@ -1,7 +1,7 @@
 import type { ArticleDetailsSchema } from '../types/articleDetailsSchema'
 import { articleDetailsReducer } from './articleDetailsSlice'
 import { fetchArticleById } from '../services/fetchArticleById/fetchArticleById'
-import { article } from '../mocks/tests'
+import { article } from '../mocks/data'
 
 describe('articleDetailsSlice', () => {
   test('fetchArticleById service pending', () => {

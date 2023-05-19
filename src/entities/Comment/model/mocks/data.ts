@@ -1,3 +1,4 @@
+import { UserRole } from 'entities/User'
 import type { Comment } from '../types/comment'
 
 export const comments: Comment[] = [
@@ -9,7 +10,7 @@ export const comments: Comment[] = [
       username: 'test',
       avatar:
         'https://i.pinimg.com/564x/db/6b/a8/db6ba8c0e0244f71230e6aae953e57be.jpg',
-      role: 'ADMIN',
+      roles: [UserRole.ADMIN],
     },
   },
   {
@@ -20,7 +21,7 @@ export const comments: Comment[] = [
       username: 'test',
       avatar:
         'https://i.pinimg.com/564x/db/6b/a8/db6ba8c0e0244f71230e6aae953e57be.jpg',
-      role: 'ADMIN',
+      roles: [UserRole.MANAGER],
     },
   },
   {
@@ -31,7 +32,7 @@ export const comments: Comment[] = [
       username: 'username',
       avatar:
         'https://i.pinimg.com/564x/db/6b/a8/db6ba8c0e0244f71230e6aae953e57be.jpg',
-      role: 'USER',
+      roles: [UserRole.USER],
     },
   },
 ]
