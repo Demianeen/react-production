@@ -1,8 +1,13 @@
 import fs from 'fs'
 import { resolveRoot } from './resolveRoot'
 import { isErrorWithCode } from './errorWithCode'
-import type { Layer } from '../types/featureSlicedDesign'
 import { capitalize } from './capitalize'
+
+export type Layer =
+  | 'pages'
+  | 'widgets'
+  | 'features'
+  | 'entities'
 
 export const createSliceFolder = (
   layer: Layer,

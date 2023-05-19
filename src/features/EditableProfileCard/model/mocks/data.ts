@@ -1,7 +1,7 @@
 import { Currency } from 'entities/Currency'
 import { Country } from 'entities/Country'
 
-export const profile = {
+export const mockProfile = {
   id: 1,
   firstName: 'Demian',
   lastName: 'Netliukh',

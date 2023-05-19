@@ -98,6 +98,8 @@ module.exports = {
           '**/storybook/**', // storybook configuration
           'utils/**', // project utils
           'scripts/**', // project scripts
+          '**/jest/**', // jest config
+          '**/mocks/**', // mocks
         ],
       },
     ],

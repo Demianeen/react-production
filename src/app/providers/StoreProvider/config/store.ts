@@ -15,7 +15,7 @@ import { createReducerManager } from './reducerManager'
 
 interface CreateReduxStoreProps {
   preloadedState?: StateSchema
-  preloadedAsyncReducers?: Record<StateSchemaKey, Reducer>
+  preloadedAsyncReducers?: ReducersList
 }
 
 export function createReduxStore({

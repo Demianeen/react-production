@@ -1,11 +1,11 @@
 import { validateProfileForm } from '../../model/services/validateProfileForm/validateProfileForm'
 import { ProfileValidationError } from '../../model/types/profileSchema'
-import { profile } from '../../model/mocks/data'
+import { mockProfile } from '../../model/mocks/data'
 
 describe('validateAge', () => {
   test('success', () => {
     const result = validateProfileForm({
-      ...profile,
+      ...mockProfile,
       age: 30,
     })
 
@@ -14,7 +14,7 @@ describe('validateAge', () => {
 
   test('missing age', () => {
     const result = validateProfileForm({
-      ...profile,
+      ...mockProfile,
       age: undefined,
     })
 
@@ -25,7 +25,7 @@ describe('validateAge', () => {
 
   test('incorrect age', () => {
     const result = validateProfileForm({
-      ...profile,
+      ...mockProfile,
       age: 1,
     })
 

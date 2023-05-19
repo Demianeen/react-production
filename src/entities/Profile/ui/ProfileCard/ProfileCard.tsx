@@ -1,3 +1,4 @@
+import type { FormEvent } from 'react'
 import React from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { useTranslation } from 'react-i18next'
@@ -32,6 +33,7 @@ interface ProfileCardProps {
   onChangeCurrency?: (value: Currency) => void
   onChangeCountry?: (value: Country) => void
   formId?: string
+  onSubmit?: (e: FormEvent<HTMLFormElement>) => void
 }
 
 export const ProfileCard = ({
@@ -49,12 +51,17 @@ export const ProfileCard = ({
   onChangeCurrency,
   onChangeCountry,
   formId = 'profile-card',
+  onSubmit,
 }: ProfileCardProps) => {
   const { t } = useTranslation('profile')
 
   if (isLoading) {
     return (
-      <HStack className={styles.profileCard} maxWidth>
+      <HStack
+        className={styles.profileCard}
+        maxWidth
+        data-testid='ProfileCard.Loading'
+      >
         <div className={styles.content}>
           <HStack
             justify='center'
@@ -96,6 +103,11 @@ export const ProfileCard = ({
     )
   }
 
+  const onFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    onSubmit?.(e)
+  }
+
   return (
     <HStack
       className={classNames(styles.profileCard, {}, [
@@ -103,7 +115,11 @@ export const ProfileCard = ({
       ])}
       maxWidth
     >
-      <form className={styles.content} id={formId}>
+      <form
+        className={styles.content}
+        id={formId}
+        onSubmit={onFormSubmit}
+      >
         {data?.avatar && (
           <HStack
             justify='center'
@@ -119,6 +135,7 @@ export const ProfileCard = ({
           label={t('First name')}
           onChange={onChangeFirstName}
           readonly={readonly}
+          data-testid='ProfileCard.firstName'
         />
         <Input
           value={data?.lastName}
@@ -127,6 +144,7 @@ export const ProfileCard = ({
           label={t('Last name')}
           onChange={onChangeLastName}
           readonly={readonly}
+          data-testid='ProfileCard.lastName'
         />
         <Input
           value={data?.age}
@@ -135,6 +153,7 @@ export const ProfileCard = ({
           label={t('Age')}
           onChange={onChangeAge}
           readonly={readonly}
+          data-testid='ProfileCard.age'
         />
         <Input
           value={data?.city}
@@ -143,6 +162,7 @@ export const ProfileCard = ({
           label={t('City')}
           onChange={onChangeCity}
           readonly={readonly}
+          data-testid='ProfileCard.city'
         />
         <Input
           value={data?.username}
@@ -151,6 +171,7 @@ export const ProfileCard = ({
           label={t('Username')}
           onChange={onChangeUsername}
           readonly={readonly}
+          data-testid='ProfileCard.username'
         />
         <Input
           value={data?.avatar}
@@ -159,6 +180,7 @@ export const ProfileCard = ({
           label={t('Avatar')}
           onChange={onChangeAvatar}
           readonly={readonly}
+          data-testid='ProfileCard.avatar'
         />
         <SelectCurrency
           value={data?.currency}
@@ -167,6 +189,7 @@ export const ProfileCard = ({
           className={styles.select}
           direction='up-left'
           maxWidth
+          data-testid='ProfileCard.currency'
         />
         <SelectCountry
           value={data?.country}
@@ -175,6 +198,7 @@ export const ProfileCard = ({
           className={styles.select}
           direction='up-left'
           maxWidth
+          data-testid='ProfileCard.country'
         />
       </form>
     </HStack>

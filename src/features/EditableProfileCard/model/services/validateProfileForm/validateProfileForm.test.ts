@@ -1,5 +1,5 @@
 import { validateAge } from '../../../lib/validate/validateAge'
-import { profile } from '../../mocks/data'
+import { mockProfile } from '../../mocks/data'
 import { validateProfileForm } from './validateProfileForm'
 import { ProfileValidationError } from '../../types/profileSchema'
 
@@ -15,14 +15,14 @@ describe('validateProfileForm', () => {
   })
 
   test('success', () => {
-    const result = validateProfileForm(profile)
+    const result = validateProfileForm(mockProfile)
 
     expect(result).toEqual([])
   })
 
   test('missing id', () => {
     const result = validateProfileForm({
-      ...profile,
+      ...mockProfile,
       id: undefined,
     })
 
@@ -33,7 +33,7 @@ describe('validateProfileForm', () => {
 
   test('missing first name', () => {
     const result = validateProfileForm({
-      ...profile,
+      ...mockProfile,
       firstName: undefined,
     })
 
@@ -44,7 +44,7 @@ describe('validateProfileForm', () => {
 
   test('missing last name', () => {
     const result = validateProfileForm({
-      ...profile,
+      ...mockProfile,
       lastName: undefined,
     })
 
@@ -54,13 +54,13 @@ describe('validateProfileForm', () => {
   })
 
   test('age is validated', () => {
-    validateProfileForm(profile)
+    validateProfileForm(mockProfile)
     expect(mockedValidateAge).toHaveBeenCalled()
   })
 
   test('missing city', () => {
     const result = validateProfileForm({
-      ...profile,
+      ...mockProfile,
       city: undefined,
     })
 
@@ -71,7 +71,7 @@ describe('validateProfileForm', () => {
 
   test('missing username', () => {
     const result = validateProfileForm({
-      ...profile,
+      ...mockProfile,
       username: undefined,
     })
 

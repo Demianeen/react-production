@@ -90,6 +90,7 @@
     "json-server": "^0.17.0",
     "loki": "^0.31.1",
     "mini-css-extract-plugin": "^2.5.3",
+    "msw": "^1.2.1",
     "react-refresh": "^0.14.0",
     "reg-cli": "^0.17.6",
     "regenerator-runtime": "^0.13.9",
@@ -106,7 +107,8 @@
     "webpack": "5.76.0",
     "webpack-bundle-analyzer": "^4.4.1",
     "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "^4.7.4"
+    "webpack-dev-server": "^4.7.4",
+    "whatwg-fetch": "^3.6.2"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.14",
@@ -142,5 +144,8 @@
         "preset": "iPhone 7"
       }
     }
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
