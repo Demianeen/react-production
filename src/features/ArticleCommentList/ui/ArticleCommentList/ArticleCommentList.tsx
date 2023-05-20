@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react'
+import { memo, useCallback } from 'react'
 import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useSelector } from 'react-redux'

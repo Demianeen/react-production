@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import React, { memo, useCallback } from 'react'
+import { memo, useCallback } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'

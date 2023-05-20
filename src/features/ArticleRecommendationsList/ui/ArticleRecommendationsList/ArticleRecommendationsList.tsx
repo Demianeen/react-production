@@ -1,7 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames'
 import { ArticleList } from 'entities/Article'
 import { View } from 'entities/ListFilters'
-import React from 'react'
+
 import { Text, TextSize } from 'shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next'
 import { useGetArticleRecommendationsQuery } from '../../api/articleRecommendationsApi'

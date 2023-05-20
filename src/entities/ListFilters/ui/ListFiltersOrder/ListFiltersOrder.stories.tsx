@@ -1,7 +1,4 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { SortOrder } from 'shared/types/sort'
@@ -18,7 +15,7 @@ export default {
     order: SortOrder.DESC,
     onChangeOrder: action('onChangeOrder'),
   },
-} as ComponentMeta<typeof ListFiltersOrder>
+} as Meta<typeof ListFiltersOrder>
 
 const Template: ComponentStory<typeof ListFiltersOrder> = (
   args

@@ -1,28 +1,44 @@
 import fs from 'fs'
 import { resolveRoot } from '../../../../utils/resolveRoot'
 import { capitalize } from '../../../../utils/capitalize'
-import type { Layer } from '../../types/createSlice'
+import type {
+  CreateSliceOptions,
+  Layer,
+} from '../../types/createSlice'
+import { componentExportTemplate } from './templates/componentExport.template'
+import { modelExportTemplate } from './templates/modelExport.template'
 
 export const createPublicApi = (
   layer: Layer,
-  sliceName: string
+  sliceName: string,
+  options: CreateSliceOptions
 ) => {
   const componentName = capitalize(sliceName)
   const reduxSchemaName = `${sliceName}Schema`
-  const capitalizedSchemaName = capitalize(reduxSchemaName)
 
   try {
-    fs.writeFileSync(
-      resolveRoot(
-        'src',
-        layer,
-        capitalize(sliceName),
-        'index.ts'
-      ),
-      `export { ${componentName} } from './ui/${componentName}/${componentName}'
-export type { ${capitalizedSchemaName} } from './model/types/${reduxSchemaName}'
-export { ${sliceName}Slice } from './model/slice/${sliceName}Slice'`
+    const publicApiPath = resolveRoot(
+      'src',
+      layer,
+      capitalize(sliceName),
+      'index.ts'
     )
+
+    fs.writeFileSync(
+      publicApiPath,
+      componentExportTemplate(componentName, layer)
+    )
+
+    if (options.model) {
+      fs.appendFileSync(
+        publicApiPath,
+        modelExportTemplate(
+          layer,
+          sliceName,
+          reduxSchemaName
+        )
+      )
+    }
   } catch (e) {
     if (e instanceof Error) {
       throw new Error(

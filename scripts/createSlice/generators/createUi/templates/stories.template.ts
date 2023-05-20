@@ -2,10 +2,15 @@ import type { Layer } from '../../../types/createSlice'
 
 export const storiesTemplate = (
   layer: Layer,
-  componentName: string
+  componentName: string,
+  isDefaultExport: boolean
 ) => {
-  return `import type { ComponentStory, ComponentMeta } from '@storybook/react';
-import { ${componentName} } from './${componentName}';
+  const componentImport = isDefaultExport
+    ? `import ${componentName} from './${componentName}'`
+    : `import { ${componentName} } from './${componentName}'`
+
+  return `import type { ComponentStory, Meta } from '@storybook/react';
+${componentImport}
 
 export default {
     title: '${layer}/${componentName}',
@@ -13,7 +18,7 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof ${componentName}>;
+} as Meta<typeof ${componentName}>;
 
 const Template: ComponentStory<typeof ${componentName}> = (args) => <${componentName} {...args} />
 

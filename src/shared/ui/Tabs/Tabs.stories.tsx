@@ -1,7 +1,4 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { action } from '@storybook/addon-actions'
@@ -34,7 +31,7 @@ export default {
     value: 'tab2',
     onTabClick: action('onTabClick'),
   },
-} as ComponentMeta<typeof Tabs>
+} as Meta<typeof Tabs>
 
 const Template: ComponentStory<typeof Tabs> = (args) => (
   <Tabs {...args} />

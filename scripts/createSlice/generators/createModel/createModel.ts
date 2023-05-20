@@ -1,7 +1,7 @@
 import fs from 'fs'
 import { resolveRoot } from '../../../../utils/resolveRoot'
-import { reduxSliceTemplate } from './templates/reduxSlice.template'
 import { capitalize } from '../../../../utils/capitalize'
+import { reduxSliceTemplate } from './templates/reduxSlice.template'
 import { reduxSchemaTemplate } from './templates/reduxSchema.template'
 import type { Layer } from '../../types/createSlice'
 

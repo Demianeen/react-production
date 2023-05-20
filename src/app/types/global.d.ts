@@ -7,14 +7,13 @@ declare module '*.scss' {
   export = classNames
 }
 
+type Svg = React.FC<React.SVGProps<SVGSVGElement>>
 declare module '*.png'
 declare module '*.jpg'
 declare module '*.jpeg'
 declare module '*.svg' {
-  import type React from 'react'
-
-  const SVG: React.VFC<React.SVGProps<SVGSVGElement>>
-  export default SVG
+  const Svg
+  export default Svg
 }
 
 declare const __IS_DEV__: boolean

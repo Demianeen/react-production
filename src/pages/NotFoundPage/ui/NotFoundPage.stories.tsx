@@ -1,8 +1,4 @@
-import React from 'react'
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
@@ -15,10 +11,11 @@ export default {
     backgroundColor: { control: 'color' },
   },
   decorators: [StoreDecorator()],
-} as ComponentMeta<typeof NotFoundPage>
+} as Meta<typeof NotFoundPage>
 
-const Template: ComponentStory<typeof NotFoundPage> =
-  () => <NotFoundPage />
+const Template: ComponentStory<
+  typeof NotFoundPage
+> = () => <NotFoundPage />
 
 export const Light = Template.bind({})
 Light.args = {}

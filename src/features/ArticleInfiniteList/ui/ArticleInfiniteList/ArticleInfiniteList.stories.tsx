@@ -1,7 +1,4 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
 import {
   articleIds,
@@ -24,10 +21,11 @@ export default {
       },
     }),
   ],
-} as ComponentMeta<typeof ArticleInfiniteList>
+} as Meta<typeof ArticleInfiniteList>
 
-const Template: ComponentStory<typeof ArticleInfiniteList> =
-  (args) => <ArticleInfiniteList {...args} />
+const Template: ComponentStory<
+  typeof ArticleInfiniteList
+> = (args) => <ArticleInfiniteList {...args} />
 
 export const Light = Template.bind({})
 Light.args = {}

@@ -1,7 +1,4 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
 import { ArticleRecommendationsList } from './ArticleRecommendationsList'
 
@@ -18,7 +15,7 @@ export default {
       skip: true,
     },
   },
-} as ComponentMeta<typeof ArticleRecommendationsList>
+} as Meta<typeof ArticleRecommendationsList>
 
 const Template: ComponentStory<
   typeof ArticleRecommendationsList

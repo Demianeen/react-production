@@ -1,7 +1,4 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { Text } from '../Text/Text'
@@ -16,7 +13,7 @@ export default {
   args: {
     children: <Text title='Title' text='Text' />,
   },
-} as ComponentMeta<typeof Card>
+} as Meta<typeof Card>
 
 const Template: ComponentStory<typeof Card> = (args) => (
   <Card {...args} />

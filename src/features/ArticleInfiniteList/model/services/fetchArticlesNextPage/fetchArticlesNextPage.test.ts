@@ -18,8 +18,7 @@ jest.mock('../fetchArticles/fetchArticles', () => ({
 describe('fetchArticles', () => {
   test('success', async () => {
     const mockedArticleInfiniteListActions = jest.mocked(
-      articleInfiniteListActions,
-      true
+      articleInfiniteListActions
     )
 
     const thunk = new TestAsyncThunk(

@@ -1,8 +1,4 @@
-import React from 'react'
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import AboutIcon from 'shared/assets/icons/about-us-20-20.svg'
@@ -24,7 +20,7 @@ export default {
     },
   },
   decorators: [StoreDecorator()],
-} as ComponentMeta<typeof SidebarItem>
+} as Meta<typeof SidebarItem>
 
 const Template: ComponentStory<typeof SidebarItem> = (
   args

@@ -1,7 +1,16 @@
 import { capitalize } from '../../../../../utils/capitalize'
+import type { Layer } from '../../../types/createSlice'
 
-export const componentTemplate = (sliceName: string) => {
+export const componentTemplate = (
+  layer: Layer,
+  sliceName: string,
+  isDefaultExport: boolean
+) => {
   const capitalizedSliceName = capitalize(sliceName)
+
+  const componentDeclaration = `${
+    !isDefaultExport ? 'export ' : ''
+  }const`
 
   return `import { classNames } from "shared/lib/classNames/classNames"
 import styles from "./${capitalizedSliceName}.module.scss"
@@ -10,12 +19,18 @@ interface ${capitalizedSliceName}Props {
   className?: string;
 }
 
-export const ${capitalizedSliceName} = ({ className }: ${capitalizedSliceName}Props) => {
+${componentDeclaration} ${capitalizedSliceName} = ({ className }: ${capitalizedSliceName}Props) => {
   return (
     <div className={classNames(styles.${sliceName}, {}, [className])}>
        
     </div>
   )
+}
+
+${
+  isDefaultExport
+    ? `export default ${capitalizedSliceName}`
+    : ''
 }
 `
 }

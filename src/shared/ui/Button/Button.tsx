@@ -3,7 +3,6 @@ import type {
   ForwardedRef,
   ReactNode,
 } from 'react'
-import React from 'react'
 import type { Mods } from 'shared/lib/classNames/classNames'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { typedMemo } from 'shared/lib/react/typedMemo/typedMemo'

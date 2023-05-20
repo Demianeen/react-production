@@ -1,7 +1,4 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
@@ -15,7 +12,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   decorators: [StoreDecorator()],
-} as ComponentMeta<typeof ArticleInfiniteListFilters>
+} as Meta<typeof ArticleInfiniteListFilters>
 
 const Template: ComponentStory<
   typeof ArticleInfiniteListFilters

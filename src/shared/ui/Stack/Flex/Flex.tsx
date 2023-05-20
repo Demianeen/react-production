@@ -1,5 +1,5 @@
 import type { ElementType, ReactNode } from 'react'
-import React from 'react'
+
 import type { Mods } from 'shared/lib/classNames/classNames'
 import { classNames } from 'shared/lib/classNames/classNames'
 import type { Props, WithDefaultTag } from 'shared/types/ui'

@@ -1,6 +1,7 @@
-import React, { memo } from 'react'
+import { memo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import styles from './Icon.module.scss'
+import type Svg from '*.svg'
 
 export enum IconType {
   FILL = 'fill',
@@ -15,7 +16,7 @@ export const colorMap: Record<IconColor, string> = {
 
 interface IconProps {
   className?: string
-  Svg: React.VFC<React.SVGProps<SVGSVGElement>>
+  Svg: Svg
   type?: IconType
   color?: IconColor
 }

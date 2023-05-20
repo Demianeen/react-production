@@ -2,6 +2,7 @@ import type { ReactNode } from 'react'
 import React, {
   useCallback,
   useEffect,
+  useRef,
   useState,
 } from 'react'
 import type { Mods } from 'shared/lib/classNames/classNames'
@@ -28,8 +29,9 @@ export const Modal = ({
   lazy = false,
 }: ModalProps) => {
   const [isClosing, setIsClosing] = useState(false)
-  const timeRef =
-    React.useRef<ReturnType<typeof setTimeout> | null>(null)
+  const timeRef = useRef<ReturnType<
+    typeof setTimeout
+  > | null>(null)
 
   const closeHandler = useCallback(() => {
     if (!onClose) return
@@ -46,7 +48,7 @@ export const Modal = ({
   }
 
   const onKeyDown = useCallback(
-    (e) => {
+    (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         closeHandler()
       }

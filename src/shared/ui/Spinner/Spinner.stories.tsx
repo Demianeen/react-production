@@ -1,8 +1,4 @@
-import React from 'react'
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { Theme } from 'app/providers/ThemeProvider'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Spinner } from './Spinner'
@@ -13,7 +9,7 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof Spinner>
+} as Meta<typeof Spinner>
 
 const Template: ComponentStory<typeof Spinner> = (args) => (
   <Spinner {...args} />

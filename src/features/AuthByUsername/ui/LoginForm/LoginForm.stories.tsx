@@ -1,8 +1,4 @@
-import React from 'react'
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
@@ -17,7 +13,7 @@ export default {
   args: {
     children: 'Text',
   },
-} as ComponentMeta<typeof LoginForm>
+} as Meta<typeof LoginForm>
 
 const Template: ComponentStory<typeof LoginForm> = (
   args

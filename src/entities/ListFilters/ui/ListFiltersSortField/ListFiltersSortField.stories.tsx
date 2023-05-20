@@ -1,7 +1,4 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
@@ -18,7 +15,7 @@ export default {
   args: {
     sortField: SortField.CREATED_AT,
   },
-} as ComponentMeta<typeof ListFiltersSortField>
+} as Meta<typeof ListFiltersSortField>
 
 const Template: ComponentStory<
   typeof ListFiltersSortField

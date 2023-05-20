@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import { memo } from 'react'
 import { ArticleDetails } from 'entities/Article'
 import { useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'

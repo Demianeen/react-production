@@ -1,8 +1,4 @@
-import React from 'react'
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { Modal } from './Modal'
@@ -18,7 +14,7 @@ export default {
     children:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam quae quod, voluptas, quibusdam, voluptates voluptatibus quidem quos v oluptatum quia quod. Quisquam quae quod, voluptas, quibusdam, voluptates voluptatibus quidem quos v oluptatum quia quod. Quisquam quae quod, voluptas, quibusdam, voluptates voluptatibus quidem quos v oluptatum quia quod. Quisquam quae quod, voluptas, quibusdam, voluptates voluptatibus quidem quos v oluptatum quia quod. Quisquam quae quod, voluptas, quibusdam, voluptates voluptatibus quidem quos v',
   },
-} as ComponentMeta<typeof Modal>
+} as Meta<typeof Modal>
 
 const Template: ComponentStory<typeof Modal> = (args) => (
   <Modal {...args} />

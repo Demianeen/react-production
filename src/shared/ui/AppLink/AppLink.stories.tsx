@@ -1,8 +1,4 @@
-import React from 'react'
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { Theme } from 'app/providers/ThemeProvider'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { AppLink, AppLinkTheme } from './AppLink'
@@ -17,7 +13,7 @@ export default {
     to: '/',
     children: 'Text',
   },
-} as ComponentMeta<typeof AppLink>
+} as Meta<typeof AppLink>
 
 const Template: ComponentStory<typeof AppLink> = (args) => (
   <AppLink {...args} />

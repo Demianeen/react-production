@@ -1,8 +1,18 @@
+import minimist from 'minimist'
+import type {
+  CreateSliceOptions,
+  Layer,
+} from './types/createSlice'
 import { createSlice } from './generators'
-import type { Layer } from './types/createSlice'
 
-const layer = process.argv[2]
-const sliceName = process.argv[3]
+const argv = minimist(process.argv.slice(2))
+// eslint-disable-next-line prefer-const
+let [layer, sliceName] = argv._
+
+const options: CreateSliceOptions = {
+  model: argv.model,
+  api: argv.api,
+}
 
 const layers: Layer[] = [
   'pages',
@@ -32,4 +42,20 @@ if (!isLayer(layer)) {
   )
 }
 
-createSlice(layer, sliceName)
+if (layer === 'entities') {
+  if (sliceName.slice(-1) === 's') {
+    console.warn(
+      'Slice name should be singular for entities layer.'
+    )
+    sliceName = sliceName.slice(0, -1)
+  }
+}
+
+if (layer === 'pages') {
+  // if slice name don't end with Page, add it
+  if (sliceName.slice(-4) !== 'Page') {
+    sliceName = `${sliceName}Page`
+  }
+}
+
+createSlice(layer, sliceName, options)

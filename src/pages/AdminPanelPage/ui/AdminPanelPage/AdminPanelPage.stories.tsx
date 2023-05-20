@@ -1,7 +1,4 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import AdminPanelPage from './AdminPanelPage'
 
 export default {
@@ -10,7 +7,7 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof AdminPanelPage>
+} as Meta<typeof AdminPanelPage>
 
 const Template: ComponentStory<typeof AdminPanelPage> = (
   args

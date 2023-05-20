@@ -1,7 +1,4 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { View } from 'entities/ListFilters'
@@ -17,7 +14,7 @@ export default {
   args: {
     article,
   },
-} as ComponentMeta<typeof ArticleListItem>
+} as Meta<typeof ArticleListItem>
 
 const Template: ComponentStory<typeof ArticleListItem> = (
   args

@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import { memo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { useTheme } from 'app/providers/ThemeProvider'
 import DarkIcon from 'shared/assets/icons/theme-dark-40-41.svg'

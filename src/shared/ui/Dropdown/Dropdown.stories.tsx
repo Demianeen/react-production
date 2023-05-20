@@ -1,7 +1,4 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { action } from '@storybook/addon-actions'
@@ -26,7 +23,7 @@ export default {
       { label: 'Item 3', onClick: action('onClick') },
     ],
   },
-} as ComponentMeta<typeof Dropdown>
+} as Meta<typeof Dropdown>
 
 const Template: ComponentStory<typeof Dropdown> = (
   args

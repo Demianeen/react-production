@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import { memo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import styles from './Text.module.scss'
 
@@ -71,7 +71,7 @@ export const Text = memo(
           className,
         ])}
       >
-        {title && (
+        {title != null && (
           <HeaderTag
             title={titleTitle}
             className={styles.title}
@@ -80,7 +80,7 @@ export const Text = memo(
             {title}
           </HeaderTag>
         )}
-        {text && (
+        {text != null && (
           <TextTag
             title={textTitle}
             className={styles.text}

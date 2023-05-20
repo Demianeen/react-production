@@ -1,7 +1,4 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import type { ArticleTextBlock } from '../../model/types/article'
@@ -26,7 +23,7 @@ export default {
   args: {
     block,
   },
-} as ComponentMeta<typeof ArticleTextBlockComponent>
+} as Meta<typeof ArticleTextBlockComponent>
 
 const Template: ComponentStory<
   typeof ArticleTextBlockComponent

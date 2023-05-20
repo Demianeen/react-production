@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import { memo } from 'react'
 import { Text } from 'shared/ui/Text/Text'
 import { ArticleRecommendationsList } from 'features/ArticleRecommendationsList'
 import { ArticleCommentList } from 'features/ArticleCommentList'

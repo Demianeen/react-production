@@ -1,7 +1,4 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import type { ArticleImageBlock } from '../../model/types/article'
@@ -21,7 +18,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   args: { block },
-} as ComponentMeta<typeof ArticleImageBlockComponent>
+} as Meta<typeof ArticleImageBlockComponent>
 
 const Template: ComponentStory<
   typeof ArticleImageBlockComponent

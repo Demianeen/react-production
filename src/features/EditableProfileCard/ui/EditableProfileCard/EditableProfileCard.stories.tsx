@@ -1,8 +1,4 @@
-import React from 'react'
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
@@ -22,29 +18,32 @@ export default {
   args: {
     id: 1,
   },
-  msw: {
-    handlers: {
-      editableProfileCard: rest.get(
-        '/profile/:profileId',
-        (req, res, ctx) => {
-          const { profileId = '1' } = req.params
+  parameters: {
+    msw: {
+      handlers: {
+        editableProfileCard: rest.get(
+          '/profile/:profileId',
+          (req, res, ctx) => {
+            const { profileId = '1' } = req.params
 
-          return res(
-            ctx.status(200),
-            ctx.json({
-              ...mockProfile,
-              id: Number(profileId),
-            })
-          )
-        }
-      ),
+            return res(
+              ctx.status(200),
+              ctx.json({
+                ...mockProfile,
+                id: Number(profileId),
+              })
+            )
+          }
+        ),
+      },
     },
   },
   decorators: [StoreDecorator()],
-} as ComponentMeta<typeof EditableProfileCard>
+} as Meta<typeof EditableProfileCard>
 
-const Template: ComponentStory<typeof EditableProfileCard> =
-  (args) => <EditableProfileCard {...args} />
+const Template: ComponentStory<
+  typeof EditableProfileCard
+> = (args) => <EditableProfileCard {...args} />
 
 const data = {
   firstName: 'Demian',

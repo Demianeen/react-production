@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useMemo } from 'react'
+import { memo, useCallback, useMemo } from 'react'
 import type { TabItem } from 'shared/ui/Tabs/Tabs'
 import { Tabs } from 'shared/ui/Tabs/Tabs'
 import { useSelector } from 'react-redux'

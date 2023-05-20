@@ -1,4 +1,3 @@
-import React from 'react'
 import type { ReactTag } from 'shared/types/ui'
 import type { FlexProps } from '../Flex/Flex'
 import { Flex } from '../Flex/Flex'

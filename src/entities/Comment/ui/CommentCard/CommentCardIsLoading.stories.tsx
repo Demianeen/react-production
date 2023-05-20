@@ -1,7 +1,4 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { CommentCardIsLoading } from './CommentCardIsLoading'
@@ -12,7 +9,7 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof CommentCardIsLoading>
+} as Meta<typeof CommentCardIsLoading>
 
 const Template: ComponentStory<
   typeof CommentCardIsLoading

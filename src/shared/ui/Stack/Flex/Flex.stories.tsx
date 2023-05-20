@@ -1,7 +1,4 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { Flex } from './Flex'
 
 export default {
@@ -10,7 +7,7 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof Flex>
+} as Meta<typeof Flex>
 
 const Template: ComponentStory<typeof Flex> = (args) => (
   <Flex {...args} />

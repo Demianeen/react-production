@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import { memo } from 'react'
 import { Button } from 'shared/ui/Button/Button'
 import { AppLink } from 'shared/ui/AppLink/AppLink'
 import { useTranslation } from 'react-i18next'

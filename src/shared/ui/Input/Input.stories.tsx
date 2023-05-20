@@ -1,8 +1,4 @@
-import React from 'react'
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { Input } from './Input'
@@ -17,7 +13,7 @@ export default {
     placeholder: 'Placeholder',
     label: 'Label',
   },
-} as ComponentMeta<typeof Input>
+} as Meta<typeof Input>
 
 const Template: ComponentStory<typeof Input> = (args) => (
   <Input {...args} />

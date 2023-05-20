@@ -1,7 +1,4 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { action } from '@storybook/addon-actions'
@@ -17,7 +14,7 @@ export default {
   args: {
     onSendComment: action('onSendComment'),
   },
-} as ComponentMeta<typeof CommentForm>
+} as Meta<typeof CommentForm>
 
 const Template: ComponentStory<typeof CommentForm> = (
   args

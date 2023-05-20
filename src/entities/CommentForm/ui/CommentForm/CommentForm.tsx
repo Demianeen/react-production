@@ -1,5 +1,5 @@
 import type { FormEvent } from 'react'
-import React, { memo, useCallback } from 'react'
+import { memo, useCallback } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { Input } from 'shared/ui/Input/Input'
 import { useTranslation } from 'react-i18next'

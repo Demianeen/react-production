@@ -137,6 +137,9 @@ module.exports = {
 
     // we use only Button component where type is required
     'react/button-has-type': 0,
+
+    // to stop getting error highlights from prettier autoformatting
+    'prettier/prettier': 0,
   },
   settings: {
     react: {
@@ -190,6 +193,14 @@ module.exports = {
       rules: {
         // we can make props not required in redux services
         '@typescript-eslint/default-param-last': 0,
+      },
+    },
+    {
+      // override rules for scripts
+      files: ['scripts/**/*.{ts,tsx}'],
+      rules: {
+        // we can use console in scripts files
+        'no-console': 0,
       },
     },
   ],

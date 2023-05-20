@@ -1,6 +1,5 @@
 import { Menu } from '@headlessui/react'
 import type { ReactNode } from 'react'
-import React from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import type { Direction } from 'shared/types/ui'
 import { HStack } from '../Stack'

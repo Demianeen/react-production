@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import { memo } from 'react'
 import { HStack, VStack } from 'shared/ui/Stack'
 import type { SortOrder } from 'shared/types/sort'
 import type { SortField } from '../../model/types/sortField'

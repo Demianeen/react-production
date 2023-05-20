@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react'
+import { memo, useCallback } from 'react'
 import type { SortField, View } from 'entities/ListFilters'
 import { ListFilters } from 'entities/ListFilters'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'

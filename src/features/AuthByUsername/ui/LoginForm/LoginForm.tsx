@@ -1,4 +1,5 @@
-import React, { memo, useCallback } from 'react'
+import type { FormEvent } from 'react'
+import { memo, useCallback } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { useTranslation } from 'react-i18next'
 import {
@@ -59,8 +60,8 @@ const LoginForm = memo(
     )
 
     const onLogin = useCallback(
-      async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault()
+      async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
 
         const result = await dispatch(
           loginByUsername({ username, password })

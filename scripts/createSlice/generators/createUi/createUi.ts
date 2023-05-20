@@ -1,10 +1,11 @@
 import fs from 'fs'
 import { resolveRoot } from '../../../../utils/resolveRoot'
+import { capitalize } from '../../../../utils/capitalize'
 import { componentTemplate } from './templates/component.template'
 import { styleTemplate } from './templates/style.template'
 import { storiesTemplate } from './templates/stories.template'
-import { capitalize } from '../../../../utils/capitalize'
 import type { Layer } from '../../types/createSlice'
+import { componentAsyncTemplate } from './templates/componentAsync.template'
 
 export const createUi = (
   layer: Layer,
@@ -34,6 +35,7 @@ export const createUi = (
   }
 
   const createUiComponent = () => {
+    const isDefaultExport = layer === 'pages'
     try {
       fs.mkdirSync(resolveUiPath(componentName))
       fs.writeFileSync(
@@ -41,7 +43,7 @@ export const createUi = (
           componentName,
           `${componentName}.tsx`
         ),
-        componentTemplate(sliceName)
+        componentTemplate(layer, sliceName, isDefaultExport)
       )
       fs.writeFileSync(
         resolveUiPath(
@@ -55,8 +57,21 @@ export const createUi = (
           componentName,
           `${componentName}.stories.tsx`
         ),
-        storiesTemplate(layer, componentName)
+        storiesTemplate(
+          layer,
+          componentName,
+          isDefaultExport
+        )
       )
+      if (layer === 'pages') {
+        fs.writeFileSync(
+          resolveUiPath(
+            componentName,
+            `${componentName}.async.tsx`
+          ),
+          componentAsyncTemplate(componentName)
+        )
+      }
     } catch (e) {
       if (e instanceof Error) {
         throw new Error(

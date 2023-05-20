@@ -1,8 +1,4 @@
-import React from 'react'
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import CalendarIcon from 'shared/assets/icons/calendar-20-20.svg'
@@ -17,7 +13,7 @@ export default {
   args: {
     Svg: CalendarIcon,
   },
-} as ComponentMeta<typeof Icon>
+} as Meta<typeof Icon>
 
 const Template: ComponentStory<typeof Icon> = (args) => (
   <Icon {...args} />

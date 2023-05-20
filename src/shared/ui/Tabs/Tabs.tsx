@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import { useCallback } from 'react'
 import { typedMemo } from 'shared/lib/react/typedMemo/typedMemo'
 import { HStack } from '../Stack'
 import { Button, ButtonTheme } from '../Button/Button'

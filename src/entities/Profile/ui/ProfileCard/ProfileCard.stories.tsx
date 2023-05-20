@@ -1,7 +1,4 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { Currency } from 'entities/Currency/model/types/currency'
@@ -14,7 +11,7 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof ProfileCard>
+} as Meta<typeof ProfileCard>
 
 const Template: ComponentStory<typeof ProfileCard> = (
   args

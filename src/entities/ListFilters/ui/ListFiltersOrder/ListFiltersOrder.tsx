@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from 'react'
+import { memo, useMemo } from 'react'
 import { SortOrder } from 'shared/types/sort'
 import type { SelectOption } from 'shared/ui/Select/Select'
 import { Select } from 'shared/ui/Select/Select'

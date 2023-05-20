@@ -1,4 +1,4 @@
-import React, { memo, Suspense, useMemo } from 'react'
+import { memo, Suspense, useMemo } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import type { AppRouteProps } from 'shared/config/routeConfig/routeConfig'
 import { routeConfig } from 'shared/config/routeConfig/routeConfig'

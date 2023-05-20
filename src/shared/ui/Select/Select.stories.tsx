@@ -1,7 +1,4 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { action } from '@storybook/addon-actions'
@@ -23,7 +20,7 @@ export default {
     onChange: action('onChange'),
     defaultValue: 'default value',
   },
-} as ComponentMeta<typeof Select>
+} as Meta<typeof Select>
 
 const Template: ComponentStory<typeof Select> = (args) => (
   <Select {...args} />

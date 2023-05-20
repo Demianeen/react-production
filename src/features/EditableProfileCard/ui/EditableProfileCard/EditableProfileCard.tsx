@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect } from 'react'
+import { memo, useCallback, useEffect } from 'react'
 import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { ProfileCard } from 'entities/Profile'

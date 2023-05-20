@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react'
+import { memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Input } from 'shared/ui/Input/Input'
 import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce'

@@ -1,7 +1,4 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { View } from 'entities/ListFilters'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
@@ -13,7 +10,7 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof ArticleListItemSkeleton>
+} as Meta<typeof ArticleListItemSkeleton>
 
 const Template: ComponentStory<
   typeof ArticleListItemSkeleton

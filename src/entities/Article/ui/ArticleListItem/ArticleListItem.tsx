@@ -1,5 +1,5 @@
 import type { HTMLAttributeAnchorTarget } from 'react'
-import React, { memo, useMemo } from 'react'
+import { memo, useMemo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { Text } from 'shared/ui/Text/Text'
 import { Icon } from 'shared/ui/Icon/Icon'

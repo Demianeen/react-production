@@ -1,4 +1,4 @@
-import React, { memo, useRef } from 'react'
+import { memo, useRef } from 'react'
 import { Page } from 'widgets/Page/ui/Page/Page'
 import { ArticleInfiniteList } from 'features/ArticleInfiniteList'
 

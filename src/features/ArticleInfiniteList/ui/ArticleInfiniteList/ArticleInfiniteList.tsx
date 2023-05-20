@@ -2,7 +2,7 @@ import type {
   HTMLAttributeAnchorTarget,
   RefObject,
 } from 'react'
-import React, { useCallback } from 'react'
+import { useCallback } from 'react'
 import type { OnOpenArticle } from 'entities/Article'
 import { VirtualizedArticleList } from 'entities/Article'
 import { useSelector } from 'react-redux'

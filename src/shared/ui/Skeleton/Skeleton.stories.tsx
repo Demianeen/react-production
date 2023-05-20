@@ -1,7 +1,4 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { Skeleton } from './Skeleton'
@@ -16,7 +13,7 @@ export default {
     width: '100%',
     height: '13rem',
   },
-} as ComponentMeta<typeof Skeleton>
+} as Meta<typeof Skeleton>
 
 const Template: ComponentStory<typeof Skeleton> = (
   args

@@ -1,5 +1,5 @@
 import type { ForwardRefExoticComponent, Ref } from 'react'
-import React, { forwardRef } from 'react'
+import { forwardRef } from 'react'
 import type { LinkProps } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { classNames } from 'shared/lib/classNames/classNames'

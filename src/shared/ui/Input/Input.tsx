@@ -1,5 +1,8 @@
-import type { InputHTMLAttributes } from 'react'
-import React, { memo, useEffect } from 'react'
+import type {
+  ChangeEvent,
+  InputHTMLAttributes,
+} from 'react'
+import { memo, useEffect, useRef } from 'react'
 import type { Mods } from 'shared/lib/classNames/classNames'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { WithLabel } from '../WithLabel/WithLabel'
@@ -35,11 +38,11 @@ export const Input = memo(
     ...props
   }: InputProps) => {
     const handleChange = (
-      e: React.ChangeEvent<HTMLInputElement>
+      e: ChangeEvent<HTMLInputElement>
     ) => {
       onChange?.(e.target.value)
     }
-    const inputRef = React.useRef<HTMLInputElement>(null)
+    const inputRef = useRef<HTMLInputElement>(null)
 
     useEffect(() => {
       if (autoFocus) {

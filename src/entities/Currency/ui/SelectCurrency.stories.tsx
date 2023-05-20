@@ -1,7 +1,4 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { action } from '@storybook/addon-actions'
@@ -18,7 +15,7 @@ export default {
     value: Currency.USD,
     onChange: action('onChange'),
   },
-} as ComponentMeta<typeof SelectCurrency>
+} as Meta<typeof SelectCurrency>
 
 const Template: ComponentStory<typeof SelectCurrency> = (
   args

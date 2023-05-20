@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import { memo } from 'react'
 import { EditableProfileCard } from 'features/EditableProfileCard'
 import { Text, TextTheme } from 'shared/ui/Text/Text'
 import { useParams } from 'react-router-dom'

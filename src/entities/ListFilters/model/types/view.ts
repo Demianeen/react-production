@@ -1,4 +1,3 @@
-import type React from 'react'
 import GridIcon from 'shared/assets/icons/grid-24-24.svg'
 import ListIcon from 'shared/assets/icons/list-24-24.svg'
 
@@ -9,7 +8,7 @@ export enum View {
 
 interface ViewType {
   view: View
-  Icon: React.VFC<React.SVGProps<SVGSVGElement>>
+  Icon: Svg
 }
 
 export const viewTypes: ViewType[] = [

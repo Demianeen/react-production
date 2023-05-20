@@ -1,7 +1,4 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import ForbiddenPage from './ForbiddenPage'
 
 export default {
@@ -10,7 +7,7 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof ForbiddenPage>
+} as Meta<typeof ForbiddenPage>
 
 const Template: ComponentStory<typeof ForbiddenPage> = (
   args

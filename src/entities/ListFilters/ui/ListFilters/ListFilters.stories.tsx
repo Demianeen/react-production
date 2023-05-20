@@ -1,7 +1,4 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
 import { action } from '@storybook/addon-actions'
 import { SortOrder } from 'shared/types/sort'
@@ -37,7 +34,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   decorators: [StoreDecorator()],
-} as ComponentMeta<typeof ListFilters>
+} as Meta<typeof ListFilters>
 
 const Template: ComponentStory<typeof ListFilters> = (
   args

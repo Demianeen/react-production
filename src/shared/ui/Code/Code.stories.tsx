@@ -1,7 +1,4 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { Code } from './Code'
@@ -44,7 +41,7 @@ function double(n: number): number {
 }
 `,
   },
-} as ComponentMeta<typeof Code>
+} as Meta<typeof Code>
 
 const Template: ComponentStory<typeof Code> = (args) => (
   <Code {...args} />

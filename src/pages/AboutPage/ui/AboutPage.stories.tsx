@@ -1,8 +1,4 @@
-import React from 'react'
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { ComponentStory, Meta } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
@@ -15,7 +11,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   decorators: [StoreDecorator()],
-} as ComponentMeta<typeof AboutPage>
+} as Meta<typeof AboutPage>
 
 const Template: ComponentStory<typeof AboutPage> = () => (
   <AboutPage />
