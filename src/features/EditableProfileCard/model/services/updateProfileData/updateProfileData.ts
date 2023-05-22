@@ -5,7 +5,6 @@ import { ProfileValidationError } from 'features/EditableProfileCard/model/const
 import { validateProfileForm } from '../validateProfileForm/validateProfileForm'
 import { getProfileForm } from '../../selectors/getProfileForm/getProfileForm'
 
-
 export const updateProfileData = createAsyncThunk<
   Profile,
   void,

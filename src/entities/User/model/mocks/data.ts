@@ -1,7 +1,6 @@
 import { UserRole } from 'entities/User/model/const/userRole'
 import type { User } from '../types/userSchema'
 
-
 export const mockUser: User = {
   id: 1,
   username: 'admin',

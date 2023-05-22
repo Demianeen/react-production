@@ -3,7 +3,6 @@ import { validateAge } from '../../../lib/validate/validateAge'
 import { mockProfile } from '../../mocks/data'
 import { validateProfileForm } from './validateProfileForm'
 
-
 jest.mock('../../../lib/validate/validateAge', () => ({
   __esModule: true,
   validateAge: jest.fn(() => []),
