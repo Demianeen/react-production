@@ -52,7 +52,7 @@ export function createReduxStore({
       }).concat(rtkApi.middleware),
   })
 
-  // @ts-expect-error there is no such property in the store types definition
+  // @ts-expect-error there is no such property in the store const definition
   store.reducerManager = reducerManager
 
   return store

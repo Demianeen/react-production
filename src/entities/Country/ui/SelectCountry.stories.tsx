@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { action } from '@storybook/addon-actions'
-import { Country } from '../model/types/country'
+import { Country } from 'entities/Country/model/const/country'
 import { SelectCountry } from './SelectCountry'
 
 export default {

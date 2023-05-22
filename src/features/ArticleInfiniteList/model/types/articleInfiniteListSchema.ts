@@ -1,6 +1,6 @@
 import type { Article, ArticleType } from 'entities/Article'
 import type { EntityState } from '@reduxjs/toolkit'
-import type { SortOrder } from 'shared/types/sort'
+import type { SortOrder } from 'shared/const/sort'
 import type { SortField, View } from 'entities/ListFilters'
 
 export interface ArticleInfiniteListSchema

@@ -2,8 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { action } from '@storybook/addon-actions'
+import { Currency } from 'entities/Currency/model/const/currency'
 import { SelectCurrency } from './SelectCurrency'
-import { Currency } from '../model/types/currency'
 
 export default {
   title: 'entities/SelectCurrency',

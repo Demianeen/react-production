@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
 import { action } from '@storybook/addon-actions'
-import { SortOrder } from 'shared/types/sort'
-import { SortField } from '../../model/types/sortField'
-import { View } from '../../model/types/view'
+import { SortOrder } from 'shared/const/sort'
+import { SortField } from 'entities/ListFilters/model/const/sortField'
+import { View } from 'entities/ListFilters'
 import { ListFilters } from './ListFilters'
 
 const sortField = {

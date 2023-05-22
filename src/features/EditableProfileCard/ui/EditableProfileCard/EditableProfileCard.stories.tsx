@@ -3,7 +3,7 @@ import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
 import { InitUserDecorator } from 'shared/lib/storybook/InitUserDecorator'
-import { ProfileValidationError } from '../../model/types/profileSchema'
+import { ProfileValidationError } from 'features/EditableProfileCard/model/const/profileValidationError'
 import { EditableProfileCard } from './EditableProfileCard'
 
 export default {

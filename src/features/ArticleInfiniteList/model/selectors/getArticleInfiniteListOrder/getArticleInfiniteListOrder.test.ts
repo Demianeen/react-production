@@ -1,5 +1,5 @@
 import type { StateSchema } from 'app/providers/StoreProvider'
-import { SortOrder } from 'shared/types/sort'
+import { SortOrder } from 'shared/const/sort'
 import { getArticleInfiniteListOrder } from './getArticleInfiniteListOrder'
 
 describe('getArticleInfiniteListOrder', () => {

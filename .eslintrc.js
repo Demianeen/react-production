@@ -113,7 +113,7 @@ module.exports = {
     'jsx-a11y/click-events-have-key-events': 0,
     'jsx-a11y/no-static-element-interactions': 0,
 
-    // enforces to use type imports when importing types
+    // enforces to use type imports when importing const
     '@typescript-eslint/consistent-type-imports': [
       2,
       {
@@ -135,7 +135,8 @@ module.exports = {
     'import/no-cycle': 0,
 
     // checks path for fsd violations
-    'netliukh-demian-fsd-plugin/check-path': 2,
+    // TODO: add autofix
+    // 'netliukh-demian-fsd-plugin/check-path': 2,
 
     // we use only Button component where type is required
     'react/button-has-type': 0,

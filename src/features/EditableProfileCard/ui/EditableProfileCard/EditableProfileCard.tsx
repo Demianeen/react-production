@@ -9,9 +9,9 @@ import type { Country } from 'entities/Country'
 import { Text, TextTheme } from 'shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next'
 import { VStack } from 'shared/ui/Stack'
+import { ProfileValidationError } from 'features/EditableProfileCard/model/const/profileValidationError'
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData'
 import { fetchProfileDataById } from '../../model/services/fetchProfileDataById/fetchProfileDataById'
-import { ProfileValidationError } from '../../model/types/profileSchema'
 import {
   profileActions,
   profileReducer,

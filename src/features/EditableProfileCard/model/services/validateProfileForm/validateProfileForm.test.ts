@@ -1,7 +1,8 @@
+import { ProfileValidationError } from 'features/EditableProfileCard/model/const/profileValidationError'
 import { validateAge } from '../../../lib/validate/validateAge'
 import { mockProfile } from '../../mocks/data'
 import { validateProfileForm } from './validateProfileForm'
-import { ProfileValidationError } from '../../types/profileSchema'
+
 
 jest.mock('../../../lib/validate/validateAge', () => ({
   __esModule: true,

@@ -2,7 +2,7 @@ import { memo, useCallback, useMemo } from 'react'
 import { Select } from 'shared/ui/Select/Select'
 import { useTranslation } from 'react-i18next'
 import type { Direction } from 'shared/types/ui'
-import { Currency } from '../model/types/currency'
+import { Currency } from 'entities/Currency/model/const/currency'
 
 interface SelectCurrencyProps {
   className?: string

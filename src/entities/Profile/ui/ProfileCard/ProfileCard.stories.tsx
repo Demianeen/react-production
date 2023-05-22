@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
-import { Currency } from 'entities/Currency/model/types/currency'
+import { Currency } from 'entities/Currency/model/const/currency'
 import { Country } from 'entities/Country'
 import { ProfileCard } from './ProfileCard'
 

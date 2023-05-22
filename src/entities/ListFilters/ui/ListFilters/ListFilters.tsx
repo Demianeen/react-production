@@ -1,12 +1,12 @@
 import { memo } from 'react'
 import { HStack, VStack } from 'shared/ui/Stack'
-import type { SortOrder } from 'shared/types/sort'
-import type { SortField } from '../../model/types/sortField'
+import type { SortOrder } from 'shared/const/sort'
+import type { SortField } from 'entities/ListFilters/model/const/sortField'
+import type { View } from 'entities/ListFilters/model/const/view'
 import { ListFiltersSortField } from '../ListFiltersSortField/ListFiltersSortField'
 import { ListFiltersView } from '../ListFiltersView/ListFiltersView'
 import { ListFiltersSearch } from '../ListFiltersSearch/ListFiltersSearch'
 import { ListFiltersOrder } from '../ListFiltersOrder/ListFiltersOrder'
-import type { View } from '../../model/types/view'
 
 interface SortedArticlesListProps {
   className?: string

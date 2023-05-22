@@ -25,7 +25,9 @@
     "strict": true
     /* Enable all strict type-checking options. */,
     "skipLibCheck": true
-    /* Skip type checking all .d.ts files. */
+    /* Skip type checking all .d.ts files. */,
+    "isolatedModules": true,
+    /* The isolatedModules flag in TypeScript enables warnings for code that may not be correctly interpreted by single-file transpilation processes, such as const enums and namespaces, without affecting the behavior of the code or TypeScript's checking and emitting process. */
   },
   "ts-node": {
     "compilerOptions": {

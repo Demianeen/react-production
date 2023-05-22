@@ -12,12 +12,12 @@ import { View } from 'entities/ListFilters'
 import { RoutePath } from 'shared/config/routeConfig/routeConfig'
 import { AppLink } from 'shared/ui/AppLink/AppLink'
 import { HStack, VStack } from 'shared/ui/Stack'
+import { ArticleBlockType } from 'entities/Article/model/const/articleBlockType'
 import type { OnOpenArticle } from '../ArticleList/VirtualizedArticleList'
 import type {
   Article,
   ArticleTextBlock,
 } from '../../model/types/article'
-import { ArticleBlockType } from '../../model/types/article'
 import styles from './ArticleListItem.module.scss'
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent'
 

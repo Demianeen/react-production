@@ -1,6 +1,6 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk'
+import { ProfileValidationError } from 'features/EditableProfileCard/model/const/profileValidationError'
 import { mockProfile } from '../../mocks/data'
-import { ProfileValidationError } from '../../types/profileSchema'
 import { validateProfileForm } from '../validateProfileForm/validateProfileForm'
 import { updateProfileData } from './updateProfileData'
 

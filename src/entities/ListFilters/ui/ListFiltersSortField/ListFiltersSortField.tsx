@@ -2,7 +2,8 @@ import { memo, useMemo } from 'react'
 import type { SelectOption } from 'shared/ui/Select/Select'
 import { Select } from 'shared/ui/Select/Select'
 import { useTranslation } from 'react-i18next'
-import { SortField } from '../../model/types/sortField'
+
+import { SortField } from 'entities/ListFilters/model/const/sortField'
 
 interface ListFiltersSortFieldProps {
   className?: string
