@@ -1,8 +1,8 @@
-import type { ComponentStory, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { View } from 'entities/ListFilters'
-import { article } from '../../model/mocks/data'
+import { mockArticle } from '../../model/mocks/data'
 import { ArticleListItem } from './ArticleListItem'
 
 export default {
@@ -12,44 +12,47 @@ export default {
     backgroundColor: { control: 'color' },
   },
   args: {
-    article,
+    article: mockArticle,
   },
 } as Meta<typeof ArticleListItem>
 
-const Template: ComponentStory<typeof ArticleListItem> = (
-  args
-) => <ArticleListItem {...args} />
-
-export const List = Template.bind({})
-List.args = {
-  view: View.LIST,
+type Story = StoryObj<typeof ArticleListItem>
+export const List: Story = {
+  args: {
+    view: View.LIST,
+  },
 }
 
-export const Grid = Template.bind({})
-Grid.args = {
-  view: View.GRID,
+export const Grid: Story = {
+  args: {
+    view: View.GRID,
+  },
 }
 
-export const DarkList = Template.bind({})
-DarkList.args = {
-  view: View.LIST,
+export const DarkList: Story = {
+  args: {
+    view: View.LIST,
+  },
+  decorators: [ThemeDecorator(Theme.DARK)],
 }
-DarkList.decorators = [ThemeDecorator(Theme.DARK)]
 
-export const DarkGrid = Template.bind({})
-DarkGrid.args = {
-  view: View.GRID,
+export const DarkGrid: Story = {
+  args: {
+    view: View.GRID,
+  },
+  decorators: [ThemeDecorator(Theme.DARK)],
 }
-DarkGrid.decorators = [ThemeDecorator(Theme.DARK)]
 
-export const RedList = Template.bind({})
-RedList.args = {
-  view: View.LIST,
+export const RedList: Story = {
+  args: {
+    view: View.LIST,
+  },
+  decorators: [ThemeDecorator(Theme.RED)],
 }
-RedList.decorators = [ThemeDecorator(Theme.RED)]
 
-export const RedGrid = Template.bind({})
-RedGrid.args = {
-  view: View.GRID,
+export const RedGrid: Story = {
+  args: {
+    view: View.GRID,
+  },
+  decorators: [ThemeDecorator(Theme.RED)],
 }
-RedGrid.decorators = [ThemeDecorator(Theme.RED)]

@@ -1,12 +1,17 @@
-import { memo, useCallback } from 'react'
+import {
+  memo,
+  Suspense,
+  useCallback,
+  useEffect,
+} from 'react'
 import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useSelector } from 'react-redux'
 import { CommentList } from 'entities/Comment'
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { CommentForm } from 'entities/CommentForm'
 import { VStack } from 'shared/ui/Stack'
+import { CommentFormSkeleton } from 'entities/CommentForm/ui/CommentForm/CommentFormSkeleton'
 import { sendArticleComment } from '../../model/services/sendArticleComment/sendArticleComment'
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId'
 import { getArticleCommentListIsLoading } from '../../model/selectors/getArticleCommentListIsLoading/getArticleCommentListIsLoading'
@@ -43,14 +48,15 @@ export const ArticleCommentList = memo(
       [dispatch]
     )
 
-    useInitialEffect(() => {
+    useEffect(() => {
       dispatch(fetchCommentsByArticleId(articleId))
-    })
+    }, [articleId, dispatch])
 
     return (
       <VStack gap={1.25} maxWidth>
-        {/* we pass onSendComment here to make addCommentForm independent feature that can be used elsewhere. */}
-        <CommentForm onSendComment={onSendComment} />
+        <Suspense fallback={<CommentFormSkeleton />}>
+          <CommentForm onSendComment={onSendComment} />
+        </Suspense>
         <CommentList
           className={className}
           comments={comments}

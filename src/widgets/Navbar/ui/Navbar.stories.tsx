@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
@@ -12,37 +12,32 @@ export default {
   },
 } as Meta<typeof Navbar>
 
-const Template: ComponentStory<typeof Navbar> = (args) => (
-  <Navbar {...args} />
-)
+type Story = StoryObj<typeof Navbar>
 
-export const Light = Template.bind({})
-Light.args = {}
-Light.decorators = [StoreDecorator()]
+export const Light: Story = {
+  decorators: [StoreDecorator()],
+}
 
-export const Logged = Template.bind({})
-Logged.args = {}
-Logged.decorators = [
-  StoreDecorator({
-    user: {
-      authData: {
-        id: 1,
-        username: 'username',
+export const Logged: Story = {
+  decorators: [
+    StoreDecorator({
+      user: {
+        authData: {
+          id: 1,
+          username: 'username',
+        },
       },
-    },
-  }),
-]
+    }),
+  ],
+}
 
-export const Dark = Template.bind({})
-Dark.args = {}
-Dark.decorators = [
-  ThemeDecorator(Theme.DARK),
-  StoreDecorator(),
-]
+export const Dark: Story = {
+  decorators: [
+    ThemeDecorator(Theme.DARK),
+    StoreDecorator(),
+  ],
+}
 
-export const Red = Template.bind({})
-Red.args = {}
-Red.decorators = [
-  ThemeDecorator(Theme.RED),
-  StoreDecorator(),
-]
+export const Red: Story = {
+  decorators: [ThemeDecorator(Theme.RED), StoreDecorator()],
+}

@@ -5,7 +5,7 @@ import {
   ArticleType,
 } from '../types/article'
 
-export const article: Article = {
+export const mockArticle: Article = {
   id: 1,
   title: 'Javascript news - what is new in JS for 2023?',
   subtitle: 'Что нового в JS за 2022 год?',

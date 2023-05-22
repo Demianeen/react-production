@@ -8,7 +8,8 @@
  * - Please do NOT serve this file on production.
  */
 
-const INTEGRITY_CHECKSUM = '3d6b9f06410d179a7f7404d4bf4c3c70'
+const INTEGRITY_CHECKSUM =
+  '3d6b9f06410d179a7f7404d4bf4c3c70'
 const activeClientIds = new Set()
 
 self.addEventListener('install', function () {
@@ -70,9 +71,11 @@ self.addEventListener('message', async function (event) {
     case 'CLIENT_CLOSED': {
       activeClientIds.delete(clientId)
 
-      const remainingClients = allClients.filter((client) => {
-        return client.id !== clientId
-      })
+      const remainingClients = allClients.filter(
+        (client) => {
+          return client.id !== clientId
+        }
+      )
 
       // Unregister itself when there are no more clients
       if (remainingClients.length === 0) {
@@ -100,7 +103,10 @@ self.addEventListener('fetch', function (event) {
 
   // Opening the DevTools triggers the "only-if-cached" request
   // that cannot be handled by the worker. Bypass such requests.
-  if (request.cache === 'only-if-cached' && request.mode !== 'same-origin') {
+  if (
+    request.cache === 'only-if-cached' &&
+    request.mode !== 'same-origin'
+  ) {
     return
   }
 
@@ -120,7 +126,7 @@ self.addEventListener('fetch', function (event) {
         console.warn(
           '[MSW] Successfully emulated a network error for the "%s %s" request.',
           request.method,
-          request.url,
+          request.url
         )
         return
       }
@@ -131,15 +137,19 @@ self.addEventListener('fetch', function (event) {
 [MSW] Caught an exception from the "%s %s" request (%s). This is probably not a problem with Mock Service Worker. There is likely an additional logging output above.`,
         request.method,
         request.url,
-        `${error.name}: ${error.message}`,
+        `${error.name}: ${error.message}`
       )
-    }),
+    })
   )
 })
 
 async function handleRequest(event, requestId) {
   const client = await resolveMainClient(event)
-  const response = await getResponse(event, client, requestId)
+  const response = await getResponse(
+    event,
+    client,
+    requestId
+  )
 
   // Send back the response clone for the "response:*" life-cycle events.
   // Ensure MSW is active and ready to handle the message, otherwise
@@ -156,8 +166,12 @@ async function handleRequest(event, requestId) {
           status: clonedResponse.status,
           statusText: clonedResponse.statusText,
           body:
-            clonedResponse.body === null ? null : await clonedResponse.text(),
-          headers: Object.fromEntries(clonedResponse.headers.entries()),
+            clonedResponse.body === null
+              ? null
+              : await clonedResponse.text(),
+          headers: Object.fromEntries(
+            clonedResponse.headers.entries()
+          ),
           redirected: clonedResponse.redirected,
         },
       })
@@ -201,7 +215,9 @@ async function getResponse(event, client, requestId) {
   function passthrough() {
     // Clone the request because it might've been already used
     // (i.e. its body has been read and sent to the client).
-    const headers = Object.fromEntries(clonedRequest.headers.entries())
+    const headers = Object.fromEntries(
+      clonedRequest.headers.entries()
+    )
 
     // Remove MSW-specific request headers so the bypassed requests
     // comply with the server's CORS preflight check.
@@ -227,7 +243,9 @@ async function getResponse(event, client, requestId) {
 
   // Bypass requests with the explicit bypass header.
   // Such requests can be issued by "ctx.fetch()".
-  if (request.headers.get('x-msw-bypass') === 'true') {
+  if (
+    request.headers.get('x-mock-server-bypass') === 'true'
+  ) {
     return passthrough()
   }
 
@@ -238,7 +256,9 @@ async function getResponse(event, client, requestId) {
       id: requestId,
       url: request.url,
       method: request.method,
-      headers: Object.fromEntries(request.headers.entries()),
+      headers: Object.fromEntries(
+        request.headers.entries()
+      ),
       cache: request.cache,
       mode: request.mode,
       credentials: request.credentials,

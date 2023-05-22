@@ -3,7 +3,7 @@ import { userActions, UserRole } from 'entities/User'
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk'
 import { loginByUsername } from './loginByUsername'
 
-// TODO: refactor tests with msw
+// TODO: refactor mocks with mock-server
 describe('loginByUsername', () => {
   test('fulfilled login', async () => {
     const data: User = {

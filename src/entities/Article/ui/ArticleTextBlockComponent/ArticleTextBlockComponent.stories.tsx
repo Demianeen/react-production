@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import type { ArticleTextBlock } from '../../model/types/article'
@@ -25,25 +25,22 @@ export default {
   },
 } as Meta<typeof ArticleTextBlockComponent>
 
-const Template: ComponentStory<
-  typeof ArticleTextBlockComponent
-> = (args) => <ArticleTextBlockComponent {...args} />
+type Story = StoryObj<typeof ArticleTextBlockComponent>
+export const WithoutTitle: Story = {}
 
-export const WithoutTitle = Template.bind({})
-WithoutTitle.args = {}
-
-export const WithTitle = Template.bind({})
-WithTitle.args = {
-  block: {
-    ...block,
-    title: 'Title',
+export const WithTitle: Story = {
+  args: {
+    block: {
+      ...block,
+      title: 'Title',
+    },
   },
 }
 
-export const Dark = Template.bind({})
-Dark.args = {}
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
+export const Dark: Story = {
+  decorators: [ThemeDecorator(Theme.DARK)],
+}
 
-export const Red = Template.bind({})
-Red.args = {}
-Red.decorators = [ThemeDecorator(Theme.RED)]
+export const Red: Story = {
+  decorators: [ThemeDecorator(Theme.RED)],
+}

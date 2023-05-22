@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { action } from '@storybook/addon-actions'
@@ -17,22 +17,19 @@ export default {
   },
 } as Meta<typeof SelectCurrency>
 
-const Template: ComponentStory<typeof SelectCurrency> = (
-  args
-) => <SelectCurrency {...args} />
+type Story = StoryObj<typeof SelectCurrency>
+export const Light: Story = {}
 
-export const Light = Template.bind({})
-Light.args = {}
-
-export const Readonly = Template.bind({})
-Readonly.args = {
-  readonly: true,
+export const Readonly: Story = {
+  args: {
+    readonly: true,
+  },
 }
 
-export const Dark = Template.bind({})
-Dark.args = {}
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
+export const Dark: Story = {
+  decorators: [ThemeDecorator(Theme.DARK)],
+}
 
-export const Red = Template.bind({})
-Red.args = {}
-Red.decorators = [ThemeDecorator(Theme.RED)]
+export const Red: Story = {
+  decorators: [ThemeDecorator(Theme.RED)],
+}

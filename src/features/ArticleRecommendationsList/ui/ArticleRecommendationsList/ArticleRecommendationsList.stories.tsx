@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
 import { ArticleRecommendationsList } from './ArticleRecommendationsList'
 
@@ -9,17 +9,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   decorators: [StoreDecorator()],
-  parameters: {
-    loki: {
-      // FIXME: Add mock data to RTK Query
-      skip: true,
-    },
-  },
 } as Meta<typeof ArticleRecommendationsList>
 
-const Template: ComponentStory<
-  typeof ArticleRecommendationsList
-> = (args) => <ArticleRecommendationsList {...args} />
-
-export const Light = Template.bind({})
-Light.args = {}
+type Story = StoryObj<typeof ArticleRecommendationsList>
+export const Light: Story = {}

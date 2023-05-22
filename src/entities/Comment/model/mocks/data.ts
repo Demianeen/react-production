@@ -1,7 +1,7 @@
 import { UserRole } from 'entities/User'
 import type { Comment } from '../types/comment'
 
-export const comments: Comment[] = [
+export const mockComments: Comment[] = [
   {
     id: 1,
     body: 'test',

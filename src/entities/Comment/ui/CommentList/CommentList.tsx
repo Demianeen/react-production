@@ -20,6 +20,7 @@ export const CommentList = memo(
     isLoading,
   }: CommentListProps) => {
     const { t } = useTranslation()
+
     if (isLoading) {
       return (
         <VStack

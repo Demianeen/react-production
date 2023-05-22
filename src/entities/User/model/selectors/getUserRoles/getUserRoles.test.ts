@@ -19,8 +19,8 @@ describe('getUserRoles', () => {
   it('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {}
 
-    expect(getUserRoles(state as StateSchema)).toEqual(
-      UserRole.USER
-    )
+    expect(getUserRoles(state as StateSchema)).toEqual([
+      UserRole.USER,
+    ])
   })
 })

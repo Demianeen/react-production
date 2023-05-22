@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
 import { action } from '@storybook/addon-actions'
 import { SortOrder } from 'shared/types/sort'
@@ -36,14 +36,12 @@ export default {
   decorators: [StoreDecorator()],
 } as Meta<typeof ListFilters>
 
-const Template: ComponentStory<typeof ListFilters> = (
-  args
-) => <ListFilters {...args} />
-
-export const AllFilters = Template.bind({})
-AllFilters.args = {
-  ...sortField,
-  ...sortOrder,
-  ...view,
-  ...search,
+type Story = StoryObj<typeof ListFilters>
+export const AllFilters: Story = {
+  args: {
+    ...sortField,
+    ...sortOrder,
+    ...view,
+    ...search,
+  },
 }

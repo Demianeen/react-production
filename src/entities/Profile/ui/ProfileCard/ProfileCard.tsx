@@ -1,5 +1,4 @@
 import type { FormEvent } from 'react'
-
 import { classNames } from 'shared/lib/classNames/classNames'
 import { useTranslation } from 'react-i18next'
 import {
@@ -8,7 +7,6 @@ import {
   TextTheme,
 } from 'shared/ui/Text/Text'
 import { Input } from 'shared/ui/Input/Input'
-import type { Profile } from 'features/EditableProfileCard/model/types/profileSchema'
 import { Avatar } from 'shared/ui/Avatar/Avatar'
 import type { Currency } from 'entities/Currency'
 import { SelectCurrency } from 'entities/Currency'
@@ -16,6 +14,8 @@ import type { Country } from 'entities/Country'
 import { SelectCountry } from 'entities/Country'
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton'
 import { HStack } from 'shared/ui/Stack'
+import { InputSkeleton } from 'shared/ui/Input/InputSkeleton'
+import type { Profile } from '../../model/types/profile'
 import styles from './ProfileCard.module.scss'
 
 interface ProfileCardProps {
@@ -73,14 +73,14 @@ export const ProfileCard = ({
               borderRadius='50%'
             />
           </HStack>
-          <Skeleton className={styles.input} />
-          <Skeleton className={styles.input} />
-          <Skeleton className={styles.input} />
-          <Skeleton className={styles.input} />
-          <Skeleton className={styles.input} />
-          <Skeleton className={styles.input} />
-          <Skeleton className={styles.input} />
-          <Skeleton className={styles.input} />
+          <InputSkeleton />
+          <InputSkeleton />
+          <InputSkeleton />
+          <InputSkeleton />
+          <InputSkeleton />
+          <InputSkeleton />
+          <InputSkeleton />
+          <InputSkeleton />
         </div>
       </HStack>
     )
@@ -131,7 +131,6 @@ export const ProfileCard = ({
         <Input
           value={data?.firstName}
           placeholder={t('John')}
-          className={styles.input}
           label={t('First name')}
           onChange={onChangeFirstName}
           readonly={readonly}
@@ -140,7 +139,6 @@ export const ProfileCard = ({
         <Input
           value={data?.lastName}
           placeholder={t('Doe')}
-          className={styles.input}
           label={t('Last name')}
           onChange={onChangeLastName}
           readonly={readonly}
@@ -149,7 +147,6 @@ export const ProfileCard = ({
         <Input
           value={data?.age}
           placeholder='30'
-          className={styles.input}
           label={t('Age')}
           onChange={onChangeAge}
           readonly={readonly}
@@ -158,7 +155,6 @@ export const ProfileCard = ({
         <Input
           value={data?.city}
           placeholder={t('London')}
-          className={styles.input}
           label={t('City')}
           onChange={onChangeCity}
           readonly={readonly}
@@ -167,7 +163,6 @@ export const ProfileCard = ({
         <Input
           value={data?.username}
           placeholder={t('Your creative username')}
-          className={styles.input}
           label={t('Username')}
           onChange={onChangeUsername}
           readonly={readonly}
@@ -176,7 +171,6 @@ export const ProfileCard = ({
         <Input
           value={data?.avatar}
           placeholder={t('Link to new picture')}
-          className={styles.input}
           label={t('Avatar')}
           onChange={onChangeAvatar}
           readonly={readonly}

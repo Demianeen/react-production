@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { action } from '@storybook/addon-actions'
@@ -22,59 +22,62 @@ export default {
   },
 } as Meta<typeof Select>
 
-const Template: ComponentStory<typeof Select> = (args) => (
-  <Select {...args} />
-)
+type Story = StoryObj<typeof Select>
 
-export const Default = Template.bind({})
-Default.args = {
-  label: 'label',
+export const Default: Story = {
+  args: {
+    label: 'label',
+  },
 }
 
-export const DirectionDownRight = Template.bind({})
-DirectionDownRight.args = {
-  label: 'label',
-  direction: 'down-right',
-}
-DirectionDownRight.decorators = [
-  LayoutDecorator('centered'),
-]
-
-export const DirectionUpLeft = Template.bind({})
-DirectionUpLeft.args = {
-  label: 'label',
-  direction: 'up-left',
-}
-DirectionUpLeft.decorators = [LayoutDecorator('centered')]
-
-export const DirectionUpRight = Template.bind({})
-DirectionUpRight.args = {
-  label: 'label',
-  direction: 'up-right',
-}
-DirectionUpRight.decorators = [LayoutDecorator('centered')]
-
-export const WithoutLabel = Template.bind({})
-WithoutLabel.args = {}
-
-export const WithSelectedValue = Template.bind({})
-WithSelectedValue.args = {
-  value: '2',
+export const DirectionDownRight: Story = {
+  args: {
+    label: 'label',
+    direction: 'down-right',
+  },
+  decorators: [LayoutDecorator('centered')],
 }
 
-export const Readonly = Template.bind({})
-Readonly.args = {
-  readonly: true,
+export const DirectionUpLeft: Story = {
+  args: {
+    label: 'label',
+    direction: 'up-left',
+  },
+  decorators: [LayoutDecorator('centered')],
 }
 
-export const Dark = Template.bind({})
-Dark.args = {
-  label: 'label',
+export const DirectionUpRight: Story = {
+  args: {
+    label: 'label',
+    direction: 'up-right',
+  },
+  decorators: [LayoutDecorator('centered')],
 }
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
 
-export const Red = Template.bind({})
-Red.args = {
-  label: 'label',
+export const WithoutLabel: Story = {}
+
+export const WithSelectedValue: Story = {
+  args: {
+    value: '2',
+  },
 }
-Red.decorators = [ThemeDecorator(Theme.RED)]
+
+export const Readonly: Story = {
+  args: {
+    readonly: true,
+  },
+}
+
+export const Dark: Story = {
+  args: {
+    label: 'label',
+  },
+  decorators: [ThemeDecorator(Theme.DARK)],
+}
+
+export const Red: Story = {
+  args: {
+    label: 'label',
+  },
+  decorators: [ThemeDecorator(Theme.RED)],
+}

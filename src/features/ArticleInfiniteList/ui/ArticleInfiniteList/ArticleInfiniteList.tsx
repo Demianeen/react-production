@@ -2,7 +2,7 @@ import type {
   HTMLAttributeAnchorTarget,
   RefObject,
 } from 'react'
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
 import type { OnOpenArticle } from 'entities/Article'
 import { VirtualizedArticleList } from 'entities/Article'
 import { useSelector } from 'react-redux'
@@ -10,7 +10,6 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useTranslation } from 'react-i18next'
 import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
 import { PageError } from 'widgets/PageError'
 import { initArticleInfiniteList } from '../../model/services/initArticleInfiniteList/initArticleInfiniteList'
 import { getArticleInfiniteListView } from '../../model/selectors/getArticleInfiniteListView/getArticleInfiniteListView'
@@ -71,9 +70,9 @@ export const ArticleInfiniteList = ({
     [dispatch]
   )
 
-  useInitialEffect(() => {
+  useEffect(() => {
     dispatch(initArticleInfiniteList())
-  })
+  }, [dispatch])
 
   if (error) {
     return <PageError text={t('Failed to load articles')} />

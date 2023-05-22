@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { action } from '@storybook/addon-actions'
@@ -25,37 +25,34 @@ export default {
   },
 } as Meta<typeof Dropdown>
 
-const Template: ComponentStory<typeof Dropdown> = (
-  args
-) => <Dropdown {...args} />
+type Story = StoryObj<typeof Dropdown>
+export const Light: Story = {}
 
-export const Light = Template.bind({})
-Light.args = {}
-
-export const DirectionDownRight = Template.bind({})
-DirectionDownRight.args = {
-  direction: 'down-right',
+export const DirectionDownRight: Story = {
+  args: {
+    direction: 'down-right',
+  },
+  decorators: [LayoutDecorator('centered')],
 }
-DirectionDownRight.decorators = [
-  LayoutDecorator('centered'),
-]
 
-export const DirectionUpLeft = Template.bind({})
-DirectionUpLeft.args = {
-  direction: 'up-left',
+export const DirectionUpLeft: Story = {
+  args: {
+    direction: 'up-left',
+  },
+  decorators: [LayoutDecorator('centered')],
 }
-DirectionUpLeft.decorators = [LayoutDecorator('centered')]
 
-export const DirectionUpRight = Template.bind({})
-DirectionUpRight.args = {
-  direction: 'up-right',
+export const DirectionUpRight: Story = {
+  args: {
+    direction: 'up-right',
+  },
+  decorators: [LayoutDecorator('centered')],
 }
-DirectionUpRight.decorators = [LayoutDecorator('centered')]
 
-export const Dark = Template.bind({})
-Dark.args = {}
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
+export const Dark: Story = {
+  decorators: [ThemeDecorator(Theme.DARK)],
+}
 
-export const Red = Template.bind({})
-Red.args = {}
-Red.decorators = [ThemeDecorator(Theme.RED)]
+export const Red: Story = {
+  decorators: [ThemeDecorator(Theme.RED)],
+}

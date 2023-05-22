@@ -1,7 +1,7 @@
-import type { ComponentStory, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
-import { comments } from '../../model/mocks/data'
+import { mockComments } from '../../model/mocks/data'
 import { CommentList } from './CommentList'
 
 export default {
@@ -12,31 +12,31 @@ export default {
   },
 } as Meta<typeof CommentList>
 
-const Template: ComponentStory<typeof CommentList> = (
-  args
-) => <CommentList {...args} />
+type Story = StoryObj<typeof CommentList>
+export const WithoutComments: Story = {}
 
-export const WithoutComments = Template.bind({})
-WithoutComments.args = {}
-
-export const WithComments = Template.bind({})
-WithComments.args = {
-  comments,
+export const WithComments: Story = {
+  args: {
+    comments: mockComments,
+  },
 }
 
-export const IsLoading = Template.bind({})
-IsLoading.args = {
-  isLoading: true,
+export const IsLoading: Story = {
+  args: {
+    isLoading: true,
+  },
 }
 
-export const Dark = Template.bind({})
-Dark.args = {
-  comments,
+export const Dark: Story = {
+  args: {
+    comments: mockComments,
+  },
+  decorators: [ThemeDecorator(Theme.DARK)],
 }
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
 
-export const Red = Template.bind({})
-Red.args = {
-  comments,
+export const Red: Story = {
+  args: {
+    comments: mockComments,
+  },
+  decorators: [ThemeDecorator(Theme.RED)],
 }
-Red.decorators = [ThemeDecorator(Theme.RED)]

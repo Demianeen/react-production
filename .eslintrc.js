@@ -87,11 +87,12 @@ module.exports = {
       {
         devDependencies: [
           '**/test/**', // tape, common npm pattern
-          '**/tests/**', // also common npm pattern
+          '**/tests/**', // tape, common npm pattern
+          '**/mocks/**', // also common npm pattern
           'spec/**', // mocha, rspec-like pattern
           '**/__tests__/**', // jest pattern
           '**/__mocks__/**', // jest pattern
-          '**/*{.,_}{test,stories}.{ts,tsx}', // tests and stories where the extension or filename suffix denotes that it is a test
+          '**/*{.,_}{test,stories}.{ts,tsx}', // mocks and stories where the extension or filename suffix denotes that it is a test
           '.eslintrc.js', // eslint config
           '**/webpack.config.ts', // webpack config
           'config/**', // project configuration
@@ -100,6 +101,7 @@ module.exports = {
           'scripts/**', // project scripts
           '**/jest/**', // jest config
           '**/mocks/**', // mocks
+          '**/mock-server/**', // mock server
         ],
       },
     ],
@@ -158,10 +160,10 @@ module.exports = {
       files: [
         '**/src/**/*.{stories,test}.{ts,tsx}',
         '**/storybook/**/*.{ts,tsx}',
-        '**/tests/**/*.{ts,tsx}',
+        '**/mocks/**/*.{ts,tsx}',
       ],
       rules: {
-        // we don't need internalization in tests
+        // we don't need internalization in mocks
         'i18next/no-literal-string': 0,
         // we use props spreading in stories
         'react/jsx-props-no-spreading': 0,

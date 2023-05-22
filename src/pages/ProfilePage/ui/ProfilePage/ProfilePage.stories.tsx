@@ -1,9 +1,8 @@
-import type { ComponentStory, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
-import { Currency } from 'entities/Currency/model/types/currency'
-import { Country } from 'entities/Country'
+import { RoutePath } from 'shared/config/routeConfig/routeConfig'
 import ProfilePage from './ProfilePage'
 
 export default {
@@ -12,52 +11,31 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  parameters: {
+    reactRouter: {
+      routePath: `${RoutePath.profile}:id`,
+      routeParams: { id: '1' },
+    },
+  },
+  decorators: [StoreDecorator()],
 } as Meta<typeof ProfilePage>
 
-const Template: ComponentStory<typeof ProfilePage> = () => (
-  <ProfilePage />
-)
+type Story = StoryObj<typeof ProfilePage>
 
-const data = {
-  firstName: 'Demian',
-  lastName: 'Netliukh',
-  age: 30,
-  currency: Currency.USD,
-  country: Country.UK,
-  city: 'London',
-  username: 'admin',
-  avatar:
-    'https://lablab.ai/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Flablab-static-eu%2Fimages%252Fusers%252Fcldzwest200dfb70s3i8pc564_5w13le5_picture.jpg&w=256&q=75',
+export const Light: Story = {}
+
+export const NotFound: Story = {
+  parameters: {
+    reactRouter: {
+      routePath: `${RoutePath.profile}`,
+    },
+  },
 }
 
-export const Light = Template.bind({})
-Light.args = {}
-Light.decorators = [
-  StoreDecorator({
-    profile: {
-      data,
-    },
-  }),
-]
+export const Dark: Story = {
+  decorators: [ThemeDecorator(Theme.DARK)],
+}
 
-export const Dark = Template.bind({})
-Dark.args = {}
-Dark.decorators = [
-  ThemeDecorator(Theme.DARK),
-  StoreDecorator({
-    profile: {
-      data,
-    },
-  }),
-]
-
-export const Red = Template.bind({})
-Red.args = {}
-Red.decorators = [
-  ThemeDecorator(Theme.RED),
-  StoreDecorator({
-    profile: {
-      data,
-    },
-  }),
-]
+export const Red: Story = {
+  decorators: [ThemeDecorator(Theme.RED)],
+}

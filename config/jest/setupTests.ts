@@ -3,11 +3,11 @@ import 'regenerator-runtime/runtime'
 import 'whatwg-fetch'
 import { server } from '../../src/app/mocks/server'
 
-// Establish API mocking before all tests.
+// Establish API mocking before all mocks.
 beforeAll(() => server.listen())
 
-// Reset any request handlers that we may add during the tests, so they don't affect other tests.
+// Reset any request handlers that we may add during the mocks, so they don't affect other mocks.
 afterEach(() => server.resetHandlers())
 
-// Clean up after the tests are finished.
+// Clean up after the mocks are finished.
 afterAll(() => server.close())

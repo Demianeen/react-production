@@ -1,4 +1,3 @@
-import type { Story } from '@storybook/react'
 import type { StateSchema } from 'app/providers/StoreProvider'
 import { StoreProvider } from 'app/providers/StoreProvider'
 import { loginReducer } from 'features/AuthByUsername/modal/slice/loginFormSlice'
@@ -10,6 +9,7 @@ import type { Reducer } from 'redux'
 import { commentFormReducer } from 'entities/CommentForm/model/slice/commentFormSlice'
 import { articleCommentListReducer } from 'features/ArticleCommentList/model/slice/articleCommentListSlice'
 import { articleInfiniteListReducer } from 'features/ArticleInfiniteList/model/slice/articleInfiniteListSlice'
+import type { StoryFn } from '@storybook/react'
 import type { ReducersList } from '../hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 
 const defaultAsyncReducers: ReducersList = {
@@ -25,7 +25,7 @@ export const StoreDecorator = (
   initialState?: DeepPartial<StateSchema>,
   asyncReducers?: ReducersList
 ) =>
-  function decorator(StoryComponent: Story) {
+  function decorator(StoryComponent: StoryFn) {
     return (
       <StoreProvider
         preloadedState={initialState}

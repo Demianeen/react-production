@@ -1,4 +1,4 @@
-import type { Profile } from '../../types/profileSchema'
+import type { Profile } from 'entities/Profile'
 import { ProfileValidationError } from '../../types/profileSchema'
 import { validateAge } from '../../../lib/validate/validateAge'
 

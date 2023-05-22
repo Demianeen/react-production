@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { View } from 'entities/ListFilters'
@@ -15,10 +15,7 @@ export default {
   },
 } as Meta<typeof ArticleListSkeleton>
 
-const Template: ComponentStory<
-  typeof ArticleListSkeleton
-> = (args) => <ArticleListSkeleton {...args} />
-
+type Story = StoryObj<typeof ArticleListSkeleton>
 const listContext = {
   isLoading: true,
   view: View.LIST,
@@ -31,24 +28,28 @@ const gridContext = {
   skeletonsLimit: 12,
 }
 
-export const List = Template.bind({})
-List.args = {
-  context: listContext,
+export const List: Story = {
+  args: {
+    context: listContext,
+  },
 }
 
-export const Grid = Template.bind({})
-Grid.args = {
-  context: gridContext,
+export const Grid: Story = {
+  args: {
+    context: gridContext,
+  },
 }
 
-export const Dark = Template.bind({})
-Dark.args = {
-  context: listContext,
+export const Dark: Story = {
+  args: {
+    context: listContext,
+  },
+  decorators: [ThemeDecorator(Theme.DARK)],
 }
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
 
-export const Red = Template.bind({})
-Red.args = {
-  context: listContext,
+export const Red: Story = {
+  args: {
+    context: listContext,
+  },
+  decorators: [ThemeDecorator(Theme.RED)],
 }
-Red.decorators = [ThemeDecorator(Theme.RED)]

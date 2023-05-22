@@ -1,3 +1,3 @@
-import { editableProfileCardHandlers } from 'features/EditableProfileCard/model/mocks/handlers'
+import { profileHandlers } from 'entities/Profile/mocks/profileHandlers'
 
-export const handlers = [...editableProfileCardHandlers]
+export const handlers = [...profileHandlers]

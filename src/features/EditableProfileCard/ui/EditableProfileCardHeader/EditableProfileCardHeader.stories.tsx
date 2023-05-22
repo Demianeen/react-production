@@ -1,11 +1,12 @@
-import type { ComponentStory, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
 import { EditableProfileCardHeader } from './EditableProfileCardHeader'
 
 export default {
-  title: 'features/EditableProfileCardHeader',
+  title:
+    'features/EditableProfileCard/EditableProfileCardHeader',
   component: EditableProfileCardHeader,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -13,10 +14,7 @@ export default {
   decorators: [StoreDecorator()],
 } as Meta<typeof EditableProfileCardHeader>
 
-const Template: ComponentStory<
-  typeof EditableProfileCardHeader
-> = () => <EditableProfileCardHeader />
-
+type Story = StoryObj<typeof EditableProfileCardHeader>
 const canEditState = {
   profile: {
     data: {
@@ -30,23 +28,22 @@ const canEditState = {
   },
 }
 
-export const CanEdit = Template.bind({})
-CanEdit.args = {}
-CanEdit.decorators = [StoreDecorator(canEditState)]
+export const CanEdit: Story = {
+  decorators: [StoreDecorator(canEditState)],
+}
 
-export const CannotEdit = Template.bind({})
-CannotEdit.args = {}
+export const CannotEdit: Story = {}
 
-export const Dark = Template.bind({})
-Dark.args = {}
-Dark.decorators = [
-  ThemeDecorator(Theme.DARK),
-  StoreDecorator(canEditState),
-]
+export const Dark: Story = {
+  decorators: [
+    ThemeDecorator(Theme.DARK),
+    StoreDecorator(canEditState),
+  ],
+}
 
-export const Red = Template.bind({})
-Red.args = {}
-Red.decorators = [
-  ThemeDecorator(Theme.RED),
-  StoreDecorator(canEditState),
-]
+export const Red: Story = {
+  decorators: [
+    ThemeDecorator(Theme.RED),
+    StoreDecorator(canEditState),
+  ],
+}

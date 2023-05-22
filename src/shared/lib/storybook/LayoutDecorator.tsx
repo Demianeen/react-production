@@ -1,9 +1,9 @@
-import type { Story } from '@storybook/react'
 import type { ReactNode } from 'react'
 import { HStack } from 'shared/ui/Stack'
+import type { StoryFn } from '@storybook/react'
 
 export const LayoutDecorator = (layout: 'centered') =>
-  function Decorator(StoryComponent: Story) {
+  function Decorator(StoryComponent: StoryFn) {
     let content: ReactNode
 
     if (layout === 'centered') {

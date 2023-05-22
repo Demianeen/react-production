@@ -1,8 +1,8 @@
-import type { ComponentStory, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
-import { article } from '../../model/mocks/data'
+import { mockArticle } from '../../model/mocks/data'
 import { ArticleDetails } from './ArticleDetails'
 
 export default {
@@ -13,58 +13,55 @@ export default {
   },
 } as Meta<typeof ArticleDetails>
 
-const Template: ComponentStory<typeof ArticleDetails> = (
-  args
-) => <ArticleDetails {...args} />
+type Story = StoryObj<typeof ArticleDetails>
+export const Light: Story = {
+  decorators: [
+    StoreDecorator({
+      articleDetails: {
+        data: mockArticle,
+      },
+    }),
+  ],
+}
 
-export const Light = Template.bind({})
-Light.args = {}
-Light.decorators = [
-  StoreDecorator({
-    articleDetails: {
-      data: article,
-    },
-  }),
-]
+export const Loading: Story = {
+  decorators: [
+    StoreDecorator({
+      articleDetails: {
+        isLoading: true,
+      },
+    }),
+  ],
+}
 
-export const Loading = Template.bind({})
-Loading.args = {}
-Loading.decorators = [
-  StoreDecorator({
-    articleDetails: {
-      isLoading: true,
-    },
-  }),
-]
+export const Error: Story = {
+  decorators: [
+    StoreDecorator({
+      articleDetails: {
+        error: 'Error',
+      },
+    }),
+  ],
+}
 
-export const Error = Template.bind({})
-Error.args = {}
-Error.decorators = [
-  StoreDecorator({
-    articleDetails: {
-      error: 'Error',
-    },
-  }),
-]
-
-export const Dark = Template.bind({})
-Dark.args = {}
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
+export const Dark: Story = {
+  decorators: [ThemeDecorator(Theme.DARK)],
+}
 Dark.decorators = [
   StoreDecorator({
     articleDetails: {
-      data: article,
+      data: mockArticle,
     },
   }),
 ]
 
-export const Red = Template.bind({})
-Red.args = {}
-Red.decorators = [ThemeDecorator(Theme.RED)]
+export const Red: Story = {
+  decorators: [ThemeDecorator(Theme.RED)],
+}
 Red.decorators = [
   StoreDecorator({
     articleDetails: {
-      data: article,
+      data: mockArticle,
     },
   }),
 ]

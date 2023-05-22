@@ -1,5 +1,5 @@
-import type { ComponentStory, Meta } from '@storybook/react'
-import AvatarImg from 'shared/assets/tests/storybook.jpeg'
+import type { Meta, StoryObj } from '@storybook/react'
+import AvatarImg from 'shared/assets/mocks/avatar.jpeg'
 import { Avatar } from './Avatar'
 
 export default {
@@ -13,14 +13,12 @@ export default {
   },
 } as Meta<typeof Avatar>
 
-const Template: ComponentStory<typeof Avatar> = (args) => (
-  <Avatar {...args} />
-)
+type Story = StoryObj<typeof Avatar>
 
-export const Default = Template.bind({})
-Default.args = {}
+export const Default: Story = {}
 
-export const CustomSize = Template.bind({})
-CustomSize.args = {
-  size: '12rem',
+export const CustomSize: Story = {
+  args: {
+    size: '12rem',
+  },
 }

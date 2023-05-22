@@ -17,13 +17,13 @@
     "test:unit": "jest --config ./config/jest/jest.config.ts",
     "test:ui": "npx loki test --chromeConcurrency 10",
     "test:ui:ok": "npx loki approve",
-    "test:ui:ci": "npx loki --chromeConcurrency 10 --requireReference --reactUri file:./storybook-static",
+    "test:ui:ci": "concurrently -s first -k \"npm run storybook\" \"npm run test:ui\"",
     "test:ui:json": "node scripts/generate-visual-json-report.js",
     "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
     "test:ui:report:chrome": "npm run test:ui:json && npm run test:ui:html && open -a 'Google Chrome' .loki/report.html",
     "test:ui:report:arc": "npm run test:ui:json && npm run test:ui:html && open -a 'Arc' .loki/report.html",
-    "storybook": "storybook dev -p 6006 -c ./config/storybook -s public",
-    "build:storybook": "storybook build -c ./config/storybook -s public",
+    "storybook": "storybook dev -p 6006 -c ./config/storybook --no-open",
+    "build:storybook": "storybook build -c ./config/storybook",
     "generate:slice": "ts-node ./scripts/createSlice/index.ts",
     "rename:slice": "ts-node ./scripts/renameSlice/index.ts",
     "prepare": "husky install"
@@ -39,6 +39,7 @@
     "@loki/create-async-callback": "^0.31.1",
     "@loki/is-loki-running": "^0.31.1",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
+    "@storybook/addon-a11y": "^7.0.12",
     "@storybook/addon-actions": "^7.0.12",
     "@storybook/addon-essentials": "^7.0.12",
     "@storybook/addon-interactions": "^7.0.12",
@@ -76,7 +77,7 @@
     "eslint-plugin-jest": "^27.2.1",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-n": "^16.0.0",
-    "eslint-plugin-netliukh-demian-fsd-plugin": "^0.0.2",
+    "eslint-plugin-netliukh-demian-fsd-plugin": "^0.0.3",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.32.2",
@@ -86,6 +87,7 @@
     "husky": "^8.0.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0",
     "jest-html-reporters": "^3.1.4",
     "json-server": "^0.17.0",
     "loki": "^0.31.2",
@@ -99,6 +101,7 @@
     "sass": "^1.62.1",
     "sass-loader": "^13.2.2",
     "storybook": "^7.0.12",
+    "storybook-addon-react-router-v6": "^1.0.0",
     "style-loader": "^3.3.3",
     "stylelint": "^15.6.2",
     "stylelint-config-prettier-scss": "^1.0.0",
@@ -128,7 +131,7 @@
     "react-virtuoso": "^4.3.7"
   },
   "loki": {
-    "chromeSelector": "#storybook-root > *",
+    "fetchFailIgnore": "https://mockapi.com/*",
     "diffingEngine": "gm",
     "gm": {
       "tolerance": 0.00024

@@ -41,7 +41,7 @@ export default {
     'node',
   ],
 
-  // The root directory that Jest should scan for tests and modules within
+  // The root directory that Jest should scan for mocks and modules within
   rootDir: '../../',
 
   // The glob patterns Jest uses to detect test files
@@ -75,10 +75,10 @@ export default {
     ],
   ],
 
-  // All imported modules in your tests should be mocked automatically
+  // All imported modules in your mocks should be mocked automatically
   // automock: false,
 
-  // Stop running tests after `n` failures
+  // Stop running mocks after `n` failures
   // bail: 0,
 
   // The directory where Jest should store its cached dependency information
@@ -121,7 +121,7 @@ export default {
   // A path to a module which exports an async function that is triggered once after all test suites
   // globalTeardown: undefined,
 
-  // The maximum amount of workers used to run your tests. Can be specified as % or a number. E.g. maxWorkers: 10% will use 10% of your CPU amount + 1 as the maximum worker number. maxWorkers: 2 will use a maximum of 2 workers.
+  // The maximum amount of workers used to run your mocks. Can be specified as % or a number. E.g. maxWorkers: 10% will use 10% of your CPU amount + 1 as the maximum worker number. maxWorkers: 2 will use a maximum of 2 workers.
   // maxWorkers: "50%",
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
@@ -139,7 +139,7 @@ export default {
   // A preset that is used as a base for Jest's configuration
   // preset: undefined,
 
-  // Run tests from one or more projects
+  // Run mocks from one or more projects
   // projects: undefined,
 
   // Automatically reset mock state before every test
@@ -180,7 +180,7 @@ export default {
   // Adds a location field to test results
   // testLocationInResults: false,
 
-  // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
+  // An array of regexp pattern strings that are matched against all test paths, matched mocks are skipped
   // testPathIgnorePatterns: [
   //   "/node_modules/"
   // ],
@@ -215,7 +215,7 @@ export default {
   // Indicates whether each individual test should be reported during the run
   // verbose: undefined,
 
-  // An array of regexp patterns that are matched against all source file paths before re-running tests in watch mode
+  // An array of regexp patterns that are matched against all source file paths before re-running mocks in watch mode
   // watchPathIgnorePatterns: [],
 
   // Whether to use watchman for file crawling

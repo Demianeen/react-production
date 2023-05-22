@@ -1,10 +1,5 @@
-import type { ComponentStory, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
-import {
-  articleIds,
-  articles,
-  getArticleEntities,
-} from '../../model/mocks/data'
 import { ArticleInfiniteList } from './ArticleInfiniteList'
 
 export default {
@@ -13,19 +8,11 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  decorators: [
-    StoreDecorator({
-      articleInfiniteList: {
-        entities: getArticleEntities(articles),
-        ids: articleIds,
-      },
-    }),
-  ],
+  decorators: [StoreDecorator()],
 } as Meta<typeof ArticleInfiniteList>
 
-const Template: ComponentStory<
-  typeof ArticleInfiniteList
-> = (args) => <ArticleInfiniteList {...args} />
+type Story = StoryObj<typeof ArticleInfiniteList>
 
-export const Light = Template.bind({})
-Light.args = {}
+export const Light: Story = {}
+
+export const Loading: Story = {}

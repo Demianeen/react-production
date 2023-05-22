@@ -2,7 +2,7 @@ import { memo } from 'react'
 import { ArticleDetails } from 'entities/Article'
 import { useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Text } from 'shared/ui/Text/Text'
+import { Text, TextTheme } from 'shared/ui/Text/Text'
 import { Page } from 'widgets/Page/ui/Page/Page'
 import { Button } from 'shared/ui/Button/Button'
 import { AppLink } from 'shared/ui/AppLink/AppLink'
@@ -28,7 +28,10 @@ const ArticleDetailsPage = ({
         justify='center'
         align='center'
       >
-        <Text title={t('Article not found')} />
+        <Text
+          theme={TextTheme.ERROR}
+          title={t('Article not found')}
+        />
         <Button as={AppLink} to={RoutePath.articles}>
           {t('Back to list')}
         </Button>

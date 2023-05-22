@@ -1,4 +1,5 @@
-import type { ComponentStory, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
+import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
 import ForbiddenPage from './ForbiddenPage'
 
 export default {
@@ -7,11 +8,8 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  decorators: [StoreDecorator()],
 } as Meta<typeof ForbiddenPage>
 
-const Template: ComponentStory<typeof ForbiddenPage> = (
-  args
-) => <ForbiddenPage {...args} />
-
-export const Light = Template.bind({})
-Light.args = {}
+type Story = StoryObj<typeof ForbiddenPage>
+export const Light: Story = {}

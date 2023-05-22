@@ -1,8 +1,7 @@
-import type { ComponentStory, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
-import { SuspenseWithSpinner } from 'shared/ui/SuspenseWithSpinner/SuspenseWithSpinner'
 import { ArticleDetailsPageFooter } from './ArticleDetailsPageFooter'
 
 export default {
@@ -15,21 +14,14 @@ export default {
   decorators: [StoreDecorator()],
 } as Meta<typeof ArticleDetailsPageFooter>
 
-const Template: ComponentStory<
-  typeof ArticleDetailsPageFooter
-> = (args) => (
-  <SuspenseWithSpinner>
-    <ArticleDetailsPageFooter {...args} />
-  </SuspenseWithSpinner>
-)
+type Story = StoryObj<typeof ArticleDetailsPageFooter>
 
-export const Light = Template.bind({})
-Light.args = {}
+export const Light: Story = {}
 
-export const Dark = Template.bind({})
-Dark.args = {}
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
+export const Dark: Story = {
+  decorators: [ThemeDecorator(Theme.DARK)],
+}
 
-export const Red = Template.bind({})
-Red.args = {}
-Red.decorators = [ThemeDecorator(Theme.RED)]
+export const Red: Story = {
+  decorators: [ThemeDecorator(Theme.RED)],
+}

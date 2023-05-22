@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
@@ -15,55 +15,49 @@ export default {
   },
 } as Meta<typeof LoginForm>
 
-const Template: ComponentStory<typeof LoginForm> = (
-  args
-) => <LoginForm {...args} />
+type Story = StoryObj<typeof LoginForm>
+export const Light: Story = {
+  decorators: [StoreDecorator()],
+}
 
-export const Light = Template.bind({})
-Light.args = {}
-Light.decorators = [StoreDecorator()]
+export const WithValue: Story = {
+  decorators: [
+    StoreDecorator({
+      loginForm: {
+        username: 'username',
+        password: 'password',
+      },
+    }),
+  ],
+}
 
-export const WithValue = Template.bind({})
-WithValue.args = {}
-WithValue.decorators = [
-  StoreDecorator({
-    loginForm: {
-      username: 'username',
-      password: 'password',
-    },
-  }),
-]
+export const Error: Story = {
+  decorators: [
+    StoreDecorator({
+      loginForm: {
+        error: 'Error',
+      },
+    }),
+  ],
+}
 
-export const Error = Template.bind({})
-Error.args = {}
-Error.decorators = [
-  StoreDecorator({
-    loginForm: {
-      error: 'Error',
-    },
-  }),
-]
+export const Loading: Story = {
+  decorators: [
+    StoreDecorator({
+      loginForm: {
+        isLoading: true,
+      },
+    }),
+  ],
+}
 
-export const Loading = Template.bind({})
-Loading.args = {}
-Loading.decorators = [
-  StoreDecorator({
-    loginForm: {
-      isLoading: true,
-    },
-  }),
-]
+export const Dark: Story = {
+  decorators: [
+    ThemeDecorator(Theme.DARK),
+    StoreDecorator(),
+  ],
+}
 
-export const Dark = Template.bind({})
-Dark.args = {}
-Dark.decorators = [
-  ThemeDecorator(Theme.DARK),
-  StoreDecorator(),
-]
-
-export const Red = Template.bind({})
-Red.args = {}
-Red.decorators = [
-  ThemeDecorator(Theme.RED),
-  StoreDecorator(),
-]
+export const Red: Story = {
+  decorators: [ThemeDecorator(Theme.RED), StoreDecorator()],
+}

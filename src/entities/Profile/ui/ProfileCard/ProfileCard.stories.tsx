@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { Currency } from 'entities/Currency/model/types/currency'
@@ -13,10 +13,7 @@ export default {
   },
 } as Meta<typeof ProfileCard>
 
-const Template: ComponentStory<typeof ProfileCard> = (
-  args
-) => <ProfileCard {...args} />
-
+type Story = StoryObj<typeof ProfileCard>
 const data = {
   firstName: 'Demian',
   lastName: 'Netliukh',
@@ -25,42 +22,46 @@ const data = {
   country: Country.UK,
   city: 'London',
   username: 'admin',
-  avatar:
-    'https://lablab.ai/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Flablab-static-eu%2Fimages%252Fusers%252Fcldzwest200dfb70s3i8pc564_5w13le5_picture.jpg&w=256&q=75',
+  avatar: 'https://mockapi.com/avatar',
 }
 
-export const Light = Template.bind({})
-Light.args = {
-  data,
+export const Light: Story = {
+  args: {
+    data,
+  },
 }
 
-export const Readonly = Template.bind({})
-Readonly.args = {
-  data,
-  readonly: true,
+export const Readonly: Story = {
+  args: {
+    data,
+    readonly: true,
+  },
 }
 
-export const WithoutValues = Template.bind({})
-WithoutValues.args = {}
+export const WithoutValues: Story = {}
 
-export const Loading = Template.bind({})
-Loading.args = {
-  isLoading: true,
+export const Loading: Story = {
+  args: {
+    isLoading: true,
+  },
 }
 
-export const Error = Template.bind({})
-Error.args = {
-  error: 'Error',
+export const Error: Story = {
+  args: {
+    error: 'Error',
+  },
 }
 
-export const Dark = Template.bind({})
-Dark.args = {
-  data,
+export const Dark: Story = {
+  args: {
+    data,
+  },
+  decorators: [ThemeDecorator(Theme.DARK)],
 }
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
 
-export const Red = Template.bind({})
-Red.args = {
-  data,
+export const Red: Story = {
+  args: {
+    data,
+  },
+  decorators: [ThemeDecorator(Theme.RED)],
 }
-Red.decorators = [ThemeDecorator(Theme.RED)]
