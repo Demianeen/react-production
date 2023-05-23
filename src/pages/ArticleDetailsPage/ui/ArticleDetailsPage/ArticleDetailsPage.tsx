@@ -6,8 +6,8 @@ import { Text, TextTheme } from 'shared/ui/Text/Text'
 import { Page } from 'widgets/Page/ui/Page/Page'
 import { Button } from 'shared/ui/Button/Button'
 import { AppLink } from 'shared/ui/AppLink/AppLink'
-import { RoutePath } from 'shared/config/routeConfig/routeConfig'
 import { VStack } from 'shared/ui/Stack'
+import { RoutePath } from 'shared/config/routeConfig/routePath'
 import { ArticleDetailsPageFooter } from '../ArticleDetailsPageFooter/ArticleDetailsPageFooter'
 
 interface ArticleDetailsPageProps {

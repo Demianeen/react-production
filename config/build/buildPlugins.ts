@@ -4,6 +4,7 @@ import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
 import MiniCSSExtractPlugin from 'mini-css-extract-plugin'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
+import CircularDependencyPlugin from 'circular-dependency-plugin'
 import type { BuildOptions } from './types/config'
 
 export default ({
@@ -34,6 +35,10 @@ export default ({
           to: paths.buildLocales,
         },
       ],
+    }),
+    new CircularDependencyPlugin({
+      exclude: /node_modules/,
+      failOnError: true,
     }),
   ]
 

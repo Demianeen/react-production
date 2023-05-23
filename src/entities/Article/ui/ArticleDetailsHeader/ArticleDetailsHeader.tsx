@@ -4,7 +4,7 @@ import { AppLink } from 'shared/ui/AppLink/AppLink'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { HStack } from 'shared/ui/Stack'
-import { RoutePath } from '../../../../shared/config/routeConfig/routeConfig'
+import { RoutePath } from 'shared/config/routeConfig/routePath'
 import { getArticleDetailsError } from '../../model/selectors/getArticleDetailsError/getArticleDetailsError'
 import { getArticleDetailsCanEdit } from '../../model/selectors/getArticleDetailsCanEdit/getArticleDetailsCanEdit'
 

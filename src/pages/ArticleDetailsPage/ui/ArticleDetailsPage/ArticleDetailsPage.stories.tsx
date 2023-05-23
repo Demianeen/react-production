@@ -3,7 +3,7 @@ import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
 import { mockArticle } from 'entities/Article/model/mocks/data'
-import { RoutePath } from 'shared/config/routeConfig/routeConfig'
+import { RoutePath } from 'shared/config/routeConfig/routePath'
 import ArticleDetailsPage from './ArticleDetailsPage'
 
 export default {

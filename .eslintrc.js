@@ -132,7 +132,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 2,
 
     // TODO: enable later
-    'import/no-cycle': 0,
+    // 'import/no-cycle': 0,
 
     // checks path for fsd violations
     // TODO: add autofix

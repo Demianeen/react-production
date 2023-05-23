@@ -19,10 +19,10 @@ import {
   AppLink,
   AppLinkTheme,
 } from 'shared/ui/AppLink/AppLink'
-import { RoutePath } from 'shared/config/routeConfig/routeConfig'
 import { Dropdown } from 'shared/ui/Dropdown/Dropdown'
 import { Avatar } from 'shared/ui/Avatar/Avatar'
 import { HStack } from 'shared/ui/Stack'
+import { RoutePath } from 'shared/config/routeConfig/routePath'
 import styles from './Navbar.module.scss'
 
 interface NavbarProps {

@@ -4,7 +4,8 @@ import {
   createSlice,
 } from '@reduxjs/toolkit'
 import type { StateSchema } from 'app/providers/StoreProvider'
-import type { Article, ArticleType } from 'entities/Article'
+import type { Article } from 'entities/Article'
+import { ArticleType } from 'entities/Article'
 import { ARTICLE_VIEW_LOCALSTORAGE_KEY } from 'shared/const/localstorage'
 import { SortOrder } from 'shared/const/sort'
 import { SortField, View } from 'entities/ListFilters'
@@ -26,7 +27,7 @@ const initialState: ArticleInfiniteListSchema =
     order: SortOrder.ASC,
     search: '',
     sortField: SortField.CREATED_AT,
-    type: 'ALL' as ArticleType.ALL,
+    type: ArticleType.ALL,
   })
 
 export const articleInfiniteListSlice = createSlice({
