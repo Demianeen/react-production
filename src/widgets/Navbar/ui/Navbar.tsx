@@ -7,22 +7,16 @@ import {
 } from 'shared/ui/Button/Button'
 import { LoginModal } from 'features/AuthByUsername'
 import { useSelector } from 'react-redux'
-import {
-  getIsUserAdmin,
-  getIsUserManager,
-  getUserAuthData,
-  userActions,
-} from 'entities/User'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { getUserAuthData } from 'entities/User'
 import { Text, TextTheme } from 'shared/ui/Text/Text'
 import {
   AppLink,
   AppLinkTheme,
 } from 'shared/ui/AppLink/AppLink'
-import { Dropdown } from 'shared/ui/Dropdown/Dropdown'
-import { Avatar } from 'shared/ui/Avatar/Avatar'
 import { HStack } from 'shared/ui/Stack'
 import { RoutePath } from 'shared/config/routeConfig/routePath'
+import { NotificationPopup } from 'features/NotificationPopup'
+import { UserDropdown } from 'features/UserDropdown'
 import styles from './Navbar.module.scss'
 
 interface NavbarProps {
@@ -34,11 +28,6 @@ export const Navbar = memo(({ className }: NavbarProps) => {
   const [isAuthModalOpened, setIsAuthModalOpened] =
     useState(false)
   const authData = useSelector(getUserAuthData)
-  const dispatch = useAppDispatch()
-
-  const isAdmin = useSelector(getIsUserAdmin)
-  const isManager = useSelector(getIsUserManager)
-  const isAdminPanelAvailable = isAdmin || isManager
 
   const onOpenModal = useCallback(() => {
     setIsAuthModalOpened(true)
@@ -47,10 +36,6 @@ export const Navbar = memo(({ className }: NavbarProps) => {
   const onCloseModal = useCallback(() => {
     setIsAuthModalOpened(false)
   }, [])
-
-  const onLogout = useCallback(() => {
-    dispatch(userActions.logout())
-  }, [dispatch])
 
   return (
     <HStack
@@ -73,34 +58,10 @@ export const Navbar = memo(({ className }: NavbarProps) => {
           >
             {t('Create article')}
           </AppLink>
-          <Dropdown
-            className={styles.loginBtn}
-            items={[
-              ...(isAdminPanelAvailable
-                ? [
-                    {
-                      label: t('Admin panel'),
-                      href: RoutePath.admin_panel,
-                    },
-                  ]
-                : []),
-              {
-                label: t('Profile'),
-                href: RoutePath.profile + authData.id,
-              },
-              {
-                label: t('Logout'),
-                onClick: onLogout,
-              },
-            ]}
-            triggerChildren={
-              authData?.avatar ? (
-                <Avatar size='2rem' src={authData.avatar} />
-              ) : (
-                t('Account')
-              )
-            }
-          />
+          <HStack gap={1} className={styles.actions}>
+            <NotificationPopup />
+            <UserDropdown />
+          </HStack>
         </>
       ) : (
         <Button

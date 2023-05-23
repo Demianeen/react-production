@@ -2,10 +2,15 @@ import { Menu } from '@headlessui/react'
 import type { ReactNode } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import type { Direction } from 'shared/types/ui'
-import { HStack } from '../Stack'
-import { AppLink, AppLinkTheme } from '../AppLink/AppLink'
-import { Button, ButtonTheme } from '../Button/Button'
+import { mapDirection } from '../../const/mapDirection'
+import { HStack } from '../../../Stack'
+import {
+  AppLink,
+  AppLinkTheme,
+} from '../../../AppLink/AppLink'
+import { Button, ButtonTheme } from '../../../Button/Button'
 import styles from './Dropdown.module.scss'
+import popupStyles from '../../styles/Popup.module.scss'
 
 interface DropdownItemButton {
   onClick: () => void
@@ -24,19 +29,11 @@ export type DropdownItem = {
 
 interface DropdownProps {
   className?: string
+  /* trigger is a Button */
   triggerChildren: ReactNode
   items: DropdownItem[]
   direction?: Direction
 }
-
-/* eslint-disable @typescript-eslint/naming-convention */
-const mapDirection: Record<Direction, string> = {
-  'up-right': `${styles.up}`,
-  'up-left': `${styles.up} ${styles.left}`,
-  'down-right': `${styles.down}`,
-  'down-left': `${styles.down} ${styles.left}`,
-}
-/* eslint-enable @typescript-eslint/naming-convention */
 
 export const Dropdown = ({
   className,
@@ -47,7 +44,7 @@ export const Dropdown = ({
   return (
     <Menu
       as='div'
-      className={classNames(styles.dropdown, {}, [
+      className={classNames(popupStyles.popup, {}, [
         className,
       ])}
     >
@@ -60,13 +57,21 @@ export const Dropdown = ({
         {triggerChildren}
       </Menu.Button>
       <Menu.Items
-        className={classNames(styles.menu, {}, [
+        className={classNames(styles.items, {}, [
           mapDirection[direction],
         ])}
       >
         {items.map((item) => (
           <Menu.Item key={item.label}>
             {({ active, disabled }) => {
+              const itemClassName = classNames(
+                styles.item,
+                {
+                  [popupStyles.active]: active,
+                  [popupStyles.disabled]: disabled,
+                }
+              )
+
               if (item.href !== undefined) {
                 return (
                   <HStack
@@ -77,10 +82,7 @@ export const Dropdown = ({
                         ? AppLinkTheme.INVERTED
                         : AppLinkTheme.PRIMARY
                     }
-                    className={classNames(styles.item, {
-                      [styles.active]: active,
-                      [styles.disabled]: disabled,
-                    })}
+                    className={itemClassName}
                   >
                     {item.label}
                   </HStack>
@@ -96,10 +98,7 @@ export const Dropdown = ({
                       ? ButtonTheme.CLEAR_INVERTED
                       : ButtonTheme.CLEAR
                   }
-                  className={classNames(styles.item, {
-                    [styles.active]: active,
-                    [styles.disabled]: disabled,
-                  })}
+                  className={itemClassName}
                   onClick={item.onClick}
                 >
                   {item.label}

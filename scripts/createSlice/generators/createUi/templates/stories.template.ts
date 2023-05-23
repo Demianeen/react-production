@@ -9,21 +9,25 @@ export const storiesTemplate = (
     ? `import ${componentName} from './${componentName}'`
     : `import { ${componentName} } from './${componentName}'`
 
-  return `import type { ComponentStory, Meta } from '@storybook/react';
+  return `import type { Meta, StoryObj } from '@storybook/react'
+import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
 ${componentImport}
 
 export default {
-    title: '${layer}/${componentName}',
-    component: ${componentName},
-    argTypes: {
-        backgroundColor: { control: 'color' },
-    },
-} as Meta<typeof ${componentName}>;
+  title: '$PARENT_DIR/${componentName}',
+  component: ${componentName},
+  argTypes: {
+    backgroundColor: { control: 'color' },
+  },
+  args: {
+  },
+  parameters: {
+  },
+  decorators: [StoreDecorator()],
+} as Meta<typeof ${componentName}>
 
-const Template: ComponentStory<typeof ${componentName}> = (args) => <${componentName} {...args} />
+type Story = StoryObj<typeof ${componentName}>
 
-export const Light = Template.bind({});
-Light.args = {
-   
-}`
+export const Light: Story = {}
+`
 }

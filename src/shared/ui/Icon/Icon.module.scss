@@ -19,4 +19,12 @@
   &.secondary {
     color: var(--secondary-color);
   }
+
+  &.invertedPrimary {
+    color: var(--inverted-primary-color);
+  }
+
+  &.invertedSecondary {
+    color: var(--inverted-secondary-color);
+  }
 }

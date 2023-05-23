@@ -27,7 +27,7 @@ export default (
     stats: {
       errorDetails: true,
     },
-    devtool: isDev ? 'inline-source-map' : undefined,
+    devtool: isDev && 'eval-source-map',
     devServer: isDev ? buildDevServer(options) : undefined,
   }
 }

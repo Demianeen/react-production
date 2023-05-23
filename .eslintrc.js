@@ -46,7 +46,7 @@ module.exports = {
         caughtErrorsIgnorePattern: '^_',
       },
     ],
-    // disallow spreading props in custom components except those from libraries
+    // disallow spreading props in custom ui except those from libraries
     'react/jsx-props-no-spreading': [
       1,
       {

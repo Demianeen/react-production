@@ -8,5 +8,5 @@ export const componentExportTemplate = (
     return `export { ${componentName}Async as ${componentName} } from './ui/${componentName}/${componentName}.async'\n`
   }
 
-  return `export { ${componentName} } from './ui/${componentName}'/${componentName}\n`
+  return `export { ${componentName} } from './ui/${componentName}/${componentName}'\n`
 }

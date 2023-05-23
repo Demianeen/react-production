@@ -5,10 +5,12 @@ import { Fragment, useMemo } from 'react'
 import TickIcon from 'shared/assets/icons/tick-20-20.svg'
 import ArrowDownIcon from 'shared/assets/icons/arrows-up-down-20-20.svg'
 import type { Direction } from 'shared/types/ui'
-import { Button, ButtonTheme } from '../Button/Button'
-import { Icon } from '../Icon/Icon'
-import { WithLabel } from '../WithLabel/WithLabel'
+import { mapDirection } from '../../const/mapDirection'
+import { Button, ButtonTheme } from '../../../Button/Button'
+import { Icon } from '../../../Icon/Icon'
+import { WithLabel } from '../../../WithLabel/WithLabel'
 import styles from './Select.module.scss'
+import popupStyles from '../../styles/Popup.module.scss'
 
 export interface SelectOption<T extends string> {
   value: T
@@ -29,15 +31,6 @@ interface SelectProps<T extends string> {
   direction?: Direction
   name?: string
 }
-
-/* eslint-disable @typescript-eslint/naming-convention */
-const mapDirection: Record<Direction, string> = {
-  'up-right': `${styles.up}`,
-  'up-left': `${styles.up} ${styles.left}`,
-  'down-right': `${styles.down}`,
-  'down-left': `${styles.down} ${styles.left}`,
-}
-/* eslint-enable @typescript-eslint/naming-convention */
 
 export const Select = typedMemo(
   <T extends string>({
@@ -62,7 +55,7 @@ export const Select = typedMemo(
 
     return (
       <WithLabel
-        wrapperClassName={styles.wrapper}
+        wrapperClassName={popupStyles.popup}
         label={label}
         maxWidth={maxWidth}
       >
@@ -81,7 +74,7 @@ export const Select = typedMemo(
             className={classNames(
               styles.button,
               {
-                [styles.maxWidth]: maxWidth,
+                [popupStyles.maxWidth]: maxWidth,
               },
               [className]
             )}
@@ -98,7 +91,7 @@ export const Select = typedMemo(
             className={classNames(
               styles.options,
               {
-                [styles.maxWidth]: maxWidth,
+                [popupStyles.maxWidth]: maxWidth,
               },
               [mapDirection[direction]]
             )}
@@ -113,9 +106,10 @@ export const Select = typedMemo(
                 {({ active, selected }) => (
                   <li
                     className={classNames(styles.option, {
-                      [styles.active]: active,
+                      [popupStyles.active]: active,
+                      [popupStyles.disabled]:
+                        option.disabled,
                       [styles.selected]: selected,
-                      [styles.disabled]: option.disabled,
                     })}
                   >
                     {selected && (

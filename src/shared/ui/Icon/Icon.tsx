@@ -8,10 +8,16 @@ export enum IconType {
   STROKE = 'stroke',
 }
 
-export type IconColor = 'primary' | 'secondary'
+export type IconColor =
+  | 'primary'
+  | 'secondary'
+  | 'invertedPrimary'
+  | 'invertedSecondary'
 export const colorMap: Record<IconColor, string> = {
   primary: styles.primary,
   secondary: styles.secondary,
+  invertedPrimary: styles.invertedPrimary,
+  invertedSecondary: styles.invertedSecondary,
 }
 
 interface IconProps {

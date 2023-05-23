@@ -100,7 +100,6 @@ export const VirtualizedArticleList = ({
   >({ current: null })
   const gridRef = useRef<VirtuosoGridHandle | null>(null)
 
-  // eslint-disable-next-line react/no-unstable-nested-components
   useEffect(() => {
     // scrollParentRef becomes undefined when the component is unmounted and mounted again
     // because scrollParentRef becomes available after the component is mounted but don't cause re-render

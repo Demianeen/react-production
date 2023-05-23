@@ -19,7 +19,7 @@ interface ${capitalizedSliceName}Props {
   className?: string;
 }
 
-${componentDeclaration} ${capitalizedSliceName} = ({ className }: ${capitalizedSliceName}Props) => {
+${componentDeclaration} ${capitalizedSliceName} = memo(({ className }: ${capitalizedSliceName}Props) => {
   return (
     <div className={classNames(styles.${sliceName}, {}, [className])}>
        
@@ -27,10 +27,12 @@ ${componentDeclaration} ${capitalizedSliceName} = ({ className }: ${capitalizedS
   )
 }
 
+${capitalizedSliceName}.displayName = "${capitalizedSliceName}"
+
 ${
   isDefaultExport
     ? `export default ${capitalizedSliceName}`
     : ''
-}
+})
 `
 }
