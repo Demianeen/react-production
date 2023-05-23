@@ -5,6 +5,7 @@ import MiniCSSExtractPlugin from 'mini-css-extract-plugin'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import CircularDependencyPlugin from 'circular-dependency-plugin'
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import type { BuildOptions } from './types/config'
 
 export default ({
@@ -36,13 +37,23 @@ export default ({
         },
       ],
     }),
+    new ForkTsCheckerWebpackPlugin({
+      typescript: {
+        diagnosticOptions: {
+          semantic: true,
+          syntactic: true,
+        },
+      },
+    }),
+  ]
+
+  const devPlugins = [
+    new ReactRefreshWebpackPlugin(),
     new CircularDependencyPlugin({
       exclude: /node_modules/,
       failOnError: true,
     }),
   ]
-
-  const devPlugins = [new ReactRefreshWebpackPlugin()]
 
   if (isDev) {
     plugins.push(...devPlugins)

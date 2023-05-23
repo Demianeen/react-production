@@ -31,7 +31,7 @@ export default ({
   if (!config.module)
     throw new Error('config.module not found')
 
-  // because we modify storybook configuration
+  // exclude svg from default webpack config
   // eslint-disable-next-line no-param-reassign
   config.module.rules = config.module?.rules?.map(
     (rule) => {
@@ -46,9 +46,10 @@ export default ({
     }
   )
 
-  config.module?.rules?.push(buildSvgLoader())
-
-  config.module?.rules?.push(buildCssLoader(true))
+  config.module?.rules?.push(
+    buildSvgLoader(),
+    buildCssLoader(true)
+  )
 
   return config
 }
