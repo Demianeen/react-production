@@ -1,8 +1,13 @@
-import type { ElementType, ReactNode } from 'react'
-import React from 'react'
+import type {
+  ElementType,
+  ForwardedRef,
+  ReactNode,
+} from 'react'
+
 import type { Mods } from 'shared/lib/classNames/classNames'
 import { classNames } from 'shared/lib/classNames/classNames'
-import type { Props } from 'shared/types/ui'
+import type { Props, WithDefaultTag } from 'shared/types/ui'
+import { typedForwardRef } from 'shared/lib/react/typedForwardRef/typedForwardRef'
 import styles from './Flex.module.scss'
 
 type FlexJustify =
@@ -74,48 +79,50 @@ export type FlexProps<TTag extends ElementType> = Props<
 
 const DEFAULT_TAG = 'div'
 
-export const Flex = <
-  TTag extends ElementType = typeof DEFAULT_TAG
->({
-  className,
-  children,
-  justify = 'start',
-  align = 'start',
-  direction = 'row',
-  wrap,
-  gap,
-  height,
-  maxWidth = false,
-  maxHeight = false,
-  as,
-  ...props
-}: FlexProps<TTag>) => {
-  const classes = [
-    justifyMap[justify],
-    alignMap[align],
-    directionMap[direction],
-    wrap && wrapMap[wrap],
-    gap && gapMap[gap],
-    className,
-  ]
+export const Flex = typedForwardRef(
+  <TTag extends ElementType = typeof DEFAULT_TAG>(
+    {
+      className,
+      children,
+      justify = 'start',
+      align = 'start',
+      direction = 'row',
+      wrap,
+      gap,
+      height,
+      maxWidth = false,
+      maxHeight = false,
+      as,
+      ...props
+    }: FlexProps<WithDefaultTag<TTag, typeof DEFAULT_TAG>>,
+    ref: ForwardedRef<HTMLDivElement>
+  ) => {
+    const classes = [
+      justifyMap[justify],
+      alignMap[align],
+      directionMap[direction],
+      wrap && wrapMap[wrap],
+      gap && gapMap[gap],
+      className,
+    ]
 
-  const mods: Mods = {
-    [styles.maxWidth]: maxWidth,
-    [styles.maxHeight]: maxHeight,
+    const mods: Mods = {
+      [styles.maxWidth]: maxWidth,
+      [styles.maxHeight]: maxHeight,
+    }
+
+    const Tag = as ?? DEFAULT_TAG
+
+    return (
+      <Tag
+        style={{ height }}
+        className={classNames(styles.flex, mods, classes)}
+        ref={ref}
+        /* eslint-disable-next-line react/jsx-props-no-spreading */
+        {...props}
+      >
+        {children}
+      </Tag>
+    )
   }
-
-  // TTag has default tag, but we still can't pass it to "as", so we pass it here
-  const Tag = as ?? (DEFAULT_TAG as TTag)
-
-  return (
-    // @ts-expect-error FIXME
-    <Tag
-      style={{ height }}
-      className={classNames(styles.flex, mods, classes)}
-      /* eslint-disable-next-line react/jsx-props-no-spreading */
-      {...props}
-    >
-      {children}
-    </Tag>
-  )
-}
+)

@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react'
+import { memo, useCallback } from 'react'
 import {
   Button,
   ButtonTheme,
@@ -10,7 +10,6 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { HStack } from 'shared/ui/Stack'
 import { getProfileCanEdit } from '../../model/selectors/getProfileCanEdit/getProfileCanEdit'
 import { getProfileIsReadonly } from '../../model/selectors/getProfileIsReadonly/getProfileIsReadonly'
-import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData'
 import { profileActions } from '../../model/slice/profileSlice'
 
 interface ProfilePageHeaderProps {
@@ -34,11 +33,6 @@ export const EditableProfileCardHeader = memo(
       [dispatch]
     )
 
-    const onSave = useCallback(
-      () => dispatch(updateProfileData()),
-      [dispatch]
-    )
-
     return (
       <HStack
         justify='between'
@@ -53,6 +47,7 @@ export const EditableProfileCardHeader = memo(
                 theme={ButtonTheme.OUTLINE}
                 onClick={onEdit}
                 type='button'
+                data-testid='EditableProfileCardHeader.EditButton'
               >
                 {t('Edit')}
               </Button>
@@ -62,6 +57,7 @@ export const EditableProfileCardHeader = memo(
                   theme={ButtonTheme.OUTLINE_RED}
                   onClick={onCancel}
                   type='button'
+                  data-testid='EditableProfileCardHeader.CancelButton'
                 >
                   {t('Cancel')}
                 </Button>
@@ -69,7 +65,7 @@ export const EditableProfileCardHeader = memo(
                   form='editable-profile-card'
                   type='submit'
                   theme={ButtonTheme.OUTLINE}
-                  onClick={onSave}
+                  data-testid='EditableProfileCardHeader.SaveButton'
                 >
                   {t('Save')}
                 </Button>

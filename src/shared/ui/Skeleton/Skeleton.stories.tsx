@@ -1,7 +1,4 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { Skeleton } from './Skeleton'
@@ -16,42 +13,41 @@ export default {
     width: '100%',
     height: '13rem',
   },
-} as ComponentMeta<typeof Skeleton>
+} as Meta<typeof Skeleton>
 
-const Template: ComponentStory<typeof Skeleton> = (
-  args
-) => <Skeleton {...args} />
+type Story = StoryObj<typeof Skeleton>
+export const Light: Story = {}
 
-export const Light = Template.bind({})
-Light.args = {}
-
-export const Circle = Template.bind({})
-Circle.args = {
-  width: '7rem',
-  height: '7rem',
-  borderRadius: '50%',
+export const Circle: Story = {
+  args: {
+    width: '7rem',
+    height: '7rem',
+    borderRadius: '50%',
+  },
 }
 
-export const Dark = Template.bind({})
-Dark.args = {}
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
-
-export const DarkCircle = Template.bind({})
-DarkCircle.args = {
-  width: '7rem',
-  height: '7rem',
-  borderRadius: '50%',
+export const Dark: Story = {
+  decorators: [ThemeDecorator(Theme.DARK)],
 }
-DarkCircle.decorators = [ThemeDecorator(Theme.DARK)]
 
-export const Red = Template.bind({})
-Red.args = {}
-Red.decorators = [ThemeDecorator(Theme.RED)]
-
-export const RedCircle = Template.bind({})
-RedCircle.args = {
-  width: '7rem',
-  height: '7rem',
-  borderRadius: '50%',
+export const DarkCircle: Story = {
+  args: {
+    width: '7rem',
+    height: '7rem',
+    borderRadius: '50%',
+  },
+  decorators: [ThemeDecorator(Theme.DARK)],
 }
-RedCircle.decorators = [ThemeDecorator(Theme.RED)]
+
+export const Red: Story = {
+  decorators: [ThemeDecorator(Theme.RED)],
+}
+
+export const RedCircle: Story = {
+  args: {
+    width: '7rem',
+    height: '7rem',
+    borderRadius: '50%',
+  },
+  decorators: [ThemeDecorator(Theme.RED)],
+}

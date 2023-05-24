@@ -1,11 +1,10 @@
 import type { ReactNode, UIEvent } from 'react'
-import React, { forwardRef, useRef } from 'react'
+import { forwardRef, useEffect, useRef } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import type { StateSchema } from 'app/providers/StoreProvider'
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
 import { useThrottle } from 'shared/lib/hooks/useThrottle/useThrottle'
 import { pageActions } from '../../model/slice/pageSlice'
 import { getPageScrollPositionByPath } from '../../selectors/getPageScrollPositionByPath/getPageScrollPositionByPath'
@@ -40,11 +39,11 @@ export const Page = forwardRef<HTMLDivElement, PageProps>(
       wrapperRef.current = ref
     }
 
-    useInitialEffect(() => {
+    useEffect(() => {
       if (wrapperRef.current !== null) {
         wrapperRef.current.scrollTop = scrollPosition
       }
-    })
+    }, [scrollPosition])
 
     const onScroll = useThrottle(
       (e: UIEvent<HTMLElement>) => {

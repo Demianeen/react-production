@@ -1,21 +1,28 @@
-import React, { memo } from 'react'
+import { memo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import styles from './Icon.module.scss'
+import type Svg from '*.svg'
 
 export enum IconType {
   FILL = 'fill',
   STROKE = 'stroke',
 }
 
-export type IconColor = 'primary' | 'secondary'
+export type IconColor =
+  | 'primary'
+  | 'secondary'
+  | 'invertedPrimary'
+  | 'invertedSecondary'
 export const colorMap: Record<IconColor, string> = {
   primary: styles.primary,
   secondary: styles.secondary,
+  invertedPrimary: styles.invertedPrimary,
+  invertedSecondary: styles.invertedSecondary,
 }
 
 interface IconProps {
   className?: string
-  Svg: React.VFC<React.SVGProps<SVGSVGElement>>
+  Svg: Svg
   type?: IconType
   color?: IconColor
 }

@@ -1,54 +1,27 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
-import { View } from 'entities/View'
-import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
-import { Theme } from 'app/providers/ThemeProvider'
+import type { Meta, StoryObj } from '@storybook/react'
+import { View } from 'entities/ListFilters'
+import { ParentDecorator } from 'shared/lib/storybook/ParentDecorator'
 import { ArticleListItemSkeleton } from './ArticleListItemSkeleton'
 
 export default {
-  title: 'entities/Article/ArticleListItemSkeleton',
+  title: 'entities/Article/ArticleListItem',
   component: ArticleListItemSkeleton,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof ArticleListItemSkeleton>
+} as Meta<typeof ArticleListItemSkeleton>
 
-const Template: ComponentStory<
-  typeof ArticleListItemSkeleton
-> = (args) => <ArticleListItemSkeleton {...args} />
+type Story = StoryObj<typeof ArticleListItemSkeleton>
 
-export const List = Template.bind({})
-List.args = {
-  view: View.LIST,
+export const ListSkeleton: Story = {
+  args: {
+    view: View.LIST,
+  },
 }
 
-export const Grid = Template.bind({})
-Grid.args = {
-  view: View.GRID,
+export const GridSkeleton: Story = {
+  args: {
+    view: View.GRID,
+  },
+  decorators: [ParentDecorator({ parentWidth: '15rem' })],
 }
-
-export const DarkList = Template.bind({})
-DarkList.args = {
-  view: View.LIST,
-}
-DarkList.decorators = [ThemeDecorator(Theme.DARK)]
-
-export const DarkGrid = Template.bind({})
-DarkGrid.args = {
-  view: View.GRID,
-}
-DarkGrid.decorators = [ThemeDecorator(Theme.DARK)]
-
-export const RedList = Template.bind({})
-RedList.args = {
-  view: View.LIST,
-}
-RedList.decorators = [ThemeDecorator(Theme.RED)]
-
-export const RedGrid = Template.bind({})
-RedGrid.args = {
-  view: View.GRID,
-}
-RedGrid.decorators = [ThemeDecorator(Theme.RED)]

@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import { memo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { Spinner } from 'shared/ui/Spinner/Spinner'
 import { HStack } from 'shared/ui/Stack'

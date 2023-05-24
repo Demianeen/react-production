@@ -1,25 +1,24 @@
-import React, { memo, useCallback } from 'react'
+import {
+  memo,
+  Suspense,
+  useCallback,
+  useEffect,
+} from 'react'
 import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useSelector } from 'react-redux'
 import { CommentList } from 'entities/Comment'
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { AddCommentForm } from 'features/AddCommentForm'
-import { Text } from 'shared/ui/Text/Text'
-import { useTranslation } from 'react-i18next'
-import { ArticleList } from 'entities/Article'
-import { View } from 'entities/View'
+import { CommentForm } from 'entities/CommentForm'
 import { VStack } from 'shared/ui/Stack'
-import { articleDetailsFooterReducer } from '../../model/slice'
-import { getArticleRecommendations } from '../../model/slice/articleDetailsRecommendationsSlice'
-import { fetchArticleRecommendations } from '../../model/services/fetchArticleRecommendations/fetchArticleRecommendations'
+import { CommentFormSkeleton } from 'entities/CommentForm/ui/CommentForm/CommentFormSkeleton'
 import { sendArticleComment } from '../../model/services/sendArticleComment/sendArticleComment'
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId'
 import { getArticleCommentListIsLoading } from '../../model/selectors/getArticleCommentListIsLoading/getArticleCommentListIsLoading'
-import { getArticleDetailsRecommendationsIsLoading } from '../../model/selectors/recommendations/getArticleDetailsRecommendationsIsLoading/getArticleDetailsRecommendationsIsLoading'
-import { getArticleCommentList } from '../../model/slice/articleCommentListSlice'
-import styles from './ArticleCommentList.module.scss'
+import {
+  articleCommentListReducer,
+  getArticleCommentList,
+} from '../../model/slice/articleCommentListSlice'
 
 export interface ArticleCommentListProps {
   className?: string
@@ -27,13 +26,12 @@ export interface ArticleCommentListProps {
 }
 
 const reducers: ReducersList = {
-  articleDetailsFooter: articleDetailsFooterReducer,
+  articleCommentList: articleCommentListReducer,
 }
 
 export const ArticleCommentList = memo(
   ({ className, articleId }: ArticleCommentListProps) => {
     useDynamicModuleLoader(reducers)
-    const { t } = useTranslation('article-details')
 
     const comments = useSelector(
       getArticleCommentList.selectAll
@@ -50,35 +48,15 @@ export const ArticleCommentList = memo(
       [dispatch]
     )
 
-    useInitialEffect(() => {
+    useEffect(() => {
       dispatch(fetchCommentsByArticleId(articleId))
-      dispatch(fetchArticleRecommendations())
-    })
-
-    const recommendations = useSelector(
-      getArticleRecommendations.selectAll
-    )
-    const isRecommendationsLoading = useSelector(
-      getArticleDetailsRecommendationsIsLoading
-    )
+    }, [articleId, dispatch])
 
     return (
-      <VStack
-        gap={1.25}
-        className={styles.articleCommentList}
-      >
-        <Text title={t('Recommend next')} />
-        <ArticleList
-          articles={recommendations}
-          isLoading={isRecommendationsLoading}
-          className={styles.recommendations}
-          target='_blank'
-          limit={4}
-          view={View.GRID}
-        />
-        {/* we pass onSendComment here to make addCommentForm independent feature that can be used elsewhere. */}
-        <Text title={t('Comments')} />
-        <AddCommentForm onSendComment={onSendComment} />
+      <VStack gap={1.25} maxWidth>
+        <Suspense fallback={<CommentFormSkeleton />}>
+          <CommentForm onSendComment={onSendComment} />
+        </Suspense>
         <CommentList
           className={className}
           comments={comments}

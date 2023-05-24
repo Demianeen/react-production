@@ -1,11 +1,7 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
-import { article } from '../../model/mocks/tests'
 import { ArticleDetails } from './ArticleDetails'
 
 export default {
@@ -14,60 +10,28 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof ArticleDetails>
+} as Meta<typeof ArticleDetails>
 
-const Template: ComponentStory<typeof ArticleDetails> = (
-  args
-) => <ArticleDetails {...args} />
+type Story = StoryObj<typeof ArticleDetails>
+export const Light: Story = {
+  decorators: [StoreDecorator()],
+}
 
-export const Light = Template.bind({})
-Light.args = {}
-Light.decorators = [
-  StoreDecorator({
-    articleDetails: {
-      data: article,
-    },
-  }),
-]
+export const Loading: Story = {
+  decorators: [StoreDecorator()],
+}
 
-export const Loading = Template.bind({})
-Loading.args = {}
-Loading.decorators = [
-  StoreDecorator({
-    articleDetails: {
-      isLoading: true,
-    },
-  }),
-]
+export const Error: Story = {
+  decorators: [StoreDecorator()],
+}
 
-export const Error = Template.bind({})
-Error.args = {}
-Error.decorators = [
-  StoreDecorator({
-    articleDetails: {
-      error: 'Error',
-    },
-  }),
-]
+export const Dark: Story = {
+  decorators: [
+    StoreDecorator(),
+    ThemeDecorator(Theme.DARK),
+  ],
+}
 
-export const Dark = Template.bind({})
-Dark.args = {}
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
-Dark.decorators = [
-  StoreDecorator({
-    articleDetails: {
-      data: article,
-    },
-  }),
-]
-
-export const Red = Template.bind({})
-Red.args = {}
-Red.decorators = [ThemeDecorator(Theme.RED)]
-Red.decorators = [
-  StoreDecorator({
-    articleDetails: {
-      data: article,
-    },
-  }),
-]
+export const Red: Story = {
+  decorators: [StoreDecorator(), ThemeDecorator(Theme.RED)],
+}

@@ -10,34 +10,26 @@ import type { createReduxStore } from 'app/providers/StoreProvider'
 import type { AxiosInstance } from 'axios'
 import type { ProfileSchema } from 'features/EditableProfileCard'
 import type { ArticleDetailsSchema } from 'entities/Article'
-import type { AddCommentFormSchema } from 'features/AddCommentForm'
-import type { ArticlesPageSchema } from 'pages/ArticlesPage'
+import type { CommentFormSchema } from 'entities/CommentForm'
 import type { PageSchema } from 'widgets/Page'
-import type { ArticleDetailsFooterSchema } from 'features/ArticleCommentList'
-import type { SortedArticleListSchema } from 'features/SortedArticlesList'
+import type { rtkApi } from 'shared/api/rtkApi'
+import type { ArticleCommentListSchema } from 'features/ArticleCommentList'
+import type { ArticleInfiniteListSchema } from 'features/ArticleInfiniteList'
 
 export interface StateSchema {
   counter: CounterSchema
   user: UserSchema
   page: PageSchema
+  [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
 
   // Async reducers
   loginForm?: LoginFormSchema
   profile?: ProfileSchema
   articleDetails?: ArticleDetailsSchema
-  articleDetailsFooter?: ArticleDetailsFooterSchema
-  addCommentForm?: AddCommentFormSchema
-  articlesPage?: ArticlesPageSchema
-  sortedArticleList?: SortedArticleListSchema
+  articleCommentList?: ArticleCommentListSchema
+  commentForm?: CommentFormSchema
+  articleInfiniteList?: ArticleInfiniteListSchema
 }
-
-export type OptionalStateSchema = {
-  [K in keyof StateSchema extends undefined
-    ? K
-    : never]?: StateSchema[K]
-}
-
-export const optionalStateSchema: OptionalStateSchema = {}
 
 export type StateSchemaKey = keyof StateSchema
 export type StateReducer = Reducer<StateSchema>

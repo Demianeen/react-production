@@ -1,7 +1,4 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { CommentCardIsLoading } from './CommentCardIsLoading'
@@ -12,19 +9,15 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof CommentCardIsLoading>
+} as Meta<typeof CommentCardIsLoading>
 
-const Template: ComponentStory<
-  typeof CommentCardIsLoading
-> = (args) => <CommentCardIsLoading {...args} />
+type Story = StoryObj<typeof CommentCardIsLoading>
+export const Light: Story = {}
 
-export const Light = Template.bind({})
-Light.args = {}
+export const Dark: Story = {
+  decorators: [ThemeDecorator(Theme.DARK)],
+}
 
-export const Dark = Template.bind({})
-Dark.args = {}
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
-
-export const Red = Template.bind({})
-Red.args = {}
-Red.decorators = [ThemeDecorator(Theme.RED)]
+export const Red: Story = {
+  decorators: [ThemeDecorator(Theme.RED)],
+}

@@ -1,14 +1,9 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
-import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
-import { Theme } from 'app/providers/ThemeProvider'
-import { View } from 'entities/View'
+import type { Meta, StoryObj } from '@storybook/react'
+import { View } from 'entities/ListFilters'
 import { ArticleListSkeleton } from './ArticleListSkeleton'
 
 export default {
-  title: 'entities/Article/ArticleListSkeleton',
+  title: 'entities/Article/ArticleList',
   component: ArticleListSkeleton,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -16,41 +11,29 @@ export default {
   args: {
     isLoading: true,
   },
-} as ComponentMeta<typeof ArticleListSkeleton>
+} as Meta<typeof ArticleListSkeleton>
 
-const Template: ComponentStory<typeof ArticleListSkeleton> =
-  (args) => <ArticleListSkeleton {...args} />
-
+type Story = StoryObj<typeof ArticleListSkeleton>
 const listContext = {
   isLoading: true,
   view: View.LIST,
-  limit: 4,
+  skeletonsLimit: 4,
 }
 
 const gridContext = {
   isLoading: true,
   view: View.GRID,
-  limit: 12,
+  skeletonsLimit: 12,
 }
 
-export const List = Template.bind({})
-List.args = {
-  context: listContext,
+export const ListSkeleton: Story = {
+  args: {
+    context: listContext,
+  },
 }
 
-export const Grid = Template.bind({})
-Grid.args = {
-  context: gridContext,
+export const GridSkeleton: Story = {
+  args: {
+    context: gridContext,
+  },
 }
-
-export const Dark = Template.bind({})
-Dark.args = {
-  context: listContext,
-}
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
-
-export const Red = Template.bind({})
-Red.args = {
-  context: listContext,
-}
-Red.decorators = [ThemeDecorator(Theme.RED)]

@@ -1,11 +1,14 @@
-import React, { memo } from 'react'
+import { memo } from 'react'
 import { ArticleDetails } from 'entities/Article'
 import { useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Text } from 'shared/ui/Text/Text'
-import { ArticleCommentList } from 'features/ArticleCommentList/ui/ArticleCommentList/ArticleCommentList'
+import { Text, TextTheme } from 'shared/ui/Text/Text'
 import { Page } from 'widgets/Page/ui/Page/Page'
-import styles from './ArticleDetailsPage.module.scss'
+import { Button } from 'shared/ui/Button/Button'
+import { AppLink } from 'shared/ui/AppLink/AppLink'
+import { VStack } from 'shared/ui/Stack'
+import { RoutePath } from 'shared/config/routeConfig/routePath'
+import { ArticleDetailsPageFooter } from '../ArticleDetailsPageFooter/ArticleDetailsPageFooter'
 
 interface ArticleDetailsPageProps {
   className?: string
@@ -19,23 +22,29 @@ const ArticleDetailsPage = ({
 
   if (id === undefined) {
     return (
-      <Page>
+      <VStack
+        maxHeight
+        maxWidth
+        justify='center'
+        align='center'
+      >
         <Text
-          className={styles.commentTitle}
+          theme={TextTheme.ERROR}
           title={t('Article not found')}
         />
-      </Page>
+        <Button as={AppLink} to={RoutePath.articles}>
+          {t('Back to list')}
+        </Button>
+      </VStack>
     )
   }
 
+  const numberId = Number(id)
+
   return (
     <Page className={className}>
-      <ArticleDetails id={Number(id)} />
-      {/* <Text */}
-      {/*   title={t('Comments')} */}
-      {/*   className={styles.commentTitle} */}
-      {/* /> */}
-      <ArticleCommentList articleId={Number(id)} />
+      <ArticleDetails id={numberId} />
+      <ArticleDetailsPageFooter id={numberId} />
     </Page>
   )
 }

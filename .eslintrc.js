@@ -46,7 +46,7 @@ module.exports = {
         caughtErrorsIgnorePattern: '^_',
       },
     ],
-    // disallow spreading props in custom components except those from libraries
+    // disallow spreading props in custom ui except those from libraries
     'react/jsx-props-no-spreading': [
       1,
       {
@@ -87,15 +87,21 @@ module.exports = {
       {
         devDependencies: [
           '**/test/**', // tape, common npm pattern
-          '**/tests/**', // also common npm pattern
+          '**/tests/**', // tape, common npm pattern
+          '**/mocks/**', // also common npm pattern
           'spec/**', // mocha, rspec-like pattern
           '**/__tests__/**', // jest pattern
           '**/__mocks__/**', // jest pattern
-          '**/*{.,_}{test,stories}.{ts,tsx}', // tests and stories where the extension or filename suffix denotes that it is a test
+          '**/*{.,_}{test,stories}.{ts,tsx}', // mocks and stories where the extension or filename suffix denotes that it is a test
           '.eslintrc.js', // eslint config
           '**/webpack.config.ts', // webpack config
           'config/**', // project configuration
           '**/storybook/**', // storybook configuration
+          'utils/**', // project utils
+          'scripts/**', // project scripts
+          '**/jest/**', // jest config
+          '**/mocks/**', // mocks
+          '**/mock-server/**', // mock server
         ],
       },
     ],
@@ -107,7 +113,7 @@ module.exports = {
     'jsx-a11y/click-events-have-key-events': 0,
     'jsx-a11y/no-static-element-interactions': 0,
 
-    // enforces to use type imports when importing types
+    // enforces to use type imports when importing const
     '@typescript-eslint/consistent-type-imports': [
       2,
       {
@@ -126,10 +132,17 @@ module.exports = {
     'react-hooks/exhaustive-deps': 2,
 
     // TODO: enable later
-    'import/no-cycle': 0,
+    // 'import/no-cycle': 0,
 
     // checks path for fsd violations
-    'netliukh-demian-fsd-plugin/check-path': 2,
+    // TODO: add autofix
+    // 'netliukh-demian-fsd-plugin/check-path': 2,
+
+    // we use only Button component where type is required
+    'react/button-has-type': 0,
+
+    // to stop getting error highlights from prettier autoformatting
+    'prettier/prettier': 0,
   },
   settings: {
     react: {
@@ -148,10 +161,10 @@ module.exports = {
       files: [
         '**/src/**/*.{stories,test}.{ts,tsx}',
         '**/storybook/**/*.{ts,tsx}',
-        '**/tests/**/*.{ts,tsx}',
+        '**/mocks/**/*.{ts,tsx}',
       ],
       rules: {
-        // we don't need internalization in tests
+        // we don't need internalization in mocks
         'i18next/no-literal-string': 0,
         // we use props spreading in stories
         'react/jsx-props-no-spreading': 0,
@@ -183,6 +196,14 @@ module.exports = {
       rules: {
         // we can make props not required in redux services
         '@typescript-eslint/default-param-last': 0,
+      },
+    },
+    {
+      // override rules for scripts
+      files: ['scripts/**/*.{ts,tsx}'],
+      rules: {
+        // we can use console in scripts files
+        'no-console': 0,
       },
     },
   ],

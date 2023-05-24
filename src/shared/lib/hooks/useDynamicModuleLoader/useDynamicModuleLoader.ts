@@ -5,12 +5,12 @@ import type {
   StateSchema,
 } from 'app/providers/StoreProvider'
 import type { StateSchemaKey } from 'app/providers/StoreProvider/config/stateSchema'
-import type { Reducer } from '@reduxjs/toolkit'
+import type { Reducer } from 'redux'
 import { useAppDispatch } from '../useAppDispatch/useAppDispatch'
 
 export type ReducersList = {
-  [name in StateSchemaKey]?: Reducer<
-    NonNullable<StateSchema[name]>
+  [Name in StateSchemaKey]?: Reducer<
+    NonNullable<StateSchema[Name]>
   >
 }
 

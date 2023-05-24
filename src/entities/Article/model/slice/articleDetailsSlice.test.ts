@@ -1,7 +1,7 @@
 import type { ArticleDetailsSchema } from '../types/articleDetailsSchema'
 import { articleDetailsReducer } from './articleDetailsSlice'
 import { fetchArticleById } from '../services/fetchArticleById/fetchArticleById'
-import { article } from '../mocks/tests'
+import { mockArticle } from '../mocks/data'
 
 describe('articleDetailsSlice', () => {
   test('fetchArticleById service pending', () => {
@@ -24,9 +24,9 @@ describe('articleDetailsSlice', () => {
     expect(
       articleDetailsReducer(
         state as ArticleDetailsSchema,
-        fetchArticleById.fulfilled(article, '', 1)
+        fetchArticleById.fulfilled(mockArticle, '', 1)
       )
-    ).toEqual({ isLoading: false, data: article })
+    ).toEqual({ isLoading: false, data: mockArticle })
   })
 
   test('fetchArticleById service rejected', () => {

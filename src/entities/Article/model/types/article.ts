@@ -1,10 +1,6 @@
 import type { User } from 'entities/User'
-
-export enum ArticleBlockType {
-  CODE = 'CODE',
-  IMAGE = 'IMAGE',
-  TEXT = 'TEXT',
-}
+import type { ArticleBlockType } from 'entities/Article/model/const/articleBlockType'
+import type { ArticleType } from 'entities/Article/model/const/articleType'
 
 export interface ArticleBlockBase {
   id: number
@@ -33,13 +29,6 @@ export type ArticleBlock =
   | ArticleCodeBlock
   | ArticleImageBlock
   | ArticleTextBlock
-
-export enum ArticleType {
-  ALL = 'ALL',
-  IT = 'IT',
-  SCIENCE = 'SCIENCE',
-  ECONOMICS = 'ECONOMICS',
-}
 
 export interface Article {
   id: number

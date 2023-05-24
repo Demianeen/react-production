@@ -1,11 +1,7 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
-import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
-import { Theme } from 'app/providers/ThemeProvider'
-import { View } from 'entities/View'
-import { article } from '../../model/mocks/tests'
+import type { Meta, StoryObj } from '@storybook/react'
+import { View } from 'entities/ListFilters'
+import { ParentDecorator } from 'shared/lib/storybook/ParentDecorator'
+import { mockArticle } from '../../model/mocks/data'
 import { ArticleListItem } from './ArticleListItem'
 
 export default {
@@ -15,44 +11,21 @@ export default {
     backgroundColor: { control: 'color' },
   },
   args: {
-    article,
+    article: mockArticle,
   },
-} as ComponentMeta<typeof ArticleListItem>
+} as Meta<typeof ArticleListItem>
 
-const Template: ComponentStory<typeof ArticleListItem> = (
-  args
-) => <ArticleListItem {...args} />
+type Story = StoryObj<typeof ArticleListItem>
 
-export const List = Template.bind({})
-List.args = {
-  view: View.LIST,
+export const List: Story = {
+  args: {
+    view: View.LIST,
+  },
 }
 
-export const Grid = Template.bind({})
-Grid.args = {
-  view: View.GRID,
+export const Grid: Story = {
+  args: {
+    view: View.GRID,
+  },
+  decorators: [ParentDecorator({ parentWidth: '15rem' })],
 }
-
-export const DarkList = Template.bind({})
-DarkList.args = {
-  view: View.LIST,
-}
-DarkList.decorators = [ThemeDecorator(Theme.DARK)]
-
-export const DarkGrid = Template.bind({})
-DarkGrid.args = {
-  view: View.GRID,
-}
-DarkGrid.decorators = [ThemeDecorator(Theme.DARK)]
-
-export const RedList = Template.bind({})
-RedList.args = {
-  view: View.LIST,
-}
-RedList.decorators = [ThemeDecorator(Theme.RED)]
-
-export const RedGrid = Template.bind({})
-RedGrid.args = {
-  view: View.GRID,
-}
-RedGrid.decorators = [ThemeDecorator(Theme.RED)]

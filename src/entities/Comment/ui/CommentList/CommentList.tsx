@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import { memo } from 'react'
 import { Text } from 'shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next'
 import { VStack } from 'shared/ui/Stack'
@@ -20,6 +20,7 @@ export const CommentList = memo(
     isLoading,
   }: CommentListProps) => {
     const { t } = useTranslation()
+
     if (isLoading) {
       return (
         <VStack

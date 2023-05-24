@@ -4,8 +4,8 @@ import { getArticleCommentListError } from './getArticleCommentListError'
 describe('getArticleCommentsError', () => {
   it('should return the error', () => {
     const state: DeepPartial<StateSchema> = {
-      articleDetailsFooter: {
-        comments: { error: 'error' },
+      articleCommentList: {
+        error: 'error',
       },
     }
     expect(

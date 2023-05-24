@@ -1,17 +1,17 @@
 import type { StateSchema } from 'app/providers/StoreProvider'
-import { article } from '../../mocks/tests'
+import { mockArticle } from '../../mocks/data'
 import { getArticleDetailsData } from './getArticleDetailsData'
 
 describe('getArticleDetailsData', () => {
   it('should return the data', () => {
     const state: DeepPartial<StateSchema> = {
       articleDetails: {
-        data: article,
+        data: mockArticle,
       },
     }
     expect(
       getArticleDetailsData(state as StateSchema)
-    ).toEqual(article)
+    ).toEqual(mockArticle)
   })
 
   it('should work with empty state', () => {

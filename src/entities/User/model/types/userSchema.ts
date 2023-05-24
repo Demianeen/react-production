@@ -1,8 +1,10 @@
+import type { UserRole } from '../const/userRole'
+
 export interface User {
   id: number
   username: string
+  roles: [UserRole, ...UserRole[]]
   avatar?: string
-  role: 'ADMIN' | 'USER'
 }
 
 export interface UserSchema {

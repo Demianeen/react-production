@@ -1,4 +1,3 @@
-import React from 'react'
 import { Modal } from 'shared/ui/Modal/Modal'
 import { SuspenseWithSpinner } from 'shared/ui/SuspenseWithSpinner/SuspenseWithSpinner'
 import { LoginFormAsync } from '../LoginForm/LoginForm.async'
@@ -9,6 +8,7 @@ interface LoginModalProps {
   onClose: () => void
 }
 
+// TODO: remake it with redux
 export const LoginModal = ({
   className,
   isOpen,

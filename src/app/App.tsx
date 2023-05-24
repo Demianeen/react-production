@@ -1,15 +1,15 @@
-import React, { Suspense, useEffect } from 'react'
-import { Navbar } from 'widgets/Navbar'
-import { Sidebar } from 'widgets/Sidebar'
+import { Suspense, useEffect } from 'react'
 import {
   getUserIsInitialized,
   userActions,
 } from 'entities/User'
-import { AppRouter } from 'app/providers/router'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useSelector } from 'react-redux'
 import { PageLoader } from 'widgets/PageLoader'
 import { HStack } from 'shared/ui/Stack'
+import { Sidebar } from 'widgets/Sidebar'
+import { Navbar } from 'widgets/Navbar'
+import { AppRouter } from 'app/providers/router'
 
 const App = () => {
   const dispatch = useAppDispatch()

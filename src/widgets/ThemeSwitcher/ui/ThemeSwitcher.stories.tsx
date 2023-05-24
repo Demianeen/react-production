@@ -1,8 +1,4 @@
-import React from 'react'
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { ThemeSwitcher } from './ThemeSwitcher'
@@ -13,19 +9,15 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof ThemeSwitcher>
+} as Meta<typeof ThemeSwitcher>
 
-const Template: ComponentStory<typeof ThemeSwitcher> = (
-  args
-) => <ThemeSwitcher {...args} />
+type Story = StoryObj<typeof ThemeSwitcher>
+export const Light: Story = {}
 
-export const Light = Template.bind({})
-Light.args = {}
+export const Dark: Story = {
+  decorators: [ThemeDecorator(Theme.DARK)],
+}
 
-export const Dark = Template.bind({})
-Dark.args = {}
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
-
-export const Red = Template.bind({})
-Red.args = {}
-Red.decorators = [ThemeDecorator(Theme.RED)]
+export const Red: Story = {
+  decorators: [ThemeDecorator(Theme.RED)],
+}

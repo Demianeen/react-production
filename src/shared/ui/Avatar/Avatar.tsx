@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react'
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import styles from './Avatar.module.scss'
 

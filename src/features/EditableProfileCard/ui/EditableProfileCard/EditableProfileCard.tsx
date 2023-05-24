@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react'
+import { memo, useCallback, useEffect } from 'react'
 import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { ProfileCard } from 'entities/Profile'
@@ -8,10 +8,10 @@ import type { Currency } from 'entities/Currency'
 import type { Country } from 'entities/Country'
 import { Text, TextTheme } from 'shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next'
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
 import { VStack } from 'shared/ui/Stack'
+import { ProfileValidationError } from 'features/EditableProfileCard/model/const/profileValidationError'
+import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData'
 import { fetchProfileDataById } from '../../model/services/fetchProfileDataById/fetchProfileDataById'
-import { ProfileValidationError } from '../../model/types/profileSchema'
 import {
   profileActions,
   profileReducer,
@@ -76,9 +76,9 @@ export const EditableProfileCard = memo(
       ),
     }
 
-    useInitialEffect(() => {
+    useEffect(() => {
       dispatch(fetchProfileDataById(Number(id)))
-    })
+    }, [dispatch, id])
 
     const onChangeFirstName = useCallback(
       (value: string) => {
@@ -169,6 +169,11 @@ export const EditableProfileCard = memo(
       [dispatch]
     )
 
+    const onSubmit = useCallback(
+      () => dispatch(updateProfileData()),
+      [dispatch]
+    )
+
     return (
       <VStack gap={1.25} maxWidth>
         <EditableProfileCardHeader />
@@ -178,6 +183,7 @@ export const EditableProfileCard = memo(
               key={errCode}
               theme={TextTheme.ERROR}
               text={validationErrorMessage[errCode]}
+              data-testid='EditableProfileCard.Error'
             />
           ))}
         <ProfileCard
@@ -193,6 +199,7 @@ export const EditableProfileCard = memo(
           onChangeCurrency={onChangeCurrency}
           onChangeCountry={onChangeCountry}
           readonly={isReadonly}
+          onSubmit={onSubmit}
           formId='editable-profile-card'
         />
       </VStack>

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import React, { memo, useCallback } from 'react'
+import { memo, useCallback, useEffect } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
@@ -16,13 +16,12 @@ import { Avatar } from 'shared/ui/Avatar/Avatar'
 import EyeIcon from 'shared/assets/icons/eye-20-20.svg'
 import CalendarIcon from 'shared/assets/icons/calendar-20-20.svg'
 import { Icon } from 'shared/ui/Icon/Icon'
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
 import { HStack } from 'shared/ui/Stack'
+import { ArticleBlockType } from 'entities/Article/model/const/articleBlockType'
 import { getArticleDetailsIsLoading } from '../../model/selectors/getArticleDetailsIsLoading/getArticleDetailsIsLoading'
 import { getArticleDetailsError } from '../../model/selectors/getArticleDetailsError/getArticleDetailsError'
 import { getArticleDetailsData } from '../../model/selectors/getArticleDetailsData/getArticleDetailsData'
 import type { ArticleBlock } from '../../model/types/article'
-import { ArticleBlockType } from '../../model/types/article'
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent'
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent'
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent'
@@ -85,7 +84,9 @@ export const ArticleDetails = memo(
       []
     )
 
-    useInitialEffect(() => dispatch(fetchArticleById(id)))
+    useEffect(() => {
+      dispatch(fetchArticleById(id))
+    }, [dispatch, id])
 
     let content: ReactNode
 

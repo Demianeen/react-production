@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState } from 'react'
+import { memo, useCallback, useState } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { useTranslation } from 'react-i18next'
 import {
@@ -7,17 +7,16 @@ import {
 } from 'shared/ui/Button/Button'
 import { LoginModal } from 'features/AuthByUsername'
 import { useSelector } from 'react-redux'
-import { getUserAuthData, userActions } from 'entities/User'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { getUserAuthData } from 'entities/User'
 import { Text, TextTheme } from 'shared/ui/Text/Text'
 import {
   AppLink,
   AppLinkTheme,
 } from 'shared/ui/AppLink/AppLink'
-import { RoutePath } from 'shared/config/routeConfig/routeConfig'
-import { Dropdown } from 'shared/ui/Dropdown/Dropdown'
-import { Avatar } from 'shared/ui/Avatar/Avatar'
 import { HStack } from 'shared/ui/Stack'
+import { RoutePath } from 'shared/config/routeConfig/routePath'
+import { NotificationButton } from 'features/NotificationButton'
+import { UserDropdown } from 'features/UserDropdown'
 import styles from './Navbar.module.scss'
 
 interface NavbarProps {
@@ -29,7 +28,6 @@ export const Navbar = memo(({ className }: NavbarProps) => {
   const [isAuthModalOpened, setIsAuthModalOpened] =
     useState(false)
   const authData = useSelector(getUserAuthData)
-  const dispatch = useAppDispatch()
 
   const onOpenModal = useCallback(() => {
     setIsAuthModalOpened(true)
@@ -38,10 +36,6 @@ export const Navbar = memo(({ className }: NavbarProps) => {
   const onCloseModal = useCallback(() => {
     setIsAuthModalOpened(false)
   }, [])
-
-  const onLogout = useCallback(() => {
-    dispatch(userActions.logout())
-  }, [dispatch])
 
   return (
     <HStack
@@ -64,26 +58,10 @@ export const Navbar = memo(({ className }: NavbarProps) => {
           >
             {t('Create article')}
           </AppLink>
-          <Dropdown
-            className={styles.loginBtn}
-            items={[
-              {
-                label: t('Profile'),
-                href: RoutePath.profile + authData.id,
-              },
-              {
-                label: t('Logout'),
-                onClick: onLogout,
-              },
-            ]}
-            triggerChildren={
-              authData?.avatar ? (
-                <Avatar size='2rem' src={authData.avatar} />
-              ) : (
-                t('Account')
-              )
-            }
-          />
+          <HStack gap={1} className={styles.actions}>
+            <NotificationButton />
+            <UserDropdown />
+          </HStack>
         </>
       ) : (
         <Button

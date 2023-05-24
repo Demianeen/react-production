@@ -1,11 +1,8 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { action } from '@storybook/addon-actions'
-import { Country } from '../model/types/country'
+import { Country } from 'entities/Country/model/const/country'
 import { SelectCountry } from './SelectCountry'
 
 export default {
@@ -18,24 +15,21 @@ export default {
     value: Country.USA,
     onChange: action('onChange'),
   },
-} as ComponentMeta<typeof SelectCountry>
+} as Meta<typeof SelectCountry>
 
-const Template: ComponentStory<typeof SelectCountry> = (
-  args
-) => <SelectCountry {...args} />
+type Story = StoryObj<typeof SelectCountry>
+export const Light: Story = {}
 
-export const Light = Template.bind({})
-Light.args = {}
-
-export const Readonly = Template.bind({})
-Readonly.args = {
-  readonly: true,
+export const Readonly: Story = {
+  args: {
+    readonly: true,
+  },
 }
 
-export const Dark = Template.bind({})
-Dark.args = {}
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
+export const Dark: Story = {
+  decorators: [ThemeDecorator(Theme.DARK)],
+}
 
-export const Red = Template.bind({})
-Red.args = {}
-Red.decorators = [ThemeDecorator(Theme.RED)]
+export const Red: Story = {
+  decorators: [ThemeDecorator(Theme.RED)],
+}

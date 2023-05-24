@@ -1,8 +1,9 @@
 import type {
+  FC,
   HTMLAttributeAnchorTarget,
   RefObject,
 } from 'react'
-import React, {
+import {
   memo,
   useCallback,
   useEffect,
@@ -10,7 +11,7 @@ import React, {
   useState,
 } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
-import { View } from 'entities/View'
+import { View } from 'entities/ListFilters'
 import type { VirtuosoGridHandle } from 'react-virtuoso'
 import { Virtuoso, VirtuosoGrid } from 'react-virtuoso'
 import { useTranslation } from 'react-i18next'
@@ -25,17 +26,20 @@ export type OnOpenArticle = (arg: {
   index: number
 }) => void
 
+export type VirtualizedArticleListHeader = FC<{
+  context?: VirtualizedArticleListContext
+  className?: string
+}>
+
 interface VirtualizedArticleListProps {
   className?: string
   articles: Article[]
   isLoading: boolean
-  limit: number
+  skeletonsLimit: number
   view: View
   target?: HTMLAttributeAnchorTarget
   onLoadNextPart?: () => void
-  Header?: React.FC<{
-    context?: VirtualizedArticleListContext
-  }>
+  Header?: VirtualizedArticleListHeader
   scrollParentRef?: RefObject<HTMLElement>
   startIndex?: number
   onOpenArticle?: OnOpenArticle
@@ -44,7 +48,8 @@ interface VirtualizedArticleListProps {
 export interface VirtualizedArticleListContext {
   view: View
   isLoading: boolean
-  limit: number
+  skeletonsLimit: number
+  Header?: VirtualizedArticleListHeader
 }
 
 const ArticlesNotFound = memo(() => {
@@ -58,6 +63,21 @@ const ArticlesNotFound = memo(() => {
 })
 ArticlesNotFound.displayName = 'ArticlesNotFound'
 
+const HeaderWithMargin = memo(
+  ({
+    context,
+  }: {
+    context?: VirtualizedArticleListContext
+  }) => {
+    if (!context?.Header) {
+      return null
+    }
+
+    return <context.Header className={styles.header} />
+  }
+)
+HeaderWithMargin.displayName = 'Header'
+
 /**
  * Every component that wraps this component needs to have a height.
  * @return {React.NamedExoticComponent<VirtualizedArticleListProps>}
@@ -68,7 +88,7 @@ export const VirtualizedArticleList = ({
   isLoading,
   view = View.GRID,
   target,
-  limit,
+  skeletonsLimit,
   onLoadNextPart,
   Header,
   scrollParentRef,
@@ -133,12 +153,17 @@ export const VirtualizedArticleList = ({
         itemContent={renderArticle}
         endReached={onLoadNextPart}
         components={{
-          Header,
+          Header: HeaderWithMargin,
           Footer: isArticlesNotFound
             ? ArticlesNotFound
             : ArticleListSkeleton,
         }}
-        context={{ view: View.LIST, isLoading, limit }}
+        context={{
+          view: View.LIST,
+          isLoading,
+          skeletonsLimit,
+          Header,
+        }}
         overscan={200}
         customScrollParent={
           scrollParent?.current ?? undefined
@@ -156,7 +181,7 @@ export const VirtualizedArticleList = ({
       itemContent={renderArticle}
       endReached={onLoadNextPart}
       components={{
-        Header,
+        Header: HeaderWithMargin,
         Footer: isArticlesNotFound
           ? ArticlesNotFound
           : ArticleListSkeleton,
@@ -171,7 +196,8 @@ export const VirtualizedArticleList = ({
       context={{
         view: View.GRID,
         isLoading,
-        limit,
+        skeletonsLimit,
+        Header,
       }}
       overscan={200}
       customScrollParent={

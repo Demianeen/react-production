@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import type { Comment } from 'entities/Comment'
 import type { Dictionary } from '@reduxjs/toolkit/src/entities/models'
+import { UserRole } from 'entities/User'
 
 export const ids = [1, 2, 3]
 export const entities: Dictionary<Comment> = {
@@ -12,7 +13,7 @@ export const entities: Dictionary<Comment> = {
       username: 'test',
       avatar:
         'https://i.pinimg.com/564x/db/6b/a8/db6ba8c0e0244f71230e6aae953e57be.jpg',
-      role: 'ADMIN',
+      roles: [UserRole.ADMIN],
     },
   },
   2: {
@@ -23,7 +24,7 @@ export const entities: Dictionary<Comment> = {
       username: 'test',
       avatar:
         'https://i.pinimg.com/564x/db/6b/a8/db6ba8c0e0244f71230e6aae953e57be.jpg',
-      role: 'ADMIN',
+      roles: [UserRole.MANAGER],
     },
   },
   3: {
@@ -34,7 +35,7 @@ export const entities: Dictionary<Comment> = {
       username: 'username',
       avatar:
         'https://i.pinimg.com/564x/db/6b/a8/db6ba8c0e0244f71230e6aae953e57be.jpg',
-      role: 'USER',
+      roles: [UserRole.USER],
     },
   },
 }
@@ -48,7 +49,7 @@ export const comments: Comment[] = [
       username: 'test',
       avatar:
         'https://i.pinimg.com/564x/db/6b/a8/db6ba8c0e0244f71230e6aae953e57be.jpg',
-      role: 'ADMIN',
+      roles: [UserRole.ADMIN],
     },
   },
   {
@@ -59,7 +60,7 @@ export const comments: Comment[] = [
       username: 'test',
       avatar:
         'https://i.pinimg.com/564x/db/6b/a8/db6ba8c0e0244f71230e6aae953e57be.jpg',
-      role: 'ADMIN',
+      roles: [UserRole.MANAGER],
     },
   },
   {
@@ -70,7 +71,7 @@ export const comments: Comment[] = [
       username: 'username',
       avatar:
         'https://i.pinimg.com/564x/db/6b/a8/db6ba8c0e0244f71230e6aae953e57be.jpg',
-      role: 'USER',
+      roles: [UserRole.USER],
     },
   },
 ]

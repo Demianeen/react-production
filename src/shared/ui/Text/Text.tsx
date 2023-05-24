@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import { memo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import styles from './Text.module.scss'
 
@@ -31,6 +31,8 @@ interface TextProps {
   theme?: TextTheme
   align?: TextAlign
   size?: TextSize
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  'data-testid'?: string
 }
 
 type HeaderTag = 'h1' | 'h2' | 'h3'
@@ -55,6 +57,7 @@ export const Text = memo(
     theme = TextTheme.DEFAULT,
     align = TextAlign.LEFT,
     size = TextSize.M,
+    'data-testid': dataTestId = 'Text',
   }: TextProps) => {
     const HeaderTag =
       TitleTag ?? mapSizeToDefaultHeaderTag[size]
@@ -68,18 +71,20 @@ export const Text = memo(
           className,
         ])}
       >
-        {title && (
+        {title != null && (
           <HeaderTag
             title={titleTitle}
             className={styles.title}
+            data-testid={`${dataTestId}.Title`}
           >
             {title}
           </HeaderTag>
         )}
-        {text && (
+        {text != null && (
           <TextTag
             title={textTitle}
             className={styles.text}
+            data-testid={`${dataTestId}.Paragraph`}
           >
             {text}
           </TextTag>

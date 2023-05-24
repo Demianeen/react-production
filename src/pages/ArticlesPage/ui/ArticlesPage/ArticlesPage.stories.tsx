@@ -1,14 +1,11 @@
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
 import {
   articleIds,
   getArticleEntities,
-} from '../../model/mocks/data'
+} from 'features/ArticleInfiniteList/model/mocks/data'
 import ArticlesPage from './ArticlesPage'
 
 export default {
@@ -25,25 +22,21 @@ export default {
   },
   decorators: [
     StoreDecorator({
-      articlesPage: {
+      articleInfiniteList: {
         ids: articleIds,
         entities: getArticleEntities(),
       },
     }),
   ],
-} as ComponentMeta<typeof ArticlesPage>
+} as Meta<typeof ArticlesPage>
 
-const Template: ComponentStory<typeof ArticlesPage> = (
-  args
-) => <ArticlesPage {...args} />
+type Story = StoryObj<typeof ArticlesPage>
+export const Light: Story = {}
 
-export const Light = Template.bind({})
-Light.args = {}
+export const Dark: Story = {
+  decorators: [ThemeDecorator(Theme.DARK)],
+}
 
-export const Dark = Template.bind({})
-Dark.args = {}
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
-
-export const Red = Template.bind({})
-Red.args = {}
-Red.decorators = [ThemeDecorator(Theme.RED)]
+export const Red: Story = {
+  decorators: [ThemeDecorator(Theme.RED)],
+}

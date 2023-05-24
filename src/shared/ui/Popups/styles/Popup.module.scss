@@ -1,0 +1,31 @@
+.popup {
+  position: relative;
+  min-width: max-content;
+}
+
+// item states
+.active {
+  background: var(--inverted-bg-color) !important;
+}
+
+.disabled {
+  opacity: 0.5;
+}
+
+// directions
+.up {
+  bottom: 100%;
+}
+
+.down {
+  top: 100%;
+}
+
+.left {
+  right: 0;
+}
+
+// mods
+.maxWidth {
+  width: 100%;
+}

@@ -1,13 +1,9 @@
-import React from 'react'
-import type {
-  ComponentMeta,
-  ComponentStory,
-} from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import AboutIcon from 'shared/assets/icons/about-us-20-20.svg'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
-import { RoutePath } from 'shared/config/routeConfig/routeConfig'
+import { RoutePath } from 'shared/config/routeConfig/routePath'
 import { SidebarItem } from './SidebarItem'
 
 export default {
@@ -24,30 +20,31 @@ export default {
     },
   },
   decorators: [StoreDecorator()],
-} as ComponentMeta<typeof SidebarItem>
+} as Meta<typeof SidebarItem>
 
-const Template: ComponentStory<typeof SidebarItem> = (
-  args
-) => <SidebarItem {...args} />
-
-export const Light = Template.bind({})
-Light.args = {
-  isCollapsed: false,
+type Story = StoryObj<typeof SidebarItem>
+export const Light: Story = {
+  args: {
+    isCollapsed: false,
+  },
 }
 
-export const Collapsed = Template.bind({})
-Collapsed.args = {
-  isCollapsed: true,
+export const Collapsed: Story = {
+  args: {
+    isCollapsed: true,
+  },
 }
 
-export const Dark = Template.bind({})
-Dark.args = {
-  isCollapsed: false,
+export const Dark: Story = {
+  args: {
+    isCollapsed: false,
+  },
+  decorators: [ThemeDecorator(Theme.DARK)],
 }
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
 
-export const Red = Template.bind({})
-Red.args = {
-  isCollapsed: false,
+export const Red: Story = {
+  args: {
+    isCollapsed: false,
+  },
+  decorators: [ThemeDecorator(Theme.RED)],
 }
-Red.decorators = [ThemeDecorator(Theme.RED)]

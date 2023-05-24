@@ -4,11 +4,14 @@ import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
 import MiniCSSExtractPlugin from 'mini-css-extract-plugin'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
+import CircularDependencyPlugin from 'circular-dependency-plugin'
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import type { BuildOptions } from './types/config'
 
 export default ({
   paths,
   isDev,
+  isAnalyze,
   apiURL,
   project,
 }: BuildOptions): webpack.WebpackPluginInstance[] => {
@@ -34,17 +37,30 @@ export default ({
         },
       ],
     }),
+    new ForkTsCheckerWebpackPlugin({
+      typescript: {
+        diagnosticOptions: {
+          semantic: true,
+          syntactic: true,
+        },
+      },
+    }),
   ]
 
   const devPlugins = [
-    new BundleAnalyzerPlugin({
-      openAnalyzer: false,
-    }),
     new ReactRefreshWebpackPlugin(),
+    new CircularDependencyPlugin({
+      exclude: /node_modules/,
+      failOnError: true,
+    }),
   ]
 
   if (isDev) {
     plugins.push(...devPlugins)
+  }
+
+  if (isAnalyze) {
+    plugins.push(new BundleAnalyzerPlugin())
   }
 
   return plugins
