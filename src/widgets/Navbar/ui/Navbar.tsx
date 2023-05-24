@@ -15,7 +15,7 @@ import {
 } from 'shared/ui/AppLink/AppLink'
 import { HStack } from 'shared/ui/Stack'
 import { RoutePath } from 'shared/config/routeConfig/routePath'
-import { NotificationPopup } from 'features/NotificationPopup'
+import { NotificationButton } from 'features/NotificationButton'
 import { UserDropdown } from 'features/UserDropdown'
 import styles from './Navbar.module.scss'
 
@@ -59,7 +59,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
             {t('Create article')}
           </AppLink>
           <HStack gap={1} className={styles.actions}>
-            <NotificationPopup />
+            <NotificationButton />
             <UserDropdown />
           </HStack>
         </>

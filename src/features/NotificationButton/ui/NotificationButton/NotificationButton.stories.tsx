@@ -1,18 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
-import { NotificationPopup } from './NotificationPopup'
+import { NotificationButton } from './NotificationButton'
 
 export default {
-  title: 'features/NotificationPopup',
-  component: NotificationPopup,
+  title: 'features/NotificationButton',
+  component: NotificationButton,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
   args: {},
   parameters: {},
   decorators: [StoreDecorator()],
-} as Meta<typeof NotificationPopup>
+} as Meta<typeof NotificationButton>
 
-type Story = StoryObj<typeof NotificationPopup>
+type Story = StoryObj<typeof NotificationButton>
 
 export const Light: Story = {}

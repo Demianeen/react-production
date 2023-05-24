@@ -3,16 +3,12 @@
   inset: 0;
   z-index: var(--modal-z-index);
 
-  .overlay {
-    background-color: var(--overlay-color);
-
-    .content {
-      max-width: 60%;
-      padding: 1.25rem;
-      background: var(--bg-color);
-      border-radius: 0.5rem;
-      animation: modal-appear 0.3s ease-in-out;
-    }
+  .content {
+    max-width: 60%;
+    padding: 1.25rem;
+    background: var(--bg-color);
+    border-radius: 0.5rem;
+    animation: modal-appear 0.3s ease-in-out;
   }
 
   &.isClosing {

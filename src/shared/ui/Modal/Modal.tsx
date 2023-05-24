@@ -7,7 +7,8 @@ import React, {
 } from 'react'
 import type { Mods } from 'shared/lib/classNames/classNames'
 import { classNames } from 'shared/lib/classNames/classNames'
-import { HStack } from '../Stack'
+import { Overlay } from 'shared/ui/Overlay/Overlay'
+import { HStack } from 'shared/ui/Stack'
 import { Portal } from '../Portal/Portal'
 import styles from './Modal.module.scss'
 
@@ -43,10 +44,6 @@ export const Modal = ({
     }, ANIMATION_TIME)
   }, [onClose])
 
-  const onContentClick = (e: React.MouseEvent) => {
-    e.stopPropagation()
-  }
-
   const onKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -79,28 +76,19 @@ export const Modal = ({
 
   return (
     <Portal>
-      <div
+      <HStack
+        maxHeight
+        maxWidth
+        justify='center'
+        align='center'
         className={classNames(styles.modal, mods, [
           className,
           'appStyles',
         ])}
       >
-        <HStack
-          justify='center'
-          align='center'
-          maxWidth
-          maxHeight
-          className={styles.overlay}
-          onClick={closeHandler}
-        >
-          <div
-            className={styles.content}
-            onClick={onContentClick}
-          >
-            {children}
-          </div>
-        </HStack>
-      </div>
+        <Overlay onClick={closeHandler} />
+        <div className={styles.content}>{children}</div>
+      </HStack>
     </Portal>
   )
 }
