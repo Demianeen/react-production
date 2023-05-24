@@ -14,7 +14,7 @@ export const CardSkeleton = memo(
     return (
       <Skeleton
         className={classNames(styles.card, {}, [className])}
-        borderRadius='var(--border-radius)'
+        borderRadius='var(--card-border-radius)'
         width={width}
         height={height}
       />

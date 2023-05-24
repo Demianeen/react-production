@@ -26,5 +26,8 @@
   "Your country": "Your country",
   "Account": "Account",
   "Admin panel": "Admin panel",
-  "You don't have access to this page": "You don't have access to this page"
+  "You don't have access to this page": "You don't have access to this page",
+  "No notifications": "No notifications",
+  "Cannot load notification right now": "Cannot load notification right now",
+  "Try again later": "Try again later"
 }

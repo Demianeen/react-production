@@ -1,8 +1,5 @@
-export const isMockLoading = () => {
-  const searchParams = new URLSearchParams(
-    window.location.search
-  )
-  const storyId = searchParams.get('id')
+import { isStoryNameIncludes } from 'shared/lib/mock-server/isStoryNameIncludes'
 
-  return storyId?.includes('loading')
+export const isMockLoading = () => {
+  return isStoryNameIncludes('loading')
 }

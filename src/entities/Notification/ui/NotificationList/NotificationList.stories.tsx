@@ -19,6 +19,12 @@ type Story = StoryObj<typeof NotificationList>
 
 export const Light: Story = {}
 
+export const Loading: Story = {}
+
+export const Error: Story = {}
+
+export const Empty: Story = {}
+
 export const Dark: Story = {
   decorators: [ThemeDecorator(Theme.DARK)],
 }

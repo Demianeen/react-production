@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
-import { mockArticle } from '../../model/mocks/data'
 import { ArticleDetails } from './ArticleDetails'
 
 export default {
@@ -15,53 +14,24 @@ export default {
 
 type Story = StoryObj<typeof ArticleDetails>
 export const Light: Story = {
-  decorators: [
-    StoreDecorator({
-      articleDetails: {
-        data: mockArticle,
-      },
-    }),
-  ],
+  decorators: [StoreDecorator()],
 }
 
 export const Loading: Story = {
-  decorators: [
-    StoreDecorator({
-      articleDetails: {
-        isLoading: true,
-      },
-    }),
-  ],
+  decorators: [StoreDecorator()],
 }
 
 export const Error: Story = {
-  decorators: [
-    StoreDecorator({
-      articleDetails: {
-        error: 'Error',
-      },
-    }),
-  ],
+  decorators: [StoreDecorator()],
 }
 
 export const Dark: Story = {
-  decorators: [ThemeDecorator(Theme.DARK)],
+  decorators: [
+    StoreDecorator(),
+    ThemeDecorator(Theme.DARK),
+  ],
 }
-Dark.decorators = [
-  StoreDecorator({
-    articleDetails: {
-      data: mockArticle,
-    },
-  }),
-]
 
 export const Red: Story = {
-  decorators: [ThemeDecorator(Theme.RED)],
+  decorators: [StoreDecorator(), ThemeDecorator(Theme.RED)],
 }
-Red.decorators = [
-  StoreDecorator({
-    articleDetails: {
-      data: mockArticle,
-    },
-  }),
-]

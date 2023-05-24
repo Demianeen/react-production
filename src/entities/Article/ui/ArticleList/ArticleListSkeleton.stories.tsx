@@ -1,11 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
-import { Theme } from 'app/providers/ThemeProvider'
 import { View } from 'entities/ListFilters'
 import { ArticleListSkeleton } from './ArticleListSkeleton'
 
 export default {
-  title: 'entities/Article/ArticleListSkeleton',
+  title: 'entities/Article/ArticleList',
   component: ArticleListSkeleton,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -28,28 +26,14 @@ const gridContext = {
   skeletonsLimit: 12,
 }
 
-export const List: Story = {
+export const ListSkeleton: Story = {
   args: {
     context: listContext,
   },
 }
 
-export const Grid: Story = {
+export const GridSkeleton: Story = {
   args: {
     context: gridContext,
   },
-}
-
-export const Dark: Story = {
-  args: {
-    context: listContext,
-  },
-  decorators: [ThemeDecorator(Theme.DARK)],
-}
-
-export const Red: Story = {
-  args: {
-    context: listContext,
-  },
-  decorators: [ThemeDecorator(Theme.RED)],
 }

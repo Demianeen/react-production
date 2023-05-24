@@ -1,6 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
-import { Theme } from 'app/providers/ThemeProvider'
 import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
 import { ArticleDetailsHeader } from './ArticleDetailsHeader'
 
@@ -44,19 +42,5 @@ export const CannotEdit: Story = {
         },
       },
     }),
-  ],
-}
-
-export const Dark: Story = {
-  decorators: [
-    ThemeDecorator(Theme.DARK),
-    StoreDecorator(store),
-  ],
-}
-
-export const Red: Story = {
-  decorators: [
-    ThemeDecorator(Theme.RED),
-    StoreDecorator(store),
   ],
 }

@@ -5,6 +5,7 @@ import {
   initialize,
   mswDecorator,
 } from 'msw-storybook-addon'
+import { notificationHandlers } from 'entities/Notification/mocks/notificationHandlers'
 import { StyleDecorator } from '../../src/shared/lib/storybook/StyleDecorator'
 import { SuspenseDecorator } from '../../src/shared/lib/storybook/SuspenseDecorator'
 import { ThemeDecorator } from '../../src/shared/lib/storybook/ThemeDecorator'
@@ -37,6 +38,7 @@ const preview: Preview = {
         articleDetails: articleDetailsHandlers,
         comments: commentHandlers,
         image: imageHandlers,
+        notification: notificationHandlers,
       },
     },
   },
