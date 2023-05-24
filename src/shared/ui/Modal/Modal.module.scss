@@ -10,11 +10,11 @@
     border-radius: 0.5rem;
     animation: modal-appear 0.3s ease-in-out;
   }
+}
 
-  &.isClosing {
-    .content {
-      animation: model-disappear 0.3s ease-in-out;
-    }
+.closing {
+  .content {
+    animation: model-disappear 0.3s ease-in-out;
   }
 }
 

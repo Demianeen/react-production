@@ -1,14 +1,10 @@
 import type { ReactNode } from 'react'
-import React, {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import React from 'react'
 import type { Mods } from 'shared/lib/classNames/classNames'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { Overlay } from 'shared/ui/Overlay/Overlay'
 import { HStack } from 'shared/ui/Stack'
+import { useModal } from 'shared/lib/hooks/useModal/useModal'
 import { Portal } from '../Portal/Portal'
 import styles from './Modal.module.scss'
 
@@ -20,8 +16,6 @@ interface ModalProps {
   lazy?: boolean
 }
 
-const ANIMATION_TIME = 300
-
 export const Modal = ({
   className,
   children,
@@ -29,48 +23,17 @@ export const Modal = ({
   onClose,
   lazy = false,
 }: ModalProps) => {
-  const [isClosing, setIsClosing] = useState(false)
-  const timeRef = useRef<ReturnType<
-    typeof setTimeout
-  > | null>(null)
-
-  const closeHandler = useCallback(() => {
-    if (!onClose) return
-
-    setIsClosing(true)
-    timeRef.current = setTimeout(() => {
-      onClose()
-      setIsClosing(false)
-    }, ANIMATION_TIME)
-  }, [onClose])
-
-  const onKeyDown = useCallback(
-    (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        closeHandler()
-      }
-    },
-    [closeHandler]
-  )
-
-  useEffect(() => {
-    if (isOpen) {
-      window.addEventListener('keydown', onKeyDown)
-    }
-
-    return () => {
-      if (timeRef.current !== null) {
-        clearTimeout(timeRef.current)
-      }
-      window.removeEventListener('keydown', onKeyDown)
-    }
-  }, [isOpen, onKeyDown])
+  const { isClosing, close, isMounted } = useModal({
+    isOpen,
+    onClose,
+    animationTime: 300,
+  })
 
   const mods: Mods = {
-    [styles.isClosing]: isClosing,
+    [styles.closing]: isClosing,
   }
 
-  if (lazy && !isOpen) {
+  if (lazy && !isMounted) {
     return null
   }
 
@@ -86,7 +49,7 @@ export const Modal = ({
           'appStyles',
         ])}
       >
-        <Overlay onClick={closeHandler} />
+        <Overlay onClick={close} />
         <div className={styles.content}>{children}</div>
       </HStack>
     </Portal>

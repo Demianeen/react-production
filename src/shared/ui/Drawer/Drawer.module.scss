@@ -46,3 +46,9 @@
     transform: translateY(0%);
   }
 }
+
+.closing {
+  .content {
+    transform: translateY(100%);
+  }
+}

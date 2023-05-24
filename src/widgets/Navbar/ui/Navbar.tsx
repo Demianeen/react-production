@@ -7,7 +7,6 @@ import {
 } from 'shared/ui/Button/Button'
 import { LoginModal } from 'features/AuthByUsername'
 import { useSelector } from 'react-redux'
-import { getUserAuthData } from 'entities/User'
 import { Text, TextTheme } from 'shared/ui/Text/Text'
 import {
   AppLink,
@@ -17,6 +16,7 @@ import { HStack } from 'shared/ui/Stack'
 import { RoutePath } from 'shared/config/routeConfig/routePath'
 import { NotificationButton } from 'features/NotificationButton'
 import { UserDropdown } from 'features/UserDropdown'
+import { getIsUserLogged } from 'entities/User/model/selectors/getIsUserLogged/getIsUserLogged'
 import styles from './Navbar.module.scss'
 
 interface NavbarProps {
@@ -27,7 +27,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
   const { t } = useTranslation()
   const [isAuthModalOpened, setIsAuthModalOpened] =
     useState(false)
-  const authData = useSelector(getUserAuthData)
+  const isUserLogged = useSelector(getIsUserLogged)
 
   const onOpenModal = useCallback(() => {
     setIsAuthModalOpened(true)
@@ -49,7 +49,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
         theme={TextTheme.INVERTED}
         title={t('Netliukh Demian')}
       />
-      {authData ? (
+      {isUserLogged ? (
         <>
           <AppLink
             to={RoutePath.article_create}
