@@ -19,7 +19,14 @@ type Story = StoryObj<typeof NotificationList>
 
 export const Light: Story = {}
 
-export const Loading: Story = {}
+export const Loading: Story = {
+  // FIXME: some msw loading handlers not working
+  parameters: {
+    loki: {
+      skip: true,
+    },
+  },
+}
 
 export const Error: Story = {}
 

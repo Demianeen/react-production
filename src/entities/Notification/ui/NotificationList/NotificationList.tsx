@@ -40,7 +40,7 @@ export const NotificationList = memo(
       )
     }
 
-    if (!data || data.length === 0) {
+    if (data === undefined || data.length === 0) {
       return (
         <VStack className={className} gap={1.25} maxWidth>
           <Text
