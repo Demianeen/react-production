@@ -26,7 +26,8 @@
     "build:storybook": "storybook build -c ./config/storybook",
     "generate:slice": "ts-node ./scripts/createSlice/index.ts",
     "rename:slice": "ts-node ./scripts/renameSlice/index.ts",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "postinstall": "patch-package"
   },
   "keywords": [],
   "author": "",
@@ -100,6 +101,7 @@
     "minimist": "^1.2.8",
     "msw": "^1.2.1",
     "msw-storybook-addon": "^1.8.0",
+    "patch-package": "^7.0.0",
     "react-refresh": "^0.14.0",
     "reg-cli": "^0.17.6",
     "regenerator-runtime": "^0.13.11",
