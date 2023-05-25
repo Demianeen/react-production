@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import AvatarImg from 'shared/assets/mocks/avatar.jpeg'
+import AvatarImg from '@/shared/assets/mocks/avatar.jpeg'
 import { Avatar } from './Avatar'
 
 export default {

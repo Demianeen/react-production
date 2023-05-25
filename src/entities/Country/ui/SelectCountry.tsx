@@ -1,8 +1,8 @@
 import { memo, useCallback, useMemo } from 'react'
-import { Select } from 'shared/ui/Popups/ui/Select/Select'
 import { useTranslation } from 'react-i18next'
-import type { Direction } from 'shared/types/ui'
-import { Country } from 'entities/Country/model/const/country'
+import { Select } from '@/shared/ui/Popups/ui/Select/Select'
+import type { Direction } from '@/shared/types/ui'
+import { Country } from '@/entities/Country/model/const/country'
 
 interface SelectCountryProps {
   className?: string

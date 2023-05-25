@@ -1,20 +1,20 @@
 import type { FormEvent } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
 import { useTranslation } from 'react-i18next'
+import { classNames } from '@/shared/lib/classNames/classNames'
 import {
   Text,
   TextAlign,
   TextTheme,
-} from 'shared/ui/Text/Text'
-import { Input } from 'shared/ui/Input/Input'
-import { Avatar } from 'shared/ui/Avatar/Avatar'
-import type { Currency } from 'entities/Currency'
-import { SelectCurrency } from 'entities/Currency'
-import type { Country } from 'entities/Country'
-import { SelectCountry } from 'entities/Country'
-import { Skeleton } from 'shared/ui/Skeleton/Skeleton'
-import { HStack } from 'shared/ui/Stack'
-import { InputSkeleton } from 'shared/ui/Input/InputSkeleton'
+} from '@/shared/ui/Text/Text'
+import { Input } from '@/shared/ui/Input/Input'
+import { Avatar } from '@/shared/ui/Avatar/Avatar'
+import type { Currency } from '@/entities/Currency'
+import { SelectCurrency } from '@/entities/Currency'
+import type { Country } from '@/entities/Country'
+import { SelectCountry } from '@/entities/Country'
+import { Skeleton } from '@/shared/ui/Skeleton/Skeleton'
+import { HStack } from '@/shared/ui/Stack'
+import { InputSkeleton } from '@/shared/ui/Input/InputSkeleton'
 import type { Profile } from '../../model/types/profile'
 import styles from './ProfileCard.module.scss'
 

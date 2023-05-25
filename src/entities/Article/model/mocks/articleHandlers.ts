@@ -1,5 +1,5 @@
 import { rest } from 'msw'
-import { isMockLoading } from 'shared/lib/mock-server/isMockLoading'
+import { isMockLoading } from '@/shared/lib/mock-server/isMockLoading'
 import { mockArticle } from './data'
 import type { Article } from '../types/article'
 

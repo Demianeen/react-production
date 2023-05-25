@@ -2,10 +2,10 @@ import type {
   AsyncThunkAction,
   Dispatch,
 } from '@reduxjs/toolkit'
-import type { StateSchema } from 'app/providers/StoreProvider'
 import type { AxiosStatic } from 'axios'
 import axios from 'axios'
 import type { NavigateFunction } from 'react-router/dist/lib/hooks'
+import type { StateSchema } from '@/app/providers/StoreProvider'
 
 type ActionCreator<Return, Arg, RejectValue> = (
   arg: Arg

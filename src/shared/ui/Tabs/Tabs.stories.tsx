@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
-import { Theme } from 'app/providers/ThemeProvider'
 import { action } from '@storybook/addon-actions'
+import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
+import { Theme } from '@/app/providers/ThemeProvider'
 import type { TabItem } from './Tabs'
 import { Tabs } from './Tabs'
 

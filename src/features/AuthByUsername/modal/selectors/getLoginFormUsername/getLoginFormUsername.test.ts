@@ -1,4 +1,4 @@
-import type { StateSchema } from 'app/providers/StoreProvider'
+import type { StateSchema } from '@/app/providers/StoreProvider'
 import { getLoginFormUsername } from './getLoginFormUsername'
 
 describe('getLoginFormUsername', () => {

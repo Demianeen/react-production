@@ -1,7 +1,7 @@
-import { classNames } from 'shared/lib/classNames/classNames'
 import type { ReactNode } from 'react'
 import React, { memo, useCallback, useEffect } from 'react'
-import { useAnimationLibs } from 'shared/lib/components/AnimationProvider'
+import { classNames } from '@/shared/lib/classNames/classNames'
+import { useAnimationLibs } from '@/shared/lib/components/AnimationProvider'
 import { Overlay } from '../Overlay/Overlay'
 import styles from './Drawer.module.scss'
 import { Portal } from '../Portal/Portal'
@@ -11,18 +11,20 @@ interface DrawerProps {
   children: ReactNode
   isOpen?: boolean
   onClose?: () => void
-  lazy?: boolean
 }
 
 const height = window.innerHeight - 100
 
-export const DrawerContent = (props: DrawerProps) => {
+export const DrawerContent = ({
+  className,
+  children,
+  onClose,
+  isOpen,
+}: DrawerProps) => {
   const { Spring, Gesture } = useAnimationLibs()
   const [{ y }, api] = Spring.useSpring(() => ({
     y: height,
   }))
-  const { className, children, onClose, isOpen, lazy } =
-    props
 
   const openDrawer = useCallback(() => {
     api.start({ y: 0, immediate: false })

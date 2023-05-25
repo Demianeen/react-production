@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
-import { Theme } from 'app/providers/ThemeProvider'
-import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
-import { RoutePath } from 'shared/config/routeConfig/routePath'
+import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
+import { Theme } from '@/app/providers/ThemeProvider'
+import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
+import { RoutePath } from '@/shared/config/routeConfig/routePath'
 import ProfilePage from './ProfilePage'
 
 export default {

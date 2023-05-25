@@ -50,11 +50,13 @@ export default {
     '**/?(*.)+(spec|test).[tj]s?(x)',
   ],
 
-  // to enable css modules
+  // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
+    // enables absolute imports
+    '^@/(.*)$': '<rootDir>src/$1',
+    // enables css modules
     '\\.s?css$': 'identity-obj-proxy',
-    // eslint-disable-next-line @typescript-eslint/naming-convention
+    // enables svg imports
     '\\.svg': path.resolve(
       __dirname,
       'jestEmptyComponent.tsx'
@@ -123,9 +125,6 @@ export default {
 
   // The maximum amount of workers used to run your mocks. Can be specified as % or a number. E.g. maxWorkers: 10% will use 10% of your CPU amount + 1 as the maximum worker number. maxWorkers: 2 will use a maximum of 2 workers.
   // maxWorkers: "50%",
-
-  // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-  // moduleNameMapper: {},
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],

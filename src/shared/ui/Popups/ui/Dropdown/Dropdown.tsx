@@ -1,7 +1,7 @@
 import { Menu } from '@headlessui/react'
 import type { ReactNode } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
-import type { Direction } from 'shared/types/ui'
+import { classNames } from '@/shared/lib/classNames/classNames'
+import type { Direction } from '@/shared/types/ui'
 import { mapDirection } from '../../const/mapDirection'
 import { HStack } from '../../../Stack'
 import {

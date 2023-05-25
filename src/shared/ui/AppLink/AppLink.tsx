@@ -1,9 +1,9 @@
 import type { Ref } from 'react'
 import type { LinkProps } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { classNames } from 'shared/lib/classNames/classNames'
-import { typedMemo } from 'shared/lib/react/typedMemo/typedMemo'
-import { typedForwardRef } from 'shared/lib/react/typedForwardRef/typedForwardRef'
+import { classNames } from '@/shared/lib/classNames/classNames'
+import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
+import { typedForwardRef } from '@/shared/lib/react/typedForwardRef/typedForwardRef'
 import styles from './AppLink.module.scss'
 
 export enum AppLinkTheme {

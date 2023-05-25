@@ -1,8 +1,8 @@
 import { memo, useMemo } from 'react'
-import { SortOrder } from 'shared/const/sort'
-import type { SelectOption } from 'shared/ui/Popups/ui/Select/Select'
-import { Select } from 'shared/ui/Popups/ui/Select/Select'
 import { useTranslation } from 'react-i18next'
+import { SortOrder } from '@/shared/const/sort'
+import type { SelectOption } from '@/shared/ui/Popups/ui/Select/Select'
+import { Select } from '@/shared/ui/Popups/ui/Select/Select'
 
 interface ListFiltersOrderProps {
   className?: string

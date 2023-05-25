@@ -1,6 +1,6 @@
 import { memo } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
-import { View } from 'entities/ListFilters'
+import { classNames } from '@/shared/lib/classNames/classNames'
+import { View } from '@/entities/ListFilters'
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton'
 import styles from './ArticleList.module.scss'
 import type { VirtualizedArticleListContext } from './VirtualizedArticleList'

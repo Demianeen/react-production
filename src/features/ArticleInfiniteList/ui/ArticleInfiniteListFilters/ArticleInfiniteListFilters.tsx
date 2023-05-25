@@ -1,10 +1,13 @@
 import { memo, useCallback } from 'react'
-import type { SortField, View } from 'entities/ListFilters'
-import { ListFilters } from 'entities/ListFilters'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useSelector } from 'react-redux'
-import type { SortOrder } from 'shared/const/sort'
-import { VStack } from 'shared/ui/Stack'
+import type {
+  SortField,
+  View,
+} from '@/entities/ListFilters'
+import { ListFilters } from '@/entities/ListFilters'
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
+import type { SortOrder } from '@/shared/const/sort'
+import { VStack } from '@/shared/ui/Stack'
 import { articleInfiniteListActions } from '../../model/slice/articleInfiniteListSlice'
 import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles'
 import { getArticleInfiniteListSearch } from '../../model/selectors/getArticleInfiniteListSearch/getArticleInfiniteListSearch'

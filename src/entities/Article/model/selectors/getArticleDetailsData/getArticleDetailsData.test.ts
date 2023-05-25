@@ -1,4 +1,4 @@
-import type { StateSchema } from 'app/providers/StoreProvider'
+import type { StateSchema } from '@/app/providers/StoreProvider'
 import { mockArticle } from '../../mocks/data'
 import { getArticleDetailsData } from './getArticleDetailsData'
 

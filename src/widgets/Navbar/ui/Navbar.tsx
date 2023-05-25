@@ -1,22 +1,22 @@
 import { memo, useCallback, useState } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
 import { useTranslation } from 'react-i18next'
+import { useSelector } from 'react-redux'
+import { classNames } from '@/shared/lib/classNames/classNames'
 import {
   Button,
   ButtonTheme,
-} from 'shared/ui/Button/Button'
-import { LoginModal } from 'features/AuthByUsername'
-import { useSelector } from 'react-redux'
-import { Text, TextTheme } from 'shared/ui/Text/Text'
+} from '@/shared/ui/Button/Button'
+import { LoginModal } from '@/features/AuthByUsername'
+import { Text, TextTheme } from '@/shared/ui/Text/Text'
 import {
   AppLink,
   AppLinkTheme,
-} from 'shared/ui/AppLink/AppLink'
-import { HStack } from 'shared/ui/Stack'
-import { RoutePath } from 'shared/config/routeConfig/routePath'
-import { NotificationButton } from 'features/NotificationButton'
-import { UserDropdown } from 'features/UserDropdown'
-import { getIsUserLogged } from 'entities/User/model/selectors/getIsUserLogged/getIsUserLogged'
+} from '@/shared/ui/AppLink/AppLink'
+import { HStack } from '@/shared/ui/Stack'
+import { RoutePath } from '@/shared/config/routeConfig/routePath'
+import { NotificationButton } from '@/features/NotificationButton'
+import { UserDropdown } from '@/features/UserDropdown'
+import { getIsUserLogged } from '@/entities/User/model/selectors/getIsUserLogged/getIsUserLogged'
 import styles from './Navbar.module.scss'
 
 interface NavbarProps {

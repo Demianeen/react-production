@@ -1,5 +1,5 @@
 import { rest } from 'msw'
-import avatar from 'shared/assets/mocks/avatar.jpeg'
+import avatar from '@/shared/assets/mocks/avatar.jpeg'
 
 export const imageHandlers = [
   rest.get(

@@ -3,9 +3,9 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import type {
   Gesture,
   Spring,
-} from 'shared/lib/components/AnimationProvider/lib/AnimationContext'
-import { AnimationContext } from 'shared/lib/components/AnimationProvider/lib/AnimationContext'
-import { getAsyncAnimationModules } from 'shared/lib/components/AnimationProvider/lib/getAsyncAnimationModules'
+} from '@/shared/lib/components/AnimationProvider/lib/AnimationContext'
+import { AnimationContext } from '@/shared/lib/components/AnimationProvider/lib/AnimationContext'
+import { getAsyncAnimationModules } from '@/shared/lib/components/AnimationProvider/lib/getAsyncAnimationModules'
 
 // animation provider not in app because we use it not globally, but only where we need animations
 

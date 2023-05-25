@@ -1,7 +1,7 @@
 import type { HTMLAttributeAnchorTarget } from 'react'
 import { memo, useCallback } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
-import { View } from 'entities/ListFilters'
+import { classNames } from '@/shared/lib/classNames/classNames'
+import { View } from '@/entities/ListFilters'
 import {
   ArticleListSkeleton,
   getArticleListSkeletons,

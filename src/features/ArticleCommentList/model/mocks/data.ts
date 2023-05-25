@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import type { Comment } from 'entities/Comment'
 import type { Dictionary } from '@reduxjs/toolkit/src/entities/models'
-import { UserRole } from 'entities/User'
+import type { Comment } from '@/entities/Comment'
+import { UserRole } from '@/entities/User'
 
 export const ids = [1, 2, 3]
 export const entities: Dictionary<Comment> = {

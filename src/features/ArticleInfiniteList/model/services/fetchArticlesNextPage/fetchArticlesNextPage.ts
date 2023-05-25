@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import type { ThunkConfig } from 'app/providers/StoreProvider'
+import type { ThunkConfig } from '@/app/providers/StoreProvider'
 import { getArticleInfiniteListPage } from '../../selectors/getArticleInfiniteListPage/getArticleInfiniteListPage'
 import { getArticleInfiniteListHasMore } from '../../selectors/getArticleInfiniteListHasMore/getArticleInfiniteListHasMore'
 import { articleInfiniteListActions } from '../../slice/articleInfiniteListSlice'

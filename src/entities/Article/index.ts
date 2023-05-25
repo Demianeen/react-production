@@ -10,4 +10,4 @@ export type { OnOpenArticle } from './ui/ArticleList/VirtualizedArticleList'
 
 export { articleHandlers } from './model/mocks/articleHandlers'
 export { articleDetailsHandlers } from './model/mocks/articleDetailsHandlers'
-export { ArticleType } from 'entities/Article/model/const/articleType'
+export { ArticleType } from '@/entities/Article/model/const/articleType'

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { View } from 'entities/ListFilters'
+import { View } from '@/entities/ListFilters'
 import { ArticleListSkeleton } from './ArticleListSkeleton'
 
 export default {

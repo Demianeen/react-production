@@ -1,4 +1,4 @@
-import type { StateSchema } from 'app/providers/StoreProvider'
+import type { StateSchema } from '@/app/providers/StoreProvider'
 import { getArticleDetailsIsLoading } from './getArticleDetailsIsLoading'
 
 describe('getArticleDetailsIsLoading', () => {

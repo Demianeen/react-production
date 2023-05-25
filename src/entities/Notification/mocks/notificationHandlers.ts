@@ -1,8 +1,8 @@
 import { rest } from 'msw'
-import { isMockLoading } from 'shared/lib/mock-server/isMockLoading'
-import { mockNotifications } from 'entities/Notification/mocks/notificationMockData'
-import { isMockEmpty } from 'shared/lib/mock-server/isMockEmpty'
-import { isMockError } from 'shared/lib/mock-server/isMockError'
+import { isMockLoading } from '@/shared/lib/mock-server/isMockLoading'
+import { mockNotifications } from '@/entities/Notification/mocks/notificationMockData'
+import { isMockEmpty } from '@/shared/lib/mock-server/isMockEmpty'
+import { isMockError } from '@/shared/lib/mock-server/isMockError'
 
 export const notificationHandlers = [
   rest.get('/notifications', (req, res, ctx) => {

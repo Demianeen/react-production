@@ -1,5 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit'
-import { ArticleType } from 'entities/Article'
+import { ArticleType } from '@/entities/Article'
 import { getArticleInfiniteListState } from '../getArticleInfiniteListState/getArticleInfiniteListState'
 
 export const getArticleInfiniteListType = createSelector(

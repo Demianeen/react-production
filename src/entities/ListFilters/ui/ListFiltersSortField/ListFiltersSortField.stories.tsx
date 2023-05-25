@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
-import { Theme } from 'app/providers/ThemeProvider'
-import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
-import { SortField } from 'entities/ListFilters/model/const/sortField'
+import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
+import { Theme } from '@/app/providers/ThemeProvider'
+import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
+import { SortField } from '@/entities/ListFilters/model/const/sortField'
 import { ListFiltersSortField } from './ListFiltersSortField'
 
 export default {

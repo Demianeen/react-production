@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable @typescript-eslint/naming-convention */
 import webpack from 'webpack'
 import path from 'path'
 import type { BuildPath } from '../build/types/config'
@@ -17,10 +19,22 @@ export default ({
     locales: '',
     buildLocales: '',
   }
-  config.resolve?.modules?.push(paths.src)
-  config.resolve?.extensions?.push('.ts', '.tsx')
 
-  config.plugins?.push(
+  if (!config.resolve) config.resolve = {}
+  if (!config.resolve.extensions)
+    config.resolve.extensions = []
+  if (!config.resolve.modules) config.resolve.modules = []
+
+  config.resolve.modules.push(paths.src)
+  config.resolve.extensions.push('.ts', '.tsx')
+  config.resolve.alias = {
+    ...config.resolve.alias,
+    '@': paths.src,
+  }
+
+  if (!config.plugins) config.plugins = []
+
+  config.plugins.push(
     new webpack.DefinePlugin({
       __IS_DEV__: true,
       __API__: JSON.stringify(''),
@@ -28,11 +42,9 @@ export default ({
     })
   )
 
-  if (!config.module)
-    throw new Error('config.module not found')
+  if (!config.module) config.module = { rules: [] }
 
   // exclude svg from default webpack config
-  // eslint-disable-next-line no-param-reassign
   config.module.rules = config.module?.rules?.map(
     (rule) => {
       if (rule === '...') return rule

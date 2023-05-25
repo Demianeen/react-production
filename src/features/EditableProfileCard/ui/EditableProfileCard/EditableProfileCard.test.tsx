@@ -1,5 +1,5 @@
-import { componentRender } from 'shared/lib/tests/componentRender/componentRender'
 import { screen, waitFor } from '@testing-library/react'
+import { componentRender } from '@/shared/lib/tests/componentRender/componentRender'
 import { mockProfile } from '../../model/mocks/data'
 import { profileReducer } from '../../model/slice/profileSlice'
 import { EditableProfileCard } from './EditableProfileCard'

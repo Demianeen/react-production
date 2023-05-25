@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
-import { Theme } from 'app/providers/ThemeProvider'
-import { View } from 'entities/ListFilters'
+import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
+import { Theme } from '@/app/providers/ThemeProvider'
+import { View } from '@/entities/ListFilters'
 import { mockArticle } from '../../model/mocks/data'
 import { ArticleList } from './ArticleList'
 

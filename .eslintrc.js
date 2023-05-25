@@ -1,3 +1,6 @@
+/**
+ * @type {import("eslint").Linter.Config}
+ */
 module.exports = {
   env: {
     browser: true,
@@ -150,10 +153,14 @@ module.exports = {
     },
     // ensures that eslint understand absolute paths correctly
     'import/resolver': {
-      node: {
-        paths: ['src'],
+      typescript: {
+        project: './tsconfig.json',
       },
     },
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
+    typescript: {},
   },
   overrides: [
     {
@@ -204,6 +211,13 @@ module.exports = {
       rules: {
         // we can use console in scripts files
         'no-console': 0,
+      },
+    },
+    {
+      // override rules for jest config
+      files: ['config/jest/**/*.{ts,tsx}'],
+      rules: {
+        '@typescript-eslint/naming-convention': 0,
       },
     },
   ],

@@ -1,5 +1,5 @@
-import { ARTICLE_VIEW_LOCALSTORAGE_KEY } from 'shared/const/localstorage'
-import { View } from 'entities/ListFilters'
+import { ARTICLE_VIEW_LOCALSTORAGE_KEY } from '@/shared/const/localstorage'
+import { View } from '@/entities/ListFilters'
 import { fetchArticles } from '../services/fetchArticles/fetchArticles'
 import type { ArticleInfiniteListSchema } from '../types/articleInfiniteListSchema'
 import {

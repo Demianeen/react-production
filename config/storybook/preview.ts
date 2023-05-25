@@ -1,11 +1,11 @@
 import { withRouter } from 'storybook-addon-react-router-v6'
 import type { Preview } from '@storybook/react'
-import { Theme } from 'app/providers/ThemeProvider'
 import {
   initialize,
   mswDecorator,
 } from 'msw-storybook-addon'
-import { notificationHandlers } from 'entities/Notification/mocks/notificationHandlers'
+import { Theme } from '../../src/app/providers/ThemeProvider'
+import { notificationHandlers } from '../../src/entities/Notification/mocks/notificationHandlers'
 import { StyleDecorator } from '../../src/shared/lib/storybook/StyleDecorator'
 import { SuspenseDecorator } from '../../src/shared/lib/storybook/SuspenseDecorator'
 import { ThemeDecorator } from '../../src/shared/lib/storybook/ThemeDecorator'

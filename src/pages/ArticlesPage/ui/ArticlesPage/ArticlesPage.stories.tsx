@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
-import { Theme } from 'app/providers/ThemeProvider'
-import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
+import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
+import { Theme } from '@/app/providers/ThemeProvider'
+import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 import {
   articleIds,
   getArticleEntities,
-} from 'features/ArticleInfiniteList/model/mocks/data'
+} from '@/features/ArticleInfiniteList/model/mocks/data'
 import ArticlesPage from './ArticlesPage'
 
 export default {

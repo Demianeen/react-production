@@ -3,8 +3,8 @@ import type {
   InputHTMLAttributes,
 } from 'react'
 import { memo, useEffect, useRef } from 'react'
-import type { Mods } from 'shared/lib/classNames/classNames'
-import { classNames } from 'shared/lib/classNames/classNames'
+import type { Mods } from '@/shared/lib/classNames/classNames'
+import { classNames } from '@/shared/lib/classNames/classNames'
 import { WithLabel } from '../WithLabel/WithLabel'
 import styles from './Input.module.scss'
 

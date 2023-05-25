@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
-import { Theme } from 'app/providers/ThemeProvider'
 import { action } from '@storybook/addon-actions'
-import { LayoutDecorator } from 'shared/lib/storybook/LayoutDecorator'
+import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
+import { Theme } from '@/app/providers/ThemeProvider'
+import { LayoutDecorator } from '@/shared/lib/storybook/LayoutDecorator'
 import { Dropdown } from './Dropdown'
 
 export default {

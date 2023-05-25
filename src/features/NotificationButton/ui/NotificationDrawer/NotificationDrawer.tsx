@@ -1,12 +1,12 @@
 import React, { memo, useCallback, useState } from 'react'
-import { Drawer } from 'shared/ui/Drawer/Drawer'
-import { NotificationList } from 'entities/Notification'
-import NotificationIcon from 'shared/assets/icons/notification-20-20.svg'
-import { Icon } from 'shared/ui/Icon/Icon'
+import { Drawer } from '@/shared/ui/Drawer/Drawer'
+import { NotificationList } from '@/entities/Notification'
+import NotificationIcon from '@/shared/assets/icons/notification-20-20.svg'
+import { Icon } from '@/shared/ui/Icon/Icon'
 import {
   Button,
   ButtonTheme,
-} from 'shared/ui/Button/Button'
+} from '@/shared/ui/Button/Button'
 
 interface NotificationDrawerProps {
   className?: string

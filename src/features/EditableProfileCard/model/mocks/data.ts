@@ -1,6 +1,6 @@
-import { Currency } from 'entities/Currency'
-import { Country } from 'entities/Country'
-import type { Profile } from 'entities/Profile'
+import { Currency } from '@/entities/Currency'
+import { Country } from '@/entities/Country'
+import type { Profile } from '@/entities/Profile'
 
 // TODO: move all mock data to entities
 export const mockProfile: Profile = {

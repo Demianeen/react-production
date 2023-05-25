@@ -1,11 +1,11 @@
 import { memo, useCallback } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
+import { classNames } from '@/shared/lib/classNames/classNames'
 import {
   Button,
   ButtonTheme,
-} from 'shared/ui/Button/Button'
-import { Icon } from 'shared/ui/Icon/Icon'
-import type { View } from 'entities/ListFilters/model/const/view'
+} from '@/shared/ui/Button/Button'
+import { Icon } from '@/shared/ui/Icon/Icon'
+import type { View } from '@/entities/ListFilters/model/const/view'
 import { viewTypes } from '../../model/types/view'
 import styles from './ListFiltersView.module.scss'
 

@@ -1,6 +1,6 @@
 import { memo } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
-import { Skeleton } from 'shared/ui/Skeleton/Skeleton'
+import { classNames } from '@/shared/lib/classNames/classNames'
+import { Skeleton } from '@/shared/ui/Skeleton/Skeleton'
 import styles from './Card.module.scss'
 
 interface CardSkeletonProps {

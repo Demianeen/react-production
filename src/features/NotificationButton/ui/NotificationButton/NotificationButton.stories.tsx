@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
-import { LayoutDecorator } from 'shared/lib/storybook/LayoutDecorator'
+import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
+import { LayoutDecorator } from '@/shared/lib/storybook/LayoutDecorator'
 import { NotificationButton } from './NotificationButton'
 
 export default {

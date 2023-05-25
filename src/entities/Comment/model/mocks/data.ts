@@ -1,4 +1,4 @@
-import { UserRole } from 'entities/User'
+import { UserRole } from '@/entities/User'
 import type { Comment } from '../types/comment'
 
 export const mockComments: Comment[] = [

@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
-import { Theme } from 'app/providers/ThemeProvider'
-import { SortOrder } from 'shared/const/sort'
 import { action } from '@storybook/addon-actions'
+import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
+import { Theme } from '@/app/providers/ThemeProvider'
+import { SortOrder } from '@/shared/const/sort'
 import { ListFiltersOrder } from './ListFiltersOrder'
 
 export default {

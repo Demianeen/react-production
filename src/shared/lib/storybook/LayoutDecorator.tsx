@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
-import { HStack } from 'shared/ui/Stack'
 import type { StoryFn } from '@storybook/react'
+import { HStack } from '@/shared/ui/Stack'
 
 export const LayoutDecorator = (layout: 'centered') =>
   function Decorator(StoryComponent: StoryFn) {

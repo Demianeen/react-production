@@ -1,11 +1,11 @@
+import { useTranslation } from 'react-i18next'
 import {
   Text,
   TextSize,
   TextTheme,
-} from 'shared/ui/Text/Text'
-import { useTranslation } from 'react-i18next'
-import { Page } from 'widgets/Page'
-import { HStack } from 'shared/ui/Stack'
+} from '@/shared/ui/Text/Text'
+import { Page } from '@/widgets/Page'
+import { HStack } from '@/shared/ui/Stack'
 
 interface ForbiddenPageProps {
   className?: string

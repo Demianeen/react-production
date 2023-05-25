@@ -4,10 +4,13 @@ import type {
   ReactNode,
 } from 'react'
 
-import type { Mods } from 'shared/lib/classNames/classNames'
-import { classNames } from 'shared/lib/classNames/classNames'
-import type { Props, WithDefaultTag } from 'shared/types/ui'
-import { typedForwardRef } from 'shared/lib/react/typedForwardRef/typedForwardRef'
+import type { Mods } from '@/shared/lib/classNames/classNames'
+import { classNames } from '@/shared/lib/classNames/classNames'
+import type {
+  Props,
+  WithDefaultTag,
+} from '@/shared/types/ui'
+import { typedForwardRef } from '@/shared/lib/react/typedForwardRef/typedForwardRef'
 import styles from './Flex.module.scss'
 
 type FlexJustify =

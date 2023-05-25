@@ -1,6 +1,6 @@
 import type { FC, ReactNode } from 'react'
 import { useMemo, useState } from 'react'
-import { LOCAL_STORAGE_THEME_KEY } from 'shared/const/localstorage'
+import { LOCAL_STORAGE_THEME_KEY } from '@/shared/const/localstorage'
 import { Theme } from '../const/theme'
 import { ThemeContext } from '../lib/ThemeContext'
 

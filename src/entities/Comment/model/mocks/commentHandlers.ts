@@ -1,5 +1,5 @@
 import { rest } from 'msw'
-import { isMockLoading } from 'shared/lib/mock-server/isMockLoading'
+import { isMockLoading } from '@/shared/lib/mock-server/isMockLoading'
 import { mockComments } from './data'
 
 export const commentHandlers = [

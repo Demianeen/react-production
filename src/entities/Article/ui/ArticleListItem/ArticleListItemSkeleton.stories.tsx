@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { View } from 'entities/ListFilters'
-import { ParentDecorator } from 'shared/lib/storybook/ParentDecorator'
+import { View } from '@/entities/ListFilters'
+import { ParentDecorator } from '@/shared/lib/storybook/ParentDecorator'
 import { ArticleListItemSkeleton } from './ArticleListItemSkeleton'
 
 export default {

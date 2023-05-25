@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ThemeDecorator } from 'shared/lib/storybook/ThemeDecorator'
-import { Theme } from 'app/providers/ThemeProvider'
-import CalendarIcon from 'shared/assets/icons/calendar-20-20.svg'
+import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
+import { Theme } from '@/app/providers/ThemeProvider'
+import CalendarIcon from '@/shared/assets/icons/calendar-20-20.svg'
 import { Icon } from './Icon'
 
 export default {

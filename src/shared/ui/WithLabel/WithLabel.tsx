@@ -1,6 +1,6 @@
 import type { LabelHTMLAttributes, ReactNode } from 'react'
 import { memo } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
+import { classNames } from '@/shared/lib/classNames/classNames'
 import { VStack } from '../Stack'
 import styles from './WithLabel.module.scss'
 

@@ -1,5 +1,5 @@
-import type { StateSchema } from 'app/providers/StoreProvider'
-import { ArticleType } from 'entities/Article'
+import type { StateSchema } from '@/app/providers/StoreProvider'
+import { ArticleType } from '@/entities/Article'
 import { getArticleInfiniteListType } from './getArticleInfiniteListType'
 
 describe('getArticleInfiniteListType', () => {

@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import type { ThunkConfig } from 'app/providers/StoreProvider'
-import type { Comment } from 'entities/Comment'
-import { getUserAuthData } from 'entities/User'
-import { getArticleDetailsData } from 'entities/Article'
+import type { ThunkConfig } from '@/app/providers/StoreProvider'
+import type { Comment } from '@/entities/Comment'
+import { getUserAuthData } from '@/entities/User'
+import { getArticleDetailsData } from '@/entities/Article'
 import { articleCommentListActions } from '../../slice/articleCommentListSlice'
 
 export const sendArticleComment = createAsyncThunk<

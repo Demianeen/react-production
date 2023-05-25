@@ -1,5 +1,5 @@
-import GridIcon from 'shared/assets/icons/grid-24-24.svg'
-import ListIcon from 'shared/assets/icons/list-24-24.svg'
+import GridIcon from '@/shared/assets/icons/grid-24-24.svg'
+import ListIcon from '@/shared/assets/icons/list-24-24.svg'
 import { View } from '../const/view'
 
 interface ViewType {

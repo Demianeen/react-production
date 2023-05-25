@@ -1,6 +1,6 @@
-import type { ReactTag } from 'shared/types/ui'
-import { typedForwardRef } from 'shared/lib/react/typedForwardRef/typedForwardRef'
 import type { ForwardedRef } from 'react'
+import type { ReactTag } from '@/shared/types/ui'
+import { typedForwardRef } from '@/shared/lib/react/typedForwardRef/typedForwardRef'
 import type { FlexProps } from '../Flex/Flex'
 import { Flex } from '../Flex/Flex'
 

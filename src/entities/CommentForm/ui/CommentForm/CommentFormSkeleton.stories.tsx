@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
+import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 import { CommentFormSkeleton } from './CommentFormSkeleton'
 
 export default {

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { UserAgent } from 'shared/lib/components/UserAgent/UserAgent'
+import { UserAgent } from '@/shared/lib/components/UserAgent/UserAgent'
 
 interface DesktopViewProps {
   children?: ReactNode

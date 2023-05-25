@@ -1,5 +1,5 @@
-import { Currency } from 'entities/Currency'
-import { Country } from 'entities/Country'
+import { Currency } from '@/entities/Currency'
+import { Country } from '@/entities/Country'
 import type { Profile } from '../model/types/profile'
 
 export const mockProfile: Profile = {

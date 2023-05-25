@@ -1,4 +1,4 @@
-import type { StateSchema } from 'app/providers/StoreProvider'
+import type { StateSchema } from '@/app/providers/StoreProvider'
 import { getArticleInfiniteListIsInitialized } from './getArticleInfiniteListIsInitialized'
 
 describe('getArticleInfiniteListIsInitialized', () => {

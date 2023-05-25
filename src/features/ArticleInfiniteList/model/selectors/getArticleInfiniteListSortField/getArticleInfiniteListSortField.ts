@@ -1,5 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit'
-import { SortField } from 'entities/ListFilters'
+import { SortField } from '@/entities/ListFilters'
 import { getArticleInfiniteListState } from '../getArticleInfiniteListState/getArticleInfiniteListState'
 
 export const getArticleInfiniteListSortField =

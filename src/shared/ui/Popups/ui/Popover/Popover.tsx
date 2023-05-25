@@ -4,10 +4,10 @@ import { Popover as HPopover } from '@headlessui/react'
 import {
   Button,
   ButtonTheme,
-} from 'shared/ui/Button/Button'
-import { classNames } from 'shared/lib/classNames/classNames'
-import type { Direction } from 'shared/types/ui'
-import { mapDirection } from 'shared/ui/Popups/const/mapDirection'
+} from '@/shared/ui/Button/Button'
+import { classNames } from '@/shared/lib/classNames/classNames'
+import type { Direction } from '@/shared/types/ui'
+import { mapDirection } from '@/shared/ui/Popups/const/mapDirection'
 import styles from './Popover.module.scss'
 import popupStyles from '../../styles/Popup.module.scss'
 

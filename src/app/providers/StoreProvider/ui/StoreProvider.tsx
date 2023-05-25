@@ -1,9 +1,9 @@
 import { Provider } from 'react-redux'
-import { createReduxStore } from 'app/providers/StoreProvider/config/store'
-import type { StateSchema } from 'app/providers/StoreProvider/config/stateSchema'
 import type { ReactNode } from 'react'
 import { useMemo } from 'react'
-import type { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
+import { createReduxStore } from '@/app/providers/StoreProvider/config/store'
+import type { StateSchema } from '@/app/providers/StoreProvider/config/stateSchema'
+import type { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 
 interface StoreProviderProps {
   children: ReactNode

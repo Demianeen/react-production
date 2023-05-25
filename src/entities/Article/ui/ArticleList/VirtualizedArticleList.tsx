@@ -10,12 +10,12 @@ import {
   useRef,
   useState,
 } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
-import { View } from 'entities/ListFilters'
 import type { VirtuosoGridHandle } from 'react-virtuoso'
 import { Virtuoso, VirtuosoGrid } from 'react-virtuoso'
 import { useTranslation } from 'react-i18next'
-import { Text, TextSize } from 'shared/ui/Text/Text'
+import { View } from '@/entities/ListFilters'
+import { classNames } from '@/shared/lib/classNames/classNames'
+import { Text, TextSize } from '@/shared/ui/Text/Text'
 import type { Article } from '../../model/types/article'
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
 import { ArticleListSkeleton } from './ArticleListSkeleton'

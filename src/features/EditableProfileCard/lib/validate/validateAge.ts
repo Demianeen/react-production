@@ -1,4 +1,4 @@
-import { ProfileValidationError } from 'features/EditableProfileCard/model/const/profileValidationError'
+import { ProfileValidationError } from '@/features/EditableProfileCard/model/const/profileValidationError'
 
 export const validateAge = (
   age: number | undefined
