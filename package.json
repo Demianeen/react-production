@@ -15,7 +15,7 @@
     "lint:scss": "npx stylelint \"**/*.scss\"",
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
     "test:unit": "jest --config ./config/jest/jest.config.ts",
-    "test:ui": "npx loki test --chromeConcurrency 10 --chromeRetries 3",
+    "test:ui": "npx loki test --chromeConcurrency 10",
     "test:ui:ok": "npx loki approve",
     "test:ui:ci": "concurrently -s first -k \"npm run storybook\" \"npm run test:ui\"",
     "test:ui:json": "node scripts/generate-visual-json-report.js",
