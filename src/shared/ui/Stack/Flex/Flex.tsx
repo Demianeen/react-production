@@ -16,7 +16,12 @@ type FlexJustify =
   | 'end'
   | 'between'
   | 'around'
-type FlexAlign = 'start' | 'center' | 'end' | 'stretch'
+type FlexAlign =
+  | 'start'
+  | 'center'
+  | 'end'
+  | 'stretch'
+  | 'baseline'
 type FlexDirection = 'row' | 'column'
 type FlexWrap = 'wrap' | 'nowrap'
 type FlexGap = 0.25 | 0.5 | 1 | 1.25 | 2
@@ -34,6 +39,7 @@ const alignMap: Record<FlexAlign, string> = {
   center: styles.alignCenter,
   end: styles.alignEnd,
   stretch: styles.alignStretch,
+  baseline: styles.alignBaseline,
 }
 
 const directionMap: Record<FlexDirection, string> = {

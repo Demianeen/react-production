@@ -40,6 +40,10 @@
   align-items: stretch;
 }
 
+.alignBaseline {
+  align-items: baseline;
+}
+
 // direction
 .directionRow {
   flex-direction: row;
