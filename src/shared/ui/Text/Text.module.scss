@@ -1,6 +1,10 @@
 .textContainer {
+  .title {
+    color: var(--primary-color);
+  }
+
   .text {
-    color: var(--secondary-color)
+    color: var(--secondary-color);
   }
 
   // Text alignments
@@ -50,11 +54,11 @@
   // Text themes
   &.error {
     .title {
-      color: var(--red-light)
+      color: var(--red-light);
     }
 
     .text {
-      color: var(--red-dark)
+      color: var(--red-dark);
     }
   }
 

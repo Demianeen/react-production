@@ -1,11 +1,14 @@
 import React, { memo } from 'react'
-import { useGetNotificationsQuery } from 'entities/Notification/api/notificationApiApi'
+import { useGetNotificationsQuery } from 'entities/Notification/api/notificationApi'
 import { NotificationItem } from 'entities/Notification/ui/NotificationItem/NotificationItem'
 import { VStack } from 'shared/ui/Stack'
 import { CardSkeleton } from 'shared/ui/Card/CardSkeleton'
 import { useTranslation } from 'react-i18next'
 import { Text, TextAlign } from 'shared/ui/Text/Text'
 import { classNames } from 'shared/lib/classNames/classNames'
+import { useSelector } from 'react-redux'
+import { getUserId } from 'entities/User'
+import { skipToken } from '@reduxjs/toolkit/query'
 import styles from './NotificationList.module.scss'
 
 interface NotificationListProps {
@@ -15,8 +18,9 @@ interface NotificationListProps {
 export const NotificationList = memo(
   ({ className }: NotificationListProps) => {
     const { t } = useTranslation()
+    const userId = useSelector(getUserId)
     const { data, isLoading, isError } =
-      useGetNotificationsQuery(null, {
+      useGetNotificationsQuery(userId ?? skipToken, {
         pollingInterval: 10000,
       })
 

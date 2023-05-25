@@ -1,51 +1,38 @@
-import type { ReactNode } from 'react'
-import React, { useCallback, useEffect } from 'react'
-import type { Mods } from 'shared/lib/classNames/classNames'
 import { classNames } from 'shared/lib/classNames/classNames'
-import { HStack } from 'shared/ui/Stack'
-import { Overlay } from 'shared/ui/Overlay/Overlay'
-import { Portal } from 'shared/ui/Portal/Portal'
-import { useModal } from 'shared/lib/hooks/useModal/useModal'
+import type { ReactNode } from 'react'
+import React, { memo, useCallback, useEffect } from 'react'
 import { useAnimationLibs } from 'shared/lib/components/AnimationProvider'
+import { Overlay } from '../Overlay/Overlay'
 import styles from './Drawer.module.scss'
+import { Portal } from '../Portal/Portal'
 
 interface DrawerProps {
   className?: string
-  children?: ReactNode
+  children: ReactNode
+  isOpen?: boolean
   onClose?: () => void
-  isOpen: boolean
   lazy?: boolean
 }
 
-const height = window.innerHeight - 210
+const height = window.innerHeight - 100
 
-export const DrawerContent = ({
-  className,
-  children,
-  isOpen,
-  onClose,
-  lazy = false,
-}: DrawerProps) => {
-  const { isClosing, isMounted } = useModal({
-    isOpen,
-    onClose,
-    animationTime: 300,
-  })
+export const DrawerContent = (props: DrawerProps) => {
   const { Spring, Gesture } = useAnimationLibs()
   const [{ y }, api] = Spring.useSpring(() => ({
     y: height,
   }))
+  const { className, children, onClose, isOpen, lazy } =
+    props
 
-  const open = useCallback(
-    (velocity = 0) => {
-      api.start({
-        y: 0,
-        immediate: false,
-        config: { ...Spring.config.stiff, velocity },
-      })
-    },
-    [Spring.config.stiff, api]
-  )
+  const openDrawer = useCallback(() => {
+    api.start({ y: 0, immediate: false })
+  }, [api])
+
+  useEffect(() => {
+    if (isOpen) {
+      openDrawer()
+    }
+  }, [api, isOpen, openDrawer])
 
   const close = (velocity = 0) => {
     api.start({
@@ -62,78 +49,70 @@ export const DrawerContent = ({
       velocity: [, vy],
       direction: [, dy],
       movement: [, my],
+      cancel,
     }) => {
+      if (my < -70) cancel()
+
       if (last) {
-        if (my > height * 0.5 || (vy > 0.5 && dy > 0))
-          close(vy)
-      } else api.start({ y: my, immediate: true })
+        if (my > height * 0.5 || (vy > 0.5 && dy > 0)) {
+          close()
+        } else {
+          openDrawer()
+        }
+      } else {
+        api.start({ y: my, immediate: true })
+      }
     },
     {
       from: () => [0, y.get()],
       filterTaps: true,
-      bounds: { top: -200 },
+      bounds: { top: 0 },
       rubberband: true,
     }
   )
 
-  useEffect(() => {
-    if (isOpen) {
-      open()
-    }
-  }, [isOpen, open])
-
-  if (lazy && !isMounted) {
+  if (!isOpen) {
     return null
   }
 
-  const display = y.to((py) => {
-    return py < height ? 'block' : 'none'
-  })
-
-  if (!isOpen) return null
-
-  const mods: Mods = {
-    [styles.closing]: isClosing,
-    [styles.opened]: isOpen,
-  }
+  const display = y.to((py) =>
+    py < height ? 'block' : 'none'
+  )
 
   return (
     <Portal>
-      <HStack
-        as={Spring.a.div}
-        maxHeight
-        maxWidth
-        justify='center'
-        align='center'
-        className={classNames(styles.drawer, mods, [
+      <div
+        className={classNames(styles.drawer, {}, [
           className,
           'appStyles',
         ])}
       >
-        <Overlay onClick={() => close()} />
+        <Overlay onClick={close} />
         <Spring.a.div
-          className={styles.content}
+          className={styles.sheet}
           style={{
             display,
-            bottom: `calc(-100vh + ${height - 150}px)`,
+            bottom: `calc(-100vh + ${height - 100}px)`,
             y,
           }}
           {...bind()}
         >
+          <div className={styles.handle} />
           {children}
         </Spring.a.div>
-      </HStack>
+      </div>
     </Portal>
   )
 }
 
-export const Drawer = (props: DrawerProps) => {
+export const Drawer = memo((props: DrawerProps) => {
   const { isLoaded } = useAnimationLibs()
 
   if (!isLoaded) {
     return null
   }
 
-  // eslint-disable-next-line react/jsx-props-no-spreading
   return <DrawerContent {...props} />
-}
+})
+
+Drawer.displayName = 'Drawer'
