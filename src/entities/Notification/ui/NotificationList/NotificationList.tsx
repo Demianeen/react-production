@@ -5,6 +5,8 @@ import { VStack } from 'shared/ui/Stack'
 import { CardSkeleton } from 'shared/ui/Card/CardSkeleton'
 import { useTranslation } from 'react-i18next'
 import { Text, TextAlign } from 'shared/ui/Text/Text'
+import { classNames } from 'shared/lib/classNames/classNames'
+import styles from './NotificationList.module.scss'
 
 interface NotificationListProps {
   className?: string
@@ -20,8 +22,15 @@ export const NotificationList = memo(
 
     if (isLoading) {
       return (
-        <VStack className={className} gap={1.25} maxWidth>
-          <CardSkeleton width='100%' height='5.7rem' />
+        <VStack
+          className={classNames('', {}, [
+            className,
+            styles.skeletonWrapper,
+          ])}
+          gap={1.25}
+          maxWidth
+        >
+          <CardSkeleton height='5.7rem' />
           <CardSkeleton width='100%' height='5.7rem' />
           <CardSkeleton width='100%' height='5.7rem' />
         </VStack>

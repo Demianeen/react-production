@@ -12,12 +12,14 @@
   position: relative;
   bottom: 0;
   z-index: var(--modal-z-index);
+  box-sizing: border-box;
   width: 100%;
-  height: 70%;
+  height: 80%;
   min-height: 5rem;
   padding: 1.25rem;
   overflow-x: hidden;
   overflow-y: auto;
+  touch-action: none;
   background: var(--bg-color);
   border-top-left-radius: var(--card-border-radius);
   border-top-right-radius: var(--card-border-radius);
@@ -27,10 +29,10 @@
 
 .content::before {
   position: relative;
-  bottom: 40px;
+  bottom: 3rem;
   display: block;
-  width: 100px;
-  height: 10px;
+  width: 5rem;
+  height: 1rem;
   margin: auto;
   content: '';
   background: var(--bg-color);
