@@ -35,9 +35,7 @@ export const NotificationButton = ({
         </Popover>
       </DesktopView>
       <MobileView>
-        <AnimationProvider>
-          <NotificationDrawer />
-        </AnimationProvider>
+        <NotificationDrawer />
       </MobileView>
     </>
   )
