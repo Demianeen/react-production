@@ -4,18 +4,16 @@ import {
   initialize,
   mswDecorator,
 } from 'msw-storybook-addon'
-import { Theme } from '../../src/app/providers/ThemeProvider'
-import { notificationHandlers } from '../../src/entities/Notification/mocks/notificationHandlers'
+import { articleDetailsHandlers } from '../../src/entities/Article/model/mocks/articleDetailsHandlers'
+import { commentHandlers } from '../../src/entities/Comment/model/mocks/commentHandlers'
+import { imageHandlers } from '../../src/shared/lib/mock-server/imageHandlers'
+import { notificationHandlers } from '../../src/entities/Notification/model/mocks/notificationHandlers'
 import { StyleDecorator } from '../../src/shared/lib/storybook/StyleDecorator'
 import { SuspenseDecorator } from '../../src/shared/lib/storybook/SuspenseDecorator'
 import { ThemeDecorator } from '../../src/shared/lib/storybook/ThemeDecorator'
-import { commentHandlers } from '../../src/entities/Comment'
-import { imageHandlers } from '../../src/shared/lib/mock-server/imageHandlers'
-import {
-  articleDetailsHandlers,
-  articleHandlers,
-} from '../../src/entities/Article'
-import { profileHandlers } from '../../src/entities/Profile'
+import { profileHandlers } from '../../src/entities/Profile/mocks/profileHandlers'
+import { articleHandlers } from '../../src/entities/Article/model/mocks/articleHandlers'
+import { Theme } from '../../src/app/providers/ThemeProvider'
 
 // Initialize MSW
 initialize({

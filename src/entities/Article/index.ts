@@ -8,6 +8,4 @@ export { ArticleList } from './ui/ArticleList/ArticleList'
 export { VirtualizedArticleList } from './ui/ArticleList/VirtualizedArticleList'
 export type { OnOpenArticle } from './ui/ArticleList/VirtualizedArticleList'
 
-export { articleHandlers } from './model/mocks/articleHandlers'
-export { articleDetailsHandlers } from './model/mocks/articleDetailsHandlers'
 export { ArticleType } from '@/entities/Article/model/const/articleType'

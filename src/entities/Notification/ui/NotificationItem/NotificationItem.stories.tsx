@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
-import { mockNotification } from '@/entities/Notification/mocks/notificationMockData'
+import { mockNotification } from '@/entities/Notification/model/mocks/notificationMockData'
 import { NotificationItem } from './NotificationItem'
 
 export default {
