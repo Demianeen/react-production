@@ -10,7 +10,7 @@ export const storiesTemplate = (
     : `import { ${componentName} } from './${componentName}'`
 
   return `import type { Meta, StoryObj } from '@storybook/react'
-import { StoreDecorator } from 'shared/lib/storybook/StoreDecorator'
+import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 ${componentImport}
 
 export default {

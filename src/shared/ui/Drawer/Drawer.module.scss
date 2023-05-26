@@ -11,8 +11,8 @@
   left: 2vw;
   z-index: var(--modal-z-index);
   width: 96vw;
-  height: calc(100vh + 100px);
-  padding: 15px;
+  max-height: calc(100vh);
+  padding: 1rem 1rem 7rem;
   touch-action: none;
   background: var(--bg-color);
   border-radius: 12px 12px 0;

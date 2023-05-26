@@ -50,6 +50,7 @@ type ButtonOwnProps<TTag extends ElementType> = {
   // in case we need to disable the button when we pass it as another component's prop (e.g. Dropdown) where we don't have access to the button's disabled prop
   disabledButton?: boolean
   as?: TTag
+  maxWidth?: boolean
 } & AdditionalProps<TTag>
 
 export type ButtonProps<
@@ -83,6 +84,7 @@ export const Button = typedMemo(
       disabled = false,
       disabledButton = false,
       as,
+      maxWidth = false,
       ...props
     }: ButtonProps<
       WithDefaultTag<TTag, typeof DEFAULT_TAG>
@@ -92,10 +94,13 @@ export const Button = typedMemo(
     >
   ) {
     const isDisabled = disabled ?? disabledButton
+
     const mods: Mods = {
       [styles.square]: square,
       [styles.disabled]: isDisabled,
+      [styles.maxWidth]: maxWidth,
     }
+
     const classes = classNames(styles.button, mods, [
       styles[theme],
       styles[size],

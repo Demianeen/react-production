@@ -9,7 +9,8 @@
   }
 
   // themes
-  &.clear, &.clearInverted {
+  &.clear,
+  &.clearInverted {
     padding: 0;
     background: none;
     border: none;
@@ -77,10 +78,13 @@
     }
   }
 
-  // button statuses
+  // mods
   &.disabled {
     cursor: not-allowed;
     opacity: 0.5;
   }
-}
 
+  &.maxWidth {
+    width: 100%;
+  }
+}

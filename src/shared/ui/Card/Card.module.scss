@@ -1,12 +1,17 @@
 .card {
   padding: 1rem;
-  border-radius: var(--card-border-radius);
 
+  // themes
   &.default {
     background-color: var(--card-bg);
   }
 
   &.outline {
     border: 1px solid var(--primary-color);
+  }
+
+  // mods
+  &.border {
+    border-radius: var(--card-border-radius);
   }
 }

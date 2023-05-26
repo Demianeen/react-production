@@ -1,0 +1,12 @@
+.normal {
+  cursor: pointer;
+  fill: none;
+}
+
+.highlighted {
+  fill: var(--primary-color);
+}
+
+.selected {
+  cursor: auto;
+}

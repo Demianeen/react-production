@@ -11,6 +11,11 @@
     stroke: currentcolor;
   }
 
+  &.both {
+    fill: currentcolor;
+    stroke: currentcolor;
+  }
+
   // color
   &.primary {
     color: var(--primary-color);

@@ -45,8 +45,7 @@ export const useModal = ({
     if (isOpen) {
       setIsMounted(true)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [isOpen])
 
   useEffect(() => {
     if (isOpen) {

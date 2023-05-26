@@ -1,5 +1,10 @@
 import type { ReactNode } from 'react'
-import React, { memo, useCallback, useEffect } from 'react'
+import React, {
+  memo,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import {
   AnimationProvider,
@@ -29,24 +34,38 @@ export const DrawerContent = ({
     y: height,
   }))
 
+  // for close animation
+  const [isClosed, setIsClosed] = useState(!isOpen)
+
+  const handleClose = useCallback(() => {
+    setIsClosed(true)
+    onClose?.()
+  }, [onClose])
+
   const openDrawer = useCallback(() => {
     api.start({ y: 0, immediate: false })
   }, [api])
 
+  const close = useCallback(
+    (velocity = 0) => {
+      api.start({
+        y: height,
+        immediate: false,
+        config: { ...Spring.config.stiff, velocity },
+        onResolve: handleClose,
+      })
+    },
+    [Spring.config.stiff, api, handleClose]
+  )
+
   useEffect(() => {
     if (isOpen) {
+      setIsClosed(false)
       openDrawer()
+    } else {
+      close()
     }
-  }, [api, isOpen, openDrawer])
-
-  const close = (velocity = 0) => {
-    api.start({
-      y: height,
-      immediate: false,
-      config: { ...Spring.config.stiff, velocity },
-      onResolve: onClose,
-    })
-  }
+  }, [api, close, isOpen, openDrawer])
 
   const bind = Gesture.useDrag(
     ({
@@ -76,7 +95,7 @@ export const DrawerContent = ({
     }
   )
 
-  if (!isOpen) {
+  if (isClosed) {
     return null
   }
 
@@ -92,12 +111,12 @@ export const DrawerContent = ({
           'appStyles',
         ])}
       >
-        <Overlay onClick={close} />
+        <Overlay onClick={() => close()} />
         <Spring.a.div
           className={styles.sheet}
           style={{
             display,
-            bottom: `calc(-100vh + ${height - 100}px)`,
+            bottom: `calc(-100vh + ${height}px)`,
             y,
           }}
           {...bind()}

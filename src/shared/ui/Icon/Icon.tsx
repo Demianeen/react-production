@@ -1,11 +1,15 @@
+import type { SVGProps } from 'react'
 import { memo } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import styles from './Icon.module.scss'
 import type Svg from '*.svg'
 
 export enum IconType {
+  // when we need to control the color of the icon
+  NONE = 'none',
   FILL = 'fill',
   STROKE = 'stroke',
+  BOTH = 'both',
 }
 
 export type IconColor =
@@ -13,6 +17,7 @@ export type IconColor =
   | 'secondary'
   | 'invertedPrimary'
   | 'invertedSecondary'
+
 export const colorMap: Record<IconColor, string> = {
   primary: styles.primary,
   secondary: styles.secondary,
@@ -20,7 +25,7 @@ export const colorMap: Record<IconColor, string> = {
   invertedSecondary: styles.invertedSecondary,
 }
 
-interface IconProps {
+interface IconProps extends SVGProps<SVGSVGElement> {
   className?: string
   Svg: Svg
   type?: IconType
@@ -33,6 +38,7 @@ export const Icon = memo(
     Svg,
     type = IconType.FILL,
     color,
+    ...props
   }: IconProps) => {
     return (
       <Svg
@@ -41,6 +47,7 @@ export const Icon = memo(
           styles[type],
           color && colorMap[color],
         ])}
+        {...props}
       />
     )
   }

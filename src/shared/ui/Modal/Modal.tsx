@@ -31,6 +31,7 @@ export const Modal = ({
 
   const mods: Mods = {
     [styles.closing]: isClosing,
+    [styles.closed]: !isOpen && !isClosing,
   }
 
   if (lazy && !isMounted) {

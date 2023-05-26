@@ -4,6 +4,7 @@
   z-index: var(--modal-z-index);
 
   .content {
+    min-width: 25rem;
     max-width: 60%;
     padding: 1.25rem;
     background: var(--bg-color);
@@ -16,6 +17,10 @@
   .content {
     animation: model-disappear 0.3s ease-in-out;
   }
+}
+
+.closed {
+  display: none;
 }
 
 @keyframes modal-appear {

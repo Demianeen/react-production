@@ -34,6 +34,7 @@ module.exports = {
   plugins: [
     '@typescript-eslint',
     'netliukh-demian-fsd-plugin',
+    'unused-imports',
   ],
   settings: {
     react: {
@@ -62,14 +63,6 @@ module.exports = {
         argsIgnorePattern: '^_',
         varsIgnorePattern: '^_',
         caughtErrorsIgnorePattern: '^_',
-      },
-    ],
-    // disallow spreading props in custom ui except those from libraries
-    'react/jsx-props-no-spreading': [
-      1,
-      {
-        html: 'ignore',
-        exceptions: ['Link'],
       },
     ],
     // ensure that every function component declared as an arrow function
@@ -162,6 +155,12 @@ module.exports = {
 
     // to stop getting error highlights from prettier autoformatting
     'prettier/prettier': 0,
+
+    // remove unused imports
+    'unused-imports/no-unused-imports': 1,
+
+    // we can use props spreading sometimes
+    'react/jsx-props-no-spreading': 0,
   },
   overrides: [
     {
