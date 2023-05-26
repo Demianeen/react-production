@@ -35,10 +35,5 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
-    "config/**/*",
-    "./config/jest/setupTests.ts",
-    "webpack.config.ts",
-    "scripts/**/*.ts",
-    "utils/**/*.ts",
   ]
 }

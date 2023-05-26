@@ -29,12 +29,27 @@ module.exports = {
     jsx: true,
     sourceType: 'module',
     useJSXTextNode: true,
-    project: './tsconfig.json',
+    project: ['./tsconfig*.json'],
   },
   plugins: [
     '@typescript-eslint',
     'netliukh-demian-fsd-plugin',
   ],
+  settings: {
+    react: {
+      version: 'detect',
+    },
+    // ensures that eslint understand absolute paths correctly
+    'import/resolver': {
+      typescript: {
+        project: './tsconfig.json',
+      },
+    },
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
+    typescript: {},
+  },
   rules: {
     // ensures that we can handle undefined straight in the component if needed
     'react/require-default-props': 0,
@@ -98,6 +113,7 @@ module.exports = {
           '**/*{.,_}{test,stories}.{ts,tsx}', // mocks and stories where the extension or filename suffix denotes that it is a test
           '.eslintrc.js', // eslint config
           '**/webpack.config.ts', // webpack config
+          'vite.config.ts', // vite config
           'config/**', // project configuration
           '**/storybook/**', // storybook configuration
           'utils/**', // project utils
@@ -146,21 +162,6 @@ module.exports = {
 
     // to stop getting error highlights from prettier autoformatting
     'prettier/prettier': 0,
-  },
-  settings: {
-    react: {
-      version: 'detect',
-    },
-    // ensures that eslint understand absolute paths correctly
-    'import/resolver': {
-      typescript: {
-        project: './tsconfig.json',
-      },
-    },
-    'import/parsers': {
-      '@typescript-eslint/parser': ['.ts', '.tsx'],
-    },
-    typescript: {},
   },
   overrides: [
     {
