@@ -19,6 +19,18 @@ type Story = StoryObj<typeof Card>
 
 export const Light: Story = {}
 
+export const Squared: Story = {
+  args: {
+    squared: true,
+  },
+}
+
+export const MaxWidth: Story = {
+  args: {
+    maxWidth: true,
+  },
+}
+
 export const Dark: Story = {
   decorators: [ThemeDecorator(Theme.DARK)],
 }

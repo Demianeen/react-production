@@ -8,5 +8,9 @@
   "Back to list": "Повернутися до списку",
   "Recommend next": "Рекомендуємо далі",
   "Edit": "Редагувати",
-  "Failed to load articles recommendations": "Failed to load articles recommendations"
+  "Failed to load articles recommendations": "Failed to load articles recommendations",
+  "Evaluate the article": "Оцініть статтю",
+  "Leave a feedback about the article. It can be a comment, a question or a suggestion for improvement.": "Залиште відгук про статтю. Це може бути коментар, питання або пропозиція щодо вдосконалення.",
+  "Thank you for assessment!": "Дякую за оцінку!",
+  "Article rating is unavailable right now. Try again later": "Рейтинг статті недоступний зараз. Спробуйте пізніше"
 }

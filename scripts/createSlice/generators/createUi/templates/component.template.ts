@@ -12,7 +12,7 @@ export const componentTemplate = (
     !isDefaultExport ? 'export ' : ''
   }const`
 
-  return `import { classNames } from "shared/lib/classNames/classNames"
+  return `import { classNames } from "@/shared/lib/classNames/classNames"
 import styles from "./${capitalizedSliceName}.module.scss"
 
 interface ${capitalizedSliceName}Props {

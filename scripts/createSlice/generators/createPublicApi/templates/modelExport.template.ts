@@ -3,10 +3,10 @@ import type { Layer } from '../../../types/createSlice'
 
 export const modelExportTemplate = (
   layer: Layer,
-  sliceName: string,
+  modelName: string,
   reduxSchemaName: string
 ) => {
   const capitalizedSchemaName = capitalize(reduxSchemaName)
   return `export type { ${capitalizedSchemaName} } from './model/types/${reduxSchemaName}'
-export { ${sliceName}Slice } from './model/slice/${sliceName}Slice'\n`
+export { ${modelName}Slice } from './model/slice/${modelName}Slice'\n`
 }

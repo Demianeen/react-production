@@ -3,6 +3,7 @@ import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { Theme } from '@/app/providers/ThemeProvider'
 import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 import { RoutePath } from '@/shared/config/routeConfig/routePath'
+import { InitUserDecorator } from '@/shared/lib/storybook/InitUserDecorator'
 import ProfilePage from './ProfilePage'
 
 export default {
@@ -17,7 +18,7 @@ export default {
       routeParams: { id: '1' },
     },
   },
-  decorators: [StoreDecorator()],
+  decorators: [InitUserDecorator(), StoreDecorator()],
 } as Meta<typeof ProfilePage>
 
 type Story = StoryObj<typeof ProfilePage>

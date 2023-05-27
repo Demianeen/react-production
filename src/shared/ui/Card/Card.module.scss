@@ -14,4 +14,8 @@
   &.border {
     border-radius: var(--card-border-radius);
   }
+
+  &.maxWidth {
+    width: 100%;
+  }
 }

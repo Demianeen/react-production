@@ -5,15 +5,19 @@ import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsLis
 import { ArticleCommentList } from '@/features/ArticleCommentList'
 import { VStack } from '@/shared/ui/Stack'
 import { classNames } from '@/shared/lib/classNames/classNames'
+import { ArticleRating } from '@/features/ArticleRating'
 import styles from './ArticleDetailsPageFooter.module.scss'
 
 interface ArticleDetailsPageFooterProps {
   className?: string
-  id: number
+  articleId: number
 }
 
 export const ArticleDetailsPageFooter = memo(
-  ({ className, id }: ArticleDetailsPageFooterProps) => {
+  ({
+    className,
+    articleId,
+  }: ArticleDetailsPageFooterProps) => {
     const { t } = useTranslation('article-details')
 
     return (
@@ -26,10 +30,11 @@ export const ArticleDetailsPageFooter = memo(
         )}
         maxWidth
       >
+        <ArticleRating articleId={articleId} />
         <Text title={t('Recommend next')} />
         <ArticleRecommendationsList />
         <Text title={t('Comments')} />
-        <ArticleCommentList articleId={Number(id)} />
+        <ArticleCommentList articleId={Number(articleId)} />
       </VStack>
     )
   }

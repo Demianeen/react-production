@@ -7,7 +7,8 @@ import type { Layer } from '../../types/createSlice'
 
 export const createModel = (
   layer: Layer,
-  sliceName: string
+  sliceName: string,
+  modelName: string
 ) => {
   const resolveModelPath = (...segments: string[]) =>
     resolveRoot(
@@ -38,8 +39,8 @@ export const createModel = (
   const createReduxSlice = () => {
     try {
       fs.writeFileSync(
-        resolveModelPath('slice', `${sliceName}Slice.ts`),
-        reduxSliceTemplate(sliceName)
+        resolveModelPath('slice', `${modelName}Slice.ts`),
+        reduxSliceTemplate(modelName)
       )
     } catch (e) {
       if (e instanceof Error) {
@@ -54,8 +55,8 @@ export const createModel = (
   const createReduxSchema = () => {
     try {
       fs.writeFileSync(
-        resolveModelPath('types', `${sliceName}Schema.ts`),
-        reduxSchemaTemplate(sliceName)
+        resolveModelPath('types', `${modelName}Schema.ts`),
+        reduxSchemaTemplate(modelName)
       )
     } catch (e) {
       if (e instanceof Error) {

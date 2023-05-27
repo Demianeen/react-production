@@ -15,8 +15,8 @@ export const createSlice = (
 ) => {
   createSliceFolder(layer, name)
 
-  if (options.model) {
-    createModel(layer, name)
+  if (options.model !== undefined) {
+    createModel(layer, name, options.model)
   }
 
   if (options.api !== undefined) {

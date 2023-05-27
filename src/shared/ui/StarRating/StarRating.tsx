@@ -46,7 +46,7 @@ export const StarRating = memo(
     }
 
     return (
-      <div>
+      <div className={className}>
         {starNumber.map((value) => {
           return (
             <Icon

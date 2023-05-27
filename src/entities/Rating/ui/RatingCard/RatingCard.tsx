@@ -1,3 +1,4 @@
+import type { FormEvent } from 'react'
 import { memo, useCallback, useState } from 'react'
 import { Card } from '@/shared/ui/Card/Card'
 import { StarRating } from '@/shared/ui/StarRating/StarRating'
@@ -20,7 +21,9 @@ interface RatingCardProps {
   feedbackTitle: string
   onCancel?: (starCount: number) => void
   onSubmit?: (starCount: number, feedback?: string) => void
-  noBorderRadius?: boolean
+  squared?: boolean
+  rating?: number
+  maxWidth?: boolean
 }
 
 export const RatingCard = memo(
@@ -30,20 +33,22 @@ export const RatingCard = memo(
     title,
     onSubmit,
     onCancel,
-    noBorderRadius,
+    squared,
+    rating = 0,
+    maxWidth = false,
   }: RatingCardProps) => {
     const { t } = useTranslation()
 
     const [isModalOpen, setIsModalOpen] = useState(false)
-    const [starCount, setStarCount] = useState(0)
+    const [starCount, setStarCount] = useState(rating)
     const [feedback, setFeedback] = useState('')
 
     const onSelectStars = useCallback(
       (newStarCount: number) => {
+        setStarCount(newStarCount)
         if (feedbackTitle !== undefined) {
           setIsModalOpen(true)
         } else {
-          setStarCount(newStarCount)
           onSubmit?.(newStarCount)
         }
       },
@@ -51,10 +56,13 @@ export const RatingCard = memo(
     )
 
     const handleSubmit = useCallback(
-      (event: React.FormEvent<HTMLFormElement>) => {
+      (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         setIsModalOpen(false)
-        onSubmit?.(starCount, feedback)
+        onSubmit?.(
+          starCount,
+          feedback === '' ? undefined : feedback
+        )
       },
       [feedback, onSubmit, starCount]
     )
@@ -79,11 +87,21 @@ export const RatingCard = memo(
     return (
       <Card
         className={className}
-        noBorderRadius={noBorderRadius}
+        squared={squared}
+        maxWidth={maxWidth}
       >
         <VStack align='center' gap={1} maxWidth>
-          <Text title={title} />
-          <StarRating onSelect={onSelectStars} />
+          <Text
+            title={
+              starCount !== 0
+                ? t('Thank you for assessment!')
+                : title
+            }
+          />
+          <StarRating
+            selectedStars={rating}
+            onSelect={onSelectStars}
+          />
         </VStack>
         <DesktopView>
           <Modal

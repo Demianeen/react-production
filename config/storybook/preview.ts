@@ -14,11 +14,10 @@ import { ThemeDecorator } from '../../src/shared/lib/storybook/ThemeDecorator'
 import { profileHandlers } from '../../src/entities/Profile/mocks/profileHandlers'
 import { articleHandlers } from '../../src/entities/Article/model/mocks/articleHandlers'
 import { Theme } from '../../src/app/providers/ThemeProvider'
+import { ratingHandlers } from '../../src/entities/Rating/model/mocks/ratingHandlers'
 
 // Initialize MSW
-initialize({
-  onUnhandledRequest: 'bypass',
-})
+initialize({})
 
 const preview: Preview = {
   parameters: {
@@ -37,6 +36,7 @@ const preview: Preview = {
         comments: commentHandlers,
         image: imageHandlers,
         notification: notificationHandlers,
+        rating: ratingHandlers,
       },
     },
   },

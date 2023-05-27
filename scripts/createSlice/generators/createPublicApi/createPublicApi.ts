@@ -14,7 +14,7 @@ export const createPublicApi = (
   options: CreateSliceOptions
 ) => {
   const componentName = capitalize(sliceName)
-  const reduxSchemaName = `${sliceName}Schema`
+  const reduxSchemaName = `${options.model}Schema`
 
   try {
     const publicApiPath = resolveRoot(
@@ -34,7 +34,7 @@ export const createPublicApi = (
         publicApiPath,
         modelExportTemplate(
           layer,
-          sliceName,
+          options.model,
           reduxSchemaName
         )
       )

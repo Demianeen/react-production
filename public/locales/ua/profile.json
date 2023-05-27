@@ -23,5 +23,8 @@
   "City": "Місто",
   "Username": "Ім'я користувача",
   "Your creative username": "Ваше творче ім'я користувача",
-  "Profile not found": "Профіль не знайдено"
+  "Profile not found": "Профіль не знайдено",
+  "Profile rating is unavailable right now. Try again later": "Рейтинг профілю недоступний зараз. Спробуйте пізніше",
+  "Evaluate the profile": "Оцінити профіль",
+  "What do you like about this profile?": "Що вам подобається в цьому профілі?"
 }

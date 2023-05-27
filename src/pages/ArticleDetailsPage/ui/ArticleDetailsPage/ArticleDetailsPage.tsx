@@ -44,7 +44,7 @@ const ArticleDetailsPage = ({
   return (
     <Page className={className}>
       <ArticleDetails id={numberId} />
-      <ArticleDetailsPageFooter id={numberId} />
+      <ArticleDetailsPageFooter articleId={numberId} />
     </Page>
   )
 }

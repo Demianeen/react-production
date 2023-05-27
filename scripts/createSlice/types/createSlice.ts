@@ -5,6 +5,6 @@ export type Layer =
   | 'entities'
 
 export interface CreateSliceOptions {
-  model: boolean
-  api: string
+  model?: string
+  api?: string
 }

@@ -13,7 +13,8 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
   className?: string
   children: ReactNode
   theme?: CardTheme
-  noBorderRadius?: boolean
+  squared?: boolean
+  maxWidth?: boolean
 }
 
 export const Card = memo(
@@ -21,11 +22,13 @@ export const Card = memo(
     className,
     children,
     theme = CardTheme.DEFAULT,
-    noBorderRadius = false,
+    squared = false,
+    maxWidth = false,
     ...props
   }: CardProps) => {
     const mods: Mods = {
-      [styles.border]: !noBorderRadius,
+      [styles.border]: !squared,
+      [styles.maxWidth]: maxWidth,
     }
 
     return (

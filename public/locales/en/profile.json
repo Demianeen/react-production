@@ -23,5 +23,8 @@
   "City": "City",
   "Username": "Username",
   "Your creative username": "Your creative username",
-  "Profile not found": "Profile not found"
+  "Profile not found": "Profile not found",
+  "Profile rating is unavailable right now. Try again later": "Profile rating is unavailable right now. Try again later",
+  "Evaluate the profile": "Evaluate the profile",
+  "What do you like about this profile?": "What do you like about this profile?"
 }

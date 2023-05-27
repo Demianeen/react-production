@@ -1,4 +1,5 @@
 {
+  "extends": "./tsconfig.json",
   "include": [
     "config/**/*",
     "./config/jest/setupTests.ts",
@@ -6,5 +7,4 @@
     "scripts/**/*.ts",
     "utils/**/*.ts"
   ],
-  "references": [{ "path": "./tsconfig.json" }]
 }

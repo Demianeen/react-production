@@ -11,8 +11,6 @@ export const UserAgent = ({
   mobileView,
 }: UserAgentProps) => {
   const isMobile = useDevice()
-  console.log('isMobile', isMobile)
-  console.log('mobileView', mobileView)
 
   if (mobileView === isMobile) {
     return <>{children}</>

@@ -10,8 +10,8 @@ const argv = minimist(process.argv.slice(2))
 let [layer, sliceName] = argv._
 
 const options: CreateSliceOptions = {
-  model: argv.model,
-  api: argv.api,
+  model: argv.model === true ? sliceName : argv.model,
+  api: argv.api === true ? sliceName : argv.api,
 }
 
 const layers: Layer[] = [
