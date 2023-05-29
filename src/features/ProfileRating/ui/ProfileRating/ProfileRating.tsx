@@ -1,16 +1,17 @@
 import React, { memo, useCallback } from 'react'
-import { RatingCard } from '@/entities/Rating'
+import {
+  RatingCard,
+  RatingCardSkeleton,
+} from '@/entities/Rating'
 import { useTranslation } from 'react-i18next'
-
 import { useSelector } from 'react-redux'
 import { getUserId } from '@/entities/User'
-import { RatingCardSkeleton } from '@/entities/Rating/ui/RatingCard/RatingCardSkeleton'
 import { Text } from '@/shared/ui/Text/Text'
 import { Card } from '@/shared/ui/Card/Card'
 import {
   useGetProfileRatingQuery,
   useRateProfileMutation,
-} from '@/features/ProfileRating/api/profileRatingApi'
+} from '../../api/profileRatingApi'
 
 export interface ProfileRatingProps {
   className?: string

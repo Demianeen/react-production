@@ -1,4 +1,4 @@
-import { UserRole } from '@/entities/User/model/const/userRole'
+import { UserRole } from '../const/userRole'
 import type { User } from '../types/userSchema'
 
 export const mockUser: User = {

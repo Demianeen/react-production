@@ -1,5 +1,5 @@
 import type { Profile } from '@/entities/Profile'
-import { ProfileValidationError } from '@/features/EditableProfileCard/model/const/profileValidationError'
+import { ProfileValidationError } from '../../const/profileValidationError'
 import { validateAge } from '../../../lib/validate/validateAge'
 
 export const validateProfileForm = (profile?: Profile) => {

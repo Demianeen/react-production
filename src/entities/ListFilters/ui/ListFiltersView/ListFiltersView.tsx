@@ -5,7 +5,7 @@ import {
   ButtonTheme,
 } from '@/shared/ui/Button/Button'
 import { Icon } from '@/shared/ui/Icon/Icon'
-import type { View } from '@/entities/ListFilters/model/const/view'
+import type { View } from '@/entities/ListFilters'
 import { viewTypes } from '../../model/types/view'
 import styles from './ListFiltersView.module.scss'
 

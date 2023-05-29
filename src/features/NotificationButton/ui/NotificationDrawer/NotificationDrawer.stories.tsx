@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { NotificationDrawer } from '@/features/NotificationButton/ui/NotificationDrawer/NotificationDrawer'
 import { AnimationProvider } from '@/shared/lib/components/AnimationProvider'
 import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
+import { NotificationDrawer } from './NotificationDrawer'
 
 export default {
   title: 'features/NotificationButton/NotificationDrawer',

@@ -2,7 +2,7 @@ import { rest } from 'msw'
 import { isMockLoading } from '@/shared/lib/mock-server/isMockLoading'
 import { isMockError } from '@/shared/lib/mock-server/isMockError'
 import { isStoryNameIncludes } from '@/shared/lib/mock-server/isStoryNameIncludes'
-import { mockProfileRating } from '@/features/ProfileRating/model/mocks/mockProfileRating'
+import { mockProfileRating } from './mockProfileRating'
 
 export const profileRatingHandlers = [
   rest.get('/profile-rating', (req, res, ctx) => {

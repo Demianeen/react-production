@@ -1,7 +1,8 @@
 import type { Article } from '@/entities/Article'
 import { UserRole } from '@/entities/User'
-import { ArticleBlockType } from '@/entities/Article/model/const/articleBlockType'
-import { ArticleType } from '@/entities/Article/model/const/articleType'
+// TODO
+import { ArticleType } from '@/entities/Article'
+import { ArticleBlockType } from '../../../../entities/Article/model/const/articleBlockType'
 
 export const article: Article = {
   id: 1,

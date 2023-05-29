@@ -1,6 +1,6 @@
 import type { ErrorInfo, ReactNode } from 'react'
 import React from 'react'
-import { PageError } from '@/widgets/PageError/ui/PageError'
+import { PageError } from '@/widgets/PageError'
 import { SuspenseWithSpinner } from '@/shared/ui/SuspenseWithSpinner/SuspenseWithSpinner'
 import { Page } from '@/widgets/Page'
 

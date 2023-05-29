@@ -16,7 +16,7 @@ import { HStack } from '@/shared/ui/Stack'
 import { RoutePath } from '@/shared/config/routeConfig/routePath'
 import { NotificationButton } from '@/features/NotificationButton'
 import { UserDropdown } from '@/features/UserDropdown'
-import { getIsUserLogged } from '@/entities/User/model/selectors/getIsUserLogged/getIsUserLogged'
+import { getIsUserLogged } from '@/entities/User'
 import styles from './Navbar.module.scss'
 
 interface NavbarProps {

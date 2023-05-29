@@ -9,7 +9,7 @@ import type { Currency } from '@/entities/Currency'
 import type { Country } from '@/entities/Country'
 import { Text, TextTheme } from '@/shared/ui/Text/Text'
 import { VStack } from '@/shared/ui/Stack'
-import { ProfileValidationError } from '@/features/EditableProfileCard/model/const/profileValidationError'
+import { ProfileValidationError } from '../../model/const/profileValidationError'
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData'
 import { fetchProfileDataById } from '../../model/services/fetchProfileDataById/fetchProfileDataById'
 import {

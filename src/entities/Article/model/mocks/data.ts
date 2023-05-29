@@ -1,6 +1,6 @@
 import { UserRole } from '@/entities/User'
-import { ArticleBlockType } from '@/entities/Article/model/const/articleBlockType'
-import { ArticleType } from '@/entities/Article/model/const/articleType'
+import { ArticleBlockType } from '../const/articleBlockType'
+import { ArticleType } from '../const/articleType'
 import type { Article } from '../types/article'
 
 export const mockArticle: Article = {

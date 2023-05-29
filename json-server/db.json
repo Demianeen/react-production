@@ -1062,6 +1062,78 @@
       "userId": 1,
       "rating": 3,
       "id": 17
+    },
+    {
+      "articleId": 5,
+      "userId": 1,
+      "rating": 0,
+      "id": 18
+    },
+    {
+      "articleId": 5,
+      "userId": 1,
+      "rating": 0,
+      "id": 19
+    },
+    {
+      "articleId": 5,
+      "userId": 1,
+      "rating": 0,
+      "id": 20
+    },
+    {
+      "articleId": 5,
+      "userId": 1,
+      "rating": 0,
+      "id": 21
+    },
+    {
+      "articleId": 5,
+      "userId": 1,
+      "rating": 0,
+      "id": 22
+    },
+    {
+      "articleId": 5,
+      "userId": 1,
+      "rating": 0,
+      "id": 23
+    },
+    {
+      "articleId": 5,
+      "userId": 1,
+      "rating": 0,
+      "id": 24
+    },
+    {
+      "articleId": 5,
+      "userId": 1,
+      "rating": 0,
+      "id": 25
+    },
+    {
+      "articleId": 5,
+      "userId": 1,
+      "rating": 0,
+      "id": 26
+    },
+    {
+      "articleId": 5,
+      "userId": 1,
+      "rating": 0,
+      "id": 27
+    },
+    {
+      "articleId": 5,
+      "userId": 1,
+      "rating": 0,
+      "id": 28
+    },
+    {
+      "articleId": 5,
+      "userId": 1,
+      "rating": 0,
+      "id": 29
     }
   ],
   "profile-rating": [

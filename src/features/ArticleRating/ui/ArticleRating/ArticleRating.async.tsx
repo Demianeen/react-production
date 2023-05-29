@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react'
-import { RatingCardSkeleton } from '@/entities/Rating/ui/RatingCard/RatingCardSkeleton'
+import { RatingCardSkeleton } from '@/entities/Rating'
 import type { ArticleRatingProps } from './ArticleRating'
 
 const ArticleRatingLazy = lazy(

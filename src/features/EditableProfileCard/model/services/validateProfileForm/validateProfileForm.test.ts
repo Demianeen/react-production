@@ -1,4 +1,4 @@
-import { ProfileValidationError } from '@/features/EditableProfileCard/model/const/profileValidationError'
+import { ProfileValidationError } from '../../const/profileValidationError'
 import { validateAge } from '../../../lib/validate/validateAge'
 import { mockProfile } from '../../mocks/data'
 import { validateProfileForm } from './validateProfileForm'

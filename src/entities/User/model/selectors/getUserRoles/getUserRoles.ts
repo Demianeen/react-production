@@ -1,5 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit'
-import { UserRole } from '@/entities/User/model/const/userRole'
+import { UserRole } from '../../const/userRole'
 import { getUserAuthData } from '../getUserAuthData/getUserAuthData'
 
 export const getUserRoles = createSelector(

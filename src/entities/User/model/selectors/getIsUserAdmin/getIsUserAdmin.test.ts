@@ -1,5 +1,5 @@
 import type { StateSchema } from '@/app/providers/StoreProvider'
-import { UserRole } from '@/entities/User/model/const/userRole'
+import { UserRole } from '../../const/userRole'
 import { getIsUserAdmin } from './getIsUserAdmin'
 
 describe('getIsUserAdmin', () => {

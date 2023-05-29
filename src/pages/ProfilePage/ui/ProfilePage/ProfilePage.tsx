@@ -6,7 +6,7 @@ import {
   getProfileError,
 } from '@/features/EditableProfileCard'
 import { Text, TextTheme } from '@/shared/ui/Text/Text'
-import { Page } from '@/widgets/Page/ui/Page/Page'
+import { Page } from '@/widgets/Page'
 import { VStack } from '@/shared/ui/Stack'
 import { ProfileRating } from '@/features/ProfileRating'
 import { useSelector } from 'react-redux'

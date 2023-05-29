@@ -1,6 +1,6 @@
 import type { User } from '@/entities/User'
-import type { ArticleBlockType } from '@/entities/Article/model/const/articleBlockType'
-import type { ArticleType } from '@/entities/Article/model/const/articleType'
+import type { ArticleBlockType } from '../const/articleBlockType'
+import type { ArticleType } from '../const/articleType'
 
 export interface ArticleBlockBase {
   id: number

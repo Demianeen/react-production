@@ -145,7 +145,7 @@ module.exports = {
     // TODO: enable later
     // 'import/no-cycle': 0,
 
-    // checks path for fsd violations
+    // checks if path should be relative
     // TODO: add autofix
     // 'netliukh-demian-fsd-plugin/check-path': [
     //   2,
@@ -153,6 +153,14 @@ module.exports = {
     //     alias: '@/',
     //   },
     // ],
+
+    // check if absolute imports is imported from public api
+    'netliukh-demian-fsd-plugin/public-api-imports': [
+      2,
+      {
+        alias: '@/',
+      },
+    ],
 
     // we use only Button component where type is required
     'react/button-has-type': 0,

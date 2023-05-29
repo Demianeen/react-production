@@ -2,7 +2,7 @@ import { rest } from 'msw'
 import { isMockLoading } from '@/shared/lib/mock-server/isMockLoading'
 import { isMockError } from '@/shared/lib/mock-server/isMockError'
 import { isStoryNameIncludes } from '@/shared/lib/mock-server/isStoryNameIncludes'
-import { mockArticleRating } from '@/features/ArticleRating/model/mocks/mockArticleRating'
+import { mockArticleRating } from './mockArticleRating'
 
 export const articleRatingHandlers = [
   rest.get('/article-rating', (req, res, ctx) => {

@@ -11,8 +11,8 @@ import { Button } from '@/shared/ui/Button/Button'
 import { View } from '@/entities/ListFilters'
 import { AppLink } from '@/shared/ui/AppLink/AppLink'
 import { HStack, VStack } from '@/shared/ui/Stack'
-import { ArticleBlockType } from '@/entities/Article/model/const/articleBlockType'
 import { RoutePath } from '@/shared/config/routeConfig/routePath'
+import { ArticleBlockType } from '../../model/const/articleBlockType'
 import type { OnOpenArticle } from '../ArticleList/VirtualizedArticleList'
 import type {
   Article,
