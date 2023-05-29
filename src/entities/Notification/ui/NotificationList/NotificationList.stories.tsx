@@ -11,7 +11,11 @@ export default {
     backgroundColor: { control: 'color' },
   },
   args: {},
-  parameters: {},
+  parameters: {
+    loki: {
+      skip: true,
+    },
+  },
   decorators: [StoreDecorator()],
 } as Meta<typeof NotificationList>
 

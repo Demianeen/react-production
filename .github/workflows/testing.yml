@@ -32,11 +32,11 @@ jobs:
       matrix:
         node-version: [20.x]
     steps:
-      - name: Cache deps
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+#      - name: Cache deps
+#        uses: actions/cache@v3
+#        with:
+#          path: ~/.npm
+#          key: node-modules-${{ hashFiles('**/package-lock.json') }}
       - uses: actions/checkout@v3
       - name: Starting Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
