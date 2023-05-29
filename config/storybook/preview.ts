@@ -34,8 +34,8 @@ const preview: Preview = {
     msw: {
       handlers: {
         profile: profileHandlers,
-        articles: articleHandlers,
         articleDetails: articleDetailsHandlers,
+        articles: articleHandlers,
         comments: commentHandlers,
         image: imageHandlers,
         notification: notificationHandlers,

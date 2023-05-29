@@ -1,6 +1,6 @@
 import { rest } from 'msw'
 import { isMockLoading } from 'shared/lib/mock-server/isMockLoading'
-import { mockProfile } from '../../../features/EditableProfileCard/model/mocks/data'
+import { mockProfile } from './data'
 
 export const profileHandlers = [
   rest.get('/profile/:profileId', (req, res, ctx) => {
