@@ -139,6 +139,7 @@
   },
   "loki": {
     "fetchFailIgnore": "https://mockapi.com/*",
+    "skipStories": "(?<!is )loading",
     "diffingEngine": "gm",
     "gm": {
       "tolerance": 0.00024
