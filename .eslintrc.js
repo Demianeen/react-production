@@ -147,7 +147,12 @@ module.exports = {
 
     // checks path for fsd violations
     // TODO: add autofix
-    // 'netliukh-demian-fsd-plugin/check-path': 2,
+    // 'netliukh-demian-fsd-plugin/check-path': [
+    //   2,
+    //   {
+    //     alias: '@/',
+    //   },
+    // ],
 
     // we use only Button component where type is required
     'react/button-has-type': 0,
