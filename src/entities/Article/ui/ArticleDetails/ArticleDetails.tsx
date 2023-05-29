@@ -154,7 +154,7 @@ export const ArticleDetails = memo(
             <Icon color='primary' Svg={CalendarIcon} />
             <Text text={article?.createdAt} />
           </HStack>
-          {article?.blocks.map(renderBlock)}
+          {article?.blocks?.map(renderBlock)}
         </>
       )
     }
