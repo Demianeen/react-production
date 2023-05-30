@@ -10,7 +10,8 @@ import { VirtualizedArticleList } from '@/entities/Article'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import type { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
-import { PageError } from '@/widgets/PageError'
+import { Text, TextSize } from '@/shared/ui/Text/Text'
+import { HStack } from '@/shared/ui/Stack'
 import { initArticleInfiniteList } from '../../model/services/initArticleInfiniteList/initArticleInfiniteList'
 import { getArticleInfiniteListView } from '../../model/selectors/getArticleInfiniteListView/getArticleInfiniteListView'
 import { ArticleInfiniteListFilters } from '../ArticleInfiniteListFilters/ArticleInfiniteListFilters'
@@ -75,7 +76,19 @@ export const ArticleInfiniteList = ({
   }, [dispatch])
 
   if (error) {
-    return <PageError text={t('Failed to load articles')} />
+    return (
+      <HStack
+        justify='center'
+        align='center'
+        maxWidth
+        maxHeight
+      >
+        <Text
+          title={t('Failed to load articles')}
+          size={TextSize.L}
+        />
+      </HStack>
+    )
   }
 
   return (

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
-import { Theme } from '@/app/providers/ThemeProvider'
+import { Theme } from '@/shared/const/theme'
 import { StarRating } from './StarRating'
 
 export default {

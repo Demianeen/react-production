@@ -56,7 +56,7 @@ export const mockArticle: Article = {
     {
       id: 3,
       type: ArticleBlockType.CODE,
-      code: "mocks1 path = require('path');\n\nmocks1 server = jsonServer.create();\n\nmocks1 router = jsonServer.router(path.resolve(__dirname, 'db.json'));\n\nserver.use(jsonServer.defaults({}));\nserver.use(jsonServer.bodyParser);",
+      code: "mock path = require('path');\n\nmock server = jsonServer.create();\n\nmock router = jsonServer.router(path.resolve(__dirname, 'db.json'));\n\nserver.use(jsonServer.defaults({}));\nserver.use(jsonServer.bodyParser);",
     },
     {
       id: 7,

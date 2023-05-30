@@ -1,8 +1,8 @@
 import { memo, useMemo, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import { ThemeSwitcher } from '@/widgets/ThemeSwitcher'
-import { LangSwitcher } from '@/widgets/LangSwitcher'
+import { ThemeSwitcher } from 'src/features/ThemeSwitcher'
+import { LangSwitcher } from 'src/features/LangSwitcher'
 import {
   Button,
   ButtonSize,
@@ -17,7 +17,7 @@ interface SidebarProps {
   className?: string
 }
 
-// TODO: sidebar is rerendering after page route change
+// FIXME: sidebar is rerendering after page route change
 export const Sidebar = memo(
   ({ className }: SidebarProps) => {
     const [isCollapsed, setIsCollapsed] = useState(false)

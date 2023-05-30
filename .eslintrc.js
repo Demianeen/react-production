@@ -102,7 +102,7 @@ module.exports = {
           'spec/**', // mocha, rspec-like pattern
           '**/__tests__/**', // jest pattern
           '**/__mocks__/**', // jest pattern
-          '**/*{.,_}{test,stories}.{ts,tsx}', // mocks1 and stories where the extension or filename suffix denotes that it is a test
+          '**/*{.,_}{test,stories}.{ts,tsx}', // mocks and stories where the extension or filename suffix denotes that it is a test
           '.eslintrc.js', // eslint config
           '**/webpack.config.ts', // webpack config
           'vite.config.ts', // vite config
@@ -167,6 +167,19 @@ module.exports = {
       },
     ],
 
+    // disallows imports from higher layers
+    'netliukh-demian-fsd-plugin/layer-imports': [
+      2,
+      {
+        alias: '@/',
+        ignoreFilesPatterns: [
+          '**/StoreProvider',
+          'entities/User',
+          'app/providers/StoreProvider/config/stateSchema',
+        ],
+      },
+    ],
+
     // we use only Button component where type is required
     'react/button-has-type': 0,
 
@@ -185,10 +198,10 @@ module.exports = {
       files: [
         '**/src/**/*.{stories,test}.{ts,tsx}',
         '**/storybook/**/*.{ts,tsx}',
-        '**/mocks1/**/*.{ts,tsx}',
+        '**/mocks/**/*.{ts,tsx}',
       ],
       rules: {
-        // we don't need internalization in mocks1
+        // we don't need internalization in mocks
         'i18next/no-literal-string': 0,
         // we use props spreading in stories
         'react/jsx-props-no-spreading': 0,
@@ -235,6 +248,13 @@ module.exports = {
       files: ['config/jest/**/*.{ts,tsx}'],
       rules: {
         '@typescript-eslint/naming-convention': 0,
+      },
+    },
+    {
+      // places where to turn off layer-imports
+      files: ['src/shared/lib/storybook/*'],
+      rules: {
+        'netliukh-demian-fsd-plugin/layer-imports': 0,
       },
     },
   ],

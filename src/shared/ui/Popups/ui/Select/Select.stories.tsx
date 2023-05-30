@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
-import { Theme } from '@/app/providers/ThemeProvider'
+import { Theme } from '@/shared/const/theme'
 import { LayoutDecorator } from '@/shared/lib/storybook/LayoutDecorator'
 import { Select } from './Select'
 
