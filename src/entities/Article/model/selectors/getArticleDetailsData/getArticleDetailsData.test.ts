@@ -1,5 +1,5 @@
 import type { StateSchema } from '@/app/providers/StoreProvider'
-import { mockArticle } from '../../mocks/data'
+import { mockArticle } from '../../mocks/mockArticle'
 import { getArticleDetailsData } from './getArticleDetailsData'
 
 describe('getArticleDetailsData', () => {

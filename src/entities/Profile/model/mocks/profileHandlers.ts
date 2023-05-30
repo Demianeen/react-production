@@ -1,6 +1,6 @@
 import { rest } from 'msw'
 import { isMockLoading } from '@/shared/lib/mock-server/isMockLoading'
-import { mockProfile } from './data'
+import { mockProfile } from './mockProfile'
 
 export const profileHandlers = [
   rest.get('/profile/:profileId', (req, res, ctx) => {

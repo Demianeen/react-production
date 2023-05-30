@@ -1,17 +1,18 @@
 import { ARTICLE_VIEW_LOCALSTORAGE_KEY } from '@/shared/const/localstorage'
 import { View } from '@/entities/ListFilters'
+import {
+  anotherMockArticleEntities,
+  anotherMockArticleIds,
+  anotherMockArticles,
+  mockArticleEntities,
+  mockArticleIds,
+} from '@/entities/Article/testing'
 import { fetchArticles } from '../services/fetchArticles/fetchArticles'
 import type { ArticleInfiniteListSchema } from '../types/articleInfiniteListSchema'
 import {
   articleInfiniteListActions,
   articleInfiniteListReducer,
 } from './articleInfiniteListSlice'
-import {
-  anotherArticleIds,
-  anotherArticles,
-  articleIds,
-  getArticleEntities,
-} from '../mocks/data'
 
 describe('articleInfiniteListSlice', () => {
   beforeEach(() => {
@@ -82,8 +83,8 @@ describe('articleInfiniteListSlice', () => {
 
   test('fetchArticles service pending', () => {
     const state: DeepPartial<ArticleInfiniteListSchema> = {
-      entities: getArticleEntities(),
-      ids: articleIds,
+      entities: mockArticleEntities,
+      ids: mockArticleIds,
       isLoading: false,
       error: 'error',
     }
@@ -93,8 +94,8 @@ describe('articleInfiniteListSlice', () => {
         fetchArticles.pending
       )
     ).toEqual({
-      entities: getArticleEntities(),
-      ids: articleIds,
+      entities: mockArticleEntities,
+      ids: mockArticleIds,
       isLoading: true,
       error: undefined,
     })
@@ -102,8 +103,8 @@ describe('articleInfiniteListSlice', () => {
 
   test('fetchArticles service pending with replace = true', () => {
     const state: DeepPartial<ArticleInfiniteListSchema> = {
-      entities: getArticleEntities(),
-      ids: articleIds,
+      entities: mockArticleEntities,
+      ids: mockArticleIds,
       isLoading: false,
       error: 'error',
     }
@@ -122,8 +123,8 @@ describe('articleInfiniteListSlice', () => {
 
   test('fetchArticles service fulfilled', () => {
     const state: DeepPartial<ArticleInfiniteListSchema> = {
-      entities: getArticleEntities(),
-      ids: articleIds,
+      entities: mockArticleEntities,
+      ids: mockArticleIds,
       isLoading: true,
       error: undefined,
       limit: 12,
@@ -131,14 +132,14 @@ describe('articleInfiniteListSlice', () => {
     expect(
       articleInfiniteListReducer(
         state as ArticleInfiniteListSchema,
-        fetchArticles.fulfilled(anotherArticles, '')
+        fetchArticles.fulfilled(anotherMockArticles, '')
       )
     ).toEqual({
       entities: {
-        ...getArticleEntities(),
-        ...getArticleEntities(anotherArticles),
+        ...mockArticleEntities,
+        ...anotherMockArticleEntities,
       },
-      ids: [...articleIds, ...anotherArticleIds],
+      ids: [...mockArticleIds, ...anotherMockArticleIds],
       isLoading: false,
       error: undefined,
       hasMore: true,
@@ -148,8 +149,8 @@ describe('articleInfiniteListSlice', () => {
 
   test('fetchArticles service fulfilled with replace = true', () => {
     const state: DeepPartial<ArticleInfiniteListSchema> = {
-      entities: getArticleEntities(),
-      ids: articleIds,
+      entities: mockArticleEntities,
+      ids: mockArticleIds,
       isLoading: true,
       error: undefined,
       limit: 12,
@@ -157,13 +158,13 @@ describe('articleInfiniteListSlice', () => {
     expect(
       articleInfiniteListReducer(
         state as ArticleInfiniteListSchema,
-        fetchArticles.fulfilled(anotherArticles, '', {
+        fetchArticles.fulfilled(anotherMockArticles, '', {
           replace: true,
         })
       )
     ).toEqual({
-      entities: getArticleEntities(anotherArticles),
-      ids: anotherArticleIds,
+      entities: anotherMockArticleEntities,
+      ids: anotherMockArticleIds,
       isLoading: false,
       error: undefined,
       hasMore: true,

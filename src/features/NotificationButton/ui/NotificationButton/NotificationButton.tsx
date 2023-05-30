@@ -5,7 +5,7 @@ import NotificationIcon from '@/shared/assets/icons/notification-20-20.svg'
 import { Icon } from '@/shared/ui/Icon/Icon'
 import { DesktopView } from '@/shared/lib/components/UserAgent/DesktopView'
 import { MobileView } from '@/shared/lib/components/UserAgent/MobileView'
-import { NotificationDrawer } from '@/features/NotificationButton/ui/NotificationDrawer/NotificationDrawer'
+import { NotificationDrawer } from '../NotificationDrawer/NotificationDrawer'
 import styles from './NotificationButton.module.scss'
 
 interface NotificationButtonProps {

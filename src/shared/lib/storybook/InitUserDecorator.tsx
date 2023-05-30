@@ -1,7 +1,7 @@
 import type { StoryFn } from '@storybook/react'
 import { AUTH_DATA_LOCALSTORAGE_KEY } from '@/shared/const/localstorage'
-import { mockUser } from '@/entities/User/model/mocks/data'
 import { userActions } from '@/entities/User'
+import { mockUser } from '@/entities/User/testing'
 import { useAppDispatch } from '../hooks/useAppDispatch/useAppDispatch'
 
 export const InitUserDecorator = (userId = 1) =>

@@ -1,6 +1,6 @@
 import { rest } from 'msw'
 import { isMockLoading } from '@/shared/lib/mock-server/isMockLoading'
-import { mockComments } from './data'
+import { mockComments } from './mockCommentEntities'
 
 export const commentHandlers = [
   rest.get('/comments', (req, res, ctx) => {

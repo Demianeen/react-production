@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { View } from '@/entities/ListFilters'
 import { ParentDecorator } from '@/shared/lib/storybook/ParentDecorator'
-import { mockArticle } from '../../model/mocks/data'
+import { mockArticle } from '../../model/mocks/mockArticle'
 import { ArticleListItem } from './ArticleListItem'
 
 export default {

@@ -11,7 +11,7 @@ import { notificationHandlers } from '../../src/entities/Notification/model/mock
 import { StyleDecorator } from '../../src/shared/lib/storybook/StyleDecorator'
 import { SuspenseDecorator } from '../../src/shared/lib/storybook/SuspenseDecorator'
 import { ThemeDecorator } from '../../src/shared/lib/storybook/ThemeDecorator'
-import { profileHandlers } from '../../src/entities/Profile/mocks/profileHandlers'
+import { profileHandlers } from '../../src/entities/Profile/model/mocks/profileHandlers'
 import { articleHandlers } from '../../src/entities/Article/model/mocks/articleHandlers'
 import { Theme } from '../../src/app/providers/ThemeProvider'
 import { ratingHandlers } from '../../src/entities/Rating/model/mocks/ratingHandlers'

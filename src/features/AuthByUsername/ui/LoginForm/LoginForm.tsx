@@ -14,16 +14,16 @@ import type { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/use
 import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { VStack } from '@/shared/ui/Stack'
-import { getLoginFormPassword } from '../../modal/selectors/getLoginFormPassword/getLoginFormPassword'
-import { getLoginFormError } from '../../modal/selectors/getLoginFormError/getLoginFormError'
-import { getLoginFormUsername } from '../../modal/selectors/getLoginFormUsername/getLoginFormUsername'
-import { getLoginFormIsLoading } from '../../modal/selectors/getLoginFormIsLoading/getLoginFormIsLoading'
-import styles from './LoginForm.module.scss'
 import {
   loginActions,
   loginReducer,
-} from '../../modal/slice/loginFormSlice'
-import { loginByUsername } from '../../modal/services/loginByUsername/loginByUsername'
+} from '../../model/slice/loginFormSlice'
+import { getLoginFormPassword } from '../../model/selectors/getLoginFormPassword/getLoginFormPassword'
+import { getLoginFormError } from '../../model/selectors/getLoginFormError/getLoginFormError'
+import { getLoginFormUsername } from '../../model/selectors/getLoginFormUsername/getLoginFormUsername'
+import { getLoginFormIsLoading } from '../../model/selectors/getLoginFormIsLoading/getLoginFormIsLoading'
+import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername'
+import styles from './LoginForm.module.scss'
 
 interface LoginFormProps {
   className?: string

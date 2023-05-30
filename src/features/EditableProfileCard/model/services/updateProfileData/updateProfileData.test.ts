@@ -1,6 +1,6 @@
 import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk'
+import { mockProfile } from '@/entities/Profile/testing'
 import { ProfileValidationError } from '../../const/profileValidationError'
-import { mockProfile } from '../../mocks/data'
 import { validateProfileForm } from '../validateProfileForm/validateProfileForm'
 import { updateProfileData } from './updateProfileData'
 

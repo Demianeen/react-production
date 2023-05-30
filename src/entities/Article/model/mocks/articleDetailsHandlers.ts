@@ -1,7 +1,7 @@
 import { rest } from 'msw'
 import { isMockLoading } from '@/shared/lib/mock-server/isMockLoading'
 import { isMockError } from '@/shared/lib/mock-server/isMockError'
-import { mockArticle } from './data'
+import { mockArticle } from './mockArticle'
 
 export const articleDetailsHandlers = [
   rest.get('/articles/:articleId', (req, res, ctx) => {

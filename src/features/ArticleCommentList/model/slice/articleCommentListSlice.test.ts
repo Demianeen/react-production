@@ -1,4 +1,8 @@
-import { comments, entities, ids } from '../mocks/data'
+import {
+  mockCommentEntities,
+  mockCommentIds,
+  mockComments,
+} from '@/entities/Comment/testing'
 import { articleCommentListReducer } from './articleCommentListSlice'
 import type { ArticleCommentListSchema } from '../types/articleCommentListSchema'
 import { fetchCommentsByArticleId } from '../services/fetchCommentsByArticleId/fetchCommentsByArticleId'
@@ -24,9 +28,17 @@ describe('articleCommentsSlice', () => {
     expect(
       articleCommentListReducer(
         state as ArticleCommentListSchema,
-        fetchCommentsByArticleId.fulfilled(comments, '', 1)
+        fetchCommentsByArticleId.fulfilled(
+          mockComments,
+          '',
+          1
+        )
       )
-    ).toEqual({ isLoading: false, entities, ids })
+    ).toEqual({
+      isLoading: false,
+      entities: mockCommentEntities,
+      ids: mockCommentIds,
+    })
   })
 
   test('fetchCommentsByArticleId service rejected', () => {

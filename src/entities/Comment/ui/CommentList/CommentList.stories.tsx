@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { Theme } from '@/app/providers/ThemeProvider'
-import { mockComments } from '../../model/mocks/data'
+import { mockComments } from '../../model/mocks/mockCommentEntities'
 import { CommentList } from './CommentList'
 
 export default {

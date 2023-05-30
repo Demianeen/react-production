@@ -1,6 +1,6 @@
 import { Currency } from '@/entities/Currency'
 import { Country } from '@/entities/Country'
-import type { Profile } from '../model/types/profile'
+import type { Profile } from '../types/profile'
 
 export const mockProfile: Profile = {
   id: 1,

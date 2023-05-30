@@ -1,6 +1,6 @@
 import { rest } from 'msw'
 import { isMockLoading } from '@/shared/lib/mock-server/isMockLoading'
-import { mockArticle } from './data'
+import { mockArticle } from './mockArticle'
 import type { Article } from '../types/article'
 
 export const articleHandlers = [

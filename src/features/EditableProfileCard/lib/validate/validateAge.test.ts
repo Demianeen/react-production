@@ -1,6 +1,6 @@
+import { mockProfile } from '@/entities/Profile/testing'
 import { ProfileValidationError } from '../../model/const/profileValidationError'
 import { validateProfileForm } from '../../model/services/validateProfileForm/validateProfileForm'
-import { mockProfile } from '../../model/mocks/data'
 
 describe('validateAge', () => {
   test('success', () => {

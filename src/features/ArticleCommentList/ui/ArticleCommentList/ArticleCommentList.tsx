@@ -9,9 +9,11 @@ import type { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/use
 import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { CommentList } from '@/entities/Comment'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { CommentForm } from '@/entities/CommentForm'
+import {
+  CommentForm,
+  CommentFormSkeleton,
+} from '@/entities/CommentForm'
 import { VStack } from '@/shared/ui/Stack'
-import { CommentFormSkeleton } from '@/entities/CommentForm/ui/CommentForm/CommentFormSkeleton'
 import { sendArticleComment } from '../../model/services/sendArticleComment/sendArticleComment'
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId'
 import { getArticleCommentListIsLoading } from '../../model/selectors/getArticleCommentListIsLoading/getArticleCommentListIsLoading'

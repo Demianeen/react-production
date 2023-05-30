@@ -1,6 +1,6 @@
 import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk'
+import { mockArticles } from '@/entities/Article/testing'
 import { fetchArticles } from './fetchArticles'
-import { articles } from '../../mocks/data'
 
 describe('fetchArticles', () => {
   test('fulfilled', async () => {
@@ -10,11 +10,11 @@ describe('fetchArticles', () => {
       },
     })
     thunk.api.get.mockReturnValue(
-      Promise.resolve({ data: articles })
+      Promise.resolve({ data: mockArticles })
     )
     const result = await thunk.call()
 
-    expect(result.payload).toEqual(articles)
+    expect(result.payload).toEqual(mockArticles)
     expect(thunk.api.get).toHaveBeenCalled()
     expect(result.meta.requestStatus).toEqual('fulfilled')
   })

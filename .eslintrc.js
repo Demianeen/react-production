@@ -142,8 +142,7 @@ module.exports = {
     // we always need to add deps to useEffect
     'react-hooks/exhaustive-deps': 2,
 
-    // TODO: enable later
-    // 'import/no-cycle': 0,
+    'import/no-cycle': 0,
 
     // checks if path should be relative
     // TODO: add autofix
@@ -159,6 +158,12 @@ module.exports = {
       2,
       {
         alias: '@/',
+        testFilesPatterns: [
+          '**/*.test.*',
+          '**/storybook/**',
+          '**/*.stories.*',
+          '**/mocks/*',
+        ],
       },
     ],
 

@@ -1,4 +1,6 @@
 import { UserRole } from '@/entities/User'
+import { getMockEntities } from '@/shared/lib/tests/entities/getMockEntities'
+import { getMockIds } from '@/shared/lib/tests/entities/getMockIds'
 import type { Comment } from '../types/comment'
 
 export const mockComments: Comment[] = [
@@ -36,3 +38,7 @@ export const mockComments: Comment[] = [
     },
   },
 ]
+
+export const mockCommentEntities =
+  getMockEntities(mockComments)
+export const mockCommentIds = getMockIds(mockComments)

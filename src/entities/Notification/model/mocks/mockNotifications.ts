@@ -26,10 +26,3 @@ export const mockNotifications = [
     userId: 1,
   },
 ]
-
-export const mockNotification = {
-  id: 1,
-  title: 'Title',
-  description: 'Something happened',
-  userId: 1,
-}
