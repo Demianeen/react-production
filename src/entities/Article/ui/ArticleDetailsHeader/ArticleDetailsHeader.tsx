@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { Button } from '@/shared/ui/Button/Button'
 import { AppLink } from '@/shared/ui/AppLink/AppLink'
 import { HStack } from '@/shared/ui/Stack'
-import { RoutePath } from '@/shared/config/routeConfig/routePath'
+import { RoutePath } from '@/shared/const/routePath'
 import { getArticleDetailsError } from '../../model/selectors/getArticleDetailsError/getArticleDetailsError'
 import { getArticleDetailsCanEdit } from '../../model/selectors/getArticleDetailsCanEdit/getArticleDetailsCanEdit'
 

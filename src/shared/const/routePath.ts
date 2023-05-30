@@ -1,4 +1,4 @@
-import { AppRoutes } from '@/shared/config/routeConfig/appRoutes'
+import { AppRoutes } from '@/shared/const/appRoutes'
 
 export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.HOME]: '/',

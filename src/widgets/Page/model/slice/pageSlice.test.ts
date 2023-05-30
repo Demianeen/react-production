@@ -1,4 +1,4 @@
-import { RoutePath } from '@/shared/config/routeConfig/routePath'
+import { RoutePath } from '@/shared/const/routePath'
 import type { PageSchema } from '../types/PageSchema'
 import { pageActions, pageReducer } from './pageSlice'
 

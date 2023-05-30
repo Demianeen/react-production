@@ -4,7 +4,7 @@ import { Avatar } from '@/shared/ui/Avatar/Avatar'
 import { Text } from '@/shared/ui/Text/Text'
 import { AppLink } from '@/shared/ui/AppLink/AppLink'
 import { HStack } from '@/shared/ui/Stack'
-import { RoutePath } from '@/shared/config/routeConfig/routePath'
+import { RoutePath } from '@/shared/const/routePath'
 import styles from './CommentCard.module.scss'
 import type { Comment } from '../../model/types/comment'
 

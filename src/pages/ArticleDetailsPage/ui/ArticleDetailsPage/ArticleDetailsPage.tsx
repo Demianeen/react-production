@@ -7,7 +7,7 @@ import { Page } from '@/widgets/Page'
 import { Button } from '@/shared/ui/Button/Button'
 import { AppLink } from '@/shared/ui/AppLink/AppLink'
 import { VStack } from '@/shared/ui/Stack'
-import { RoutePath } from '@/shared/config/routeConfig/routePath'
+import { RoutePath } from '@/shared/const/routePath'
 import { ArticleDetailsPageFooter } from '../ArticleDetailsPageFooter/ArticleDetailsPageFooter'
 
 interface ArticleDetailsPageProps {

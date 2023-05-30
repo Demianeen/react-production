@@ -3,7 +3,7 @@ import HomeIcon from '@/shared/assets/icons/home-20-20.svg'
 import AboutIcon from '@/shared/assets/icons/about-us-20-20.svg'
 import ProfileIcon from '@/shared/assets/icons/profile-17-20.svg'
 import ArticlesIcon from '@/shared/assets/icons/articles-20-20.svg'
-import { RoutePath } from '@/shared/config/routeConfig/routePath'
+import { RoutePath } from '@/shared/const/routePath'
 import { getSidebarItems } from './getSidebarItems'
 
 describe('getSidebarItems', () => {

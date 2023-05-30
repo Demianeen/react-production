@@ -1,10 +1,10 @@
 import { memo, Suspense, useMemo } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import type { AppRouteProps } from '@/shared/config/routeConfig/routeConfig'
-import { routeConfig } from '@/shared/config/routeConfig/routeConfig'
+import { routeConfig } from '@/app/providers/router/config/routeConfig'
 import { PageLoader } from '@/widgets/PageLoader'
 import { RequireAuth } from '@/app/providers/router/ui/RequireAuth'
 import { RequireRoles } from '@/app/providers/router/ui/RequireRoles'
+import type { AppRouteProps } from '@/shared/types/router'
 
 export const AppRouter = memo(() => {
   const routes = useMemo(() => {
