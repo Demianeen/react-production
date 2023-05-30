@@ -3,13 +3,10 @@ import { memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import {
-  Button,
-  ButtonTheme,
-} from '@/shared/ui/Button/Button'
-import { Input } from '@/shared/ui/Input/Input'
-import { Text, TextTheme } from '@/shared/ui/Text/Text'
-import { Spinner } from '@/shared/ui/Spinner/Spinner'
+import { Button, ButtonTheme } from '@/shared/ui/Button'
+import { Input } from '@/shared/ui/Input'
+import { Text, TextTheme } from '@/shared/ui/Text'
+import { Spinner } from '@/shared/ui/Spinner'
 import type { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'

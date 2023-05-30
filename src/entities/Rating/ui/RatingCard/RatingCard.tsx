@@ -1,19 +1,16 @@
 import type { FormEvent } from 'react'
 import { memo, useCallback, useState } from 'react'
-import { Card } from '@/shared/ui/Card/Card'
-import { StarRating } from '@/shared/ui/StarRating/StarRating'
+import { Card } from '@/shared/ui/Card'
+import { StarRating } from '@/shared/ui/StarRating'
 import { HStack, VStack } from '@/shared/ui/Stack'
-import { Modal } from '@/shared/ui/Modal/Modal'
-import { Input } from '@/shared/ui/Input/Input'
+import { Modal } from '@/shared/ui/Modal'
+import { Input } from '@/shared/ui/Input'
 import { useTranslation } from 'react-i18next'
-import { Text } from '@/shared/ui/Text/Text'
-import {
-  Button,
-  ButtonTheme,
-} from '@/shared/ui/Button/Button'
+import { Text } from '@/shared/ui/Text'
+import { Button, ButtonTheme } from '@/shared/ui/Button'
 import { DesktopView } from '@/shared/lib/components/UserAgent/DesktopView'
 import { MobileView } from '@/shared/lib/components/UserAgent/MobileView'
-import { Drawer } from '@/shared/ui/Drawer/Drawer'
+import { Drawer } from '@/shared/ui/Drawer'
 
 interface RatingCardProps {
   className?: string

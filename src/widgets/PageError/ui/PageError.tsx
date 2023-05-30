@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Button } from '@/shared/ui/Button/Button'
-import { Text } from '@/shared/ui/Text/Text'
+import { Button } from '@/shared/ui/Button'
+import { Text } from '@/shared/ui/Text'
 import { VStack } from '@/shared/ui/Stack'
 
 interface PageErrorProps {

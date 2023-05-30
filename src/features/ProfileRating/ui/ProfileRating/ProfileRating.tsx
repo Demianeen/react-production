@@ -6,8 +6,8 @@ import {
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { getUserId } from '@/entities/User'
-import { Text } from '@/shared/ui/Text/Text'
-import { Card } from '@/shared/ui/Card/Card'
+import { Text } from '@/shared/ui/Text'
+import { Card } from '@/shared/ui/Card'
 import {
   useGetProfileRatingQuery,
   useRateProfileMutation,

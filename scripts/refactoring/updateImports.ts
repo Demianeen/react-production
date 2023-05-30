@@ -14,15 +14,7 @@ const isLayer = (path: string) => {
     'pages',
   ]
 
-  const result = layers.some((layer) =>
-    path.startsWith(layer)
-  )
-
-  if (path.startsWith('pages') && !result) {
-    console.log('path', path)
-  }
-
-  return result
+  return layers.some((layer) => path.startsWith(layer))
 }
 
 project.getSourceFiles().forEach((sourceFile) => {

@@ -5,16 +5,15 @@ import {
   Text,
   TextAlign,
   TextTheme,
-} from '@/shared/ui/Text/Text'
-import { Input } from '@/shared/ui/Input/Input'
-import { Avatar } from '@/shared/ui/Avatar/Avatar'
+} from '@/shared/ui/Text'
+import { Input, InputSkeleton } from '@/shared/ui/Input'
+import { Avatar } from '@/shared/ui/Avatar'
 import type { Currency } from '@/entities/Currency'
 import { SelectCurrency } from '@/entities/Currency'
 import type { Country } from '@/entities/Country'
 import { SelectCountry } from '@/entities/Country'
-import { Skeleton } from '@/shared/ui/Skeleton/Skeleton'
+import { Skeleton } from '@/shared/ui/Skeleton'
 import { HStack } from '@/shared/ui/Stack'
-import { InputSkeleton } from '@/shared/ui/Input/InputSkeleton'
 import type { Profile } from '../../model/types/profile'
 import styles from './ProfileCard.module.scss'
 

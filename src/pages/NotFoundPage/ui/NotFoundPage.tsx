@@ -2,11 +2,7 @@ import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Page } from '@/widgets/Page'
 import { HStack } from '@/shared/ui/Stack'
-import {
-  Text,
-  TextSize,
-  TextTheme,
-} from '@/shared/ui/Text/Text'
+import { Text, TextSize, TextTheme } from '@/shared/ui/Text'
 
 interface NotFoundPageProps {
   className?: string

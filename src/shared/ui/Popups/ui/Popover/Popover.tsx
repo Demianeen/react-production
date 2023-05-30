@@ -1,13 +1,10 @@
 import type { ReactNode } from 'react'
 import React from 'react'
 import { Popover as HPopover } from '@headlessui/react'
-import {
-  Button,
-  ButtonTheme,
-} from '@/shared/ui/Button/Button'
+import { Button, ButtonTheme } from '@/shared/ui/Button'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import type { Direction } from '@/shared/types/ui'
-import { mapDirection } from '@/shared/ui/Popups/const/mapDirection'
+import { mapDirection } from '../../const/mapDirection'
 import styles from './Popover.module.scss'
 import popupStyles from '../../styles/Popup.module.scss'
 

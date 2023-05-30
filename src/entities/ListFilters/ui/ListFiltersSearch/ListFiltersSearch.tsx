@@ -1,6 +1,6 @@
 import { memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Input } from '@/shared/ui/Input/Input'
+import { Input } from '@/shared/ui/Input'
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce'
 
 interface ListFiltersSearchProps {

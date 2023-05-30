@@ -1,13 +1,13 @@
 import { memo, useMemo, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import { ThemeSwitcher } from 'src/features/ThemeSwitcher'
-import { LangSwitcher } from 'src/features/LangSwitcher'
+import { ThemeSwitcher } from '@/features/ThemeSwitcher'
+import { LangSwitcher } from '@/features/LangSwitcher'
 import {
   Button,
   ButtonSize,
   ButtonTheme,
-} from '@/shared/ui/Button/Button'
+} from '@/shared/ui/Button'
 import { HStack, VStack } from '@/shared/ui/Stack'
 import { getSidebarItems } from '../../model/selectors/getSidebarItems/getSidebarItems'
 import { SidebarItem } from '../SidebarItem/SidebarItem'
