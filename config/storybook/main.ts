@@ -14,7 +14,7 @@ const config: StorybookConfig = {
     options: {},
   },
   features: {
-    storyStoreV7: false, // for loki to support storybook v7
+    // storyStoreV7: false, // for loki to support storybook v7
   },
   staticDirs: ['./public'],
 }

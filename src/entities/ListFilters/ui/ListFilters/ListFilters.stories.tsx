@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 import { SortOrder } from '@/shared/const/sort'
-import { View } from '@/entities/ListFilters'
+import { View } from '../..'
 import { SortField } from '../../model/const/sortField'
 import { ListFilters } from './ListFilters'
 

@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import type { Mods } from '@/shared/lib/classNames/classNames'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import { Skeleton } from '@/shared/ui/Skeleton'
+import { Skeleton } from '../Skeleton'
 import styles from './Card.module.scss'
 
 interface CardSkeletonProps {

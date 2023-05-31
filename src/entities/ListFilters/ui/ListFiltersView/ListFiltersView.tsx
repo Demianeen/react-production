@@ -2,7 +2,7 @@ import { memo, useCallback } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { Button, ButtonTheme } from '@/shared/ui/Button'
 import { Icon } from '@/shared/ui/Icon'
-import type { View } from '@/entities/ListFilters'
+import type { View } from '../..'
 import { viewTypes } from '../../model/types/view'
 import styles from './ListFiltersView.module.scss'
 

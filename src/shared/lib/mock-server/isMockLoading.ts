@@ -1,4 +1,4 @@
-import { isStoryNameIncludes } from '@/shared/lib/mock-server/isStoryNameIncludes'
+import { isStoryNameIncludes } from './isStoryNameIncludes'
 
 export const isMockLoading = () => {
   return isStoryNameIncludes('loading')

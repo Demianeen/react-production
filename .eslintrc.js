@@ -145,13 +145,12 @@ module.exports = {
     'import/no-cycle': 0,
 
     // checks if path should be relative
-    // TODO: add autofix
-    // 'netliukh-demian-fsd-plugin/check-path': [
-    //   2,
-    //   {
-    //     alias: '@/',
-    //   },
-    // ],
+    'netliukh-demian-fsd-plugin/check-path': [
+      2,
+      {
+        alias: '@/',
+      },
+    ],
 
     // check if absolute imports is imported from public api
     'netliukh-demian-fsd-plugin/public-api-imports': [
