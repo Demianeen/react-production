@@ -15,4 +15,4 @@ export { getIsUserLogged } from './model/selectors/getIsUserLogged/getIsUserLogg
 export { getUserRoles } from './model/selectors/getUserRoles/getUserRoles'
 export { getIsUserAdmin } from './model/selectors/getIsUserAdmin/getIsUserAdmin'
 export { getIsUserManager } from './model/selectors/getIsUserManager/getIsUserManager'
-export { UserRole } from '@/entities/User/model/const/userRole'
+export { UserRole } from './model/const/userRole'
