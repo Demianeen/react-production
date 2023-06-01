@@ -65,7 +65,7 @@ export const BackgroundInverted: Template = {
 
 export const Square: Template = {
   args: {
-    square: true,
+    squared: true,
     theme: ButtonTheme.BACKGROUND_INVERTED,
     children: '>',
   },
@@ -73,7 +73,7 @@ export const Square: Template = {
 
 export const SquareSizeL: Template = {
   args: {
-    square: true,
+    squared: true,
     theme: ButtonTheme.BACKGROUND_INVERTED,
     children: '>',
     size: ButtonSize.L,
@@ -82,7 +82,7 @@ export const SquareSizeL: Template = {
 
 export const SquareSizeXL: Template = {
   args: {
-    square: true,
+    squared: true,
     theme: ButtonTheme.BACKGROUND_INVERTED,
     children: '>',
     size: ButtonSize.XL,

@@ -55,7 +55,7 @@ export const Sidebar = memo(
           theme={ButtonTheme.BACKGROUND_INVERTED}
           className={styles.toggleBtn}
           onClick={onToggle}
-          square
+          squared
           size={ButtonSize.L}
           type='button'
         >
