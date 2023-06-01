@@ -17,7 +17,13 @@ import { Portal } from '../Portal/Portal'
 interface DrawerProps {
   className?: string
   children: ReactNode
+  /**
+   * @description Flag to open/close drawer
+   */
   isOpen?: boolean
+  /**
+   * @description Callback to close drawer
+   */
   onClose?: () => void
 }
 

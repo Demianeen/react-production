@@ -14,6 +14,9 @@ type HTMLInputProps = Omit<
 >
 
 interface InputProps extends HTMLInputProps {
+  /**
+   * @description Input block label
+   */
   label?: string
   className?: string
   value?: string | number
@@ -21,6 +24,9 @@ interface InputProps extends HTMLInputProps {
   autoFocus?: boolean
   readonly?: boolean
   wrapperClassName?: string
+  /**
+   * @description Flag to set width to 100% for input
+   */
   maxWidth?: boolean
 }
 

@@ -7,6 +7,9 @@ interface SkeletonProps {
   className?: string
   height?: string
   width?: string
+  /**
+   * @description Border radius of skeleton
+   */
   borderRadius?: string
 }
 

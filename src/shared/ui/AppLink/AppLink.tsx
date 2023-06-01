@@ -14,6 +14,10 @@ export enum AppLinkTheme {
 
 export interface AppLinkProps extends LinkProps {
   className?: string
+  /**
+   * @description AppLink theme. Responsible for AppLink's color.
+   * @default AppLinkTheme.PRIMARY
+   */
   theme?: AppLinkTheme
 }
 

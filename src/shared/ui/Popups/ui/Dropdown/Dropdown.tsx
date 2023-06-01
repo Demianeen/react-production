@@ -29,9 +29,18 @@ export type DropdownItem = {
 
 interface DropdownProps {
   className?: string
-  /* trigger is a Button */
+  /**
+   * @description Children of trigger Button component
+   */
   triggerChildren: ReactNode
+  /**
+   * @description List of items to render in dropdown
+   */
   items: DropdownItem[]
+  /**
+   * @description Direction of dropdown
+   * @default 'down-left'
+   */
   direction?: Direction
 }
 

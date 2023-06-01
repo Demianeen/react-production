@@ -8,7 +8,13 @@ import styles from './WithLabel.module.scss'
 interface WithLabelSkeletonProps {
   className?: string
   children: ReactNode
+  /**
+   * @description The class name for the wrapper
+   */
   wrapperClassName?: string
+  /**
+   * @description Flag to set width to 100%
+   */
   maxWidth?: boolean
 }
 

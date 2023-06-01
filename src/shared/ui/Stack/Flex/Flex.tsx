@@ -69,14 +69,38 @@ const gapMap: Record<FlexGap, string> = {
 export interface FlexOwnProps<TTag extends ElementType> {
   className?: string
   children?: ReactNode
+  /**
+   * @description Justify content css property
+   */
   justify?: FlexJustify
+  /**
+   * @description Align items css property
+   */
   align?: FlexAlign
+  /**
+   * @description Flex direction css property
+   */
   direction?: FlexDirection
+  /**
+   * @description Flex wrap css property
+   */
   wrap?: FlexWrap
+  /**
+   * @description Gap between flex items
+   */
   gap?: FlexGap
   height?: string
+  /**
+   * @description Flag to set width: 100%
+   */
   maxWidth?: boolean
+  /**
+   * @description Flag to set height: 100%
+   */
   maxHeight?: boolean
+  /**
+   * @description Tag name or component
+   */
   as?: TTag
 }
 

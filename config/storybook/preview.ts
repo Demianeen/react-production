@@ -13,8 +13,8 @@ import { SuspenseDecorator } from '../../src/shared/lib/storybook/SuspenseDecora
 import { ThemeDecorator } from '../../src/shared/lib/storybook/ThemeDecorator'
 import { profileHandlers } from '../../src/entities/Profile/model/mocks/profileHandlers'
 import { articleHandlers } from '../../src/entities/Article/model/mocks/articleHandlers'
-import { Theme } from '../../src/app/providers/ThemeProvider'
 import { ratingHandlers } from '../../src/entities/Rating/model/mocks/ratingHandlers'
+import { Theme } from '../../src/shared/const/theme'
 
 // Initialize MSW
 initialize({})

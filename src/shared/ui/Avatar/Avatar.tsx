@@ -5,7 +5,14 @@ import styles from './Avatar.module.scss'
 
 export interface AvatarProps {
   className?: string
+  /**
+   * @description Avatar image source.
+   */
   src: string
+  /**
+   * @description Avatar width and height.
+   * @default 8rem
+   */
   size?: string
 }
 

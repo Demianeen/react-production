@@ -10,11 +10,20 @@ import popupStyles from '../../styles/Popup.module.scss'
 
 interface PopoverProps {
   className?: string
+  /**
+   * @description Flag to show/hide modal
+   */
   maxWidth?: boolean
   readonly?: boolean
   children?: ReactNode
-  /* trigger is a Button */
+  /**
+   * @description Children of trigger Button component
+   */
   triggerChildren: ReactNode
+  /**
+   * @description Direction of dropdown
+   * @default 'down-left'
+   */
   direction?: Direction
 }
 

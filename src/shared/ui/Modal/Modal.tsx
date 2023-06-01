@@ -11,8 +11,17 @@ import styles from './Modal.module.scss'
 interface ModalProps {
   className?: string
   children?: ReactNode
+  /**
+   * @description Flag to show/hide modal
+   */
   isOpen: boolean
+  /**
+   * @description Callback to close modal
+   */
   onClose?: () => void
+  /**
+   * @description Flag to render modal only when it is open
+   */
   lazy?: boolean
 }
 

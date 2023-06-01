@@ -20,14 +20,26 @@ export interface SelectOption<T extends string> {
 
 interface SelectProps<T extends string> {
   className?: string
+  /**
+   * @description Label of select block
+   */
   label?: string
+  /**
+   * @description List of items to render in select dropdown
+   */
   options: SelectOption<T>[]
   value?: T
   defaultValue?: string | T
   onChange?: (value: T) => void
   readonly?: boolean
+  /**
+   * @description Flag that sets width to 100% for select
+   */
   maxWidth?: boolean
-  // TODO: Implement directions with floating-ui
+  /**
+   * @description Direction of dropdown
+   * @default 'down-left'
+   */
   direction?: Direction
   name?: string
 }

@@ -11,6 +11,14 @@ interface UseModalProps {
   animationTime?: number
 }
 
+/**
+ * @description Reusable hook for modal components (modal/drawer)
+ *
+ * @param {boolean} isOpen
+ * @param {(() => void) | undefined} onClose
+ * @param {number | undefined} animationTime
+ * @returns {{isMounted: boolean, isClosing: boolean, close: () => void}}
+ */
 export const useModal = ({
   isOpen,
   onClose,

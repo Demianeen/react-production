@@ -27,8 +27,18 @@ export const colorMap: Record<IconColor, string> = {
 
 interface IconProps extends SVGProps<SVGSVGElement> {
   className?: string
+  /**
+   * @description Icon component
+   */
   Svg: Svg
+  /**
+   * @description Icon fill type
+   * @default IconType.FILL
+   */
   type?: IconType
+  /**
+   * @description Icon color
+   */
   color?: IconColor
 }
 

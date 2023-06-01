@@ -6,8 +6,20 @@ import styles from './StarRating.module.scss'
 
 interface StarRatingProps {
   className?: string
+  /**
+   * @description Called when a star is selected
+   * @param {number} starNumber
+   */
   onSelect: (starNumber: number) => void
+  /**
+   * @description Height and width of the star
+   * @default 2rem
+   */
   size?: string
+  /**
+   * @default 0
+   * @description 0 means no stars are selected
+   */
   selectedStars?: number
 }
 

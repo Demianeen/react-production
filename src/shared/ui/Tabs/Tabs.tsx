@@ -12,11 +12,19 @@ export interface TabItem<T extends string> {
 
 interface TabsProps<T extends string> {
   className?: string
+  /**
+   * @description The tabs to display
+   */
   tabs: TabItem<T>[]
   value: T
+  /**
+   * @description Called when a tab is clicked
+   * @param {T} value
+   */
   onTabClick: (value: T) => void
 }
 
+// TODO: Implement with headless ui
 export const Tabs = typedMemo(
   <T extends string>({
     className,
@@ -40,7 +48,7 @@ export const Tabs = typedMemo(
             role='tab'
             theme={
               value === tab.value
-                ? CardTheme.DEFAULT
+                ? CardTheme.FILLED
                 : CardTheme.OUTLINE
             }
             className={styles.tab}

@@ -3,7 +3,7 @@ import { classNames } from '@/shared/lib/classNames/classNames'
 import styles from './Text.module.scss'
 
 export enum TextTheme {
-  DEFAULT = 'normal',
+  NORMAL = 'normal',
   INVERTED = 'inverted',
   ERROR = 'error',
 }
@@ -22,14 +22,43 @@ export enum TextSize {
 
 interface TextProps {
   className?: string
+  /**
+   * @description The text to display
+   */
   text?: string
+  /**
+   * @description The title attribute for the text
+   */
   textTitle?: string
+  /**
+   * @description The tag to use for the text
+   */
   TextTag?: 'p' | 'span'
+  /**
+   * @description The title of the text
+   */
   title?: string
+  /**
+   * @description The title attribute for the title
+   */
   titleTitle?: string
+  /**
+   * @description The tag to use for the title
+   */
   TitleTag?: 'h1' | 'h2' | 'h3' | 'p' | 'span'
+  /**
+   * @description The theme of the text. Changes the color
+   * @default TextTheme.NORMAL
+   */
   theme?: TextTheme
+  /**
+   * @description The text alignment
+   */
   align?: TextAlign
+  /**
+   * @description The size of the text
+   * @default TextSize.M
+   */
   size?: TextSize
   // eslint-disable-next-line @typescript-eslint/naming-convention
   'data-testid'?: string
@@ -54,7 +83,7 @@ export const Text = memo(
     text,
     textTitle,
     TextTag = 'p',
-    theme = TextTheme.DEFAULT,
+    theme = TextTheme.NORMAL,
     align = TextAlign.LEFT,
     size = TextSize.M,
     'data-testid': dataTestId = 'Text',

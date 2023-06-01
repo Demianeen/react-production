@@ -43,13 +43,31 @@ type AdditionalProps<TTag extends ElementType> =
 type ButtonOwnProps<TTag extends ElementType> = {
   className?: string
   children?: ReactNode
+  /**
+   * @description Button theme. Responsible for button's color and border.
+   * @default ButtonTheme.OUTLINE
+   */
   theme?: ButtonTheme
-  square?: boolean
+  /**
+   * @description Flag to make button squared.
+   */
+  squared?: boolean
+  /**
+   * @description Button size. Responsible for button's text size.
+   */
   size?: ButtonSize
   disabled?: boolean
-  // in case we need to disable the button when we pass it as another component's prop (e.g. Dropdown) where we don't have access to the button's disabled prop
+  /**
+   * @description Flag to disable button when we need to disable the button when we pass it as another component's prop (e.g. Dropdown) where button disable props is used as another component prop.
+   */
   disabledButton?: boolean
+  /**
+   * @description Tag to render button as.
+   */
   as?: TTag
+  /**
+   * @description Flag to make button's width 100%.
+   */
   maxWidth?: boolean
 } & AdditionalProps<TTag>
 
@@ -79,7 +97,7 @@ export const Button = typedMemo(
       className,
       children,
       theme = ButtonTheme.OUTLINE,
-      square = false,
+      squared = false,
       size = ButtonSize.M,
       disabled = false,
       disabledButton = false,
@@ -96,7 +114,7 @@ export const Button = typedMemo(
     const isDisabled = disabled ?? disabledButton
 
     const mods: Mods = {
-      [styles.square]: square,
+      [styles.squared]: squared,
       [styles.disabled]: isDisabled,
       [styles.maxWidth]: maxWidth,
     }
