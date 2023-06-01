@@ -107,8 +107,8 @@ More about [Storybook](./docs/storybook.md)
 ## Project configuration
 
 For development, the project contains 2 configs:
-1. Webpack - ./config/build
-2. Vite - vite.config.ts
+1. Webpack - [./config/build](./config/build)
+2. Vite - [vite.config.ts](./vite.config.ts)
 
 Both builders are adapted to the main features of the application.
 
@@ -170,7 +170,14 @@ For asynchronous connection of reducers (to avoid bundling them together in one 
 - [ThemeSwitcher](./src/features/ThemeSwitcher)
 - [UserDropdown](./src/features/UserDropdown)
 
-### Pages
+## Widgets
+- [Navbar](./src/widgets/Navbar)
+- [Page](./src/widgets/Page)
+- [PageError](./src/widgets/PageError)
+- [PageLoader](./src/widgets/PageLoader)
+- [Sidebar](./src/widgets/Sidebar)
+
+## Pages
 - [AboutPage](./src/pages/AboutPage)
 - [AdminPanelPage](./src/pages/AdminPanelPage)
 - [ArticleDetailsPage](./src/pages/ArticleDetailsPage)
@@ -180,10 +187,3 @@ For asynchronous connection of reducers (to avoid bundling them together in one 
 - [HomePage](./src/pages/HomePage)
 - [NotFoundPage](./src/pages/NotFoundPage)
 - [ProfilePage](./src/pages/ProfilePage)
-
-### Widgets
-- [Navbar](./src/widgets/Navbar)
-- [Page](./src/widgets/Page)
-- [PageError](./src/widgets/PageError)
-- [PageLoader](./src/widgets/PageLoader)
-- [Sidebar](./src/widgets/Sidebar)
