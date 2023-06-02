@@ -4,7 +4,7 @@ import { InitUserDecorator } from '@/shared/lib/storybook/InitUserDecorator'
 import ArticleRating from './ArticleRating'
 
 export default {
-  title: 'features/ProfileRating',
+  title: 'features/ArticleRating',
   component: ArticleRating,
   argTypes: {
     backgroundColor: { control: 'color' },
