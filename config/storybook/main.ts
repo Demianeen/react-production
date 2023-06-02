@@ -7,10 +7,16 @@ const config: StorybookConfig = {
   ],
   addons: [
     '@storybook/addon-links',
-    '@storybook/addon-essentials',
+    {
+      name: '@storybook/addon-essentials',
+      options: {
+        backgrounds: false,
+      },
+    },
     '@storybook/addon-interactions',
     'storybook-addon-react-router-v6',
     '@storybook/addon-a11y',
+    'storybook-addon-themes',
   ],
   framework: {
     name: '@storybook/react-webpack5',

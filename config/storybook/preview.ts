@@ -10,7 +10,6 @@ import { imageHandlers } from '../../src/shared/lib/mock-server/imageHandlers'
 import { notificationHandlers } from '../../src/entities/Notification/model/mocks/notificationHandlers'
 import { StyleDecorator } from '../../src/shared/lib/storybook/StyleDecorator'
 import { SuspenseDecorator } from '../../src/shared/lib/storybook/SuspenseDecorator'
-import { ThemeDecorator } from '../../src/shared/lib/storybook/ThemeDecorator'
 import { profileHandlers } from '../../src/entities/Profile/model/mocks/profileHandlers'
 import { articleHandlers } from '../../src/entities/Article/model/mocks/articleHandlers'
 import { ratingHandlers } from '../../src/entities/Rating/model/mocks/ratingHandlers'
@@ -39,8 +38,25 @@ const preview: Preview = {
         rating: ratingHandlers,
       },
     },
-    loki: {
-      delay: 1000,
+    themes: {
+      default: 'light',
+      list: [
+        {
+          name: 'light',
+          class: ['app', Theme.LIGHT],
+          color: '#fffbfe',
+        },
+        {
+          name: 'dark',
+          class: ['app', Theme.DARK],
+          color: '#1c1b1f',
+        },
+        {
+          name: 'red',
+          class: ['app', Theme.RED],
+          color: '#de2560',
+        },
+      ],
     },
   },
   decorators: [
@@ -48,7 +64,6 @@ const preview: Preview = {
     withRouter,
     mswDecorator,
     SuspenseDecorator,
-    ThemeDecorator(Theme.LIGHT),
   ],
 }
 
