@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
+import { LayoutDecorator } from '@/shared/lib/storybook/LayoutDecorator'
 import { ArticleInfiniteList } from './ArticleInfiniteList'
 
 export default {
@@ -8,7 +9,10 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  decorators: [StoreDecorator()],
+  decorators: [
+    StoreDecorator(),
+    LayoutDecorator('fullpage'),
+  ],
 } as Meta<typeof ArticleInfiniteList>
 
 type Story = StoryObj<typeof ArticleInfiniteList>
