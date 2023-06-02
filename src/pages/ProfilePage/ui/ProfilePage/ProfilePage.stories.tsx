@@ -17,6 +17,9 @@ export default {
       routePath: `${RoutePath.profile}:id`,
       routeParams: { id: '1' },
     },
+    loki: {
+      skip: true,
+    },
   },
   decorators: [InitUserDecorator(), StoreDecorator()],
 } as Meta<typeof ProfilePage>
