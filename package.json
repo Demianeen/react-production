@@ -29,7 +29,7 @@
     "generate:slice": "ts-node ./scripts/createSlice/index.ts",
     "rename:slice": "ts-node ./scripts/renameSlice/index.ts",
     "prepare": "husky install",
-    "postinstall": "patch-package"
+    "postinstall": "rimraf ./node_modules/.cache && patch-package"
   },
   "keywords": [],
   "author": "",
@@ -107,6 +107,7 @@
     "react-refresh": "^0.14.0",
     "reg-cli": "^0.17.7",
     "regenerator-runtime": "^0.13.11",
+    "rimraf": "^5.0.1",
     "sass": "^1.62.1",
     "sass-loader": "^13.2.2",
     "storybook": "^7.0.12",

@@ -27,7 +27,7 @@ export default (
     stats: {
       errorDetails: true,
     },
-    devtool: isDev && 'eval-source-map',
+    devtool: isDev && 'eval-cheap-module-source-map',
     devServer: isDev ? buildDevServer(options) : undefined,
   }
 }

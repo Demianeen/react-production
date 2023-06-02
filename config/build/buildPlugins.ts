@@ -15,27 +15,17 @@ export default ({
   apiURL,
   project,
 }: BuildOptions): webpack.WebpackPluginInstance[] => {
+  const isProd = !isDev
+
   const plugins: webpack.WebpackPluginInstance[] = [
     new HtmlWebpackPlugin({
       template: paths.html,
     }),
     new ProgressPlugin(),
-    new MiniCSSExtractPlugin({
-      filename: 'css/[name].[contenthash:8].css',
-      chunkFilename: 'css/[name].[contenthash:8].css',
-    }),
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
       __API__: JSON.stringify(apiURL),
       __PROJECT__: JSON.stringify(project),
-    }),
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: paths.locales,
-          to: paths.buildLocales,
-        },
-      ],
     }),
     new ForkTsCheckerWebpackPlugin({
       typescript: {
@@ -55,8 +45,27 @@ export default ({
     }),
   ]
 
+  const prodPlugins = [
+    new MiniCSSExtractPlugin({
+      filename: 'css/[name].[contenthash:8].css',
+      chunkFilename: 'css/[name].[contenthash:8].css',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: paths.locales,
+          to: paths.buildLocales,
+        },
+      ],
+    }),
+  ]
+
   if (isDev) {
     plugins.push(...devPlugins)
+  }
+
+  if (isProd) {
+    plugins.push(...prodPlugins)
   }
 
   if (isAnalyze) {
