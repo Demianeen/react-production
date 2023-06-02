@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { Button } from '@/shared/ui/Button'
 import { AppLink } from '@/shared/ui/AppLink'
 import { HStack } from '@/shared/ui/Stack'
-import { RoutePath } from '@/shared/const/routePath'
+import { routes } from '@/shared/lib/router/routes'
 import { getArticleDetailsError } from '../../model/selectors/getArticleDetailsError/getArticleDetailsError'
 import { getArticleDetailsCanEdit } from '../../model/selectors/getArticleDetailsCanEdit/getArticleDetailsCanEdit'
 
@@ -25,13 +25,13 @@ export const ArticleDetailsHeader = memo(
         className={className}
         as='header'
       >
-        <Button as={AppLink} to={RoutePath.articles}>
+        <Button as={AppLink} to={routes.articles()}>
           {t('Back to list')}
         </Button>
         {canEdit && error === undefined && (
           <Button
             as={AppLink}
-            to={`${RoutePath.article_details + id}/edit`}
+            to={routes.articleEdit({ id: String(id) })}
           >
             {t('Edit')}
           </Button>

@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { Theme } from '@/shared/const/theme'
 import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
-import { RoutePath } from '@/shared/const/routePath'
+import { RoutePath } from '@/shared/const/router/routePath'
+import { routes } from '@/shared/lib/router/routes'
 import ArticleDetailsPage from './ArticleDetailsPage'
 
 export default {
@@ -14,7 +15,7 @@ export default {
   decorators: [StoreDecorator()],
   parameters: {
     reactRouter: {
-      routePath: `${RoutePath.article_details}:id`,
+      routePath: RoutePath.article_details,
       routeParams: { id: '1' },
     },
   },
@@ -29,7 +30,7 @@ export const Light: Story = {
 export const NotFound: Story = {
   parameters: {
     reactRouter: {
-      routePath: `${RoutePath.article_details}`,
+      routePath: routes.articleDetails({ id: '' }),
     },
   },
 }

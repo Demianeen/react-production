@@ -2,7 +2,7 @@ import { Navigate, useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { getUserAuthData } from '@/entities/User'
 
-import { RoutePath } from '@/shared/const/routePath'
+import { routes } from '@/shared/lib/router/routes'
 
 export const RequireAuth = ({
   children,
@@ -19,7 +19,7 @@ export const RequireAuth = ({
     // than dropping them off on the home page.
     return (
       <Navigate
-        to={RoutePath.home}
+        to={routes.home()}
         state={{ from: location }}
         replace
       />

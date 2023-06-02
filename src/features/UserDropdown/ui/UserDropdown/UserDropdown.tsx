@@ -2,7 +2,6 @@ import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { memo, useCallback } from 'react'
 import { Dropdown } from '@/shared/ui/Popups'
-import { RoutePath } from '@/shared/const/routePath'
 import { Avatar } from '@/shared/ui/Avatar'
 import {
   getIsUserAdmin,
@@ -11,6 +10,7 @@ import {
   userActions,
 } from '@/entities/User'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { routes } from '@/shared/lib/router/routes'
 
 interface UserDropdownProps {
   className?: string
@@ -43,13 +43,15 @@ export const UserDropdown = memo(
             ? [
                 {
                   label: t('Admin panel'),
-                  href: RoutePath.admin_panel,
+                  href: routes.adminPanel(),
                 },
               ]
             : []),
           {
             label: t('Profile'),
-            href: RoutePath.profile + authData.id,
+            href: routes.profile({
+              id: String(authData.id),
+            }),
           },
           {
             label: t('Logout'),

@@ -11,7 +11,7 @@ import { Button } from '@/shared/ui/Button'
 import { View } from '@/entities/ListFilters'
 import { AppLink } from '@/shared/ui/AppLink'
 import { HStack, VStack } from '@/shared/ui/Stack'
-import { RoutePath } from '@/shared/const/routePath'
+import { routes } from '@/shared/lib/router/routes'
 import { ArticleBlockType } from '../../model/const/articleBlockType'
 import type { OnOpenArticle } from '../ArticleList/VirtualizedArticleList'
 import type {
@@ -129,7 +129,9 @@ export const ArticleListItem = memo(
               <Button
                 as={AppLink}
                 role='link'
-                to={RoutePath.article_details + article.id}
+                to={routes.articleDetails({
+                  id: String(article.id),
+                })}
                 target={target}
                 onClick={onClick()}
               >
@@ -144,7 +146,9 @@ export const ArticleListItem = memo(
 
     return (
       <AppLink
-        to={RoutePath.article_details + article.id}
+        to={routes.articleDetails({
+          id: String(article.id),
+        })}
         target={target}
         onClick={onClick()}
       >

@@ -3,7 +3,7 @@ import HomeIcon from '@/shared/assets/icons/home-20-20.svg'
 import AboutIcon from '@/shared/assets/icons/about-us-20-20.svg'
 import ProfileIcon from '@/shared/assets/icons/profile-17-20.svg'
 import ArticlesIcon from '@/shared/assets/icons/articles-20-20.svg'
-import { RoutePath } from '@/shared/const/routePath'
+import { routes } from '@/shared/lib/router/routes'
 import { getSidebarItems } from './getSidebarItems'
 
 describe('getSidebarItems', () => {
@@ -17,23 +17,23 @@ describe('getSidebarItems', () => {
     }
     expect(getSidebarItems(state as StateSchema)).toEqual([
       {
-        path: RoutePath.home,
+        path: routes.home(),
         text: 'Home',
         Icon: HomeIcon,
       },
       {
-        path: RoutePath.about,
+        path: routes.about(),
         text: 'About us',
         Icon: AboutIcon,
       },
       {
-        path: `${RoutePath.profile}1`,
+        path: routes.profile({ id: '1' }),
         text: 'Profile',
         Icon: ProfileIcon,
         authOnly: true,
       },
       {
-        path: RoutePath.articles,
+        path: routes.articles(),
         text: 'Articles',
         Icon: ArticlesIcon,
         authOnly: true,
@@ -47,23 +47,23 @@ describe('getSidebarItems', () => {
     // we need to get even authOnly items because we need to redirect from them
     expect(getSidebarItems(state as StateSchema)).toEqual([
       {
-        path: RoutePath.home,
+        path: routes.home(),
         text: 'Home',
         Icon: HomeIcon,
       },
       {
-        path: RoutePath.about,
+        path: routes.about(),
         text: 'About us',
         Icon: AboutIcon,
       },
       {
-        path: RoutePath.profile,
+        path: routes.profile({ id: '' }),
         text: 'Profile',
         Icon: ProfileIcon,
         authOnly: true,
       },
       {
-        path: RoutePath.articles,
+        path: routes.articles(),
         text: 'Articles',
         Icon: ArticlesIcon,
         authOnly: true,

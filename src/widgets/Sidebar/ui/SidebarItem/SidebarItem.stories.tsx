@@ -3,7 +3,7 @@ import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { Theme } from '@/shared/const/theme'
 import AboutIcon from '@/shared/assets/icons/about-us-20-20.svg'
 import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
-import { RoutePath } from '@/shared/const/routePath'
+import { routes } from '@/shared/lib/router/routes'
 import { SidebarItem } from './SidebarItem'
 
 export default {
@@ -14,7 +14,7 @@ export default {
   },
   args: {
     item: {
-      path: RoutePath.about,
+      path: routes.about(),
       text: 'About us',
       Icon: AboutIcon,
     },

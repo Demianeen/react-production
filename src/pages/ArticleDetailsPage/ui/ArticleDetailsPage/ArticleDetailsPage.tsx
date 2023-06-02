@@ -7,7 +7,7 @@ import { Page } from '@/widgets/Page'
 import { Button } from '@/shared/ui/Button'
 import { AppLink } from '@/shared/ui/AppLink'
 import { VStack } from '@/shared/ui/Stack'
-import { RoutePath } from '@/shared/const/routePath'
+import { routes } from '@/shared/lib/router/routes'
 import { ArticleDetailsPageFooter } from '../ArticleDetailsPageFooter/ArticleDetailsPageFooter'
 
 interface ArticleDetailsPageProps {
@@ -32,7 +32,7 @@ const ArticleDetailsPage = ({
           theme={TextTheme.ERROR}
           title={t('Article not found')}
         />
-        <Button as={AppLink} to={RoutePath.articles}>
+        <Button as={AppLink} to={routes.articles()}>
           {t('Back to list')}
         </Button>
       </VStack>

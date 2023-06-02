@@ -9,8 +9,8 @@ import { AdminPanelPage } from '@/pages/AdminPanelPage'
 import { UserRole } from '@/entities/User'
 import { ForbiddenPage } from '@/pages/ForbiddenPage'
 import type { AppRouteProps } from '@/shared/types/router'
-import { AppRoutes } from '../../../../shared/const/appRoutes'
-import { RoutePath } from '../../../../shared/const/routePath'
+import { AppRoutes } from '@/shared/const/router/appRoutes'
+import { RoutePath } from '@/shared/const/router/routePath'
 
 export const routeConfig: Record<AppRoutes, AppRouteProps> =
   {
@@ -23,7 +23,7 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> =
       element: <AboutPage />,
     },
     [AppRoutes.PROFILE]: {
-      path: `${RoutePath.profile}:id`,
+      path: RoutePath.profile,
       element: <ProfilePage />,
       authOnly: true,
     },
@@ -33,7 +33,7 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> =
       authOnly: true,
     },
     [AppRoutes.ARTICLE_DETAILS]: {
-      path: `${RoutePath.article_details}:id`,
+      path: RoutePath.article_details,
       element: <ArticleDetailsPage />,
       authOnly: true,
     },

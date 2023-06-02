@@ -4,7 +4,7 @@ import HomeIcon from '@/shared/assets/icons/home-20-20.svg'
 import AboutIcon from '@/shared/assets/icons/about-us-20-20.svg'
 import ProfileIcon from '@/shared/assets/icons/profile-17-20.svg'
 import ArticlesIcon from '@/shared/assets/icons/articles-20-20.svg'
-import { RoutePath } from '@/shared/const/routePath'
+import { routes } from '@/shared/lib/router/routes'
 import type { SidebarItemArgs } from '../../types/sidebar'
 
 export const getSidebarItems = createSelector(
@@ -12,23 +12,25 @@ export const getSidebarItems = createSelector(
   (authData) => {
     const items: SidebarItemArgs[] = [
       {
-        path: RoutePath.home,
+        path: routes.home(),
         text: 'Home',
         Icon: HomeIcon,
       },
       {
-        path: RoutePath.about,
+        path: routes.about(),
         text: 'About us',
         Icon: AboutIcon,
       },
       {
-        path: RoutePath.profile + (authData?.id ?? ''),
+        path: routes.profile({
+          id: String(authData?.id ?? ''),
+        }),
         text: 'Profile',
         Icon: ProfileIcon,
         authOnly: true,
       },
       {
-        path: RoutePath.articles,
+        path: routes.articles(),
         text: 'Articles',
         Icon: ArticlesIcon,
         authOnly: true,

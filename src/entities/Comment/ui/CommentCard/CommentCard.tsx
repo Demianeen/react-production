@@ -4,7 +4,7 @@ import { Avatar } from '@/shared/ui/Avatar'
 import { Text } from '@/shared/ui/Text'
 import { AppLink } from '@/shared/ui/AppLink'
 import { HStack } from '@/shared/ui/Stack'
-import { RoutePath } from '@/shared/const/routePath'
+import { routes } from '@/shared/lib/router/routes'
 import styles from './CommentCard.module.scss'
 import type { Comment } from '../../model/types/comment'
 
@@ -24,7 +24,9 @@ export const CommentCard = memo(
         <header>
           <HStack
             as={AppLink}
-            to={`${RoutePath.profile}${comment.user.id}`}
+            to={routes.profile({
+              id: String(comment.user.id),
+            })}
             className={styles.header}
           >
             {comment.user.avatar && (

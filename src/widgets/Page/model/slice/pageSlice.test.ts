@@ -1,4 +1,4 @@
-import { RoutePath } from '@/shared/const/routePath'
+import { routes } from '@/shared/lib/router/routes'
 import type { PageSchema } from '../types/PageSchema'
 import { pageActions, pageReducer } from './pageSlice'
 
@@ -6,22 +6,22 @@ describe('pageSlice', () => {
   test('setScrollPosition', () => {
     const state: DeepPartial<PageSchema> = {
       scrollPosition: {
-        [RoutePath.articles]: 250,
-        [RoutePath.article_details]: 0,
+        [routes.articles()]: 250,
+        [routes.articleDetails({ id: '1' })]: 0,
       },
     }
     expect(
       pageReducer(
         state as PageSchema,
         pageActions.setScrollPosition({
-          path: RoutePath.articles,
+          path: routes.articles(),
           position: 100,
         })
       )
     ).toEqual({
       scrollPosition: {
-        [RoutePath.articles]: 100,
-        [RoutePath.article_details]: 0,
+        [routes.articles()]: 100,
+        [routes.articleDetails({ id: '1' })]: 0,
       },
     })
   })
