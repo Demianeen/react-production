@@ -2,18 +2,18 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { Theme } from '@/shared/const/theme'
 import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
-import { ListFiltersSearch } from './ListFiltersSearch'
+import { Search } from './Search'
 
 export default {
-  title: 'entities/ListFilters/ListFiltersSearch',
-  component: ListFiltersSearch,
+  title: 'shared/Search',
+  component: Search,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
   decorators: [StoreDecorator()],
-} as Meta<typeof ListFiltersSearch>
+} as Meta<typeof Search>
 
-type Story = StoryObj<typeof ListFiltersSearch>
+type Story = StoryObj<typeof Search>
 export const Light: Story = {}
 
 export const Dark: Story = {

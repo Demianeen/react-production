@@ -3,7 +3,7 @@ import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 import { ArticleInfiniteList } from './ArticleInfiniteList'
 
 export default {
-  title: 'features/ArticleInfiniteList/ArticleInfiniteList',
+  title: 'widgets/ArticleInfiniteList/ArticleInfiniteList',
   component: ArticleInfiniteList,
   argTypes: {
     backgroundColor: { control: 'color' },

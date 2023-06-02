@@ -8,6 +8,7 @@ import { ListFilters } from '@/entities/ListFilters'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import type { SortOrder } from '@/shared/const/sort'
 import { VStack } from '@/shared/ui/Stack'
+import { Search } from '@/shared/ui/Search'
 import { articleInfiniteListActions } from '../../model/slice/articleInfiniteListSlice'
 import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles'
 import { getArticleInfiniteListSearch } from '../../model/selectors/getArticleInfiniteListSearch/getArticleInfiniteListSearch'
@@ -88,9 +89,11 @@ export const ArticleInfiniteListFilters = memo(
           order={order}
           onChangeView={onChangeView}
           view={view}
+        />
+        <Search
           onSearch={onSearch}
           onSearchDebounced={onSearchDebounced}
-          search={search}
+          searchQuery={search}
         />
         <ArticleInfiniteListTabs />
       </VStack>

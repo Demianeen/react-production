@@ -159,7 +159,7 @@ For asynchronous connection of reducers (to avoid bundling them together in one 
 ## Features
 
 - [ArticleCommentList](./src/features/ArticleCommentList)
-- [ArticleInfiniteList](./src/features/ArticleInfiniteList)
+- [ArticleInfiniteList](src/widgets/ArticleInfiniteList)
 - [ArticleRating](./src/features/ArticleRating)
 - [ArticleRecommendationsList](./src/features/ArticleRecommendationsList)
 - [AuthByUsername](./src/features/AuthByUsername)

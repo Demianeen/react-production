@@ -5,7 +5,6 @@ import type { SortField } from '../../model/const/sortField'
 import type { View } from '../../model/const/view'
 import { ListFiltersSortField } from '../ListFiltersSortField/ListFiltersSortField'
 import { ListFiltersView } from '../ListFiltersView/ListFiltersView'
-import { ListFiltersSearch } from '../ListFiltersSearch/ListFiltersSearch'
 import { ListFiltersOrder } from '../ListFiltersOrder/ListFiltersOrder'
 
 interface SortedArticlesListProps {
@@ -16,10 +15,6 @@ interface SortedArticlesListProps {
   order?: SortOrder
   onChangeView?: (view: View) => void
   view?: View
-  onSearch?: (search: string) => void
-  onSearchDebounced?: (search: string) => void
-  search?: string
-  debounceDelay?: number
 }
 
 export const ListFilters = memo(
@@ -31,10 +26,6 @@ export const ListFilters = memo(
     sortField,
     onChangeView,
     view,
-    onSearch,
-    onSearchDebounced,
-    search,
-    debounceDelay,
   }: SortedArticlesListProps) => {
     return (
       <VStack gap={1.25} className={className} maxWidth>
@@ -65,14 +56,6 @@ export const ListFilters = memo(
             />
           )}
         </HStack>
-        {(onSearch || onSearchDebounced) && (
-          <ListFiltersSearch
-            onSearch={onSearch}
-            onSearchDebounced={onSearchDebounced}
-            searchQuery={search}
-            debounceDelay={debounceDelay}
-          />
-        )}
       </VStack>
     )
   }

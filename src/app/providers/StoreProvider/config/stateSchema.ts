@@ -14,7 +14,7 @@ import type { CommentFormSchema } from '@/entities/CommentForm'
 import type { PageSchema } from '@/widgets/Page'
 import type { rtkApi } from '@/shared/api/rtkApi'
 import type { ArticleCommentListSchema } from '@/features/ArticleCommentList'
-import type { ArticleInfiniteListSchema } from '@/features/ArticleInfiniteList'
+import type { ArticleInfiniteListSchema } from 'src/widgets/ArticleInfiniteList'
 
 export interface StateSchema {
   counter: CounterSchema

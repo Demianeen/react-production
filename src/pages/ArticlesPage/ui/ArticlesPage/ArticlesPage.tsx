@@ -1,6 +1,6 @@
 import { memo, useRef } from 'react'
 import { Page } from '@/widgets/Page'
-import { ArticleInfiniteList } from '@/features/ArticleInfiniteList'
+import { ArticleInfiniteList } from '@/widgets/ArticleInfiniteList'
 
 interface ArticlesPageProps {
   className?: string

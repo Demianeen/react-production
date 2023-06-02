@@ -20,9 +20,7 @@ export const ListFiltersView = memo(
   }: ListFiltersViewProps) => {
     const onClick = useCallback(
       (newView: View) => {
-        return () =>
-          // dispatch(listFiltersActions.setView(newView))
-          onChangeView?.(newView)
+        return () => onChangeView?.(newView)
       },
       [onChangeView]
     )

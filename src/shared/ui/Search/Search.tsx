@@ -1,27 +1,41 @@
 import { memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Input } from '@/shared/ui/Input'
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce'
+import { Input } from '../Input'
 
-interface ListFiltersSearchProps {
+interface SearchProps {
   className?: string
+  /**
+   * @description Callback for each search query change
+   * @param {string} query
+   */
   onSearch?: (query: string) => void
+  /**
+   * @description Callback for each search query change with debounce
+   * @param {string} query
+   */
   onSearchDebounced?: (query: string) => void
+  /**
+   * @description Current search query
+   */
   searchQuery?: string
+  /**
+   * @description Debounce delay in ms
+   */
   debounceDelay?: number
 }
 
-export const ListFiltersSearch = memo(
+export const Search = memo(
   ({
     className,
     onSearch,
     searchQuery,
     onSearchDebounced,
     debounceDelay = 500,
-  }: ListFiltersSearchProps) => {
-    const { t } = useTranslation('articles')
+  }: SearchProps) => {
+    const { t } = useTranslation()
 
-    const debouncedFetchArticles = useDebounce(
+    const debouncedFunction = useDebounce(
       () => onSearchDebounced?.(searchQuery ?? ''),
       debounceDelay
     )
@@ -29,9 +43,9 @@ export const ListFiltersSearch = memo(
     const onChangeSearch = useCallback(
       (query: string) => {
         onSearch?.(query)
-        debouncedFetchArticles()
+        debouncedFunction()
       },
-      [debouncedFetchArticles, onSearch]
+      [debouncedFunction, onSearch]
     )
 
     return (
@@ -46,4 +60,4 @@ export const ListFiltersSearch = memo(
   }
 )
 
-ListFiltersSearch.displayName = 'ListFiltersSearch'
+Search.displayName = 'Search'

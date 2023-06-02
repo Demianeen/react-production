@@ -36,30 +36,6 @@ export const ListFiltersSortField = memo(
       [t]
     )
 
-    // const onChangeOrder = useCallback(
-    //   (newOrder: SortOrder) => {
-    //     dispatch(
-    //       listFiltersActions.setOrder(newOrder)
-    //     )
-    //     dispatch(articlesPageActions.setPage(1))
-    //     dispatch(fetchArticles({ replace: true }))
-    //   },
-    //   [dispatch]
-    // )
-    //
-    // const onChangeSortField = useCallback(
-    //   (newSortField: ArticleSortField) => {
-    //     dispatch(
-    //       listFiltersActions.setSortField(
-    //         newSortField
-    //       )
-    //     )
-    //     dispatch(articlesPageActions.setPage(1))
-    //     dispatch(fetchArticles({ replace: true }))
-    //   },
-    //   [dispatch]
-    // )
-
     return (
       <Select
         options={sortOptions}
@@ -67,6 +43,7 @@ export const ListFiltersSortField = memo(
         onChange={onChangeSortField}
         value={sortField}
         className={className}
+        direction='down-right'
       />
     )
   }

@@ -8,7 +8,7 @@ import { articleDetailsReducer } from '@/entities/Article/testing'
 import type { StateSchemaKey } from '@/app/providers/StoreProvider/config/stateSchema'
 import { commentFormReducer } from '@/entities/CommentForm/testing'
 import { articleCommentListReducer } from '@/features/ArticleCommentList/testing'
-import { articleInfiniteListReducer } from '@/features/ArticleInfiniteList/testing'
+import { articleInfiniteListReducer } from '@/widgets/ArticleInfiniteList/testing'
 import type { ReducersList } from '../hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 
 const defaultAsyncReducers: ReducersList = {

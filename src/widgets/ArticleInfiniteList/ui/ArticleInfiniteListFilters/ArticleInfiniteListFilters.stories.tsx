@@ -6,7 +6,7 @@ import { ArticleInfiniteListFilters } from './ArticleInfiniteListFilters'
 
 export default {
   title:
-    'features/ArticleInfiniteList/ArticleInfiniteListFilters',
+    'widgets/ArticleInfiniteList/ArticleInfiniteListFilters',
   component: ArticleInfiniteListFilters,
   argTypes: {
     backgroundColor: { control: 'color' },

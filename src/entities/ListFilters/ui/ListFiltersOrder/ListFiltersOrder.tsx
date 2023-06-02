@@ -39,6 +39,7 @@ export const ListFiltersOrder = memo(
         onChange={onChangeOrder}
         value={order}
         className={className}
+        direction='down-right'
       />
     )
   }

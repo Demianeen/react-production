@@ -1,6 +1,6 @@
-### Feature ArticleInfiniteList
+### Widget ArticleInfiniteList
 
-Description: Shows list of articles with infinite scroll. All redux logic is implemented in this feature.      
+Description: Shows list of articles with infinite scroll and list filters. All redux logic is implemented in this feature.      
 
 #### Public api
 
