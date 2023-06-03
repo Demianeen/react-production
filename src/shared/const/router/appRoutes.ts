@@ -3,12 +3,12 @@ export enum AppRoutes {
   ABOUT = 'about',
   PROFILE = 'profile',
   ARTICLES = 'articles',
-  ARTICLE_DETAILS = 'article_details',
-  ARTICLE_CREATE = 'article_create',
-  ARTICLE_EDIT = 'article_edit',
-  ADMIN_PANEL = 'admin_panel',
+  ARTICLE_DETAILS = 'articleDetails',
+  ARTICLE_CREATE = 'articleCreate',
+  ARTICLE_EDIT = 'articleEdit',
+  ADMIN_PANEL = 'adminPanel',
   FORBIDDEN = 'forbidden',
 
   // always keep this last
-  NOT_FOUND = 'not_found',
+  NOT_FOUND = 'notFound',
 }

@@ -26,8 +26,8 @@ export const SelectCountry = memo(
 
     const countryOptions = useMemo(() => {
       return Object.entries(Country).map(
-        ([enumKey, enumValue]) => ({
-          value: enumKey,
+        ([_enumKey, enumValue]) => ({
+          value: enumValue,
           label: enumValue,
         })
       )

@@ -15,7 +15,7 @@ export default {
   decorators: [StoreDecorator()],
   parameters: {
     reactRouter: {
-      routePath: RoutePath.article_details,
+      routePath: RoutePath.articleDetails,
       routeParams: { id: '1' },
     },
   },

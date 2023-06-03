@@ -91,6 +91,14 @@ module.exports = {
         leadingUnderscore: 'allowSingleOrDouble',
         trailingUnderscore: 'allowDouble',
       },
+      {
+        selector: 'enum',
+        format: ['PascalCase'],
+      },
+      {
+        selector: 'enumMember',
+        format: ['UPPER_CASE'],
+      },
     ],
     // to import dev dependencies in some files
     'import/no-extraneous-dependencies': [

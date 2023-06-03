@@ -17,20 +17,6 @@ interface PublicApiExport {
   isTypeOnly: boolean
 }
 
-const isExportSpecifierTypeOnly = (
-  exportSpecifier: any
-): boolean => {
-  const { compilerNode } = exportSpecifier
-  if (compilerNode.modifiers) {
-    return compilerNode.modifiers.some(
-      (modifier: any) =>
-        modifier.kind ===
-        111 /* ts.SyntaxKind.ExportKeyword */
-    )
-  }
-  return false
-}
-
 export const getPublicApiExportNamesFromFile = (
   file: SourceFile
 ): PublicApiExport[][] => {

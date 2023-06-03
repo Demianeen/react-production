@@ -33,20 +33,20 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> =
       authOnly: true,
     },
     [AppRoutes.ARTICLE_DETAILS]: {
-      path: RoutePath.article_details,
+      path: RoutePath.articleDetails,
       element: <ArticleDetailsPage />,
       authOnly: true,
     },
     [AppRoutes.ARTICLE_CREATE]: {
-      path: RoutePath.article_create,
+      path: RoutePath.articleCreate,
       element: <ArticleEditPage />,
     },
     [AppRoutes.ARTICLE_EDIT]: {
-      path: RoutePath.article_edit,
+      path: RoutePath.articleEdit,
       element: <ArticleEditPage />,
     },
     [AppRoutes.ADMIN_PANEL]: {
-      path: RoutePath.admin_panel,
+      path: RoutePath.adminPanel,
       element: <AdminPanelPage />,
       authOnly: true,
       roles: [UserRole.ADMIN, UserRole.MANAGER],
@@ -58,7 +58,7 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> =
 
     // always keep this last
     [AppRoutes.NOT_FOUND]: {
-      path: RoutePath.not_found,
+      path: RoutePath.notFound,
       element: <NotFoundPage />,
     },
   }

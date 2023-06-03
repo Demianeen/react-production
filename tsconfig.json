@@ -37,6 +37,7 @@
     "src/**/*.tsx",
     "webpack.config.ts",
     "config/**/*.ts",
+    "config/**/*.tsx",
     "scripts/**/*.ts",
     "utils/**/*.ts"
   ]
