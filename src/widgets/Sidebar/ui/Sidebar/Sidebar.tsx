@@ -1,5 +1,4 @@
 import { memo, useMemo, useState } from 'react'
-import { useSelector } from 'react-redux'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { ThemeSwitcher } from '@/features/ThemeSwitcher'
 import { LangSwitcher } from '@/features/LangSwitcher'
@@ -9,7 +8,7 @@ import {
   ButtonTheme,
 } from '@/shared/ui/Button'
 import { HStack, VStack } from '@/shared/ui/Stack'
-import { getSidebarItems } from '../../model/selectors/getSidebarItems/getSidebarItems'
+import { useSidebarItems } from '../../model/selectors/getSidebarItems/getSidebarItems'
 import { SidebarItem } from '../SidebarItem/SidebarItem'
 import styles from './Sidebar.module.scss'
 
@@ -21,7 +20,7 @@ interface SidebarProps {
 export const Sidebar = memo(
   ({ className }: SidebarProps) => {
     const [isCollapsed, setIsCollapsed] = useState(false)
-    const sidebarItems = useSelector(getSidebarItems)
+    const sidebarItems = useSidebarItems()
 
     const onToggle = () => {
       setIsCollapsed((prev) => !prev)

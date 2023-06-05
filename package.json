@@ -82,7 +82,7 @@
     "eslint-plugin-jest": "^27.2.1",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-n": "^16.0.0",
-    "eslint-plugin-netliukh-demian-fsd-plugin": "^0.0.14",
+    "eslint-plugin-netliukh-demian-fsd-plugin": "^0.0.20",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.32.2",

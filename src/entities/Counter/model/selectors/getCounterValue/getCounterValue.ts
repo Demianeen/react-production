@@ -1,4 +1,5 @@
 import { buildSelector } from '@/shared/ui/store'
+import { getCounter } from '../getCounter/getCounter'
 
 export const [useCounterValue, getCounterValue] =
-  buildSelector((state) => state.counter.value)
+  buildSelector(getCounter, (counter) => counter.value)
