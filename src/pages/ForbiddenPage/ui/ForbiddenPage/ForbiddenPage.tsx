@@ -12,7 +12,7 @@ const ForbiddenPage = ({
 }: ForbiddenPageProps) => {
   const { t } = useTranslation()
   return (
-    <Page className={className}>
+    <Page className={className} data-testid='ForbiddenPage'>
       <HStack
         justify='center'
         align='center'

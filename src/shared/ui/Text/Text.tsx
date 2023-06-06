@@ -1,5 +1,6 @@
 import { memo } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
+import type { TestProps } from '@/shared/types/tests'
 import styles from './Text.module.scss'
 
 export enum TextTheme {
@@ -20,7 +21,7 @@ export enum TextSize {
   L = 'large',
 }
 
-interface TextProps {
+interface TextProps extends TestProps {
   className?: string
   /**
    * @description The text to display
@@ -60,8 +61,6 @@ interface TextProps {
    * @default TextSize.M
    */
   size?: TextSize
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  'data-testid'?: string
 }
 
 type HeaderTag = 'h1' | 'h2' | 'h3'

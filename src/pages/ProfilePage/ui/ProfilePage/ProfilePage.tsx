@@ -35,7 +35,7 @@ const ProfilePage = () => {
   const numberId = Number(id)
 
   return (
-    <Page>
+    <Page data-testid='ProfilePage'>
       <EditableProfileCard id={numberId} />
       {error === undefined && (
         <ProfileRating profileId={numberId} />

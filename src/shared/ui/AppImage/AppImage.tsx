@@ -9,6 +9,7 @@ interface AppImageProps
   errorFallback?: ReactElement
 }
 
+// TODO: Add ui kit
 export const AppImage = memo(
   ({
     className,

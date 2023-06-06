@@ -42,7 +42,10 @@ const ArticleDetailsPage = ({
   const numberId = Number(id)
 
   return (
-    <Page className={className}>
+    <Page
+      className={className}
+      data-testid='ArticleDetailsPage'
+    >
       <ArticleDetails id={numberId} />
       <ArticleDetailsPageFooter articleId={numberId} />
     </Page>

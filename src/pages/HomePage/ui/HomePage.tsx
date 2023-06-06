@@ -5,7 +5,7 @@ import { Page } from '@/widgets/Page'
 const HomePage = () => {
   const { t } = useTranslation('home')
 
-  return <Page>{t('Home')}</Page>
+  return <Page data-testid='HomePage'>{t('Home')}</Page>
 }
 
 export default memo(HomePage)

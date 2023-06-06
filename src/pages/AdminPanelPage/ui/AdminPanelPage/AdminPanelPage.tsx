@@ -10,7 +10,12 @@ const AdminPanelPage = ({
 }: AdminPanelPageProps) => {
   const { t } = useTranslation('admin')
   return (
-    <Page className={className}>{t('Admin panel')}</Page>
+    <Page
+      className={className}
+      data-testid='AdminPanelPage'
+    >
+      {t('Admin panel')}
+    </Page>
   )
 }
 

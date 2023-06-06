@@ -16,7 +16,10 @@ const ArticleEditPage = ({
   const isEdit = Boolean(id)
 
   return (
-    <Page className={className}>
+    <Page
+      className={className}
+      data-testid='ArticleEditPage'
+    >
       {isEdit ? t('Edit article') : t('Create new article')}
     </Page>
   )

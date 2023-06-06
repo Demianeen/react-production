@@ -6,18 +6,22 @@ import { classNames } from '@/shared/lib/classNames/classNames'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import type { StateSchema } from '@/app/providers/StoreProvider'
 import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle'
+import type { TestProps } from '@/shared/types/tests'
 import { pageActions } from '../../model/slice/pageSlice'
 import { getPageScrollPositionByPath } from '../../selectors/getPageScrollPositionByPath/getPageScrollPositionByPath'
 import styles from './Page.module.scss'
 
-interface PageProps {
+interface PageProps extends TestProps {
   className?: string
   children?: ReactNode
 }
 
 // FIXME: Scroll position is not restored
 export const Page = forwardRef<HTMLDivElement, PageProps>(
-  ({ className, children }, forwardedRef) => {
+  (
+    { className, children, 'data-testid': dataTestId },
+    forwardedRef
+  ) => {
     const wrapperRef = useRef<HTMLElement | null>(null)
 
     const { pathname } = useLocation()
@@ -62,6 +66,7 @@ export const Page = forwardRef<HTMLDivElement, PageProps>(
         ref={mergedRef}
         className={classNames(styles.page, {}, [className])}
         onScroll={onScroll}
+        data-testid={dataTestId}
       >
         {children}
       </main>

@@ -31,11 +31,7 @@ export const Counter = () => {
       >
         {t('Increment')}
       </Button>
-      <Button
-        type='button'
-        onClick={handleIncrementByTwo}
-        data-testid='increment-btn'
-      >
+      <Button type='button' onClick={handleIncrementByTwo}>
         {t('Increment by 2')}
       </Button>
 

@@ -10,7 +10,11 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
   const pageRef = useRef<HTMLDivElement>(null)
 
   return (
-    <Page ref={pageRef} className={className}>
+    <Page
+      ref={pageRef}
+      className={className}
+      data-testid='ArticlesPage'
+    >
       <ArticleInfiniteList scrollParentRef={pageRef} />
     </Page>
   )

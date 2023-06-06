@@ -12,7 +12,7 @@ const NotFoundPage = ({ className }: NotFoundPageProps) => {
   const { t } = useTranslation()
 
   return (
-    <Page className={className}>
+    <Page className={className} data-testid='NotFoundPage'>
       <HStack
         justify='center'
         align='center'
