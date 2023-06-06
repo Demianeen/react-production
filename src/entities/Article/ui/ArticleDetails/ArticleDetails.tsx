@@ -8,11 +8,11 @@ import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoade
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { Text, TextAlign, TextSize } from '@/shared/ui/Text'
 import { Skeleton } from '@/shared/ui/Skeleton'
-import { Avatar } from '@/shared/ui/Avatar'
 import EyeIcon from '@/shared/assets/icons/eye-20-20.svg'
 import CalendarIcon from '@/shared/assets/icons/calendar-20-20.svg'
 import { Icon } from '@/shared/ui/Icon'
 import { HStack } from '@/shared/ui/Stack'
+import { AppImage } from '@/shared/ui/AppImage'
 import { ArticleBlockType } from '../../model/const/articleBlockType'
 import { getArticleDetailsIsLoading } from '../../model/selectors/getArticleDetailsIsLoading/getArticleDetailsIsLoading'
 import { getArticleDetailsError } from '../../model/selectors/getArticleDetailsError/getArticleDetailsError'
@@ -131,11 +131,13 @@ export const ArticleDetails = memo(
     } else {
       content = (
         <>
-          {article?.img && (
-            <HStack justify='center' maxWidth>
-              <Avatar size='12.5rem' src={article.img} />
-            </HStack>
-          )}
+          <HStack justify='center' maxWidth>
+            <AppImage
+              alt={article?.title ?? ''}
+              src={article?.img}
+              className={styles.logo}
+            />
+          </HStack>
           <Text
             className={styles.title}
             title={article?.title}

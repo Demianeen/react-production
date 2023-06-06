@@ -125,9 +125,11 @@ export type Tail<A> = A extends [unknown, ...infer Rest]
   ? Rest
   : never
 
+type SingleSelector<T> = (state: StateSchema) => T
+
 export type ResultSelector<FR> = [
   () => FR,
-  Selector<StateSchema, FR>
+  SingleSelector<FR>
 ]
 
 export type ResultMemoized<

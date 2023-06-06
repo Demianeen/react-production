@@ -918,8 +918,7 @@
       "password": "123",
       "roles": [
         "MANAGER"
-      ],
-      "avatar": "https://i.pinimg.com/564x/db/6b/a8/db6ba8c0e0244f71230e6aae953e57be.jpg"
+      ]
     }
   ],
   "profile": [
@@ -944,6 +943,16 @@
       "city": "Kyiv",
       "username": "Ukrainer",
       "avatar": "https://i.pinimg.com/564x/db/6b/a8/db6ba8c0e0244f71230e6aae953e57be.jpg"
+    },
+    {
+      "id": 3,
+      "firstName": "Manager",
+      "lastName": "Managerov",
+      "age": 14,
+      "currency": "UAH",
+      "country": "Ukraine",
+      "city": "Kyiv",
+      "username": "Ukrainer"
     }
   ],
   "article-rating": [

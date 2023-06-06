@@ -12,6 +12,8 @@ import { View } from '@/entities/ListFilters'
 import { AppLink } from '@/shared/ui/AppLink'
 import { HStack, VStack } from '@/shared/ui/Stack'
 import { routes } from '@/shared/lib/router/routes'
+import { AppImage } from '@/shared/ui/AppImage'
+import { Skeleton } from '@/shared/ui/Skeleton'
 import { ArticleBlockType } from '../../model/const/articleBlockType'
 import type { OnOpenArticle } from '../ArticleList/VirtualizedArticleList'
 import type {
@@ -43,10 +45,11 @@ export const ArticleListItem = memo(
 
     const image = useMemo(
       () => (
-        <img
+        <AppImage
           src={article.img}
           alt={article.title}
           className={styles.img}
+          fallback={<Skeleton className={styles.img} />}
         />
       ),
       [article.img, article.title]

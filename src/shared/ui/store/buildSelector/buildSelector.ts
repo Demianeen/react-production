@@ -29,13 +29,13 @@ export function buildSelector<FR, S extends SelectorArray>(
 >
 
 /**
- * @description when only one selector is passed, the result is a selector
+ * when only one selector is passed, the result is a selector
  * @template FR
- * @param {any} selectors
+ * @param {(state: StateSchema) => FR} selector
  * @returns {ResultSelector<FR>}
  */
 export function buildSelector<FR>(
-  ...selectors: [Selector<StateSchema, FR>]
+  selector: (state: StateSchema) => FR
 ): ResultSelector<FR>
 
 export function buildSelector<FR, S extends SelectorArray>(

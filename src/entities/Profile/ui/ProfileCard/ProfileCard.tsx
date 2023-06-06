@@ -119,14 +119,12 @@ export const ProfileCard = ({
         id={formId}
         onSubmit={onFormSubmit}
       >
-        {data?.avatar && (
-          <HStack
-            justify='center'
-            className={styles.avatarWrapper}
-          >
-            <Avatar src={data?.avatar} />
-          </HStack>
-        )}
+        <HStack
+          justify='center'
+          className={styles.avatarWrapper}
+        >
+          <Avatar src={data?.avatar} />
+        </HStack>
         <Input
           value={data?.firstName}
           placeholder={t('John')}

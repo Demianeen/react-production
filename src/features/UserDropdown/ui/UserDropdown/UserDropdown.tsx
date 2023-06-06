@@ -59,11 +59,11 @@ export const UserDropdown = memo(
           },
         ]}
         triggerChildren={
-          authData?.avatar ? (
-            <Avatar size='2rem' src={authData.avatar} />
-          ) : (
-            t('Account')
-          )
+          <Avatar
+            size='2rem'
+            src={authData.avatar}
+            fallbackColor='invertedPrimary'
+          />
         }
       />
     )
