@@ -63,20 +63,35 @@ jobs:
         run: npm ci
       - name: Install GraphicsMagick Engine
         run: sudo apt-get install -y graphicsmagick
-      - name: screenshot testing
+      - name: Screenshot testing
         run: npm run test:ui:ci
       - name: Generate HTML report
         run: npm run test:ui:report
-        if: failure()
+        if: always()
       - name: Setup Pages
-        uses: actions/configure-pages@v3
-        if: failure()
-      - name: Upload difference folder
-        if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/configure-pages@v2
+        if: always()
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        if: always()
         with:
-          path: .loki
+          path: '.loki'
       - name: Deploy to GitHub Pages
         id: deployment
-        if: failure()
-        uses: actions/deploy-pages@v2
+        if: always()
+        uses: actions/deploy-pages@v1
+#      - name: Generate HTML report
+#        run: npm run test:ui:report
+#        if: failure()
+#      - name: Setup Pages
+#        uses: actions/configure-pages@v3
+#        if: failure()
+#      - name: Upload difference folder
+#        if: failure()
+#        uses: actions/upload-artifact@v3
+#        with:
+#          path: .loki
+#      - name: Deploy to GitHub Pages
+#        id: deployment
+#        if: failure()
+#        uses: actions/deploy-pages@v2
