@@ -45,7 +45,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         if: always()
         with:
-          path: 'reports'
+          path: ${{ github.sha }}/'reports'
 
   ui:
     runs-on: ubuntu-latest
@@ -79,21 +79,19 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         if: always()
         with:
-          path: 'reports'
+          path: ${{ github.sha }}/'reports'
 
-  deploy:
+  reports:
     needs: [unit, ui]
     if: always()
     runs-on: ubuntu-latest
     concurrency: ci-${{ github.ref }}
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url }}/${{ github.sha }}
     steps:
       - name: Setup Pages
         uses: actions/configure-pages@v3
-        if: always()
       - name: Deploy to GitHub Pages
         id: deployment
-        if: always()
         uses: actions/deploy-pages@v2
