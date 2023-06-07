@@ -78,7 +78,6 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v3
         with:
-          name: .loki
           path: .loki
       - name: Deploy to GitHub Pages
         id: deployment
