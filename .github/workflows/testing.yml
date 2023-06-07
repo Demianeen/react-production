@@ -30,6 +30,11 @@ jobs:
         run: mkdir -p reports/${{ github.sha }}
       - name: Copy report index.html
         run: cp reports/index.html reports/${{ github.sha }}/index.html
+      - name: Upload created folder
+        uses: actions/upload-pages-artifact@v1
+        if: always()
+        with:
+          path: reports/${{ github.sha }}
 
   unit:
     needs: prepare-reports
@@ -56,7 +61,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         if: always()
         with:
-          path: ${{ github.sha }}/'reports'
+          path: reports/${{ github.sha }}
 
   ui:
     needs: prepare-reports
