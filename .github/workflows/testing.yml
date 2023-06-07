@@ -72,17 +72,17 @@ jobs:
         run: npm run test:ui:report
         if: always()
       - name: Setup Pages
-        uses: actions/configure-pages@v2
+        uses: actions/configure-pages@v3
         if: always()
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         if: always()
         with:
           path: '.loki'
       - name: Deploy to GitHub Pages
         id: deployment
         if: always()
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v2
 #      - name: Generate HTML report
 #        run: npm run test:ui:report
 #        if: failure()
