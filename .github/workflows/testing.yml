@@ -21,11 +21,13 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  prepare-reports:
+  tests:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20.x]
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      # prepare reports
       - name: Make dir from commit hash
         run: mkdir -p reports/${{ github.sha }}
       - name: Copy report index.html
@@ -35,14 +37,7 @@ jobs:
         if: always()
         with:
           path: reports
-
-  unit:
-    needs: prepare-reports
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [20.x]
-    steps:
+      # prepare tests
       - name: Cache deps
         uses: actions/cache@v3
         with:
@@ -55,6 +50,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install modules
         run: npm ci
+      # run unit tests
       - name: Unit testing
         run: npm run test:unit
       - name: Move unit report
@@ -64,26 +60,7 @@ jobs:
         if: always()
         with:
           path: reports
-
-  ui:
-    needs: prepare-reports
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [20.x]
-    steps:
-      - name: Cache deps
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: node-modules-${{ hashFiles('**/package-lock.json') }}
-      - uses: actions/checkout@v3
-      - name: Starting Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install modules
-        run: npm ci
+      # run ui tests
       - name: Install GraphicsMagick Engine
         run: sudo apt-get install -y graphicsmagick
       - name: Screenshot testing
@@ -94,6 +71,7 @@ jobs:
       - name: Move loki report
         run: mkdir -p reports/${{ github.sha }}/unit; mv .loki $_
         if: always()
+      # upload reports
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         if: always()
@@ -101,7 +79,7 @@ jobs:
           path: reports
 
   reports:
-    needs: [unit, ui]
+    needs: tests
     if: always()
     runs-on: ubuntu-latest
     concurrency: ci-${{ github.ref }}
