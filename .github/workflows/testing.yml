@@ -21,7 +21,18 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  prepare-reports:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Make dir from commit hash
+        run: mkdir -p reports/${{ github.sha }}
+      - name: Copy report index.html
+        run: cp reports/index.html reports/${{ github.sha }}/index.html
+
   unit:
+    needs: prepare-reports
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -48,6 +59,7 @@ jobs:
           path: ${{ github.sha }}/'reports'
 
   ui:
+    needs: prepare-reports
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -79,7 +91,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         if: always()
         with:
-          path: ${{ github.sha }}/'reports'
+          path: reports/${{ github.sha }}
 
   reports:
     needs: [unit, ui]
