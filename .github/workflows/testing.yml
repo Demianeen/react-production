@@ -34,8 +34,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         if: always()
         with:
-          path: reports/${{ github.sha }}
-          name: reports/${{ github.sha }}
+          path: reports
 
   unit:
     needs: prepare-reports
@@ -58,12 +57,13 @@ jobs:
         run: npm ci
       - name: Unit testing
         run: npm run test:unit
+      - name: Move unit report
+        run: mkdir -p reports/${{ github.sha }}/unit; mv reports/unit $_
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         if: always()
         with:
-          path: reports/unit
-          name: reports/${{ github.sha }}/unit
+          path: reports
 
   ui:
     needs: prepare-reports
@@ -91,15 +91,14 @@ jobs:
       - name: Generate HTML report
         run: npm run test:ui:report
         if: always()
-      # - name: Move loki report
-      #   run: mv .loki reports
-      #   if: always()
+      - name: Move loki report
+        run: mkdir -p reports/${{ github.sha }}/unit; mv .loki $_
+        if: always()
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         if: always()
         with:
-          path: .loki
-          name: reports/${{ github.sha }}/ui
+          path: reports
 
   reports:
     needs: [unit, ui]
