@@ -22,6 +22,7 @@
     "test:ui:ci": "concurrently -s first -k \"npm run storybook\" \"npm run test:ui\"",
     "test:ui:json": "node scripts/generate-visual-json-report.js",
     "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
+    "test:ui:report": "npm run test:ui:json && npm run test:ui:html",
     "test:ui:report:chrome": "npm run test:ui:json && npm run test:ui:html && open -a 'Google Chrome' .loki/report.html",
     "test:ui:report:arc": "npm run test:ui:json && npm run test:ui:html && open -a 'Arc' .loki/report.html",
     "storybook": "storybook dev -p 6006 -c ./config/storybook --no-open",

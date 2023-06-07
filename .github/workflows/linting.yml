@@ -17,15 +17,14 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - name: install modules
-        run: npm i
-        # run: npm ci
+      - name: Install modules
+        run: npm ci
       - name: Cache deps
         uses: actions/cache@v3
         with:
           path: ~/.npm
           key: node-modules-${{ hashFiles('**/package-lock.json') }}
-      - name: linting typescript
+      - name: Linting typescript
         run: npm run lint:ts
 
   scss:
@@ -44,7 +43,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - name: install modules
-        run: npm i
-      - name: linting css
+      - name: Install modules
+        run: npm ci
+      - name: Linting css
         run: npm run lint:scss
