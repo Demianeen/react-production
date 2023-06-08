@@ -3,7 +3,7 @@
 /storybook-static
 /.loki/report.json
 /.loki/report.html
-/html-report
+/reports/unit
 ### macOS ###
 # General
 .DS_Store
