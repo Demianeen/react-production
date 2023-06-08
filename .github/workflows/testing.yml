@@ -73,6 +73,10 @@ jobs:
         if: always()
         with:
           path: reports
+      - name: Commit reports
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Add reports for ${{ github.sha }}"
 
   reports:
     needs: tests
