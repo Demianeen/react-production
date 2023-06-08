@@ -155,7 +155,6 @@
     "gm": {
       "tolerance": 0.00024
     },
-    "verboseRenderer": true,
     "configurations": {
       "chrome.laptop": {
         "target": "chrome.docker",
