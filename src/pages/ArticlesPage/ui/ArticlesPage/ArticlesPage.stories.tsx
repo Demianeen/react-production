@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { Theme } from '@/shared/const/theme'
-import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 import ArticlesPage from './ArticlesPage'
 
 export default {
@@ -16,7 +15,6 @@ export default {
       skip: true,
     },
   },
-  decorators: [StoreDecorator()],
 } as Meta<typeof ArticlesPage>
 
 type Story = StoryObj<typeof ArticlesPage>

@@ -11,7 +11,6 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  decorators: [StoreDecorator()],
 } as Meta<typeof EditableProfileCardHeader>
 
 type Story = StoryObj<typeof EditableProfileCardHeader>

@@ -6,7 +6,7 @@ import { LayoutDecorator } from '@/shared/lib/storybook/LayoutDecorator'
 import { Select } from './Select'
 
 export default {
-  title: 'shared/Select',
+  title: 'shared/Popups/Select',
   component: Select,
   argTypes: {
     backgroundColor: { control: 'color' },

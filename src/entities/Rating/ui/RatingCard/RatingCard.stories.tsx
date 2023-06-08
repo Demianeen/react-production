@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 import { RatingCard } from './RatingCard'
 
 export default {
@@ -13,7 +12,6 @@ export default {
     feedbackTitle: 'Tell us what you think',
   },
   parameters: {},
-  decorators: [StoreDecorator()],
 } as Meta<typeof RatingCard>
 
 type Story = StoryObj<typeof RatingCard>

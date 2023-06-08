@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
-import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 import { Theme } from '@/shared/const/theme'
 import { AppImage } from './AppImage'
 
@@ -16,7 +15,6 @@ export default {
     src: 'https://mockapi.com/article-image',
   },
   parameters: {},
-  decorators: [StoreDecorator()],
 } as Meta<typeof AppImage>
 
 type Story = StoryObj<typeof AppImage>

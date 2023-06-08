@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { Theme } from '@/shared/const/theme'
 import AboutIcon from '@/shared/assets/icons/about-us-20-20.svg'
-import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 import { routes } from '@/shared/lib/router/routes'
 import { SidebarItem } from './SidebarItem'
 
@@ -19,7 +18,6 @@ export default {
       Icon: AboutIcon,
     },
   },
-  decorators: [StoreDecorator()],
 } as Meta<typeof SidebarItem>
 
 type Story = StoryObj<typeof SidebarItem>

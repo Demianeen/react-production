@@ -16,9 +16,7 @@ export default {
 } as Meta<typeof LoginForm>
 
 type Story = StoryObj<typeof LoginForm>
-export const Light: Story = {
-  decorators: [StoreDecorator()],
-}
+export const Light: Story = {}
 
 export const WithValue: Story = {
   decorators: [
@@ -52,12 +50,9 @@ export const Loading: Story = {
 }
 
 export const Dark: Story = {
-  decorators: [
-    ThemeDecorator(Theme.DARK),
-    StoreDecorator(),
-  ],
+  decorators: [ThemeDecorator(Theme.DARK)],
 }
 
 export const Red: Story = {
-  decorators: [ThemeDecorator(Theme.RED), StoreDecorator()],
+  decorators: [ThemeDecorator(Theme.RED)],
 }

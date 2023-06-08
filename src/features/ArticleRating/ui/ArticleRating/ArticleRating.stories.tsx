@@ -1,6 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
-import { InitUserDecorator } from '@/shared/lib/storybook/InitUserDecorator'
 import ArticleRating from './ArticleRating'
 
 export default {
@@ -13,7 +11,6 @@ export default {
     articleId: 1,
   },
   parameters: {},
-  decorators: [InitUserDecorator(), StoreDecorator()],
 } as Meta<typeof ArticleRating>
 
 type Story = StoryObj<typeof ArticleRating>

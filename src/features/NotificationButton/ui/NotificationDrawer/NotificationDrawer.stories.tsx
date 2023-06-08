@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { AnimationProvider } from '@/shared/lib/components/AnimationProvider'
-import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 import { NotificationDrawer } from './NotificationDrawer'
 
 export default {
@@ -16,7 +15,6 @@ export default {
       <NotificationDrawer {...args} />
     </AnimationProvider>
   ),
-  decorators: [StoreDecorator()],
 } as Meta<typeof NotificationDrawer>
 
 type Story = StoryObj<typeof NotificationDrawer>

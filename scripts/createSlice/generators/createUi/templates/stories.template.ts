@@ -23,7 +23,6 @@ export default {
   },
   parameters: {
   },
-  decorators: [StoreDecorator()],
 } as Meta<typeof ${componentName}>
 
 type Story = StoryObj<typeof ${componentName}>

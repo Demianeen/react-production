@@ -1,9 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { Theme } from '@/shared/const/theme'
-import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 import { RoutePath } from '@/shared/const/router/routePath'
-import { InitUserDecorator } from '@/shared/lib/storybook/InitUserDecorator'
 import { routes } from '@/shared/lib/router/routes'
 import ProfilePage from './ProfilePage'
 
@@ -22,7 +20,6 @@ export default {
       skip: true,
     },
   },
-  decorators: [InitUserDecorator(), StoreDecorator()],
 } as Meta<typeof ProfilePage>
 
 type Story = StoryObj<typeof ProfilePage>

@@ -15,7 +15,7 @@ export default {
   args: {
     id: 1,
   },
-  decorators: [InitUserDecorator(), StoreDecorator()],
+  decorators: [InitUserDecorator()],
 } as Meta<typeof EditableProfileCard>
 
 type Story = StoryObj<typeof EditableProfileCard>

@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { Theme } from '@/shared/const/theme'
-import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 import { ArticleCommentList } from './ArticleCommentList'
 
 export default {
@@ -11,7 +10,6 @@ export default {
     backgroundColor: { control: 'color' },
   },
   args: {},
-  decorators: [StoreDecorator()],
 } as Meta<typeof ArticleCommentList>
 
 type Story = StoryObj<typeof ArticleCommentList>

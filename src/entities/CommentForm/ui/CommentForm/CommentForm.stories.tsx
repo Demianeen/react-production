@@ -17,9 +17,7 @@ export default {
 } as Meta<typeof CommentForm>
 
 type Story = StoryObj<typeof CommentForm>
-export const WithoutValue: Story = {
-  decorators: [StoreDecorator()],
-}
+export const WithoutValue: Story = {}
 
 export const WithValue: Story = {
   decorators: [
@@ -32,12 +30,9 @@ export const WithValue: Story = {
 }
 
 export const Dark: Story = {
-  decorators: [
-    ThemeDecorator(Theme.DARK),
-    StoreDecorator(),
-  ],
+  decorators: [ThemeDecorator(Theme.DARK)],
 }
 
 export const Red: Story = {
-  decorators: [ThemeDecorator(Theme.RED), StoreDecorator()],
+  decorators: [ThemeDecorator(Theme.RED)],
 }

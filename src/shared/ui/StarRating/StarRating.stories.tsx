@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
-import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { Theme } from '@/shared/const/theme'
 import { StarRating } from './StarRating'
@@ -15,7 +14,6 @@ export default {
     onSelect: action('onSelect'),
   },
   parameters: {},
-  decorators: [StoreDecorator()],
 } as Meta<typeof StarRating>
 
 type Story = StoryObj<typeof StarRating>

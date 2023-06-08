@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 import ForbiddenPage from './ForbiddenPage'
 
 export default {
@@ -8,7 +7,6 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  decorators: [StoreDecorator()],
 } as Meta<typeof ForbiddenPage>
 
 type Story = StoryObj<typeof ForbiddenPage>

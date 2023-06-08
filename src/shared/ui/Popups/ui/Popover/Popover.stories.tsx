@@ -1,18 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { Theme } from '@/shared/const/theme'
-import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 import { Popover } from './Popover'
 
 export default {
-  title: 'Popups/Popover',
+  title: 'shared/Popups/Popover',
   component: Popover,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
   args: {},
   parameters: {},
-  decorators: [StoreDecorator()],
 } as Meta<typeof Popover>
 
 type Story = StoryObj<typeof Popover>

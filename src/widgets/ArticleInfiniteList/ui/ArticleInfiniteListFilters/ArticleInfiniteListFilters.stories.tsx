@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 import { ArticleInfiniteListFilters } from './ArticleInfiniteListFilters'
 
 export default {
@@ -9,7 +8,6 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  decorators: [StoreDecorator()],
 } as Meta<typeof ArticleInfiniteListFilters>
 
 type Story = StoryObj<typeof ArticleInfiniteListFilters>

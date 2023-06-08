@@ -4,6 +4,8 @@ import {
   initialize,
   mswDecorator,
 } from 'msw-storybook-addon'
+import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
+import { InitUserDecorator } from '@/shared/lib/storybook/InitUserDecorator'
 import { articleDetailsHandlers } from '../../src/entities/Article/model/mocks/articleDetailsHandlers'
 import { commentHandlers } from '../../src/entities/Comment/model/mocks/commentHandlers'
 import { imageHandlers } from '../../src/shared/lib/mock-server/imageHandlers'
@@ -64,6 +66,8 @@ const preview: Preview = {
     withRouter,
     mswDecorator,
     SuspenseDecorator,
+    InitUserDecorator(2),
+    StoreDecorator(),
   ],
 }
 
