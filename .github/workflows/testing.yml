@@ -33,7 +33,7 @@ jobs:
       - name: Make dir from commit hash
         run: mkdir -p reports/${{ github.sha }}
       - name: Copy report index.html
-        run: cp reports/index.html reports/${{ github.sha }}/index.html
+        run: cp reports/templates/index.html reports/${{ github.sha }}/index.html
       - name: Upload created folder
         uses: actions/upload-pages-artifact@v1
         if: always()
@@ -55,12 +55,7 @@ jobs:
       - name: Unit testing
         run: npm run test:unit
       - name: Move unit report
-        run: mkdir -p reports/${{ github.sha }}/unit/; mv reports/unit/* $_
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        if: always()
-        with:
-          path: reports
+        run: mkdir -p reports/${{ github.sha }}/unit/; mv reports/templates/unit/* $_
       # run ui tests
       - name: Install GraphicsMagick Engine
         run: sudo apt-get install -y graphicsmagick
