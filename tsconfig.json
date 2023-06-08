@@ -1,29 +1,31 @@
 {
   "compilerOptions": {
     "target": "ES6"
-    /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+    /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */ ,
     "jsx": "react-jsx"
-    /* Specify what JSX code is generated. */,
+    /* Specify what JSX code is generated. */ ,
     "module": "ESNext"
-    /* Specify what module code is generated. */,
+    /* Specify what module code is generated. */ ,
     "moduleResolution": "node"
-    /* Specify how TypeScript looks up a file from a given module specifier. */,
+    /* Specify how TypeScript looks up a file from a given module specifier. */ ,
     "baseUrl": "."
-    /* Specify the base directory to resolve non-relative module names. */,
+    /* Specify the base directory to resolve non-relative module names. */ ,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     }
-    /* Specify a set of entries that re-map imports to additional lookup locations. */,
+    /* Specify a set of entries that re-map imports to additional lookup locations. */ ,
     "allowSyntheticDefaultImports": true
-    /* Allow 'import x from y' when a module doesn't have a default export. */,
+    /* Allow 'import x from y' when a module doesn't have a default export. */ ,
     "esModuleInterop": true
-    /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
+    /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */ ,
     "forceConsistentCasingInFileNames": true
-    /* Ensure that casing is correct in imports. */,
+    /* Ensure that casing is correct in imports. */ ,
     "strict": true
-    /* Enable all strict type-checking options. */,
+    /* Enable all strict type-checking options. */ ,
     "skipLibCheck": true
-    /* Skip type checking all .d.ts files. */,
+    /* Skip type checking all .d.ts files. */ ,
     "isolatedModules": true,
     /* The isolatedModules flag in TypeScript enables warnings for code that may not be correctly interpreted by single-file transpilation processes, such as const enums and namespaces, without affecting the behavior of the code or TypeScript's checking and emitting process. */
   },

@@ -15,7 +15,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'airbnb-typescript',
     'plugin:@typescript-eslint/recommended',
-    'plugin:jest/recommended',
+
     'plugin:prettier/recommended',
     'prettier',
     'plugin:import/recommended',
@@ -29,13 +29,14 @@ module.exports = {
     jsx: true,
     sourceType: 'module',
     useJSXTextNode: true,
-    project: ['./tsconfig*.json'],
+    project: ['./**/tsconfig*.json'],
   },
   plugins: [
     '@typescript-eslint',
     'netliukh-demian-fsd-plugin',
     'unused-imports',
   ],
+  ignorePatterns: ['.eslintrc.js', 'cypress.config.ts'],
   settings: {
     react: {
       version: 'detect',
@@ -253,6 +254,7 @@ module.exports = {
     {
       // override rules for jest config
       files: ['config/jest/**/*.{ts,tsx}'],
+      extends: ['plugin:jest/recommended'],
       rules: {
         '@typescript-eslint/naming-convention': 0,
       },
@@ -262,6 +264,14 @@ module.exports = {
       files: ['src/shared/lib/storybook/*'],
       rules: {
         'netliukh-demian-fsd-plugin/layer-imports': 0,
+      },
+    },
+    {
+      // override rules for cypress
+      files: ['cypress/**/*.{ts,tsx}'],
+      extends: ['plugin:cypress/recommended'],
+      rules: {
+        '@typescript-eslint/no-namespace': 0,
       },
     },
   ],

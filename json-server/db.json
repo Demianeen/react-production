@@ -919,6 +919,15 @@
       "roles": [
         "MANAGER"
       ]
+    },
+    {
+      "id": 4,
+      "username": "testUser",
+      "password": "123",
+      "roles": [
+        "USER"
+      ],
+      "avatar": "https://i.pinimg.com/564x/db/6b/a8/db6ba8c0e0244f71230e6aae953e57be.jpg"
     }
   ],
   "profile": [
