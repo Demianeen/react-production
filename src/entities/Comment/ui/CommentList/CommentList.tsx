@@ -48,17 +48,22 @@ export const CommentList = memo(
         gap={1.25}
         maxWidth
         className={className}
+        data-testid='CommentList'
       >
-        {comments ? (
-          comments.map((comment) => (
+        {comments?.length !== 0 ? (
+          comments?.map((comment) => (
             <CommentCard
               className={styles.comment}
               comment={comment}
               key={comment.id}
+              data-testid='CommentList.Item'
             />
           ))
         ) : (
-          <Text text={t('No comments yet')} />
+          <Text
+            data-testid='CommentList.NoComments'
+            text={t('No comments yet')}
+          />
         )}
       </VStack>
     )

@@ -9,7 +9,8 @@
       "cypress",
       "node"
     ],
-    "isolatedModules": false
+    "isolatedModules": false,
+    "allowSyntheticDefaultImports": true
   },
   "extends": "../tsconfig.json",
   "include": [

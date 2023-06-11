@@ -55,6 +55,7 @@ export const ArticleDetails = memo(
                 key={block.id}
                 className={styles.block}
                 block={block}
+                data-testid='ArticleDetails.CodeBlock'
               />
             )
           case ArticleBlockType.IMAGE:
@@ -63,6 +64,7 @@ export const ArticleDetails = memo(
                 key={block.id}
                 className={styles.block}
                 block={block}
+                data-testid='ArticleDetails.ImageBlock'
               />
             )
           case ArticleBlockType.TEXT:
@@ -71,6 +73,7 @@ export const ArticleDetails = memo(
                 key={block.id}
                 className={styles.block}
                 block={block}
+                data-testid='ArticleDetails.TextBlock'
               />
             )
           default:
@@ -136,6 +139,7 @@ export const ArticleDetails = memo(
               alt={article?.title ?? ''}
               src={article?.img}
               className={styles.logo}
+              data-testid='ArticleDetails.logo'
             />
           </HStack>
           <Text
@@ -143,14 +147,21 @@ export const ArticleDetails = memo(
             title={article?.title}
             text={article?.subtitle}
             size={TextSize.L}
+            data-testid='ArticleDetails'
           />
           <HStack gap={0.5}>
             <Icon color='primary' Svg={EyeIcon} />
-            <Text text={String(article?.views)} />
+            <Text
+              text={String(article?.views)}
+              data-testid='ArticleDetails.views'
+            />
           </HStack>
           <HStack gap={0.5}>
             <Icon color='primary' Svg={CalendarIcon} />
-            <Text text={article?.createdAt} />
+            <Text
+              text={article?.createdAt}
+              data-testid='ArticleDetails.createdAt'
+            />
           </HStack>
           {article?.blocks?.map(renderBlock)}
         </>
@@ -162,6 +173,7 @@ export const ArticleDetails = memo(
         className={classNames(styles.articleDetails, {}, [
           className,
         ])}
+        data-testid='ArticleDetails'
       >
         <ArticleDetailsHeader id={id} />
         {content}

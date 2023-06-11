@@ -40,6 +40,7 @@ export const ArticleRecommendationsList = ({
       target='_blank'
       limit={4}
       view={View.GRID}
+      data-testid='ArticleRecommendationsList'
     />
   )
 }

@@ -44,6 +44,7 @@ export const ListFiltersSortField = memo(
         value={sortField}
         className={className}
         direction='down-right'
+        data-testid='ListFiltersSortField'
       />
     )
   }

@@ -14,6 +14,7 @@ import { HStack, VStack } from '@/shared/ui/Stack'
 import { routes } from '@/shared/lib/router/routes'
 import { AppImage } from '@/shared/ui/AppImage'
 import { Skeleton } from '@/shared/ui/Skeleton'
+import type { TestProps } from '@/shared/types/tests'
 import { ArticleBlockType } from '../../model/const/articleBlockType'
 import type { OnOpenArticle } from '../ArticleList/VirtualizedArticleList'
 import type {
@@ -23,7 +24,7 @@ import type {
 import styles from './ArticleListItem.module.scss'
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent'
 
-interface ArticleListItemProps {
+interface ArticleListItemProps extends TestProps {
   className?: string
   article: Article
   view: View
@@ -40,6 +41,7 @@ export const ArticleListItem = memo(
     target,
     onOpenArticle,
     index = 0,
+    'data-testid': testId = 'ArticleListItem',
   }: ArticleListItemProps) => {
     const { t } = useTranslation('articles')
 
@@ -99,6 +101,7 @@ export const ArticleListItem = memo(
             {},
             [className, styles[view]]
           )}
+          data-testid={`${testId}.List`}
         >
           <VStack gap={1}>
             <HStack as='header' gap={0.5} maxWidth>
@@ -154,6 +157,7 @@ export const ArticleListItem = memo(
         })}
         target={target}
         onClick={onClick()}
+        data-testid={`${testId}.Grid`}
       >
         <Card
           className={classNames(

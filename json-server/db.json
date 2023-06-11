@@ -962,6 +962,16 @@
       "country": "Ukraine",
       "city": "Kyiv",
       "username": "Ukrainer"
+    },
+    {
+      "id": 4,
+      "firstName": "Test",
+      "lastName": "Testov",
+      "age": 465,
+      "currency": "UAH",
+      "country": "Ukraine",
+      "city": "Kyiv",
+      "username": "testUser"
     }
   ],
   "article-rating": [
@@ -990,76 +1000,6 @@
       "id": 4,
       "articleId": 1,
       "userId": 4,
-      "rating": 2,
-      "feedback": "I liked this article. But I think it could be better"
-    },
-    {
-      "id": 5,
-      "articleId": 1,
-      "userId": 5,
-      "rating": 1,
-      "feedback": "I liked this article. But I think it could be better"
-    },
-    {
-      "id": 6,
-      "articleId": 1,
-      "userId": 6,
-      "rating": 5,
-      "feedback": "I liked this article. But I think it could be better"
-    },
-    {
-      "id": 7,
-      "articleId": 1,
-      "userId": 7,
-      "rating": 4,
-      "feedback": "I liked this article. But I think it could be better"
-    },
-    {
-      "id": 8,
-      "articleId": 1,
-      "userId": 8,
-      "rating": 3,
-      "feedback": "I liked this article. But I think it could be better"
-    },
-    {
-      "id": 9,
-      "articleId": 1,
-      "userId": 9,
-      "rating": 2,
-      "feedback": "I liked this article. But I think it could be better"
-    },
-    {
-      "id": 10,
-      "articleId": 1,
-      "userId": 10,
-      "rating": 1,
-      "feedback": "I liked this article. But I think it could be better"
-    },
-    {
-      "id": 11,
-      "articleId": 1,
-      "userId": 11,
-      "rating": 5,
-      "feedback": "I liked this article. But I think it could be better"
-    },
-    {
-      "id": 12,
-      "articleId": 1,
-      "userId": 12,
-      "rating": 4,
-      "feedback": "I liked this article. But I think it could be better"
-    },
-    {
-      "id": 13,
-      "articleId": 1,
-      "userId": 13,
-      "rating": 3,
-      "feedback": "I liked this article. But I think it could be better"
-    },
-    {
-      "id": 14,
-      "articleId": 1,
-      "userId": 14,
       "rating": 2,
       "feedback": "I liked this article. But I think it could be better"
     },
@@ -2303,55 +2243,6 @@
       "profileId": 1,
       "userId": 4,
       "rating": 2,
-      "feedback": "I liked this profile. But I think it could be better"
-    },
-    {
-      "id": 5,
-      "profileId": 1,
-      "userId": 5,
-      "rating": 1,
-      "feedback": "I liked this profile. But I think it could be better"
-    },
-    {
-      "id": 6,
-      "profileId": 1,
-      "userId": 6,
-      "rating": 5,
-      "feedback": "I liked this profile. But I think it could be better"
-    },
-    {
-      "id": 7,
-      "profileId": 1,
-      "userId": 7,
-      "rating": 4,
-      "feedback": "I liked this profile. But I think it could be better"
-    },
-    {
-      "id": 8,
-      "profileId": 1,
-      "userId": 8,
-      "rating": 3,
-      "feedback": "I liked this profile. But I think it could be better"
-    },
-    {
-      "id": 9,
-      "profileId": 1,
-      "userId": 9,
-      "rating": 2,
-      "feedback": "I liked this profile. But I think it could be better"
-    },
-    {
-      "id": 10,
-      "profileId": 1,
-      "userId": 10,
-      "rating": 1,
-      "feedback": "I liked this profile. But I think it could be better"
-    },
-    {
-      "id": 11,
-      "profileId": 1,
-      "userId": 11,
-      "rating": 5,
       "feedback": "I liked this profile. But I think it could be better"
     },
     {

@@ -170,6 +170,7 @@ export const VirtualizedArticleList = ({
         }
         initialTopMostItemIndex={startIndex}
         role='feed'
+        data-testid='VirtualizedArticleList.List'
       />
     )
   }
@@ -204,6 +205,7 @@ export const VirtualizedArticleList = ({
         scrollParent?.current ?? undefined
       }
       role='feed'
+      data-testid='VirtualizedArticleList.Grid'
     />
   )
 }

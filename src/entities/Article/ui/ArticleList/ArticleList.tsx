@@ -2,6 +2,7 @@ import type { HTMLAttributeAnchorTarget } from 'react'
 import { memo, useCallback } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { View } from '@/entities/ListFilters'
+import type { TestProps } from '@/shared/types/tests'
 import {
   ArticleListSkeleton,
   getArticleListSkeletons,
@@ -10,7 +11,7 @@ import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
 import type { Article } from '../../model/types/article'
 import styles from './ArticleList.module.scss'
 
-type ArticleListProps = {
+interface ArticleListProps extends TestProps {
   className?: string
   articles: Article[]
   isLoading: boolean
@@ -27,6 +28,7 @@ export const ArticleList = memo(
     view = View.GRID,
     target,
     limit,
+    'data-testid': testId = 'ArticleList',
   }: ArticleListProps) => {
     const renderArticle = useCallback(
       (article: Article) => (
@@ -36,9 +38,10 @@ export const ArticleList = memo(
           key={article.id}
           target={target}
           className={styles.item}
+          data-testid={`${testId}.Item`}
         />
       ),
-      [target, view]
+      [target, testId, view]
     )
 
     if (isLoading) {
@@ -61,6 +64,7 @@ export const ArticleList = memo(
           {},
           [className, styles[view]]
         )}
+        data-testid={testId}
       >
         {articles.length > 0
           ? articles.map(renderArticle)

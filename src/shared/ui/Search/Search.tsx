@@ -55,6 +55,7 @@ export const Search = memo(
         value={searchQuery}
         onChange={onChangeSearch}
         maxWidth
+        data-testid='Search'
       />
     )
   }

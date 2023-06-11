@@ -5,21 +5,27 @@ import { Text } from '@/shared/ui/Text'
 import { AppLink } from '@/shared/ui/AppLink'
 import { HStack } from '@/shared/ui/Stack'
 import { routes } from '@/shared/lib/router/routes'
+import type { TestProps } from '@/shared/types/tests'
 import styles from './CommentCard.module.scss'
 import type { Comment } from '../../model/types/comment'
 
-interface CommentCardProps {
+interface CommentCardProps extends TestProps {
   className?: string
   comment: Comment
 }
 
 export const CommentCard = memo(
-  ({ className, comment }: CommentCardProps) => {
+  ({
+    className,
+    comment,
+    'data-testid': testId,
+  }: CommentCardProps) => {
     return (
       <article
         className={classNames(styles.commentCard, {}, [
           className,
         ])}
+        data-testid={testId}
       >
         <header>
           <HStack

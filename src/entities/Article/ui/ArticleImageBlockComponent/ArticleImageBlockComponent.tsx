@@ -1,10 +1,12 @@
 import { memo } from 'react'
 import { Text, TextAlign } from '@/shared/ui/Text'
 import { VStack } from '@/shared/ui/Stack'
+import type { TestProps } from '@/shared/types/tests'
 import type { ArticleImageBlock } from '../../model/types/article'
 import styles from './ArticleImageBlockComponent.module.scss'
 
-interface ArticleImageBlockComponentProps {
+interface ArticleImageBlockComponentProps
+  extends TestProps {
   className?: string
   block: ArticleImageBlock
 }
@@ -13,6 +15,7 @@ export const ArticleImageBlockComponent = memo(
   ({
     className,
     block,
+    'data-testid': dataTestId,
   }: ArticleImageBlockComponentProps) => {
     return (
       <VStack
@@ -24,11 +27,13 @@ export const ArticleImageBlockComponent = memo(
           className={styles.img}
           src={block.src}
           alt={block.title}
+          data-testid={`${dataTestId}.Image`}
         />
         {block.title && (
           <Text
             text={block.title}
             align={TextAlign.CENTER}
+            data-testid={`${dataTestId}.Title`}
           />
         )}
       </VStack>

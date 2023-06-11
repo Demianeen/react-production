@@ -77,6 +77,7 @@ export const RatingCard = memo(
           value={feedback}
           onChange={setFeedback}
           maxWidth
+          data-testid='RatingCard.FeedbackInput'
         />
       </>
     )
@@ -86,6 +87,7 @@ export const RatingCard = memo(
         className={className}
         squared={squared}
         maxWidth={maxWidth}
+        data-testid='RatingCard'
       >
         <VStack align='center' gap={1} maxWidth>
           <Text
@@ -118,10 +120,16 @@ export const RatingCard = memo(
                   type='button'
                   theme={ButtonTheme.OUTLINE_RED}
                   onClick={handleCancel}
+                  data-testid='RatingCard.CancelButton'
                 >
                   {t('Close')}
                 </Button>
-                <Button type='submit'>{t('Send')}</Button>
+                <Button
+                  type='submit'
+                  data-testid='RatingCard.SubmitButton'
+                >
+                  {t('Send')}
+                </Button>
               </HStack>
             </VStack>
           </Modal>
