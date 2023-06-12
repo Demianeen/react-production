@@ -2,6 +2,7 @@ import { SortOrder } from '../../../src/shared/const/sort'
 import { SortField } from '../../../src/entities/ListFilters/model/const/sortField'
 import { routes } from '../../../src/shared/lib/router/routes'
 
+let articleId = 0
 describe('User enters the articles page', () => {
   beforeEach(() => {
     cy.login()
@@ -18,13 +19,52 @@ describe('User enters the articles page', () => {
     )
   })
 
-  it('user searches for an article', () => {
-    const searchQuery = 'economics'
-    cy.getByTestId('Search').type(searchQuery)
-    cy.getByTestId('ArticleListItem.Grid').should(
-      'have.length',
-      1
-    )
+  describe('user searches for an article', () => {
+    afterEach(() => {
+      cy.removeArticle(articleId)
+    })
+
+    it('uses title', () => {
+      const searchQuery = 'Test title'
+
+      cy.createArticle().then((data) => {
+        articleId = data.id
+      })
+
+      cy.getByTestId('Search').type(searchQuery)
+      cy.getByTestId('ArticleListItem.Grid').should(
+        'have.length',
+        1
+      )
+    })
+
+    it('uses subtitle', () => {
+      const searchQuery = 'Test subtitle'
+
+      cy.createArticle().then((data) => {
+        articleId = data.id
+      })
+
+      cy.getByTestId('Search').type(searchQuery)
+      cy.getByTestId('ArticleListItem.Grid').should(
+        'have.length',
+        1
+      )
+    })
+
+    it('uses text inside', () => {
+      const searchQuery = 'Test paragraph 2'
+
+      cy.createArticle().then((data) => {
+        articleId = data.id
+      })
+
+      cy.getByTestId('Search').type(searchQuery)
+      cy.getByTestId('ArticleListItem.Grid').should(
+        'have.length',
+        1
+      )
+    })
   })
 
   it('user changes sort field to "views"', () => {
