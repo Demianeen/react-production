@@ -50,7 +50,7 @@ export const CommentList = memo(
         className={className}
         data-testid='CommentList'
       >
-        {comments?.length !== 0 ? (
+        {comments?.length !== 0 && comments ? (
           comments?.map((comment) => (
             <CommentCard
               className={styles.comment}
