@@ -4,6 +4,7 @@
 /.loki/report.json
 /.loki/report.html
 /reports/unit
+/reports/template
 ### macOS ###
 # General
 .DS_Store

@@ -5,10 +5,17 @@ interface ProfileEdit {
   newLastName: string
 }
 
-export const updateProfile = ({
-  newFirstName: firstName,
-  newLastName: lastName,
-}: ProfileEdit) => {
+interface ProfileEditOptions {
+  submit?: boolean
+}
+
+export const updateProfile = (
+  {
+    newFirstName: firstName,
+    newLastName: lastName,
+  }: ProfileEdit,
+  { submit = true }: ProfileEditOptions = {}
+) => {
   cy.getByTestId(
     'EditableProfileCardHeader.EditButton'
   ).click()
@@ -19,35 +26,33 @@ export const updateProfile = ({
   cy.getByTestId('ProfileCard.lastName').clear()
   cy.getByTestId('ProfileCard.lastName').type(lastName)
 
-  cy.getByTestId(
-    'EditableProfileCardHeader.SaveButton'
-  ).click()
+  if (submit) {
+    cy.getByTestId(
+      'EditableProfileCardHeader.SubmitButton'
+    ).click()
+  }
 }
 
 export const resetProfile = (profileId: number) => {
-  return cy.request({
-    method: 'PUT',
-    url: `http://localhost:8000/profile/${profileId}`,
-    headers: {
-      Authorization: `mockAuth`,
-    },
-    body: {
-      id: 4,
-      firstName: 'Test',
-      lastName: 'Testov',
-      age: 465,
-      currency: 'UAH',
-      country: 'Ukraine',
-      city: 'Kyiv',
-      username: 'testUser',
-    },
-  })
+  return cy.fixture('profile.json').then((profile) =>
+    cy.request({
+      method: 'PUT',
+      url: `http://localhost:8000/profile/${profileId}`,
+      headers: {
+        Authorization: `mockAuth`,
+      },
+      body: profile,
+    })
+  )
 }
 
 declare global {
   namespace Cypress {
     interface Chainable {
-      updateProfile(data: ProfileEdit): Chainable<void>
+      updateProfile(
+        data: ProfileEdit,
+        options?: ProfileEditOptions
+      ): Chainable<void>
       resetProfile(profileId: number): Chainable<Profile>
     }
   }

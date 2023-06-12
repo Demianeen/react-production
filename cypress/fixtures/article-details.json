@@ -1,0 +1,24 @@
+{
+  "title": "Test title",
+  "subtitle": "Test subtitle",
+  "img": "https: //blog.jetbrains.com/wp-content/uploads/2023/03/DSGN-16128-1.8.20-Release_Blog-Featured-image-1280x600-1.png",
+  "views": 1022,
+  "userId": 1,
+  "createdAt": "26.02.2013",
+  "types": [
+    "IT"
+  ],
+  "id": 123,
+  "blocks": [
+    {
+      "id": 1,
+      "type": "TEXT",
+      "title": "Test title",
+      "paragraphs": [
+        "Test paragraph 1",
+        "Test paragraph 2",
+        "Test paragraph 3"
+      ]
+    }
+  ]
+}

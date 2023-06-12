@@ -18,39 +18,46 @@ describe('User enters article details page', () => {
   })
 
   it('renders article', () => {
-    // cy.getByTestId('ArticleDetails.logo').should(
-    //   'have.attr',
-    //   'src',
-    //   defaultArticle.img
-    // )
-    // cy.getByTestId('ArticleDetails.Title').should(
-    //   'have.text',
-    //   defaultArticle.title
-    // )
-    // cy.getByTestId('ArticleDetails.Paragraph').should(
-    //   'have.text',
-    //   defaultArticle.subtitle
-    // )
-    // cy.getByTestId('ArticleDetails.views.Paragraph').should(
-    //   'have.text',
-    //   String(defaultArticle.views)
-    // )
-    // cy.getByTestId(
-    //   'ArticleDetails.createdAt.Paragraph'
-    // ).should('have.text', defaultArticle.createdAt)
-    // cy.getByTestId('ArticleDetails.TextBlock.Title').should(
-    //   'have.text',
-    //   defaultArticle.blocks[0].title
-    // )
-    // cy.getByTestId(
-    //   'ArticleDetails.TextBlock.Paragraph'
-    // ).should(
-    //   'have.text',
-    //   defaultArticle.blocks[0].paragraphs.join('')
-    // )
+    cy.getByTestId('ArticleDetails.logo').should(
+      'have.attr',
+      'src',
+      'https://blog.jetbrains.com/wp-content/uploads/2023/03/DSGN-16128-1.8.20-Release_Blog-Featured-image-1280x600-1.png'
+    )
+    cy.getByTestId('ArticleDetails.Title').should(
+      'have.text',
+      'Test title'
+    )
+    cy.getByTestId('ArticleDetails.Paragraph').should(
+      'have.text',
+      'Test subtitle'
+    )
+    cy.getByTestId('ArticleDetails.views.Paragraph').should(
+      'have.text',
+      String(1022)
+    )
+    cy.getByTestId(
+      'ArticleDetails.createdAt.Paragraph'
+    ).should('have.text', '26.02.2013')
+    cy.getByTestId('ArticleDetails.TextBlock.Title').should(
+      'have.text',
+      'Test title'
+    )
+    cy.getByTestId(
+      'ArticleDetails.TextBlock.Paragraph'
+    ).should(
+      'have.text',
+      [
+        'Test paragraph 1',
+        'Test paragraph 2',
+        'Test paragraph 3',
+      ].join('')
+    )
   })
 
   it('rates article', () => {
+    cy.intercept('GET', '**/articles/*', {
+      fixture: 'article-details.json',
+    })
     cy.getByTestId('ArticleDetails.logo')
     cy.getByTestId('RatingCard').scrollIntoView()
     cy.get('[data-selected=true]').should('have.length', 0)
@@ -68,6 +75,9 @@ describe('User enters article details page', () => {
   })
 
   it('adds comment', () => {
+    cy.intercept('GET', '**/articles/*', {
+      fixture: 'article-details.json',
+    })
     cy.getByTestId('ArticleDetails.logo')
     cy.getByTestId('CommentList').scrollIntoView()
     cy.getByTestId('CommentList.Item').should(

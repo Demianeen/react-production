@@ -6,7 +6,7 @@ import type {
 } from './config/build/types/config'
 import buildWebpackConfig from './config/build/buildWebpackConfig'
 
-export default (env: BuildEnv) => {
+export default (env?: BuildEnv) => {
   const paths: BuildPath = {
     entry: path.resolve(__dirname, 'src', 'index.tsx'),
     build: path.resolve(__dirname, 'build'),
@@ -21,10 +21,10 @@ export default (env: BuildEnv) => {
   }
 
   const mode: BuildOptions['mode'] =
-    env.mode ?? 'development'
-  const PORT = env.port ?? 3000
-  const apiURL = env.apiUrl ?? 'http://localhost:8000'
-  const isAnalyze = env.analyze ?? false
+    env?.mode ?? 'development'
+  const PORT = env?.port ?? 3000
+  const apiURL = env?.apiUrl ?? 'http://localhost:8000'
+  const isAnalyze = env?.analyze ?? false
 
   const isDev = mode === 'development'
 

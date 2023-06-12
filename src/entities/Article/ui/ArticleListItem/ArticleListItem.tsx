@@ -73,11 +73,12 @@ export const ArticleListItem = memo(
           <Text
             text={String(article.views)}
             className={styles.views}
+            data-testid={`${testId}.Views`}
           />
           <Icon Svg={EyeIcon} />
         </>
       ),
-      [article.views]
+      [article.views, testId]
     )
 
     const onClick = () => {

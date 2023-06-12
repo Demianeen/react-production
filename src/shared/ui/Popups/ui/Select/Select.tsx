@@ -5,6 +5,7 @@ import { classNames } from '@/shared/lib/classNames/classNames'
 import TickIcon from '@/shared/assets/icons/tick-20-20.svg'
 import ArrowDownIcon from '@/shared/assets/icons/arrows-up-down-20-20.svg'
 import type { Direction } from '@/shared/types/ui'
+import type { TestProps } from '@/shared/types/tests'
 import { mapDirection } from '../../const/mapDirection'
 import { Button, ButtonTheme } from '../../../Button/Button'
 import { Icon } from '../../../Icon/Icon'
@@ -18,7 +19,7 @@ export interface SelectOption<T extends string> {
   disabled?: boolean
 }
 
-interface SelectProps<T extends string> {
+interface SelectProps<T extends string> extends TestProps {
   className?: string
   /**
    * @description Label of select block
@@ -56,6 +57,7 @@ export const Select = typedMemo(
     maxWidth,
     direction = 'down-left',
     name,
+    'data-testid': testId = 'Select',
   }: SelectProps<T>) => {
     const selectedOption = useMemo(
       () =>
@@ -90,6 +92,7 @@ export const Select = typedMemo(
               },
               [className]
             )}
+            data-testid={`${testId}.Button`}
           >
             <span className={styles.label}>
               {selectedOption?.label ?? defaultValue}
@@ -123,6 +126,8 @@ export const Select = typedMemo(
                         option.disabled,
                       [styles.selected]: selected,
                     })}
+                    data-testid={`${testId}.Option.${option.value}`}
+                    data-selected={selected}
                   >
                     {selected && (
                       <TickIcon className={styles.icon} />

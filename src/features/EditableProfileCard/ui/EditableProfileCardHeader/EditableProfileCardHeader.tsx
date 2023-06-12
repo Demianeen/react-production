@@ -62,7 +62,7 @@ export const EditableProfileCardHeader = memo(
                   form='editable-profile-card'
                   type='submit'
                   theme={ButtonTheme.OUTLINE}
-                  data-testid='EditableProfileCardHeader.SaveButton'
+                  data-testid='EditableProfileCardHeader.SubmitButton'
                 >
                   {t('Save')}
                 </Button>

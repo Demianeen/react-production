@@ -40,6 +40,7 @@ export const ListFiltersOrder = memo(
         value={order}
         className={className}
         direction='down-right'
+        data-testid='ListFiltersOrder'
       />
     )
   }

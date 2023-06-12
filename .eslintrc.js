@@ -122,6 +122,7 @@ module.exports = {
           '**/jest/**', // jest config
           '**/mocks/**', // mocks
           '**/mock-server/**', // mock server
+          'cypress/**', // cypress
         ],
       },
     ],

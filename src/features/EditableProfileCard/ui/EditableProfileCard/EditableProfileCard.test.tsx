@@ -116,7 +116,7 @@ describe('features/EditableProfileCard', () => {
 
     await user.click(
       await screen.getByTestId(
-        'EditableProfileCardHeader.SaveButton'
+        'EditableProfileCardHeader.SubmitButton'
       )
     )
 
@@ -148,7 +148,7 @@ describe('features/EditableProfileCard', () => {
 
     await user.click(
       await screen.getByTestId(
-        'EditableProfileCardHeader.SaveButton'
+        'EditableProfileCardHeader.SubmitButton'
       )
     )
 

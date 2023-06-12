@@ -10,10 +10,12 @@
       "node"
     ],
     "isolatedModules": false,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true
   },
   "extends": "../tsconfig.json",
   "include": [
-    "**/*.ts"
+    "**/*.ts",
+    "**/*.tsx",
   ]
 }
