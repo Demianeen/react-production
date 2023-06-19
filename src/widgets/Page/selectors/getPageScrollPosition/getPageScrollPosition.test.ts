@@ -10,9 +10,7 @@ describe('getPageScrollPosition', () => {
         },
       },
     }
-    expect(
-      getPageScrollPosition(state as StateSchema)
-    ).toEqual({
+    expect(getPageScrollPosition(state as StateSchema)).toEqual({
       articles: 100,
     })
   })
@@ -20,8 +18,6 @@ describe('getPageScrollPosition', () => {
   it('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {}
 
-    expect(
-      getPageScrollPosition(state as StateSchema)
-    ).toEqual(0)
+    expect(getPageScrollPosition(state as StateSchema)).toEqual(0)
   })
 })

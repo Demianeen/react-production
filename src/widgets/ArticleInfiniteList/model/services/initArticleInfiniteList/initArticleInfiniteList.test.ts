@@ -17,32 +17,24 @@ jest.mock('../fetchArticles/fetchArticles', () => ({
 
 describe('initArticleInfiniteList', () => {
   test('initialized', () => {
-    const thunk = new TestAsyncThunk(
-      initArticleInfiniteList,
-      {
-        articleInfiniteList: {
-          _isInitialized: false,
-        },
-      }
-    )
+    const thunk = new TestAsyncThunk(initArticleInfiniteList, {
+      articleInfiniteList: {
+        _isInitialized: false,
+      },
+    })
     thunk.call()
 
     expect(thunk.dispatch).toHaveBeenCalledTimes(3)
-    expect(
-      articleInfiniteListActions.initState
-    ).toHaveBeenCalled()
+    expect(articleInfiniteListActions.initState).toHaveBeenCalled()
     expect(fetchArticles).toHaveBeenCalled()
   })
 
   test('not initialized', () => {
-    const thunk = new TestAsyncThunk(
-      initArticleInfiniteList,
-      {
-        articleInfiniteList: {
-          _isInitialized: true,
-        },
-      }
-    )
+    const thunk = new TestAsyncThunk(initArticleInfiniteList, {
+      articleInfiniteList: {
+        _isInitialized: true,
+      },
+    })
     thunk.call()
 
     expect(thunk.dispatch).toHaveBeenCalledTimes(1)

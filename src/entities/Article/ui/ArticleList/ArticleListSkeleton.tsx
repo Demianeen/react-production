@@ -27,10 +27,7 @@ export const getArticleListSkeletons = (
 }
 
 export const ArticleListSkeleton = memo(
-  ({
-    context,
-    className,
-  }: VirtualizedArticleListSkeletonProps) => {
+  ({ context, className }: VirtualizedArticleListSkeletonProps) => {
     const {
       view = View.GRID,
       isLoading = false,

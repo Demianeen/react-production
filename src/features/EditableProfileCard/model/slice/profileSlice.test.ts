@@ -3,10 +3,7 @@ import { Country } from '@/entities/Country'
 import { ProfileValidationError } from '../const/profileValidationError'
 import { updateProfileData } from '../services/updateProfileData/updateProfileData'
 import type { ProfileSchema } from '../types/profileSchema'
-import {
-  profileActions,
-  profileReducer,
-} from './profileSlice'
+import { profileActions, profileReducer } from './profileSlice'
 
 const data = {
   firstName: 'Demian',
@@ -34,9 +31,7 @@ describe('profileSlice', () => {
   test('cancelEdit', () => {
     const state: DeepPartial<ProfileSchema> = {
       isReadonly: false,
-      validationErrors: [
-        ProfileValidationError.MISSING_AGE,
-      ],
+      validationErrors: [ProfileValidationError.MISSING_AGE],
       data,
       form: { ...data, age: undefined },
     }
@@ -73,9 +68,7 @@ describe('profileSlice', () => {
   test('updateProfileData service pending', () => {
     const state: DeepPartial<ProfileSchema> = {
       isLoading: false,
-      validationErrors: [
-        ProfileValidationError.MISSING_AGE,
-      ],
+      validationErrors: [ProfileValidationError.MISSING_AGE],
     }
 
     expect(
@@ -92,9 +85,7 @@ describe('profileSlice', () => {
   test('updateProfileData service fulfilled', () => {
     const state: DeepPartial<ProfileSchema> = {
       isLoading: false,
-      validationErrors: [
-        ProfileValidationError.MISSING_AGE,
-      ],
+      validationErrors: [ProfileValidationError.MISSING_AGE],
     }
 
     expect(

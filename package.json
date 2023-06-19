@@ -12,8 +12,9 @@
     "build:prod": "webpack --env mode=production apiUrl=https://react-production-json-server.vercel.app/",
     "build:prod:analyze": "webpack --env mode=production analyze=true",
     "build:dev": "webpack --env mode=development",
-    "lint:ts": "eslint \"**/*.{ts,tsx}\" && npx prettier --check \"**/*.{ts,tsx}\"",
-    "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix && npx prettier --write \"**/*.{ts,tsx}\"",
+    "prettier": "prettier --write \"**/*.{ts,tsx,json}\"",
+    "lint:ts": "eslint \"**/*.{ts,tsx}\"",
+    "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
     "lint:scss": "npx stylelint \"**/*.scss\"",
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
     "test:unit": "jest --config ./config/jest/jest.config.ts",
@@ -174,5 +175,18 @@
   },
   "msw": {
     "workerDirectory": "public"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint",
+      "prettier --write"
+    ],
+    "*.json": [
+      "prettier --write"
+    ],
+    "*.scss": [
+      "stylelint",
+      "prettier --list-different"
+    ]
   }
 }

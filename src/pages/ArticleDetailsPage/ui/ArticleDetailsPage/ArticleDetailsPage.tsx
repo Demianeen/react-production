@@ -22,12 +22,7 @@ const ArticleDetailsPage = ({
 
   if (id === undefined) {
     return (
-      <VStack
-        maxHeight
-        maxWidth
-        justify='center'
-        align='center'
-      >
+      <VStack maxHeight maxWidth justify='center' align='center'>
         <Text
           theme={TextTheme.ERROR}
           title={t('Article not found')}
@@ -42,10 +37,7 @@ const ArticleDetailsPage = ({
   const numberId = Number(id)
 
   return (
-    <Page
-      className={className}
-      data-testid='ArticleDetailsPage'
-    >
+    <Page className={className} data-testid='ArticleDetailsPage'>
       <ArticleDetails id={numberId} />
       <ArticleDetailsPageFooter articleId={numberId} />
     </Page>

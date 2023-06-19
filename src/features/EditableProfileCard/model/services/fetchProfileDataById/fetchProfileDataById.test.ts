@@ -20,9 +20,7 @@ describe('fetchProfileDataByIdj', () => {
     }
 
     const thunk = new TestAsyncThunk(fetchProfileDataById)
-    thunk.api.get.mockReturnValue(
-      Promise.resolve(returnValue)
-    )
+    thunk.api.get.mockReturnValue(Promise.resolve(returnValue))
     const result = await thunk.call(1)
 
     expect(result.payload).toEqual(data)

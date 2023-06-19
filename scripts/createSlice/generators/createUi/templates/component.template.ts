@@ -29,10 +29,6 @@ ${componentDeclaration} ${capitalizedSliceName} = memo(({ className }: ${capital
 
 ${capitalizedSliceName}.displayName = "${capitalizedSliceName}"
 
-${
-  isDefaultExport
-    ? `export default ${capitalizedSliceName}`
-    : ''
-})
+${isDefaultExport ? `export default ${capitalizedSliceName}` : ''})
 `
 }

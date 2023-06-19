@@ -14,19 +14,15 @@ export default {
 } as Meta<typeof ArticleList>
 
 type Story = StoryObj<typeof ArticleList>
-const articlesGrid = new Array(12)
-  .fill(null)
-  .map((array, index) => ({
-    ...mockArticle,
-    id: index,
-  }))
+const articlesGrid = new Array(12).fill(null).map((array, index) => ({
+  ...mockArticle,
+  id: index,
+}))
 
-const articlesList = new Array(2)
-  .fill(null)
-  .map((array, index) => ({
-    ...mockArticle,
-    id: index,
-  }))
+const articlesList = new Array(2).fill(null).map((array, index) => ({
+  ...mockArticle,
+  id: index,
+}))
 
 export const List: Story = {
   args: {

@@ -8,18 +8,13 @@ interface ArticleEditPageProps {
 }
 
 // TODO: add create edit page functionality
-const ArticleEditPage = ({
-  className,
-}: ArticleEditPageProps) => {
+const ArticleEditPage = ({ className }: ArticleEditPageProps) => {
   const { t } = useTranslation('article-edit')
   const { id } = useParams()
   const isEdit = Boolean(id)
 
   return (
-    <Page
-      className={className}
-      data-testid='ArticleEditPage'
-    >
+    <Page className={className} data-testid='ArticleEditPage'>
       {isEdit ? t('Edit article') : t('Create new article')}
     </Page>
   )

@@ -13,11 +13,7 @@ interface ListFiltersViewProps {
 }
 
 export const ListFiltersView = memo(
-  ({
-    className,
-    onChangeView,
-    view,
-  }: ListFiltersViewProps) => {
+  ({ className, onChangeView, view }: ListFiltersViewProps) => {
     const onClick = useCallback(
       (newView: View) => {
         return () => onChangeView?.(newView)
@@ -41,10 +37,7 @@ export const ListFiltersView = memo(
               [styles.selected]: view === viewType.view,
             })}
           >
-            <Icon
-              className={styles.icon}
-              Svg={viewType.Icon}
-            />
+            <Icon className={styles.icon} Svg={viewType.Icon} />
           </Button>
         ))}
       </div>

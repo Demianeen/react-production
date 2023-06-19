@@ -10,11 +10,7 @@ export const articleHandlers = [
     const page = searchParams.get('_page')
 
     if (isMockLoading()) {
-      return res(
-        ctx.status(200),
-        ctx.json({}),
-        ctx.delay('infinite')
-      )
+      return res(ctx.status(200), ctx.json({}), ctx.delay('infinite'))
     }
 
     const articles: Article[] = Array.from({

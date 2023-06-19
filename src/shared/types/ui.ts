@@ -19,10 +19,9 @@ export type Expand<T> = T extends infer O
   ? { [K in keyof O]: O[K] }
   : never
 
-export type PropsOf<TTag extends ReactTag> =
-  TTag extends ElementType
-    ? Omit<ComponentProps<TTag>, 'ref'>
-    : never
+export type PropsOf<TTag extends ReactTag> = TTag extends ElementType
+  ? Omit<ComponentProps<TTag>, 'ref'>
+  : never
 
 type PropsWeControl = 'as' | 'children' | 'className'
 

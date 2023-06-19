@@ -5,9 +5,8 @@ import { Theme } from '../../../../shared/const/theme'
 import { ThemeContext } from '../../../../shared/lib/context/ThemeContext/ThemeContext'
 
 const defaultTheme =
-  (localStorage.getItem(
-    LOCAL_STORAGE_THEME_KEY
-  ) as Theme) ?? Theme.LIGHT
+  (localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme) ??
+  Theme.LIGHT
 
 interface ThemeProviderProps {
   initialTheme?: Theme

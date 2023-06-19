@@ -27,9 +27,7 @@ export const CardSkeleton = memo(
 
     return (
       <Skeleton
-        className={classNames(styles.card, mods, [
-          className,
-        ])}
+        className={classNames(styles.card, mods, [className])}
         width={width}
         height={height}
       />

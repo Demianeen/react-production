@@ -1,15 +1,5 @@
-import type {
-  FC,
-  HTMLAttributeAnchorTarget,
-  RefObject,
-} from 'react'
-import {
-  memo,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import type { FC, HTMLAttributeAnchorTarget, RefObject } from 'react'
+import { memo, useCallback, useEffect, useRef, useState } from 'react'
 import type { VirtuosoGridHandle } from 'react-virtuoso'
 import { Virtuoso, VirtuosoGrid } from 'react-virtuoso'
 import { useTranslation } from 'react-i18next'
@@ -54,21 +44,12 @@ export interface VirtualizedArticleListContext {
 
 const ArticlesNotFound = memo(() => {
   const { t } = useTranslation('articles')
-  return (
-    <Text
-      title={t('Articles not found')}
-      size={TextSize.L}
-    />
-  )
+  return <Text title={t('Articles not found')} size={TextSize.L} />
 })
 ArticlesNotFound.displayName = 'ArticlesNotFound'
 
 const HeaderWithMargin = memo(
-  ({
-    context,
-  }: {
-    context?: VirtualizedArticleListContext
-  }) => {
+  ({ context }: { context?: VirtualizedArticleListContext }) => {
     if (!context?.Header) {
       return null
     }
@@ -97,7 +78,9 @@ export const VirtualizedArticleList = ({
 }: VirtualizedArticleListProps) => {
   const [scrollParent, setScrollParent] = useState<
     typeof scrollParentRef
-  >({ current: null })
+  >({
+    current: null,
+  })
   const gridRef = useRef<VirtuosoGridHandle | null>(null)
 
   useEffect(() => {
@@ -111,11 +94,7 @@ export const VirtualizedArticleList = ({
   useEffect(() => {
     let timeout: NodeJS.Timeout
 
-    if (
-      gridRef.current &&
-      startIndex &&
-      view === View.GRID
-    ) {
+    if (gridRef.current && startIndex && view === View.GRID) {
       timeout = setTimeout(() => {
         gridRef.current?.scrollToIndex(10)
       }, 100)
@@ -165,9 +144,7 @@ export const VirtualizedArticleList = ({
           Header,
         }}
         overscan={200}
-        customScrollParent={
-          scrollParent?.current ?? undefined
-        }
+        customScrollParent={scrollParent?.current ?? undefined}
         initialTopMostItemIndex={startIndex}
         role='feed'
         data-testid='VirtualizedArticleList.List'
@@ -201,9 +178,7 @@ export const VirtualizedArticleList = ({
         Header,
       }}
       overscan={200}
-      customScrollParent={
-        scrollParent?.current ?? undefined
-      }
+      customScrollParent={scrollParent?.current ?? undefined}
       role='feed'
       data-testid='VirtualizedArticleList.Grid'
     />

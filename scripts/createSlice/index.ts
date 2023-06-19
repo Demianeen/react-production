@@ -1,8 +1,5 @@
 import minimist from 'minimist'
-import type {
-  CreateSliceOptions,
-  Layer,
-} from './types/createSlice'
+import type { CreateSliceOptions, Layer } from './types/createSlice'
 import { createSlice } from './generators'
 
 const argv = minimist(process.argv.slice(2))
@@ -14,12 +11,7 @@ const options: CreateSliceOptions = {
   api: argv.api === true ? sliceName : argv.api,
 }
 
-const layers: Layer[] = [
-  'pages',
-  'widgets',
-  'features',
-  'entities',
-]
+const layers: Layer[] = ['pages', 'widgets', 'features', 'entities']
 
 const isLayer = (value: string): value is Layer =>
   layers.includes(value as Layer)
@@ -31,22 +23,16 @@ if (layer === undefined || sliceName === undefined) {
 }
 
 if (sliceName[0] === sliceName[0].toUpperCase()) {
-  throw new Error(
-    'Slice name must start with a lowercase letter.'
-  )
+  throw new Error('Slice name must start with a lowercase letter.')
 }
 
 if (!isLayer(layer)) {
-  throw new Error(
-    `Layer must be one of ${layers.join(', ')}.`
-  )
+  throw new Error(`Layer must be one of ${layers.join(', ')}.`)
 }
 
 if (layer === 'entities') {
   if (sliceName.slice(-1) === 's') {
-    console.warn(
-      'Slice name should be singular for entities layer.'
-    )
+    console.warn('Slice name should be singular for entities layer.')
     sliceName = sliceName.slice(0, -1)
   }
 }

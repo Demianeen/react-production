@@ -11,39 +11,32 @@ describe('EditableProfileCard.cy.tsx', () => {
       })
       cy.fixture('profile.json').then((profile) => {
         mockProfile = profile
-        cy.mountComponent(
-          <EditableProfileCard id={profile.id} />,
-          {
-            preloadedState: {
-              user: {
-                authData: {
-                  id: profile.id,
-                },
+        cy.mountComponent(<EditableProfileCard id={profile.id} />, {
+          preloadedState: {
+            user: {
+              authData: {
+                id: profile.id,
               },
             },
-          }
-        )
+          },
+        })
       })
     })
 
     it('should toggle readonly mode', () => {
-      cy.getByTestId(
-        'EditableProfileCardHeader.EditButton'
-      ).click()
+      cy.getByTestId('EditableProfileCardHeader.EditButton').click()
 
-      cy.getByTestId(
-        'EditableProfileCardHeader.CancelButton'
-      ).should('be.visible')
-      cy.getByTestId(
-        'EditableProfileCardHeader.SubmitButton'
-      ).should('be.visible')
+      cy.getByTestId('EditableProfileCardHeader.CancelButton').should(
+        'be.visible'
+      )
+      cy.getByTestId('EditableProfileCardHeader.SubmitButton').should(
+        'be.visible'
+      )
 
-      cy.getByTestId(
-        'EditableProfileCardHeader.CancelButton'
-      ).click()
-      cy.getByTestId(
-        'EditableProfileCardHeader.EditButton'
-      ).should('be.visible')
+      cy.getByTestId('EditableProfileCardHeader.CancelButton').click()
+      cy.getByTestId('EditableProfileCardHeader.EditButton').should(
+        'be.visible'
+      )
     })
 
     it('should reset data after cancel', () => {
@@ -58,9 +51,7 @@ describe('EditableProfileCard.cy.tsx', () => {
         { submit: false }
       )
 
-      cy.getByTestId(
-        'EditableProfileCardHeader.CancelButton'
-      ).click()
+      cy.getByTestId('EditableProfileCardHeader.CancelButton').click()
 
       cy.getByTestId('ProfileCard.firstName').should(
         'have.value',
@@ -101,19 +92,15 @@ describe('EditableProfileCard.cy.tsx', () => {
     })
 
     it('should show validation errors', () => {
-      cy.getByTestId(
-        'EditableProfileCardHeader.EditButton'
-      ).click()
+      cy.getByTestId('EditableProfileCardHeader.EditButton').click()
 
       cy.getByTestId('ProfileCard.firstName').clear()
 
-      cy.getByTestId(
-        'EditableProfileCardHeader.SubmitButton'
-      ).click()
+      cy.getByTestId('EditableProfileCardHeader.SubmitButton').click()
 
-      cy.getByTestId(
-        'EditableProfileCard.Error.Paragraph'
-      ).should('be.visible')
+      cy.getByTestId('EditableProfileCard.Error.Paragraph').should(
+        'be.visible'
+      )
     })
   })
 })

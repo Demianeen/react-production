@@ -41,14 +41,8 @@ export const renameFile = ({
       const newFilePath = path.resolve(
         newDir,
         fileName
-          .replace(
-            decapitalizedOldName,
-            decapitalizedNewName
-          )
-          .replace(
-            capitalizedOldSliceName,
-            capitalizedNewSliceName
-          )
+          .replace(decapitalizedOldName, decapitalizedNewName)
+          .replace(capitalizedOldSliceName, capitalizedNewSliceName)
       )
       fs.renameSync(oldFilePath, newFilePath)
     }

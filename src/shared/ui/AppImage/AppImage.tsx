@@ -1,8 +1,7 @@
 import type { ImgHTMLAttributes, ReactElement } from 'react'
 import { memo, useLayoutEffect, useState } from 'react'
 
-interface AppImageProps
-  extends ImgHTMLAttributes<HTMLImageElement> {
+interface AppImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   className?: string
   alt: string
   fallback?: ReactElement
@@ -44,12 +43,7 @@ export const AppImage = memo(
     }
 
     return (
-      <img
-        src={src}
-        alt={alt}
-        className={className}
-        {...props}
-      />
+      <img src={src} alt={alt} className={className} {...props} />
     )
   }
 )

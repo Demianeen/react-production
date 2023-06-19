@@ -1,7 +1,4 @@
-import type {
-  HTMLAttributeAnchorTarget,
-  RefObject,
-} from 'react'
+import type { HTMLAttributeAnchorTarget, RefObject } from 'react'
 import { useCallback, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
@@ -49,13 +46,9 @@ export const ArticleInfiniteList = ({
   const dispatch = useAppDispatch()
 
   const articles = useSelector(getArticles.selectAll)
-  const isLoading = useSelector(
-    getArticleInfiniteListIsLoading
-  )
+  const isLoading = useSelector(getArticleInfiniteListIsLoading)
   const error = useSelector(getArticleInfiniteListError)
-  const startIndex = useSelector(
-    getArticleInfiniteListStartIndex
-  )
+  const startIndex = useSelector(getArticleInfiniteListStartIndex)
   const view = useSelector(getArticleInfiniteListView)
 
   const onLoadNextPart = useCallback(() => {
@@ -64,9 +57,7 @@ export const ArticleInfiniteList = ({
 
   const onOpenArticle = useCallback<OnOpenArticle>(
     ({ index }) => {
-      dispatch(
-        articleInfiniteListActions.setStartIndex(index)
-      )
+      dispatch(articleInfiniteListActions.setStartIndex(index))
     },
     [dispatch]
   )
@@ -77,12 +68,7 @@ export const ArticleInfiniteList = ({
 
   if (error) {
     return (
-      <HStack
-        justify='center'
-        align='center'
-        maxWidth
-        maxHeight
-      >
+      <HStack justify='center' align='center' maxWidth maxHeight>
         <Text
           title={t('Failed to load articles')}
           size={TextSize.L}

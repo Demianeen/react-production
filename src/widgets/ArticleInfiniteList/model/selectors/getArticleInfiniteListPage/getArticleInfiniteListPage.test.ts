@@ -8,16 +8,16 @@ describe('getArticleInfiniteListPage', () => {
         page: 2,
       },
     }
-    expect(
-      getArticleInfiniteListPage(state as StateSchema)
-    ).toEqual(2)
+    expect(getArticleInfiniteListPage(state as StateSchema)).toEqual(
+      2
+    )
   })
 
   it('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {}
 
-    expect(
-      getArticleInfiniteListPage(state as StateSchema)
-    ).toEqual(1)
+    expect(getArticleInfiniteListPage(state as StateSchema)).toEqual(
+      1
+    )
   })
 })

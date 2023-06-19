@@ -18,19 +18,15 @@ const isLayer = (path: string) => {
 }
 
 project.getSourceFiles().forEach((sourceFile) => {
-  const importDeclarations =
-    sourceFile.getImportDeclarations()
-  const exportDeclarations =
-    sourceFile.getExportDeclarations()
+  const importDeclarations = sourceFile.getImportDeclarations()
+  const exportDeclarations = sourceFile.getExportDeclarations()
 
   importDeclarations.forEach((importDeclaration) => {
     const moduleSpecifier =
       importDeclaration.getModuleSpecifierValue()
 
     if (isLayer(moduleSpecifier)) {
-      importDeclaration.setModuleSpecifier(
-        `@/${moduleSpecifier}`
-      )
+      importDeclaration.setModuleSpecifier(`@/${moduleSpecifier}`)
     }
   })
 
@@ -41,9 +37,7 @@ project.getSourceFiles().forEach((sourceFile) => {
     if (moduleSpecifier === undefined) return
 
     if (isLayer(moduleSpecifier)) {
-      exportDeclaration.setModuleSpecifier(
-        `@/${moduleSpecifier}`
-      )
+      exportDeclaration.setModuleSpecifier(`@/${moduleSpecifier}`)
     }
   })
 })

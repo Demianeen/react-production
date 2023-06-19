@@ -8,16 +8,16 @@ describe('getArticleInfiniteListError', () => {
         error: 'error',
       },
     }
-    expect(
-      getArticleInfiniteListError(state as StateSchema)
-    ).toEqual('error')
+    expect(getArticleInfiniteListError(state as StateSchema)).toEqual(
+      'error'
+    )
   })
 
   it('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {}
 
-    expect(
-      getArticleInfiniteListError(state as StateSchema)
-    ).toEqual(undefined)
+    expect(getArticleInfiniteListError(state as StateSchema)).toEqual(
+      undefined
+    )
   })
 })

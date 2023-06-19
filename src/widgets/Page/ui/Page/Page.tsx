@@ -27,9 +27,8 @@ export const Page = forwardRef<HTMLDivElement, PageProps>(
     const { pathname } = useLocation()
 
     const dispatch = useAppDispatch()
-    const scrollPosition = useSelector(
-      (state: StateSchema) =>
-        getPageScrollPositionByPath(state, pathname)
+    const scrollPosition = useSelector((state: StateSchema) =>
+      getPageScrollPositionByPath(state, pathname)
     )
 
     const mergedRef = (ref: HTMLDivElement | null) => {
@@ -49,17 +48,14 @@ export const Page = forwardRef<HTMLDivElement, PageProps>(
       }
     }, [scrollPosition])
 
-    const onScroll = useThrottle(
-      (e: UIEvent<HTMLElement>) => {
-        dispatch(
-          pageActions.setScrollPosition({
-            path: pathname,
-            position: e.currentTarget.scrollTop,
-          })
-        )
-      },
-      500
-    )
+    const onScroll = useThrottle((e: UIEvent<HTMLElement>) => {
+      dispatch(
+        pageActions.setScrollPosition({
+          path: pathname,
+          position: e.currentTarget.scrollTop,
+        })
+      )
+    }, 500)
 
     return (
       <main

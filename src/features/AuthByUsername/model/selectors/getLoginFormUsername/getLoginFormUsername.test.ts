@@ -10,15 +10,13 @@ describe('getLoginFormUsername', () => {
         password: '',
       },
     }
-    expect(
-      getLoginFormUsername(state as StateSchema)
-    ).toEqual('username')
+    expect(getLoginFormUsername(state as StateSchema)).toEqual(
+      'username'
+    )
   })
 
   it('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {}
-    expect(
-      getLoginFormUsername(state as StateSchema)
-    ).toEqual('')
+    expect(getLoginFormUsername(state as StateSchema)).toEqual('')
   })
 })

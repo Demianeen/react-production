@@ -18,9 +18,9 @@ describe('getArticleDetailsCanEdit', () => {
       },
     }
 
-    expect(
-      getArticleDetailsCanEdit(state as StateSchema)
-    ).toEqual(true)
+    expect(getArticleDetailsCanEdit(state as StateSchema)).toEqual(
+      true
+    )
   })
 
   it('should return the canEdit false', () => {
@@ -39,16 +39,16 @@ describe('getArticleDetailsCanEdit', () => {
       },
     }
 
-    expect(
-      getArticleDetailsCanEdit(state as StateSchema)
-    ).toEqual(false)
+    expect(getArticleDetailsCanEdit(state as StateSchema)).toEqual(
+      false
+    )
   })
 
   it('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {}
 
-    expect(
-      getArticleDetailsCanEdit(state as StateSchema)
-    ).toEqual(false)
+    expect(getArticleDetailsCanEdit(state as StateSchema)).toEqual(
+      false
+    )
   })
 })

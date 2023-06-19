@@ -4,10 +4,7 @@ import { classNames } from '@/shared/lib/classNames/classNames'
 import type { Direction } from '@/shared/types/ui'
 import { mapDirection } from '../../const/mapDirection'
 import { HStack } from '../../../Stack'
-import {
-  AppLink,
-  AppLinkTheme,
-} from '../../../AppLink/AppLink'
+import { AppLink, AppLinkTheme } from '../../../AppLink/AppLink'
 import { Button, ButtonTheme } from '../../../Button/Button'
 import styles from './Dropdown.module.scss'
 import popupStyles from '../../styles/Popup.module.scss'
@@ -53,9 +50,7 @@ export const Dropdown = ({
   return (
     <Menu
       as='div'
-      className={classNames(popupStyles.popup, {}, [
-        className,
-      ])}
+      className={classNames(popupStyles.popup, {}, [className])}
     >
       <Menu.Button
         as={Button}
@@ -73,13 +68,10 @@ export const Dropdown = ({
         {items.map((item) => (
           <Menu.Item key={item.label}>
             {({ active, disabled }) => {
-              const itemClassName = classNames(
-                styles.item,
-                {
-                  [popupStyles.active]: active,
-                  [popupStyles.disabled]: disabled,
-                }
-              )
+              const itemClassName = classNames(styles.item, {
+                [popupStyles.active]: active,
+                [popupStyles.disabled]: disabled,
+              })
 
               if (item.href !== undefined) {
                 return (

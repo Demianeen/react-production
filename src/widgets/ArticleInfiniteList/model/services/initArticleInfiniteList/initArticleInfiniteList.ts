@@ -15,27 +15,20 @@ export const initArticleInfiniteList = createAsyncThunk<
 >(
   'articleInfiniteList/initArticleInfiniteList',
   async (_, { dispatch, getState }) => {
-    const isInitialized =
-      getArticleInfiniteListIsInitialized(getState())
+    const isInitialized = getArticleInfiniteListIsInitialized(
+      getState()
+    )
 
     if (!isInitialized) {
       initQueryParams({
         sortField: (param: SortField) =>
-          dispatch(
-            articleInfiniteListActions.setSortField(param)
-          ),
+          dispatch(articleInfiniteListActions.setSortField(param)),
         order: (param: SortOrder) =>
-          dispatch(
-            articleInfiniteListActions.setOrder(param)
-          ),
+          dispatch(articleInfiniteListActions.setOrder(param)),
         search: (param: string) =>
-          dispatch(
-            articleInfiniteListActions.setSearch(param)
-          ),
+          dispatch(articleInfiniteListActions.setSearch(param)),
         type: (param: ArticleType) =>
-          dispatch(
-            articleInfiniteListActions.setType(param)
-          ),
+          dispatch(articleInfiniteListActions.setType(param)),
       })
 
       dispatch(articleInfiniteListActions.initState())

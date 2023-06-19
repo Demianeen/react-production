@@ -11,10 +11,7 @@ describe('getPageScrollPositionByPath', () => {
       },
     }
     expect(
-      getPageScrollPositionByPath(
-        state as StateSchema,
-        'articles'
-      )
+      getPageScrollPositionByPath(state as StateSchema, 'articles')
     ).toEqual(100)
   })
 
@@ -22,10 +19,7 @@ describe('getPageScrollPositionByPath', () => {
     const state: DeepPartial<StateSchema> = {}
 
     expect(
-      getPageScrollPositionByPath(
-        state as StateSchema,
-        'articles'
-      )
+      getPageScrollPositionByPath(state as StateSchema, 'articles')
     ).toEqual(0)
   })
 })

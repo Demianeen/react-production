@@ -27,16 +27,11 @@ export const WithLabel = memo(
     ...props
   }: WithLabelProps) => {
     return (
-      <VStack
-        className={wrapperClassName}
-        maxWidth={maxWidth}
-      >
+      <VStack className={wrapperClassName} maxWidth={maxWidth}>
         {label && (
           <label
             htmlFor={label}
-            className={classNames(styles.label, {}, [
-              className,
-            ])}
+            className={classNames(styles.label, {}, [className])}
             {...props}
           >
             {label}:{' '}

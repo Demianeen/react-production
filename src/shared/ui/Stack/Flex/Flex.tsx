@@ -1,30 +1,13 @@
-import type {
-  ElementType,
-  ForwardedRef,
-  ReactNode,
-} from 'react'
+import type { ElementType, ForwardedRef, ReactNode } from 'react'
 
 import type { Mods } from '@/shared/lib/classNames/classNames'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import type {
-  Props,
-  WithDefaultTag,
-} from '@/shared/types/ui'
+import type { Props, WithDefaultTag } from '@/shared/types/ui'
 import { typedForwardRef } from '@/shared/lib/react/typedForwardRef/typedForwardRef'
 import styles from './Flex.module.scss'
 
-type FlexJustify =
-  | 'start'
-  | 'center'
-  | 'end'
-  | 'between'
-  | 'around'
-type FlexAlign =
-  | 'start'
-  | 'center'
-  | 'end'
-  | 'stretch'
-  | 'baseline'
+type FlexJustify = 'start' | 'center' | 'end' | 'between' | 'around'
+type FlexAlign = 'start' | 'center' | 'end' | 'stretch' | 'baseline'
 type FlexDirection = 'row' | 'column'
 type FlexWrap = 'wrap' | 'nowrap'
 type FlexGap = 0.25 | 0.5 | 1 | 1.25 | 2

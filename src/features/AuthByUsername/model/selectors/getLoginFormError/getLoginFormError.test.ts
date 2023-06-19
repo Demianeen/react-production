@@ -11,15 +11,11 @@ describe('getLoginFormError', () => {
         password: '',
       },
     }
-    expect(getLoginFormError(state as StateSchema)).toEqual(
-      'error'
-    )
+    expect(getLoginFormError(state as StateSchema)).toEqual('error')
   })
 
   it('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {}
-    expect(getLoginFormError(state as StateSchema)).toEqual(
-      undefined
-    )
+    expect(getLoginFormError(state as StateSchema)).toEqual(undefined)
   })
 })

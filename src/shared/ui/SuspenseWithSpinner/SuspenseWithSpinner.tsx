@@ -6,10 +6,6 @@ interface SpinnerProps {
   children?: ReactNode
 }
 
-export const SuspenseWithSpinner = ({
-  children,
-}: SpinnerProps) => {
-  return (
-    <Suspense fallback={<Spinner />}>{children}</Suspense>
-  )
+export const SuspenseWithSpinner = ({ children }: SpinnerProps) => {
+  return <Suspense fallback={<Spinner />}>{children}</Suspense>
 }

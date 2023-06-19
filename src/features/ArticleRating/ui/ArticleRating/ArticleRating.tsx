@@ -1,8 +1,5 @@
 import React, { memo, useCallback } from 'react'
-import {
-  RatingCard,
-  RatingCardSkeleton,
-} from '@/entities/Rating'
+import { RatingCard, RatingCardSkeleton } from '@/entities/Rating'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { getUserId } from '@/entities/User'
@@ -39,10 +36,8 @@ const ArticleRating = memo(
       }
     )
 
-    const [
-      rateArticle,
-      { isLoading: isRateArticleLoading },
-    ] = useRateArticleMutation()
+    const [rateArticle, { isLoading: isRateArticleLoading }] =
+      useRateArticleMutation()
 
     const handleRateArticle = useCallback(
       (starCount: number, feedback?: string) => {
@@ -75,11 +70,7 @@ const ArticleRating = memo(
 
     if (isGetRatingLoading) {
       return (
-        <RatingCardSkeleton
-          squared
-          maxWidth
-          className={className}
-        />
+        <RatingCardSkeleton squared maxWidth className={className} />
       )
     }
 

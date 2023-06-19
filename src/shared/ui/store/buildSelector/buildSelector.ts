@@ -17,10 +17,7 @@ import type {
  * @returns {ResultMemoized<FR, S, (...args: SelectorResultArray<S>) => FR, GetParamsFromSelectors<S>>}
  */
 export function buildSelector<FR, S extends SelectorArray>(
-  ...selectors: [
-    ...S,
-    (...args: SelectorResultArray<S>) => FR
-  ]
+  ...selectors: [...S, (...args: SelectorResultArray<S>) => FR]
 ): ResultMemoized<
   FR,
   S,
@@ -39,10 +36,7 @@ export function buildSelector<FR>(
 ): ResultSelector<FR>
 
 export function buildSelector<FR, S extends SelectorArray>(
-  ...selectors: [
-    ...S,
-    (...args: SelectorResultArray<S>) => FR
-  ]
+  ...selectors: [...S, (...args: SelectorResultArray<S>) => FR]
 ):
   | ResultMemoized<
       FR,
@@ -51,8 +45,7 @@ export function buildSelector<FR, S extends SelectorArray>(
       GetParamsFromSelectors<S>
     >
   | ResultSelector<FR> {
-  const combiner =
-    selectors.length > 1 ? selectors.pop() : undefined
+  const combiner = selectors.length > 1 ? selectors.pop() : undefined
   let selector: Selector<StateSchema, FR>
 
   if (combiner !== undefined) {

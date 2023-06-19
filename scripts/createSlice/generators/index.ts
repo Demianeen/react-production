@@ -2,10 +2,7 @@ import { createSliceFolder } from '../../../utils/createSliceFolder'
 import { createModel } from './createModel/createModel'
 import { createUi } from './createUi/createUi'
 import { createPublicApi } from './createPublicApi/createPublicApi'
-import type {
-  CreateSliceOptions,
-  Layer,
-} from '../types/createSlice'
+import type { CreateSliceOptions, Layer } from '../types/createSlice'
 import { createApi } from './createApi/createApi'
 
 export const createSlice = (

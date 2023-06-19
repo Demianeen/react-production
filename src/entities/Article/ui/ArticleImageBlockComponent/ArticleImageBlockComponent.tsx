@@ -5,8 +5,7 @@ import type { TestProps } from '@/shared/types/tests'
 import type { ArticleImageBlock } from '../../model/types/article'
 import styles from './ArticleImageBlockComponent.module.scss'
 
-interface ArticleImageBlockComponentProps
-  extends TestProps {
+interface ArticleImageBlockComponentProps extends TestProps {
   className?: string
   block: ArticleImageBlock
 }
@@ -18,11 +17,7 @@ export const ArticleImageBlockComponent = memo(
     'data-testid': dataTestId,
   }: ArticleImageBlockComponentProps) => {
     return (
-      <VStack
-        className={className}
-        justify='center'
-        align='stretch'
-      >
+      <VStack className={className} justify='center' align='stretch'>
         <img
           className={styles.img}
           src={block.src}
@@ -41,5 +36,4 @@ export const ArticleImageBlockComponent = memo(
   }
 )
 
-ArticleImageBlockComponent.displayName =
-  'ArticleImageBlockComponent'
+ArticleImageBlockComponent.displayName = 'ArticleImageBlockComponent'

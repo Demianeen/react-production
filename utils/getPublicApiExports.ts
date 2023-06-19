@@ -1,16 +1,15 @@
 import type { SourceFile } from 'ts-morph'
 import { Project } from 'ts-morph'
 
-interface GetPublicApiExportsOptions<
-  F extends boolean | undefined
-> {
+interface GetPublicApiExportsOptions<F extends boolean | undefined> {
   flat: F
 }
 
-type FlatReturnType<F extends boolean | undefined> =
-  F extends true | undefined
-    ? PublicApiExport[]
-    : PublicApiExport[][]
+type FlatReturnType<F extends boolean | undefined> = F extends
+  | true
+  | undefined
+  ? PublicApiExport[]
+  : PublicApiExport[][]
 
 interface PublicApiExport {
   name: string
@@ -21,9 +20,8 @@ export const getPublicApiExportNamesFromFile = (
   file: SourceFile
 ): PublicApiExport[][] => {
   const exportDeclarations = file.getExportDeclarations()
-  const namedExports = exportDeclarations.map(
-    (exportDeclaration) =>
-      exportDeclaration.getNamedExports()
+  const namedExports = exportDeclarations.map((exportDeclaration) =>
+    exportDeclaration.getNamedExports()
   )
 
   return namedExports.map((namedExport) =>
@@ -48,8 +46,7 @@ export const getPublicApiExports = <
 
   if (file === undefined) return []
 
-  const namedExportsNames =
-    getPublicApiExportNamesFromFile(file)
+  const namedExportsNames = getPublicApiExportNamesFromFile(file)
 
   if (!flat) {
     return namedExportsNames.flat() as FlatReturnType<F>

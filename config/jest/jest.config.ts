@@ -27,19 +27,10 @@ export default {
   modulePaths: ['<rootDir>src'],
 
   // For a jest dom
-  setupFilesAfterEnv: [
-    '<rootDir>/config/jest/setupTests.ts',
-  ],
+  setupFilesAfterEnv: ['<rootDir>/config/jest/setupTests.ts'],
 
   // An array of file extensions your modules use
-  moduleFileExtensions: [
-    'js',
-    'jsx',
-    'ts',
-    'tsx',
-    'json',
-    'node',
-  ],
+  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
 
   // The root directory that Jest should scan for mocks and modules within
   rootDir: '../../',
@@ -55,10 +46,7 @@ export default {
     // enables css modules
     '\\.s?css$': 'identity-obj-proxy',
     // enable svg
-    '\\.svg$': path.resolve(
-      __dirname,
-      'jestEmptyComponent.tsx'
-    ),
+    '\\.svg$': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
     // enables absolute imports
     '^@/(.*)$': '<rootDir>src/$1',
   },

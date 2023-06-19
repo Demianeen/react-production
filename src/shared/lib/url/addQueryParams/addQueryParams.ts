@@ -2,9 +2,7 @@
 export const getNewQueryParamsString = (
   params: OptionalRecord<string, string>
 ) => {
-  const searchParams = new URLSearchParams(
-    window.location.search
-  )
+  const searchParams = new URLSearchParams(window.location.search)
   Object.entries(params).forEach(([key, value]) => {
     if (value) {
       searchParams.set(key, value)
@@ -22,9 +20,5 @@ export const getNewQueryParamsString = (
 export const addQueryParams = (
   params: OptionalRecord<string, string>
 ) => {
-  window.history.pushState(
-    null,
-    '',
-    getNewQueryParamsString(params)
-  )
+  window.history.pushState(null, '', getNewQueryParamsString(params))
 }

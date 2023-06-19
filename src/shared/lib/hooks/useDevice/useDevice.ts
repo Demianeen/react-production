@@ -5,15 +5,12 @@ export const useDevice = () => {
 
   useEffect(() => {
     const handleResize = () =>
-      setIsMobile(
-        window.matchMedia('(pointer:coarse)').matches
-      )
+      setIsMobile(window.matchMedia('(pointer:coarse)').matches)
 
     handleResize()
     window.addEventListener('resize', handleResize)
 
-    return () =>
-      window.removeEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
   }, [])
 
   return isMobile

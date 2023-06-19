@@ -17,9 +17,7 @@ describe('fetchArticleById', () => {
 
   test('rejected', async () => {
     const thunk = new TestAsyncThunk(fetchArticleById)
-    thunk.api.get.mockReturnValue(
-      Promise.resolve({ status: 403 })
-    )
+    thunk.api.get.mockReturnValue(Promise.resolve({ status: 403 }))
     const result = await thunk.call(1)
 
     expect(thunk.api.get).toHaveBeenCalled()

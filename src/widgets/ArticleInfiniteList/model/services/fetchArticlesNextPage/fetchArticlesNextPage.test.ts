@@ -21,19 +21,16 @@ describe('fetchArticles', () => {
       articleInfiniteListActions
     )
 
-    const thunk = new TestAsyncThunk(
-      fetchArticlesNextPage,
-      {
-        articleInfiniteList: {
-          page: 1,
-          ids: [],
-          entities: {},
-          hasMore: true,
-          isLoading: false,
-          limit: 5,
-        },
-      }
-    )
+    const thunk = new TestAsyncThunk(fetchArticlesNextPage, {
+      articleInfiniteList: {
+        page: 1,
+        ids: [],
+        entities: {},
+        hasMore: true,
+        isLoading: false,
+        limit: 5,
+      },
+    })
     await thunk.call()
 
     expect(thunk.dispatch).toHaveBeenCalledTimes(4)
@@ -43,16 +40,13 @@ describe('fetchArticles', () => {
   })
 
   test('fetchArticleList not called when hasMore equal false', () => {
-    const thunk = new TestAsyncThunk(
-      fetchArticlesNextPage,
-      {
-        articleInfiniteList: {
-          page: 1,
-          hasMore: false,
-          isLoading: false,
-        },
-      }
-    )
+    const thunk = new TestAsyncThunk(fetchArticlesNextPage, {
+      articleInfiniteList: {
+        page: 1,
+        hasMore: false,
+        isLoading: false,
+      },
+    })
     thunk.call()
 
     expect(thunk.dispatch).toHaveBeenCalledTimes(1)
@@ -60,16 +54,13 @@ describe('fetchArticles', () => {
   })
 
   test('fetchArticleList not called when isLoading is true', () => {
-    const thunk = new TestAsyncThunk(
-      fetchArticlesNextPage,
-      {
-        articleInfiniteList: {
-          page: 1,
-          hasMore: false,
-          isLoading: true,
-        },
-      }
-    )
+    const thunk = new TestAsyncThunk(fetchArticlesNextPage, {
+      articleInfiniteList: {
+        page: 1,
+        hasMore: false,
+        isLoading: true,
+      },
+    })
     thunk.call()
 
     expect(thunk.dispatch).toHaveBeenCalledTimes(1)

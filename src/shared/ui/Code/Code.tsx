@@ -12,19 +12,13 @@ interface CodeProps extends TestProps {
 }
 
 export const Code = memo(
-  ({
-    className,
-    text,
-    'data-testid': dataTestId,
-  }: CodeProps) => {
+  ({ className, text, 'data-testid': dataTestId }: CodeProps) => {
     const onCopy = useCallback(() => {
       navigator.clipboard.writeText(text)
     }, [text])
 
     return (
-      <pre
-        className={classNames(styles.code, {}, [className])}
-      >
+      <pre className={classNames(styles.code, {}, [className])}>
         <Button
           type='button'
           className={styles.copyBtn}
@@ -34,9 +28,7 @@ export const Code = memo(
         >
           <Icon Svg={CopyIcon} type={IconType.STROKE} />
         </Button>
-        <code data-testid={`${dataTestId}.Code`}>
-          {text}
-        </code>
+        <code data-testid={`${dataTestId}.Code`}>{text}</code>
       </pre>
     )
   }

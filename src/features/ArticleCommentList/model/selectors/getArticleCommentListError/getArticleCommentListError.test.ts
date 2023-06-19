@@ -8,16 +8,16 @@ describe('getArticleCommentsError', () => {
         error: 'error',
       },
     }
-    expect(
-      getArticleCommentListError(state as StateSchema)
-    ).toEqual('error')
+    expect(getArticleCommentListError(state as StateSchema)).toEqual(
+      'error'
+    )
   })
 
   it('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {}
 
-    expect(
-      getArticleCommentListError(state as StateSchema)
-    ).toEqual(undefined)
+    expect(getArticleCommentListError(state as StateSchema)).toEqual(
+      undefined
+    )
   })
 })

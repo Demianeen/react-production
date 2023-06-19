@@ -34,9 +34,7 @@ export const ArticleRecommendationsList = ({
     <ArticleList
       articles={recommendations}
       isLoading={isLoading}
-      className={classNames(styles.recommendations, {}, [
-        className,
-      ])}
+      className={classNames(styles.recommendations, {}, [className])}
       target='_blank'
       limit={4}
       view={View.GRID}

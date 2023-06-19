@@ -12,9 +12,7 @@ export const useDebounce = <A extends unknown[]>(
   callback: (...args: A) => void,
   delay: number
 ) => {
-  const timerRef = useRef<ReturnType<
-    typeof setTimeout
-  > | null>(null)
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   return useCallback(
     (...args: A) => {

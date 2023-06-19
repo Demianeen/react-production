@@ -26,16 +26,11 @@ export const WithLabelSkeleton = memo(
     maxWidth,
   }: WithLabelSkeletonProps) => {
     return (
-      <VStack
-        className={wrapperClassName}
-        maxWidth={maxWidth}
-      >
+      <VStack className={wrapperClassName} maxWidth={maxWidth}>
         <Skeleton
           height='var(--font-line-m)'
           width='6rem'
-          className={classNames(styles.label, {}, [
-            className,
-          ])}
+          className={classNames(styles.label, {}, [className])}
         />
         {children}
       </VStack>

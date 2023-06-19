@@ -9,16 +9,16 @@ describe('getArticleDetailsData', () => {
         data: mockArticle,
       },
     }
-    expect(
-      getArticleDetailsData(state as StateSchema)
-    ).toEqual(mockArticle)
+    expect(getArticleDetailsData(state as StateSchema)).toEqual(
+      mockArticle
+    )
   })
 
   it('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {}
 
-    expect(
-      getArticleDetailsData(state as StateSchema)
-    ).toEqual(undefined)
+    expect(getArticleDetailsData(state as StateSchema)).toEqual(
+      undefined
+    )
   })
 })

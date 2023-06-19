@@ -32,18 +32,12 @@ export const createPublicApi = (
     if (options.model) {
       fs.appendFileSync(
         publicApiPath,
-        modelExportTemplate(
-          layer,
-          options.model,
-          reduxSchemaName
-        )
+        modelExportTemplate(layer, options.model, reduxSchemaName)
       )
     }
   } catch (e) {
     if (e instanceof Error) {
-      throw new Error(
-        `Failed to create public api: ${e.message}`
-      )
+      throw new Error(`Failed to create public api: ${e.message}`)
     }
     throw new Error('Unexpected error')
   }

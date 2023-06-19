@@ -21,9 +21,7 @@ export const RequireRoles = ({
       return true
     }
 
-    return requiredRoles.some((role) =>
-      userRoles.includes(role)
-    )
+    return requiredRoles.some((role) => userRoles.includes(role))
   }, [requiredRoles, userRoles])
 
   if (!hasRequiredRoles) {

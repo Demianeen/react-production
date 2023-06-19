@@ -1,9 +1,4 @@
-import {
-  memo,
-  Suspense,
-  useCallback,
-  useEffect,
-} from 'react'
+import { memo, Suspense, useCallback, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import type { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
@@ -35,12 +30,8 @@ export const ArticleCommentList = memo(
   ({ className, articleId }: ArticleCommentListProps) => {
     useDynamicModuleLoader(reducers)
 
-    const comments = useSelector(
-      getArticleCommentList.selectAll
-    )
-    const isLoading = useSelector(
-      getArticleCommentListIsLoading
-    )
+    const comments = useSelector(getArticleCommentList.selectAll)
+    const isLoading = useSelector(getArticleCommentListIsLoading)
     const dispatch = useAppDispatch()
 
     const onSendComment = useCallback(

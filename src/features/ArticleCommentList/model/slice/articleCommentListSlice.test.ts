@@ -28,11 +28,7 @@ describe('articleCommentsSlice', () => {
     expect(
       articleCommentListReducer(
         state as ArticleCommentListSchema,
-        fetchCommentsByArticleId.fulfilled(
-          mockComments,
-          '',
-          1
-        )
+        fetchCommentsByArticleId.fulfilled(mockComments, '', 1)
       )
     ).toEqual({
       isLoading: false,
@@ -48,12 +44,7 @@ describe('articleCommentsSlice', () => {
     expect(
       articleCommentListReducer(
         state as ArticleCommentListSchema,
-        fetchCommentsByArticleId.rejected(
-          null,
-          '',
-          1,
-          'error'
-        )
+        fetchCommentsByArticleId.rejected(null, '', 1, 'error')
       )
     ).toEqual({ error: 'error', isLoading: false })
   })

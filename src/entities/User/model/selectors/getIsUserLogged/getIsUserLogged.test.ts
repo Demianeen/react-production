@@ -8,16 +8,12 @@ describe('getUserIsLogged', () => {
         authData: {},
       },
     }
-    expect(getIsUserLogged(state as StateSchema)).toEqual(
-      true
-    )
+    expect(getIsUserLogged(state as StateSchema)).toEqual(true)
   })
 
   it('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {}
 
-    expect(getIsUserLogged(state as StateSchema)).toEqual(
-      false
-    )
+    expect(getIsUserLogged(state as StateSchema)).toEqual(false)
   })
 })

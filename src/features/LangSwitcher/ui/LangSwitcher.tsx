@@ -14,17 +14,13 @@ export const LangSwitcher = memo(
     const { t, i18n } = useTranslation()
 
     const onToggleLanguage = () => {
-      i18n.changeLanguage(
-        i18n.language === 'ua' ? 'en' : 'ua'
-      )
+      i18n.changeLanguage(i18n.language === 'ua' ? 'en' : 'ua')
     }
 
     return (
       <Button
         type='button'
-        className={classNames(styles.langSwitcher, {}, [
-          className,
-        ])}
+        className={classNames(styles.langSwitcher, {}, [className])}
         theme={ButtonTheme.CLEAR}
         onClick={onToggleLanguage}
       >

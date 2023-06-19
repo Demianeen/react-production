@@ -1,8 +1,5 @@
 import React, { memo, useCallback } from 'react'
-import {
-  RatingCard,
-  RatingCardSkeleton,
-} from '@/entities/Rating'
+import { RatingCard, RatingCardSkeleton } from '@/entities/Rating'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { getUserId } from '@/entities/User'
@@ -39,10 +36,8 @@ const ProfileRating = memo(
       }
     )
 
-    const [
-      rateProfile,
-      { isLoading: isRateArticleLoading },
-    ] = useRateProfileMutation()
+    const [rateProfile, { isLoading: isRateArticleLoading }] =
+      useRateProfileMutation()
 
     const handleRateProfile = useCallback(
       (starCount: number, feedback?: string) => {
@@ -75,11 +70,7 @@ const ProfileRating = memo(
 
     if (isGetRatingLoading) {
       return (
-        <RatingCardSkeleton
-          squared
-          maxWidth
-          className={className}
-        />
+        <RatingCardSkeleton squared maxWidth className={className} />
       )
     }
 
@@ -103,9 +94,7 @@ const ProfileRating = memo(
         onSubmit={onSubmit}
         rating={rating}
         title={t('Evaluate the profile')}
-        feedbackTitle={t(
-          'What do you like about this profile?'
-        )}
+        feedbackTitle={t('What do you like about this profile?')}
         squared
         className={className}
         maxWidth

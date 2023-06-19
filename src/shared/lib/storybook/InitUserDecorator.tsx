@@ -9,9 +9,7 @@ import { useAppDispatch } from '../hooks/useAppDispatch/useAppDispatch'
  * @param userId number or null to remove user data
  * @returns
  */
-export const InitUserDecorator = (
-  userId: number | null = 1
-) =>
+export const InitUserDecorator = (userId: number | null = 1) =>
   function Decorator(StoryComponent: StoryFn) {
     const dispatch = useAppDispatch()
 

@@ -1,9 +1,6 @@
 import { memo, useCallback } from 'react'
 import { useSelector } from 'react-redux'
-import type {
-  SortField,
-  View,
-} from '@/entities/ListFilters'
+import type { SortField, View } from '@/entities/ListFilters'
 import { ListFilters } from '@/entities/ListFilters'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import type { SortOrder } from '@/shared/const/sort'
@@ -24,9 +21,7 @@ interface ArticleInfiniteListFiltersProps {
 export const ArticleInfiniteListFilters = memo(
   ({ className }: ArticleInfiniteListFiltersProps) => {
     const dispatch = useAppDispatch()
-    const sortField = useSelector(
-      getArticleInfiniteListSortField
-    )
+    const sortField = useSelector(getArticleInfiniteListSortField)
     const order = useSelector(getArticleInfiniteListOrder)
     const view = useSelector(getArticleInfiniteListView)
     const search = useSelector(getArticleInfiniteListSearch)
@@ -34,9 +29,7 @@ export const ArticleInfiniteListFilters = memo(
     const onChangeSortField = useCallback(
       (newSortField: SortField) => {
         dispatch(
-          articleInfiniteListActions.setSortField(
-            newSortField
-          )
+          articleInfiniteListActions.setSortField(newSortField)
         )
         dispatch(articleInfiniteListActions.setPage(1))
         dispatch(fetchArticles({ replace: true }))
@@ -46,9 +39,7 @@ export const ArticleInfiniteListFilters = memo(
 
     const onChangeOrder = useCallback(
       (newOrder: SortOrder) => {
-        dispatch(
-          articleInfiniteListActions.setOrder(newOrder)
-        )
+        dispatch(articleInfiniteListActions.setOrder(newOrder))
         dispatch(articleInfiniteListActions.setPage(1))
         dispatch(fetchArticles({ replace: true }))
       },
@@ -57,9 +48,7 @@ export const ArticleInfiniteListFilters = memo(
 
     const onChangeView = useCallback(
       (newView: View) => {
-        dispatch(
-          articleInfiniteListActions.setView(newView)
-        )
+        dispatch(articleInfiniteListActions.setView(newView))
         dispatch(articleInfiniteListActions.setPage(1))
         dispatch(fetchArticles({ replace: true }))
       },
@@ -68,9 +57,7 @@ export const ArticleInfiniteListFilters = memo(
 
     const onSearch = useCallback(
       (newQuery: string) => {
-        dispatch(
-          articleInfiniteListActions.setSearch(newQuery)
-        )
+        dispatch(articleInfiniteListActions.setSearch(newQuery))
         dispatch(articleInfiniteListActions.setPage(1))
       },
       [dispatch]
@@ -101,5 +88,4 @@ export const ArticleInfiniteListFilters = memo(
   }
 )
 
-ArticleInfiniteListFilters.displayName =
-  'ArticleInfiniteListFilters'
+ArticleInfiniteListFilters.displayName = 'ArticleInfiniteListFilters'

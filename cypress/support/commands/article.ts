@@ -22,9 +22,7 @@ const defaultArticle = {
   ],
 }
 
-export const createArticle = (
-  article?: Omit<Article, 'id'>
-) => {
+export const createArticle = (article?: Omit<Article, 'id'>) => {
   return cy
     .request({
       method: 'POST',

@@ -97,10 +97,7 @@ export const Select = typedMemo(
             <span className={styles.label}>
               {selectedOption?.label ?? defaultValue}
             </span>
-            <Icon
-              Svg={ArrowDownIcon}
-              className={styles.icon}
-            />
+            <Icon Svg={ArrowDownIcon} className={styles.icon} />
           </Listbox.Button>
           <Listbox.Options
             className={classNames(
@@ -122,16 +119,13 @@ export const Select = typedMemo(
                   <li
                     className={classNames(styles.option, {
                       [popupStyles.active]: active,
-                      [popupStyles.disabled]:
-                        option.disabled,
+                      [popupStyles.disabled]: option.disabled,
                       [styles.selected]: selected,
                     })}
                     data-testid={`${testId}.Option.${option.value}`}
                     data-selected={selected}
                   >
-                    {selected && (
-                      <TickIcon className={styles.icon} />
-                    )}
+                    {selected && <TickIcon className={styles.icon} />}
                     {option.label}
                   </li>
                 )}

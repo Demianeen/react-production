@@ -9,9 +9,7 @@ describe('getArticleInfiniteListIsInitialized', () => {
       },
     }
     expect(
-      getArticleInfiniteListIsInitialized(
-        state as StateSchema
-      )
+      getArticleInfiniteListIsInitialized(state as StateSchema)
     ).toEqual(true)
   })
 
@@ -19,9 +17,7 @@ describe('getArticleInfiniteListIsInitialized', () => {
     const state: DeepPartial<StateSchema> = {}
 
     expect(
-      getArticleInfiniteListIsInitialized(
-        state as StateSchema
-      )
+      getArticleInfiniteListIsInitialized(state as StateSchema)
     ).toEqual(false)
   })
 })

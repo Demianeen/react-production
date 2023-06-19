@@ -9,11 +9,7 @@ interface InputSkeletonProps {
 }
 
 export const InputSkeleton = memo(
-  ({
-    className,
-    wrapperClassName,
-    maxWidth,
-  }: InputSkeletonProps) => {
+  ({ className, wrapperClassName, maxWidth }: InputSkeletonProps) => {
     return (
       <WithLabelSkeleton
         wrapperClassName={wrapperClassName}

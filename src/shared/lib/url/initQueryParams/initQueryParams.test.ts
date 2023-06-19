@@ -1,13 +1,10 @@
 import { initQueryParams } from './initQueryParams'
 import { getQueryParams } from '../getQueryParams/getQueryParams'
 
-jest.mock(
-  'shared/lib/url/getQueryParams/getQueryParams',
-  () => ({
-    __esModule: true,
-    getQueryParams: jest.fn(),
-  })
-)
+jest.mock('shared/lib/url/getQueryParams/getQueryParams', () => ({
+  __esModule: true,
+  getQueryParams: jest.fn(),
+}))
 const mockedGetQueryParams = jest.mocked(getQueryParams)
 
 describe('initQueryParams', () => {

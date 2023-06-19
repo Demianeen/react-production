@@ -18,12 +18,7 @@ const ProfilePage = () => {
 
   if (id === undefined) {
     return (
-      <VStack
-        maxHeight
-        maxWidth
-        justify='center'
-        align='center'
-      >
+      <VStack maxHeight maxWidth justify='center' align='center'>
         <Text
           theme={TextTheme.ERROR}
           title={t('Profile not found')}
@@ -37,9 +32,7 @@ const ProfilePage = () => {
   return (
     <Page data-testid='ProfilePage'>
       <EditableProfileCard id={numberId} />
-      {error === undefined && (
-        <ProfileRating profileId={numberId} />
-      )}
+      {error === undefined && <ProfileRating profileId={numberId} />}
     </Page>
   )
 }

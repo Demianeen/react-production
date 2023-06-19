@@ -1,10 +1,5 @@
 import type { ReactNode } from 'react'
-import React, {
-  memo,
-  useCallback,
-  useEffect,
-  useState,
-} from 'react'
+import React, { memo, useCallback, useEffect, useState } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import {
   AnimationProvider,
@@ -105,9 +100,7 @@ export const DrawerContent = ({
     return null
   }
 
-  const display = y.to((py) =>
-    py < height ? 'block' : 'none'
-  )
+  const display = y.to((py) => (py < height ? 'block' : 'none'))
 
   return (
     <Portal>

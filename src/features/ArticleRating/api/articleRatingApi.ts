@@ -25,10 +25,7 @@ const articleRatingApi = rtkApi.injectEndpoints({
         params,
       }),
     }),
-    rateArticle: builder.mutation<
-      Rating,
-      RateArticleParams
-    >({
+    rateArticle: builder.mutation<Rating, RateArticleParams>({
       query: (body) => ({
         url: '/article-rating',
         method: 'POST',
@@ -38,7 +35,5 @@ const articleRatingApi = rtkApi.injectEndpoints({
   }),
 })
 
-export const {
-  useGetArticleRatingQuery,
-  useRateArticleMutation,
-} = articleRatingApi
+export const { useGetArticleRatingQuery, useRateArticleMutation } =
+  articleRatingApi

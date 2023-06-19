@@ -7,11 +7,7 @@ import { mockArticleRating } from './mockArticleRating'
 export const articleRatingHandlers = [
   rest.get('/article-rating', (req, res, ctx) => {
     if (isMockLoading()) {
-      return res(
-        ctx.status(200),
-        ctx.json({}),
-        ctx.delay('infinite')
-      )
+      return res(ctx.status(200), ctx.json({}), ctx.delay('infinite'))
     }
 
     if (isMockError()) {
@@ -22,10 +18,7 @@ export const articleRatingHandlers = [
       return res(ctx.status(200), ctx.json([]))
     }
 
-    return res(
-      ctx.status(200),
-      ctx.json([mockArticleRating])
-    )
+    return res(ctx.status(200), ctx.json([mockArticleRating]))
   }),
   rest.post('/article-rating', (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(mockArticleRating))

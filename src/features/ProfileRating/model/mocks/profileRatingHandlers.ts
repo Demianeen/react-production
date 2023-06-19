@@ -7,11 +7,7 @@ import { mockProfileRating } from './mockProfileRating'
 export const profileRatingHandlers = [
   rest.get('/profile-rating', (req, res, ctx) => {
     if (isMockLoading()) {
-      return res(
-        ctx.status(200),
-        ctx.json({}),
-        ctx.delay('infinite')
-      )
+      return res(ctx.status(200), ctx.json({}), ctx.delay('infinite'))
     }
 
     if (isMockError()) {
@@ -22,10 +18,7 @@ export const profileRatingHandlers = [
       return res(ctx.status(200), ctx.json([]))
     }
 
-    return res(
-      ctx.status(200),
-      ctx.json([mockProfileRating])
-    )
+    return res(ctx.status(200), ctx.json([mockProfileRating]))
   }),
   rest.post('/profile-rating', (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(mockProfileRating))

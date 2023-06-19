@@ -18,9 +18,7 @@ export const componentRender = (
   return {
     user: userEvent.setup(),
     ...render(
-      <TestProvider options={options}>
-        {Component}
-      </TestProvider>
+      <TestProvider options={options}>{Component}</TestProvider>
     ),
   }
 }

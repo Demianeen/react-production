@@ -8,16 +8,14 @@ describe('getCommentFormError', () => {
         error: 'error',
       },
     }
-    expect(
-      getCommentFormError(state as StateSchema)
-    ).toEqual('error')
+    expect(getCommentFormError(state as StateSchema)).toEqual('error')
   })
 
   it('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {}
 
-    expect(
-      getCommentFormError(state as StateSchema)
-    ).toEqual(undefined)
+    expect(getCommentFormError(state as StateSchema)).toEqual(
+      undefined
+    )
   })
 })

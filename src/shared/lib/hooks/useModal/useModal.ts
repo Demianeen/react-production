@@ -1,9 +1,4 @@
-import {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 interface UseModalProps {
   isOpen: boolean
@@ -26,9 +21,7 @@ export const useModal = ({
 }: UseModalProps) => {
   const [isClosing, setIsClosing] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
-  const timeRef = useRef<ReturnType<
-    typeof setTimeout
-  > | null>(null)
+  const timeRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const close = useCallback(() => {
     if (!onClose) return

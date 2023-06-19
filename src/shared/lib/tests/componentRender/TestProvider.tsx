@@ -21,11 +21,7 @@ interface TestProviderProps {
 
 export const TestProvider = ({
   children,
-  options: {
-    preloadedState,
-    asyncReducers = {},
-    route = '/',
-  } = {},
+  options: { preloadedState, asyncReducers = {}, route = '/' } = {},
 }: TestProviderProps) => {
   return (
     <MemoryRouter initialEntries={[route]}>

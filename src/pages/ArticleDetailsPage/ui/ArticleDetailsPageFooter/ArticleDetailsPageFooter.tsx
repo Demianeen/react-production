@@ -14,20 +14,15 @@ interface ArticleDetailsPageFooterProps {
 }
 
 export const ArticleDetailsPageFooter = memo(
-  ({
-    className,
-    articleId,
-  }: ArticleDetailsPageFooterProps) => {
+  ({ className, articleId }: ArticleDetailsPageFooterProps) => {
     const { t } = useTranslation('article-details')
 
     return (
       <VStack
         gap={1.25}
-        className={classNames(
-          styles.articleDetailsPageFooter,
-          {},
-          [className]
-        )}
+        className={classNames(styles.articleDetailsPageFooter, {}, [
+          className,
+        ])}
         maxWidth
       >
         <ArticleRating articleId={articleId} />
@@ -40,5 +35,4 @@ export const ArticleDetailsPageFooter = memo(
   }
 )
 
-ArticleDetailsPageFooter.displayName =
-  'ArticleDetailsPageFooter'
+ArticleDetailsPageFooter.displayName = 'ArticleDetailsPageFooter'

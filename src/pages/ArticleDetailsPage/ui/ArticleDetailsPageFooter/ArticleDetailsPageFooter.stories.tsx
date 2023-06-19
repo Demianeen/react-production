@@ -4,8 +4,7 @@ import { Theme } from '@/shared/const/theme'
 import { ArticleDetailsPageFooter } from './ArticleDetailsPageFooter'
 
 export default {
-  title:
-    'pages/ArticleDetailsPage/ArticleDetailsPageFooter',
+  title: 'pages/ArticleDetailsPage/ArticleDetailsPageFooter',
   component: ArticleDetailsPageFooter,
   argTypes: {
     backgroundColor: { control: 'color' },

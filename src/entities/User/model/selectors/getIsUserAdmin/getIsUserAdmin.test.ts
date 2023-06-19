@@ -9,9 +9,7 @@ describe('getIsUserAdmin', () => {
         authData: { roles: [UserRole.ADMIN] },
       },
     }
-    expect(getIsUserAdmin(state as StateSchema)).toEqual(
-      true
-    )
+    expect(getIsUserAdmin(state as StateSchema)).toEqual(true)
   })
 
   it('should return the false', () => {
@@ -20,16 +18,12 @@ describe('getIsUserAdmin', () => {
         authData: { roles: [UserRole.USER] },
       },
     }
-    expect(getIsUserAdmin(state as StateSchema)).toEqual(
-      false
-    )
+    expect(getIsUserAdmin(state as StateSchema)).toEqual(false)
   })
 
   it('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {}
 
-    expect(getIsUserAdmin(state as StateSchema)).toEqual(
-      false
-    )
+    expect(getIsUserAdmin(state as StateSchema)).toEqual(false)
   })
 })

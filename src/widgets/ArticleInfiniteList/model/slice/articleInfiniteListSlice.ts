@@ -1,8 +1,5 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
-import {
-  createEntityAdapter,
-  createSlice,
-} from '@reduxjs/toolkit'
+import { createEntityAdapter, createSlice } from '@reduxjs/toolkit'
 import type { StateSchema } from '@/app/providers/StoreProvider'
 import type { Article } from '@/entities/Article'
 import { ArticleType } from '@/entities/Article'
@@ -37,19 +34,13 @@ export const articleInfiniteListSlice = createSlice({
     setPage: (state, action: PayloadAction<number>) => {
       state.page = action.payload
     },
-    setStartIndex: (
-      state,
-      action: PayloadAction<number>
-    ) => {
+    setStartIndex: (state, action: PayloadAction<number>) => {
       state.startIndex = action.payload
     },
     setOrder: (state, action: PayloadAction<SortOrder>) => {
       state.order = action.payload
     },
-    setSortField: (
-      state,
-      action: PayloadAction<SortField>
-    ) => {
+    setSortField: (state, action: PayloadAction<SortField>) => {
       state.sortField = action.payload
     },
     setSearch: (state, action: PayloadAction<string>) => {
@@ -64,10 +55,7 @@ export const articleInfiniteListSlice = createSlice({
         action.payload
       )
     },
-    setType: (
-      state,
-      action: PayloadAction<ArticleType>
-    ) => {
+    setType: (state, action: PayloadAction<ArticleType>) => {
       state.type = action.payload
     },
     initState: (state) => {
@@ -92,8 +80,7 @@ export const articleInfiniteListSlice = createSlice({
       })
       .addCase(fetchArticles.fulfilled, (state, action) => {
         state.isLoading = false
-        state.hasMore =
-          action.payload.length === state.limit
+        state.hasMore = action.payload.length === state.limit
 
         if (action?.meta?.arg?.replace === true) {
           articlesAdapter.setAll(state, action.payload)
@@ -114,6 +101,5 @@ export const { reducer: articleInfiniteListReducer } =
   articleInfiniteListSlice
 
 export const getArticles = articlesAdapter.getSelectors(
-  (state: StateSchema) =>
-    state.articleInfiniteList ?? initialState
+  (state: StateSchema) => state.articleInfiniteList ?? initialState
 )

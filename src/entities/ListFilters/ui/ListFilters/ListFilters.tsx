@@ -29,12 +29,7 @@ export const ListFilters = memo(
   }: SortedArticlesListProps) => {
     return (
       <VStack gap={1.25} className={className} maxWidth>
-        <HStack
-          justify='between'
-          align='center'
-          gap={1}
-          maxWidth
-        >
+        <HStack justify='between' align='center' gap={1} maxWidth>
           <HStack align='center' gap={1} wrap='nowrap'>
             {onChangeSortField && (
               <ListFiltersSortField

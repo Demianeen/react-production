@@ -68,7 +68,9 @@ ${publicApiTypes}`
       const file = directory.createSourceFile(
         readmeFilePath,
         sourceCode,
-        { overwrite: true }
+        {
+          overwrite: true,
+        }
       )
       file.saveSync()
     }

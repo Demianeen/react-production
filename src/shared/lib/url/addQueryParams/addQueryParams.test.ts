@@ -28,15 +28,8 @@ describe('addQueryParams', () => {
   })
 
   test('call history.pushState', () => {
-    const pushStateSpy = jest.spyOn(
-      window.history,
-      'pushState'
-    )
+    const pushStateSpy = jest.spyOn(window.history, 'pushState')
     addQueryParams({ key: 'value' })
-    expect(pushStateSpy).toHaveBeenCalledWith(
-      null,
-      '',
-      '?key=value'
-    )
+    expect(pushStateSpy).toHaveBeenCalledWith(null, '', '?key=value')
   })
 })

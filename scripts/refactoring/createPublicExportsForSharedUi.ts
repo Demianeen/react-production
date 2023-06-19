@@ -36,8 +36,7 @@ const isLayer = (path: string) => {
 }
 
 project.getSourceFiles().forEach((sourceFile) => {
-  const importDeclarations =
-    sourceFile.getImportDeclarations()
+  const importDeclarations = sourceFile.getImportDeclarations()
 
   importDeclarations.forEach((importDeclaration) => {
     const moduleSpecifier = importDeclaration

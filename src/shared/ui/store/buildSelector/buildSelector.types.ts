@@ -1,13 +1,8 @@
-import type {
-  OutputSelector,
-  Selector,
-} from '@reduxjs/toolkit'
+import type { OutputSelector, Selector } from '@reduxjs/toolkit'
 import type { StateSchema } from '@/app/providers/StoreProvider'
 
 /** First item in an array */
-export type Head<T> = T extends [unknown, ...unknown[]]
-  ? T[0]
-  : never
+export type Head<T> = T extends [unknown, ...unknown[]] ? T[0] : never
 
 /** Last item in an array. Recursion also enables this to work with rest syntax - where the type of rest is extracted */
 export type ReverseHead<S extends readonly unknown[][]> =
@@ -52,10 +47,7 @@ type LongestTuple<T> = T extends [infer U extends unknown[]]
   ? MostProperties<U, LongestTuple<R>>
   : never
 
-type MergeTuples<
-  T,
-  L extends unknown[] = LongestTuple<T>
-> = {
+type MergeTuples<T, L extends unknown[] = LongestTuple<T>> = {
   [K in keyof L]: Intersect<
     ElementsAt<T, K> extends readonly unknown[]
       ? ElementsAt<T, K>
@@ -63,23 +55,21 @@ type MergeTuples<
   >
 }
 
-type ExtractParameters<
-  T extends readonly UnknownFunction[]
-> = {
+type ExtractParameters<T extends readonly UnknownFunction[]> = {
   [K in keyof T]: Parameters<T[K]>
 }
 
-export type MergeParameters<
-  T extends readonly UnknownFunction[]
-> = '0' extends keyof T
-  ? MergeTuples<MakeRestExplicit<ExtractParameters<T>>>
-  : Parameters<T[number]>
+export type MergeParameters<T extends readonly UnknownFunction[]> =
+  '0' extends keyof T
+    ? MergeTuples<MakeRestExplicit<ExtractParameters<T>>>
+    : Parameters<T[number]>
 
 type HasRest<S extends readonly unknown[]> =
   number extends S['length'] ? true : false
 
-type HasExplicit<S extends readonly unknown[]> =
-  '0' extends keyof S ? true : false
+type HasExplicit<S extends readonly unknown[]> = '0' extends keyof S
+  ? true
+  : false
 
 type HasCombined<S extends readonly unknown[]> =
   true extends HasExplicit<S> & HasRest<S> ? true : false
@@ -100,24 +90,20 @@ export type SelectorArray = Array<Selector>
 
 type UnknownFunction = (...args: unknown[]) => unknown
 
-export type ExtractReturnType<
-  T extends readonly UnknownFunction[]
-> = {
-  [index in keyof T]: T[index] extends T[number]
-    ? ReturnType<T[index]>
-    : never
-}
+export type ExtractReturnType<T extends readonly UnknownFunction[]> =
+  {
+    [index in keyof T]: T[index] extends T[number]
+      ? ReturnType<T[index]>
+      : never
+  }
 
-export type SelectorResultArray<
-  Selectors extends SelectorArray
-> = ExtractReturnType<Selectors>
+export type SelectorResultArray<Selectors extends SelectorArray> =
+  ExtractReturnType<Selectors>
 
 /** Determines the combined  "Params" type (all remaining args) from all input selectors */
 export type GetParamsFromSelectors<
   S extends SelectorArray,
-  RemainingItems extends readonly unknown[] = Tail<
-    MergeParameters<S>
-  >
+  RemainingItems extends readonly unknown[] = Tail<MergeParameters<S>>
 > = RemainingItems
 
 /** All other items in an array */
@@ -127,10 +113,7 @@ export type Tail<A> = A extends [unknown, ...infer Rest]
 
 type SingleSelector<T> = (state: StateSchema) => T
 
-export type ResultSelector<FR> = [
-  () => FR,
-  SingleSelector<FR>
-]
+export type ResultSelector<FR> = [() => FR, SingleSelector<FR>]
 
 export type ResultMemoized<
   FR,

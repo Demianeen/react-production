@@ -23,14 +23,11 @@ export const sendArticleComment = createAsyncThunk<
     }
 
     try {
-      const response = await extra.api.post<Comment>(
-        '/comments',
-        {
-          body: commentBody,
-          articleId,
-          userId: user.id,
-        }
-      )
+      const response = await extra.api.post<Comment>('/comments', {
+        body: commentBody,
+        articleId,
+        userId: user.id,
+      })
 
       if (!response.data) {
         return rejectWithValue('error')
@@ -39,9 +36,7 @@ export const sendArticleComment = createAsyncThunk<
       const newComment = { ...response.data, user }
 
       // update article comment list
-      dispatch(
-        articleCommentListActions.addComment(newComment)
-      )
+      dispatch(articleCommentListActions.addComment(newComment))
 
       return response.data
     } catch (error) {

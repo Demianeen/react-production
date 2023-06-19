@@ -4,16 +4,11 @@ import { ProfileValidationError } from '../../const/profileValidationError'
 import { validateProfileForm } from '../validateProfileForm/validateProfileForm'
 import { updateProfileData } from './updateProfileData'
 
-jest.mock(
-  '../validateProfileForm/validateProfileForm',
-  () => ({
-    __esModule: true,
-    validateProfileForm: jest.fn(() => []),
-  })
-)
-const mockedValidateProfileForm = jest.mocked(
-  validateProfileForm
-)
+jest.mock('../validateProfileForm/validateProfileForm', () => ({
+  __esModule: true,
+  validateProfileForm: jest.fn(() => []),
+}))
+const mockedValidateProfileForm = jest.mocked(validateProfileForm)
 
 describe('updateProfileData', () => {
   test('fulfilled', async () => {
@@ -27,9 +22,7 @@ describe('updateProfileData', () => {
       },
     })
 
-    thunk.api.put.mockReturnValue(
-      Promise.resolve(returnValue)
-    )
+    thunk.api.put.mockReturnValue(Promise.resolve(returnValue))
     const result = await thunk.call()
 
     expect(result.payload).toEqual(mockProfile)

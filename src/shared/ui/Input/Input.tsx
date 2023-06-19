@@ -1,7 +1,4 @@
-import type {
-  ChangeEvent,
-  InputHTMLAttributes,
-} from 'react'
+import type { ChangeEvent, InputHTMLAttributes } from 'react'
 import { memo, useEffect, useRef } from 'react'
 import type { Mods } from '@/shared/lib/classNames/classNames'
 import { classNames } from '@/shared/lib/classNames/classNames'
@@ -43,9 +40,7 @@ export const Input = memo(
     maxWidth,
     ...props
   }: InputProps) => {
-    const handleChange = (
-      e: ChangeEvent<HTMLInputElement>
-    ) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
       onChange?.(e.target.value)
     }
     const inputRef = useRef<HTMLInputElement>(null)
@@ -68,9 +63,7 @@ export const Input = memo(
       >
         <input
           id={label}
-          className={classNames(styles.input, mods, [
-            className,
-          ])}
+          className={classNames(styles.input, mods, [className])}
           value={value}
           type={type}
           onChange={handleChange}

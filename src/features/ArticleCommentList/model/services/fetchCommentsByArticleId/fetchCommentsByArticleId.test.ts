@@ -4,9 +4,7 @@ import { fetchCommentsByArticleId } from './fetchCommentsByArticleId'
 
 describe('fetchCommentsByArticleId.test', () => {
   test('fulfilled', async () => {
-    const thunk = new TestAsyncThunk(
-      fetchCommentsByArticleId
-    )
+    const thunk = new TestAsyncThunk(fetchCommentsByArticleId)
     thunk.api.get.mockReturnValue(
       Promise.resolve({
         data: mockComments,
@@ -20,9 +18,7 @@ describe('fetchCommentsByArticleId.test', () => {
   })
 
   test('rejected', async () => {
-    const thunk = new TestAsyncThunk(
-      fetchCommentsByArticleId
-    )
+    const thunk = new TestAsyncThunk(fetchCommentsByArticleId)
     thunk.api.get.mockReturnValue(
       Promise.resolve({
         status: 403,
@@ -36,9 +32,7 @@ describe('fetchCommentsByArticleId.test', () => {
   })
 
   test('no data', async () => {
-    const thunk = new TestAsyncThunk(
-      fetchCommentsByArticleId
-    )
+    const thunk = new TestAsyncThunk(fetchCommentsByArticleId)
     thunk.api.get.mockReturnValue(
       Promise.resolve({
         data: undefined,

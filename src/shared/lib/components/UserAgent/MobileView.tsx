@@ -5,8 +5,6 @@ interface MobileViewProps {
   children?: ReactNode
 }
 
-export const MobileView = ({
-  children,
-}: MobileViewProps) => {
+export const MobileView = ({ children }: MobileViewProps) => {
   return <UserAgent mobileView>{children}</UserAgent>
 }

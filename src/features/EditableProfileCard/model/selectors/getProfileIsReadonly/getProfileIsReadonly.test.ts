@@ -8,16 +8,12 @@ describe('getProfileIsReadonly', () => {
         isReadonly: false,
       },
     }
-    expect(
-      getProfileIsReadonly(state as StateSchema)
-    ).toEqual(false)
+    expect(getProfileIsReadonly(state as StateSchema)).toEqual(false)
   })
 
   it('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {}
 
-    expect(
-      getProfileIsReadonly(state as StateSchema)
-    ).toEqual(true)
+    expect(getProfileIsReadonly(state as StateSchema)).toEqual(true)
   })
 })

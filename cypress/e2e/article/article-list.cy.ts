@@ -10,9 +10,7 @@ describe('User enters the articles page', () => {
   })
 
   it('articles renders successfully', () => {
-    cy.getByTestId('VirtualizedArticleList.Grid').should(
-      'exist'
-    )
+    cy.getByTestId('VirtualizedArticleList.Grid').should('exist')
     cy.getByTestId('ArticleListItem.Grid').should(
       'have.length.greaterThan',
       3
@@ -32,10 +30,7 @@ describe('User enters the articles page', () => {
       })
 
       cy.getByTestId('Search').type(searchQuery)
-      cy.getByTestId('ArticleListItem.Grid').should(
-        'have.length',
-        1
-      )
+      cy.getByTestId('ArticleListItem.Grid').should('have.length', 1)
     })
 
     it('uses subtitle', () => {
@@ -46,10 +41,7 @@ describe('User enters the articles page', () => {
       })
 
       cy.getByTestId('Search').type(searchQuery)
-      cy.getByTestId('ArticleListItem.Grid').should(
-        'have.length',
-        1
-      )
+      cy.getByTestId('ArticleListItem.Grid').should('have.length', 1)
     })
 
     it('uses text inside', () => {
@@ -60,26 +52,18 @@ describe('User enters the articles page', () => {
       })
 
       cy.getByTestId('Search').type(searchQuery)
-      cy.getByTestId('ArticleListItem.Grid').should(
-        'have.length',
-        1
-      )
+      cy.getByTestId('ArticleListItem.Grid').should('have.length', 1)
     })
   })
 
   it('user changes sort field to "views"', () => {
-    cy.intercept('GET', '**/articles@(\\?)**').as(
-      'getArticles'
-    )
+    cy.intercept('GET', '**/articles@(\\?)**').as('getArticles')
 
     cy.getByTestId('ArticleListItem.Grid').should(
       'have.length.greaterThan',
       3
     )
-    cy.selectFromSelect(
-      'ListFiltersSortField',
-      SortField.VIEWS
-    )
+    cy.selectFromSelect('ListFiltersSortField', SortField.VIEWS)
 
     // Wait for new articles to be returned by the server
     cy.wait('@getArticles')
@@ -90,29 +74,21 @@ describe('User enters the articles page', () => {
     cy.getByTestId('ArticleListItem.Views.Paragraph').each(
       (views) => {
         const viewsAmounts = Number(views.text())
-        cy.wrap(viewsAmounts).should(
-          'be.gte',
-          previousViewsAmount
-        )
+        cy.wrap(viewsAmounts).should('be.gte', previousViewsAmount)
         previousViewsAmount = viewsAmounts
       }
     )
   })
 
   it('user changes sort order to "desc"', () => {
-    cy.intercept('GET', '**/articles@(\\?)**').as(
-      'getArticles'
-    )
+    cy.intercept('GET', '**/articles@(\\?)**').as('getArticles')
 
     cy.getByTestId('ArticleListItem.Grid').should(
       'have.length.greaterThan',
       3
     )
     cy.selectFromSelect('ListFiltersOrder', SortOrder.DESC)
-    cy.selectFromSelect(
-      'ListFiltersSortField',
-      SortField.VIEWS
-    )
+    cy.selectFromSelect('ListFiltersSortField', SortField.VIEWS)
 
     // Wait for new articles to be returned by the server
     cy.wait('@getArticles')
@@ -125,10 +101,7 @@ describe('User enters the articles page', () => {
       (views) => {
         const viewsAmounts = Number(views.text())
         cy.log('viewsAmounts', views)
-        cy.wrap(viewsAmounts).should(
-          'be.lte',
-          previousViewsAmount
-        )
+        cy.wrap(viewsAmounts).should('be.lte', previousViewsAmount)
         previousViewsAmount = viewsAmounts
       }
     )

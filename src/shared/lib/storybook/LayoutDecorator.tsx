@@ -1,18 +1,11 @@
 import type { StoryFn } from '@storybook/react'
 import { HStack } from '@/shared/ui/Stack'
 
-export const LayoutDecorator = (
-  layout: 'centered' | 'fullpage'
-) =>
+export const LayoutDecorator = (layout: 'centered' | 'fullpage') =>
   function Decorator(StoryComponent: StoryFn) {
     if (layout === 'centered') {
       return (
-        <HStack
-          justify='center'
-          align='center'
-          maxWidth
-          maxHeight
-        >
+        <HStack justify='center' align='center' maxWidth maxHeight>
           <StoryComponent />
         </HStack>
       )

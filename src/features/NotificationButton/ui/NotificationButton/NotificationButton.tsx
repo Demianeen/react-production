@@ -28,9 +28,7 @@ export const NotificationButton = ({
           }
           className={className}
         >
-          <NotificationList
-            className={styles.notifications}
-          />
+          <NotificationList className={styles.notifications} />
         </Popover>
       </DesktopView>
       <MobileView>

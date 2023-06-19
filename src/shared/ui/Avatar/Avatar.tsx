@@ -40,13 +40,7 @@ export const Avatar = ({
   )
 
   const fallback = useMemo(
-    () => (
-      <Skeleton
-        height={size}
-        width={size}
-        borderRadius='50%'
-      />
-    ),
+    () => <Skeleton height={size} width={size} borderRadius='50%' />,
     [size]
   )
 

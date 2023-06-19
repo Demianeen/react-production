@@ -9,9 +9,7 @@ import type { StateSchemaKey } from '@/app/providers/StoreProvider/config/stateS
 import { useAppDispatch } from '../useAppDispatch/useAppDispatch'
 
 export type ReducersList = {
-  [Name in StateSchemaKey]?: Reducer<
-    NonNullable<StateSchema[Name]>
-  >
+  [Name in StateSchemaKey]?: Reducer<NonNullable<StateSchema[Name]>>
 }
 
 interface DynamicModuleLoaderOptions {
@@ -20,16 +18,13 @@ interface DynamicModuleLoaderOptions {
 
 export const useDynamicModuleLoader = (
   reducers: ReducersList,
-  {
-    removeOnUnmount = true,
-  }: DynamicModuleLoaderOptions = {}
+  { removeOnUnmount = true }: DynamicModuleLoaderOptions = {}
 ) => {
   const dispatch = useAppDispatch()
   const store = useStore() as ReduxStoreWithReducerManager
 
   useEffect(() => {
-    const mountedReducers =
-      store.reducerManager.getReducerMap()
+    const mountedReducers = store.reducerManager.getReducerMap()
 
     Object.entries(reducers).forEach(([name, reducer]) => {
       if (mountedReducers[name as StateSchemaKey]) return

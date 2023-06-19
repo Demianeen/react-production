@@ -26,14 +26,8 @@ export const renameDir = ({
       const newDir = path.resolve(
         path.dirname(dir),
         dirBaseName
-          .replace(
-            decapitalizedOldName,
-            decapitalizedNewName
-          )
-          .replace(
-            capitalizedOldSliceName,
-            capitalizedNewSliceName
-          )
+          .replace(decapitalizedOldName, decapitalizedNewName)
+          .replace(capitalizedOldSliceName, capitalizedNewSliceName)
       )
       fs.mkdirSync(newDir)
       fs.renameSync(dir, newDir)
@@ -42,9 +36,7 @@ export const renameDir = ({
     return dir
   } catch (e) {
     if (e instanceof Error) {
-      throw new Error(
-        `Failed to rename directory: ${e.message}`
-      )
+      throw new Error(`Failed to rename directory: ${e.message}`)
     }
     throw new Error('Unexpected error')
   }

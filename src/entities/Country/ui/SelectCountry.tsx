@@ -25,12 +25,10 @@ export const SelectCountry = memo(
     const { t } = useTranslation()
 
     const countryOptions = useMemo(() => {
-      return Object.entries(Country).map(
-        ([_enumKey, enumValue]) => ({
-          value: enumValue,
-          label: enumValue,
-        })
-      )
+      return Object.entries(Country).map(([_enumKey, enumValue]) => ({
+        value: enumValue,
+        label: enumValue,
+      }))
     }, [])
 
     const handleChange = useCallback(

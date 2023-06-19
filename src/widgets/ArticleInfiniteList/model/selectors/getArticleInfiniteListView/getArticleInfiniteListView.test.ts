@@ -10,16 +10,16 @@ describe('getArticleInfiniteListView', () => {
         view: View.LIST,
       },
     }
-    expect(
-      getArticleInfiniteListView(state as StateSchema)
-    ).toEqual(View.LIST)
+    expect(getArticleInfiniteListView(state as StateSchema)).toEqual(
+      View.LIST
+    )
   })
 
   it('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {}
 
-    expect(
-      getArticleInfiniteListView(state as StateSchema)
-    ).toEqual(INITIAL_ARTICLE_VIEW)
+    expect(getArticleInfiniteListView(state as StateSchema)).toEqual(
+      INITIAL_ARTICLE_VIEW
+    )
   })
 })

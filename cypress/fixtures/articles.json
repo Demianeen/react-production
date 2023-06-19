@@ -7,9 +7,7 @@
     "views": 1022,
     "userId": 1,
     "createdAt": "22.02.2022",
-    "types": [
-      "IT"
-    ],
+    "types": ["IT"],
     "blocks": [
       {
         "id": 1,
@@ -30,9 +28,7 @@
       "id": 1,
       "username": "admin",
       "password": "123",
-      "roles": [
-        "ADMIN"
-      ],
+      "roles": ["ADMIN"],
       "avatar": "https://lablab.ai/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Flablab-static-eu%2Fimages%252Fusers%252Fcldzwest200dfb70s3i8pc564_5w13le5_picture.jpg&w=256&q=75"
     }
   },
@@ -44,9 +40,7 @@
     "views": 1022,
     "userId": 1,
     "createdAt": "24.02.2016",
-    "types": [
-      "IT"
-    ],
+    "types": ["IT"],
     "blocks": [
       {
         "id": 1,
@@ -63,9 +57,7 @@
       "id": 1,
       "username": "admin",
       "password": "123",
-      "roles": [
-        "ADMIN"
-      ],
+      "roles": ["ADMIN"],
       "avatar": "https://lablab.ai/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Flablab-static-eu%2Fimages%252Fusers%252Fcldzwest200dfb70s3i8pc564_5w13le5_picture.jpg&w=256&q=75"
     }
   },
@@ -77,9 +69,7 @@
     "views": 1022,
     "userId": 1,
     "createdAt": "25.02.2020",
-    "types": [
-      "IT"
-    ],
+    "types": ["IT"],
     "blocks": [
       {
         "id": 1,
@@ -96,9 +86,7 @@
       "id": 1,
       "username": "admin",
       "password": "123",
-      "roles": [
-        "ADMIN"
-      ],
+      "roles": ["ADMIN"],
       "avatar": "https://lablab.ai/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Flablab-static-eu%2Fimages%252Fusers%252Fcldzwest200dfb70s3i8pc564_5w13le5_picture.jpg&w=256&q=75"
     }
   },
@@ -110,9 +98,7 @@
     "views": 1022,
     "userId": 1,
     "createdAt": "26.02.2013",
-    "types": [
-      "IT"
-    ],
+    "types": ["IT"],
     "blocks": [
       {
         "id": 1,
@@ -129,9 +115,7 @@
       "id": 1,
       "username": "admin",
       "password": "123",
-      "roles": [
-        "ADMIN"
-      ],
+      "roles": ["ADMIN"],
       "avatar": "https://lablab.ai/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Flablab-static-eu%2Fimages%252Fusers%252Fcldzwest200dfb70s3i8pc564_5w13le5_picture.jpg&w=256&q=75"
     }
   },
@@ -143,9 +127,7 @@
     "views": 1022,
     "userId": 1,
     "createdAt": "26.02.2014",
-    "types": [
-      "IT"
-    ],
+    "types": ["IT"],
     "blocks": [
       {
         "id": 1,
@@ -162,9 +144,7 @@
       "id": 1,
       "username": "admin",
       "password": "123",
-      "roles": [
-        "ADMIN"
-      ],
+      "roles": ["ADMIN"],
       "avatar": "https://lablab.ai/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Flablab-static-eu%2Fimages%252Fusers%252Fcldzwest200dfb70s3i8pc564_5w13le5_picture.jpg&w=256&q=75"
     }
   },
@@ -176,9 +156,7 @@
     "views": 1022,
     "userId": 1,
     "createdAt": "26.02.2015",
-    "types": [
-      "IT"
-    ],
+    "types": ["IT"],
     "blocks": [
       {
         "id": 1,
@@ -195,9 +173,7 @@
       "id": 1,
       "username": "admin",
       "password": "123",
-      "roles": [
-        "ADMIN"
-      ],
+      "roles": ["ADMIN"],
       "avatar": "https://lablab.ai/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Flablab-static-eu%2Fimages%252Fusers%252Fcldzwest200dfb70s3i8pc564_5w13le5_picture.jpg&w=256&q=75"
     }
   },
@@ -209,9 +185,7 @@
     "views": 1022,
     "userId": 1,
     "createdAt": "26.02.2016",
-    "types": [
-      "IT"
-    ],
+    "types": ["IT"],
     "blocks": [
       {
         "id": 1,
@@ -228,9 +202,7 @@
       "id": 1,
       "username": "admin",
       "password": "123",
-      "roles": [
-        "ADMIN"
-      ],
+      "roles": ["ADMIN"],
       "avatar": "https://lablab.ai/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Flablab-static-eu%2Fimages%252Fusers%252Fcldzwest200dfb70s3i8pc564_5w13le5_picture.jpg&w=256&q=75"
     }
   },
@@ -242,9 +214,7 @@
     "views": 7422,
     "userId": 1,
     "createdAt": "26.02.2017",
-    "types": [
-      "IT"
-    ],
+    "types": ["IT"],
     "blocks": [
       {
         "id": 1,
@@ -261,9 +231,7 @@
       "id": 1,
       "username": "admin",
       "password": "123",
-      "roles": [
-        "ADMIN"
-      ],
+      "roles": ["ADMIN"],
       "avatar": "https://lablab.ai/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Flablab-static-eu%2Fimages%252Fusers%252Fcldzwest200dfb70s3i8pc564_5w13le5_picture.jpg&w=256&q=75"
     }
   },
@@ -275,9 +243,7 @@
     "views": 1722,
     "userId": 1,
     "createdAt": "26.02.2017",
-    "types": [
-      "IT"
-    ],
+    "types": ["IT"],
     "blocks": [
       {
         "id": 1,
@@ -294,9 +260,7 @@
       "id": 1,
       "username": "admin",
       "password": "123",
-      "roles": [
-        "ADMIN"
-      ],
+      "roles": ["ADMIN"],
       "avatar": "https://lablab.ai/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Flablab-static-eu%2Fimages%252Fusers%252Fcldzwest200dfb70s3i8pc564_5w13le5_picture.jpg&w=256&q=75"
     }
   },
@@ -308,9 +272,7 @@
     "views": 1922,
     "userId": 1,
     "createdAt": "26.02.2018",
-    "types": [
-      "IT"
-    ],
+    "types": ["IT"],
     "blocks": [
       {
         "id": 1,
@@ -327,9 +289,7 @@
       "id": 1,
       "username": "admin",
       "password": "123",
-      "roles": [
-        "ADMIN"
-      ],
+      "roles": ["ADMIN"],
       "avatar": "https://lablab.ai/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Flablab-static-eu%2Fimages%252Fusers%252Fcldzwest200dfb70s3i8pc564_5w13le5_picture.jpg&w=256&q=75"
     }
   },
@@ -341,9 +301,7 @@
     "views": 1022,
     "userId": 1,
     "createdAt": "26.02.2018",
-    "types": [
-      "IT"
-    ],
+    "types": ["IT"],
     "blocks": [
       {
         "id": 1,
@@ -360,9 +318,7 @@
       "id": 1,
       "username": "admin",
       "password": "123",
-      "roles": [
-        "ADMIN"
-      ],
+      "roles": ["ADMIN"],
       "avatar": "https://lablab.ai/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Flablab-static-eu%2Fimages%252Fusers%252Fcldzwest200dfb70s3i8pc564_5w13le5_picture.jpg&w=256&q=75"
     }
   },
@@ -374,9 +330,7 @@
     "views": 1022,
     "userId": 1,
     "createdAt": "26.02.2019",
-    "types": [
-      "IT"
-    ],
+    "types": ["IT"],
     "blocks": [
       {
         "id": 1,
@@ -393,9 +347,7 @@
       "id": 1,
       "username": "admin",
       "password": "123",
-      "roles": [
-        "ADMIN"
-      ],
+      "roles": ["ADMIN"],
       "avatar": "https://lablab.ai/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Flablab-static-eu%2Fimages%252Fusers%252Fcldzwest200dfb70s3i8pc564_5w13le5_picture.jpg&w=256&q=75"
     }
   }

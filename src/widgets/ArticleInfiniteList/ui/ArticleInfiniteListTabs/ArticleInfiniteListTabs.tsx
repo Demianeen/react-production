@@ -49,5 +49,4 @@ export const ArticleInfiniteListTabs = memo(
   }
 )
 
-ArticleInfiniteListTabs.displayName =
-  'ArticleInfiniteListTabs'
+ArticleInfiniteListTabs.displayName = 'ArticleInfiniteListTabs'

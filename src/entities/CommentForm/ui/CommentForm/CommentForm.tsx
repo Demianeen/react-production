@@ -56,9 +56,7 @@ const CommentForm = ({
   return (
     <HStack
       as='form'
-      className={classNames(styles.commentForm, {}, [
-        className,
-      ])}
+      className={classNames(styles.commentForm, {}, [className])}
       onSubmit={onSubmit}
       align='end'
       gap={1}
@@ -74,10 +72,7 @@ const CommentForm = ({
         maxWidth
         data-testid='CommentForm.Input'
       />
-      <Button
-        type='submit'
-        data-testid='CommentForm.SubmitButton'
-      >
+      <Button type='submit' data-testid='CommentForm.SubmitButton'>
         {t('Send')}
       </Button>
     </HStack>

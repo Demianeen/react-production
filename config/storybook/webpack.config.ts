@@ -6,11 +6,7 @@ import type { BuildPath } from '../build/types/config'
 import { buildCssLoader } from '../build/loaders/buildCssLoader'
 import { buildSvgLoader } from '../build/loaders/buildSvgLoader'
 
-export default ({
-  config,
-}: {
-  config: webpack.Configuration
-}) => {
+export default ({ config }: { config: webpack.Configuration }) => {
   const paths: BuildPath = {
     build: '',
     entry: '',
@@ -21,8 +17,7 @@ export default ({
   }
 
   if (!config.resolve) config.resolve = {}
-  if (!config.resolve.extensions)
-    config.resolve.extensions = []
+  if (!config.resolve.extensions) config.resolve.extensions = []
   if (!config.resolve.modules) config.resolve.modules = []
 
   config.resolve.modules.push(paths.src)
@@ -45,23 +40,16 @@ export default ({
   if (!config.module) config.module = { rules: [] }
 
   // exclude svg from default webpack config
-  config.module.rules = config.module?.rules?.map(
-    (rule) => {
-      if (rule === '...') return rule
+  config.module.rules = config.module?.rules?.map((rule) => {
+    if (rule === '...') return rule
 
-      const isSvgLoader = rule.test
-        ?.toString()
-        .includes('svg')
-      if (!isSvgLoader) return rule
+    const isSvgLoader = rule.test?.toString().includes('svg')
+    if (!isSvgLoader) return rule
 
-      return { ...rule, exclude: /.svg$/i }
-    }
-  )
+    return { ...rule, exclude: /.svg$/i }
+  })
 
-  config.module?.rules?.push(
-    buildSvgLoader(),
-    buildCssLoader(true)
-  )
+  config.module?.rules?.push(buildSvgLoader(), buildCssLoader(true))
 
   return config
 }

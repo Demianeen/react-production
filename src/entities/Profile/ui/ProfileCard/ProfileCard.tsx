@@ -1,11 +1,7 @@
 import type { FormEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import {
-  Text,
-  TextAlign,
-  TextTheme,
-} from '@/shared/ui/Text'
+import { Text, TextAlign, TextTheme } from '@/shared/ui/Text'
 import { Input, InputSkeleton } from '@/shared/ui/Input'
 import { Avatar } from '@/shared/ui/Avatar'
 import type { Currency } from '@/entities/Currency'
@@ -62,15 +58,8 @@ export const ProfileCard = ({
         data-testid='ProfileCard.Loading'
       >
         <div className={styles.content}>
-          <HStack
-            justify='center'
-            className={styles.avatarWrapper}
-          >
-            <Skeleton
-              width='8rem'
-              height='8rem'
-              borderRadius='50%'
-            />
+          <HStack justify='center' className={styles.avatarWrapper}>
+            <Skeleton width='8rem' height='8rem' borderRadius='50%' />
           </HStack>
           <InputSkeleton />
           <InputSkeleton />
@@ -109,9 +98,7 @@ export const ProfileCard = ({
 
   return (
     <HStack
-      className={classNames(styles.profileCard, {}, [
-        className,
-      ])}
+      className={classNames(styles.profileCard, {}, [className])}
       maxWidth
     >
       <form
@@ -119,10 +106,7 @@ export const ProfileCard = ({
         id={formId}
         onSubmit={onFormSubmit}
       >
-        <HStack
-          justify='center'
-          className={styles.avatarWrapper}
-        >
+        <HStack justify='center' className={styles.avatarWrapper}>
           <Avatar src={data?.avatar} />
         </HStack>
         <Input

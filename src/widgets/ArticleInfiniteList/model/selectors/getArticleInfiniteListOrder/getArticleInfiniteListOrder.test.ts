@@ -9,16 +9,16 @@ describe('getArticleInfiniteListOrder', () => {
         order: SortOrder.DESC,
       },
     }
-    expect(
-      getArticleInfiniteListOrder(state as StateSchema)
-    ).toEqual(SortOrder.DESC)
+    expect(getArticleInfiniteListOrder(state as StateSchema)).toEqual(
+      SortOrder.DESC
+    )
   })
 
   it('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {}
 
-    expect(
-      getArticleInfiniteListOrder(state as StateSchema)
-    ).toEqual(SortOrder.ASC)
+    expect(getArticleInfiniteListOrder(state as StateSchema)).toEqual(
+      SortOrder.ASC
+    )
   })
 })

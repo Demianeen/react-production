@@ -20,11 +20,9 @@ export const ArticleTextBlockComponent = memo(
     return (
       <VStack
         gap={0.5}
-        className={classNames(
-          styles.articleTextBlockComponent,
-          {},
-          [className]
-        )}
+        className={classNames(styles.articleTextBlockComponent, {}, [
+          className,
+        ])}
         as='section'
       >
         {block.title && (
@@ -47,5 +45,4 @@ export const ArticleTextBlockComponent = memo(
   }
 )
 
-ArticleTextBlockComponent.displayName =
-  'ArticleTextBlockComponent'
+ArticleTextBlockComponent.displayName = 'ArticleTextBlockComponent'

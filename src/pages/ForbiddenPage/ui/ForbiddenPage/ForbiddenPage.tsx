@@ -7,18 +7,11 @@ interface ForbiddenPageProps {
   className?: string
 }
 
-const ForbiddenPage = ({
-  className,
-}: ForbiddenPageProps) => {
+const ForbiddenPage = ({ className }: ForbiddenPageProps) => {
   const { t } = useTranslation()
   return (
     <Page className={className} data-testid='ForbiddenPage'>
-      <HStack
-        justify='center'
-        align='center'
-        maxHeight
-        maxWidth
-      >
+      <HStack justify='center' align='center' maxHeight maxWidth>
         <Text
           theme={TextTheme.ERROR}
           size={TextSize.L}

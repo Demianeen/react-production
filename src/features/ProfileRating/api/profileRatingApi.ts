@@ -24,10 +24,7 @@ const profileRatingApi = rtkApi.injectEndpoints({
         params,
       }),
     }),
-    rateProfile: builder.mutation<
-      ProfileRating,
-      RateArticleParams
-    >({
+    rateProfile: builder.mutation<ProfileRating, RateArticleParams>({
       query: (body) => ({
         url: '/profile-rating',
         method: 'POST',
@@ -37,7 +34,5 @@ const profileRatingApi = rtkApi.injectEndpoints({
   }),
 })
 
-export const {
-  useGetProfileRatingQuery,
-  useRateProfileMutation,
-} = profileRatingApi
+export const { useGetProfileRatingQuery, useRateProfileMutation } =
+  profileRatingApi

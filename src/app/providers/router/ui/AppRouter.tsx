@@ -8,33 +8,29 @@ import type { AppRouteProps } from '@/shared/types/router'
 
 export const AppRouter = memo(() => {
   const routes = useMemo(() => {
-    return Object.values(routeConfig).map(
-      (route: AppRouteProps) => {
-        const wrappedElement = (
-          <Suspense fallback={<PageLoader />}>
-            {route.element}
-          </Suspense>
-        )
+    return Object.values(routeConfig).map((route: AppRouteProps) => {
+      const wrappedElement = (
+        <Suspense fallback={<PageLoader />}>{route.element}</Suspense>
+      )
 
-        return (
-          <Route
-            key={route.path}
-            path={route.path}
-            element={
-              route.authOnly ? (
-                <RequireAuth>
-                  <RequireRoles requiredRoles={route.roles}>
-                    {wrappedElement}
-                  </RequireRoles>
-                </RequireAuth>
-              ) : (
-                wrappedElement
-              )
-            }
-          />
-        )
-      }
-    )
+      return (
+        <Route
+          key={route.path}
+          path={route.path}
+          element={
+            route.authOnly ? (
+              <RequireAuth>
+                <RequireRoles requiredRoles={route.roles}>
+                  {wrappedElement}
+                </RequireRoles>
+              </RequireAuth>
+            ) : (
+              wrappedElement
+            )
+          }
+        />
+      )
+    })
   }, [])
 
   return (

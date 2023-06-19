@@ -39,6 +39,5 @@ export const mockComments: Comment[] = [
   },
 ]
 
-export const mockCommentEntities =
-  getMockEntities(mockComments)
+export const mockCommentEntities = getMockEntities(mockComments)
 export const mockCommentIds = getMockIds(mockComments)

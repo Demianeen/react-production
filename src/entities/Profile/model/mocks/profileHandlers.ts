@@ -7,11 +7,7 @@ export const profileHandlers = [
     const { profileId = '1' } = req.params
 
     if (isMockLoading()) {
-      return res(
-        ctx.status(200),
-        ctx.json({}),
-        ctx.delay('infinite')
-      )
+      return res(ctx.status(200), ctx.json({}), ctx.delay('infinite'))
     }
 
     return res(

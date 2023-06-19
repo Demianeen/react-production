@@ -14,11 +14,7 @@ interface CommentListProps {
 }
 
 export const CommentList = memo(
-  ({
-    className,
-    comments,
-    isLoading,
-  }: CommentListProps) => {
+  ({ className, comments, isLoading }: CommentListProps) => {
     const { t } = useTranslation()
 
     if (isLoading) {
@@ -29,15 +25,9 @@ export const CommentList = memo(
           maxWidth
           className={className}
         >
-          <CommentCardIsLoading
-            className={styles.comment}
-          />
-          <CommentCardIsLoading
-            className={styles.comment}
-          />
-          <CommentCardIsLoading
-            className={styles.comment}
-          />
+          <CommentCardIsLoading className={styles.comment} />
+          <CommentCardIsLoading className={styles.comment} />
+          <CommentCardIsLoading className={styles.comment} />
         </VStack>
       )
     }

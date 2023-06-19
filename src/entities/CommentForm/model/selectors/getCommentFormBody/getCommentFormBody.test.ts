@@ -8,16 +8,14 @@ describe('getCommentFormBody', () => {
         body: 'some comment',
       },
     }
-    expect(
-      getCommentFormBody(state as StateSchema)
-    ).toEqual('some comment')
+    expect(getCommentFormBody(state as StateSchema)).toEqual(
+      'some comment'
+    )
   })
 
   it('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {}
 
-    expect(
-      getCommentFormBody(state as StateSchema)
-    ).toEqual('')
+    expect(getCommentFormBody(state as StateSchema)).toEqual('')
   })
 })

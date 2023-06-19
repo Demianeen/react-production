@@ -11,11 +11,7 @@ interface ListFiltersOrderProps {
 }
 
 export const ListFiltersOrder = memo(
-  ({
-    className,
-    order,
-    onChangeOrder,
-  }: ListFiltersOrderProps) => {
+  ({ className, order, onChangeOrder }: ListFiltersOrderProps) => {
     const { t } = useTranslation('articles')
 
     const orderOptions: SelectOption<SortOrder>[] = useMemo(

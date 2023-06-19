@@ -16,11 +16,10 @@ export const ArticleListItemSkeleton = memo(
     if (view === View.LIST) {
       return (
         <Card
-          className={classNames(
-            styles.articleListItem,
-            {},
-            [className, styles[view]]
-          )}
+          className={classNames(styles.articleListItem, {}, [
+            className,
+            styles[view],
+          ])}
           aria-busy
         >
           <VStack gap={0.5}>
@@ -52,10 +51,7 @@ export const ArticleListItemSkeleton = memo(
               className={styles.types}
             />
             <Skeleton className={styles.img} />
-            <Skeleton
-              className={styles.skeleton}
-              height='4rem'
-            />
+            <Skeleton className={styles.skeleton} height='4rem' />
             <Skeleton className={styles.textBlock} />
             <HStack
               as='footer'

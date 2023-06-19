@@ -6,9 +6,7 @@ describe('User enters article details page', () => {
     cy.login()
     cy.createArticle().then((data) => {
       articleId = data.id
-      cy.visit(
-        routes.articleDetails({ id: String(articleId) })
-      )
+      cy.visit(routes.articleDetails({ id: String(articleId) }))
     })
   })
 
@@ -35,16 +33,15 @@ describe('User enters article details page', () => {
       'have.text',
       String(1022)
     )
-    cy.getByTestId(
-      'ArticleDetails.createdAt.Paragraph'
-    ).should('have.text', '26.02.2013')
+    cy.getByTestId('ArticleDetails.createdAt.Paragraph').should(
+      'have.text',
+      '26.02.2013'
+    )
     cy.getByTestId('ArticleDetails.TextBlock.Title').should(
       'have.text',
       'Test title'
     )
-    cy.getByTestId(
-      'ArticleDetails.TextBlock.Paragraph'
-    ).should(
+    cy.getByTestId('ArticleDetails.TextBlock.Paragraph').should(
       'have.text',
       [
         'Test paragraph 1',
@@ -66,12 +63,11 @@ describe('User enters article details page', () => {
   })
 
   it('renders article recommendations', () => {
-    cy.getByTestId(
-      'ArticleRecommendationsList'
-    ).scrollIntoView()
-    cy.getByTestId(
-      'ArticleRecommendationsList.Item.Grid'
-    ).should('have.length', 4)
+    cy.getByTestId('ArticleRecommendationsList').scrollIntoView()
+    cy.getByTestId('ArticleRecommendationsList.Item.Grid').should(
+      'have.length',
+      4
+    )
   })
 
   it('adds comment', () => {
@@ -80,21 +76,13 @@ describe('User enters article details page', () => {
     })
     cy.getByTestId('ArticleDetails.logo')
     cy.getByTestId('CommentList').scrollIntoView()
-    cy.getByTestId('CommentList.Item').should(
-      'have.length',
-      0
-    )
-    cy.getByTestId(
-      'CommentList.NoComments.Paragraph'
-    ).should('exist')
+    cy.getByTestId('CommentList.Item').should('have.length', 0)
+    cy.getByTestId('CommentList.NoComments.Paragraph').should('exist')
 
     cy.addComment()
-    cy.getByTestId('CommentList.Item').should(
-      'have.length',
-      1
+    cy.getByTestId('CommentList.Item').should('have.length', 1)
+    cy.getByTestId('CommentList.NoComments.Paragraph').should(
+      'not.exist'
     )
-    cy.getByTestId(
-      'CommentList.NoComments.Paragraph'
-    ).should('not.exist')
   })
 })

@@ -215,7 +215,7 @@ module.exports = {
         // we use props spreading in stories
         'react/jsx-props-no-spreading': 0,
         // we can use dev dependencies in development
-        'import/no-extraneous-dependencies': 0,
+        // 'import/no-extraneous-dependencies': 0,
       },
     },
     {

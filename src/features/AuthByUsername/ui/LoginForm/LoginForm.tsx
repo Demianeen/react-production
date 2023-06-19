@@ -31,96 +31,92 @@ const reducersList: ReducersList = {
   loginForm: loginReducer,
 }
 
-const LoginForm = memo(
-  ({ className, onSuccess }: LoginFormProps) => {
-    useDynamicModuleLoader(reducersList)
-    const { t } = useTranslation()
-    const dispatch = useAppDispatch()
+const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
+  useDynamicModuleLoader(reducersList)
+  const { t } = useTranslation()
+  const dispatch = useAppDispatch()
 
-    const username = useSelector(getLoginFormUsername) ?? ''
-    const password = useSelector(getLoginFormPassword) ?? ''
-    const error = useSelector(getLoginFormError)
-    const isLoading = useSelector(getLoginFormIsLoading)
+  const username = useSelector(getLoginFormUsername) ?? ''
+  const password = useSelector(getLoginFormPassword) ?? ''
+  const error = useSelector(getLoginFormError)
+  const isLoading = useSelector(getLoginFormIsLoading)
 
-    const onChangeUsername = useCallback(
-      (value: string) => {
-        dispatch(loginActions.setUsername(value))
-      },
-      [dispatch]
-    )
+  const onChangeUsername = useCallback(
+    (value: string) => {
+      dispatch(loginActions.setUsername(value))
+    },
+    [dispatch]
+  )
 
-    const onChangePassword = useCallback(
-      (value: string) => {
-        dispatch(loginActions.setPassword(value))
-      },
-      [dispatch]
-    )
+  const onChangePassword = useCallback(
+    (value: string) => {
+      dispatch(loginActions.setPassword(value))
+    },
+    [dispatch]
+  )
 
-    const onLogin = useCallback(
-      async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
+  const onLogin = useCallback(
+    async (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault()
 
-        const result = await dispatch(
-          loginByUsername({ username, password })
-        )
-        if (result.meta.requestStatus === 'fulfilled') {
-          onSuccess()
-        }
-      },
-      [dispatch, onSuccess, password, username]
-    )
+      const result = await dispatch(
+        loginByUsername({ username, password })
+      )
+      if (result.meta.requestStatus === 'fulfilled') {
+        onSuccess()
+      }
+    },
+    [dispatch, onSuccess, password, username]
+  )
 
-    return (
-      <VStack
-        as='form'
-        onSubmit={onLogin}
-        className={classNames(styles.loginForm, {}, [
-          className,
-        ])}
+  return (
+    <VStack
+      as='form'
+      onSubmit={onLogin}
+      className={classNames(styles.loginForm, {}, [className])}
+    >
+      <Text title={t('Login form')} />
+      {error && (
+        <Text
+          theme={TextTheme.ERROR}
+          text={t('Username or password is incorrect')}
+        />
+      )}
+      <Input
+        autoFocus
+        type='text'
+        placeholder={t('Your username')}
+        className={styles.input}
+        onChange={onChangeUsername}
+        value={username}
+        label={t('Enter username')}
+        autoComplete='username'
+        wrapperClassName={styles.inputWrapper}
+        maxWidth
+      />
+      <Input
+        type='password'
+        placeholder={t('Your password')}
+        className={styles.input}
+        onChange={onChangePassword}
+        value={password}
+        label={t('Enter password')}
+        autoComplete='current-password'
+        wrapperClassName={styles.inputWrapper}
+        maxWidth
+      />
+      {isLoading && <Spinner />}
+      <Button
+        theme={ButtonTheme.OUTLINE}
+        className={styles.loginBtn}
+        type='submit'
+        disabled={isLoading}
       >
-        <Text title={t('Login form')} />
-        {error && (
-          <Text
-            theme={TextTheme.ERROR}
-            text={t('Username or password is incorrect')}
-          />
-        )}
-        <Input
-          autoFocus
-          type='text'
-          placeholder={t('Your username')}
-          className={styles.input}
-          onChange={onChangeUsername}
-          value={username}
-          label={t('Enter username')}
-          autoComplete='username'
-          wrapperClassName={styles.inputWrapper}
-          maxWidth
-        />
-        <Input
-          type='password'
-          placeholder={t('Your password')}
-          className={styles.input}
-          onChange={onChangePassword}
-          value={password}
-          label={t('Enter password')}
-          autoComplete='current-password'
-          wrapperClassName={styles.inputWrapper}
-          maxWidth
-        />
-        {isLoading && <Spinner />}
-        <Button
-          theme={ButtonTheme.OUTLINE}
-          className={styles.loginBtn}
-          type='submit'
-          disabled={isLoading}
-        >
-          {t('Login')}
-        </Button>
-      </VStack>
-    )
-  }
-)
+        {t('Login')}
+      </Button>
+    </VStack>
+  )
+})
 
 LoginForm.displayName = 'LoginForm'
 

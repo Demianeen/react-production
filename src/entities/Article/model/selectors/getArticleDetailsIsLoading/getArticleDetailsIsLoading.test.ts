@@ -8,16 +8,16 @@ describe('getArticleDetailsIsLoading', () => {
         isLoading: true,
       },
     }
-    expect(
-      getArticleDetailsIsLoading(state as StateSchema)
-    ).toEqual(true)
+    expect(getArticleDetailsIsLoading(state as StateSchema)).toEqual(
+      true
+    )
   })
 
   it('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {}
 
-    expect(
-      getArticleDetailsIsLoading(state as StateSchema)
-    ).toEqual(false)
+    expect(getArticleDetailsIsLoading(state as StateSchema)).toEqual(
+      false
+    )
   })
 })

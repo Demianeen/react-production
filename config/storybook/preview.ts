@@ -1,9 +1,6 @@
 import { withRouter } from 'storybook-addon-react-router-v6'
 import type { Preview } from '@storybook/react'
-import {
-  initialize,
-  mswDecorator,
-} from 'msw-storybook-addon'
+import { initialize, mswDecorator } from 'msw-storybook-addon'
 import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 import { InitUserDecorator } from '@/shared/lib/storybook/InitUserDecorator'
 import { articleDetailsHandlers } from '../../src/entities/Article/model/mocks/articleDetailsHandlers'

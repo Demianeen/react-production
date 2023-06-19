@@ -22,14 +22,7 @@ export const typedBindActionCreators: <
   actionCreators: M,
   dispatch: Dispatch
 ) => {
-  [N in keyof M]: M[N] extends ThunkAction<
-    any,
-    any,
-    any,
-    any
-  >
-    ? (
-        ...args: Parameters<M[N]>
-      ) => ReturnType<ReturnType<M[N]>>
+  [N in keyof M]: M[N] extends ThunkAction<any, any, any, any>
+    ? (...args: Parameters<M[N]>) => ReturnType<ReturnType<M[N]>>
     : M[N]
 } = bindActionCreators

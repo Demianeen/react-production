@@ -22,9 +22,7 @@ export const CommentCard = memo(
   }: CommentCardProps) => {
     return (
       <article
-        className={classNames(styles.commentCard, {}, [
-          className,
-        ])}
+        className={classNames(styles.commentCard, {}, [className])}
         data-testid={testId}
       >
         <header>

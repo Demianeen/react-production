@@ -97,20 +97,16 @@ export const ArticleListItem = memo(
     if (view === View.LIST) {
       return (
         <Card
-          className={classNames(
-            styles.articleListItem,
-            {},
-            [className, styles[view]]
-          )}
+          className={classNames(styles.articleListItem, {}, [
+            className,
+            styles[view],
+          ])}
           data-testid={`${testId}.List`}
         >
           <VStack gap={1}>
             <HStack as='header' gap={0.5} maxWidth>
               {article.user.avatar && (
-                <Avatar
-                  size='2rem'
-                  src={article.user.avatar}
-                />
+                <Avatar size='2rem' src={article.user.avatar} />
               )}
               <Text text={article.user.username} />
               <Text
@@ -161,19 +157,15 @@ export const ArticleListItem = memo(
         data-testid={`${testId}.Grid`}
       >
         <Card
-          className={classNames(
-            styles.articleListItem,
-            {},
-            [className, styles[view]]
-          )}
+          className={classNames(styles.articleListItem, {}, [
+            className,
+            styles[view],
+          ])}
           role='link'
         >
           <div className={styles.imageWrapper}>
             {image}
-            <Text
-              text={article.createdAt}
-              className={styles.date}
-            />
+            <Text text={article.createdAt} className={styles.date} />
           </div>
           <HStack className={styles.infoWrapper} maxWidth>
             {types}

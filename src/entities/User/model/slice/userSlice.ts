@@ -17,8 +17,7 @@ export const userSlice = createSlice({
         AUTH_DATA_LOCALSTORAGE_KEY
       )
       // we need the ability to set auth data to undefined for tests
-      state.authData =
-        JSON.parse(authData ?? 'null') ?? undefined
+      state.authData = JSON.parse(authData ?? 'null') ?? undefined
       state._isInitialized = true
     },
     logout: (state) => {

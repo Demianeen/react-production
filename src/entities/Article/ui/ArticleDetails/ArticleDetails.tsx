@@ -40,48 +40,43 @@ export const ArticleDetails = memo(
     useDynamicModuleLoader(reducers)
     const { t } = useTranslation('article-details')
     const dispatch = useAppDispatch()
-    const isLoading = useSelector(
-      getArticleDetailsIsLoading
-    )
+    const isLoading = useSelector(getArticleDetailsIsLoading)
     const error = useSelector(getArticleDetailsError)
     const article = useSelector(getArticleDetailsData)
 
-    const renderBlock = useCallback(
-      (block: ArticleBlock) => {
-        switch (block.type) {
-          case ArticleBlockType.CODE:
-            return (
-              <ArticleCodeBlockComponent
-                key={block.id}
-                className={styles.block}
-                block={block}
-                data-testid='ArticleDetails.CodeBlock'
-              />
-            )
-          case ArticleBlockType.IMAGE:
-            return (
-              <ArticleImageBlockComponent
-                key={block.id}
-                className={styles.block}
-                block={block}
-                data-testid='ArticleDetails.ImageBlock'
-              />
-            )
-          case ArticleBlockType.TEXT:
-            return (
-              <ArticleTextBlockComponent
-                key={block.id}
-                className={styles.block}
-                block={block}
-                data-testid='ArticleDetails.TextBlock'
-              />
-            )
-          default:
-            return null
-        }
-      },
-      []
-    )
+    const renderBlock = useCallback((block: ArticleBlock) => {
+      switch (block.type) {
+        case ArticleBlockType.CODE:
+          return (
+            <ArticleCodeBlockComponent
+              key={block.id}
+              className={styles.block}
+              block={block}
+              data-testid='ArticleDetails.CodeBlock'
+            />
+          )
+        case ArticleBlockType.IMAGE:
+          return (
+            <ArticleImageBlockComponent
+              key={block.id}
+              className={styles.block}
+              block={block}
+              data-testid='ArticleDetails.ImageBlock'
+            />
+          )
+        case ArticleBlockType.TEXT:
+          return (
+            <ArticleTextBlockComponent
+              key={block.id}
+              className={styles.block}
+              block={block}
+              data-testid='ArticleDetails.TextBlock'
+            />
+          )
+        default:
+          return null
+      }
+    }, [])
 
     useEffect(() => {
       dispatch(fetchArticleById(id))
@@ -125,9 +120,7 @@ export const ArticleDetails = memo(
     } else if (error) {
       content = (
         <Text
-          title={t(
-            'An error occurred while loading article'
-          )}
+          title={t('An error occurred while loading article')}
           align={TextAlign.CENTER}
         />
       )
@@ -170,9 +163,7 @@ export const ArticleDetails = memo(
 
     return (
       <div
-        className={classNames(styles.articleDetails, {}, [
-          className,
-        ])}
+        className={classNames(styles.articleDetails, {}, [className])}
         data-testid='ArticleDetails'
       >
         <ArticleDetailsHeader id={id} />

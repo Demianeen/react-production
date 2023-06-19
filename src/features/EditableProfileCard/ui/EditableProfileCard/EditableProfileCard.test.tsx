@@ -31,9 +31,7 @@ describe('features/EditableProfileCard', () => {
     )
 
     expect(
-      screen.getByTestId(
-        'EditableProfileCardHeader.CancelButton'
-      )
+      screen.getByTestId('EditableProfileCardHeader.CancelButton')
     ).toBeInTheDocument()
   })
 
@@ -52,9 +50,7 @@ describe('features/EditableProfileCard', () => {
     await user.clear(
       await screen.getByTestId('ProfileCard.firstName')
     )
-    await user.clear(
-      await screen.getByTestId('ProfileCard.lastName')
-    )
+    await user.clear(await screen.getByTestId('ProfileCard.lastName'))
 
     await user.type(
       await screen.getByTestId('ProfileCard.firstName'),
@@ -65,12 +61,12 @@ describe('features/EditableProfileCard', () => {
       'test'
     )
 
-    expect(
-      screen.getByTestId('ProfileCard.firstName')
-    ).toHaveValue('test')
-    expect(
-      screen.getByTestId('ProfileCard.lastName')
-    ).toHaveValue('test')
+    expect(screen.getByTestId('ProfileCard.firstName')).toHaveValue(
+      'test'
+    )
+    expect(screen.getByTestId('ProfileCard.lastName')).toHaveValue(
+      'test'
+    )
 
     await user.click(
       await screen.getByTestId(
@@ -78,12 +74,12 @@ describe('features/EditableProfileCard', () => {
       )
     )
 
-    expect(
-      screen.getByTestId('ProfileCard.firstName')
-    ).toHaveValue(mockProfile.firstName)
-    expect(
-      screen.getByTestId('ProfileCard.lastName')
-    ).toHaveValue(mockProfile.lastName)
+    expect(screen.getByTestId('ProfileCard.firstName')).toHaveValue(
+      mockProfile.firstName
+    )
+    expect(screen.getByTestId('ProfileCard.lastName')).toHaveValue(
+      mockProfile.lastName
+    )
   })
 
   it('should submit data', async () => {
@@ -101,9 +97,7 @@ describe('features/EditableProfileCard', () => {
     await user.clear(
       await screen.getByTestId('ProfileCard.firstName')
     )
-    await user.clear(
-      await screen.getByTestId('ProfileCard.lastName')
-    )
+    await user.clear(await screen.getByTestId('ProfileCard.lastName'))
 
     await user.type(
       await screen.getByTestId('ProfileCard.firstName'),
@@ -153,9 +147,7 @@ describe('features/EditableProfileCard', () => {
     )
 
     expect(
-      screen.getByTestId(
-        'EditableProfileCard.Error.Paragraph'
-      )
+      screen.getByTestId('EditableProfileCard.Error.Paragraph')
     ).toBeInTheDocument()
   })
 })

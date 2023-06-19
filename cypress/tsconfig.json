@@ -1,21 +1,12 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "es5",
-      "dom"
-    ],
-    "types": [
-      "cypress",
-      "node"
-    ],
+    "lib": ["es5", "dom"],
+    "types": ["cypress", "node"],
     "isolatedModules": false,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true
   },
   "extends": "../tsconfig.json",
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-  ]
+  "include": ["**/*.ts", "**/*.tsx"]
 }

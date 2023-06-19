@@ -18,11 +18,9 @@ export const ArticleCodeBlockComponent = memo(
   }: ArticleCodeBlockComponentProps) => {
     return (
       <div
-        className={classNames(
-          styles.articleCodeBlockComponent,
-          {},
-          [className]
-        )}
+        className={classNames(styles.articleCodeBlockComponent, {}, [
+          className,
+        ])}
       >
         <Code text={block.code} data-testid={dataTestId} />
       </div>
@@ -30,5 +28,4 @@ export const ArticleCodeBlockComponent = memo(
   }
 )
 
-ArticleCodeBlockComponent.displayName =
-  'ArticleCodeBlockComponent'
+ArticleCodeBlockComponent.displayName = 'ArticleCodeBlockComponent'

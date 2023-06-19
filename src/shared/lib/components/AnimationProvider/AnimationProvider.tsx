@@ -1,9 +1,6 @@
 import type { ReactNode } from 'react'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import type {
-  Gesture,
-  Spring,
-} from './lib/AnimationContext'
+import type { Gesture, Spring } from './lib/AnimationContext'
 import { AnimationContext } from './lib/AnimationContext'
 import { getAsyncAnimationModules } from './lib/getAsyncAnimationModules'
 

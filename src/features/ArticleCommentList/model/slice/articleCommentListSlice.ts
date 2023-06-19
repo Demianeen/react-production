@@ -1,24 +1,18 @@
-import {
-  createEntityAdapter,
-  createSlice,
-} from '@reduxjs/toolkit'
+import { createEntityAdapter, createSlice } from '@reduxjs/toolkit'
 import type { Comment } from '@/entities/Comment'
 import type { StateSchema } from '@/app/providers/StoreProvider'
 import { fetchCommentsByArticleId } from '../services/fetchCommentsByArticleId/fetchCommentsByArticleId'
 import { getArticleCommentListState } from '../selectors/getArticleCommentListState/getArticleCommentListState'
 import type { ArticleCommentListSchema } from '../types/articleCommentListSchema'
 
-const articleCommentsAdapter =
-  createEntityAdapter<Comment>()
+const articleCommentsAdapter = createEntityAdapter<Comment>()
 
 const initialState =
-  articleCommentsAdapter.getInitialState<ArticleCommentListSchema>(
-    {
-      isLoading: true,
-      ids: [],
-      entities: {},
-    }
-  )
+  articleCommentsAdapter.getInitialState<ArticleCommentListSchema>({
+    isLoading: true,
+    ids: [],
+    entities: {},
+  })
 
 const articleCommentListSlice = createSlice({
   name: 'articleCommentList',
@@ -28,30 +22,21 @@ const articleCommentListSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(
-        fetchCommentsByArticleId.pending,
-        (state) => {
-          state.error = undefined
-          state.isLoading = true
-        }
-      )
+      .addCase(fetchCommentsByArticleId.pending, (state) => {
+        state.error = undefined
+        state.isLoading = true
+      })
       .addCase(
         fetchCommentsByArticleId.fulfilled,
         (state, action) => {
           state.isLoading = false
-          articleCommentsAdapter.setAll(
-            state,
-            action.payload
-          )
+          articleCommentsAdapter.setAll(state, action.payload)
         }
       )
-      .addCase(
-        fetchCommentsByArticleId.rejected,
-        (state, action) => {
-          state.isLoading = false
-          state.error = action.payload
-        }
-      )
+      .addCase(fetchCommentsByArticleId.rejected, (state, action) => {
+        state.isLoading = false
+        state.error = action.payload
+      })
   },
 })
 
@@ -62,6 +47,5 @@ export const { actions: articleCommentListActions } =
 
 export const getArticleCommentList =
   articleCommentsAdapter.getSelectors<StateSchema>(
-    (state) =>
-      getArticleCommentListState(state) ?? initialState
+    (state) => getArticleCommentListState(state) ?? initialState
   )

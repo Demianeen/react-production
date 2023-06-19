@@ -48,9 +48,7 @@ describe('validateProfileForm', () => {
       lastName: undefined,
     })
 
-    expect(result).toEqual([
-      ProfileValidationError.MISSING_LAST_NAME,
-    ])
+    expect(result).toEqual([ProfileValidationError.MISSING_LAST_NAME])
   })
 
   test('age is validated', () => {
@@ -64,9 +62,7 @@ describe('validateProfileForm', () => {
       city: undefined,
     })
 
-    expect(result).toEqual([
-      ProfileValidationError.MISSING_CITY,
-    ])
+    expect(result).toEqual([ProfileValidationError.MISSING_CITY])
   })
 
   test('missing username', () => {
@@ -75,9 +71,7 @@ describe('validateProfileForm', () => {
       username: undefined,
     })
 
-    expect(result).toEqual([
-      ProfileValidationError.MISSING_USERNAME,
-    ])
+    expect(result).toEqual([ProfileValidationError.MISSING_USERNAME])
   })
 
   test('no data', () => {

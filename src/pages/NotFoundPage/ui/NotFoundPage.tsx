@@ -13,12 +13,7 @@ const NotFoundPage = ({ className }: NotFoundPageProps) => {
 
   return (
     <Page className={className} data-testid='NotFoundPage'>
-      <HStack
-        justify='center'
-        align='center'
-        maxHeight
-        maxWidth
-      >
+      <HStack justify='center' align='center' maxHeight maxWidth>
         <Text
           theme={TextTheme.ERROR}
           size={TextSize.L}

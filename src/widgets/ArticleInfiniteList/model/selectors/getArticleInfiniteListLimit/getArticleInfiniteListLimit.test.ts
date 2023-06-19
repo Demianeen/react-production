@@ -8,16 +8,16 @@ describe('getArticleInfiniteListLimit', () => {
         limit: 4,
       },
     }
-    expect(
-      getArticleInfiniteListLimit(state as StateSchema)
-    ).toEqual(4)
+    expect(getArticleInfiniteListLimit(state as StateSchema)).toEqual(
+      4
+    )
   })
 
   it('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {}
 
-    expect(
-      getArticleInfiniteListLimit(state as StateSchema)
-    ).toEqual(12)
+    expect(getArticleInfiniteListLimit(state as StateSchema)).toEqual(
+      12
+    )
   })
 })

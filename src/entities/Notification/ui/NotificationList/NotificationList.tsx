@@ -19,10 +19,12 @@ export const NotificationList = memo(
   ({ className }: NotificationListProps) => {
     const { t } = useTranslation()
     const userId = useSelector(getUserId)
-    const { data, isLoading, isError } =
-      useGetNotificationsQuery(userId ?? skipToken, {
+    const { data, isLoading, isError } = useGetNotificationsQuery(
+      userId ?? skipToken,
+      {
         pollingInterval: 10000,
-      })
+      }
+    )
 
     if (isLoading) {
       return (
@@ -45,9 +47,9 @@ export const NotificationList = memo(
       return (
         <VStack className={className} gap={1.25} maxWidth>
           <Text
-            text={`${t(
-              'Cannot load notification right now'
-            )}. ${t('Try again later')}`}
+            text={`${t('Cannot load notification right now')}. ${t(
+              'Try again later'
+            )}`}
           />
         </VStack>
       )

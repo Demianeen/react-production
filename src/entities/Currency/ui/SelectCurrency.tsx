@@ -25,12 +25,10 @@ export const SelectCurrency = memo(
     const { t } = useTranslation()
 
     const currencyOptions = useMemo(() => {
-      return Object.entries(Currency).map(
-        ([enumKey, enumValue]) => ({
-          value: enumKey,
-          label: enumValue,
-        })
-      )
+      return Object.entries(Currency).map(([enumKey, enumValue]) => ({
+        value: enumKey,
+        label: enumValue,
+      }))
     }, [])
 
     const handleChange = useCallback(

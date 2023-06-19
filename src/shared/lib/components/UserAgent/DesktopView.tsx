@@ -5,10 +5,6 @@ interface DesktopViewProps {
   children?: ReactNode
 }
 
-export const DesktopView = ({
-  children,
-}: DesktopViewProps) => {
-  return (
-    <UserAgent mobileView={false}>{children}</UserAgent>
-  )
+export const DesktopView = ({ children }: DesktopViewProps) => {
+  return <UserAgent mobileView={false}>{children}</UserAgent>
 }

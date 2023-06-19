@@ -42,9 +42,7 @@ export const EditableProfileCard = memo(
     const isLoading = useSelector(getProfileIsLoading)
     const error = useSelector(getProfileError)
     const isReadonly = useSelector(getProfileIsReadonly)
-    const validationErrors = useSelector(
-      getProfileValidationErrors
-    )
+    const validationErrors = useSelector(getProfileValidationErrors)
 
     const validationErrorMessage: Record<
       ProfileValidationError,
@@ -56,21 +54,15 @@ export const EditableProfileCard = memo(
       [ProfileValidationError.MISSING_LAST_NAME]: t(
         'Last name is required'
       ),
-      [ProfileValidationError.MISSING_AGE]: t(
-        'Age is required'
-      ),
+      [ProfileValidationError.MISSING_AGE]: t('Age is required'),
       [ProfileValidationError.INCORRECT_AGE]: t(
         'You need to be at least 18 years old'
       ),
-      [ProfileValidationError.MISSING_CITY]: t(
-        'City is required'
-      ),
+      [ProfileValidationError.MISSING_CITY]: t('City is required'),
       [ProfileValidationError.MISSING_USERNAME]: t(
         'Username is required'
       ),
-      [ProfileValidationError.NO_DATA]: t(
-        'Profile data is missing'
-      ),
+      [ProfileValidationError.NO_DATA]: t('Profile data is missing'),
       [ProfileValidationError.UNKNOWN_SERVER_ERROR]: t(
         'Unknown server error happened'
       ),

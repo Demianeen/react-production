@@ -1,8 +1,4 @@
-export type Layer =
-  | 'pages'
-  | 'widgets'
-  | 'features'
-  | 'entities'
+export type Layer = 'pages' | 'widgets' | 'features' | 'entities'
 
 export interface CreateSliceOptions {
   model?: string

@@ -6,10 +6,7 @@ const directoryPath = 'src'
 const transformStoryFile = (sourceFilePath: string) => {
   fs.readFile(sourceFilePath, 'utf8', (dirErr, data) => {
     if (dirErr) {
-      console.error(
-        'Error reading the source file:',
-        dirErr
-      )
+      console.error('Error reading the source file:', dirErr)
       return
     }
 
@@ -27,9 +24,7 @@ const transformStoryFile = (sourceFilePath: string) => {
       /export const (\w+) = Template\.bind\({}\)\s*\n\w+\.args = {([\s\S]*?)}(?:\s*\n\w+\.decorators = \[([\s\S]*?)])?(?!,)/g,
       (_match, p1, p2, p3) => {
         const argsCode = p2 ? `args: { ${p2} },` : ''
-        const decoratorsCode = p3
-          ? `decorators: [${p3}],`
-          : ''
+        const decoratorsCode = p3 ? `decorators: [${p3}],` : ''
         return `export const ${p1}: Story = { ${argsCode} ${decoratorsCode} }`
       }
     )
@@ -68,10 +63,7 @@ function processFiles(directory: string) {
 
       fs.stat(filePath, (fileErr, stats) => {
         if (fileErr) {
-          console.error(
-            'Error reading file stats:',
-            fileErr
-          )
+          console.error('Error reading file stats:', fileErr)
           return
         }
 

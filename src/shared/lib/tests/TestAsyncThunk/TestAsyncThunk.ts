@@ -1,7 +1,4 @@
-import type {
-  AsyncThunkAction,
-  Dispatch,
-} from '@reduxjs/toolkit'
+import type { AsyncThunkAction, Dispatch } from '@reduxjs/toolkit'
 import type { AxiosStatic } from 'axios'
 import axios from 'axios'
 import type { NavigateFunction } from 'react-router/dist/lib/hooks'
@@ -9,11 +6,7 @@ import type { StateSchema } from '@/app/providers/StoreProvider'
 
 type ActionCreator<Return, Arg, RejectValue> = (
   arg: Arg
-) => AsyncThunkAction<
-  Return,
-  Arg,
-  { rejectValue: RejectValue }
->
+) => AsyncThunkAction<Return, Arg, { rejectValue: RejectValue }>
 
 jest.mock('axios')
 
@@ -46,14 +39,10 @@ export class TestAsyncThunk<Return, Arg, RejectValue> {
     const action = this.actionCreator(arg)
 
     // normally this is passed by redux-thunk middleware
-    const result = await action(
-      this.dispatch,
-      this.getState,
-      {
-        api: this.api,
-        navigate: this.navigate,
-      }
-    )
+    const result = await action(this.dispatch, this.getState, {
+      api: this.api,
+      navigate: this.navigate,
+    })
 
     return result
   }

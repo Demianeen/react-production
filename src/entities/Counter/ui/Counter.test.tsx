@@ -11,16 +11,12 @@ describe('Counter', () => {
         },
       },
     })
-    expect(
-      screen.getByTestId('value-title')
-    ).toHaveTextContent('10')
+    expect(screen.getByTestId('value-title')).toHaveTextContent('10')
   })
 
   it('should render with default value', () => {
     componentRender(<Counter />)
-    expect(
-      screen.getByTestId('value-title')
-    ).toHaveTextContent('0')
+    expect(screen.getByTestId('value-title')).toHaveTextContent('0')
   })
 
   it('should increment value', async () => {
@@ -33,9 +29,7 @@ describe('Counter', () => {
     })
 
     await user.click(screen.getByTestId('increment-btn'))
-    expect(
-      screen.getByTestId('value-title')
-    ).toHaveTextContent('11')
+    expect(screen.getByTestId('value-title')).toHaveTextContent('11')
   })
 
   it('should decrement value', async () => {
@@ -48,8 +42,6 @@ describe('Counter', () => {
     })
 
     await user.click(screen.getByTestId('decrement-btn'))
-    expect(
-      screen.getByTestId('value-title')
-    ).toHaveTextContent('9')
+    expect(screen.getByTestId('value-title')).toHaveTextContent('9')
   })
 })

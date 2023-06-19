@@ -56,10 +56,7 @@ export const RatingCard = memo(
       (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         setIsModalOpen(false)
-        onSubmit?.(
-          starCount,
-          feedback === '' ? undefined : feedback
-        )
+        onSubmit?.(starCount, feedback === '' ? undefined : feedback)
       },
       [feedback, onSubmit, starCount]
     )
@@ -92,9 +89,7 @@ export const RatingCard = memo(
         <VStack align='center' gap={1} maxWidth>
           <Text
             title={
-              starCount !== 0
-                ? t('Thank you for assessment!')
-                : title
+              starCount !== 0 ? t('Thank you for assessment!') : title
             }
           />
           <StarRating
@@ -103,11 +98,7 @@ export const RatingCard = memo(
           />
         </VStack>
         <DesktopView>
-          <Modal
-            isOpen={isModalOpen}
-            onClose={handleCancel}
-            lazy
-          >
+          <Modal isOpen={isModalOpen} onClose={handleCancel} lazy>
             <VStack
               maxWidth
               gap={2}
@@ -135,10 +126,7 @@ export const RatingCard = memo(
           </Modal>
         </DesktopView>
         <MobileView>
-          <Drawer
-            isOpen={isModalOpen}
-            onClose={handleCancel}
-          >
+          <Drawer isOpen={isModalOpen} onClose={handleCancel}>
             <VStack
               maxWidth
               gap={1.25}

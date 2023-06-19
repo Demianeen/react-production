@@ -12,16 +12,16 @@ describe('getArticleDetailsAuthor', () => {
         },
       },
     }
-    expect(
-      getArticleDetailsAuthor(state as StateSchema)
-    ).toEqual({ id: 1 })
+    expect(getArticleDetailsAuthor(state as StateSchema)).toEqual({
+      id: 1,
+    })
   })
 
   it('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {}
 
-    expect(
-      getArticleDetailsAuthor(state as StateSchema)
-    ).toEqual(undefined)
+    expect(getArticleDetailsAuthor(state as StateSchema)).toEqual(
+      undefined
+    )
   })
 })

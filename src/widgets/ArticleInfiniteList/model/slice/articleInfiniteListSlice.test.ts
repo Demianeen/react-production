@@ -49,10 +49,7 @@ describe('articleInfiniteListSlice', () => {
 
   test('initState with localstorage view value', () => {
     const state: DeepPartial<ArticleInfiniteListSchema> = {}
-    localStorage.setItem(
-      ARTICLE_VIEW_LOCALSTORAGE_KEY,
-      View.LIST
-    )
+    localStorage.setItem(ARTICLE_VIEW_LOCALSTORAGE_KEY, View.LIST)
     expect(
       articleInfiniteListReducer(
         state as ArticleInfiniteListSchema,

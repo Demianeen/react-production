@@ -12,8 +12,7 @@ export interface ArticleCodeBlock extends ArticleBlockBase {
   code: string
 }
 
-export interface ArticleImageBlock
-  extends ArticleBlockBase {
+export interface ArticleImageBlock extends ArticleBlockBase {
   type: ArticleBlockType.IMAGE
   src: string
   title?: string

@@ -9,16 +9,16 @@ describe('getArticleInfiniteListType', () => {
         type: ArticleType.IT,
       },
     }
-    expect(
-      getArticleInfiniteListType(state as StateSchema)
-    ).toEqual(ArticleType.IT)
+    expect(getArticleInfiniteListType(state as StateSchema)).toEqual(
+      ArticleType.IT
+    )
   })
 
   it('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {}
 
-    expect(
-      getArticleInfiniteListType(state as StateSchema)
-    ).toEqual(ArticleType.ALL)
+    expect(getArticleInfiniteListType(state as StateSchema)).toEqual(
+      ArticleType.ALL
+    )
   })
 })

@@ -1,4 +1,3 @@
 import type { StateSchema } from '@/app/providers/StoreProvider'
 
-export const getProfileState = (state: StateSchema) =>
-  state.profile
+export const getProfileState = (state: StateSchema) => state.profile

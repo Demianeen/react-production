@@ -31,11 +31,7 @@ export const EditableProfileCardHeader = memo(
     )
 
     return (
-      <HStack
-        justify='between'
-        className={className}
-        maxWidth
-      >
+      <HStack justify='between' className={className} maxWidth>
         <Text title={t('Profile')} />
         {canEdit && (
           <>
@@ -75,5 +71,4 @@ export const EditableProfileCardHeader = memo(
   }
 )
 
-EditableProfileCardHeader.displayName =
-  'EditableProfileCardHeader'
+EditableProfileCardHeader.displayName = 'EditableProfileCardHeader'

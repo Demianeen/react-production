@@ -10,15 +10,10 @@ interface ProfileEditOptions {
 }
 
 export const updateProfile = (
-  {
-    newFirstName: firstName,
-    newLastName: lastName,
-  }: ProfileEdit,
+  { newFirstName: firstName, newLastName: lastName }: ProfileEdit,
   { submit = true }: ProfileEditOptions = {}
 ) => {
-  cy.getByTestId(
-    'EditableProfileCardHeader.EditButton'
-  ).click()
+  cy.getByTestId('EditableProfileCardHeader.EditButton').click()
 
   cy.getByTestId('ProfileCard.firstName').clear()
   cy.getByTestId('ProfileCard.firstName').type(firstName)
@@ -27,9 +22,7 @@ export const updateProfile = (
   cy.getByTestId('ProfileCard.lastName').type(lastName)
 
   if (submit) {
-    cy.getByTestId(
-      'EditableProfileCardHeader.SubmitButton'
-    ).click()
+    cy.getByTestId('EditableProfileCardHeader.SubmitButton').click()
   }
 }
 

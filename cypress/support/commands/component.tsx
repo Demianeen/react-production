@@ -13,12 +13,8 @@ export const mountComponent = (
   }
 ) => {
   return cy.mount(
-    <TestStyleProvider
-      theme={options?.theme ?? Theme.LIGHT}
-    >
-      <TestProvider options={options}>
-        {Component}
-      </TestProvider>
+    <TestStyleProvider theme={options?.theme ?? Theme.LIGHT}>
+      <TestProvider options={options}>{Component}</TestProvider>
     </TestStyleProvider>
   )
 }

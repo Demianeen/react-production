@@ -8,21 +8,17 @@ interface PageLoaderProps {
   className?: string
 }
 
-export const PageLoader = memo(
-  ({ className }: PageLoaderProps) => {
-    return (
-      <HStack
-        className={classNames(styles.pageLoader, {}, [
-          className,
-        ])}
-        justify='center'
-        align='center'
-        maxWidth
-      >
-        <Spinner />
-      </HStack>
-    )
-  }
-)
+export const PageLoader = memo(({ className }: PageLoaderProps) => {
+  return (
+    <HStack
+      className={classNames(styles.pageLoader, {}, [className])}
+      justify='center'
+      align='center'
+      maxWidth
+    >
+      <Spinner />
+    </HStack>
+  )
+})
 
 PageLoader.displayName = 'PageLoader'

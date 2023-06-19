@@ -13,15 +13,10 @@ export default (env?: BuildEnv) => {
     html: path.resolve(__dirname, 'public', 'index.html'),
     src: path.resolve(__dirname, 'src'),
     locales: path.resolve(__dirname, 'public', 'locales'),
-    buildLocales: path.resolve(
-      __dirname,
-      'build',
-      'locales'
-    ),
+    buildLocales: path.resolve(__dirname, 'build', 'locales'),
   }
 
-  const mode: BuildOptions['mode'] =
-    env?.mode ?? 'development'
+  const mode: BuildOptions['mode'] = env?.mode ?? 'development'
   const PORT = env?.port ?? 3000
   const apiURL = env?.apiUrl ?? 'http://localhost:8000'
   const isAnalyze = env?.analyze ?? false

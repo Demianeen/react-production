@@ -64,10 +64,7 @@ interface TextProps extends TestProps {
 }
 
 type HeaderTag = 'h1' | 'h2' | 'h3'
-const mapSizeToDefaultHeaderTag: Record<
-  TextSize,
-  HeaderTag
-> = {
+const mapSizeToDefaultHeaderTag: Record<TextSize, HeaderTag> = {
   [TextSize.S]: 'h3',
   [TextSize.M]: 'h2',
   [TextSize.L]: 'h1',
@@ -87,8 +84,7 @@ export const Text = memo(
     size = TextSize.M,
     'data-testid': dataTestId = 'Text',
   }: TextProps) => {
-    const HeaderTag =
-      TitleTag ?? mapSizeToDefaultHeaderTag[size]
+    const HeaderTag = TitleTag ?? mapSizeToDefaultHeaderTag[size]
 
     return (
       <div

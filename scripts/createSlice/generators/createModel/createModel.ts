@@ -44,9 +44,7 @@ export const createModel = (
       )
     } catch (e) {
       if (e instanceof Error) {
-        throw new Error(
-          `Failed to create redux slice: ${e.message}`
-        )
+        throw new Error(`Failed to create redux slice: ${e.message}`)
       }
       throw new Error('Unexpected error')
     }

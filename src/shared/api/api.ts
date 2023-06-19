@@ -8,9 +8,7 @@ export const $api = axios.create({
 // set authorization header on each request
 $api.interceptors.request.use((config) => {
   if (config.headers) {
-    const token = localStorage.getItem(
-      AUTH_DATA_LOCALSTORAGE_KEY
-    )
+    const token = localStorage.getItem(AUTH_DATA_LOCALSTORAGE_KEY)
     if (token === null) return config
     // eslint-disable-next-line no-param-reassign
     config.headers.Authorization = token

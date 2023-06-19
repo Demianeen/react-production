@@ -16,10 +16,7 @@ const state = {
 
 describe('sendArticleComment', () => {
   test('fulfilled', async () => {
-    const thunk = new TestAsyncThunk(
-      sendArticleComment,
-      state
-    )
+    const thunk = new TestAsyncThunk(sendArticleComment, state)
     const newComment = {
       body: 'new comment body',
       id: 4,
@@ -37,10 +34,7 @@ describe('sendArticleComment', () => {
   })
 
   test('rejected', async () => {
-    const thunk = new TestAsyncThunk(
-      sendArticleComment,
-      state
-    )
+    const thunk = new TestAsyncThunk(sendArticleComment, state)
     thunk.api.post.mockReturnValue(
       Promise.resolve({
         status: 403,
@@ -54,10 +48,7 @@ describe('sendArticleComment', () => {
   })
 
   test('no data', async () => {
-    const thunk = new TestAsyncThunk(
-      sendArticleComment,
-      state
-    )
+    const thunk = new TestAsyncThunk(sendArticleComment, state)
     thunk.api.post.mockReturnValue(
       Promise.resolve({
         data: undefined,

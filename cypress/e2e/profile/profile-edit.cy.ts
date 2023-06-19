@@ -23,10 +23,7 @@ describe('User enters profile page', () => {
       'have.value',
       'Testov'
     )
-    cy.getByTestId('ProfileCard.age').should(
-      'have.value',
-      '465'
-    )
+    cy.getByTestId('ProfileCard.age').should('have.value', '465')
     cy.getByTestId('ProfileCard.username').should(
       'have.value',
       'testUser'

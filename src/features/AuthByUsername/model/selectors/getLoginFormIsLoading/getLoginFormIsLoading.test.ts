@@ -11,15 +11,11 @@ describe('getLoginFormIsLoading', () => {
       },
     }
 
-    expect(
-      getLoginFormIsLoading(state as StateSchema)
-    ).toEqual(true)
+    expect(getLoginFormIsLoading(state as StateSchema)).toEqual(true)
   })
 
   it('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {}
-    expect(
-      getLoginFormIsLoading(state as StateSchema)
-    ).toEqual(false)
+    expect(getLoginFormIsLoading(state as StateSchema)).toEqual(false)
   })
 })

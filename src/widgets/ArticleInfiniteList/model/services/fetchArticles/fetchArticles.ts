@@ -29,9 +29,7 @@ export const fetchArticles = createAsyncThunk<
     const page = getArticleInfiniteListPage(getState())
     const limit = getArticleInfiniteListLimit(getState())
     const order = getArticleInfiniteListOrder(getState())
-    const sortField = getArticleInfiniteListSortField(
-      getState()
-    )
+    const sortField = getArticleInfiniteListSortField(getState())
     const search = getArticleInfiniteListSearch(getState())
     const type = getArticleInfiniteListType(getState())
 
@@ -42,22 +40,18 @@ export const fetchArticles = createAsyncThunk<
         search,
         type,
       })
-      const response = await extra.api.get<Article[]>(
-        '/articles',
-        {
-          params: {
-            _expand: 'user',
-            _page: page,
-            _limit: limit,
-            _order: order,
-            _sort: sortField,
-            q: search,
-            // eslint-disable-next-line @typescript-eslint/naming-convention
-            types_like:
-              type === ArticleType.ALL ? undefined : type,
-          },
-        }
-      )
+      const response = await extra.api.get<Article[]>('/articles', {
+        params: {
+          _expand: 'user',
+          _page: page,
+          _limit: limit,
+          _order: order,
+          _sort: sortField,
+          q: search,
+          // eslint-disable-next-line @typescript-eslint/naming-convention
+          types_like: type === ArticleType.ALL ? undefined : type,
+        },
+      })
 
       if (!response.data) {
         return rejectWithValue('error')

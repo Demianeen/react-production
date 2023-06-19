@@ -59,16 +59,13 @@ export const ArticleList = memo(
 
     return (
       <div
-        className={classNames(
-          styles.articleListContainer,
-          {},
-          [className, styles[view]]
-        )}
+        className={classNames(styles.articleListContainer, {}, [
+          className,
+          styles[view],
+        ])}
         data-testid={testId}
       >
-        {articles.length > 0
-          ? articles.map(renderArticle)
-          : null}
+        {articles.length > 0 ? articles.map(renderArticle) : null}
         {isLoading && getArticleListSkeletons(view, limit)}
       </div>
     )

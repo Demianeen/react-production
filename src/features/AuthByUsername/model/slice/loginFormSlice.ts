@@ -29,15 +29,12 @@ export const loginFormSlice = createSlice({
       .addCase(loginByUsername.fulfilled, (state) => {
         state.isLoading = false
       })
-      .addCase(
-        loginByUsername.rejected,
-        (state, action) => {
-          state.isLoading = false
-          if (typeof action.payload === 'string') {
-            state.error = action.payload
-          }
+      .addCase(loginByUsername.rejected, (state, action) => {
+        state.isLoading = false
+        if (typeof action.payload === 'string') {
+          state.error = action.payload
         }
-      )
+      })
   },
 })
 

@@ -18,9 +18,7 @@ describe('validateAge', () => {
       age: undefined,
     })
 
-    expect(result).toEqual([
-      ProfileValidationError.MISSING_AGE,
-    ])
+    expect(result).toEqual([ProfileValidationError.MISSING_AGE])
   })
 
   test('incorrect age', () => {
@@ -29,8 +27,6 @@ describe('validateAge', () => {
       age: 1,
     })
 
-    expect(result).toEqual([
-      ProfileValidationError.INCORRECT_AGE,
-    ])
+    expect(result).toEqual([ProfileValidationError.INCORRECT_AGE])
   })
 })

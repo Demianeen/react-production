@@ -7,8 +7,9 @@ import { routes } from '@/shared/lib/router/routes'
 import { buildSelector } from '@/shared/ui/store'
 import type { SidebarItemArgs } from '../../types/sidebar'
 
-export const [useSidebarItems, getSidebarItems] =
-  buildSelector(getUserAuthData, (authData) => {
+export const [useSidebarItems, getSidebarItems] = buildSelector(
+  getUserAuthData,
+  (authData) => {
     const items: SidebarItemArgs[] = [
       {
         path: routes.home(),
@@ -36,4 +37,5 @@ export const [useSidebarItems, getSidebarItems] =
       },
     ]
     return items
-  })
+  }
+)

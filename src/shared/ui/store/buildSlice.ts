@@ -19,9 +19,7 @@ export const buildSlice = <
 >(
   options: CreateSliceOptions<State, CaseReducers, Name>
 ) => {
-  const slice = createSlice<State, CaseReducers, Name>(
-    options
-  )
+  const slice = createSlice<State, CaseReducers, Name>(options)
 
   const useActions = () => {
     const dispatch = useAppDispatch()

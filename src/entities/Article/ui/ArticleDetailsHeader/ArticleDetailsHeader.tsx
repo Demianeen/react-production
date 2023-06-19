@@ -20,11 +20,7 @@ export const ArticleDetailsHeader = memo(
     const error = useSelector(getArticleDetailsError)
 
     return (
-      <HStack
-        justify='between'
-        className={className}
-        as='header'
-      >
+      <HStack justify='between' className={className} as='header'>
         <Button as={AppLink} to={routes.articles()}>
           {t('Back to list')}
         </Button>

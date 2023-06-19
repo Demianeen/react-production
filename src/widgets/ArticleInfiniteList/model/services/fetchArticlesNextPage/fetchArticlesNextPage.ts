@@ -14,12 +14,8 @@ export const fetchArticlesNextPage = createAsyncThunk<
   'articleInfiniteList/fetchArticlesNextPage',
   (_, { getState, dispatch }) => {
     const page = getArticleInfiniteListPage(getState())
-    const hasMore = getArticleInfiniteListHasMore(
-      getState()
-    )
-    const isLoading = getArticleInfiniteListIsLoading(
-      getState()
-    )
+    const hasMore = getArticleInfiniteListHasMore(getState())
+    const isLoading = getArticleInfiniteListIsLoading(getState())
 
     if (hasMore && !isLoading) {
       dispatch(articleInfiniteListActions.setPage(page + 1))

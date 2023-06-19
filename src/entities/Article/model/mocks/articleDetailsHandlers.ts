@@ -6,11 +6,7 @@ import { mockArticle } from './mockArticle'
 export const articleDetailsHandlers = [
   rest.get('/articles/:articleId', (req, res, ctx) => {
     if (isMockLoading()) {
-      return res(
-        ctx.status(200),
-        ctx.json({}),
-        ctx.delay('infinite')
-      )
+      return res(ctx.status(200), ctx.json({}), ctx.delay('infinite'))
     }
 
     if (isMockError()) {

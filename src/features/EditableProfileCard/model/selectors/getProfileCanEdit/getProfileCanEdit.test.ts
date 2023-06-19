@@ -16,9 +16,7 @@ describe('getProfileCanEdit', () => {
       },
     }
 
-    expect(getProfileCanEdit(state as StateSchema)).toEqual(
-      true
-    )
+    expect(getProfileCanEdit(state as StateSchema)).toEqual(true)
   })
 
   it('should return the canEdit false', () => {
@@ -35,16 +33,12 @@ describe('getProfileCanEdit', () => {
       },
     }
 
-    expect(getProfileCanEdit(state as StateSchema)).toEqual(
-      false
-    )
+    expect(getProfileCanEdit(state as StateSchema)).toEqual(false)
   })
 
   it('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {}
 
-    expect(getProfileCanEdit(state as StateSchema)).toEqual(
-      false
-    )
+    expect(getProfileCanEdit(state as StateSchema)).toEqual(false)
   })
 })
