@@ -2,6 +2,7 @@ const fs = require('fs')
 const jsonServer = require('json-server')
 const path = require('path')
 const https = require('https')
+const http = require('http')
 
 const server = jsonServer.create()
 
@@ -66,11 +67,6 @@ server.use((req, res, next) => {
 
 server.use(router)
 
-// start server
-server.listen(HTTP_PORT, () => {
-  console.log(`http server is running on ${HTTP_PORT} port`)
-})
-
 const privateKey = fs.readFileSync('/etc/letsencrypt/live/mybrandview.co.uk/privkey.pem', 'utf8');
 const certificate = fs.readFileSync('/etc/letsencrypt/live/mybrandview.co.uk/cert.pem', 'utf8');
 const ca = fs.readFileSync('/etc/letsencrypt/live/mybrandview.co.uk/chain.pem', 'utf8');
@@ -81,5 +77,8 @@ const credentials = {
 	ca: ca
 };
 
+const httpServer = http.createServer(server)
 const httpsServer = https.createServer(credentials, server)
+
+httpServer.listen(HTTP_PORT, () => console.log(`https server listening on ${HTTP_PORT} port`))
 httpsServer.listen(HTTPS_PORT, () => console.log(`https server listening on ${HTTPS_PORT} port`))
