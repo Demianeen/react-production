@@ -9,6 +9,7 @@
     "start:dev:client": "webpack serve --env port=3000",
     "start:dev:vite:client": "vite",
     "start:dev:server": "node ./json-server/index.js",
+    "deploy": ".deploy/deploy.sh",
     "build:prod": "webpack --env mode=production",
     "build:prod:analyze": "webpack --env mode=production analyze=true",
     "build:dev": "webpack --env mode=development",
