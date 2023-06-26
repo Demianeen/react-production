@@ -2,11 +2,12 @@ name: deploy
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
 jobs:
   prod:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
       - name: Deploy to production
         uses: appleboy/ssh-action@v0.1.10
         with:
