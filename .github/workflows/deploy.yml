@@ -17,6 +17,7 @@ jobs:
           debug: true
           script: |
             cd ~/projects/react-production
+            export PATH="/home/demian/.nvm/versions/node/v20.3.0/bin:$PATH"
             echo $PATH
             git pull
             npm i
