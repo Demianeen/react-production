@@ -23,4 +23,4 @@ jobs:
             .deploy/deploy.sh
             pm2 restart json-server/index.js
       - id: Output
-        run: echo "${{ vars.WEBSITE_URL }}" >> "$GITHUB_OUTPUT"
+        run: echo "${{ vars.WEBSITE_URL }}" >> $GITHUB_STEP_SUMMARY
