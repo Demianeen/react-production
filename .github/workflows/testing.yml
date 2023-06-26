@@ -23,9 +23,6 @@ concurrency:
 jobs:
   tests:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [20.x]
     steps:
       # prepare reports
       - name: Checkout
@@ -45,10 +42,10 @@ jobs:
         with:
           path: ~/.npm
           key: node-modules-${{ hashFiles('**/package-lock.json') }}
-      - name: Starting Node.js ${{ matrix.node-version }}
+      - name: Starting Node.js ${{ vars.NODE_VERSION }}
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ vars.NODE_VERSION }}
       - name: Install modules
         run: npm ci
       # run unit tests

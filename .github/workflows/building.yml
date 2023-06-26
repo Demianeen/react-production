@@ -6,22 +6,19 @@ on:
     branches: [main]
 jobs:
   prod:
-     runs-on: ubuntu-latest
-     strategy:
-       matrix:
-         node-version: [20.x]
-     steps:
-       - name: Cache deps
-         uses: actions/cache@v3
-         with:
-           path: ~/.npm
-           key: node-modules-${{ hashFiles('**/package-lock.json') }}
-       - uses: actions/checkout@v3
-       - name: Starting Node.js ${{ matrix.node-version }}
-         uses: actions/setup-node@v3
-         with:
-           node-version: ${{ matrix.node-version }}
-       - name: Install modules
-         run: npm ci
-       - name: build production project
-         run: npm run build:prod
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache deps
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+      - uses: actions/checkout@v3
+      - name: Starting Node.js ${{ vars.NODE_VERSION }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ vars.NODE_VERSION }}
+      - name: Install modules
+        run: npm ci
+      - name: build production project
+        run: npm run build:prod
