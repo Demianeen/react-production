@@ -111,9 +111,19 @@ export type Tail<A> = A extends [unknown, ...infer Rest]
   ? Rest
   : never
 
-type SingleSelector<T> = (state: StateSchema) => T
+export type SingleSelector<FR, ARGS extends unknown[]> = (
+  state: StateSchema,
+  ...args: ARGS
+) => FR
 
-export type ResultSelector<FR> = [() => FR, SingleSelector<FR>]
+export type SelectorHook<FR, ARGS extends unknown[]> = (
+  ...args: ARGS
+) => FR
+
+export type ResultSelector<FR, ARGS extends unknown[]> = [
+  SelectorHook<FR, ARGS>,
+  SingleSelector<FR, ARGS>
+]
 
 export type ResultMemoized<
   FR,
@@ -121,4 +131,4 @@ export type ResultMemoized<
   C extends (...args: SelectorResultArray<S>) => FR,
   Params extends readonly unknown[] = never,
   Keys = object
-> = [() => FR, OutputSelector<S, FR, C, Params, Keys>]
+> = [SelectorHook<FR, []>, OutputSelector<S, FR, C, Params, Keys>]

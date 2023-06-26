@@ -8,7 +8,30 @@ import type {
   SelectorArray,
   SelectorResultArray,
   ResultSelector,
-} from './buildSelector.types'
+  SingleSelector,
+} from './reselect.types'
+
+const isSingleSelector = <
+  FR,
+  ARGS extends unknown[],
+  S extends SelectorArray
+>(
+  selector:
+    | [...S, (...args: SelectorResultArray<S>) => FR]
+    | [SingleSelector<FR, ARGS>]
+): selector is [SingleSelector<FR, ARGS>] => {
+  return selector[0].length > 1
+}
+
+/**
+ * when only one selector is passed, the result is a selector
+ * @template FR
+ * @param {(state: StateSchema) => FR} selector
+ * @returns {ResultSelector<FR>}
+ */
+export function buildSelector<FR, ARGS extends unknown[]>(
+  selector: SingleSelector<FR, ARGS>
+): ResultSelector<FR, ARGS>
 
 /**
  * @description when more than one selector is passed, the last argument is the combiner
@@ -25,18 +48,14 @@ export function buildSelector<FR, S extends SelectorArray>(
   GetParamsFromSelectors<S>
 >
 
-/**
- * when only one selector is passed, the result is a selector
- * @template FR
- * @param {(state: StateSchema) => FR} selector
- * @returns {ResultSelector<FR>}
- */
-export function buildSelector<FR>(
-  selector: (state: StateSchema) => FR
-): ResultSelector<FR>
-
-export function buildSelector<FR, S extends SelectorArray>(
-  ...selectors: [...S, (...args: SelectorResultArray<S>) => FR]
+export function buildSelector<
+  FR,
+  S extends SelectorArray,
+  ARGS extends unknown[] | never
+>(
+  ...selectors:
+    | [...S, (...args: SelectorResultArray<S>) => FR]
+    | [SingleSelector<FR, ARGS>]
 ):
   | ResultMemoized<
       FR,
@@ -44,19 +63,27 @@ export function buildSelector<FR, S extends SelectorArray>(
       (...args: SelectorResultArray<S>) => FR,
       GetParamsFromSelectors<S>
     >
-  | ResultSelector<FR> {
+  | ResultSelector<FR, ARGS> {
   const combiner = selectors.length > 1 ? selectors.pop() : undefined
-  let selector: Selector<StateSchema, FR>
 
-  if (combiner !== undefined) {
-    // @ts-expect-error problem with 'ExtractReturnType<S>'
-    selector = createSelector(selectors, combiner)
-  } else {
-    selector = selectors[0] as Selector<StateSchema, FR>
+  if (!isSingleSelector(selectors)) {
+    // @ts-expect-error selectors.pop() not change type
+    const selector: Selector<StateSchema, FR> = createSelector(
+      selectors,
+      combiner
+    )
+    const useSelectorHook = () => {
+      return useSelector(selector)
+    }
+
+    return [useSelectorHook, selector]
   }
 
-  const useSelectorHook = () => {
-    return useSelector(selector)
+  const selector = selectors[0]
+  const useSelectorHook = (...args: ARGS) => {
+    return useSelector((state: StateSchema) =>
+      selector(state, ...args)
+    )
   }
 
   return [useSelectorHook, selector]
