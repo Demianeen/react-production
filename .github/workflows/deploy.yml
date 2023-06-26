@@ -1,11 +1,11 @@
-name: building
+name: deploy
 on:
   push:
     branches: [main]
 jobs:
   prod:
-     runs-on: ubuntu-latest
-     steps:
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v3
       - name: Deploy to production
         uses: appleboy/ssh-action@v0.1.10
@@ -13,9 +13,9 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           password: ${{ secrets.PASSWORD }}
+          debug: true
           script: |
             cd ~/projects/react-production
             git pull
             .deploy/deploy.sh
             pm2 restart json-server/index.js
-
