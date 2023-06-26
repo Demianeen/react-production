@@ -18,8 +18,9 @@ jobs:
           script: |
             cd ~/projects/react-production
             export PATH="/home/demian/.nvm/versions/node/v20.3.0/bin:$PATH"
-            echo $PATH
             git pull
             npm i
             .deploy/deploy.sh
             pm2 restart json-server/index.js
+      - id: Output
+        run: echo "${{ vars.WEBSITE_URL }}" >> "$GITHUB_OUTPUT"
