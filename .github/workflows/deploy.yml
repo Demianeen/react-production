@@ -17,6 +17,7 @@ jobs:
           debug: true
           script: |
             cd ~/projects/react-production
+            ll
             git pull
             .deploy/deploy.sh
             pm2 restart json-server/index.js
