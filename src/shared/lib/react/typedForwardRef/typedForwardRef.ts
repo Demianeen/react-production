@@ -1,6 +1,7 @@
 import type {
   PropsWithoutRef,
   ReactElement,
+  ReactNode,
   Ref,
   RefAttributes,
 } from 'react'
@@ -15,4 +16,4 @@ export const typedForwardRef: <T, P = object>(
   render: (props: P, ref: Ref<T>) => ReactElement | null
 ) => (
   props: PropsWithoutRef<P> & RefAttributes<T>
-) => ReactElement | null = forwardRef
+) => ReactNode | null = forwardRef
