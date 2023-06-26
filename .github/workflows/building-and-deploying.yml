@@ -1,12 +1,32 @@
-name: deploy
+name: building-and-deploying
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
 jobs:
-  prod:
+  build:
     runs-on: ubuntu-latest
+    steps:
+      - name: Cache deps
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+      - uses: actions/checkout@v3
+      - name: Starting Node.js ${{ vars.NODE_VERSION }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ vars.NODE_VERSION }}
+      - name: Install modules
+        run: npm ci
+      - name: build production project
+        run: npm run build:prod
+  # TODO: Add preview deployment for all other branches
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main'
     steps:
       - name: Deploy to production
         uses: appleboy/ssh-action@v0.1.10
