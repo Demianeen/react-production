@@ -22,5 +22,5 @@ jobs:
             npm i
             .deploy/deploy.sh
             pm2 restart json-server/index.js
-      - id: Output
-        run: echo "${{ vars.WEBSITE_URL }}" >> $GITHUB_STEP_SUMMARY
+      - name: Output
+        run: echo "#Deployment \nWebsite is deployed to ${{ vars.WEBSITE_URL }}" >> $GITHUB_STEP_SUMMARY
