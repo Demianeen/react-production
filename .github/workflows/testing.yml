@@ -23,6 +23,7 @@ concurrency:
 jobs:
   tests:
     runs-on: ubuntu-latest
+    # TODO: add cypress tests in ci
     steps:
       # prepare reports
       - name: Checkout

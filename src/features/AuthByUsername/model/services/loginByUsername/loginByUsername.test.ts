@@ -10,6 +10,11 @@ describe('loginByUsername', () => {
       id: 1,
       username: 'username',
       roles: [UserRole.USER],
+      features: {
+        isArticleCreationEnabled: true,
+        isArticleRatingEnabled: true,
+        isCounterEnabled: true,
+      },
     }
 
     const thunk = new TestAsyncThunk(loginByUsername)

@@ -1,4 +1,4 @@
-import { UserRole } from '@/entities/User'
+import { mockUser } from '@/entities/User/testing'
 import { ArticleBlockType } from '../const/articleBlockType'
 import { ArticleType } from '../const/articleType'
 import type { Article } from '../types/article'
@@ -9,13 +9,7 @@ export const mockArticle: Article = {
   subtitle: 'Что нового в JS за 2022 год?',
   img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
   views: 1022,
-  user: {
-    id: 1,
-    username: 'user1',
-    roles: [UserRole.ADMIN],
-    avatar:
-      'https://lablab.ai/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Flablab-static-eu%2Fimages%252Fusers%252Fcldzwest200dfb70s3i8pc564_5w13le5_picture.jpg&w=256&q=75',
-  },
+  user: mockUser,
   createdAt: '26.02.2022',
   types: [ArticleType.IT, ArticleType.SCIENCE, ArticleType.ECONOMICS],
   blocks: [
