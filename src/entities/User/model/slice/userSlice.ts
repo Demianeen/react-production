@@ -1,5 +1,8 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { USER_ID_LOCALSTORAGE_KEY } from '@/shared/const/localstorage'
+import {
+  JSON_SETTINGS_LOCALSTORAGE_KEY,
+  USER_ID_LOCALSTORAGE_KEY,
+} from '@/shared/const/localstorage'
 import { setFeatureFlags } from '@/shared/lib/features'
 import { buildSlice } from '@/shared/ui/store'
 import { initAuthData } from '../services/initAuthData'
@@ -46,6 +49,16 @@ export const userSlice = buildSlice({
         state.jsonError = action.payload
       })
       // initAuthData
+      .addCase(initAuthData.pending, (state, action) => {
+        const jsonSettings = localStorage.getItem(
+          JSON_SETTINGS_LOCALSTORAGE_KEY
+        )
+
+        if (jsonSettings) {
+          state.authData = {} as User
+          state.authData.jsonSettings = JSON.parse(jsonSettings)
+        }
+      })
       .addCase(initAuthData.fulfilled, (state, action) => {
         state.authData = action.payload
         setFeatureFlags(action.payload?.features)

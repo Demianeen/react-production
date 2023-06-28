@@ -1,5 +1,8 @@
 import { buildAsyncThunk } from '@/shared/ui/store/buildAsyncThunk'
-import { USER_ID_LOCALSTORAGE_KEY } from '@/shared/const/localstorage'
+import {
+  JSON_SETTINGS_LOCALSTORAGE_KEY,
+  USER_ID_LOCALSTORAGE_KEY,
+} from '@/shared/const/localstorage'
 import type { User } from '../types/userSchema'
 import { getUserAuthDataByIdQuery } from '../api/userApi'
 
@@ -22,6 +25,11 @@ export const [useInitAuthData, initAuthData] = buildAsyncThunk<
     if (!response) {
       return rejectWithValue('error')
     }
+
+    localStorage.setItem(
+      JSON_SETTINGS_LOCALSTORAGE_KEY,
+      JSON.stringify(response.jsonSettings)
+    )
 
     return response
   } catch (error) {

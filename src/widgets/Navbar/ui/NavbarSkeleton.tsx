@@ -1,9 +1,7 @@
 import { memo } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import { Text, TextTheme } from '@/shared/ui/Text'
 import { HStack } from '@/shared/ui/Stack'
 import { Skeleton } from '@/shared/ui/Skeleton'
-import { useTranslation } from 'react-i18next'
 import styles from './Navbar.module.scss'
 
 interface NavbarSkeletonProps {
@@ -12,8 +10,6 @@ interface NavbarSkeletonProps {
 
 export const NavbarSkeleton = memo(
   ({ className }: NavbarSkeletonProps) => {
-    const { t } = useTranslation()
-
     return (
       <HStack
         as='header'
@@ -21,11 +17,7 @@ export const NavbarSkeleton = memo(
         className={classNames(styles.navbar, {}, [className])}
         maxWidth
       >
-        <Text
-          className={styles.appName}
-          theme={TextTheme.INVERTED}
-          title={t('Netliukh Demian')}
-        />
+        <Skeleton height='var(--font-size-l)' width='15rem' />
         <HStack gap={1} className={styles.actions}>
           <Skeleton width='2rem' height='2rem' borderRadius='50%' />
           <Skeleton width='2rem' height='2rem' borderRadius='50%' />

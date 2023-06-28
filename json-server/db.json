@@ -853,8 +853,7 @@
       "jsonSettings": {
         "theme": "appDarkTheme",
         "language": "en",
-        "isFirstVisit": true,
-        "settingsPageHasBeenOpened": false
+        "isArticlePageWasOpened": true
       },
       "features": {
         "isArticleRatingEnabled": true,
@@ -871,8 +870,7 @@
       "jsonSettings": {
         "theme": "appRedTheme",
         "language": "ua",
-        "isFirstVisit": true,
-        "settingsPageHasBeenOpened": false
+        "isArticlePageWasOpened": false
       },
       "features": {
         "isArticleRatingEnabled": false,
@@ -900,8 +898,7 @@
       "jsonSettings": {
         "theme": "appRedTheme",
         "language": "en",
-        "isFirstVisit": true,
-        "settingsPageHasBeenOpened": false
+        "isArticlePageWasOpened": false
       },
       "features": {
         "isArticleRatingEnabled": true,

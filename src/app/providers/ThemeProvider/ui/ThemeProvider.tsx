@@ -16,17 +16,15 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({
   const { theme: defaultTheme } = useUserJsonSettings()
 
   const [theme, setTheme] = useState<Theme>(
-    initialTheme ?? defaultTheme ?? Theme.LIGHT
+    initialTheme ?? Theme.LIGHT
   )
-  const [isThemeInitialized, setIsThemeInitialized] = useState(false)
   document.body.className = theme
 
   useEffect(() => {
-    if (!isThemeInitialized && defaultTheme) {
-      setIsThemeInitialized(true)
+    if (defaultTheme) {
       setTheme(defaultTheme)
     }
-  }, [defaultTheme, isThemeInitialized])
+  }, [defaultTheme])
 
   const defaultProps = useMemo(
     () => ({

@@ -1,4 +1,5 @@
 import { buildAsyncThunk } from '@/shared/ui/store/buildAsyncThunk'
+import { JSON_SETTINGS_LOCALSTORAGE_KEY } from '@/shared/const/localstorage'
 import { setJsonSettingsMutation } from '../api/userApi'
 import { getUserId } from '../selectors/getUserId/getUserId'
 import { getUserJsonSettings } from '../selectors/jsonSettings'
@@ -29,6 +30,11 @@ export const [useSaveJsonSettings, saveJsonSettings] =
         if (!response.jsonSettings) {
           return rejectWithValue('error')
         }
+
+        localStorage.setItem(
+          JSON_SETTINGS_LOCALSTORAGE_KEY,
+          JSON.stringify(response.jsonSettings)
+        )
 
         return response.jsonSettings
       } catch (error) {

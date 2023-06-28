@@ -1,6 +1,7 @@
 import { memo, useRef } from 'react'
 import { Page } from '@/widgets/Page'
 import { ArticleInfiniteList } from '@/widgets/ArticleInfiniteList'
+import { ArticlePageGreeting } from '@/features/ArticlePageGreeting'
 
 interface ArticlesPageProps {
   className?: string
@@ -16,6 +17,7 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
       data-testid='ArticlesPage'
     >
       <ArticleInfiniteList scrollParentRef={pageRef} />
+      <ArticlePageGreeting />
     </Page>
   )
 }
