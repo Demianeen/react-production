@@ -86,9 +86,12 @@ type MakeRestExplicit<T extends readonly unknown[][]> =
     ? [...T]
     : T
 
-export type SelectorArray = Array<Selector>
+export type SelectorArray = Array<Selector<StateSchema>>
 
-type UnknownFunction = (...args: unknown[]) => unknown
+type UnknownFunction = (
+  state: StateSchema,
+  ...args: unknown[]
+) => unknown
 
 export type ExtractReturnType<T extends readonly UnknownFunction[]> =
   {
@@ -116,7 +119,7 @@ export type SingleSelector<FR, ARGS extends unknown[]> = (
   ...args: ARGS
 ) => FR
 
-export type SelectorHook<FR, ARGS extends unknown[]> = (
+export type SelectorHook<FR, ARGS extends readonly unknown[]> = (
   ...args: ARGS
 ) => FR
 
@@ -125,10 +128,27 @@ export type ResultSelector<FR, ARGS extends unknown[]> = [
   SingleSelector<FR, ARGS>
 ]
 
-export type ResultMemoized<
+export type Expand<T> = T extends (...args: infer A) => infer R
+  ? (...args: Expand<A>) => Expand<R>
+  : T extends infer O
+  ? {
+      [K in keyof O]: O[K]
+    }
+  : never
+
+type ResultMemoizedKeys<
   FR,
   S extends SelectorArray,
+  C extends (...args: SelectorResultArray<S>) => FR
+> = Expand<Pick<ReturnType<C>, keyof ReturnType<C>>>
+
+export type ResultMemoized<
+  S extends SelectorArray,
+  FR,
   C extends (...args: SelectorResultArray<S>) => FR,
   Params extends readonly unknown[] = never,
-  Keys = object
-> = [SelectorHook<FR, []>, OutputSelector<S, FR, C, Params, Keys>]
+  Keys extends object = ResultMemoizedKeys<FR, S, C>
+> = [
+  SelectorHook<FR, Params>,
+  OutputSelector<S, FR, C, Params, Keys> & Keys
+]

@@ -7,8 +7,7 @@ import type {
 import { bindActionCreators } from '@reduxjs/toolkit'
 
 /**
- * Overload for bindActionCreators redux function, returns expects responses
- * from thunk actions
+ * Overload for bindActionCreators redux function, returns expects responses from all slice actions
  */
 export const typedBindActionCreators: <
   State,

@@ -1,4 +1,3 @@
-import type { Selector } from '@reduxjs/toolkit'
 import { createSelector } from '@reduxjs/toolkit'
 import type { StateSchema } from '@/app/providers/StoreProvider'
 import { useSelector } from 'react-redux'
@@ -25,7 +24,7 @@ const isSingleSelector = <
 
 /**
  * when only one selector is passed, the result is a selector
- * @template FR
+ * @template FR, ARGS
  * @param {(state: StateSchema) => FR} selector
  * @returns {ResultSelector<FR>}
  */
@@ -36,14 +35,14 @@ export function buildSelector<FR, ARGS extends unknown[]>(
 /**
  * @description when more than one selector is passed, the last argument is the combiner
  * @template S, FR
- * @param {any} selectors
- * @returns {ResultMemoized<FR, S, (...args: SelectorResultArray<S>) => FR, GetParamsFromSelectors<S>>}
+ * @param {[...S, (...args: SelectorResultArray<S>) => FR]} selectors
+ * @returns {ResultMemoized<S, FR, (...args: SelectorResultArray<S>) => FR, GetParamsFromSelectors<S>>}
  */
 export function buildSelector<FR, S extends SelectorArray>(
   ...selectors: [...S, (...args: SelectorResultArray<S>) => FR]
 ): ResultMemoized<
-  FR,
   S,
+  FR,
   (...args: SelectorResultArray<S>) => FR,
   GetParamsFromSelectors<S>
 >
@@ -58,8 +57,8 @@ export function buildSelector<
     | [SingleSelector<FR, ARGS>]
 ):
   | ResultMemoized<
-      FR,
       S,
+      FR,
       (...args: SelectorResultArray<S>) => FR,
       GetParamsFromSelectors<S>
     >
@@ -67,15 +66,17 @@ export function buildSelector<
   const combiner = selectors.length > 1 ? selectors.pop() : undefined
 
   if (!isSingleSelector(selectors)) {
-    // @ts-expect-error selectors.pop() not change type
-    const selector: Selector<StateSchema, FR> = createSelector(
-      selectors,
-      combiner
-    )
-    const useSelectorHook = () => {
-      return useSelector(selector)
+    const selector =
+      // @ts-expect-error selectors.pop() not change type
+      createSelector<SelectorArray, FR>(selectors, combiner)
+
+    const useSelectorHook = (...args: GetParamsFromSelectors<S>) => {
+      return useSelector((state: StateSchema) =>
+        selector(state, ...args)
+      )
     }
 
+    // @ts-expect-error TODO: fix types
     return [useSelectorHook, selector]
   }
 
