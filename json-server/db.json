@@ -850,6 +850,12 @@
       "username": "admin",
       "password": "123",
       "roles": ["ADMIN"],
+      "jsonSettings": {
+        "theme": "appRedTheme",
+        "language": "en",
+        "isFirstVisit": true,
+        "settingsPageHasBeenOpened": false
+      },
       "features": {
         "isArticleRatingEnabled": true,
         "isArticleCreationEnabled": true,
@@ -862,6 +868,12 @@
       "username": "Ukrainer",
       "password": "123",
       "roles": ["USER"],
+      "jsonSettings": {
+        "theme": "appRedTheme",
+        "language": "ua",
+        "isFirstVisit": true,
+        "settingsPageHasBeenOpened": false
+      },
       "features": {
         "isArticleRatingEnabled": false,
         "isArticleCreationEnabled": false,
@@ -885,6 +897,12 @@
       "username": "testUser",
       "password": "123",
       "roles": ["USER"],
+      "jsonSettings": {
+        "theme": "appRedTheme",
+        "language": "en",
+        "isFirstVisit": true,
+        "settingsPageHasBeenOpened": false
+      },
       "features": {
         "isArticleRatingEnabled": true,
         "isArticleCreationEnabled": true,

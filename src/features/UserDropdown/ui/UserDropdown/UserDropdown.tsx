@@ -7,9 +7,8 @@ import {
   getIsUserAdmin,
   getIsUserManager,
   getUserAuthData,
-  userActions,
+  useUserActions,
 } from '@/entities/User'
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { routes } from '@/shared/lib/router/routes'
 
 interface UserDropdownProps {
@@ -21,15 +20,16 @@ export const UserDropdown = memo(
     const { t } = useTranslation()
 
     const authData = useSelector(getUserAuthData)
-    const dispatch = useAppDispatch()
 
     const isAdmin = useSelector(getIsUserAdmin)
     const isManager = useSelector(getIsUserManager)
     const isAdminPanelAvailable = isAdmin || isManager
 
+    const { logout } = useUserActions()
+
     const onLogout = useCallback(() => {
-      dispatch(userActions.logout())
-    }, [dispatch])
+      logout()
+    }, [logout])
 
     if (!authData) {
       return null

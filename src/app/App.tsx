@@ -1,7 +1,6 @@
 import { Suspense, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { getUserIsInitialized, userActions } from '@/entities/User'
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { getUserIsInitialized, useUserActions } from '@/entities/User'
 import { PageLoader } from '@/widgets/PageLoader'
 import { HStack } from '@/shared/ui/Stack'
 import { Sidebar } from '@/widgets/Sidebar'
@@ -9,12 +8,12 @@ import { Navbar } from '@/widgets/Navbar'
 import { AppRouter } from '@/app/providers/router'
 
 const App = () => {
-  const dispatch = useAppDispatch()
   const isUserInitialized = useSelector(getUserIsInitialized)
+  const { setAuthDataFromLocalStorage } = useUserActions()
 
   useEffect(() => {
-    dispatch(userActions.setAuthDataFromLocalStorage())
-  }, [dispatch])
+    setAuthDataFromLocalStorage()
+  }, [setAuthDataFromLocalStorage])
 
   return (
     <div className='app'>

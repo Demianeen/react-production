@@ -1,12 +1,16 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { createSlice } from '@reduxjs/toolkit'
 import { AUTH_DATA_LOCALSTORAGE_KEY } from '@/shared/const/localstorage'
 import { setFeatureFlags } from '@/shared/lib/features'
+import { buildSlice } from '@/shared/ui/store'
+import { saveJsonSettings } from '../services/saveJsonSettings'
 import type { User, UserSchema } from '../types/userSchema'
 
-const initialState: UserSchema = { _isInitialized: false }
+const initialState: UserSchema = {
+  _isInitialized: false,
+  isJsonLoading: false,
+}
 
-export const userSlice = createSlice({
+export const userSlice = buildSlice({
   name: 'user',
   initialState,
   reducers: {
@@ -30,7 +34,27 @@ export const userSlice = createSlice({
       state.authData = undefined
     },
   },
+  extraReducers: (builder) => {
+    builder
+      .addCase(saveJsonSettings.pending, (state) => {
+        state.jsonError = undefined
+        state.isJsonLoading = true
+      })
+      .addCase(saveJsonSettings.fulfilled, (state, action) => {
+        state.isJsonLoading = false
+        if (state.authData) {
+          state.authData.jsonSettings = action.payload
+        }
+      })
+      .addCase(saveJsonSettings.rejected, (state, action) => {
+        state.isJsonLoading = false
+        state.jsonError = action.payload
+      })
+  },
 })
 
-export const { actions: userActions } = userSlice
-export const { reducer: userReducer } = userSlice
+export const {
+  actions: userActions,
+  reducer: userReducer,
+  useActions: useUserActions,
+} = userSlice
