@@ -1,8 +1,6 @@
 import type { StoryFn } from '@storybook/react'
-import { AUTH_DATA_LOCALSTORAGE_KEY } from '@/shared/const/localstorage'
-import { userActions } from '@/entities/User'
-import { mockUser } from '@/entities/User/testing'
-import { useAppDispatch } from '../hooks/useAppDispatch/useAppDispatch'
+import { useInitAuthData } from '@/entities/User'
+import { USER_ID_LOCALSTORAGE_KEY } from '@/shared/const/localstorage'
 
 /**
  * initialize or remove user data in redux store
@@ -11,16 +9,11 @@ import { useAppDispatch } from '../hooks/useAppDispatch/useAppDispatch'
  */
 export const InitUserDecorator = (userId: number | null = 1) =>
   function Decorator(StoryComponent: StoryFn) {
-    const dispatch = useAppDispatch()
+    const initAuthData = useInitAuthData()
 
-    if (userId !== null) {
-      localStorage.setItem(
-        AUTH_DATA_LOCALSTORAGE_KEY,
-        JSON.stringify({ ...mockUser, id: userId })
-      )
-    }
-    dispatch(userActions.setAuthDataFromLocalStorage())
-    localStorage.removeItem(AUTH_DATA_LOCALSTORAGE_KEY)
+    localStorage.setItem(USER_ID_LOCALSTORAGE_KEY, String(userId))
+    initAuthData()
+    localStorage.removeItem(USER_ID_LOCALSTORAGE_KEY)
 
     return <StoryComponent />
   }

@@ -18,3 +18,4 @@ export { UserRole } from './model/const/userRole'
 export { useUserJsonSettings } from './model/selectors/jsonSettings'
 
 export { useSaveJsonSettings } from './model/services/saveJsonSettings'
+export { useInitAuthData } from './model/services/initAuthData'

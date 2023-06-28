@@ -13,6 +13,7 @@ export interface User {
 
 export interface UserSchema {
   authData?: User
+
   isJsonLoading: boolean
   jsonError?: string
 

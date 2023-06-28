@@ -851,7 +851,7 @@
       "password": "123",
       "roles": ["ADMIN"],
       "jsonSettings": {
-        "theme": "appRedTheme",
+        "theme": "appDarkTheme",
         "language": "en",
         "isFirstVisit": true,
         "settingsPageHasBeenOpened": false

@@ -11,10 +11,17 @@ interface SkeletonProps {
    * @description Border radius of skeleton
    */
   borderRadius?: string
+  inverted?: boolean
 }
 
 export const Skeleton = memo(
-  ({ className, height, width, borderRadius }: SkeletonProps) => {
+  ({
+    className,
+    height,
+    width,
+    borderRadius,
+    inverted = false,
+  }: SkeletonProps) => {
     const style: CSSProperties = {
       height,
       width,

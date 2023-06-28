@@ -1,7 +1,8 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { AUTH_DATA_LOCALSTORAGE_KEY } from '@/shared/const/localstorage'
+import { USER_ID_LOCALSTORAGE_KEY } from '@/shared/const/localstorage'
 import { setFeatureFlags } from '@/shared/lib/features'
 import { buildSlice } from '@/shared/ui/store'
+import { initAuthData } from '../services/initAuthData'
 import { saveJsonSettings } from '../services/saveJsonSettings'
 import type { User, UserSchema } from '../types/userSchema'
 
@@ -17,25 +18,19 @@ export const userSlice = buildSlice({
     setAuthData: (state, action: PayloadAction<User>) => {
       state.authData = action.payload
       setFeatureFlags(action.payload.features)
-    },
-    setAuthDataFromLocalStorage: (state) => {
-      const authData = localStorage.getItem(
-        AUTH_DATA_LOCALSTORAGE_KEY
+      localStorage.setItem(
+        USER_ID_LOCALSTORAGE_KEY,
+        JSON.stringify(action.payload.id)
       )
-      // we need the ability to set auth data to undefined for tests
-      const user: User | undefined =
-        JSON.parse(authData ?? 'null') ?? undefined
-      state.authData = user
-      state._isInitialized = true
-      setFeatureFlags(user?.features)
     },
     logout: (state) => {
-      localStorage.removeItem(AUTH_DATA_LOCALSTORAGE_KEY)
+      localStorage.removeItem(USER_ID_LOCALSTORAGE_KEY)
       state.authData = undefined
     },
   },
   extraReducers: (builder) => {
     builder
+      // saveJsonSettings
       .addCase(saveJsonSettings.pending, (state) => {
         state.jsonError = undefined
         state.isJsonLoading = true
@@ -49,6 +44,16 @@ export const userSlice = buildSlice({
       .addCase(saveJsonSettings.rejected, (state, action) => {
         state.isJsonLoading = false
         state.jsonError = action.payload
+      })
+      // initAuthData
+      .addCase(initAuthData.fulfilled, (state, action) => {
+        state.authData = action.payload
+        setFeatureFlags(action.payload?.features)
+        state._isInitialized = true
+      })
+      .addCase(initAuthData.rejected, (state) => {
+        // we need to set flag to true to load app
+        state._isInitialized = true
       })
   },
 })
