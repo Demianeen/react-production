@@ -6,8 +6,7 @@ import { ArticleCommentList } from '@/features/ArticleCommentList'
 import { VStack } from '@/shared/ui/Stack'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { ArticleRating } from '@/features/ArticleRating'
-import { getFeatureFlag } from '@/shared/lib/features'
-import { Counter } from '@/entities/Counter'
+import { toggleFeature } from '@/shared/lib/features'
 import styles from './ArticleDetailsPageFooter.module.scss'
 
 interface ArticleDetailsPageFooterProps {
@@ -18,8 +17,6 @@ interface ArticleDetailsPageFooterProps {
 export const ArticleDetailsPageFooter = memo(
   ({ className, articleId }: ArticleDetailsPageFooterProps) => {
     const { t } = useTranslation('article-details')
-    const isRatingEnabled = getFeatureFlag('isArticleRatingEnabled')
-    const isCounterEnabled = getFeatureFlag('isCounterEnabled')
 
     return (
       <VStack
@@ -29,8 +26,11 @@ export const ArticleDetailsPageFooter = memo(
         ])}
         maxWidth
       >
-        {isRatingEnabled && <ArticleRating articleId={articleId} />}
-        {isCounterEnabled && <Counter />}
+        {toggleFeature({
+          name: 'isArticleRatingEnabled',
+          on: () => <ArticleRating articleId={articleId} />,
+          off: () => null,
+        })}
         <Text title={t('Recommend next')} />
         <ArticleRecommendationsList />
         <Text title={t('Comments')} />

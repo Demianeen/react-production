@@ -1,8 +1,8 @@
 {
   "typescript.preferences.importModuleSpecifier": "non-relative",
-  "i18n-ally.localesPaths": [
-    "public/locales",
-    "src/shared/config/i18n"
-  ],
-  "jest.jestCommandLine": "npm run test:unit --"
+  "i18n-ally.localesPaths": ["public/locales"],
+  "i18n-ally.sourceLanguage": "english",
+  "i18n-ally.defaultNamespace": "translation",
+  "jest.jestCommandLine": "npm run test:unit --",
+  "i18n-ally.dirStructure": "dir"
 }

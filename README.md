@@ -18,7 +18,7 @@ This repository was created as part of the UlbiTV's course "To production on Rea
 - `npm run start:dev:server` - Launch backend server
 - `npm run build:prod` - Build in prod mode
 - `npm run build:dev` - Build in dev mode (not minimized)
-- `npm run build:prod:analyze` - Build in prod mode and open bundle analyser
+- `npm run build:prod:analyze` - Build in prod mode and open bundle analyzer
 - `npm run lint:ts` - Check ts files with linter
 - `npm run lint:ts:fix` - Fix ts files with linter
 - `npm run lint:scss` - Check scss files with style linter
@@ -35,6 +35,7 @@ This repository was created as part of the UlbiTV's course "To production on Rea
 - `npm run storybook` - Launch Storybook
 - `npm run storybook:build` - Build storybook
 - `npm run prepare` - Pre-commit hooks
+- `npm run remove:feature` - Removes feature using feature flag name, and state on/off (read more about feature flags [here](#working-with-feature-flags))
 - `npm run generate:slice` - Script for generating FSD slices,
 - `npm run postinstall` - Apply patches after npm i
 
@@ -85,7 +86,7 @@ which contains 3 rules
    (for example, widgets cannot be used in features and entities)
 3. public-api-imports - allows import from other modules only from public api. Has auto fix
 
-##### Running linters
+### Running linters
 
 - `npm run lint:ts` - Check ts files with linter
 - `npm run lint:ts:fix` - Fix ts files with linter
@@ -147,6 +148,30 @@ Requests to the server are sent using [RTK query](./src/shared/api/rtkApi.ts)
 
 For asynchronous connection of reducers (to avoid bundling them together in one bundle) use
 [useDynamicModuleLoader](./src/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader.ts)
+
+---
+
+### Working with feature-flags
+
+The use of feature flags is only allowed through the toggleFeatures helper
+
+it takes an object with options
+
+```js
+{
+   name: "feature flag name",
+   on: "function that will work after turning on the feature"
+   off: "function that will work after turning off the feature"
+}
+```
+
+As on/off functions allowed only to use concise body arrow function (e.g. () => 1)
+
+To automatically remove a feature, use the `remove-feature.ts` script,
+which takes 2 arguments
+
+1. Name of the feature flag to be removed
+2. State (on/off)
 
 ---
 

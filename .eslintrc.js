@@ -144,10 +144,7 @@ module.exports = {
     ],
 
     // allow us to use expressions in fragments top level
-    'react/jsx-no-useless-fragment': [
-      2,
-      { allowExpressions: true },
-    ],
+    'react/jsx-no-useless-fragment': [2, { allowExpressions: true }],
 
     // we always need to add deps to useEffect
     'react-hooks/exhaustive-deps': 2,
@@ -200,6 +197,9 @@ module.exports = {
 
     // we can use props spreading sometimes
     'react/jsx-props-no-spreading': 0,
+
+    // TODO: turn on later
+    'react/no-unstable-nested-components': 0,
   },
   overrides: [
     {

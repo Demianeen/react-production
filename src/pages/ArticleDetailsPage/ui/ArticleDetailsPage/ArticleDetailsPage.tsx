@@ -8,6 +8,7 @@ import { Button } from '@/shared/ui/Button'
 import { AppLink } from '@/shared/ui/AppLink'
 import { VStack } from '@/shared/ui/Stack'
 import { routes } from '@/shared/lib/router/routes'
+import { toggleFeature } from '@/shared/lib/features'
 import { ArticleDetailsPageFooter } from '../ArticleDetailsPageFooter/ArticleDetailsPageFooter'
 
 interface ArticleDetailsPageProps {
@@ -19,6 +20,12 @@ const ArticleDetailsPage = ({
 }: ArticleDetailsPageProps) => {
   const { id } = useParams()
   const { t } = useTranslation('article-details')
+
+  toggleFeature({
+    name: 'isCounterEnabled',
+    on: () => console.log(`New counter${1}`),
+    off: () => console.log('Old counter'),
+  })
 
   if (id === undefined) {
     return (
