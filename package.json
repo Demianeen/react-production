@@ -32,7 +32,7 @@
     "build:storybook": "storybook build -c ./config/storybook",
     "generate:slice": "ts-node ./scripts/createSlice/index.ts",
     "rename:slice": "ts-node ./scripts/renameSlice/index.ts",
-    "remove:feature": "ts-node ./scripts/removeFeature.ts",
+    "remove:feature": "ts-node ./scripts/removeFeature/index.ts",
     "prepare": "husky install",
     "postinstall": "rimraf ./node_modules/.cache && patch-package"
   },
