@@ -8,7 +8,12 @@ export default {
     backgroundColor: { control: 'color' },
   },
   args: {},
-  parameters: {},
+  parameters: {
+    loki: {
+      // it is rendered outside root
+      skip: true,
+    },
+  },
 } as Meta<typeof ArticlePageGreeting>
 
 type Story = StoryObj<typeof ArticlePageGreeting>
