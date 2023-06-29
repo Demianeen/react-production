@@ -1,9 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 import { ArticlePageGreeting } from './ArticlePageGreeting'
 
 export default {
-  title: '$PARENT_DIR/ArticlePageGreeting',
+  title: 'features/ArticlePageGreeting',
   component: ArticlePageGreeting,
   argTypes: {
     backgroundColor: { control: 'color' },

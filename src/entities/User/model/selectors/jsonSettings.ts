@@ -13,11 +13,11 @@ export const [useUserJsonSettings, getUserJsonSettings] =
   )
 
 // TODO: Add right types for single selector T[key]
-// export const [useUserJsonSettingsByKey, getUserJsonSettingsByKey] =
-//   buildSelector(
-//     (state, key: keyof JsonSettings) =>
-//       state.user.authData?.jsonSettings?.[key]
-//   )
+export const [useUserJsonSettingsByKey, getUserJsonSettingsByKey] =
+  buildSelector(
+    (state, key: keyof JsonSettings) =>
+      state.user.authData?.jsonSettings?.[key]
+  )
 
 // TODO: Add right types for combiner additional arguments
 // export const [useUserJsonSettingsByKey, getUserJsonSettingsByKey] =

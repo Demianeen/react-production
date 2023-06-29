@@ -1,6 +1,6 @@
 import type { StoryFn } from '@storybook/react'
-import { useInitAuthData } from '@/entities/User'
 import { USER_ID_LOCALSTORAGE_KEY } from '@/shared/const/localstorage'
+import { useInitAuthData } from '@/entities/User'
 
 /**
  * initialize or remove user data in redux store
@@ -12,8 +12,8 @@ export const InitUserDecorator = (userId: number | null = 1) =>
     const initAuthData = useInitAuthData()
 
     localStorage.setItem(USER_ID_LOCALSTORAGE_KEY, String(userId))
+
     initAuthData()
-    localStorage.removeItem(USER_ID_LOCALSTORAGE_KEY)
 
     return <StoryComponent />
   }

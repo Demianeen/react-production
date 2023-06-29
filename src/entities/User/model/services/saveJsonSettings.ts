@@ -20,21 +20,25 @@ export const [useSaveJsonSettings, saveJsonSettings] =
       }
 
       try {
+        const jsonSettings = {
+          ...currentSettings,
+          ...newJsonSettings,
+        }
+        localStorage.setItem(
+          JSON_SETTINGS_LOCALSTORAGE_KEY,
+          JSON.stringify(jsonSettings)
+        )
+
         const response = await dispatch(
           setJsonSettingsMutation({
             userId,
-            jsonSettings: { ...currentSettings, ...newJsonSettings },
+            jsonSettings,
           })
         ).unwrap()
 
         if (!response.jsonSettings) {
           return rejectWithValue('error')
         }
-
-        localStorage.setItem(
-          JSON_SETTINGS_LOCALSTORAGE_KEY,
-          JSON.stringify(response.jsonSettings)
-        )
 
         return response.jsonSettings
       } catch (error) {

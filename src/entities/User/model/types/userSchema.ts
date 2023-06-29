@@ -8,7 +8,7 @@ export interface User {
   roles: [UserRole, ...UserRole[]]
   avatar?: string
   features: FeatureFlags
-  jsonSettings?: JsonSettings
+  jsonSettings: JsonSettings
 }
 
 export interface UserSchema {

@@ -18,7 +18,7 @@ export const Light: Story = {
   decorators: [],
 }
 
-export const NoAuth: Story = {
+export const Unauthorized: Story = {
   decorators: [InitUserDecorator(null)],
 }
 

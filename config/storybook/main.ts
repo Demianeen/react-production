@@ -22,7 +22,7 @@ const config: StorybookConfig = {
   features: {
     // storyStoreV7: false, // for loki to support storybook v7
   },
-  staticDirs: ['./public'],
+  staticDirs: ['./public', '../../public'],
 }
 
 export default config

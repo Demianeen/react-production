@@ -50,6 +50,7 @@ export const userSlice = buildSlice({
       })
       // initAuthData
       .addCase(initAuthData.pending, (state, action) => {
+        localStorage.removeItem(JSON_SETTINGS_LOCALSTORAGE_KEY)
         const jsonSettings = localStorage.getItem(
           JSON_SETTINGS_LOCALSTORAGE_KEY
         )
@@ -67,6 +68,7 @@ export const userSlice = buildSlice({
       .addCase(initAuthData.rejected, (state) => {
         // we need to set flag to true to load app
         state._isInitialized = true
+        state.authData = undefined
       })
   },
 })

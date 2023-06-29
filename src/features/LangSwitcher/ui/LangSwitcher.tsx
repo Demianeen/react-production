@@ -1,10 +1,10 @@
-import { memo, useCallback, useEffect } from 'react'
+import { memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Button, ButtonTheme } from '@/shared/ui/Button'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import {
+  useJsonSettingOnUserInit,
   useSaveJsonSettings,
-  useUserJsonSettings,
 } from '@/entities/User'
 import styles from './LangSwitcher.module.scss'
 
@@ -17,7 +17,6 @@ export const LangSwitcher = memo(
   ({ className, short = false }: LangSwitcherProps) => {
     const { t, i18n } = useTranslation()
 
-    const { language } = useUserJsonSettings()
     const saveJsonSettings = useSaveJsonSettings()
 
     const onToggleLanguage = useCallback(() => {
@@ -28,11 +27,14 @@ export const LangSwitcher = memo(
       })
     }, [i18n, saveJsonSettings])
 
-    useEffect(() => {
-      if (language) {
-        i18n.changeLanguage(language)
-      }
-    }, [i18n, language])
+    const onLanguageChange = useCallback(
+      (newLanguage: string) => {
+        i18n.changeLanguage(newLanguage)
+      },
+      [i18n]
+    )
+
+    useJsonSettingOnUserInit('language', onLanguageChange)
 
     return (
       <Button

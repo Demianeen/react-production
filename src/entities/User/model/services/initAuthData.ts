@@ -21,15 +21,18 @@ export const [useInitAuthData, initAuthData] = buildAsyncThunk<
     const response = await dispatch(
       getUserAuthDataByIdQuery(JSON.parse(userId))
     ).unwrap()
+    console.log('response', response)
 
     if (!response) {
       return rejectWithValue('error')
     }
 
-    localStorage.setItem(
-      JSON_SETTINGS_LOCALSTORAGE_KEY,
-      JSON.stringify(response.jsonSettings)
-    )
+    if (response.jsonSettings) {
+      localStorage.setItem(
+        JSON_SETTINGS_LOCALSTORAGE_KEY,
+        JSON.stringify(response.jsonSettings)
+      )
+    }
 
     return response
   } catch (error) {

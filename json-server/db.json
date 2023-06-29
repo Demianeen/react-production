@@ -851,8 +851,8 @@
       "password": "123",
       "roles": ["ADMIN"],
       "jsonSettings": {
-        "theme": "appDarkTheme",
-        "language": "en",
+        "theme": "appLightTheme",
+        "language": "ua",
         "isArticlePageWasOpened": true
       },
       "features": {

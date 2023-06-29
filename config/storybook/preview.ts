@@ -3,6 +3,8 @@ import type { Preview } from '@storybook/react'
 import { initialize, mswDecorator } from 'msw-storybook-addon'
 import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 import { InitUserDecorator } from '@/shared/lib/storybook/InitUserDecorator'
+import { userHandlers } from '@/entities/User/testing'
+import { I18NextDecorator } from '@/shared/lib/storybook/I18NextDecorator'
 import { articleDetailsHandlers } from '../../src/entities/Article/model/mocks/articleDetailsHandlers'
 import { commentHandlers } from '../../src/entities/Comment/model/mocks/commentHandlers'
 import { imageHandlers } from '../../src/shared/lib/mock-server/imageHandlers'
@@ -15,7 +17,16 @@ import { ratingHandlers } from '../../src/entities/Rating/model/mocks/ratingHand
 import { Theme } from '../../src/shared/const/theme'
 
 // Initialize MSW
-initialize({})
+initialize({
+  onUnhandledRequest(request) {
+    const url = request.url.pathname
+
+    if (url.includes('localhost') || url.includes('mockapi.com'))
+      console.error(
+        `Found an unhandled ${request.method} request to ${url}`
+      )
+  },
+})
 
 const preview: Preview = {
   parameters: {
@@ -35,6 +46,7 @@ const preview: Preview = {
         image: imageHandlers,
         notification: notificationHandlers,
         rating: ratingHandlers,
+        user: userHandlers,
       },
     },
     themes: {
@@ -65,7 +77,22 @@ const preview: Preview = {
     SuspenseDecorator,
     InitUserDecorator(2),
     StoreDecorator(),
+    I18NextDecorator,
   ],
+  globalTypes: {
+    locale: {
+      name: 'Locale',
+      description: 'Internationalization locale',
+      toolbar: {
+        icon: 'globe',
+        items: [
+          { value: 'en', title: 'English' },
+          { value: 'ua', title: 'Ukrainian' },
+        ],
+        showName: false,
+      },
+    },
+  },
 }
 
 export default preview

@@ -14,7 +14,7 @@ import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 ${componentImport}
 
 export default {
-  title: '$PARENT_DIR/${componentName}',
+  title: '${layer}/${componentName}',
   component: ${componentName},
   argTypes: {
     backgroundColor: { control: 'color' },

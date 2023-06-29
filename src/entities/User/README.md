@@ -10,11 +10,17 @@ Description: The user is the general entity for user.
 
 `userActions` - Redux actions for user.
 
+`useSaveJsonSettings` - Hook that returns function to save json settings.
+
+`useInitAuthData` - Hook that returns function to init auth data.
+
+`useJsonSettingOnUserInit` - Hook that used to get data from json settings on user init. It ensures that there won't be any jumps in state.
+
 - Selectors
 
 `getUserAuthData` - Selector that returns user auth data.
 
-`getUserIsInitialized` - Selector that returns is user state was initialized. 
+`getUserIsInitialized` - Selector that returns is user state was initialized.
 
 `getUserId` - Selector that returns user id.
 
@@ -26,6 +32,8 @@ Description: The user is the general entity for user.
 
 `getIsUserManager` - Selector that returns is user manager.
 
+`useJsonSettings` - Hook that returns is json settings.
+
 - Const
 
 `UserRole` - Describes user role (e.g. ADMIN, MANAGER, USER).
@@ -35,4 +43,3 @@ Description: The user is the general entity for user.
 `UserSchema` - Describes redux store type for user.
 
 `User` - Describes user.
-
