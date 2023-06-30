@@ -11,6 +11,12 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  decorators: [],
+  parameters: {
+    loki: {
+      skip: true,
+    },
+  },
 } as Meta<typeof ProfileCard>
 
 type Story = StoryObj<typeof ProfileCard>

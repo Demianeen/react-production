@@ -7,6 +7,7 @@ interface SetJsonSettingsArgs {
   jsonSettings: JsonSettings
 }
 
+// TODO: create a decorator that can wait until data is fetched in storybook
 const userApi = rtkApi.injectEndpoints({
   endpoints: (builder) => ({
     setJsonSettings: builder.mutation<User, SetJsonSettingsArgs>({

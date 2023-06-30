@@ -16,6 +16,11 @@ export default {
     id: 1,
   },
   decorators: [InitUserDecorator()],
+  parameters: {
+    loki: {
+      skip: true,
+    },
+  },
 } as Meta<typeof EditableProfileCard>
 
 type Story = StoryObj<typeof EditableProfileCard>
