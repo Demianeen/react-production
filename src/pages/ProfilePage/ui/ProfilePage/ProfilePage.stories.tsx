@@ -16,6 +16,9 @@ export default {
       routePath: RoutePath.profile,
       routeParams: { id: '1' },
     },
+    loki: {
+      skip: true,
+    },
   },
 } as Meta<typeof ProfilePage>
 
