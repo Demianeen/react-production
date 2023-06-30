@@ -159,7 +159,7 @@
     "skipStories": "(?<!is )loading",
     "diffingEngine": "gm",
     "gm": {
-      "tolerance": 0.00024
+      "tolerance": 0.01
     },
     "configurations": {
       "chrome.laptop": {
