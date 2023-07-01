@@ -1,5 +1,5 @@
-import type { FC, HTMLAttributeAnchorTarget, RefObject } from 'react'
-import { memo, useCallback, useEffect, useRef, useState } from 'react'
+import type { FC, HTMLAttributeAnchorTarget } from 'react'
+import { memo, useCallback, useEffect, useRef } from 'react'
 import type { VirtuosoGridHandle } from 'react-virtuoso'
 import { Virtuoso, VirtuosoGrid } from 'react-virtuoso'
 import { useTranslation } from 'react-i18next'
@@ -30,7 +30,7 @@ interface VirtualizedArticleListProps {
   target?: HTMLAttributeAnchorTarget
   onLoadNextPart?: () => void
   Header?: VirtualizedArticleListHeader
-  scrollParentRef?: RefObject<HTMLElement>
+  scrollParent?: HTMLElement | null
   startIndex?: number
   onOpenArticle?: OnOpenArticle
 }
@@ -72,24 +72,11 @@ export const VirtualizedArticleList = ({
   skeletonsLimit,
   onLoadNextPart,
   Header,
-  scrollParentRef,
+  scrollParent,
   startIndex,
   onOpenArticle,
 }: VirtualizedArticleListProps) => {
-  const [scrollParent, setScrollParent] = useState<
-    typeof scrollParentRef
-  >({
-    current: null,
-  })
   const gridRef = useRef<VirtuosoGridHandle | null>(null)
-
-  useEffect(() => {
-    // scrollParentRef becomes undefined when the component is unmounted and mounted again
-    // because scrollParentRef becomes available after the component is mounted but don't cause re-render
-    if (scrollParent) {
-      setScrollParent(scrollParentRef)
-    }
-  }, [scrollParent, scrollParentRef])
 
   useEffect(() => {
     let timeout: NodeJS.Timeout
@@ -143,7 +130,7 @@ export const VirtualizedArticleList = ({
           skeletonsLimit,
           Header,
         }}
-        customScrollParent={scrollParent?.current ?? undefined}
+        customScrollParent={scrollParent ?? undefined}
         initialTopMostItemIndex={startIndex}
         role='feed'
         data-testid='VirtualizedArticleList.List'
@@ -176,7 +163,7 @@ export const VirtualizedArticleList = ({
         skeletonsLimit,
         Header,
       }}
-      customScrollParent={scrollParent?.current ?? undefined}
+      customScrollParent={scrollParent ?? undefined}
       role='feed'
       data-testid='VirtualizedArticleList.Grid'
     />

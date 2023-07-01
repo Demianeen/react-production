@@ -89,10 +89,10 @@ export const Dark: Story = {
   decorators: [ThemeDecorator(Theme.DARK)],
 }
 
-export const Red: Story = {
+export const Orange: Story = {
   args: {
     title: 'Title',
     text: 'Text',
   },
-  decorators: [ThemeDecorator(Theme.RED)],
+  decorators: [ThemeDecorator(Theme.ORANGE)],
 }

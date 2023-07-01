@@ -1,2 +1,2 @@
-export { Navbar } from './ui/Navbar'
-export { NavbarSkeleton } from './ui/NavbarSkeleton'
+export { Navbar } from './ui/Navbar/Navbar'
+export { NavbarDeprecatedSkeleton } from './ui/NavbarDeprecated/NavbarDeprecatedSkeleton'

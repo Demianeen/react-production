@@ -9,6 +9,7 @@ export const mockUser: User = {
     isArticleCreationEnabled: true,
     isArticleRatingEnabled: true,
     isCounterEnabled: true,
+    isAppRedesigned: true,
   },
   jsonSettings: {
     isArticlePageWasOpened: false,

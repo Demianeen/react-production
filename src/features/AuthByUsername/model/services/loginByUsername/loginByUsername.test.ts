@@ -14,7 +14,9 @@ describe('loginByUsername', () => {
         isArticleCreationEnabled: true,
         isArticleRatingEnabled: true,
         isCounterEnabled: true,
+        isAppRedesigned: true,
       },
+      jsonSettings: {},
     }
 
     const thunk = new TestAsyncThunk(loginByUsername)

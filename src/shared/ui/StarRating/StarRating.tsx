@@ -1,6 +1,6 @@
 import { memo, useState } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import StarIcon from '@/shared/assets/icons/star-24-22.svg'
+import StarIcon from '@/shared/assets/icons/deprecated/star-24-22.svg'
 import { Icon, IconType } from '../Icon'
 import styles from './StarRating.module.scss'
 

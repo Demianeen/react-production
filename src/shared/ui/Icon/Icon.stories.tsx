@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { Theme } from '@/shared/const/theme'
-import CalendarIcon from '@/shared/assets/icons/calendar-20-20.svg'
+import CalendarIcon from '@/shared/assets/icons/deprecated/calendar-20-20.svg'
 import { Icon } from './Icon'
 
 export default {
@@ -23,6 +23,6 @@ export const Dark: Story = {
   decorators: [ThemeDecorator(Theme.DARK)],
 }
 
-export const Red: Story = {
-  decorators: [ThemeDecorator(Theme.RED)],
+export const Orange: Story = {
+  decorators: [ThemeDecorator(Theme.ORANGE)],
 }

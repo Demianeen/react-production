@@ -39,15 +39,15 @@ export const DarkCircle: Story = {
   decorators: [ThemeDecorator(Theme.DARK)],
 }
 
-export const Red: Story = {
-  decorators: [ThemeDecorator(Theme.RED)],
+export const Orange: Story = {
+  decorators: [ThemeDecorator(Theme.ORANGE)],
 }
 
-export const RedCircle: Story = {
+export const OrangeCircle: Story = {
   args: {
     width: '7rem',
     height: '7rem',
     borderRadius: '50%',
   },
-  decorators: [ThemeDecorator(Theme.RED)],
+  decorators: [ThemeDecorator(Theme.ORANGE)],
 }

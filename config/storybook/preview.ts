@@ -64,7 +64,7 @@ const preview: Preview = {
         },
         {
           name: 'red',
-          class: ['app', Theme.RED],
+          class: ['app', Theme.ORANGE],
           color: '#de2560',
         },
       ],

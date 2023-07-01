@@ -3,14 +3,14 @@ import { classNames } from '@/shared/lib/classNames/classNames'
 import { VStack } from '@/shared/ui/Stack'
 import { Skeleton } from '@/shared/ui/Skeleton'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
-import styles from './Sidebar.module.scss'
+import styles from './SidebarDeprecated.module.scss'
 
-interface SidebarSkeletonProps {
+interface SidebarDeprecatedSkeletonProps {
   className?: string
 }
 
-export const SidebarSkeleton = typedMemo(
-  ({ className }: SidebarSkeletonProps) => {
+export const SidebarDeprecatedSkeleton = typedMemo(
+  ({ className }: SidebarDeprecatedSkeletonProps) => {
     const itemsList = useMemo(() => {
       return Array(4)
         .fill(null)

@@ -23,6 +23,6 @@ export const Dark: Story = {
   decorators: [ThemeDecorator(Theme.DARK)],
 }
 
-export const Red: Story = {
-  decorators: [ThemeDecorator(Theme.RED)],
+export const Orange: Story = {
+  decorators: [ThemeDecorator(Theme.ORANGE)],
 }

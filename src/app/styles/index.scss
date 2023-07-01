@@ -2,17 +2,29 @@
 @import 'variables/global';
 @import 'themes/dark';
 @import 'themes/light';
-@import 'themes/red';
+@import 'themes/orange';
 
 .app,
-.appStyles {
+.app > .appStyles {
   font: var(--font-m);
   color: var(--primary-color);
 }
 
 .app {
-  height: 100vh;
+  min-height: 100svh;
   background: var(--bg-color);
+}
+
+.appRedesigned,
+.appRedesigned > .appStyles {
+  font: var(--font-text-redesigned);
+  color: var(--text-redesigned);
+}
+
+.appRedesigned {
+  background: var(--bg-redesigned);
+
+  // min-height: 100svh;
 }
 
 // scrollbar

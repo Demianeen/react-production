@@ -2,7 +2,7 @@
   position: relative;
   flex-shrink: 0;
   width: var(--sidebar-width);
-  height: calc(100vh - var(--navbar-height));
+  height: calc(100svh - var(--navbar-height));
   padding: 1.25rem 1.85rem;
   color: var(--inverted-primary-color);
   background: var(--inverted-bg-color);
@@ -32,4 +32,3 @@
     }
   }
 }
-

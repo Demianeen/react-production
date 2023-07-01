@@ -1,7 +1,7 @@
 import { memo, useCallback } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import DarkIcon from '@/shared/assets/icons/theme-dark-40-41.svg'
-import LightIcon from '@/shared/assets/icons/theme-light-40-41.svg'
+import DarkIcon from '@/shared/assets/icons/deprecated/theme-dark-40-41.svg'
+import LightIcon from '@/shared/assets/icons/deprecated/theme-light-40-41.svg'
 import { Button, ButtonTheme } from '@/shared/ui/Button'
 import { useTheme } from '@/shared/hooks/useTheme/useTheme'
 import { Theme } from '@/shared/const/theme'
@@ -31,7 +31,7 @@ export const ThemeSwitcher = memo(
         theme={ButtonTheme.CLEAR}
         className={classNames('', {}, [className])}
       >
-        {theme === Theme.LIGHT || theme === Theme.RED ? (
+        {theme === Theme.LIGHT || theme === Theme.ORANGE ? (
           <LightIcon />
         ) : (
           <DarkIcon />

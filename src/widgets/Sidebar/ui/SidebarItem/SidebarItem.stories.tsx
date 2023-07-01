@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { Theme } from '@/shared/const/theme'
-import AboutIcon from '@/shared/assets/icons/about-us-20-20.svg'
+import AboutIcon from '@/shared/assets/icons/deprecated/about-us-20-20.svg'
 import { routes } from '@/shared/lib/router/routes'
 import { SidebarItem } from './SidebarItem'
 
@@ -40,9 +40,9 @@ export const Dark: Story = {
   decorators: [ThemeDecorator(Theme.DARK)],
 }
 
-export const Red: Story = {
+export const Orange: Story = {
   args: {
     isCollapsed: false,
   },
-  decorators: [ThemeDecorator(Theme.RED)],
+  decorators: [ThemeDecorator(Theme.ORANGE)],
 }

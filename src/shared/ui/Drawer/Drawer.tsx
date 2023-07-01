@@ -115,7 +115,7 @@ export const DrawerContent = ({
           className={styles.sheet}
           style={{
             display,
-            bottom: `calc(-100vh + ${height}px)`,
+            bottom: `calc(-100svh + ${height}px)`,
             y,
           }}
           {...bind()}

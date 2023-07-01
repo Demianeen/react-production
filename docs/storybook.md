@@ -1,9 +1,10 @@
 In the project, story cases are described for each component.
-Server requests are mocked using *msw-storybook-addon*.
+Server requests are mocked using _msw-storybook-addon_.
 
 The file with story cases is created next to the component with the .stories.tsx extension
 
 You can start storybook with the command:
+
 - `npm run storybook`
 
 Example:
@@ -110,7 +111,7 @@ export const Dark: Template = {
   decorators: [ThemeDecorator(Theme.DARK)],
 }
 
-export const Red: Template = {
+export const Orange: Template = {
   decorators: [ThemeDecorator(Theme.RED)],
 }
 ```

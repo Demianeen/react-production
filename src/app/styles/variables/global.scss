@@ -1,5 +1,5 @@
 :root {
-  --font-family-main: 'Fira Code', monospace;
+  --font-family-main: 'Roboto', sans-serif;
 
   // small font
   --font-size-s: 0.75rem;
@@ -40,4 +40,32 @@
 
   // border-radius
   --card-border-radius: 0.5rem;
+
+  // --redesigned--
+  --font-family-text-redesigned: 'Nunito Sans', sans-serif;
+  --font-family-title-redesigned: 'Roboto', sans-serif;
+
+  // text
+  --font-size-text-redesigned: 1rem;
+  --font-line-text-redesigned: 1.5rem;
+  --font-text-redesigned: var(--font-size-text-redesigned) /
+    var(--font-line-text-redesigned)
+    var(--font-family-text-redesigned);
+
+  // level 2 title
+  --font-size-l2title-redesigned: 1.5rem;
+  --font-line-l2title-redesigned: 2rem;
+  --font-l2title-redesigned: var(--font-size-l2title-redesigned) /
+    var(--font-line-l2title-redesigned)
+    var(--font-family-text-redesigned);
+
+  // title
+  --font-size-title-redesigned: 2rem;
+  --font-line-title-redesigned: 2.5rem;
+  --font-title-redesigned: var(--font-size-title-redesigned) /
+    var(--font-line-title-redesigned)
+    var(--font-family-title-redesigned);
+
+  // border-radius
+  --border-radius-redesigned: 2rem;
 }

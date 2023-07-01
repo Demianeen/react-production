@@ -99,6 +99,6 @@ export const Dark: Template = {
   decorators: [ThemeDecorator(Theme.DARK)],
 }
 
-export const Red: Template = {
-  decorators: [ThemeDecorator(Theme.RED)],
+export const Orange: Template = {
+  decorators: [ThemeDecorator(Theme.ORANGE)],
 }

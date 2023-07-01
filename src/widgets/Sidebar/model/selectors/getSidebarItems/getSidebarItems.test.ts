@@ -1,8 +1,8 @@
 import type { StateSchema } from '@/app/providers/StoreProvider'
-import HomeIcon from '@/shared/assets/icons/home-20-20.svg'
-import AboutIcon from '@/shared/assets/icons/about-us-20-20.svg'
-import ProfileIcon from '@/shared/assets/icons/profile-17-20.svg'
-import ArticlesIcon from '@/shared/assets/icons/articles-20-20.svg'
+import HomeIcon from '@/shared/assets/icons/deprecated/home-20-20.svg'
+import AboutIcon from '@/shared/assets/icons/deprecated/about-us-20-20.svg'
+import ProfileIcon from '@/shared/assets/icons/deprecated/profile-17-20.svg'
+import ArticlesIcon from '@/shared/assets/icons/deprecated/articles-20-20.svg'
 import { routes } from '@/shared/lib/router/routes'
 import { getSidebarItems } from './getSidebarItems'
 

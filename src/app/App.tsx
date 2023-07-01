@@ -10,6 +10,8 @@ import { Sidebar } from '@/widgets/Sidebar'
 import { Navbar } from '@/widgets/Navbar'
 import { AppRouter } from '@/app/providers/router'
 import { LoaderLayout } from '@/widgets/LoaderLayout'
+import { ToggleFeature } from '@/shared/lib/features'
+import { MainLayout } from '@/shared/layouts/MainLayout'
 
 const App = () => {
   const isUserInitialized = useSelector(getUserIsInitialized)
@@ -24,15 +26,32 @@ const App = () => {
   }
 
   return (
-    <div className='app'>
-      <Suspense fallback={<PageLoader />}>
-        <Navbar />
-        <HStack>
-          <Sidebar />
-          {isUserInitialized && <AppRouter />}
-        </HStack>
-      </Suspense>
-    </div>
+    <ToggleFeature
+      name='isAppRedesigned'
+      on={
+        <div className='appRedesigned'>
+          {/* for i18next */}
+          <Suspense fallback={<PageLoader />}>
+            <MainLayout
+              header={<Navbar />}
+              sidebar={<Sidebar />}
+              content={<AppRouter />}
+            />
+          </Suspense>
+        </div>
+      }
+      off={
+        <div className='app'>
+          <Suspense fallback={<PageLoader />}>
+            <Navbar />
+            <HStack>
+              <Sidebar />
+              <AppRouter />
+            </HStack>
+          </Suspense>
+        </div>
+      }
+    />
   )
 }
 

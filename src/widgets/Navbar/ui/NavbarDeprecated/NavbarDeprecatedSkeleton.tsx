@@ -2,19 +2,21 @@ import { memo } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { HStack } from '@/shared/ui/Stack'
 import { Skeleton } from '@/shared/ui/Skeleton'
-import styles from './Navbar.module.scss'
+import styles from './NavbarDeprecated.module.scss'
 
-interface NavbarSkeletonProps {
+interface NavbarDeprecatedSkeletonProps {
   className?: string
 }
 
-export const NavbarSkeleton = memo(
-  ({ className }: NavbarSkeletonProps) => {
+export const NavbarDeprecatedSkeleton = memo(
+  ({ className }: NavbarDeprecatedSkeletonProps) => {
     return (
       <HStack
         as='header'
         gap={1}
-        className={classNames(styles.navbar, {}, [className])}
+        className={classNames(styles.navbarDeprecated, {}, [
+          className,
+        ])}
         maxWidth
       >
         <Skeleton height='var(--font-size-l)' width='15rem' />
@@ -27,4 +29,4 @@ export const NavbarSkeleton = memo(
   }
 )
 
-NavbarSkeleton.displayName = 'Navbar'
+NavbarDeprecatedSkeleton.displayName = 'Navbar'

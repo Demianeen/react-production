@@ -1,4 +1,4 @@
-import type { HTMLAttributeAnchorTarget, RefObject } from 'react'
+import type { HTMLAttributeAnchorTarget } from 'react'
 import { useCallback, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
@@ -25,7 +25,7 @@ import { INITIAL_ARTICLE_VIEW } from '../../model/const/view'
 
 interface ArticleInfiniteListProps {
   className?: string
-  scrollParentRef?: RefObject<HTMLElement>
+  scrollParent?: HTMLElement | null
   target?: HTMLAttributeAnchorTarget
 }
 
@@ -35,7 +35,7 @@ const reducers: ReducersList = {
 
 export const ArticleInfiniteList = ({
   className,
-  scrollParentRef,
+  scrollParent,
   target,
 }: ArticleInfiniteListProps) => {
   useDynamicModuleLoader(reducers, {
@@ -85,7 +85,7 @@ export const ArticleInfiniteList = ({
       className={className}
       skeletonsLimit={view === INITIAL_ARTICLE_VIEW ? 8 : 1}
       onLoadNextPart={onLoadNextPart}
-      scrollParentRef={scrollParentRef}
+      scrollParent={scrollParent}
       Header={ArticleInfiniteListFilters}
       startIndex={startIndex}
       onOpenArticle={onOpenArticle}

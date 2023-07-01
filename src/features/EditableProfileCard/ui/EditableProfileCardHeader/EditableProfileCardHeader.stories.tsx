@@ -39,9 +39,9 @@ export const Dark: Story = {
   ],
 }
 
-export const Red: Story = {
+export const Orange: Story = {
   decorators: [
-    ThemeDecorator(Theme.RED),
+    ThemeDecorator(Theme.ORANGE),
     StoreDecorator(canEditState),
   ],
 }

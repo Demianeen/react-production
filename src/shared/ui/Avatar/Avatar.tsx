@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react'
 import { useMemo } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import UserIcon from '@/shared/assets/icons/user-avatar-32-32.svg'
+import UserIcon from '@/shared/assets/icons/deprecated/user-avatar-32-32.svg'
 import { Skeleton } from '../Skeleton'
 import type { IconColor } from '../Icon'
 import { Icon } from '../Icon'

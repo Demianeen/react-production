@@ -50,7 +50,6 @@ export const userSlice = buildSlice({
       })
       // initAuthData
       .addCase(initAuthData.pending, (state, action) => {
-        localStorage.removeItem(JSON_SETTINGS_LOCALSTORAGE_KEY)
         const jsonSettings = localStorage.getItem(
           JSON_SETTINGS_LOCALSTORAGE_KEY
         )

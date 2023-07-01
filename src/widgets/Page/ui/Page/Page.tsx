@@ -1,5 +1,10 @@
 import type { ReactNode, UIEvent } from 'react'
-import { forwardRef, useEffect, useRef } from 'react'
+import {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+} from 'react'
 import { useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { classNames } from '@/shared/lib/classNames/classNames'
@@ -7,6 +12,7 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import type { StateSchema } from '@/app/providers/StoreProvider'
 import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle'
 import type { TestProps } from '@/shared/types/tests'
+import { toggleFeature } from '@/shared/lib/features'
 import { pageActions } from '../../model/slice/pageSlice'
 import { getPageScrollPositionByPath } from '../../selectors/getPageScrollPositionByPath/getPageScrollPositionByPath'
 import styles from './Page.module.scss'
@@ -16,13 +22,12 @@ interface PageProps extends TestProps {
   children?: ReactNode
 }
 
-// FIXME: Scroll position is not restored
 export const Page = forwardRef<HTMLDivElement, PageProps>(
   (
     { className, children, 'data-testid': dataTestId },
     forwardedRef
   ) => {
-    const wrapperRef = useRef<HTMLElement | null>(null)
+    const wrapperRef = useRef<HTMLDivElement>(null)
 
     const { pathname } = useLocation()
 
@@ -31,16 +36,10 @@ export const Page = forwardRef<HTMLDivElement, PageProps>(
       getPageScrollPositionByPath(state, pathname)
     )
 
-    const mergedRef = (ref: HTMLDivElement | null) => {
-      if (
-        typeof forwardedRef !== 'function' &&
-        forwardedRef !== null
-      ) {
-        // eslint-disable-next-line no-param-reassign
-        forwardedRef.current = ref
-      }
-      wrapperRef.current = ref
-    }
+    useImperativeHandle(
+      forwardedRef,
+      () => wrapperRef.current as HTMLDivElement
+    )
 
     useEffect(() => {
       if (wrapperRef.current !== null) {
@@ -59,8 +58,16 @@ export const Page = forwardRef<HTMLDivElement, PageProps>(
 
     return (
       <main
-        ref={mergedRef}
-        className={classNames(styles.page, {}, [className])}
+        ref={wrapperRef}
+        className={classNames(
+          toggleFeature({
+            name: 'isAppRedesigned',
+            on: () => styles.pageRedesigned,
+            off: () => styles.page,
+          }),
+          {},
+          [className]
+        )}
         onScroll={onScroll}
         data-testid={dataTestId}
       >

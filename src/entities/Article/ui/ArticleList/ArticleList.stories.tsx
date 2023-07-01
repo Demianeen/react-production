@@ -76,20 +76,20 @@ export const DarkGrid: Story = {
   decorators: [ThemeDecorator(Theme.DARK)],
 }
 
-export const RedList: Story = {
+export const OrangeList: Story = {
   args: {
     articles: articlesList,
     view: View.LIST,
     limit: 4,
   },
-  decorators: [ThemeDecorator(Theme.RED)],
+  decorators: [ThemeDecorator(Theme.ORANGE)],
 }
 
-export const RedGrid: Story = {
+export const OrangeGrid: Story = {
   args: {
     articles: articlesGrid,
     view: View.GRID,
     limit: 12,
   },
-  decorators: [ThemeDecorator(Theme.RED)],
+  decorators: [ThemeDecorator(Theme.ORANGE)],
 }
