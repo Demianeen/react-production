@@ -95,10 +95,6 @@ export type FlexProps<TTag extends ElementType> = Props<
 
 const DEFAULT_TAG = 'div'
 
-/**
- * Use components from redesigned folder
- * @deprecated
- */
 export const Flex = typedForwardRef(
   <TTag extends ElementType = typeof DEFAULT_TAG>(
     {

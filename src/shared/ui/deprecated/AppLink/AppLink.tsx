@@ -21,10 +21,6 @@ export interface AppLinkProps extends LinkProps {
   theme?: AppLinkTheme
 }
 
-/**
- * Use components from redesigned folder
- * @deprecated
- */
 export const AppLink = typedMemo(
   typedForwardRef(function AppLink(
     {

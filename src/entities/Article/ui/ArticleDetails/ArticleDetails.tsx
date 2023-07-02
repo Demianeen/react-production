@@ -15,7 +15,7 @@ import {
 } from '@/shared/ui/deprecated/Text'
 import { Skeleton } from '@/shared/ui/deprecated/Skeleton'
 import { Icon } from '@/shared/ui/deprecated/Icon'
-import { HStack } from '@/shared/ui/deprecated/Stack'
+import { HStack } from '@/shared/ui/Stack'
 import { AppImage } from '@/shared/ui/deprecated/AppImage'
 import { ArticleBlockType } from '../../model/const/articleBlockType'
 import { getArticleDetailsIsLoading } from '../../model/selectors/getArticleDetailsIsLoading/getArticleDetailsIsLoading'

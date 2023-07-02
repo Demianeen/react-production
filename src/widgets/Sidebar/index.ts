@@ -1,2 +1,2 @@
 export { Sidebar } from './ui/Sidebar/Sidebar'
-export { SidebarDeprecatedSkeleton } from './ui/SidebarDeprecated/SidebarDeprecatedSkeleton'
+export { SidebarDeprecatedSkeleton } from './ui/Sidebar/SidebarDeprecated/SidebarDeprecatedSkeleton'

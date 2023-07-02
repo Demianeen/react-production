@@ -7,10 +7,10 @@ import {
   ButtonTheme,
   ButtonSize,
 } from '@/shared/ui/deprecated/Button'
-import { VStack, HStack } from '@/shared/ui/deprecated/Stack'
+import { VStack, HStack } from '@/shared/ui/Stack'
 import { useMemo, useState } from 'react'
-import { SidebarItem } from '../SidebarItem/SidebarItem'
-import { useSidebarItems } from '../../model/selectors/getSidebarItems/getSidebarItems'
+import { SidebarItem } from '../../SidebarItem/SidebarItem'
+import { useSidebarItems } from '../../../model/selectors/getSidebarItems/getSidebarItems'
 import styles from './SidebarDeprecated.module.scss'
 
 export interface SidebarDeprecatedProps {
@@ -61,7 +61,7 @@ export const SidebarDeprecated = typedMemo(
         >
           {isCollapsed ? '>' : '<'}
         </Button>
-        <nav className={styles.itemsContainer}>
+        <nav>
           <VStack gap={1} className={styles.items} as='ul'>
             {itemsList}
           </VStack>

@@ -1,0 +1,30 @@
+.sidebarItem {
+  width: 100%;
+  height: 2rem;
+}
+
+.icon {
+  margin: 0 1rem;
+}
+
+.active {
+  background: linear-gradient(
+    88deg,
+    rgb(29 89 255 / 30%) 0%,
+    rgb(94 211 243 / 0%) 100%
+  );
+  border-left: 2px solid var(--ccent, #5ed3f3);
+}
+
+.collapsed {
+  .text {
+    // text hiding animation
+    width: 0;
+    overflow: hidden;
+    transition: 0.3s opacity;
+  }
+
+  .icon {
+    margin: 0;
+  }
+}

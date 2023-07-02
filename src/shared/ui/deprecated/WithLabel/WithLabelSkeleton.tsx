@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import { memo } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { Skeleton } from '../Skeleton/Skeleton'
-import { VStack } from '../Stack'
+import { VStack } from '../../Stack'
 import styles from './WithLabel.module.scss'
 
 interface WithLabelSkeletonProps {

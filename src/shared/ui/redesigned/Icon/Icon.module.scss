@@ -1,0 +1,16 @@
+.icon {
+  color: var(--icon-redesigned);
+}
+
+.button {
+  all: unset;
+  cursor: pointer;
+}
+
+.button:hover .icon {
+  color: var(--accent-redesigned);
+
+  path {
+    box-shadow: var(--box-shadow-accent-redesigned);
+  }
+}

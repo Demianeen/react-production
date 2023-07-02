@@ -1,0 +1,46 @@
+.sidebarRedesigned {
+  position: relative;
+  width: 13.75rem;
+  height: 100%;
+  overflow: hidden;
+  background: var(--light-bg-redesigned);
+  border-radius: var(--border-radius-redesigned);
+}
+
+.logo {
+  margin: 1.36rem 0 2.6rem;
+}
+
+.switchers {
+  position: absolute;
+  bottom: 2.5rem;
+}
+
+.toggleBtn {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: rotate(90deg);
+}
+
+.collapsed {
+  width: 3.125rem;
+
+  .logo {
+    margin: 0.7rem 0 4.7rem;
+  }
+
+  .items {
+    display: flex;
+    align-items: center;
+  }
+
+  .switchers {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .toggleBtn {
+    transform: rotate(-90deg);
+  }
+}

@@ -2,7 +2,7 @@
 /* eslint-disable netliukh-demian-fsd-plugin/layer-imports */
 import { PageLoader } from '@/widgets/PageLoader'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import { HStack } from '@/shared/ui/deprecated/Stack'
+import { HStack } from '@/shared/ui/Stack'
 import { SidebarDeprecatedSkeleton } from '@/widgets/Sidebar'
 import { NavbarDeprecatedSkeleton } from '@/widgets/Navbar'
 

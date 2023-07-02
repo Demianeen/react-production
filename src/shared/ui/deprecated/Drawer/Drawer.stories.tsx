@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { Theme } from '@/shared/const/theme'
 import { Card } from '../Card'
-import { VStack } from '../Stack'
+import { VStack } from '../../Stack'
 import { Drawer } from './Drawer'
 
 export default {

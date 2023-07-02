@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { Text } from '@/shared/ui/deprecated/Text'
-import { VStack } from '@/shared/ui/deprecated/Stack'
+import { VStack } from '@/shared/ui/Stack'
 import type { TestProps } from '@/shared/types/tests'
 import type { ArticleTextBlock } from '../../model/types/article'
 import styles from './ArticleTextBlockComponent.module.scss'

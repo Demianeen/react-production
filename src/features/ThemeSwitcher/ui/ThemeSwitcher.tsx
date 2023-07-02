@@ -3,8 +3,11 @@ import { classNames } from '@/shared/lib/classNames/classNames'
 import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button'
 import { useTheme } from '@/shared/hooks/useTheme/useTheme'
 import { useSaveJsonSettings } from '@/entities/User'
-import { Icon } from '@/shared/ui/deprecated/Icon'
-import ThemeIcon from '@/shared/assets/icons/deprecated/theme-40-41.svg'
+import { Icon } from '@/shared/ui/redesigned/Icon'
+import { Icon as IconDeprecated } from '@/shared/ui/deprecated/Icon'
+import ThemeIcon from '@/shared/assets/icons/redesigned/theme.svg'
+import ThemeIconDeprecated from '@/shared/assets/icons/deprecated/theme-40-41.svg'
+import { ToggleFeature } from '@/shared/lib/features'
 
 interface ThemeSwitcherProps {
   className?: string
@@ -24,19 +27,25 @@ export const ThemeSwitcher = memo(
     }, [saveJsonSettings, toggleTheme])
 
     return (
-      <Button
-        type='button'
-        onClick={onToggleTheme}
-        theme={ButtonTheme.CLEAR}
-        className={classNames('', {}, [className])}
-      >
-        <Icon
-          Svg={ThemeIcon}
-          color='invertedPrimary'
-          width={40}
-          height={40}
-        />
-      </Button>
+      <ToggleFeature
+        name='isAppRedesigned'
+        on={<Icon Svg={ThemeIcon} onClick={onToggleTheme} />}
+        off={
+          <Button
+            type='button'
+            onClick={onToggleTheme}
+            theme={ButtonTheme.CLEAR}
+            className={classNames('', {}, [className])}
+          >
+            <IconDeprecated
+              Svg={ThemeIconDeprecated}
+              color='invertedPrimary'
+              width={40}
+              height={40}
+            />
+          </Button>
+        }
+      />
     )
   }
 )

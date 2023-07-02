@@ -3,7 +3,7 @@ import { classNames } from '@/shared/lib/classNames/classNames'
 import { Card } from '@/shared/ui/deprecated/Card'
 import { Skeleton } from '@/shared/ui/deprecated/Skeleton'
 import { View } from '@/entities/ListFilters'
-import { HStack, VStack } from '@/shared/ui/deprecated/Stack'
+import { HStack, VStack } from '@/shared/ui/Stack'
 import styles from './ArticleListItem.module.scss'
 
 interface ArticleListItemSkeletonProps {

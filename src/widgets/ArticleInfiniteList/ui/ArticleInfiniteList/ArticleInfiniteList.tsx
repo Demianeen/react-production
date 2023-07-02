@@ -8,7 +8,7 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import type { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { Text, TextSize } from '@/shared/ui/deprecated/Text'
-import { HStack } from '@/shared/ui/deprecated/Stack'
+import { HStack } from '@/shared/ui/Stack'
 import { initArticleInfiniteList } from '../../model/services/initArticleInfiniteList/initArticleInfiniteList'
 import { getArticleInfiniteListView } from '../../model/selectors/getArticleInfiniteListView/getArticleInfiniteListView'
 import { ArticleInfiniteListFilters } from '../ArticleInfiniteListFilters/ArticleInfiniteListFilters'

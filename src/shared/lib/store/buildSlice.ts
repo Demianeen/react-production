@@ -4,8 +4,8 @@ import type {
 } from '@reduxjs/toolkit/dist'
 import { createSlice } from '@reduxjs/toolkit'
 import { useMemo } from 'react'
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { typedBindActionCreators } from '@/shared/lib/react/typedBindActionCreators/typedBindActionCreators'
+import { useAppDispatch } from '../hooks/useAppDispatch/useAppDispatch'
+import { typedBindActionCreators } from '../react/typedBindActionCreators/typedBindActionCreators'
 
 /**
  * @description create slice that automatically binds the actions to the dispatch function and returns them in a useActions hook.

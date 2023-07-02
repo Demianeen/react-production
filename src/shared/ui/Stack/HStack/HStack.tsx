@@ -4,21 +4,24 @@ import { typedForwardRef } from '@/shared/lib/react/typedForwardRef/typedForward
 import type { FlexProps } from '../Flex/Flex'
 import { Flex } from '../Flex/Flex'
 
-type VStackProps<TTag extends ReactTag> = Omit<
+type HStackProps<TTag extends ReactTag> = Omit<
   FlexProps<TTag>,
   'direction'
 >
 
-/**
- * Use components from redesigned folder
- * @deprecated
- */
-export const VStack = typedForwardRef(
+export const HStack = typedForwardRef(
   <TTag extends ReactTag = 'div'>(
-    props: VStackProps<TTag>,
+    { align = 'center', ...props }: HStackProps<TTag>,
     ref: ForwardedRef<HTMLDivElement>
   ) => {
-    // eslint-disable-next-line react/jsx-props-no-spreading
-    return <Flex direction='column' ref={ref} {...props} />
+    return (
+      <Flex
+        direction='row'
+        align={align}
+        ref={ref}
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        {...props}
+      />
+    )
   }
 )

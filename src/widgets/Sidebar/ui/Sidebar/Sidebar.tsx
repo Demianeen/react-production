@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import { ToggleFeature } from '@/shared/lib/features'
-import { SidebarRedesigned } from '../SidebarRedesigned/SidebarRedesigned'
-import { SidebarDeprecated } from '../SidebarDeprecated/SidebarDeprecated'
+import { SidebarRedesigned } from './SidebarRedesigned/SidebarRedesigned'
+import { SidebarDeprecated } from './SidebarDeprecated/SidebarDeprecated'
 
 interface SidebarProps {
   className?: string

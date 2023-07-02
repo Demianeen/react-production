@@ -1,0 +1,16 @@
+// variants
+.primary {
+  color: var(--text-redesigned);
+
+  &:hover {
+    color: var(--accent-redesigned);
+  }
+}
+
+.cancel {
+  color: var(--cancel-redesigned);
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

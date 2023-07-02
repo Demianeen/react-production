@@ -1,5 +1,4 @@
 import type { ThunkConfig } from '@/app/providers/StoreProvider'
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import type {
   AsyncThunk,
   AsyncThunkOptions,
@@ -10,6 +9,7 @@ import {
   bindActionCreators,
 } from '@reduxjs/toolkit'
 import { useMemo } from 'react'
+import { useAppDispatch } from '../hooks/useAppDispatch/useAppDispatch'
 
 export type BuildAsyncThunkReturnType<
   Returned,

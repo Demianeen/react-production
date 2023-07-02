@@ -1,0 +1,42 @@
+.appLogo {
+  position: relative;
+}
+
+.gradientSmall {
+  position: absolute;
+  flex-shrink: 0;
+  width: 12rem;
+  height: 12rem;
+  pointer-events: none;
+  background: radial-gradient(
+    30.29% 30.29% at 50% 50%,
+    rgb(94 211 243 / 18%) 0%,
+    rgb(94 211 243 / 11%) 25.55%,
+    rgb(94 211 243 / 7%) 47.27%,
+    rgb(94 211 243 / 4%) 69.66%,
+    rgb(94 211 243 / 0%) 100%
+  );
+  border-radius: 50%;
+}
+
+.gradientBig {
+  position: absolute;
+  flex-shrink: 0;
+  width: 18rem;
+  height: 18rem;
+  pointer-events: none;
+  background: radial-gradient(
+    57.05% 57.05% at 49.84% 42.95%,
+    rgb(94 211 243 / 20%) 0%,
+    rgb(94 211 243 / 13%) 7.81%,
+    rgb(94 211 243 / 8%) 29.69%,
+    rgb(94 211 243 / 4%) 56.77%,
+    rgb(94 211 243 / 2%) 77.6%,
+    rgb(94 211 243 / 0%) 100%
+  );
+  border-radius: 50%;
+}
+
+.logo {
+  z-index: 1;
+}

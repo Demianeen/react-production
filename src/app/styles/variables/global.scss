@@ -47,25 +47,35 @@
 
   // text
   --font-size-text-redesigned: 1rem;
-  --font-line-text-redesigned: 1.5rem;
-  --font-text-redesigned: var(--font-size-text-redesigned) /
+  --font-line-text-redesigned: 1rem;
+  --font-weight-text-redesigned: 400;
+  --font-text-redesigned: var(--font-weight-text-redesigned)
+    var(--font-size-text-redesigned) /
     var(--font-line-text-redesigned)
     var(--font-family-text-redesigned);
 
   // level 2 title
   --font-size-l2title-redesigned: 1.5rem;
-  --font-line-l2title-redesigned: 2rem;
-  --font-l2title-redesigned: var(--font-size-l2title-redesigned) /
+  --font-line-l2title-redesigned: 1rem;
+  --font-weight-l2title-redesigned: 400;
+  --font-l2title-redesigned: var(--font-weight-l2title)
+    var(--font-size-l2title-redesigned) /
     var(--font-line-l2title-redesigned)
     var(--font-family-text-redesigned);
 
   // title
   --font-size-title-redesigned: 2rem;
-  --font-line-title-redesigned: 2.5rem;
-  --font-title-redesigned: var(--font-size-title-redesigned) /
+  --font-line-title-redesigned: 1rem;
+  --font-weight-title-redesigned: 900;
+  --font-title-redesigned: var(--font-weight-title-redesigned)
+    var(--font-size-title-redesigned) /
     var(--font-line-title-redesigned)
     var(--font-family-title-redesigned);
 
   // border-radius
   --border-radius-redesigned: 2rem;
+
+  // box-shadow
+  --box-shadow-accent-redesigned: 0px 3px 10px 0px
+    rgb(16 55 163 / 60%);
 }
