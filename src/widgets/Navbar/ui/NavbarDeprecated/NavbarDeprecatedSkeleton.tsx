@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import { HStack } from '@/shared/ui/Stack'
-import { Skeleton } from '@/shared/ui/Skeleton'
+import { HStack } from '@/shared/ui/deprecated/Stack'
+import { Skeleton } from '@/shared/ui/deprecated/Skeleton'
 import styles from './NavbarDeprecated.module.scss'
 
 interface NavbarDeprecatedSkeletonProps {

@@ -1,8 +1,8 @@
 import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Button } from '@/shared/ui/Button'
-import { Text } from '@/shared/ui/Text'
-import { VStack } from '@/shared/ui/Stack'
+import { Button } from '@/shared/ui/deprecated/Button'
+import { Text } from '@/shared/ui/deprecated/Text'
+import { VStack } from '@/shared/ui/deprecated/Stack'
 
 interface PageErrorProps {
   className?: string

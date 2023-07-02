@@ -1,8 +1,8 @@
 import { memo } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import { HStack } from '@/shared/ui/Stack'
-import { InputSkeleton } from '@/shared/ui/Input'
-import { ButtonSkeleton } from '@/shared/ui/Button'
+import { HStack } from '@/shared/ui/deprecated/Stack'
+import { InputSkeleton } from '@/shared/ui/deprecated/Input'
+import { ButtonSkeleton } from '@/shared/ui/deprecated/Button'
 import styles from './CommentForm.module.scss'
 
 export interface CommentFormSkeletonProps {

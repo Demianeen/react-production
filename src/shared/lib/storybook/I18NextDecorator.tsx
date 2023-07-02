@@ -1,5 +1,5 @@
 import i18n from '@/shared/config/i18n/i18n'
-import { Spinner } from '@/shared/ui/Spinner'
+import { Spinner } from '@/shared/ui/deprecated/Spinner'
 import type { StoryContext, StoryFn } from '@storybook/react'
 import { Suspense, useEffect } from 'react'
 import { I18nextProvider } from 'react-i18next'

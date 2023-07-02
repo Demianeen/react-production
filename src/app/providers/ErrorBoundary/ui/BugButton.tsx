@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Button, ButtonTheme } from '@/shared/ui/Button'
+import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button'
 
 // component to test ErrorBoundary
 export const BugButton = () => {

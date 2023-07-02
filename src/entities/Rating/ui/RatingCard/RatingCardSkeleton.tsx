@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { CardSkeleton } from '@/shared/ui/Card'
+import { CardSkeleton } from '@/shared/ui/deprecated/Card'
 
 interface RatingCardSkeletonProps {
   className?: string

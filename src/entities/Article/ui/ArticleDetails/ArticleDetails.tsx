@@ -6,13 +6,17 @@ import { classNames } from '@/shared/lib/classNames/classNames'
 import type { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { Text, TextAlign, TextSize } from '@/shared/ui/Text'
-import { Skeleton } from '@/shared/ui/Skeleton'
 import EyeIcon from '@/shared/assets/icons/deprecated/eye-20-20.svg'
 import CalendarIcon from '@/shared/assets/icons/deprecated/calendar-20-20.svg'
-import { Icon } from '@/shared/ui/Icon'
-import { HStack } from '@/shared/ui/Stack'
-import { AppImage } from '@/shared/ui/AppImage'
+import {
+  Text,
+  TextAlign,
+  TextSize,
+} from '@/shared/ui/deprecated/Text'
+import { Skeleton } from '@/shared/ui/deprecated/Skeleton'
+import { Icon } from '@/shared/ui/deprecated/Icon'
+import { HStack } from '@/shared/ui/deprecated/Stack'
+import { AppImage } from '@/shared/ui/deprecated/AppImage'
 import { ArticleBlockType } from '../../model/const/articleBlockType'
 import { getArticleDetailsIsLoading } from '../../model/selectors/getArticleDetailsIsLoading/getArticleDetailsIsLoading'
 import { getArticleDetailsError } from '../../model/selectors/getArticleDetailsError/getArticleDetailsError'

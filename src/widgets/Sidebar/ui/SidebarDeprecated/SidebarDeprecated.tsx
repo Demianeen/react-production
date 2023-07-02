@@ -2,8 +2,12 @@ import { classNames } from '@/shared/lib/classNames/classNames'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
 import { LangSwitcher } from '@/features/LangSwitcher'
 import { ThemeSwitcher } from '@/features/ThemeSwitcher'
-import { Button, ButtonTheme, ButtonSize } from '@/shared/ui/Button'
-import { VStack, HStack } from '@/shared/ui/Stack'
+import {
+  Button,
+  ButtonTheme,
+  ButtonSize,
+} from '@/shared/ui/deprecated/Button'
+import { VStack, HStack } from '@/shared/ui/deprecated/Stack'
 import { useMemo, useState } from 'react'
 import { SidebarItem } from '../SidebarItem/SidebarItem'
 import { useSidebarItems } from '../../model/selectors/getSidebarItems/getSidebarItems'

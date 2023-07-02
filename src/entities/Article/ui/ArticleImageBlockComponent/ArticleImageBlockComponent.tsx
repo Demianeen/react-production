@@ -1,6 +1,6 @@
 import { memo } from 'react'
-import { Text, TextAlign } from '@/shared/ui/Text'
-import { VStack } from '@/shared/ui/Stack'
+import { Text, TextAlign } from '@/shared/ui/deprecated/Text'
+import { VStack } from '@/shared/ui/deprecated/Stack'
 import type { TestProps } from '@/shared/types/tests'
 import type { ArticleImageBlock } from '../../model/types/article'
 import styles from './ArticleImageBlockComponent.module.scss'

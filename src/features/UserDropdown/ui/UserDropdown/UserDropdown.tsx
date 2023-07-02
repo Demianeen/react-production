@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { memo, useCallback } from 'react'
-import { Dropdown } from '@/shared/ui/Popups'
-import { Avatar } from '@/shared/ui/Avatar'
+import { Dropdown } from '@/shared/ui/deprecated/Popups'
+import { Avatar } from '@/shared/ui/deprecated/Avatar'
 import {
   getIsUserAdmin,
   getIsUserManager,

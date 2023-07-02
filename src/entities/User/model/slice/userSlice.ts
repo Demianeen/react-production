@@ -4,7 +4,7 @@ import {
   USER_ID_LOCALSTORAGE_KEY,
 } from '@/shared/const/localstorage'
 import { setFeatureFlags } from '@/shared/lib/features'
-import { buildSlice } from '@/shared/ui/store'
+import { buildSlice } from '@/shared/ui/deprecated/store'
 import { initAuthData } from '../services/initAuthData'
 import { saveJsonSettings } from '../services/saveJsonSettings'
 import type { User, UserSchema } from '../types/userSchema'

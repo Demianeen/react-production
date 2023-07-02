@@ -3,7 +3,7 @@ import { classNames } from '@/shared/lib/classNames/classNames'
 import { ArticleList } from '@/entities/Article'
 import { View } from '@/entities/ListFilters'
 
-import { Text, TextSize } from '@/shared/ui/Text'
+import { Text, TextSize } from '@/shared/ui/deprecated/Text'
 import { useGetArticleRecommendationsQuery } from '../../api/articleRecommendationsApi'
 import styles from './ArticleRecommendationsList.module.scss'
 

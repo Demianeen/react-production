@@ -4,7 +4,7 @@ import AboutIcon from '@/shared/assets/icons/deprecated/about-us-20-20.svg'
 import ProfileIcon from '@/shared/assets/icons/deprecated/profile-17-20.svg'
 import ArticlesIcon from '@/shared/assets/icons/deprecated/articles-20-20.svg'
 import { routes } from '@/shared/lib/router/routes'
-import { buildSelector } from '@/shared/ui/store'
+import { buildSelector } from '@/shared/ui/deprecated/store'
 import type { SidebarItemArgs } from '../../types/sidebar'
 
 export const [useSidebarItems, getSidebarItems] = buildSelector(

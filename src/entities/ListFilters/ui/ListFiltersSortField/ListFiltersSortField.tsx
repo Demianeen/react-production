@@ -1,7 +1,7 @@
 import { memo, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Select } from '@/shared/ui/Popups'
-import type { SelectOption } from '@/shared/ui/Popups'
+import { Select } from '@/shared/ui/deprecated/Popups'
+import type { SelectOption } from '@/shared/ui/deprecated/Popups'
 import { SortField } from '../../model/const/sortField'
 
 interface ListFiltersSortFieldProps {

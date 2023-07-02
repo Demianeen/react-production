@@ -1,4 +1,4 @@
-import { buildAsyncThunk } from '@/shared/ui/store/buildAsyncThunk'
+import { buildAsyncThunk } from '@/shared/ui/deprecated/store/buildAsyncThunk'
 import {
   JSON_SETTINGS_LOCALSTORAGE_KEY,
   USER_ID_LOCALSTORAGE_KEY,

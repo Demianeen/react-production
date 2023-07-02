@@ -1,5 +1,5 @@
-import { Modal } from '@/shared/ui/Modal'
-import { SuspenseWithSpinner } from '@/shared/ui/SuspenseWithSpinner'
+import { Modal } from '@/shared/ui/deprecated/Modal'
+import { SuspenseWithSpinner } from '@/shared/ui/deprecated/SuspenseWithSpinner'
 import { LoginFormAsync } from '../LoginForm/LoginForm.async'
 
 interface LoginModalProps {

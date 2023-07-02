@@ -7,8 +7,8 @@ import { useSelector } from 'react-redux'
 import { LoginModal } from '@/features/AuthByUsername'
 import { NotificationButton } from '@/features/NotificationButton'
 import { UserDropdown } from '@/features/UserDropdown'
-import { Button, ButtonTheme } from '@/shared/ui/Button'
-import { HStack } from '@/shared/ui/Stack'
+import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button'
+import { HStack } from '@/shared/ui/deprecated/Stack'
 import styles from './NavbarRedesigned.module.scss'
 
 export interface NavbarRedesignedProps {

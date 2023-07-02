@@ -1,5 +1,5 @@
 import type { StoryFn } from '@storybook/react'
-import { HStack } from '@/shared/ui/Stack'
+import { HStack } from '@/shared/ui/deprecated/Stack'
 
 export const LayoutDecorator = (layout: 'centered' | 'fullpage') =>
   function Decorator(StoryComponent: StoryFn) {

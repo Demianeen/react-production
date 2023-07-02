@@ -1,4 +1,4 @@
-import { buildSelector } from '@/shared/ui/store'
+import { buildSelector } from '@/shared/ui/deprecated/store'
 import type { JsonSettings } from '../types/jsonSettings'
 import { getUserAuthData } from './getUserAuthData/getUserAuthData'
 

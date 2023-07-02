@@ -1,4 +1,4 @@
-import { buildAsyncThunk } from '@/shared/ui/store/buildAsyncThunk'
+import { buildAsyncThunk } from '@/shared/ui/deprecated/store/buildAsyncThunk'
 import { JSON_SETTINGS_LOCALSTORAGE_KEY } from '@/shared/const/localstorage'
 import { setJsonSettingsMutation } from '../api/userApi'
 import { getUserId } from '../selectors/getUserId/getUserId'

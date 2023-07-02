@@ -1,13 +1,17 @@
 import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
-import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink'
+import { AppLink, AppLinkTheme } from '@/shared/ui/deprecated/AppLink'
 import type { Mods } from '@/shared/lib/classNames/classNames'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { getUserAuthData } from '@/entities/User'
-import { HStack } from '@/shared/ui/Stack'
-import { Icon } from '@/shared/ui/Icon'
-import { Text, TextSize, TextTheme } from '@/shared/ui/Text'
+import { HStack } from '@/shared/ui/deprecated/Stack'
+import { Icon } from '@/shared/ui/deprecated/Icon'
+import {
+  Text,
+  TextSize,
+  TextTheme,
+} from '@/shared/ui/deprecated/Text'
 import type { SidebarItemArgs } from '../../model/types/sidebar'
 import styles from './SidebarItem.module.scss'
 

@@ -3,8 +3,8 @@ import { RatingCard, RatingCardSkeleton } from '@/entities/Rating'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { getUserId } from '@/entities/User'
-import { Text } from '@/shared/ui/Text'
-import { Card } from '@/shared/ui/Card'
+import { Text } from '@/shared/ui/deprecated/Text'
+import { Card } from '@/shared/ui/deprecated/Card'
 import {
   useGetArticleRatingQuery,
   useRateArticleMutation,
