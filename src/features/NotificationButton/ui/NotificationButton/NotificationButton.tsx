@@ -12,6 +12,10 @@ interface NotificationButtonProps {
   className?: string
 }
 
+const Notification = () => {
+  return <Icon Svg={NotificationIcon} width={20} height={20} />
+}
+
 export const NotificationButton = ({
   className,
 }: NotificationButtonProps) => {
@@ -21,7 +25,7 @@ export const NotificationButton = ({
         <Popover
           triggerChildren={
             <Icon
-              Svg={NotificationIcon}
+              Svg={Notification}
               color='invertedPrimary'
               className={className}
             />

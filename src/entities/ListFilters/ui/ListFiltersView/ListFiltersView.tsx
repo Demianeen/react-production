@@ -37,7 +37,12 @@ export const ListFiltersView = memo(
               [styles.selected]: view === viewType.view,
             })}
           >
-            <Icon className={styles.icon} Svg={viewType.Icon} />
+            <Icon
+              className={styles.icon}
+              Svg={viewType.Icon}
+              width={24}
+              height={24}
+            />
           </Button>
         ))}
       </div>

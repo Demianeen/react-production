@@ -13,7 +13,7 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
 
   return (
     <Page
-      ref={(newRef) => setPageRef(newRef)}
+      ref={setPageRef}
       className={className}
       data-testid='ArticlesPage'
     >
