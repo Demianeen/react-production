@@ -54,18 +54,27 @@
     var(--font-line-text-redesigned)
     var(--font-family-text-redesigned);
 
+  // text variant icon
+  --font-size-icon-redesigned: 1.35rem;
+  --font-line-icon-redesigned: normal;
+  --font-weight-icon-redesigned: 600;
+  --font-icon-redesigned: var(--font-weight-icon-redesigned)
+    var(--font-size-icon-redesigned) /
+    var(--font-line-icon-redesigned)
+    var(--font-family-text-redesigned);
+
   // level 2 title
   --font-size-l2title-redesigned: 1.5rem;
-  --font-line-l2title-redesigned: 1rem;
+  --font-line-l2title-redesigned: normal;
   --font-weight-l2title-redesigned: 400;
-  --font-l2title-redesigned: var(--font-weight-l2title)
+  --font-l2title-redesigned: var(--font-weight-l2title-redesigned)
     var(--font-size-l2title-redesigned) /
     var(--font-line-l2title-redesigned)
     var(--font-family-text-redesigned);
 
   // title
   --font-size-title-redesigned: 2rem;
-  --font-line-title-redesigned: 1rem;
+  --font-line-title-redesigned: normal;
   --font-weight-title-redesigned: 900;
   --font-title-redesigned: var(--font-weight-title-redesigned)
     var(--font-size-title-redesigned) /
@@ -75,7 +84,8 @@
   // border-radius
   --border-radius-redesigned: 2rem;
 
-  // box-shadow
+  // shadow
   --box-shadow-accent-redesigned: 0px 3px 10px 0px
     rgb(16 55 163 / 60%);
+  --text-shadow-accent-redesigned: 0px 3px 10px rgb(16 55 163 / 60%);
 }

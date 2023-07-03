@@ -28,6 +28,9 @@ export const userSlice = buildSlice({
     },
     logout: (state) => {
       localStorage.removeItem(USER_ID_LOCALSTORAGE_KEY)
+
+      // remove settings that we use while user data is fetching
+      localStorage.removeItem(JSON_SETTINGS_LOCALSTORAGE_KEY)
       state.authData = undefined
     },
   },
@@ -49,7 +52,7 @@ export const userSlice = buildSlice({
         state.jsonError = action.payload
       })
       // initAuthData
-      .addCase(initAuthData.pending, (state, action) => {
+      .addCase(initAuthData.pending, (state) => {
         const jsonSettings = localStorage.getItem(
           JSON_SETTINGS_LOCALSTORAGE_KEY
         )

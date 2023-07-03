@@ -1,18 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { mockNotification } from '../../model/mocks/mockNotification'
-import { NotificationItem } from './NotificationItem'
+import { mockNotification } from '../../../model/mocks/mockNotification'
+import { NotificationItemDeprecated } from './NotificationItemDeprecated'
 
 export default {
   title: 'entities/Notification/NotificationItem',
-  component: NotificationItem,
+  component: NotificationItemDeprecated,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
   args: {},
   parameters: {},
-} as Meta<typeof NotificationItem>
+} as Meta<typeof NotificationItemDeprecated>
 
-type Story = StoryObj<typeof NotificationItem>
+type Story = StoryObj<typeof NotificationItemDeprecated>
 
 export const Light: Story = {
   args: {

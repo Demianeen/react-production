@@ -1,0 +1,20 @@
+// TODO: Add all z-indexes to globals
+.panel {
+  position: absolute;
+  z-index: 1;
+  min-width: max-content;
+  padding: 1rem;
+  border-radius: 1.1875rem;
+  box-shadow: var(--box-shadow-accent-redesigned);
+  animation: open 0.2s ease-in-out;
+}
+
+@keyframes open {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

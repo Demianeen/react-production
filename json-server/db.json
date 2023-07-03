@@ -1096,7 +1096,7 @@
       "password": "123",
       "roles": ["USER"],
       "jsonSettings": {
-        "theme": "appLightTheme",
+        "theme": "appOrangeTheme",
         "language": "ua",
         "isArticlePageWasOpened": true
       },

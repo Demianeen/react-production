@@ -1,0 +1,38 @@
+.popup {
+  position: relative;
+  min-width: max-content;
+}
+
+.menu {
+  background: var(--dark-bg-redesigned);
+  border: 1px solid var(--accent-redesigned);
+  border-radius: 1.1875rem;
+}
+
+// item states
+.active {
+  color: var(--text-redesigned) !important;
+  background: var(--light-bg-redesigned);
+}
+
+.disabled {
+  opacity: 0.5;
+}
+
+// directions
+.up {
+  bottom: 100%;
+}
+
+.down {
+  top: 100%;
+}
+
+.left {
+  right: 0;
+}
+
+// mods
+.maxWidth {
+  width: 100%;
+}

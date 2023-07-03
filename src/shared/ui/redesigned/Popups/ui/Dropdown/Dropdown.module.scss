@@ -1,0 +1,23 @@
+$item-padding-vertical: 0.5rem;
+
+.items {
+  position: absolute;
+  z-index: 1;
+  width: max-content;
+  overflow: hidden;
+  box-shadow: var(--box-shadow-accent-redesigned);
+
+  .item {
+    width: 100%;
+    padding: $item-padding-vertical 1rem;
+    cursor: pointer;
+
+    &:first-child {
+      padding-top: calc($item-padding-vertical + 0.3rem);
+    }
+
+    &:last-child {
+      padding-bottom: calc($item-padding-vertical + 0.3rem);
+    }
+  }
+}

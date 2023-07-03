@@ -1,0 +1,14 @@
+.notificationItem,
+.link {
+  &:not(:last-child)::after {
+    width: 100%;
+    height: 1px;
+    margin: 1rem 0;
+    content: '';
+    background: var(--light-bg-redesigned);
+  }
+}
+
+.title {
+  margin-bottom: 0.5rem;
+}

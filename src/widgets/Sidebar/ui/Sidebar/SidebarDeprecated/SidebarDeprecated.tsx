@@ -7,7 +7,7 @@ import {
   ButtonTheme,
   ButtonSize,
 } from '@/shared/ui/deprecated/Button'
-import { VStack, HStack } from '@/shared/ui/Stack'
+import { VStack, HStack } from '@/shared/ui/redesigned/Stack'
 import { useMemo, useState } from 'react'
 import { SidebarItem } from '../../SidebarItem/SidebarItem'
 import { useSidebarItems } from '../../../model/selectors/getSidebarItems/getSidebarItems'

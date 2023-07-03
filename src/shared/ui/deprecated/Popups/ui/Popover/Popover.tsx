@@ -10,9 +10,6 @@ import popupStyles from '../../styles/Popup.module.scss'
 
 interface PopoverProps {
   className?: string
-  /**
-   * @description Flag to show/hide modal
-   */
   maxWidth?: boolean
   readonly?: boolean
   children?: ReactNode

@@ -5,7 +5,7 @@ import UserIcon from '@/shared/assets/icons/deprecated/user-avatar-32-32.svg'
 import { Skeleton } from '../Skeleton'
 import type { IconColor } from '../Icon'
 import { Icon } from '../Icon'
-import { AppImage } from '../AppImage'
+import { AppImage } from '../../redesigned/AppImage'
 import styles from './Avatar.module.scss'
 
 export interface AvatarProps {

@@ -1,9 +1,12 @@
 import React, { memo, useCallback, useState } from 'react'
 import { NotificationList } from '@/entities/Notification'
-import NotificationIcon from '@/shared/assets/icons/deprecated/notification-20-20.svg'
-import { Icon } from '@/shared/ui/deprecated/Icon'
-import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button'
+import {
+  Button as ButtonDeprecated,
+  ButtonTheme,
+} from '@/shared/ui/deprecated/Button'
 import { Drawer } from '@/shared/ui/deprecated/Drawer'
+import { ToggleFeature } from '@/shared/lib/features'
+import { NotificationIcon } from '../NotificationIcon/NotificationIcon'
 
 interface NotificationDrawerProps {
   className?: string
@@ -22,22 +25,31 @@ export const NotificationDrawer = memo(
     }, [])
 
     return (
-      <>
-        <Button
-          type='button'
-          theme={ButtonTheme.CLEAR}
-          onClick={onOpenDrawer}
-        >
-          <Icon
-            Svg={NotificationIcon}
-            color='invertedPrimary'
-            className={className}
-          />
-        </Button>
-        <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
-          <NotificationList />
-        </Drawer>
-      </>
+      <ToggleFeature
+        name='isAppRedesigned'
+        on={
+          <>
+            <NotificationIcon onClick={onOpenDrawer} />
+            <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
+              <NotificationList />
+            </Drawer>
+          </>
+        }
+        off={
+          <>
+            <ButtonDeprecated
+              type='button'
+              theme={ButtonTheme.CLEAR}
+              onClick={onOpenDrawer}
+            >
+              <NotificationIcon />
+            </ButtonDeprecated>
+            <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
+              <NotificationList />
+            </Drawer>
+          </>
+        }
+      />
     )
   }
 )

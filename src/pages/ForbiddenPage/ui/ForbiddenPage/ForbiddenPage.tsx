@@ -5,7 +5,7 @@ import {
   TextTheme,
 } from '@/shared/ui/deprecated/Text'
 import { Page } from '@/widgets/Page'
-import { HStack } from '@/shared/ui/Stack'
+import { HStack } from '@/shared/ui/redesigned/Stack'
 
 interface ForbiddenPageProps {
   className?: string

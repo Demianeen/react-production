@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
-import { HStack } from '../../Stack'
+import { HStack } from '../../redesigned/Stack'
 import { Button, ButtonTheme } from '../Button/Button'
 import { Card, CardTheme } from '../Card/Card'
 import styles from './Tabs.module.scss'

@@ -8,7 +8,7 @@ import { Button } from '@/shared/ui/deprecated/Button'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import type { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
-import { HStack } from '@/shared/ui/Stack'
+import { HStack } from '@/shared/ui/redesigned/Stack'
 import {
   commentFormActions,
   commentFormReducer,

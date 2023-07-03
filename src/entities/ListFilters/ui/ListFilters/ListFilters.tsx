@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { HStack, VStack } from '@/shared/ui/Stack'
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
 import type { SortOrder } from '@/shared/const/sort'
 import type { SortField } from '../../model/const/sortField'
 import type { View } from '../../model/const/view'

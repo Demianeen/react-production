@@ -2,7 +2,7 @@ import { classNames } from '@/shared/lib/classNames/classNames'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
 import { AppLogo } from '@/shared/ui/redesigned/AppLogo'
 import { useState, useMemo } from 'react'
-import { HStack, VStack } from '@/shared/ui/Stack'
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
 import { Icon } from '@/shared/ui/redesigned/Icon'
 import ArrowIcon from '@/shared/assets/icons/redesigned/arrow-down.svg'
 import { LangSwitcher } from '@/features/LangSwitcher'
@@ -47,6 +47,7 @@ export const SidebarRedesigned = typedMemo(
         <AppLogo
           size={isCollapsed ? '2rem' : '3.5rem'}
           className={styles.logo}
+          showGradientBig={!isCollapsed}
         />
         <nav>
           <VStack gap={1} className={styles.items} as='ul'>

@@ -21,7 +21,6 @@ export const [useInitAuthData, initAuthData] = buildAsyncThunk<
     const response = await dispatch(
       getUserAuthDataByIdQuery(JSON.parse(userId))
     ).unwrap()
-    console.log('response', response)
 
     if (!response) {
       return rejectWithValue('error')

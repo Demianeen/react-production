@@ -7,10 +7,6 @@ interface OverlayProps {
   onClick?: () => void
 }
 
-/**
- * Use components from redesigned folder
- * @deprecated
- */
 export const Overlay = ({ className, onClick }: OverlayProps) => {
   return (
     <div

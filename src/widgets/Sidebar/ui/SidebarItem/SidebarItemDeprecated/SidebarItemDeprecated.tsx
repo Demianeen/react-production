@@ -1,7 +1,7 @@
 import type { Mods } from '@/shared/lib/classNames/classNames'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
-import { HStack } from '@/shared/ui/Stack'
+import { HStack } from '@/shared/ui/redesigned/Stack'
 import { AppLink, AppLinkTheme } from '@/shared/ui/deprecated/AppLink'
 import { Icon } from '@/shared/ui/deprecated/Icon'
 import {

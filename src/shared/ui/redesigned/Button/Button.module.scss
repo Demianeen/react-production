@@ -3,71 +3,66 @@
   color: var(--text-redesigned);
   cursor: pointer;
 
-  // states
   &:hover {
     color: var(--accent-redesigned);
   }
+}
 
-  // themes
-  &.clear {
-    padding: 0;
-    background: none;
-    border: none;
-    outline: none;
+// themes
+.clear {
+  padding: 0;
+  background: none;
+  border: none;
+  outline: none;
+}
 
-    &:hover:first-child {
-      box-shadow: var(--box-shadow-accent-redesigned);
-    }
-  }
+.outline {
+  background: none;
+  border: 1px solid var(--text-redesigned);
+}
 
-  &.outline {
-    background: none;
-    border: 1px solid var(--text-redesigned);
-  }
+// sizes
+.m {
+  font: var(--font-m-redesigned);
+}
 
-  // sizes
+.l {
+  font: var(--font-l-redesigned);
+}
+
+.xl {
+  font: var(--font-xl-redesigned);
+}
+
+// square button
+.squared {
+  padding: 0;
+
+  // square button sizes
   &.m {
-    font: var(--font-m-redesigned);
+    width: var(--font-line-m);
+    height: var(--font-line-m);
   }
 
   &.l {
-    font: var(--font-l-redesigned);
+    width: var(--font-line-l);
+    height: var(--font-line-l);
+    font: var(--font-l);
   }
 
   &.xl {
-    font: var(--font-xl-redesigned);
+    width: var(--font-line-xl);
+    height: var(--font-line-xl);
+    font: var(--font-xl);
   }
+}
 
-  // square button
-  &.squared {
-    padding: 0;
+// mods
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
 
-    // square button sizes
-    &.m {
-      width: var(--font-line-m);
-      height: var(--font-line-m);
-    }
-
-    &.l {
-      width: var(--font-line-l);
-      height: var(--font-line-l);
-      font: var(--font-l);
-    }
-
-    &.xl {
-      width: var(--font-line-xl);
-      height: var(--font-line-xl);
-      font: var(--font-xl);
-    }
-  }
-
-  // mods
-  &.disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
-
-  &.maxWidth {
-    width: 100%;
-  }
+.maxWidth {
+  width: 100%;
 }

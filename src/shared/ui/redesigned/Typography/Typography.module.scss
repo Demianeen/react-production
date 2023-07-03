@@ -1,0 +1,15 @@
+.text {
+  color: var(--text-redesigned);
+}
+
+// colors
+.icon {
+  font: var(--font-icon-redesigned);
+  color: var(--icon-redesigned);
+}
+
+// mods
+.clickable:hover {
+  color: var(--accent-redesigned);
+  text-shadow: var(--text-shadow-accent-redesigned);
+}

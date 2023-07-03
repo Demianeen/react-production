@@ -14,7 +14,7 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({
   initialTheme,
 }) => {
   const [theme, setTheme] = useState<Theme>(
-    initialTheme ?? Theme.LIGHT
+    initialTheme ?? Theme.DARK
   )
   document.body.className = theme
 

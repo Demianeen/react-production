@@ -8,7 +8,7 @@ import {
   CommentForm,
   CommentFormSkeleton,
 } from '@/entities/CommentForm'
-import { VStack } from '@/shared/ui/Stack'
+import { VStack } from '@/shared/ui/redesigned/Stack'
 import { sendArticleComment } from '../../model/services/sendArticleComment/sendArticleComment'
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId'
 import { getArticleCommentListIsLoading } from '../../model/selectors/getArticleCommentListIsLoading/getArticleCommentListIsLoading'

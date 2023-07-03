@@ -13,7 +13,7 @@ import { SelectCurrency } from '@/entities/Currency'
 import type { Country } from '@/entities/Country'
 import { SelectCountry } from '@/entities/Country'
 import { Skeleton } from '@/shared/ui/deprecated/Skeleton'
-import { HStack } from '@/shared/ui/Stack'
+import { HStack } from '@/shared/ui/redesigned/Stack'
 import type { Profile } from '../../model/types/profile'
 import styles from './ProfileCard.module.scss'
 

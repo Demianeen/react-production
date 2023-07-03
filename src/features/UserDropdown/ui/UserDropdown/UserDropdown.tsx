@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { memo, useCallback } from 'react'
-import { Dropdown } from '@/shared/ui/deprecated/Popups'
-import { Avatar } from '@/shared/ui/deprecated/Avatar'
+import { Dropdown as DropdownDeprecated } from '@/shared/ui/deprecated/Popups'
+import { Avatar as AvatarDeprecated } from '@/shared/ui/deprecated/Avatar'
 import {
   getIsUserAdmin,
   getIsUserManager,
@@ -10,6 +10,10 @@ import {
   useUserActions,
 } from '@/entities/User'
 import { routes } from '@/shared/lib/router/routes'
+import { ToggleFeature } from '@/shared/lib/features'
+import { Avatar } from '@/shared/ui/redesigned/Avatar'
+import { Dropdown } from '@/shared/ui/redesigned/Popups'
+import { Button } from '@/shared/ui/redesigned/Button'
 
 interface UserDropdownProps {
   className?: string
@@ -35,34 +39,52 @@ export const UserDropdown = memo(
       return null
     }
 
+    const items = [
+      ...(isAdminPanelAvailable
+        ? [
+            {
+              label: t('Admin panel'),
+              href: routes.adminPanel(),
+            },
+          ]
+        : []),
+      {
+        label: t('Profile'),
+        href: routes.profile({
+          id: String(authData.id),
+        }),
+      },
+      {
+        label: t('Logout'),
+        onClick: onLogout,
+      },
+    ]
+
     return (
-      <Dropdown
-        className={className}
-        items={[
-          ...(isAdminPanelAvailable
-            ? [
-                {
-                  label: t('Admin panel'),
-                  href: routes.adminPanel(),
-                },
-              ]
-            : []),
-          {
-            label: t('Profile'),
-            href: routes.profile({
-              id: String(authData.id),
-            }),
-          },
-          {
-            label: t('Logout'),
-            onClick: onLogout,
-          },
-        ]}
-        triggerChildren={
-          <Avatar
-            size='2rem'
-            src={authData.avatar}
-            fallbackColor='invertedPrimary'
+      <ToggleFeature
+        name='isAppRedesigned'
+        on={
+          <Dropdown
+            className={className}
+            items={items}
+            trigger={
+              <Button type='button' variant='clear'>
+                <Avatar size='3rem' src={authData.avatar} />
+              </Button>
+            }
+          />
+        }
+        off={
+          <DropdownDeprecated
+            className={className}
+            items={items}
+            triggerChildren={
+              <AvatarDeprecated
+                size='2rem'
+                src={authData.avatar}
+                fallbackColor='invertedPrimary'
+              />
+            }
           />
         }
       />

@@ -1,31 +1,29 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { Theme } from '@/shared/const/theme'
-import { NotificationList } from './NotificationList'
+import { WithLabel } from './WithLabel'
 
 export default {
-  title: 'entities/Notification/NotificationList',
-  component: NotificationList,
+  title: 'shared/WithLabel',
+  component: WithLabel,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  args: {},
-  parameters: {
-    loki: {
-      skip: true,
-    },
+  args: {
+    children: <input />,
+    label: 'Label',
   },
-} as Meta<typeof NotificationList>
+} as Meta<typeof WithLabel>
 
-type Story = StoryObj<typeof NotificationList>
+type Story = StoryObj<typeof WithLabel>
 
 export const Light: Story = {}
 
-export const Loading: Story = {}
-
-export const Error: Story = {}
-
-export const Empty: Story = {}
+export const WithMaxWidth: Story = {
+  args: {
+    maxWidth: true,
+  },
+}
 
 export const Dark: Story = {
   decorators: [ThemeDecorator(Theme.DARK)],

@@ -1,0 +1,24 @@
+.card {
+  padding: 1.5rem;
+  background: var(--dark-bg-redesigned);
+  background-color: var(--dark-bg-redesigned);
+  border-radius: 50%;
+}
+
+// paddings
+.padding0 {
+  padding: 0;
+}
+
+.padding1 {
+  padding: 1rem;
+}
+
+.padding1_5 {
+  padding: 1.5rem;
+}
+
+// mods
+.maxWidth {
+  width: 100%;
+}

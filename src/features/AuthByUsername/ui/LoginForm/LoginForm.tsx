@@ -10,7 +10,7 @@ import { Spinner } from '@/shared/ui/deprecated/Spinner'
 import type { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { VStack } from '@/shared/ui/Stack'
+import { VStack } from '@/shared/ui/redesigned/Stack'
 import {
   loginActions,
   loginReducer,

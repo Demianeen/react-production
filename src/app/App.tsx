@@ -5,7 +5,7 @@ import {
   useInitAuthData,
 } from '@/entities/User'
 import { PageLoader } from '@/widgets/PageLoader'
-import { HStack } from '@/shared/ui/Stack'
+import { HStack } from '@/shared/ui/redesigned/Stack'
 import { Sidebar } from '@/widgets/Sidebar'
 import { Navbar } from '@/widgets/Navbar'
 import { AppRouter } from '@/app/providers/router'

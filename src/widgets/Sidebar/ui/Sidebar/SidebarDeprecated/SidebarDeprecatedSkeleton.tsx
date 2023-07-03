@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import { VStack } from '@/shared/ui/Stack'
+import { VStack } from '@/shared/ui/redesigned/Stack'
 import { Skeleton } from '@/shared/ui/deprecated/Skeleton'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
 import styles from './SidebarDeprecated.module.scss'

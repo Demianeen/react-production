@@ -28,7 +28,7 @@ type ButtonOwnProps<TTag extends ElementType> = {
   children?: ReactNode
   /**
    * @description Button theme. Responsible for button's color and border.
-   * @default ButtonTheme.OUTLINE
+   * @default 'outline'
    */
   variant?: ButtonVariant
   /**
@@ -71,7 +71,7 @@ export const Button = typedMemo(
     {
       className,
       children,
-      variant: theme = 'outline',
+      variant = 'outline',
       squared = false,
       size = 'm',
       disabled = false,
@@ -91,7 +91,7 @@ export const Button = typedMemo(
     }
 
     const classes = classNames(styles.button, mods, [
-      styles[theme],
+      styles[variant],
       styles[size],
       className,
     ])

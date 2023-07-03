@@ -1,0 +1,50 @@
+$option-padding: 0.6rem;
+
+.button {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+
+  .label {
+    margin-right: 1rem;
+  }
+
+  .icon {
+    margin-left: auto;
+  }
+}
+
+.options {
+  position: absolute;
+  z-index: 1;
+  min-width: max-content;
+  padding: 0.5rem 0;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0/30%),
+    0 4px 6px -4px rgb(0 0 0/30%);
+  animation: open 0.2s ease-in-out;
+
+  .option {
+    padding: $option-padding calc(20px + ($option-padding * 2));
+    cursor: pointer;
+
+    .icon {
+      margin-right: $option-padding;
+    }
+
+    &.selected {
+      display: flex;
+      align-items: center;
+      padding-left: $option-padding;
+    }
+  }
+}
+
+@keyframes open {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

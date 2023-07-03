@@ -6,6 +6,6 @@
   "jest.jestCommandLine": "npm run test:unit --",
   "i18n-ally.dirStructure": "dir",
   "i18n-ally.keystyle": "flat",
-  "cSpell.words": ["rightbar"],
+  "cSpell.words": ["Avaliable", "rightbar"],
   "figma.assetExportDirectory": "src/shared/assets/icons/redesigned"
 }

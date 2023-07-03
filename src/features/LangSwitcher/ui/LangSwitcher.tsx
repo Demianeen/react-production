@@ -11,6 +11,7 @@ import {
 } from '@/entities/User'
 import { Button } from '@/shared/ui/redesigned/Button'
 import { ToggleFeature } from '@/shared/lib/features'
+import { Typography } from '@/shared/ui/redesigned/Typography'
 import styles from './LangSwitcher.module.scss'
 
 interface LangSwitcherProps {
@@ -50,7 +51,9 @@ export const LangSwitcher = memo(
             variant='clear'
             onClick={onToggleLanguage}
           >
-            {t('Short language')}
+            <Typography tag='span' variant='icon' clickable>
+              {t('Short language')}
+            </Typography>
           </Button>
         }
         off={
