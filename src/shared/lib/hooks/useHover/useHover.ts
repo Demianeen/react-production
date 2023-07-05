@@ -7,6 +7,10 @@ interface UseMouseBind {
 
 export type UseHoverReturnType = [boolean, UseMouseBind]
 
+/**
+ * Tracks if an element is hovered or not.
+ * @returns {[boolean, {onMouseEnter: () => void, onMouseLeave: () => void}]}
+ */
 export const useHover = (): UseHoverReturnType => {
   const [isHover, setIsHover] = useState(false)
 

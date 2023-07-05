@@ -1,15 +1,5 @@
 $option-padding: 0.6rem;
 
-.button {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-
-  .icon {
-    margin-left: auto;
-  }
-}
-
 .options {
   position: absolute;
   z-index: 1;

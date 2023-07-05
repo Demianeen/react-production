@@ -70,6 +70,23 @@ type ButtonOwnProps<TTag extends ElementType> = {
    * @default 'all', or 'none' for variant 'clear'
    */
   paddings?: ButtonPaddings
+  /**
+   * Content to render on the left side of input
+   * @example
+   * <Input addonLeft={<Icon Svg={SearchIcon} />} />
+   */
+  addonLeft?: ReactNode
+  /**
+   * Content to render on the right side of input
+   * @example
+   * <Input addonRight={<Icon Svg={SearchIcon} />} />
+   */
+  addonRight?: ReactNode
+  /**
+   * Flag to make button without border radius.
+   * @default false
+   */
+  noBorderRadius?: boolean
 } & AdditionalProps<TTag>
 
 export type ButtonProps<
@@ -97,6 +114,9 @@ export const Button = typedMemo(
       as,
       maxWidth = false,
       paddings = variant === 'clear' ? 'none' : 'all',
+      addonLeft,
+      addonRight,
+      noBorderRadius = false,
       ...props
     }: ButtonProps<WithDefaultTag<TTag, typeof DEFAULT_TAG>>,
     ref: ForwardedRef<WithDefaultTag<TTag, typeof DEFAULT_TAG>>
@@ -107,6 +127,9 @@ export const Button = typedMemo(
       [styles.squared]: squared,
       [styles.disabled]: isDisabled,
       [styles.maxWidth]: maxWidth,
+      [styles.withAddonLeft]: Boolean(addonLeft),
+      [styles.withAddonRight]: Boolean(addonRight),
+      [styles.borderRadius]: !noBorderRadius,
     }
 
     const classes = classNames(
@@ -114,11 +137,23 @@ export const Button = typedMemo(
       mods,
       styles[variant],
       styles[size],
-      className,
-      mapPaddings[paddings]
+      mapPaddings[paddings],
+      className
     )
 
     const Tag = as ?? DEFAULT_TAG
+
+    const childrenWithAddons = (
+      <>
+        {addonLeft && (
+          <span className={styles.addonLeft}>{addonLeft}</span>
+        )}
+        {children}
+        {addonRight && (
+          <span className={styles.addonRight}>{addonRight}</span>
+        )}
+      </>
+    )
 
     if (isButton(Tag)) {
       return (
@@ -128,7 +163,7 @@ export const Button = typedMemo(
           disabled={isDisabled}
           {...props}
         >
-          {children}
+          {childrenWithAddons}
         </button>
       )
     }

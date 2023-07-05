@@ -1,7 +1,7 @@
 import { Listbox } from '@headlessui/react'
 import { Fragment, useMemo } from 'react'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
-import { classNames } from '@/shared/lib/classNames/classNames'
+import { classNamesNew as classNames } from '@/shared/lib/classNames/classNamesNew'
 import TickIcon from '@/shared/assets/icons/deprecated/tick-20-20.svg'
 import type { Direction } from '@/shared/types/ui'
 import type { TestProps } from '@/shared/types/tests'
@@ -86,25 +86,21 @@ export const Select = typedMemo(
             variant='filled'
             paddings='horizontal'
             disabledButton={readonly}
-            className={classNames(
-              styles.button,
-              {
-                [popupStyles.maxWidth]: maxWidth,
-              },
-              [className]
-            )}
+            addonRight={<Icon Svg={ArrowDownIcon} />}
+            maxWidth={maxWidth}
+            className={classNames(styles.button, className)}
             data-testid={`${testId}.Button`}
           >
             {selectedOption?.label ?? defaultValue}
-            <Icon Svg={ArrowDownIcon} className={styles.icon} />
           </Listbox.Button>
           <Listbox.Options
             className={classNames(
               styles.options,
+              mapDirection[direction],
+              popupStyles.menu,
               {
                 [popupStyles.maxWidth]: maxWidth,
-              },
-              [mapDirection[direction], popupStyles.menu]
+              }
             )}
           >
             {options.map((option) => (

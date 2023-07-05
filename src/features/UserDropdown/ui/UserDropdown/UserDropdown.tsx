@@ -60,6 +60,8 @@ export const UserDropdown = memo(
       },
     ]
 
+    const avatarSize = '3rem'
+
     return (
       <ToggleFeature
         name='isAppRedesigned'
@@ -68,8 +70,15 @@ export const UserDropdown = memo(
             className={className}
             items={items}
             trigger={
-              <Button type='button' variant='clear'>
-                <Avatar size='3rem' src={authData.avatar} />
+              <Button
+                style={{
+                  height: avatarSize,
+                  width: avatarSize,
+                }}
+                type='button'
+                variant='clear'
+              >
+                <Avatar size={avatarSize} src={authData.avatar} />
               </Button>
             }
           />

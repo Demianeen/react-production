@@ -1,7 +1,8 @@
 import type { LabelHTMLAttributes, ReactNode } from 'react'
 import { memo } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import { VStack } from '../Stack'
+import type { FlexDirection } from '../Stack'
+import { Flex } from '../Stack'
 import styles from './WithLabel.module.scss'
 
 type HTMLLabelProps = Omit<
@@ -15,12 +16,13 @@ interface WithLabelProps extends HTMLLabelProps {
   children: ReactNode
   wrapperClassName?: string
   maxWidth?: boolean
+  /**
+   * Flex direction of wrapper
+   * @default 'column'
+   */
+  direction?: FlexDirection
 }
 
-/**
- * Use components from redesigned folder
- * @deprecated
- */
 export const WithLabel = memo(
   ({
     className,
@@ -28,13 +30,15 @@ export const WithLabel = memo(
     label,
     children,
     maxWidth,
+    direction = 'column',
     ...props
   }: WithLabelProps) => {
     return (
-      <VStack
+      <Flex
         className={wrapperClassName}
         gap={0.5}
         maxWidth={maxWidth}
+        direction={direction}
       >
         {label && (
           <label
@@ -46,7 +50,7 @@ export const WithLabel = memo(
           </label>
         )}
         {children}
-      </VStack>
+      </Flex>
     )
   }
 )

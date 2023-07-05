@@ -14,7 +14,7 @@
 // item states
 .active {
   color: var(--text-redesigned) !important;
-  background: var(--light-bg-redesigned);
+  background: var(--light-bg-redesigned) !important;
 }
 
 .disabled {

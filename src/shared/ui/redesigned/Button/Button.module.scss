@@ -8,10 +8,29 @@
   }
 }
 
+.borderRadius {
+  border-radius: 2.125rem;
+}
+
+.withAddonLeft,
+.withAddonRight {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.addonLeft,
+.addonRight {
+  display: flex;
+
+  svg {
+    color: var(--hint-redesigned);
+  }
+}
+
 // themes
 .clear {
   background: none;
-  border-radius: 2.125rem;
 }
 
 .outline {
@@ -21,7 +40,6 @@
 
 .filled {
   background: var(--light-bg-redesigned);
-  border-radius: 2.125rem;
 }
 
 // sizes

@@ -28,7 +28,7 @@
 .appRedesigned * {
   // shows outline only on tabs
   &:focus-visible {
-    outline: 2px solid var(--accent-redesigned);
+    outline: var(--outline-redesigned);
   }
 }
 

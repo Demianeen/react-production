@@ -2,7 +2,6 @@ import { memo, useMemo } from 'react'
 import { VStack } from '@/shared/ui/redesigned/Stack'
 import type { SortOrder } from '@/shared/const/sort'
 import { Card } from '@/shared/ui/redesigned/Card'
-import { Search } from '@/shared/ui/deprecated/Search'
 import type { SortField } from '@/entities/ListFilters'
 import {
   ListFiltersOrder,
@@ -13,6 +12,7 @@ import { ArticleType } from '@/entities/Article'
 import type { TabItem } from '@/shared/ui/deprecated/Tabs'
 import { Tabs } from '@/shared/ui/redesigned/Tabs'
 import { useTranslation } from 'react-i18next'
+import { Search } from '@/shared/ui/redesigned/Search'
 import styles from './ArticleListFilters.module.scss'
 
 interface ArticleListFiltersProps {

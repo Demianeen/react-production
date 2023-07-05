@@ -1,0 +1,41 @@
+.inputWrapper {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--icon-redesigned);
+  border-radius: 3rem;
+
+  &.focused {
+    border-color: var(--accent-redesigned);
+    box-shadow: var(--box-shadow-accent-redesigned);
+  }
+
+  &.focusedByTab {
+    outline: var(--outline-redesigned);
+  }
+
+  &.withAddonLeft,
+  &.withAddonRight {
+    padding: 0 0.5rem;
+  }
+}
+
+.input {
+  all: unset;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.readonly {
+    cursor: not-allowed;
+  }
+
+  &::placeholder {
+    color: var(--hint-redesigned);
+  }
+}
+
+.addonLeft,
+.addonRight {
+  display: flex;
+}

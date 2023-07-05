@@ -84,6 +84,7 @@ export const Dropdown = ({
                   as={Button}
                   type='button'
                   variant='clear'
+                  noBorderRadius
                   className={itemClassName}
                   onClick={item.onClick}
                 >

@@ -1,9 +1,9 @@
 import type { ElementType, ForwardedRef, ReactNode } from 'react'
 
 import type { Mods } from '@/shared/lib/classNames/classNames'
-import { classNames } from '@/shared/lib/classNames/classNames'
 import type { Props, WithDefaultTag } from '@/shared/types/ui'
 import { typedForwardRef } from '@/shared/lib/react/typedForwardRef/typedForwardRef'
+import { classNamesNew as classNames } from '@/shared/lib/classNames/classNamesNew'
 import styles from './Flex.module.scss'
 
 type FlexJustify = 'start' | 'center' | 'end' | 'between' | 'around'
@@ -113,15 +113,6 @@ export const Flex = typedForwardRef(
     }: FlexProps<WithDefaultTag<TTag, typeof DEFAULT_TAG>>,
     ref: ForwardedRef<HTMLDivElement>
   ) => {
-    const classes = [
-      justifyMap[justify],
-      alignMap[align],
-      directionMap[direction],
-      wrap && wrapMap[wrap],
-      gap && gapMap[gap],
-      className,
-    ]
-
     const mods: Mods = {
       [styles.maxWidth]: maxWidth,
       [styles.maxHeight]: maxHeight,
@@ -132,7 +123,16 @@ export const Flex = typedForwardRef(
     return (
       <Tag
         style={{ height }}
-        className={classNames(styles.flex, mods, classes)}
+        className={classNames(
+          styles.flex,
+          mods,
+          justifyMap[justify],
+          alignMap[align],
+          directionMap[direction],
+          wrap && wrapMap[wrap],
+          gap && gapMap[gap],
+          className
+        )}
         ref={ref}
         /* eslint-disable-next-line react/jsx-props-no-spreading */
         {...props}

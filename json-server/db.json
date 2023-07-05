@@ -1078,7 +1078,7 @@
       "roles": ["ADMIN"],
       "jsonSettings": {
         "theme": "appDarkTheme",
-        "language": "ua",
+        "language": "en",
         "isArticlePageWasOpened": true,
         "isArticlesPageWasOpened": true
       },
