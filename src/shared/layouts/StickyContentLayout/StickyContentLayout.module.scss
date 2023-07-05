@@ -1,0 +1,26 @@
+.stickyContentLayout {
+  display: grid;
+  grid-template-areas: 'left content right';
+  grid-template-columns: auto 1fr auto;
+  gap: 1rem;
+}
+
+.left {
+  grid-area: left;
+}
+
+.content {
+  grid-area: content;
+  width: 100%;
+}
+
+.right {
+  grid-area: right;
+}
+
+.left,
+.right {
+  position: sticky;
+  top: 2rem;
+  height: fit-content;
+}

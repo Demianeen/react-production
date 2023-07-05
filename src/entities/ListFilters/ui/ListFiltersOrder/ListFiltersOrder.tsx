@@ -2,7 +2,9 @@ import { memo, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { SortOrder } from '@/shared/const/sort'
 import type { SelectOption } from '@/shared/ui/deprecated/Popups'
-import { Select } from '@/shared/ui/deprecated/Popups'
+import { Select as SelectDeprecated } from '@/shared/ui/deprecated/Popups'
+import { Select } from '@/shared/ui/redesigned/Popups'
+import { ToggleFeature } from '@/shared/lib/features'
 
 interface ListFiltersOrderProps {
   className?: string
@@ -29,14 +31,30 @@ export const ListFiltersOrder = memo(
     )
 
     return (
-      <Select
-        options={orderOptions}
-        label={t('Sort order')}
-        onChange={onChangeOrder}
-        value={order}
-        className={className}
-        direction='down-right'
-        data-testid='ListFiltersOrder'
+      <ToggleFeature
+        name='isAppRedesigned'
+        on={
+          <Select
+            options={orderOptions}
+            label={t('Sort order')}
+            onChange={onChangeOrder}
+            value={order}
+            className={className}
+            direction='down-right'
+            data-testid='ListFiltersOrder'
+          />
+        }
+        off={
+          <SelectDeprecated
+            options={orderOptions}
+            label={t('Sort order')}
+            onChange={onChangeOrder}
+            value={order}
+            className={className}
+            direction='down-right'
+            data-testid='ListFiltersOrder'
+          />
+        }
       />
     )
   }

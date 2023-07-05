@@ -7,7 +7,7 @@ import { ListFiltersSortField } from '../ListFiltersSortField/ListFiltersSortFie
 import { ListFiltersView } from '../ListFiltersView/ListFiltersView'
 import { ListFiltersOrder } from '../ListFiltersOrder/ListFiltersOrder'
 
-interface SortedArticlesListProps {
+interface ListFiltersProps {
   className?: string
   onChangeSortField?: (sortField: SortField) => void
   sortField?: SortField
@@ -17,6 +17,10 @@ interface SortedArticlesListProps {
   view?: View
 }
 
+/**
+ * @deprecated
+ * Use separate list filters components
+ */
 export const ListFilters = memo(
   ({
     className,
@@ -26,7 +30,7 @@ export const ListFilters = memo(
     sortField,
     onChangeView,
     view,
-  }: SortedArticlesListProps) => {
+  }: ListFiltersProps) => {
     return (
       <VStack gap={1.25} className={className} maxWidth>
         <HStack justify='between' align='center' gap={1} maxWidth>

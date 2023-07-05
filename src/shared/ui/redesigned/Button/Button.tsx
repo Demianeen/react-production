@@ -1,15 +1,28 @@
 import type { ElementType, ForwardedRef, ReactNode } from 'react'
 import type { Mods } from '@/shared/lib/classNames/classNames'
-import { classNames } from '@/shared/lib/classNames/classNames'
+import { classNamesNew as classNames } from '@/shared/lib/classNames/classNamesNew'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
 import type { Props, WithDefaultTag } from '@/shared/types/ui'
 import { typedForwardRef } from '@/shared/lib/react/typedForwardRef/typedForwardRef'
 import type { AppLink } from '../AppLink/AppLink'
 import styles from './Button.module.scss'
 
-export type ButtonVariant = 'clear' | 'outline'
+export type ButtonVariant = 'clear' | 'outline' | 'filled'
 
 export type ButtonSize = 'm' | 'l' | 'xl'
+
+export type ButtonPaddings =
+  | 'none'
+  | 'vertical'
+  | 'horizontal'
+  | 'all'
+
+const mapPaddings: Record<ButtonPaddings, string> = {
+  none: '',
+  vertical: styles.verticalPadding,
+  horizontal: styles.horizontalPadding,
+  all: classNames(styles.verticalPadding, styles.horizontalPadding),
+}
 
 type OnlyButtonProps = {
   type: 'button' | 'submit' | 'reset'
@@ -27,31 +40,36 @@ type ButtonOwnProps<TTag extends ElementType> = {
   className?: string
   children?: ReactNode
   /**
-   * @description Button theme. Responsible for button's color and border.
+   * Button theme. Responsible for button's color and border.
    * @default 'outline'
    */
   variant?: ButtonVariant
   /**
-   * @description Flag to make button squared.
+   * Flag to make button squared.
    */
   squared?: boolean
   /**
-   * @description Button size. Responsible for button's text size.
+   * Button size. Responsible for button's text size.
    */
   size?: ButtonSize
   disabled?: boolean
   /**
-   * @description When we need to disable the button, but we pass it to another component's prop (e.g. Dropdown) where button disable props is used as another component prop.
+   * When we need to disable the button, but we pass it to another component's prop (e.g. Dropdown) where button disable props is used as another component prop.
    */
   disabledButton?: boolean
   /**
-   * @description Tag to render button as.
+   * Tag to render button as.
    */
   as?: TTag
   /**
-   * @description Flag to make button's width 100%.
+   * Flag to make button's width 100%.
    */
   maxWidth?: boolean
+  /**
+   * Button paddings.
+   * @default 'all', or 'none' for variant 'clear'
+   */
+  paddings?: ButtonPaddings
 } & AdditionalProps<TTag>
 
 export type ButtonProps<
@@ -78,6 +96,7 @@ export const Button = typedMemo(
       disabledButton = false,
       as,
       maxWidth = false,
+      paddings = variant === 'clear' ? 'none' : 'all',
       ...props
     }: ButtonProps<WithDefaultTag<TTag, typeof DEFAULT_TAG>>,
     ref: ForwardedRef<WithDefaultTag<TTag, typeof DEFAULT_TAG>>
@@ -90,11 +109,14 @@ export const Button = typedMemo(
       [styles.maxWidth]: maxWidth,
     }
 
-    const classes = classNames(styles.button, mods, [
+    const classes = classNames(
+      styles.button,
+      mods,
       styles[variant],
       styles[size],
       className,
-    ])
+      mapPaddings[paddings]
+    )
 
     const Tag = as ?? DEFAULT_TAG
 

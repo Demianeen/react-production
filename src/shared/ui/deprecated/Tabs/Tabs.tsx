@@ -1,8 +1,8 @@
 import { useCallback } from 'react'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
 import { HStack } from '../../redesigned/Stack'
-import { Button, ButtonTheme } from '../Button/Button'
-import { Card, CardTheme } from '../Card/Card'
+import { Button, ButtonTheme } from '../Button'
+import { Card, CardTheme } from '../Card'
 import styles from './Tabs.module.scss'
 
 export interface TabItem<T extends string> {
@@ -24,12 +24,6 @@ interface TabsProps<T extends string> {
   onTabClick: (value: T) => void
 }
 
-// TODO: Implement with headless ui
-
-/**
- * Use components from redesigned folder
- * @deprecated
- */
 export const Tabs = typedMemo(
   <T extends string>({
     className,

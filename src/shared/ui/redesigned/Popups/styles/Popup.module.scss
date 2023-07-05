@@ -4,9 +4,11 @@
 }
 
 .menu {
+  overflow: hidden;
   background: var(--dark-bg-redesigned);
   border: 1px solid var(--accent-redesigned);
   border-radius: 1.1875rem;
+  box-shadow: var(--box-shadow-accent-redesigned);
 }
 
 // item states

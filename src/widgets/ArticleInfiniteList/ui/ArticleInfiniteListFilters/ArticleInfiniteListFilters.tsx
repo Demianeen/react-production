@@ -1,18 +1,9 @@
-import { memo, useCallback } from 'react'
-import { useSelector } from 'react-redux'
-import type { SortField, View } from '@/entities/ListFilters'
+import { memo } from 'react'
 import { ListFilters } from '@/entities/ListFilters'
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
-import type { SortOrder } from '@/shared/const/sort'
 import { VStack } from '@/shared/ui/redesigned/Stack'
 import { Search } from '@/shared/ui/deprecated/Search'
-import { articleInfiniteListActions } from '../../model/slice/articleInfiniteListSlice'
-import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles'
-import { getArticleInfiniteListSearch } from '../../model/selectors/getArticleInfiniteListSearch/getArticleInfiniteListSearch'
-import { getArticleInfiniteListView } from '../../model/selectors/getArticleInfiniteListView/getArticleInfiniteListView'
-import { getArticleInfiniteListSortField } from '../../model/selectors/getArticleInfiniteListSortField/getArticleInfiniteListSortField'
-import { getArticleInfiniteListOrder } from '../../model/selectors/getArticleInfiniteListOrder/getArticleInfiniteListOrder'
-import { ArticleInfiniteListTabs } from '../ArticleInfiniteListTabs/ArticleInfiniteListTabs'
+import { useArticleFilters } from '../../lib/useArticleFilters'
+import { useArticleView } from '../../lib/useArticleView'
 
 interface ArticleInfiniteListFiltersProps {
   className?: string
@@ -20,52 +11,17 @@ interface ArticleInfiniteListFiltersProps {
 
 export const ArticleInfiniteListFilters = memo(
   ({ className }: ArticleInfiniteListFiltersProps) => {
-    const dispatch = useAppDispatch()
-    const sortField = useSelector(getArticleInfiniteListSortField)
-    const order = useSelector(getArticleInfiniteListOrder)
-    const view = useSelector(getArticleInfiniteListView)
-    const search = useSelector(getArticleInfiniteListSearch)
+    const viewProps = useArticleView()
 
-    const onChangeSortField = useCallback(
-      (newSortField: SortField) => {
-        dispatch(
-          articleInfiniteListActions.setSortField(newSortField)
-        )
-        dispatch(articleInfiniteListActions.setPage(1))
-        dispatch(fetchArticles({ replace: true }))
-      },
-      [dispatch]
-    )
-
-    const onChangeOrder = useCallback(
-      (newOrder: SortOrder) => {
-        dispatch(articleInfiniteListActions.setOrder(newOrder))
-        dispatch(articleInfiniteListActions.setPage(1))
-        dispatch(fetchArticles({ replace: true }))
-      },
-      [dispatch]
-    )
-
-    const onChangeView = useCallback(
-      (newView: View) => {
-        dispatch(articleInfiniteListActions.setView(newView))
-        dispatch(articleInfiniteListActions.setPage(1))
-        dispatch(fetchArticles({ replace: true }))
-      },
-      [dispatch]
-    )
-
-    const onSearch = useCallback(
-      (newQuery: string) => {
-        dispatch(articleInfiniteListActions.setSearch(newQuery))
-        dispatch(articleInfiniteListActions.setPage(1))
-      },
-      [dispatch]
-    )
-
-    const onSearchDebounced = useCallback(() => {
-      dispatch(fetchArticles({ replace: true }))
-    }, [dispatch])
+    const {
+      sortField,
+      order,
+      search,
+      onChangeSortField,
+      onChangeOrder,
+      onSearch,
+      onSearchDebounced,
+    } = useArticleFilters()
 
     return (
       <VStack gap={1.25} maxWidth className={className}>
@@ -74,15 +30,13 @@ export const ArticleInfiniteListFilters = memo(
           sortField={sortField}
           onChangeOrder={onChangeOrder}
           order={order}
-          onChangeView={onChangeView}
-          view={view}
+          {...viewProps}
         />
         <Search
           onSearch={onSearch}
           onSearchDebounced={onSearchDebounced}
           searchQuery={search}
         />
-        <ArticleInfiniteListTabs />
       </VStack>
     )
   }

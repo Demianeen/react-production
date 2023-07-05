@@ -1,0 +1,40 @@
+$toggle-offset: 0.125rem;
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 6.25rem;
+  height: 3.25rem;
+  cursor: pointer;
+  background-color: var(--dark-bg-redesigned);
+  border: none;
+  border-radius: 2rem;
+}
+
+.switchOff,
+.switchOn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(50% - $toggle-offset);
+  height: calc(100% - (2 * $toggle-offset));
+  color: var(--light-bg-redesigned);
+
+  &.enabled {
+    color: var(--text-redesigned);
+    background: var(--light-bg-redesigned);
+  }
+}
+
+.switchOff {
+  bottom: $toggle-offset;
+  left: $toggle-offset;
+  border-radius: 2rem 0 0 2rem;
+}
+
+.switchOn {
+  right: $toggle-offset;
+  bottom: $toggle-offset;
+  border-radius: 0 2rem 2rem 0;
+}

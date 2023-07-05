@@ -25,6 +25,12 @@ export const Clear: Template = {
   },
 }
 
+export const Filled: Template = {
+  args: {
+    variant: 'filled',
+  },
+}
+
 export const Outline: Template = {
   args: {
     variant: 'outline',

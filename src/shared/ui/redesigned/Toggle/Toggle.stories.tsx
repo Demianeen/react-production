@@ -1,15 +1,15 @@
 import type { StoryObj, Meta } from '@storybook/react'
-import { Br } from './Br'
+import { Toggle } from './Toggle'
 
 export default {
-  title: 'AFiletemplate/Br',
-  component: Br,
+  title: 'AFiletemplate/Switch',
+  component: Toggle,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as Meta<typeof Br>
+} as Meta<typeof Toggle>
 
-type Story = StoryObj<typeof Br>
+type Story = StoryObj<typeof Toggle>
 
 export const Primary: Story = {
   args: {},

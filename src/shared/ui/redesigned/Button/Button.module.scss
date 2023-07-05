@@ -1,7 +1,7 @@
 .button {
-  padding: 0.5rem 1rem;
   color: var(--text-redesigned);
   cursor: pointer;
+  border: none;
 
   &:hover {
     color: var(--accent-redesigned);
@@ -10,15 +10,18 @@
 
 // themes
 .clear {
-  padding: 0;
   background: none;
-  border: none;
-  outline: none;
+  border-radius: 2.125rem;
 }
 
 .outline {
   background: none;
   border: 1px solid var(--text-redesigned);
+}
+
+.filled {
+  background: var(--light-bg-redesigned);
+  border-radius: 2.125rem;
 }
 
 // sizes
@@ -55,6 +58,17 @@
     height: var(--font-line-xl);
     font: var(--font-xl);
   }
+}
+
+// paddings
+.verticalPadding {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.horizontalPadding {
+  padding-right: 1rem;
+  padding-left: 1rem;
 }
 
 // mods

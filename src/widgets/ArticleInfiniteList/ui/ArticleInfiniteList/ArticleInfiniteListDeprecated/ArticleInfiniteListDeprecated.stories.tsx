@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { LayoutDecorator } from '@/shared/lib/storybook/LayoutDecorator'
-import { ArticleInfiniteList } from './ArticleInfiniteList'
+import { ArticleInfiniteListDeprecated } from './ArticleInfiniteListDeprecated'
 
 export default {
-  title: 'widgets/ArticleInfiniteList/ArticleInfiniteList',
-  component: ArticleInfiniteList,
+  title: 'widgets/ArticleInfiniteList/ArticleInfiniteList/deprecated',
+  component: ArticleInfiniteListDeprecated,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
   decorators: [LayoutDecorator('fullpage')],
-} as Meta<typeof ArticleInfiniteList>
+} as Meta<typeof ArticleInfiniteListDeprecated>
 
-type Story = StoryObj<typeof ArticleInfiniteList>
+type Story = StoryObj<typeof ArticleInfiniteListDeprecated>
 
 export const Light: Story = {}
 

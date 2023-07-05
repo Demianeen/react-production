@@ -1,7 +1,9 @@
 import { memo, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Select } from '@/shared/ui/deprecated/Popups'
+import { Select as SelectDeprecated } from '@/shared/ui/deprecated/Popups'
 import type { SelectOption } from '@/shared/ui/deprecated/Popups'
+import { Select } from '@/shared/ui/redesigned/Popups'
+import { ToggleFeature } from '@/shared/lib/features'
 import { SortField } from '../../model/const/sortField'
 
 interface ListFiltersSortFieldProps {
@@ -37,14 +39,30 @@ export const ListFiltersSortField = memo(
     )
 
     return (
-      <Select
-        options={sortOptions}
-        label={t('Sort by')}
-        onChange={onChangeSortField}
-        value={sortField}
-        className={className}
-        direction='down-right'
-        data-testid='ListFiltersSortField'
+      <ToggleFeature
+        name='isAppRedesigned'
+        on={
+          <Select
+            options={sortOptions}
+            label={t('Sort by')}
+            onChange={onChangeSortField}
+            value={sortField}
+            className={className}
+            direction='down-right'
+            data-testid='ListFiltersSortField'
+          />
+        }
+        off={
+          <SelectDeprecated
+            options={sortOptions}
+            label={t('Sort by')}
+            onChange={onChangeSortField}
+            value={sortField}
+            className={className}
+            direction='down-right'
+            data-testid='ListFiltersSortField'
+          />
+        }
       />
     )
   }

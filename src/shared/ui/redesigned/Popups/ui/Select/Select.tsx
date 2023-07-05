@@ -3,9 +3,9 @@ import { Fragment, useMemo } from 'react'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import TickIcon from '@/shared/assets/icons/deprecated/tick-20-20.svg'
-import ArrowDownIcon from '@/shared/assets/icons/deprecated/arrows-up-down-20-20.svg'
 import type { Direction } from '@/shared/types/ui'
 import type { TestProps } from '@/shared/types/tests'
+import ArrowDownIcon from '@/shared/assets/icons/redesigned/arrow-down.svg'
 import { mapDirection } from '../../const/mapDirection'
 import { Button } from '../../../Button/Button'
 import { Icon } from '../../../Icon/Icon'
@@ -83,7 +83,8 @@ export const Select = typedMemo(
           <Listbox.Button
             as={Button}
             type='button'
-            variant='clear'
+            variant='filled'
+            paddings='horizontal'
             disabledButton={readonly}
             className={classNames(
               styles.button,
@@ -94,9 +95,7 @@ export const Select = typedMemo(
             )}
             data-testid={`${testId}.Button`}
           >
-            <span className={styles.label}>
-              {selectedOption?.label ?? defaultValue}
-            </span>
+            {selectedOption?.label ?? defaultValue}
             <Icon Svg={ArrowDownIcon} className={styles.icon} />
           </Listbox.Button>
           <Listbox.Options

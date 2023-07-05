@@ -2,11 +2,12 @@
   color: var(--icon-redesigned);
 }
 
-.button {
-  all: unset;
-  cursor: pointer;
+// mods
+.disabled {
+  color: var(--light-bg-redesigned);
 }
 
+.iconButton:hover,
 .button:hover .icon {
   color: var(--accent-redesigned);
 
