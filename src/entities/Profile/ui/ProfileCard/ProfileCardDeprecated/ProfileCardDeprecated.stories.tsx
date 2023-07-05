@@ -3,17 +3,17 @@ import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { Theme } from '@/shared/const/theme'
 import { Currency } from '@/entities/Currency'
 import { Country } from '@/entities/Country'
-import { ProfileCard } from './ProfileCard'
+import { ProfileCardDeprecated } from './ProfileCardDeprecated'
 
 export default {
   title: 'entities/ProfileCard',
-  component: ProfileCard,
+  component: ProfileCardDeprecated,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as Meta<typeof ProfileCard>
+} as Meta<typeof ProfileCardDeprecated>
 
-type Story = StoryObj<typeof ProfileCard>
+type Story = StoryObj<typeof ProfileCardDeprecated>
 const data = {
   firstName: 'Demian',
   lastName: 'Netliukh',

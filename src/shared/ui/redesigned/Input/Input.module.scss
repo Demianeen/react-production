@@ -26,13 +26,17 @@
     outline: none;
   }
 
-  &.readonly {
-    cursor: not-allowed;
-  }
-
   &::placeholder {
     color: var(--hint-redesigned);
   }
+}
+
+.readonly .input {
+  cursor: not-allowed;
+}
+
+.maxWidth {
+  width: 100%;
 }
 
 .addonLeft,

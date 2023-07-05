@@ -11,7 +11,9 @@ export interface NotificationButtonRedesignedProps {
   className?: string
 }
 
+// TODO: Add more notification functionality
 // TODO: Fix accessability
+
 export const NotificationButtonRedesigned = typedMemo(
   ({ className }: NotificationButtonRedesignedProps) => {
     return (

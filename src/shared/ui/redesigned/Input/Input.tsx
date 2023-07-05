@@ -8,6 +8,7 @@ import type { Mods } from '@/shared/lib/classNames/classNames'
 import { classNamesNew as classNames } from '@/shared/lib/classNames/classNamesNew'
 import { useFocus } from '@/shared/lib/hooks/useFocus/useFocus'
 import { useTab } from '@/shared/lib/hooks/useTab/useTab'
+import type { FlexDirection } from '../Stack'
 import { HStack } from '../Stack'
 import { WithLabel } from '../WithLabel/WithLabel'
 import styles from './Input.module.scss'
@@ -44,6 +45,7 @@ interface InputProps extends HTMLInputProps {
    * Flag to set width to 100% for input
    */
   maxWidth?: boolean
+  direction?: FlexDirection
 }
 
 export const Input = memo(
@@ -59,6 +61,7 @@ export const Input = memo(
     maxWidth,
     addonLeft,
     addonRight,
+    direction,
     ...props
   }: InputProps) => {
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -88,16 +91,20 @@ export const Input = memo(
         label={label}
         wrapperClassName={wrapperClassName}
         maxWidth={maxWidth}
+        direction={direction}
       >
         <HStack
           className={classNames(styles.inputWrapper, mods, className)}
+          maxWidth={maxWidth}
         >
           {addonLeft && (
             <div className={styles.addonLeft}>{addonLeft}</div>
           )}
           <input
             id={label}
-            className={styles.input}
+            className={classNames(styles.input, {
+              [styles.maxWidth]: maxWidth,
+            })}
             type={type}
             value={value}
             onChange={handleChange}
