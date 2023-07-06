@@ -8,6 +8,7 @@ export const RoutePath: Record<
   [AppRoutes.HOME]: routes.home(),
   [AppRoutes.ABOUT]: routes.about(),
   [AppRoutes.PROFILE]: routes.profile({ id: ':id' }),
+  [AppRoutes.SETTINGS]: routes.settings(),
   [AppRoutes.ARTICLES]: routes.articles(),
   [AppRoutes.ARTICLE_DETAILS]: routes.articleDetails({
     id: ':id',

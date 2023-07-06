@@ -12,10 +12,6 @@ interface CardSkeletonProps {
   maxWidth?: boolean
 }
 
-/**
- * Use components from redesigned folder
- * @deprecated
- */
 export const CardSkeleton = memo(
   ({
     className,

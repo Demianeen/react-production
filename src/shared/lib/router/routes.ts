@@ -4,6 +4,7 @@ export const routes = {
   home: () => '/',
   about: () => '/about',
   profile: ({ id }: { id: string }) => `/profile/${id}`,
+  settings: () => '/settings',
   articles: () => '/articles',
   articleDetails: ({ id }: { id: string }) => `/articles/${id}`,
   articleCreate: () => '/articles/new',

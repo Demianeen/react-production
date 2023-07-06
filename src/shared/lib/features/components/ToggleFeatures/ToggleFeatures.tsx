@@ -1,18 +1,18 @@
-import type { ReactElement } from 'react'
+import type { ReactNode } from 'react'
 import type { FeatureFlags } from '@/shared/types/featureFlags'
-import { getFeatureFlag } from '../setGetFeatures'
+import { getFeatureFlag } from '../../lib/setGetFeatures'
 
 interface ToggleFeatureProps {
   name: keyof FeatureFlags
-  on: ReactElement | null
-  off: ReactElement | null
+  on: ReactNode | null
+  off: ReactNode | null
 }
 
 export const ToggleFeature = ({
   on,
   off,
   name,
-}: ToggleFeatureProps): ReactElement | null => {
+}: ToggleFeatureProps): ReactNode | null => {
   if (getFeatureFlag(name)) {
     return on
   }

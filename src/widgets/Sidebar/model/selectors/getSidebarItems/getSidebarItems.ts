@@ -9,7 +9,7 @@ import HomeIcon from '@/shared/assets/icons/redesigned/home.svg'
 import AboutIcon from '@/shared/assets/icons/redesigned/info.svg'
 import ProfileIcon from '@/shared/assets/icons/redesigned/avatar.svg'
 import ArticlesIcon from '@/shared/assets/icons/redesigned/articles.svg'
-import { toggleFeature } from '../../../../../shared/lib/features/toggleFeatures'
+import { toggleFeature } from '@/shared/lib/features'
 import type { SidebarItemArgs } from '../../types/sidebar'
 
 export const [useSidebarItems, getSidebarItems] = buildSelector(

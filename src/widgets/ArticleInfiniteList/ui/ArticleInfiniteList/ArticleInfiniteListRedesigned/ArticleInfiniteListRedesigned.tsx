@@ -36,6 +36,7 @@ const reducers: ReducersList = {
   articleInfiniteList: articleInfiniteListReducer,
 }
 
+// TODO: Make navigation through articles with tabs
 export const ArticleInfiniteListRedesigned = ({
   className,
   scrollParent,

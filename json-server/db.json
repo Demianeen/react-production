@@ -1077,8 +1077,8 @@
       "password": "123",
       "roles": ["ADMIN"],
       "jsonSettings": {
-        "theme": "appDarkTheme",
-        "language": "ua",
+        "theme": "appLightTheme",
+        "language": "en",
         "isArticlePageWasOpened": true,
         "isArticlesPageWasOpened": true
       },

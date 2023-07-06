@@ -7,6 +7,8 @@ import {
   TextSize,
   TextTheme,
 } from '@/shared/ui/deprecated/Text'
+import { ToggleFeature } from '@/shared/lib/features'
+import { Title } from '@/shared/ui/redesigned/Title'
 
 interface NotFoundPageProps {
   className?: string
@@ -16,15 +18,29 @@ const NotFoundPage = ({ className }: NotFoundPageProps) => {
   const { t } = useTranslation()
 
   return (
-    <Page className={className} data-testid='NotFoundPage'>
-      <HStack justify='center' align='center' maxHeight maxWidth>
-        <Text
-          theme={TextTheme.ERROR}
-          size={TextSize.L}
-          title={t('Page not found')}
-        />
-      </HStack>
-    </Page>
+    <HStack
+      as={Page}
+      justify='center'
+      align='center'
+      maxHeight
+      maxWidth
+    >
+      <ToggleFeature
+        name='isAppRedesigned'
+        on={
+          <Title level={2} tag='h1'>
+            {t('Page not found')}
+          </Title>
+        }
+        off={
+          <Text
+            theme={TextTheme.ERROR}
+            size={TextSize.L}
+            title={t('Page not found')}
+          />
+        }
+      />
+    </HStack>
   )
 }
 

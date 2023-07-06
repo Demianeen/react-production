@@ -11,6 +11,7 @@ import { ForbiddenPage } from '@/pages/ForbiddenPage'
 import type { AppRouteProps } from '@/shared/types/router'
 import { AppRoutes } from '@/shared/const/router/appRoutes'
 import { RoutePath } from '@/shared/const/router/routePath'
+import { SettingsPage } from '@/pages/SettingsPage'
 
 export const routeConfig: Record<AppRoutes, AppRouteProps> = {
   [AppRoutes.HOME]: {
@@ -24,6 +25,11 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
   [AppRoutes.PROFILE]: {
     path: RoutePath.profile,
     element: <ProfilePage />,
+    authOnly: true,
+  },
+  [AppRoutes.SETTINGS]: {
+    path: RoutePath.settings,
+    element: <SettingsPage />,
     authOnly: true,
   },
   [AppRoutes.ARTICLES]: {

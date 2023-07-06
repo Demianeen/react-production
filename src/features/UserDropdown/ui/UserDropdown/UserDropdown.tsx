@@ -55,6 +55,10 @@ export const UserDropdown = memo(
         }),
       },
       {
+        label: t('Settings'),
+        href: routes.settings(),
+      },
+      {
         label: t('Logout'),
         onClick: onLogout,
       },
