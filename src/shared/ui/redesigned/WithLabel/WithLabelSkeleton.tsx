@@ -1,27 +1,21 @@
 import type { ReactNode } from 'react'
 import { memo } from 'react'
-import { classNames } from '@/shared/lib/classNames/classNames'
 import { Skeleton } from '../Skeleton/Skeleton'
 import { VStack } from '../Stack'
-import styles from './WithLabel.module.scss'
 
 interface WithLabelSkeletonProps {
   className?: string
   children: ReactNode
   /**
-   * @description The class name for the wrapper
+   * The class name for the wrapper
    */
   wrapperClassName?: string
   /**
-   * @description Flag to set width to 100%
+   * Flag to set width to 100%
    */
   maxWidth?: boolean
 }
 
-/**
- * Use components from redesigned folder
- * @deprecated
- */
 export const WithLabelSkeleton = memo(
   ({
     className,
@@ -30,12 +24,12 @@ export const WithLabelSkeleton = memo(
     maxWidth,
   }: WithLabelSkeletonProps) => {
     return (
-      <VStack className={wrapperClassName} maxWidth={maxWidth}>
-        <Skeleton
-          height='var(--font-line-m)'
-          width='6rem'
-          className={classNames(styles.label, {}, [className])}
-        />
+      <VStack
+        className={wrapperClassName}
+        maxWidth={maxWidth}
+        gap={0.5}
+      >
+        <Skeleton variant='text' width='6rem' className={className} />
         {children}
       </VStack>
     )

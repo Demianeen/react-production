@@ -7,7 +7,7 @@ import type { Currency } from '@/entities/Currency'
 import { SelectCurrency } from '@/entities/Currency'
 import type { Country } from '@/entities/Country'
 import { SelectCountry } from '@/entities/Country'
-import { Skeleton } from '@/shared/ui/deprecated/Skeleton'
+import { Skeleton } from '@/shared/ui/redesigned/Skeleton'
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
 import { Title } from '@/shared/ui/redesigned/Title'
 import { Card } from '@/shared/ui/redesigned/Card'
@@ -55,7 +55,7 @@ export const ProfileCardRedesigned = ({
     return (
       <VStack gap={2} as={Card} className={className} maxWidth>
         <HStack justify='center' maxWidth>
-          <Skeleton width='8rem' height='8rem' borderRadius='50%' />
+          <Skeleton variant='circular' size='8rem' />
         </HStack>
         <div className={styles.content}>
           <InputSkeleton />

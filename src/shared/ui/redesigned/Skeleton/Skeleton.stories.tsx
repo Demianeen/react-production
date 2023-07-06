@@ -18,11 +18,17 @@ export default {
 type Story = StoryObj<typeof Skeleton>
 export const Light: Story = {}
 
+export const Text: Story = {
+  args: {
+    variant: 'text',
+    height: 'text',
+  },
+}
+
 export const Circle: Story = {
   args: {
-    width: '7rem',
-    height: '7rem',
-    borderRadius: '50%',
+    variant: 'circular',
+    size: '7rem',
   },
 }
 
@@ -32,9 +38,8 @@ export const Dark: Story = {
 
 export const DarkCircle: Story = {
   args: {
-    width: '7rem',
-    height: '7rem',
-    borderRadius: '50%',
+    variant: 'circular',
+    size: '7rem',
   },
   decorators: [ThemeDecorator(Theme.DARK)],
 }
@@ -45,9 +50,8 @@ export const Orange: Story = {
 
 export const OrangeCircle: Story = {
   args: {
-    width: '7rem',
-    height: '7rem',
-    borderRadius: '50%',
+    variant: 'circular',
+    size: '7rem',
   },
   decorators: [ThemeDecorator(Theme.ORANGE)],
 }

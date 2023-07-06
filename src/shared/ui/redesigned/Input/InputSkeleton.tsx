@@ -8,10 +8,6 @@ interface InputSkeletonProps {
   maxWidth?: boolean
 }
 
-/**
- * Use components from redesigned folder
- * @deprecated
- */
 export const InputSkeleton = memo(
   ({ className, wrapperClassName, maxWidth }: InputSkeletonProps) => {
     return (
@@ -19,10 +15,7 @@ export const InputSkeleton = memo(
         wrapperClassName={wrapperClassName}
         maxWidth={maxWidth}
       >
-        <Skeleton
-          height='calc(var(--font-line-m) + 1rem)'
-          className={className}
-        />
+        <Skeleton className={className} height='2.5rem' />
       </WithLabelSkeleton>
     )
   }

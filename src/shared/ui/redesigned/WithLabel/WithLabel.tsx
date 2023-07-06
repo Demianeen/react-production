@@ -1,9 +1,7 @@
 import type { LabelHTMLAttributes, ReactNode } from 'react'
 import { memo } from 'react'
-import { classNames } from '@/shared/lib/classNames/classNames'
 import type { FlexDirection } from '../Stack'
 import { Flex } from '../Stack'
-import styles from './WithLabel.module.scss'
 
 type HTMLLabelProps = Omit<
   LabelHTMLAttributes<HTMLLabelElement>,
@@ -41,11 +39,7 @@ export const WithLabel = memo(
         direction={direction}
       >
         {label && (
-          <label
-            htmlFor={label}
-            className={classNames(styles.label, {}, [className])}
-            {...props}
-          >
+          <label htmlFor={label} className={className} {...props}>
             {label}:{' '}
           </label>
         )}

@@ -35,9 +35,7 @@ export const Avatar = typedForwardRef(
     )
 
     const fallback = useMemo(
-      () => (
-        <Skeleton height={size} width={size} borderRadius='50%' />
-      ),
+      () => <Skeleton size={size} variant='circular' />,
       [size]
     )
 
