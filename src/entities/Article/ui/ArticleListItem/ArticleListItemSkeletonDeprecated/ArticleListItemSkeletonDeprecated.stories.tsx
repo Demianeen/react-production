@@ -1,29 +1,25 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { View } from '@/entities/ListFilters'
 import { ParentDecorator } from '@/shared/lib/storybook/ParentDecorator'
-import { mockArticle } from '../../model/mocks/mockArticle'
-import { ArticleListItem } from './ArticleListItem'
+import { ArticleListItemSkeletonDeprecated } from './ArticleListItemSkeletonDeprecated'
 
 export default {
   title: 'entities/Article/ArticleListItem',
-  component: ArticleListItem,
+  component: ArticleListItemSkeletonDeprecated,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  args: {
-    article: mockArticle,
-  },
-} as Meta<typeof ArticleListItem>
+} as Meta<typeof ArticleListItemSkeletonDeprecated>
 
-type Story = StoryObj<typeof ArticleListItem>
+type Story = StoryObj<typeof ArticleListItemSkeletonDeprecated>
 
-export const List: Story = {
+export const ListSkeleton: Story = {
   args: {
     view: View.LIST,
   },
 }
 
-export const Grid: Story = {
+export const GridSkeleton: Story = {
   args: {
     view: View.GRID,
   },

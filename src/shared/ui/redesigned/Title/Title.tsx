@@ -18,7 +18,7 @@ export interface TitleProps
   className?: string
   /**
    * Title can have two levels: 1 and 2. 1 is the biggest.
-   * @default 1
+   * @default 2
    */
   level?: 1 | 2
   /**
@@ -29,7 +29,7 @@ export interface TitleProps
 }
 
 export const Title = typedMemo(
-  ({ className, tag, level = 1, children, ...props }: TitleProps) => {
+  ({ className, tag, level = 2, children, ...props }: TitleProps) => {
     const Tag = tag ?? defaultTagArray[level - 1]
 
     return (

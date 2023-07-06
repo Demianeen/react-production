@@ -8,6 +8,8 @@ export interface StickyContentLayoutProps {
   right?: ReactElement
   left?: ReactElement
   content: ReactElement
+  leftContainerClassName?: string
+  rightContainerClassName?: string
 }
 
 export const StickyContentLayout = typedMemo(

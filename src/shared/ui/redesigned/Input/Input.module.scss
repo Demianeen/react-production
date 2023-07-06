@@ -1,15 +1,15 @@
 .inputWrapper {
   padding: 0.5rem 1rem;
-  border: 1px solid var(--icon-redesigned);
+  border: 2px solid var(--icon-redesigned);
   border-radius: 3rem;
 
   &.focused {
     border-color: var(--accent-redesigned);
-    box-shadow: var(--box-shadow-accent-redesigned);
   }
 
   &.focusedByTab {
     outline: var(--outline-redesigned);
+    box-shadow: none;
   }
 
   &.withAddonLeft,

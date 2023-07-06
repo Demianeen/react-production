@@ -7,7 +7,7 @@ import { VirtualizedArticleList } from '@/entities/Article'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import type { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
-import { HStack } from '@/shared/ui/redesigned/Stack'
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
 import { Title } from '@/shared/ui/redesigned/Title'
 import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout'
 import { ArticleFiltersContainer } from '../../ArticleFiltersContainer/ArticleFiltersContainer'
@@ -24,6 +24,7 @@ import {
   articleInfiniteListActions,
 } from '../../../model/slice/articleInfiniteListSlice'
 import { articleInfiniteListReducer } from '../../../testing'
+import styles from './ArticleInfiniteListRedesigned.module.scss'
 
 export interface ArticleInfiniteListRedesignedProps {
   className?: string
@@ -78,8 +79,13 @@ export const ArticleInfiniteListRedesigned = ({
 
   return (
     <StickyContentLayout
-      left={<ArticleViewSelectorContainer />}
-      right={<ArticleFiltersContainer />}
+      className={styles.stickyContentLayout}
+      right={
+        <VStack gap={1}>
+          <ArticleViewSelectorContainer />
+          <ArticleFiltersContainer />
+        </VStack>
+      }
       content={
         <VirtualizedArticleList
           articles={articles}

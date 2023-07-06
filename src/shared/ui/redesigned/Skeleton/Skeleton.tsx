@@ -68,20 +68,19 @@ export const Skeleton = memo(
     } else if (props.variant === 'text') {
       const { width, height = 'text', additionalHeight } = props
 
+      const heightVariable = `var(--font-line-${height}-redesigned)`
+
       let heightValue: string
       if (additionalHeight !== undefined) {
-        heightValue = `calc(var(--font-size-${height}-redesigned) + ${additionalHeight})`
+        heightValue = `calc(${heightVariable} + ${additionalHeight})`
       } else {
-        heightValue = `var(--font-size-${height}-redesigned)`
+        heightValue = heightVariable
       }
-
-      const margin = `calc(((var(--font-line-${height}-redesigned) - ${heightValue}) / 2))`
 
       style = {
         width,
         height: heightValue,
         borderRadius: '0.5rem',
-        margin: `${margin} 0`,
       }
     } else {
       const { width, height } = props
@@ -97,6 +96,7 @@ export const Skeleton = memo(
       <div
         className={classNames(styles.skeleton, {}, [className])}
         style={style}
+        aria-hidden
       />
     )
   }
