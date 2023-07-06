@@ -16,60 +16,35 @@
 }
 
 .grid {
+  overflow: hidden;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
 
-  .imageWrapper {
-    position: relative;
+  .textWrapper {
+    padding: 0.5rem 0.5rem 1rem;
+  }
+
+  .img {
+    flex: 1 0 0;
+    align-self: stretch;
     width: 100%;
-    aspect-ratio: 1 / 1;
-
-    .img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    .date {
-      position: absolute;
-      top: 0;
-      right: 0;
-      display: none;
-    }
+    height: 8.8rem;
+    object-fit: cover;
   }
 
-  .infoWrapper {
-    margin-top: 1rem;
-
-    .types {
-      width: calc(100% - 5rem);
-
-      p {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-    }
-
-    .views {
-      margin: 0 0.5rem 0 auto;
-    }
-  }
-
-  /* stylelint-disable no-descending-specificity */
   .title {
-    margin-top: 0.5rem;
-
-    p {
-      flex-grow: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
+    display: -webkit-box;
+    height: calc(var(--font-line-l2title-redesigned) * 3);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
   }
 
-  /* stylelint-enable no-descending-specificity */
+  .avatar {
+    margin: 0 0.5rem 0 1rem;
+  }
+
   &:hover {
     opacity: 0.8;
     transform: scale(1.01);

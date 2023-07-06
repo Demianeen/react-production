@@ -59,15 +59,29 @@ export const ArticleListItemSkeletonRedesigned = memo(
           className,
           styles[view],
         ])}
+        role='link'
+        padding={0}
         aria-busy
       >
-        <div className={styles.imageWrapper}>
-          <Skeleton className={styles.img} />
-        </div>
-        <HStack className={styles.infoWrapper} maxWidth>
-          <Skeleton variant='text' className={styles.types} />
-        </HStack>
-        <Skeleton variant='text' className={styles.title} />
+        <Skeleton className={styles.img} />
+        <VStack gap={0.5} className={styles.textWrapper}>
+          <Skeleton
+            variant='text'
+            height='l2title'
+            numberOfLines={3}
+          />
+          <HStack
+            className={styles.infoWrapper}
+            justify='between'
+            maxWidth
+          >
+            <Skeleton variant='text' />
+          </HStack>
+          <HStack gap={0.25} className={styles.avatar}>
+            <Skeleton variant='circular' size='2rem' />
+            <Skeleton variant='text' width='5rem' />
+          </HStack>
+        </VStack>
       </Card>
     )
   }

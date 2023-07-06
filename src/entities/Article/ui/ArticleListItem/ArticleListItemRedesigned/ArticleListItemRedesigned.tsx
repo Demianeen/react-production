@@ -44,6 +44,18 @@ export const ArticleListItemRedesigned = memo(
   }: ArticleListItemRedesignedProps) => {
     const { t } = useTranslation('articles')
 
+    const user = useMemo(
+      () => (
+        <>
+          {article.user.avatar && (
+            <Avatar size='2rem' src={article.user.avatar} />
+          )}
+          <b>{article.user.username}</b>
+        </>
+      ),
+      [article.user.avatar, article.user.username]
+    )
+
     const image = useMemo(
       () => (
         <AppImage
@@ -54,15 +66,6 @@ export const ArticleListItemRedesigned = memo(
         />
       ),
       [article.img, article.title]
-    )
-
-    const types = useMemo(
-      () => (
-        <span className={styles.types}>
-          {article.types.join(', ')}
-        </span>
-      ),
-      [article.types]
     )
 
     const views = useMemo(
@@ -100,10 +103,7 @@ export const ArticleListItemRedesigned = memo(
           data-testid={`${testId}.List`}
         >
           <HStack as='header' gap={0.5} maxWidth>
-            {article.user.avatar && (
-              <Avatar size='2rem' src={article.user.avatar} />
-            )}
-            <b>{article.user.username}</b>
+            {user}
             {article.createdAt}
           </HStack>
           <Title level={1} tag='h2'>
@@ -156,16 +156,25 @@ export const ArticleListItemRedesigned = memo(
             styles[view],
           ])}
           role='link'
+          padding={0}
         >
-          <div className={styles.imageWrapper}>
-            {image}
-            <span className={styles.date}>{article.createdAt}</span>
+          {image}
+          <div className={styles.textWrapper}>
+            <Title level={2} tag='h2' className={styles.title}>
+              {article.title}
+            </Title>
+            <HStack
+              className={styles.infoWrapper}
+              justify='between'
+              maxWidth
+            >
+              <span className={styles.date}>{article.createdAt}</span>
+              {views}
+            </HStack>
+            <HStack gap={0.25} className={styles.avatar}>
+              {user}
+            </HStack>
           </div>
-          <HStack className={styles.infoWrapper} maxWidth>
-            {types}
-            {views}
-          </HStack>
-          <p className={styles.title}>{article.title}</p>
         </Card>
       </AppLink>
     )

@@ -23,10 +23,10 @@ interface SkeletonPropsVariantText extends SkeletonPropsBase {
    */
   height?: 'text' | 'l2title' | 'title'
   /**
-   * @default 0
-   * Additional height added to the calculated height
+   * Multiplies height by the number of lines
+   * @default 1
    */
-  additionalHeight?: string | number
+  numberOfLines?: number
 }
 
 interface SkeletonPropsVariantRounded extends SkeletonPropsBase {
@@ -66,20 +66,11 @@ export const Skeleton = memo(
         borderRadius: '50%',
       }
     } else if (props.variant === 'text') {
-      const { width, height = 'text', additionalHeight } = props
-
-      const heightVariable = `var(--font-line-${height}-redesigned)`
-
-      let heightValue: string
-      if (additionalHeight !== undefined) {
-        heightValue = `calc(${heightVariable} + ${additionalHeight})`
-      } else {
-        heightValue = heightVariable
-      }
+      const { width, height = 'text', numberOfLines = 1 } = props
 
       style = {
         width,
-        height: heightValue,
+        height: `calc(var(--font-line-${height}-redesigned) * ${numberOfLines})`,
         borderRadius: '0.5rem',
       }
     } else {
