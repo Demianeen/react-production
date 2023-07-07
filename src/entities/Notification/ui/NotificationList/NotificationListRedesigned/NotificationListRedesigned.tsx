@@ -3,10 +3,10 @@ import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { skipToken } from '@reduxjs/toolkit/query'
 import { VStack } from '@/shared/ui/redesigned/Stack'
-import { CardSkeleton } from '@/shared/ui/redesigned/Card'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { getUserId } from '@/entities/User'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
+import { Skeleton } from '@/shared/ui/redesigned/Skeleton'
 import { NotificationItem } from '../../NotificationItem/NotificationItem'
 import { useGetNotificationsQuery } from '../../../api/notificationApi'
 import styles from './NotificationListRedesigned.module.scss'
@@ -36,9 +36,9 @@ export const NotificationListRedesigned = typedMemo(
           gap={1.25}
           maxWidth
         >
-          <CardSkeleton height='5.7rem' />
-          <CardSkeleton width='100%' height='5.7rem' />
-          <CardSkeleton width='100%' height='5.7rem' />
+          <Skeleton height='5.7rem' />
+          <Skeleton height='5.7rem' />
+          <Skeleton height='5.7rem' />
         </VStack>
       )
     }

@@ -21,8 +21,8 @@ export const StickyContentLayout = typedMemo(
         ])}
       >
         {left && <div className={styles.left}>{left}</div>}
-        {content}
         {right && <div className={styles.right}>{right}</div>}
+        {content}
       </div>
     )
   }

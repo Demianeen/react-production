@@ -1,5 +1,5 @@
 import type { HTMLAttributeAnchorTarget } from 'react'
-import { memo, useMemo } from 'react'
+import { memo, useCallback, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import EyeIcon from '@/shared/assets/icons/redesigned/eye.svg'
@@ -15,6 +15,8 @@ import { Avatar } from '@/shared/ui/redesigned/Avatar'
 import { Card } from '@/shared/ui/redesigned/Card'
 import { AppImage } from '@/shared/ui/redesigned/AppImage'
 import { Title } from '@/shared/ui/redesigned/Title'
+import { useFocus } from '@/shared/lib/hooks/useFocus/useFocus'
+import { useTab } from '@/shared/lib/hooks/useTab/useTab'
 import { ArticleBlockType } from '../../../model/const/articleBlockType'
 import type { OnOpenArticle } from '../../ArticleList/VirtualizedArticleList'
 import type {
@@ -43,6 +45,9 @@ export const ArticleListItemRedesigned = memo(
     'data-testid': testId = 'ArticleListItem',
   }: ArticleListItemRedesignedProps) => {
     const { t } = useTranslation('articles')
+    const vStackRef = useRef<HTMLDivElement>(null)
+    const [isLinkFocused, bindFocus] = useFocus()
+    const { isTabLastKey } = useTab()
 
     const user = useMemo(
       () => (
@@ -82,6 +87,10 @@ export const ArticleListItemRedesigned = memo(
       return () => onOpenArticle?.({ article, index })
     }
 
+    const onFocus = useCallback(() => {
+      vStackRef.current?.scrollIntoView()
+    }, [])
+
     const textBlock = useMemo(() => {
       if (view === View.LIST) {
         return article.blocks.find(
@@ -94,6 +103,7 @@ export const ArticleListItemRedesigned = memo(
     if (view === View.LIST) {
       return (
         <VStack
+          ref={vStackRef}
           gap={1}
           as={Card}
           className={classNames(styles.articleListItem, {}, [
@@ -132,6 +142,7 @@ export const ArticleListItemRedesigned = memo(
               })}
               target={target}
               onClick={onClick()}
+              onFocus={onFocus}
             >
               {t('Read more...')}
             </Button>
@@ -149,13 +160,16 @@ export const ArticleListItemRedesigned = memo(
         target={target}
         onClick={onClick()}
         data-testid={`${testId}.Grid`}
+        {...bindFocus}
       >
         <Card
-          className={classNames(styles.articleListItem, {}, [
-            className,
-            styles[view],
-          ])}
-          role='link'
+          className={classNames(
+            '',
+            {
+              [styles.focused]: isLinkFocused && isTabLastKey,
+            },
+            [className, styles[view]]
+          )}
           padding={0}
         >
           {image}

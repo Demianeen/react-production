@@ -130,6 +130,7 @@ export const VirtualizedArticleList = ({
           skeletonsLimit,
           Header,
         }}
+        overscan={500}
         customScrollParent={scrollParent ?? undefined}
         initialTopMostItemIndex={startIndex}
         role='feed'
@@ -163,6 +164,7 @@ export const VirtualizedArticleList = ({
         skeletonsLimit,
         Header,
       }}
+      overscan={500}
       customScrollParent={scrollParent ?? undefined}
       role='feed'
       data-testid='VirtualizedArticleList.Grid'

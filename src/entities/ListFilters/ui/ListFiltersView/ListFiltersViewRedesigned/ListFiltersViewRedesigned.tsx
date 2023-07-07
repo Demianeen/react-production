@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from 'react'
+import { memo, useCallback, useEffect, useState } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { Toggle } from '@/shared/ui/redesigned/Toggle'
 import { useTranslation } from 'react-i18next'
@@ -30,6 +30,10 @@ export const ListFiltersViewRedesigned = memo(
       },
       [onChangeView]
     )
+
+    useEffect(() => {
+      setEnabled(view === View.GRID)
+    }, [view])
 
     const listIcon = (
       <Icon

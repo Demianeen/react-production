@@ -1,7 +1,8 @@
-import type { HTMLAttributes, ReactNode } from 'react'
+import type { ForwardedRef, HTMLAttributes, ReactNode } from 'react'
 import type { Mods } from '@/shared/lib/classNames/classNames'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
+import { typedForwardRef } from '@/shared/lib/react/typedForwardRef/typedForwardRef'
 import styles from './Card.module.scss'
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
@@ -23,27 +24,33 @@ const mapPadding = {
 /* eslint-enable @typescript-eslint/naming-convention */
 
 export const Card = typedMemo(
-  ({
-    className,
-    children,
-    maxWidth = false,
-    padding = 1.5,
-    ...props
-  }: CardProps) => {
-    const mods: Mods = {
-      [styles.maxWidth]: maxWidth,
-    }
+  typedForwardRef(
+    (
+      {
+        className,
+        children,
+        maxWidth = false,
+        padding = 1.5,
+        ...props
+      }: CardProps,
+      ref: ForwardedRef<HTMLDivElement>
+    ) => {
+      const mods: Mods = {
+        [styles.maxWidth]: maxWidth,
+      }
 
-    return (
-      <article
-        className={classNames(styles.card, mods, [
-          className,
-          mapPadding[padding],
-        ])}
-        {...props}
-      >
-        {children}
-      </article>
-    )
-  }
+      return (
+        <article
+          className={classNames(styles.card, mods, [
+            className,
+            mapPadding[padding],
+          ])}
+          {...props}
+          ref={ref}
+        >
+          {children}
+        </article>
+      )
+    }
+  )
 )

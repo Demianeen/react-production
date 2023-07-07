@@ -13,8 +13,6 @@ export const AppRouter = memo(() => {
         <Suspense fallback={<PageLoader />}>{route.element}</Suspense>
       )
 
-      console.log('route', route)
-
       return (
         <Route
           key={route.path}

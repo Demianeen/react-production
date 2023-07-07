@@ -46,13 +46,10 @@
   }
 
   &:hover {
-    opacity: 0.8;
     transform: scale(1.01);
+  }
 
-    .imageWrapper {
-      .date {
-        display: block;
-      }
-    }
+  &.focused {
+    outline: var(--outline-redesigned);
   }
 }
