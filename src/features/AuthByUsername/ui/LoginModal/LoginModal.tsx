@@ -1,5 +1,7 @@
-import { Modal } from '@/shared/ui/deprecated/Modal'
+import { Modal as ModalDeprecated } from '@/shared/ui/deprecated/Modal'
 import { SuspenseWithSpinner } from '@/shared/ui/deprecated/SuspenseWithSpinner'
+import { Modal } from '@/shared/ui/redesigned/Modal'
+import { ToggleFeature } from '@/shared/lib/features'
 import { LoginFormAsync } from '../LoginForm/LoginForm.async'
 
 interface LoginModalProps {
@@ -15,15 +17,32 @@ export const LoginModal = ({
   onClose,
 }: LoginModalProps) => {
   return (
-    <Modal
-      isOpen={isOpen}
-      onClose={onClose}
-      className={className}
-      lazy
-    >
-      <SuspenseWithSpinner>
-        <LoginFormAsync onSuccess={onClose} />
-      </SuspenseWithSpinner>
-    </Modal>
+    <ToggleFeature
+      name='isAppRedesigned'
+      on={
+        <Modal
+          isOpen={isOpen}
+          onClose={onClose}
+          className={className}
+          lazy
+        >
+          <SuspenseWithSpinner>
+            <LoginFormAsync onSuccess={onClose} />
+          </SuspenseWithSpinner>
+        </Modal>
+      }
+      off={
+        <ModalDeprecated
+          isOpen={isOpen}
+          onClose={onClose}
+          className={className}
+          lazy
+        >
+          <SuspenseWithSpinner>
+            <LoginFormAsync onSuccess={onClose} />
+          </SuspenseWithSpinner>
+        </ModalDeprecated>
+      }
+    />
   )
 }

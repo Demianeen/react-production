@@ -29,7 +29,7 @@ const App = () => {
     <ToggleFeature
       name='isAppRedesigned'
       on={
-        <div className='appRedesigned'>
+        <div className='appRedesigned' id='app'>
           {/* for i18next */}
           <Suspense fallback={<PageLoader />}>
             <MainLayout
@@ -41,7 +41,7 @@ const App = () => {
         </div>
       }
       off={
-        <div className='app'>
+        <div className='app' id='app'>
           <Suspense fallback={<PageLoader />}>
             <Navbar />
             <HStack>

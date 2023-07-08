@@ -29,8 +29,6 @@ export const loginByUsername = createAsyncThunk<
       )
       dispatch(userActions.setAuthData(response.data))
 
-      // extra.navigate?.('/about')
-
       return response.data
     } catch (error) {
       return rejectWithValue('error')

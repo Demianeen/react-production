@@ -15,7 +15,7 @@
   grid-area: content;
   justify-self: center;
   width: 100%;
-  max-width: 65rem;
+  max-width: min(65rem, 100%);
   padding: 2rem 0;
 }
 

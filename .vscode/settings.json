@@ -2,10 +2,14 @@
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "i18n-ally.localesPaths": ["public/locales"],
   "i18n-ally.sourceLanguage": "english",
-  "i18n-ally.defaultNamespace": "translation",
   "jest.jestCommandLine": "npm run test:unit --",
   "i18n-ally.dirStructure": "dir",
   "i18n-ally.keystyle": "flat",
   "cSpell.words": ["Avaliable", "rightbar"],
-  "figma.assetExportDirectory": "src/shared/assets/icons/redesigned"
+  "figma.assetExportDirectory": "src/shared/assets/icons/redesigned",
+  "i18n-ally.namespace": true,
+  "i18n-ally.pathMatcher": "{locale}/{namespace}.json",
+  "i18n-ally.translate.promptSource": true,
+  "i18n-ally.enabledFrameworks": ["react-i18next"],
+  "i18n-ally.extract.autoDetect": true
 }

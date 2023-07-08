@@ -13,6 +13,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
    */
   maxWidth?: boolean
   padding?: 0 | 1 | 1.5
+  background?: 'light' | 'dark'
 }
 
 /* eslint-disable @typescript-eslint/naming-convention */
@@ -31,6 +32,7 @@ export const Card = typedMemo(
         children,
         maxWidth = false,
         padding = 1.5,
+        background = 'dark',
         ...props
       }: CardProps,
       ref: ForwardedRef<HTMLDivElement>
@@ -44,6 +46,7 @@ export const Card = typedMemo(
           className={classNames(styles.card, mods, [
             className,
             mapPadding[padding],
+            styles[background],
           ])}
           {...props}
           ref={ref}

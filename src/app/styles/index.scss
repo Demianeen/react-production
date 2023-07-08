@@ -4,29 +4,21 @@
 @import 'themes/light';
 @import 'themes/orange';
 
-.app,
-.app > .appStyles {
-  font: var(--font-m);
-  color: var(--primary-color);
-}
-
 .app {
   min-height: 100svh;
+  font: var(--font-m);
+  color: var(--primary-color);
   background: var(--bg-color);
 }
 
-.appRedesigned,
-.appRedesigned > .appStyles {
+.appRedesigned {
   font: var(--font-text-redesigned);
   color: var(--text-redesigned);
-}
-
-.appRedesigned {
   background: var(--bg-redesigned);
 }
 
 .appRedesigned * {
-  // shows outline only on tabs
+  // shows outline only when user navigate with keyboard
   &:focus-visible {
     outline: var(--outline-redesigned);
   }

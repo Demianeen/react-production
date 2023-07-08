@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 import { LoginModal } from '@/features/AuthByUsername'
 import { NotificationButton } from '@/features/NotificationButton'
 import { UserDropdown } from '@/features/UserDropdown'
-import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button'
+import { Button } from '@/shared/ui/redesigned/Button'
 import { HStack } from '@/shared/ui/redesigned/Stack'
 import styles from './NavbarRedesigned.module.scss'
 
@@ -46,7 +46,7 @@ export const NavbarRedesigned = typedMemo(
         ) : (
           <Button
             type='button'
-            theme={ButtonTheme.CLEAR_INVERTED}
+            variant='clear'
             onClick={onOpenModal}
             className={styles.loginBtn}
           >

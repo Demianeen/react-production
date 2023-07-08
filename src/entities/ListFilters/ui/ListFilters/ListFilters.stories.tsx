@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { SortOrder } from '@/shared/const/sort'
-import { View } from '../..'
+import { View } from '../../model/const/view'
 import { SortField } from '../../model/const/sortField'
 import { ListFilters } from './ListFilters'
 

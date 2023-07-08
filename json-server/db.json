@@ -3152,6 +3152,18 @@
       "userId": 1,
       "rating": 3,
       "id": 337
+    },
+    {
+      "articleId": 4,
+      "userId": 1,
+      "rating": 3,
+      "id": 338
+    },
+    {
+      "articleId": 4,
+      "userId": 1,
+      "rating": 3,
+      "id": 339
     }
   ],
   "profile-rating": [

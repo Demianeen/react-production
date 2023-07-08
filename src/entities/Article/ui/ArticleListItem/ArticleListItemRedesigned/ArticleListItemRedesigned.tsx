@@ -49,18 +49,6 @@ export const ArticleListItemRedesigned = memo(
     const [isLinkFocused, bindFocus] = useFocus()
     const { isTabLastKey } = useTab()
 
-    const user = useMemo(
-      () => (
-        <>
-          {article.user.avatar && (
-            <Avatar size='2rem' src={article.user.avatar} />
-          )}
-          <b>{article.user.username}</b>
-        </>
-      ),
-      [article.user.avatar, article.user.username]
-    )
-
     const image = useMemo(
       () => (
         <AppImage
@@ -113,7 +101,11 @@ export const ArticleListItemRedesigned = memo(
           data-testid={`${testId}.List`}
         >
           <HStack as='header' gap={0.5} maxWidth>
-            {user}
+            <Avatar
+              size='2rem'
+              src={article.user.avatar}
+              user={article.user}
+            />
             {article.createdAt}
           </HStack>
           <Title level={1} tag='h2'>
@@ -186,7 +178,11 @@ export const ArticleListItemRedesigned = memo(
               {views}
             </HStack>
             <HStack gap={0.25} className={styles.avatar}>
-              {user}
+              <Avatar
+                size='2rem'
+                src={article.user.avatar}
+                user={article.user}
+              />
             </HStack>
           </div>
         </Card>

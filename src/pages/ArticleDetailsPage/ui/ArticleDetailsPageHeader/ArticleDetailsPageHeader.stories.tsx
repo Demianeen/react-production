@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
-import { ArticleDetailsHeader } from './ArticleDetailsHeader'
+import { ArticleDetailsPageHeader } from './ArticleDetailsPageHeader'
 
 export default {
   title: 'entities/Article/ArticleDetailsHeader',
-  component: ArticleDetailsHeader,
+  component: ArticleDetailsPageHeader,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as Meta<typeof ArticleDetailsHeader>
+} as Meta<typeof ArticleDetailsPageHeader>
 
-type Story = StoryObj<typeof ArticleDetailsHeader>
+type Story = StoryObj<typeof ArticleDetailsPageHeader>
 const store = {
   articleDetails: {
     data: {

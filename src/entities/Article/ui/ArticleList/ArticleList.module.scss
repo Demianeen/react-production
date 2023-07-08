@@ -17,14 +17,6 @@
   gap: 3rem;
   max-width: 100%;
 
-  .redesigned {
-    grid-auto-columns: 14rem;
-  }
-
-  .deprecated {
-    grid-auto-columns: minmax(12.5rem, 1fr);
-  }
-
   // footer
   &.notEmpty + div {
     margin-top: 3rem;

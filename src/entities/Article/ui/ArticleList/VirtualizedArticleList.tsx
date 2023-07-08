@@ -59,6 +59,8 @@ const HeaderWithMargin = memo(
 )
 HeaderWithMargin.displayName = 'Header'
 
+// TODO: Fix keyboard navigation
+
 /**
  * Every component that wraps this component needs to have a height.
  * @return {React.NamedExoticComponent<VirtualizedArticleListProps>}

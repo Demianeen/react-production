@@ -1,8 +1,15 @@
 .card {
   padding: 1.5rem;
-  background: var(--dark-bg-redesigned);
-  background-color: var(--dark-bg-redesigned);
   border-radius: 2rem;
+}
+
+// background
+.dark {
+  background: var(--dark-bg-redesigned);
+}
+
+.light {
+  background: var(--light-bg-redesigned);
 }
 
 // paddings

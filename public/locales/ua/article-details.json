@@ -12,5 +12,11 @@
   "Evaluate the article": "Оцініть статтю",
   "Leave a feedback about the article. It can be a comment, a question or a suggestion for improvement.": "Залиште відгук про статтю. Це може бути коментар, питання або пропозиція щодо вдосконалення.",
   "Thank you for assessment!": "Дякую за оцінку!",
-  "Article rating is unavailable right now. Try again later": "Рейтинг статті недоступний зараз. Спробуйте пізніше"
+  "Article rating is unavailable right now. Try again later": "Рейтинг статті недоступний зараз. Спробуйте пізніше",
+  "views_zero": "{{count}} переглядів",
+  "views_one": "{{count}} перегляд",
+  "views_two": "{{count}} перегляди",
+  "views_few": "{{count}} перегляда",
+  "views_many": "{{count}} просмотрів",
+  "views_other": "{{count}} переглядів"
 }

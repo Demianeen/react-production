@@ -28,7 +28,6 @@ import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleC
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice'
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById'
 import styles from './ArticleDetails.module.scss'
-import { ArticleDetailsHeader } from '../ArticleDetailsHeader/ArticleDetailsHeader'
 
 interface ArticleDetailsProps {
   className?: string
@@ -170,7 +169,6 @@ export const ArticleDetails = memo(
         className={classNames(styles.articleDetails, {}, [className])}
         data-testid='ArticleDetails'
       >
-        <ArticleDetailsHeader id={id} />
         {content}
       </div>
     )

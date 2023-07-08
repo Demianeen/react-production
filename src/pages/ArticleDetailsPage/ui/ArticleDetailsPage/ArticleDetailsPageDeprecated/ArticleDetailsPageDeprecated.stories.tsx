@@ -3,11 +3,11 @@ import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { Theme } from '@/shared/const/theme'
 import { RoutePath } from '@/shared/const/router/routePath'
 import { routes } from '@/shared/lib/router/routes'
-import ArticleDetailsPage from './ArticleDetailsPage'
+import ArticleDetailsPageDeprecated from './ArticleDetailsPageDeprecated'
 
 export default {
   title: 'pages/ArticleDetailsPage/ArticleDetailsPage',
-  component: ArticleDetailsPage,
+  component: ArticleDetailsPageDeprecated,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
@@ -18,9 +18,9 @@ export default {
       routeParams: { id: '1' },
     },
   },
-} as Meta<typeof ArticleDetailsPage>
+} as Meta<typeof ArticleDetailsPageDeprecated>
 
-type Story = StoryObj<typeof ArticleDetailsPage>
+type Story = StoryObj<typeof ArticleDetailsPageDeprecated>
 
 export const Light: Story = {
   decorators: [],
