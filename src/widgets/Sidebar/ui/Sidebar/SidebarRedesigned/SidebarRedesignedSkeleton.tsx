@@ -4,8 +4,6 @@ import { Skeleton } from '@/shared/ui/redesigned/Skeleton'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
 import { AppLogo } from '@/shared/ui/redesigned/AppLogo'
-import { LangSwitcher } from '@/features/LangSwitcher'
-import { ThemeSwitcher } from '@/features/ThemeSwitcher'
 import { Card } from '@/shared/ui/redesigned/Card'
 import styles from './SidebarRedesigned.module.scss'
 
@@ -23,6 +21,7 @@ export const SidebarRedesignedSkeleton = typedMemo(
             // eslint-disable-next-line react/no-array-index-key
             key={index}
             variant='text'
+            backgroundColor='normal'
           />
         ))
     }, [])
@@ -53,8 +52,16 @@ export const SidebarRedesignedSkeleton = typedMemo(
           maxWidth
           className={styles.switchers}
         >
-          <ThemeSwitcher />
-          <LangSwitcher />
+          <Skeleton
+            variant='circular'
+            size='2rem'
+            backgroundColor='normal'
+          />
+          <Skeleton
+            variant='circular'
+            size='2rem'
+            backgroundColor='normal'
+          />
         </HStack>
       </Card>
     )

@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react'
 import { memo } from 'react'
-import { classNames } from '@/shared/lib/classNames/classNames'
+import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
 import styles from './Skeleton.module.scss'
 
 type SkeletonVariant = 'text' | 'rounded' | 'circular'
@@ -10,6 +10,11 @@ interface SkeletonPropsBase {
    * @description Border radius of skeleton
    */
   variant?: SkeletonVariant
+  /**
+   * Skeleton bg color
+   * @default 'light'
+   */
+  backgroundColor?: 'light' | 'normal'
 }
 
 interface SkeletonPropsVariantText extends SkeletonPropsBase {
@@ -56,7 +61,11 @@ export type SkeletonProps =
   | SkeletonPropsVariantCircular
 
 export const Skeleton = memo(
-  ({ className, ...props }: SkeletonProps) => {
+  ({
+    className,
+    backgroundColor = 'light',
+    ...props
+  }: SkeletonProps) => {
     let style: CSSProperties
     if (props.variant === 'circular') {
       const { size = '2rem' } = props
@@ -85,7 +94,12 @@ export const Skeleton = memo(
 
     return (
       <div
-        className={classNames(styles.skeleton, {}, [className])}
+        className={classNamesNew(
+          styles.skeleton,
+          {},
+          className,
+          styles[backgroundColor]
+        )}
         style={style}
         aria-hidden
       />
