@@ -9,38 +9,59 @@
   font: var(--font-m);
   color: var(--primary-color);
   background: var(--bg-color);
+
+  // scrollbar
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 0.55rem;
+    height: 0.6rem;
+    scroll-behavior: smooth;
+    scroll-padding: 0.5rem;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var(--bg-color);
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--card-bg);
+    border-radius: 0.6rem;
+  }
 }
 
 .appRedesigned {
   font: var(--font-text-redesigned);
   color: var(--text-redesigned);
   background: var(--bg-redesigned);
-}
 
-.appRedesigned * {
-  // shows outline only when user navigate with keyboard
-  &:focus-visible {
-    outline: var(--outline-redesigned);
+  * {
+    // shows outline only when user navigate with keyboard
+    &:focus-visible {
+      outline: var(--outline-redesigned);
+    }
   }
-}
 
-// scrollbar
+  // scrollbar
 
-/* width */
-::-webkit-scrollbar {
-  width: 0.55rem;
-  height: 0.6rem;
-  scroll-behavior: smooth;
-  scroll-padding: 0.5rem;
-}
+  /* width */
+  ::-webkit-scrollbar {
+    width: 0.625rem;
+    height: 0.625rem;
+    scroll-behavior: smooth;
+    scroll-padding: 0.5rem;
+  }
 
-/* Track */
-::-webkit-scrollbar-track {
-  background: var(--bg-color);
-}
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var(--light-bg);
+  }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: var(--card-bg);
-  border-radius: 0.6rem;
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--icon-redesigned);
+    border-radius: 2.375rem;
+  }
 }
