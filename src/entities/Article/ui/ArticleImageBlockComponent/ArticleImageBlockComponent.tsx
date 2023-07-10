@@ -1,7 +1,11 @@
 import { memo } from 'react'
 import { Text, TextAlign } from '@/shared/ui/deprecated/Text'
-import { VStack } from '@/shared/ui/redesigned/Stack'
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
 import type { TestProps } from '@/shared/types/tests'
+import { ToggleFeature } from '@/shared/lib/features'
+import { AppImage } from '@/shared/ui/redesigned/AppImage'
+import { Skeleton } from '@/shared/ui/redesigned/Skeleton'
+import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton'
 import type { ArticleImageBlock } from '../../model/types/article'
 import styles from './ArticleImageBlockComponent.module.scss'
 
@@ -18,17 +22,34 @@ export const ArticleImageBlockComponent = memo(
   }: ArticleImageBlockComponentProps) => {
     return (
       <VStack className={className} justify='center' align='stretch'>
-        <img
+        <AppImage
           className={styles.img}
           src={block.src}
-          alt={block.title}
+          alt={block.title ?? ''}
           data-testid={`${dataTestId}.Image`}
+          fallback={
+            <ToggleFeature
+              name='isAppRedesigned'
+              on={<Skeleton height='10rem' />}
+              off={<SkeletonDeprecated height='10rem' />}
+            />
+          }
         />
         {block.title && (
-          <Text
-            text={block.title}
-            align={TextAlign.CENTER}
-            data-testid={`${dataTestId}.Title`}
+          <ToggleFeature
+            name='isAppRedesigned'
+            on={
+              <HStack as='p' maxWidth justify='center'>
+                {block.title}
+              </HStack>
+            }
+            off={
+              <Text
+                text={block.title}
+                align={TextAlign.CENTER}
+                data-testid={`${dataTestId}.Title`}
+              />
+            }
           />
         )}
       </VStack>

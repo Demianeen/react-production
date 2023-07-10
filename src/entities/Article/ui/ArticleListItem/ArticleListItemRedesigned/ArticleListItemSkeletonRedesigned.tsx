@@ -5,7 +5,7 @@ import { Skeleton } from '@/shared/ui/redesigned/Skeleton'
 import { View } from '@/entities/ListFilters'
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
 import { AvatarSkeleton } from '@/shared/ui/redesigned/Avatar/AvatarSkeleton'
-import styles from '../ArticleListItemRedesigned/ArticleListItemRedesigned.module.scss'
+import styles from './ArticleListItemRedesigned.module.scss'
 
 export interface ArticleListItemSkeletonRedesignedProps {
   className?: string

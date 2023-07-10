@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { Theme } from '@/shared/const/theme'
-import { ArticleDetails } from './ArticleDetails'
+import { ArticleDetailsDeprecated } from './ArticleDetailsDeprecated'
 
 export default {
   title: 'entities/Article/ArticleDetails',
-  component: ArticleDetails,
+  component: ArticleDetailsDeprecated,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as Meta<typeof ArticleDetails>
+} as Meta<typeof ArticleDetailsDeprecated>
 
-type Story = StoryObj<typeof ArticleDetails>
+type Story = StoryObj<typeof ArticleDetailsDeprecated>
 export const Light: Story = {}
 
 export const Loading: Story = {}

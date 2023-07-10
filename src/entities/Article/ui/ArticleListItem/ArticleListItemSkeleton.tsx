@@ -1,7 +1,7 @@
 import { ToggleFeature } from '@/shared/lib/features'
-import type { ArticleListItemSkeletonRedesignedProps } from './ArticleListItemSkeletonRedesigned/ArticleListItemSkeletonRedesigned'
-import { ArticleListItemSkeletonRedesigned } from './ArticleListItemSkeletonRedesigned/ArticleListItemSkeletonRedesigned'
-import { ArticleListItemSkeletonDeprecated } from './ArticleListItemSkeletonDeprecated/ArticleListItemSkeletonDeprecated'
+import type { ArticleListItemSkeletonRedesignedProps } from './ArticleListItemRedesigned/ArticleListItemSkeletonRedesigned'
+import { ArticleListItemSkeletonDeprecated } from './ArticleListItemDeprecated/ArticleListItemSkeletonDeprecated'
+import { ArticleListItemSkeletonRedesigned } from './ArticleListItemRedesigned/ArticleListItemSkeletonRedesigned'
 
 export interface ArticleListItemSkeletonProps {
   className?: string

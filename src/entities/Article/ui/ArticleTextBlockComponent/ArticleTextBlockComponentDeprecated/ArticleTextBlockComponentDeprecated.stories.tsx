@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { Theme } from '@/shared/const/theme'
-import { ArticleBlockType } from '../../model/const/articleBlockType'
-import type { ArticleTextBlock } from '../../model/types/article'
-import { ArticleTextBlockComponent } from './ArticleTextBlockComponent'
+import { ArticleBlockType } from '../../../model/const/articleBlockType'
+import type { ArticleTextBlock } from '../../../model/types/article'
+import { ArticleTextBlockComponentDeprecated } from './ArticleTextBlockComponentDeprecated'
 
 const block: ArticleTextBlock = {
   id: 9,
@@ -16,16 +16,16 @@ const block: ArticleTextBlock = {
 
 export default {
   title: 'entities/Article/ArticleTextBlockComponent',
-  component: ArticleTextBlockComponent,
+  component: ArticleTextBlockComponentDeprecated,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
   args: {
     block,
   },
-} as Meta<typeof ArticleTextBlockComponent>
+} as Meta<typeof ArticleTextBlockComponentDeprecated>
 
-type Story = StoryObj<typeof ArticleTextBlockComponent>
+type Story = StoryObj<typeof ArticleTextBlockComponentDeprecated>
 export const WithoutTitle: Story = {}
 
 export const WithTitle: Story = {
