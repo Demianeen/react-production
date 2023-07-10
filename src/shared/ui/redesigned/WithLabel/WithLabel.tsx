@@ -1,5 +1,9 @@
-import type { LabelHTMLAttributes, ReactNode } from 'react'
-import { memo } from 'react'
+import type {
+  ElementType,
+  LabelHTMLAttributes,
+  ReactNode,
+} from 'react'
+import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
 import type { FlexDirection } from '../Stack'
 import { Flex } from '../Stack'
 
@@ -8,7 +12,8 @@ type HTMLLabelProps = Omit<
   'value'
 >
 
-interface WithLabelProps extends HTMLLabelProps {
+interface WithLabelProps<TTag extends ElementType>
+  extends HTMLLabelProps {
   label?: string
   className?: string
   children: ReactNode
@@ -19,18 +24,23 @@ interface WithLabelProps extends HTMLLabelProps {
    * @default 'column'
    */
   direction?: FlexDirection
+  as?: TTag
 }
 
-export const WithLabel = memo(
-  ({
+const DEFAULT_TAG = 'label'
+
+export const WithLabel = typedMemo(
+  <TTag extends ElementType = typeof DEFAULT_TAG>({
     className,
     wrapperClassName,
     label,
     children,
     maxWidth,
     direction = 'column',
+    as,
     ...props
-  }: WithLabelProps) => {
+  }: WithLabelProps<TTag>) => {
+    const Tag = as ?? DEFAULT_TAG
     return (
       <Flex
         className={wrapperClassName}
@@ -39,14 +49,12 @@ export const WithLabel = memo(
         direction={direction}
       >
         {label && (
-          <label htmlFor={label} className={className} {...props}>
+          <Tag htmlFor={label} className={className} {...props}>
             {label}:{' '}
-          </label>
+          </Tag>
         )}
         {children}
       </Flex>
     )
   }
 )
-
-WithLabel.displayName = 'WithLabel'

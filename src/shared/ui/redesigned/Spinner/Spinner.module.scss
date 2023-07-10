@@ -1,0 +1,46 @@
+@use 'sass:math';
+
+$spinner-size: 2.5rem;
+
+.ldsSpinner {
+  position: relative;
+  display: inline-block;
+  width: $spinner-size;
+  height: $spinner-size;
+  color: var(--accent-redesigned);
+
+  div {
+    transform-origin: math.div($spinner-size, 2)
+      math.div($spinner-size, 2);
+    animation: lds-spinner 1.2s linear infinite;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      left: calc($spinner-size / 2 - 0.188rem);
+      display: block;
+      width: 0.25rem;
+      height: 0.75rem;
+      content: ' ';
+      background: var(--accent-redesigned);
+      border-radius: 20%;
+    }
+  }
+
+  @for $i from 1 through 12 {
+    div:nth-child(#{$i}) {
+      transform: rotate(calc(($i - 1) * 30deg));
+      animation-delay: calc(-1.1s + (0.1s * ($i - 1)));
+    }
+  }
+}
+
+@keyframes lds-spinner {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

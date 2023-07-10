@@ -19,6 +19,10 @@
   white-space: nowrap;
 }
 
+.error {
+  color: var(--cancel-redesigned);
+}
+
 // mods
 .clickable:hover {
   color: var(--accent-redesigned);

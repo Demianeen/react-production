@@ -11,7 +11,7 @@ export const setFeatureFlags = (flags: FeatureFlags | undefined) => {
 export const getFeatureFlag = <K extends keyof FeatureFlags>(
   key: K
 ): FeatureFlags[K] => {
-  return featureFlags?.[key] ?? false
+  return featureFlags?.[key] ?? true
 }
 
 export const getAllFeatureFlags = (): FeatureFlags | undefined => {

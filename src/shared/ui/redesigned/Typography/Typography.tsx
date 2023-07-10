@@ -17,7 +17,7 @@ export interface TypographyProps
    * @description Change text color and size
    * @default default
    */
-  variant?: 'default' | 'icon' | 'screenReaderOnly'
+  variant?: 'default' | 'icon' | 'screenReaderOnly' | 'error'
   /**
    * Highlights text when you hover over it
    */

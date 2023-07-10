@@ -39,6 +39,7 @@ export const CommentFormDeprecated = ({
         className={styles.input}
         maxWidth
         data-testid='CommentForm.Input'
+        required
       />
       <Button type='submit' data-testid='CommentForm.SubmitButton'>
         {t('Send')}

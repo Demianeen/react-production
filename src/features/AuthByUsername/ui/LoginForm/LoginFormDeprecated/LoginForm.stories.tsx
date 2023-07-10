@@ -2,20 +2,20 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { Theme } from '@/shared/const/theme'
 import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
-import LoginForm from './LoginForm'
+import LoginFormDeprecated from './LoginFormDeprecated'
 
 export default {
   title: 'features/LoginForm',
-  component: LoginForm,
+  component: LoginFormDeprecated,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
   args: {
     children: 'Text',
   },
-} as Meta<typeof LoginForm>
+} as Meta<typeof LoginFormDeprecated>
 
-type Story = StoryObj<typeof LoginForm>
+type Story = StoryObj<typeof LoginFormDeprecated>
 export const Light: Story = {}
 
 export const WithValue: Story = {

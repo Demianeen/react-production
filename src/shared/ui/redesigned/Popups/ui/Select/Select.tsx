@@ -6,10 +6,10 @@ import TickIcon from '@/shared/assets/icons/deprecated/tick-20-20.svg'
 import type { Direction } from '@/shared/types/ui'
 import type { TestProps } from '@/shared/types/tests'
 import ArrowDownIcon from '@/shared/assets/icons/redesigned/arrow-down.svg'
+import { WithLabel } from '../../../WithLabel'
 import { mapDirection } from '../../const/mapDirection'
 import { Button } from '../../../Button/Button'
 import { Icon } from '../../../Icon/Icon'
-import { WithLabel } from '../../../WithLabel/WithLabel'
 import styles from './Select.module.scss'
 import popupStyles from '../../styles/Popup.module.scss'
 
@@ -68,17 +68,17 @@ export const Select = typedMemo(
     )
 
     return (
-      <WithLabel
-        wrapperClassName={popupStyles.popup}
-        label={label}
-        maxWidth={maxWidth}
+      <Listbox
+        value={value}
+        onChange={onChange}
+        disabled={readonly}
+        defaultValue={defaultValue}
+        name={name}
       >
-        <Listbox
-          value={value}
-          onChange={onChange}
-          disabled={readonly}
-          defaultValue={defaultValue}
-          name={name}
+        <WithLabel
+          label={label}
+          as={Listbox.Label}
+          wrapperClassName={popupStyles.popup}
         >
           <Listbox.Button
             as={Button}
@@ -127,8 +127,8 @@ export const Select = typedMemo(
               </Listbox.Option>
             ))}
           </Listbox.Options>
-        </Listbox>
-      </WithLabel>
+        </WithLabel>
+      </Listbox>
     )
   }
 )
