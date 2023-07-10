@@ -3,20 +3,20 @@ import { action } from '@storybook/addon-actions'
 import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { Theme } from '@/shared/const/theme'
 import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
-import CommentForm from './CommentForm'
+import CommentFormRedesigned from './CommentFormRedesigned'
 
 export default {
   title: 'entities/CommentForm',
-  component: CommentForm,
+  component: CommentFormRedesigned,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
   args: {
     onSendComment: action('onSendComment'),
   },
-} as Meta<typeof CommentForm>
+} as Meta<typeof CommentFormRedesigned>
 
-type Story = StoryObj<typeof CommentForm>
+type Story = StoryObj<typeof CommentFormRedesigned>
 export const WithoutValue: Story = {}
 
 export const WithValue: Story = {

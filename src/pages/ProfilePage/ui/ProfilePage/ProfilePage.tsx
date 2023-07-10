@@ -30,10 +30,10 @@ const ProfilePage = () => {
   const numberId = Number(id)
 
   return (
-    <Page data-testid='ProfilePage'>
+    <VStack gap={1} as={Page} data-testid='ProfilePage'>
       <EditableProfileCard id={numberId} />
       {error === undefined && <ProfileRating profileId={numberId} />}
-    </Page>
+    </VStack>
   )
 }
 

@@ -8,8 +8,9 @@ import { routes } from '@/shared/lib/router/routes'
 import { Title } from '@/shared/ui/redesigned/Title'
 import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
+import { Card } from '@/shared/ui/redesigned/Card'
+import { ArticleDetails } from '@/entities/Article'
 import { AdditionalInfoContainer } from '../../AdditionalInfoContainer/AdditionalInfoContainer'
-import { DetailsContainer } from '../../DetailsContainer/DetailsContainer'
 import { ArticleDetailsPageFooter } from '../../ArticleDetailsPageFooter/ArticleDetailsPageFooter'
 import styles from './ArticleDetailsPageRedesigned.module.scss'
 
@@ -52,8 +53,10 @@ const ArticleDetailsPageRedesigned = ({
           )}
           data-testid='ArticleDetailsPage'
         >
-          <DetailsContainer />
-          <ArticleDetailsPageFooter articleId={numberId} />
+          <Card>
+            <ArticleDetails id={numberId} />
+            <ArticleDetailsPageFooter articleId={numberId} />
+          </Card>
         </Page>
       }
       right={<AdditionalInfoContainer />}

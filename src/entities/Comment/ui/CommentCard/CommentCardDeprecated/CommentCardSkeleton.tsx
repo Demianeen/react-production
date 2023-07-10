@@ -8,7 +8,7 @@ interface CommentCardProps {
   className?: string
 }
 
-export const CommentCardIsLoading = memo(
+export const CommentCardDeprecatedSkeleton = memo(
   ({ className }: CommentCardProps) => {
     return (
       <div
@@ -37,4 +37,4 @@ export const CommentCardIsLoading = memo(
   }
 )
 
-CommentCardIsLoading.displayName = 'CommentCardIsLoading'
+CommentCardDeprecatedSkeleton.displayName = 'CommentCardIsLoading'

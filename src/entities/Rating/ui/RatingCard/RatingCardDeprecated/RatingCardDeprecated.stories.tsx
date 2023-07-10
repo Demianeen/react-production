@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { RatingCard } from './RatingCard'
+import { RatingCardDeprecated } from './RatingCardDeprecated'
 
 export default {
   title: 'entities/Rating/RatingCard',
-  component: RatingCard,
+  component: RatingCardDeprecated,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
@@ -12,9 +12,9 @@ export default {
     feedbackTitle: 'Tell us what you think',
   },
   parameters: {},
-} as Meta<typeof RatingCard>
+} as Meta<typeof RatingCardDeprecated>
 
-type Story = StoryObj<typeof RatingCard>
+type Story = StoryObj<typeof RatingCardDeprecated>
 
 export const Light: Story = {}
 

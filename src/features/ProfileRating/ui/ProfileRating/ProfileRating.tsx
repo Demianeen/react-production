@@ -3,8 +3,11 @@ import { RatingCard, RatingCardSkeleton } from '@/entities/Rating'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { getUserId } from '@/entities/User'
-import { Text } from '@/shared/ui/deprecated/Text'
-import { Card } from '@/shared/ui/deprecated/Card'
+import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text'
+import { Card as CardDeprecated } from '@/shared/ui/deprecated/Card'
+import { ToggleFeature } from '@/shared/lib/features'
+import { Card } from '@/shared/ui/redesigned/Card'
+import { HStack } from '@/shared/ui/redesigned/Stack'
 import {
   useGetProfileRatingQuery,
   useRateProfileMutation,
@@ -70,34 +73,61 @@ const ProfileRating = memo(
 
     if (isGetRatingLoading) {
       return (
-        <RatingCardSkeleton squared maxWidth className={className} />
+        <ToggleFeature
+          name='isAppRedesigned'
+          on={<RatingCardSkeleton className={className} />}
+          off={
+            <RatingCardSkeleton
+              maxWidth
+              squared
+              className={className}
+            />
+          }
+        />
       )
     }
 
     if (isError || isUninitialized) {
       return (
-        <Card squared>
-          <Text
-            text={t(
-              'Profile rating is unavailable right now. Try again later'
-            )}
-          />
-        </Card>
+        <ToggleFeature
+          name='isAppRedesigned'
+          on={
+            <HStack as={Card} maxWidth justify='center'>
+              <p>
+                {t(
+                  'Profile rating is unavailable right now. Try again later'
+                )}
+              </p>
+            </HStack>
+          }
+          off={
+            <CardDeprecated squared>
+              <TextDeprecated
+                text={t(
+                  'Profile rating is unavailable right now. Try again later'
+                )}
+              />
+            </CardDeprecated>
+          }
+        />
       )
     }
 
     const rating = data?.[0]?.rating ?? 0
 
+    const defaultProps = {
+      onCancel,
+      onSubmit,
+      rating,
+      title: t('Evaluate the profile'),
+      feedbackTitle: t('What do you like about this profile?'),
+      className,
+    }
     return (
-      <RatingCard
-        onCancel={onCancel}
-        onSubmit={onSubmit}
-        rating={rating}
-        title={t('Evaluate the profile')}
-        feedbackTitle={t('What do you like about this profile?')}
-        squared
-        className={className}
-        maxWidth
+      <ToggleFeature
+        name='isAppRedesigned'
+        on={<RatingCard {...defaultProps} />}
+        off={<RatingCard {...defaultProps} maxWidth squared />}
       />
     )
   }

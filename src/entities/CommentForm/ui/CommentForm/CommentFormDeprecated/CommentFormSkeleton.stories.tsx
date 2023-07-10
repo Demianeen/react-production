@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { CommentFormSkeleton } from './CommentFormSkeleton'
+import { CommentFormDeprecatedSkeleton } from './CommentFormSkeleton'
 
 export default {
   title: 'entities/CommentForm',
-  component: CommentFormSkeleton,
+  component: CommentFormDeprecatedSkeleton,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
   args: {},
   parameters: {},
-} as Meta<typeof CommentFormSkeleton>
+} as Meta<typeof CommentFormDeprecatedSkeleton>
 
-type Story = StoryObj<typeof CommentFormSkeleton>
+type Story = StoryObj<typeof CommentFormDeprecatedSkeleton>
 
 export const Skeleton: Story = {}

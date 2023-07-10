@@ -7,7 +7,7 @@ import { typedForwardRef } from '@/shared/lib/react/typedForwardRef/typedForward
 import type { AppLink } from '../AppLink/AppLink'
 import styles from './Button.module.scss'
 
-export type ButtonVariant = 'clear' | 'outline' | 'filled'
+export type ButtonVariant = 'clear' | 'outline' | 'filled' | 'cancel'
 
 export type ButtonSize = 'm' | 'l' | 'xl'
 

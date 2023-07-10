@@ -1,21 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { Theme } from '@/shared/const/theme'
-import { mockComments } from '../../model/mocks/mockCommentEntities'
-import { CommentCard } from './CommentCard'
+import { CommentCardRedesignedSkeleton } from './CommentCardSkeleton'
 
 export default {
-  title: 'entities/Comment/CommentCard',
-  component: CommentCard,
+  title: 'entities/Comment/CommentCardIsLoading',
+  component: CommentCardRedesignedSkeleton,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  args: {
-    comment: mockComments[0],
-  },
-} as Meta<typeof CommentCard>
+} as Meta<typeof CommentCardRedesignedSkeleton>
 
-type Story = StoryObj<typeof CommentCard>
+type Story = StoryObj<typeof CommentCardRedesignedSkeleton>
 export const Light: Story = {}
 
 export const Dark: Story = {

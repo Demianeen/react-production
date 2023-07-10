@@ -1,0 +1,13 @@
+.button {
+  width: auto !important;
+  padding: 0 0.25rem;
+}
+
+.normal {
+  color: var(--icon-redesigned) !important;
+  cursor: pointer;
+}
+
+.selected {
+  cursor: auto;
+}

@@ -3,8 +3,10 @@ import { RatingCard, RatingCardSkeleton } from '@/entities/Rating'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { getUserId } from '@/entities/User'
-import { Text } from '@/shared/ui/deprecated/Text'
-import { Card } from '@/shared/ui/deprecated/Card'
+import { Card as CardDeprecated } from '@/shared/ui/deprecated/Card'
+import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text'
+import { ToggleFeature } from '@/shared/lib/features'
+import { HStack } from '@/shared/ui/redesigned/Stack'
 import {
   useGetArticleRatingQuery,
   useRateArticleMutation,
@@ -76,30 +78,48 @@ const ArticleRating = memo(
 
     if (isError || isUninitialized) {
       return (
-        <Card squared>
-          <Text
-            text={t(
-              'Article rating is unavailable right now. Try again later'
-            )}
-          />
-        </Card>
+        <ToggleFeature
+          name='isAppRedesigned'
+          on={
+            <HStack maxWidth justify='center'>
+              <p>
+                {t(
+                  'Article rating is unavailable right now. Try again later'
+                )}
+              </p>
+            </HStack>
+          }
+          off={
+            <CardDeprecated squared>
+              <TextDeprecated
+                text={t(
+                  'Article rating is unavailable right now. Try again later'
+                )}
+              />
+            </CardDeprecated>
+          }
+        />
       )
     }
 
     const rating = data?.[0]?.rating ?? 0
 
+    const defaultProps = {
+      onCancel,
+      onSubmit,
+      rating,
+      title: t('Evaluate the article'),
+      feedbackTitle: t(
+        'Leave a feedback about the article. It can be a comment, a question or a suggestion for improvement.'
+      ),
+      className,
+    }
+
     return (
-      <RatingCard
-        onCancel={onCancel}
-        onSubmit={onSubmit}
-        rating={rating}
-        title={t('Evaluate the article')}
-        feedbackTitle={t(
-          'Leave a feedback about the article. It can be a comment, a question or a suggestion for improvement.'
-        )}
-        squared
-        className={className}
-        maxWidth
+      <ToggleFeature
+        name='isAppRedesigned'
+        on={<RatingCard {...defaultProps} />}
+        off={<RatingCard {...defaultProps} maxWidth squared />}
       />
     )
   }

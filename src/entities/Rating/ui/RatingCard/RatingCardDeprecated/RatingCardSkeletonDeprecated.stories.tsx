@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { RatingCardSkeleton } from './RatingCardSkeleton'
+import { RatingCardSkeletonDeprecated } from './RatingCardSkeletonDeprecated'
 
 export default {
   title: 'entities/Rating/RatingCard',
-  component: RatingCardSkeleton,
+  component: RatingCardSkeletonDeprecated,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
   args: {},
   parameters: {},
-} as Meta<typeof RatingCardSkeleton>
+} as Meta<typeof RatingCardSkeletonDeprecated>
 
-type Story = StoryObj<typeof RatingCardSkeleton>
+type Story = StoryObj<typeof RatingCardSkeletonDeprecated>
 
 export const Skeleton: Story = {}
 

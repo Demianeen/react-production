@@ -1,27 +1,20 @@
-import { memo } from 'react'
-import { CardSkeleton } from '@/shared/ui/deprecated/Card'
+import { ToggleFeature } from '@/shared/lib/features'
+import type { RatingCardSkeletonDeprecatedProps } from './RatingCardDeprecated/RatingCardSkeletonDeprecated'
+import { RatingCardSkeletonDeprecated } from './RatingCardDeprecated/RatingCardSkeletonDeprecated'
+import { RatingCardSkeletonRedesigned } from './RatingCardRedesigned/RatingCardSkeletonRedesigned'
 
-interface RatingCardSkeletonProps {
+export interface RatingCardProps {
   className?: string
-  squared?: boolean
-  maxWidth?: boolean
 }
 
-export const RatingCardSkeleton = memo(
-  ({
-    className,
-    squared,
-    maxWidth = false,
-  }: RatingCardSkeletonProps) => {
-    return (
-      <CardSkeleton
-        className={className}
-        squared={squared}
-        maxWidth={maxWidth}
-        height='7.375rem'
-      />
-    )
-  }
-)
-
-RatingCardSkeleton.displayName = 'RatingCardSkeleton'
+export const RatingCardSkeleton = (
+  props: RatingCardProps & RatingCardSkeletonDeprecatedProps
+) => {
+  return (
+    <ToggleFeature
+      name='isAppRedesigned'
+      on={<RatingCardSkeletonRedesigned {...props} />}
+      off={<RatingCardSkeletonDeprecated {...props} />}
+    />
+  )
+}

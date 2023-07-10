@@ -2,10 +2,10 @@ import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Text } from '@/shared/ui/deprecated/Text'
 import { VStack } from '@/shared/ui/redesigned/Stack'
-import styles from './CommentList.module.scss'
+import { ToggleFeature } from '@/shared/lib/features'
 import { CommentCard } from '../CommentCard/CommentCard'
 import type { Comment } from '../../model/types/comment'
-import { CommentCardIsLoading } from '../CommentCard/CommentCardIsLoading'
+import { CommentCardSkeleton } from '../CommentCard/CommentCardSkeleton'
 
 interface CommentListProps {
   className?: string
@@ -25,9 +25,9 @@ export const CommentList = memo(
           maxWidth
           className={className}
         >
-          <CommentCardIsLoading className={styles.comment} />
-          <CommentCardIsLoading className={styles.comment} />
-          <CommentCardIsLoading className={styles.comment} />
+          <CommentCardSkeleton />
+          <CommentCardSkeleton />
+          <CommentCardSkeleton />
         </VStack>
       )
     }
@@ -43,16 +43,25 @@ export const CommentList = memo(
         {comments?.length !== 0 && comments ? (
           comments?.map((comment) => (
             <CommentCard
-              className={styles.comment}
               comment={comment}
               key={comment.id}
               data-testid='CommentList.Item'
             />
           ))
         ) : (
-          <Text
-            data-testid='CommentList.NoComments'
-            text={t('No comments yet')}
+          <ToggleFeature
+            name='isAppRedesigned'
+            on={
+              <p data-testid='CommentList.NoComments'>
+                {t('No comments yet')}
+              </p>
+            }
+            off={
+              <Text
+                data-testid='CommentList.NoComments'
+                text={t('No comments yet')}
+              />
+            }
           />
         )}
       </VStack>

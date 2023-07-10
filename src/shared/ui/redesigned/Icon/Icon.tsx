@@ -3,6 +3,8 @@ import { classNames } from '@/shared/lib/classNames/classNames'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
 import { typedForwardRef } from '@/shared/lib/react/typedForwardRef/typedForwardRef'
 import type { ForwardedRef } from 'react'
+import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
+import type { ButtonProps } from '../Button'
 import { Button } from '../Button'
 import styles from './Icon.module.scss'
 
@@ -21,12 +23,16 @@ interface NonClickableIconProps extends IconBaseProps {
   clickable?: false
   onClick?: never
   noWrapWithButton?: never
+  iconClassName?: never
+  buttonProps?: never
 }
 
 interface ClickableIconProps extends IconBaseProps {
   clickable?: true
   onClick?: () => void
   noWrapWithButton?: boolean
+  iconClassName?: string
+  buttonProps?: Partial<Omit<ButtonProps, 'children'>>
 }
 
 export type IconProps = NonClickableIconProps | ClickableIconProps
@@ -43,6 +49,8 @@ export const Icon = typedMemo(
         onClick,
         disabled = false,
         noWrapWithButton = false,
+        iconClassName,
+        buttonProps,
         ...props
       }: IconProps,
       ref: ForwardedRef<'button' | SVGSVGElement>
@@ -82,9 +90,14 @@ export const Icon = typedMemo(
               height,
             }}
             ref={ref as ForwardedRef<'button'>}
+            {...buttonProps}
           >
             <Svg
-              className={classNames(styles.icon, mods, [])}
+              className={classNamesNew(
+                styles.icon,
+                iconClassName,
+                mods
+              )}
               {...defaultSvgProps}
             />
           </Button>

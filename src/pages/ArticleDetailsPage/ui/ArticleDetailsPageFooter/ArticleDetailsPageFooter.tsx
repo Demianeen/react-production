@@ -7,6 +7,7 @@ import { VStack } from '@/shared/ui/redesigned/Stack'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { ArticleRating } from '@/features/ArticleRating'
 import { ToggleFeature } from '@/shared/lib/features'
+import { Title } from '@/shared/ui/redesigned/Title'
 import styles from './ArticleDetailsPageFooter.module.scss'
 
 interface ArticleDetailsPageFooterProps {
@@ -31,9 +32,25 @@ export const ArticleDetailsPageFooter = memo(
           on={<ArticleRating articleId={articleId} />}
           off={null}
         />
-        <Text title={t('Recommend next')} />
+        <ToggleFeature
+          name='isAppRedesigned'
+          on={
+            <Title level={1} tag='h2'>
+              {t('Recommend next')}
+            </Title>
+          }
+          off={<Text title={t('Recommend next')} />}
+        />
         <ArticleRecommendationsList />
-        <Text title={t('Comments')} />
+        <ToggleFeature
+          name='isAppRedesigned'
+          on={
+            <Title level={1} tag='h2'>
+              {t('Comments')}
+            </Title>
+          }
+          off={<Text title={t('Comments')} />}
+        />
         <ArticleCommentList articleId={Number(articleId)} />
       </VStack>
     )

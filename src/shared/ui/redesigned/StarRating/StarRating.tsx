@@ -1,9 +1,10 @@
 import { memo } from 'react'
-import { classNames } from '@/shared/lib/classNames/classNames'
-import StarIcon from '@/shared/assets/icons/deprecated/star-24-22.svg'
+import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
 import { useStarRating } from '@/shared/lib/hooks/useStarRating/useStarRating'
-import { Icon, IconType } from '../Icon'
 import styles from './StarRating.module.scss'
+import { Star } from './Star'
+
+export type OnStarSelect = (starNumber: number) => void
 
 interface StarRatingProps {
   className?: string
@@ -11,7 +12,7 @@ interface StarRatingProps {
    * @description Called when a star is selected
    * @param {number} starNumber
    */
-  onSelect: (starNumber: number) => void
+  onSelect: OnStarSelect
   /**
    * @description Height and width of the star
    * @default 2rem
@@ -26,10 +27,6 @@ interface StarRatingProps {
 
 const starNumber = [1, 2, 3, 4, 5]
 
-/**
- * Use components from redesigned folder
- * @deprecated
- */
 export const StarRating = memo(
   ({
     className,
@@ -46,25 +43,19 @@ export const StarRating = memo(
     })
 
     return (
-      <div className={className}>
+      <div className={classNamesNew(styles.wrapper, className)}>
         {starNumber.map((value) => {
           return (
-            <Icon
-              Svg={StarIcon}
+            <Star
               key={value}
-              role='presentation'
-              type={IconType.NONE}
-              width={size}
-              height={size}
-              className={classNames(styles.normal, {
-                [styles.highlighted]: value <= currentStar,
-                [styles.selected]: isSelected,
-              })}
+              value={value}
+              size={size}
+              onSelect={onSelect}
+              currentStar={currentStar}
+              isSelected={isSelected}
               onMouseEnter={onHover(value)}
               onMouseLeave={onMouseLeave}
               onClick={onClick(value)}
-              data-testid={`StarRating.${value}`}
-              data-selected={value <= currentStar}
             />
           )
         })}

@@ -12,7 +12,7 @@ import { Icon } from '../Icon'
 import { AppImage } from '../AppImage'
 import styles from './Avatar.module.scss'
 
-export interface AvatarProps {
+export interface AvatarPropsBase {
   className?: string
   /**
    * @description Avatar image source.
@@ -29,9 +29,25 @@ export interface AvatarProps {
   user?: User
 }
 
+interface AvatarPropsWithoutUsername extends AvatarPropsBase {
+  notShowUsername?: true
+}
+
+export interface AvatarPropsUsername extends AvatarPropsBase {
+  notShowUsername: false
+}
+
+type AvatarProps = AvatarPropsWithoutUsername | AvatarPropsUsername
+
 export const Avatar = typedForwardRef(
   (
-    { className, src, user, size = '2rem' }: AvatarProps,
+    {
+      className,
+      src,
+      user,
+      size = '2rem',
+      notShowUsername = false,
+    }: AvatarProps,
     ref: ForwardedRef<HTMLImageElement>
   ) => {
     const style = useMemo<CSSProperties>(
@@ -68,17 +84,29 @@ export const Avatar = typedForwardRef(
     )
 
     if (user !== undefined) {
+      if (!notShowUsername) {
+        return (
+          <HStack
+            gap={0.5}
+            as={AppLink}
+            to={routes.profile({
+              id: String(user.id),
+            })}
+          >
+            {avatar}
+            <b>{user.username}</b>
+          </HStack>
+        )
+      }
+
       return (
-        <HStack
-          gap={0.5}
-          as={AppLink}
+        <AppLink
           to={routes.profile({
             id: String(user.id),
           })}
         >
           {avatar}
-          <b>{user.username}</b>
-        </HStack>
+        </AppLink>
       )
     }
 

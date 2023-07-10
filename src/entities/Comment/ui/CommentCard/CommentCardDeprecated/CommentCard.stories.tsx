@@ -1,17 +1,21 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { Theme } from '@/shared/const/theme'
-import { CommentCardIsLoading } from './CommentCardIsLoading'
+import { mockComments } from '../../../model/mocks/mockCommentEntities'
+import { CommentCardDeprecated } from './CommentCard'
 
 export default {
-  title: 'entities/Comment/CommentCardIsLoading',
-  component: CommentCardIsLoading,
+  title: 'entities/Comment/CommentCard',
+  component: CommentCardDeprecated,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as Meta<typeof CommentCardIsLoading>
+  args: {
+    comment: mockComments[0],
+  },
+} as Meta<typeof CommentCardDeprecated>
 
-type Story = StoryObj<typeof CommentCardIsLoading>
+type Story = StoryObj<typeof CommentCardDeprecated>
 export const Light: Story = {}
 
 export const Dark: Story = {
