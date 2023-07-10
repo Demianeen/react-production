@@ -1078,7 +1078,7 @@
       "roles": ["ADMIN"],
       "jsonSettings": {
         "theme": "appDarkTheme",
-        "language": "en",
+        "language": "uk",
         "isArticlePageWasOpened": true,
         "isArticlesPageWasOpened": true
       },
@@ -1097,7 +1097,7 @@
       "roles": ["USER"],
       "jsonSettings": {
         "theme": "appOrangeTheme",
-        "language": "ua",
+        "language": "uk",
         "isArticlePageWasOpened": true
       },
       "features": {
@@ -1130,7 +1130,7 @@
       "roles": ["USER"],
       "jsonSettings": {
         "theme": "appRedTheme",
-        "language": "ua",
+        "language": "en",
         "isArticlePageWasOpened": false
       }
     },

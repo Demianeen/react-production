@@ -26,7 +26,7 @@ export const LangSwitcher = memo(
     const saveJsonSettings = useSaveJsonSettings()
 
     const onToggleLanguage = useCallback(() => {
-      const newLanguage = i18n.language === 'ua' ? 'en' : 'ua'
+      const newLanguage = i18n.language === 'uk' ? 'en' : 'uk'
       i18n.changeLanguage(newLanguage)
       saveJsonSettings({
         language: newLanguage,
