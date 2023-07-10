@@ -9,6 +9,8 @@ import type { Currency } from '@/entities/Currency'
 import type { Country } from '@/entities/Country'
 import { Text, TextTheme } from '@/shared/ui/deprecated/Text'
 import { VStack } from '@/shared/ui/redesigned/Stack'
+import { Typography } from '@/shared/ui/redesigned/Typography'
+import { ToggleFeature } from '@/shared/lib/features'
 import { ProfileValidationError } from '../../model/const/profileValidationError'
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData'
 import { fetchProfileDataById } from '../../model/services/fetchProfileDataById/fetchProfileDataById'
@@ -170,11 +172,25 @@ export const EditableProfileCard = memo(
         <EditableProfileCardHeader />
         {validationErrors &&
           validationErrors.map((errCode) => (
-            <Text
+            <ToggleFeature
               key={errCode}
-              theme={TextTheme.ERROR}
-              text={validationErrorMessage[errCode]}
-              data-testid='EditableProfileCard.Error'
+              name='isAppRedesigned'
+              on={
+                <Typography
+                  variant='error'
+                  data-testid='EditableProfileCard.Error'
+                >
+                  {validationErrorMessage[errCode]}
+                </Typography>
+              }
+              off={
+                <Text
+                  key={errCode}
+                  theme={TextTheme.ERROR}
+                  text={validationErrorMessage[errCode]}
+                  data-testid='EditableProfileCard.Error'
+                />
+              }
             />
           ))}
         <ProfileCard

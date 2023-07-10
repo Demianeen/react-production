@@ -71,6 +71,7 @@ export const userSlice = buildSlice({
         // we need to set flag to true to load app
         state._isInitialized = true
         state.authData = undefined
+        setFeatureFlags(null)
       })
   },
 })

@@ -173,6 +173,8 @@ which takes 2 arguments
 1. Name of the feature flag to be removed
 2. State (on/off)
 
+Feature-flags in our app are not reactive, and will not update components during the session. To apply new feature-flags user need to reload website.
+
 ---
 
 ## Entities

@@ -2,6 +2,7 @@
   color: var(--text-redesigned);
   cursor: pointer;
   border: none;
+  transition: color 0.08s ease-in-out;
 
   &:hover {
     color: var(--accent-redesigned);
@@ -37,17 +38,39 @@
   background: none;
   border: 1px solid var(--icon-redesigned);
 
-  &:hover {
-    border-color: var(--accent-redesigned);
+  &.primary {
+    &:hover {
+      border-color: var(--accent-redesigned);
+    }
+  }
+
+  &.save {
+    border-color: var(--save-redesigned);
+
+    &:hover {
+      color: var(--save-redesigned);
+    }
+  }
+
+  &.danger {
+    border-color: var(--cancel-redesigned);
+
+    &:hover {
+      color: var(--cancel-redesigned);
+    }
   }
 }
 
 .filled {
   background: var(--light-bg-redesigned);
-}
 
-.cancel {
-  background: var(--cancel-redesigned);
+  &.save {
+    background-color: var(--save-redesigned);
+  }
+
+  &.danger {
+    background-color: var(--cancel-redesigned);
+  }
 }
 
 // sizes

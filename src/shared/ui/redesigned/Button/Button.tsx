@@ -7,7 +7,8 @@ import { typedForwardRef } from '@/shared/lib/react/typedForwardRef/typedForward
 import type { AppLink } from '../AppLink/AppLink'
 import styles from './Button.module.scss'
 
-export type ButtonVariant = 'clear' | 'outline' | 'filled' | 'cancel'
+export type ButtonVariant = 'clear' | 'outline' | 'filled'
+export type ButtonColor = 'primary' | 'save' | 'danger'
 
 export type ButtonSize = 'm' | 'l' | 'xl'
 
@@ -40,10 +41,15 @@ type ButtonOwnProps<TTag extends ElementType> = {
   className?: string
   children?: ReactNode
   /**
-   * Button theme. Responsible for button's color and border.
+   * Responsible for button's design.
    * @default 'outline'
    */
   variant?: ButtonVariant
+  /**
+   * Responsible for button's color in outline variant.
+   * @default 'primary'
+   */
+  actionColor?: ButtonColor
   /**
    * Flag to make button squared.
    */
@@ -117,6 +123,7 @@ export const Button = typedMemo(
       addonLeft,
       addonRight,
       noBorderRadius = false,
+      actionColor: color = 'primary',
       ...props
     }: ButtonProps<WithDefaultTag<TTag, typeof DEFAULT_TAG>>,
     ref: ForwardedRef<WithDefaultTag<TTag, typeof DEFAULT_TAG>>
@@ -138,6 +145,7 @@ export const Button = typedMemo(
       styles[variant],
       styles[size],
       mapPaddings[paddings],
+      styles[color],
       className
     )
 

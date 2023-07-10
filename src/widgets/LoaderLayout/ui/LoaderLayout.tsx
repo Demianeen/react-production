@@ -3,8 +3,10 @@
 import { PageLoader } from '@/widgets/PageLoader'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { HStack } from '@/shared/ui/redesigned/Stack'
-import { SidebarDeprecatedSkeleton } from '@/widgets/Sidebar'
-import { NavbarDeprecatedSkeleton } from '@/widgets/Navbar'
+import { SidebarSkeleton } from '@/widgets/Sidebar'
+import { NavbarSkeleton } from '@/widgets/Navbar'
+import { MainLayout } from '@/shared/layouts/MainLayout'
+import { ToggleFeature } from '@/shared/lib/features'
 
 export interface LoaderLayoutProps {
   className?: string
@@ -12,12 +14,26 @@ export interface LoaderLayoutProps {
 
 export const LoaderLayout = ({ className }: LoaderLayoutProps) => {
   return (
-    <div className={classNames('app', {}, [className])}>
-      <NavbarDeprecatedSkeleton />
-      <HStack>
-        <SidebarDeprecatedSkeleton />
-        <PageLoader />
-      </HStack>
-    </div>
+    <ToggleFeature
+      name='isAppRedesigned'
+      on={
+        <div className='appRedesigned'>
+          <MainLayout
+            header={<NavbarSkeleton />}
+            sidebar={<SidebarSkeleton />}
+            content={<PageLoader />}
+          />
+        </div>
+      }
+      off={
+        <div className={classNames('app', {}, [className])}>
+          <NavbarSkeleton />
+          <HStack>
+            <SidebarSkeleton />
+            <PageLoader />
+          </HStack>
+        </div>
+      }
+    />
   )
 }

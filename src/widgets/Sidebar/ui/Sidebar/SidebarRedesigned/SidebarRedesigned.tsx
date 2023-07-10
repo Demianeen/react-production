@@ -7,6 +7,7 @@ import { Icon } from '@/shared/ui/redesigned/Icon'
 import ArrowIcon from '@/shared/assets/icons/redesigned/arrow-down.svg'
 import { LangSwitcher } from '@/features/LangSwitcher'
 import { ThemeSwitcher } from '@/features/ThemeSwitcher'
+import { Card } from '@/shared/ui/redesigned/Card'
 import { useSidebarItems } from '../../../model/selectors/getSidebarItems/getSidebarItems'
 import { SidebarItem } from '../../SidebarItem/SidebarItem'
 import styles from './SidebarRedesigned.module.scss'
@@ -35,7 +36,8 @@ export const SidebarRedesigned = typedMemo(
     }, [isCollapsed, sidebarItems])
 
     return (
-      <div
+      <Card
+        background='light'
         className={classNames(
           styles.sidebarRedesigned,
           {
@@ -43,6 +45,7 @@ export const SidebarRedesigned = typedMemo(
           },
           [className]
         )}
+        padding={0}
       >
         <AppLogo
           size={isCollapsed ? '2rem' : '3.5rem'}
@@ -69,7 +72,7 @@ export const SidebarRedesigned = typedMemo(
           <ThemeSwitcher />
           <LangSwitcher short={isCollapsed} />
         </HStack>
-      </div>
+      </Card>
     )
   }
 )

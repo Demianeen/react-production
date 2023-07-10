@@ -1,19 +1,29 @@
+import { FEATURE_FLAGS_LOCALSTORAGE_KEY } from '@/shared/const/localstorage'
 import type { FeatureFlags } from '@/shared/types/featureFlags'
 
-// features not change during runtime, so there is no need for them to be reactive
-// if user is not logged in, feature flags will be undefined
-let featureFlags: FeatureFlags | undefined
+// settings while user is being initialized
+const loadingSettings = JSON.parse(
+  localStorage.getItem(FEATURE_FLAGS_LOCALSTORAGE_KEY) ?? 'null'
+)
 
-export const setFeatureFlags = (flags: FeatureFlags | undefined) => {
+// features not change during runtime, so there is no need for them to be reactive
+// if user is not logged in, feature flags will be set to null in userSlice
+let featureFlags: FeatureFlags | null = loadingSettings
+
+export const setFeatureFlags = (flags: FeatureFlags | null) => {
   featureFlags = flags
+  localStorage.setItem(
+    FEATURE_FLAGS_LOCALSTORAGE_KEY,
+    JSON.stringify(flags)
+  )
 }
 
 export const getFeatureFlag = <K extends keyof FeatureFlags>(
   key: K
 ): FeatureFlags[K] => {
-  return featureFlags?.[key] ?? true
+  return featureFlags?.[key] ?? false
 }
 
-export const getAllFeatureFlags = (): FeatureFlags | undefined => {
+export const getAllFeatureFlags = (): FeatureFlags | null => {
   return featureFlags
 }

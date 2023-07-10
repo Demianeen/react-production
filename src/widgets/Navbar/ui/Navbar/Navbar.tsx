@@ -1,7 +1,7 @@
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
 import { ToggleFeature } from '@/shared/lib/features'
-import { NavbarRedesigned } from '../NavbarRedesigned/NavbarRedesigned'
-import { NavbarDeprecated } from '../NavbarDeprecated/NavbarDeprecated'
+import { NavbarRedesigned } from './NavbarRedesigned/NavbarRedesigned'
+import { NavbarDeprecated } from './NavbarDeprecated/NavbarDeprecated'
 
 export interface NavbarProps {
   className?: string

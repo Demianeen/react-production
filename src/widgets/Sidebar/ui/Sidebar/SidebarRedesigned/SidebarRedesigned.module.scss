@@ -3,8 +3,6 @@
   width: 13.75rem;
   height: 100%;
   overflow: hidden;
-  background: var(--light-bg-redesigned);
-  border-radius: var(--border-radius-redesigned);
 }
 
 .logo {
@@ -44,4 +42,8 @@
   .toggleBtn {
     transform: rotate(-90deg);
   }
+}
+
+.skeletonNav {
+  padding: 1rem;
 }

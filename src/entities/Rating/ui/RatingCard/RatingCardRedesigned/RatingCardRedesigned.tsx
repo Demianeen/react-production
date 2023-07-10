@@ -98,7 +98,6 @@ export const RatingCardRedesigned = memo(
               <HStack justify='end' gap={1} maxWidth>
                 <Button
                   type='button'
-                  variant='cancel'
                   onClick={handleCancel}
                   data-testid='RatingCard.CancelButton'
                 >
