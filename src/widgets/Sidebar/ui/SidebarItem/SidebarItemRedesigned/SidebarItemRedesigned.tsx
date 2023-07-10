@@ -42,7 +42,11 @@ export const SidebarItemRedesigned = typedMemo(
           justify={isCollapsed ? 'center' : undefined}
           maxWidth
         >
-          <Icon className={styles.icon} Svg={item.Icon} />
+          <Icon
+            className={styles.icon}
+            Svg={item.Icon}
+            clickable={isCollapsed}
+          />
           <span className={styles.text}>{t(item.text)}</span>
         </HStack>
       </HStack>
