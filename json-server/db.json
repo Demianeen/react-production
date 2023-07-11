@@ -1131,7 +1131,13 @@
       "jsonSettings": {
         "theme": "appRedTheme",
         "language": "en",
-        "isArticlePageWasOpened": false
+        "isArticlePageWasOpened": true
+      },
+      "features": {
+        "isArticleRatingEnabled": true,
+        "isArticleCreationEnabled": true,
+        "isCounterEnabled": false,
+        "isAppRedesigned": false
       }
     },
     {

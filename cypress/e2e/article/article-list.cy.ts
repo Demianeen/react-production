@@ -18,16 +18,18 @@ describe('User enters the articles page', () => {
   })
 
   describe('user searches for an article', () => {
+    beforeEach(() => {
+      cy.createArticle().then((data) => {
+        articleId = data.id
+      })
+    })
+
     afterEach(() => {
       cy.removeArticle(articleId)
     })
 
     it('uses title', () => {
       const searchQuery = 'Test title'
-
-      cy.createArticle().then((data) => {
-        articleId = data.id
-      })
 
       cy.getByTestId('Search').type(searchQuery)
       cy.getByTestId('ArticleListItem.Grid').should('have.length', 1)
@@ -36,20 +38,12 @@ describe('User enters the articles page', () => {
     it('uses subtitle', () => {
       const searchQuery = 'Test subtitle'
 
-      cy.createArticle().then((data) => {
-        articleId = data.id
-      })
-
       cy.getByTestId('Search').type(searchQuery)
       cy.getByTestId('ArticleListItem.Grid').should('have.length', 1)
     })
 
     it('uses text inside', () => {
       const searchQuery = 'Test paragraph 2'
-
-      cy.createArticle().then((data) => {
-        articleId = data.id
-      })
 
       cy.getByTestId('Search').type(searchQuery)
       cy.getByTestId('ArticleListItem.Grid').should('have.length', 1)

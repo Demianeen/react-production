@@ -1,6 +1,6 @@
 import { selectByTestId } from '../../helpers/selectByTestId'
 import type { User } from '../../../src/entities/User/model/types/userSchema'
-import { AUTH_DATA_LOCALSTORAGE_KEY } from '../../../src/shared/const/localstorage'
+import { USER_ID_LOCALSTORAGE_KEY } from '../../../src/shared/const/localstorage'
 
 export const login = (username = 'testUser', password = '123') => {
   return cy
@@ -13,12 +13,8 @@ export const login = (username = 'testUser', password = '123') => {
       },
     })
     .then((response) => {
-      window.localStorage.setItem(
-        AUTH_DATA_LOCALSTORAGE_KEY,
-        JSON.stringify(response.body)
-      )
-
-      return response.body
+      localStorage.setItem(USER_ID_LOCALSTORAGE_KEY, response.body.id)
+      cy.wrap(response.body)
     })
 }
 

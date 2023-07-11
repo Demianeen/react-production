@@ -24,6 +24,7 @@ const NotFoundPage = ({ className }: NotFoundPageProps) => {
       align='center'
       maxHeight
       maxWidth
+      data-testid='NotFoundPage'
     >
       <ToggleFeature
         name='isAppRedesigned'
