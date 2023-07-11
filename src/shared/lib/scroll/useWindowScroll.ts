@@ -6,7 +6,6 @@ export const useWindowScroll = () => {
   )
 
   useEffect(() => {
-    console.log('windowScroll', document.getElementById('mainLayout'))
     setWindowScroll(document.getElementById('mainLayout'))
   }, [])
 

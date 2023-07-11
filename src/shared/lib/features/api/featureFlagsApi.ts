@@ -2,6 +2,7 @@ import { type User } from '@/entities/User'
 import { rtkApi } from '@/shared/api/rtkApi'
 import type { FeatureFlags } from '@/shared/types/featureFlags'
 import type { EntityId } from '@reduxjs/toolkit'
+import { FEATURE_FLAGS_LOCALSTORAGE_KEY } from '@/shared/const/localstorage'
 import { getAllFeatureFlags } from '../lib/setGetFeatures'
 
 interface UpdateFeatureFlagsArgs {
@@ -30,6 +31,11 @@ const userApi = rtkApi.injectEndpoints({
         }
       },
       transformResponse: (response: User) => {
+        localStorage.setItem(
+          FEATURE_FLAGS_LOCALSTORAGE_KEY,
+          JSON.stringify(response.features)
+        )
+
         window.location.reload()
 
         return response

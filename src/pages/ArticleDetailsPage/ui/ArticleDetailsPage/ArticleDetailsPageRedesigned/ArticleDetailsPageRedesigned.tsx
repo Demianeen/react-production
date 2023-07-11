@@ -10,8 +10,8 @@ import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
 import { Card } from '@/shared/ui/redesigned/Card'
 import { ArticleDetails } from '@/entities/Article'
-import { AdditionalInfoContainer } from '../../AdditionalInfoContainer/AdditionalInfoContainer'
 import { ArticleDetailsPageFooter } from '../../ArticleDetailsPageFooter/ArticleDetailsPageFooter'
+import { AdditionalInfoContainer } from '../../AdditionalInfoContainer/AdditionalInfoContainer'
 import styles from './ArticleDetailsPageRedesigned.module.scss'
 
 interface ArticleDetailsPageRedesignedProps {

@@ -1,4 +1,4 @@
-import type { AppRoutes } from '@/shared/const/router/appRoutes'
+import { AppRoutes } from '@/shared/const/router/appRoutes'
 import { RoutePath } from '@/shared/const/router/routePath'
 import { useEffect, useState } from 'react'
 import { matchPath, useLocation } from 'react-router-dom'
@@ -24,5 +24,5 @@ export const useCurrentRoutePath = () => {
     setAppRoute(routeName as AppRoutes)
   }, [pathname])
 
-  return appRoute
+  return appRoute ?? AppRoutes.NOT_FOUND
 }

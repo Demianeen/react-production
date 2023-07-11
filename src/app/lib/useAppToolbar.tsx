@@ -14,9 +14,5 @@ export const useAppToolbar = () => {
     [AppRoutes.ARTICLE_DETAILS]: <ScrollToolbar />,
   }
 
-  if (currentRoute === undefined) {
-    return undefined
-  }
-
   return toolbarByRoute[currentRoute]
 }

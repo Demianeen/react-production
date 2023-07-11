@@ -11,7 +11,6 @@ export const ScrollToTopButton = memo(
   ({ className }: ScrollToTopButtonProps) => {
     const [wasScrolled, setWasScrolled] = useState(false)
     const windowElement = useWindowScroll()
-    console.log('windowElement', windowElement)
 
     const onScrollUp = useCallback(() => {
       windowElement?.scrollTo({
