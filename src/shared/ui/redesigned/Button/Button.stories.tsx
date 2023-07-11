@@ -37,43 +37,6 @@ export const Outline: Template = {
   },
 }
 
-export const OutlineSizeL: Template = {
-  args: {
-    variant: 'outline',
-    size: 'l',
-  },
-}
-
-export const OutlineSizeXL: Template = {
-  args: {
-    variant: 'outline',
-    size: 'xl',
-  },
-}
-
-export const Square: Template = {
-  args: {
-    squared: true,
-    children: '>',
-  },
-}
-
-export const SquareSizeL: Template = {
-  args: {
-    squared: true,
-    children: '>',
-    size: 'l',
-  },
-}
-
-export const SquareSizeXL: Template = {
-  args: {
-    squared: true,
-    children: '>',
-    size: 'xl',
-  },
-}
-
 export const Disabled: Template = {
   args: {
     disabled: true,

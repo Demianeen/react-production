@@ -26,7 +26,9 @@ export const ArticleListItemSkeletonRedesigned = memo(
           <VStack gap={0.5}>
             <AvatarSkeleton user textWidth='10rem' />
             <Skeleton height='title' variant='text' />
+            <Skeleton height='l2title' variant='text' />
             <Skeleton height='l2title' variant='text' width='20rem' />
+
             <Skeleton className={styles.img} />
             <Skeleton height='4rem' />
             <HStack

@@ -1,0 +1,26 @@
+.button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100% !important;
+  height: 100% !important;
+
+  &::before {
+    position: absolute;
+    inset: 0;
+    content: '';
+    opacity: 0.039;
+    transition: background 0.1s ease-in-out;
+  }
+
+  &:hover {
+    &::before {
+      background-color: var(--icon-redesigned);
+    }
+
+    svg {
+      color: var(--accent-redesigned) !important;
+    }
+  }
+}

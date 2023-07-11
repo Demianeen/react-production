@@ -12,10 +12,12 @@ import { AppRouter } from '@/app/providers/router'
 import { LoaderLayout } from '@/widgets/LoaderLayout'
 import { ToggleFeature } from '@/shared/lib/features'
 import { MainLayout } from '@/shared/layouts/MainLayout'
+import { useAppToolbar } from '@/app/lib/useAppToolbar'
 
 const App = () => {
   const isUserInitialized = useSelector(getUserIsInitialized)
   const initAuthData = useInitAuthData()
+  const toolbar = useAppToolbar()
 
   useEffect(() => {
     initAuthData()
@@ -36,6 +38,7 @@ const App = () => {
               header={<Navbar />}
               sidebar={<Sidebar />}
               content={<AppRouter />}
+              toolbar={toolbar}
             />
           </Suspense>
         </div>

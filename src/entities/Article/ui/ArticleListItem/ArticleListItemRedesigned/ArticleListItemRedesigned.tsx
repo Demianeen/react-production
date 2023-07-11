@@ -76,8 +76,9 @@ export const ArticleListItemRedesigned = memo(
     }
 
     const onFocus = useCallback(() => {
+      if (!isTabLastKey) return
       vStackRef.current?.scrollIntoView()
-    }, [])
+    }, [isTabLastKey])
 
     const textBlock = useMemo(() => {
       if (view === View.LIST) {
@@ -182,6 +183,7 @@ export const ArticleListItemRedesigned = memo(
                 size='2rem'
                 src={article.user.avatar}
                 user={article.user}
+                noWrapInLink
               />
             </HStack>
           </div>

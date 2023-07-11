@@ -50,14 +50,6 @@ type ButtonOwnProps<TTag extends ElementType> = {
    * @default 'primary'
    */
   actionColor?: ButtonColor
-  /**
-   * Flag to make button squared.
-   */
-  squared?: boolean
-  /**
-   * Button size. Responsible for button's text size.
-   */
-  size?: ButtonSize
   disabled?: boolean
   /**
    * When we need to disable the button, but we pass it to another component's prop (e.g. Dropdown) where button disable props is used as another component prop.
@@ -113,8 +105,6 @@ export const Button = typedMemo(
       className,
       children,
       variant = 'outline',
-      squared = false,
-      size = 'm',
       disabled = false,
       disabledButton = false,
       as,
@@ -131,7 +121,6 @@ export const Button = typedMemo(
     const isDisabled = disabled ?? disabledButton
 
     const mods: Mods = {
-      [styles.squared]: squared,
       [styles.disabled]: isDisabled,
       [styles.maxWidth]: maxWidth,
       [styles.withAddonLeft]: Boolean(addonLeft),
@@ -143,7 +132,6 @@ export const Button = typedMemo(
       styles.button,
       mods,
       styles[variant],
-      styles[size],
       mapPaddings[paddings],
       styles[color],
       className

@@ -23,3 +23,7 @@ export const RoutePath: Record<
   // always keep this last
   [AppRoutes.NOT_FOUND]: '*',
 }
+
+export const reverseRoutePath = Object.fromEntries(
+  Object.entries(RoutePath).map(([key, value]) => [value, key])
+)

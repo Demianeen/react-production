@@ -27,6 +27,10 @@ export interface AvatarPropsBase {
    * Adds a username to the avatar and makes it a link to the user's profile.
    */
   user?: User
+  /**
+   * Removes link that leads to the user's profile.
+   */
+  noWrapInLink?: boolean
 }
 
 interface AvatarPropsWithoutUsername extends AvatarPropsBase {
@@ -47,6 +51,7 @@ export const Avatar = typedForwardRef(
       user,
       size = '2rem',
       notShowUsername = false,
+      noWrapInLink = false,
     }: AvatarProps,
     ref: ForwardedRef<HTMLImageElement>
   ) => {
@@ -84,11 +89,13 @@ export const Avatar = typedForwardRef(
     )
 
     if (user !== undefined) {
+      const appLink = noWrapInLink ? undefined : AppLink
+
       if (!notShowUsername) {
         return (
           <HStack
             gap={0.5}
-            as={AppLink}
+            as={appLink}
             to={routes.profile({
               id: String(user.id),
             })}
@@ -100,13 +107,14 @@ export const Avatar = typedForwardRef(
       }
 
       return (
-        <AppLink
+        <HStack
+          as={appLink}
           to={routes.profile({
             id: String(user.id),
           })}
         >
           {avatar}
-        </AppLink>
+        </HStack>
       )
     }
 
