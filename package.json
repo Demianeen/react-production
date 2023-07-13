@@ -154,6 +154,7 @@
     "react-virtuoso": "^4.3.7"
   },
   "loki": {
+    "chromeTolerance": 0.01,
     "fetchFailIgnore": "https://mockapi.com/*",
     "skipStories": "(?<!is )loading",
     "configurations": {
