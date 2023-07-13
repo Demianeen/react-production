@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Flex } from './Flex'
 
 export default {
-  title: 'shared/Flex',
+  title: 'shared/redesigned/Flex',
   component: Flex,
   argTypes: {
     backgroundColor: { control: 'color' },

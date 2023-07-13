@@ -19,7 +19,7 @@ export const [useInitAuthData, initAuthData] = buildAsyncThunk<
 
   try {
     const response = await dispatch(
-      getUserAuthDataByIdQuery(JSON.parse(userId))
+      getUserAuthDataByIdQuery(Number(userId))
     ).unwrap()
 
     if (!response) {

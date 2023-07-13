@@ -1,6 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
-import { Theme } from '@/shared/const/theme'
 import { ArticleCommentList } from './ArticleCommentList'
 
 export default {
@@ -9,19 +7,15 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  args: {},
+  args: {
+    articleId: 1,
+  },
 } as Meta<typeof ArticleCommentList>
 
 type Story = StoryObj<typeof ArticleCommentList>
 
-export const Light: Story = {}
+export const PrimaryDeprecated: Story = {}
+export const PrimaryRedesigned: Story = {}
 
-export const Loading: Story = {}
-
-export const Dark: Story = {
-  decorators: [ThemeDecorator(Theme.DARK)],
-}
-
-export const Orange: Story = {
-  decorators: [ThemeDecorator(Theme.ORANGE)],
-}
+export const LoadingDeprecated: Story = {}
+export const LoadingRedesigned: Story = {}

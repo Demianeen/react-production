@@ -1,6 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
-import { Theme } from '@/shared/const/theme'
 import { ArticleBlockType } from '../../model/const/articleBlockType'
 import type { ArticleImageBlock } from '../../model/types/article'
 import { ArticleImageBlockComponent } from './ArticleImageBlockComponent'
@@ -21,21 +19,22 @@ export default {
 } as Meta<typeof ArticleImageBlockComponent>
 
 type Story = StoryObj<typeof ArticleImageBlockComponent>
-export const WithoutTitle: Story = {}
 
-export const WithTitle: Story = {
+export const WithoutTitleDeprecated: Story = {}
+export const WithoutTitleRedesigned: Story = {}
+
+const withTitle: ArticleImageBlock = {
+  ...block,
+  title: 'Title',
+}
+
+export const WithTitleDeprecated: Story = {
   args: {
-    block: {
-      ...block,
-      title: 'Title',
-    },
+    block: withTitle,
   },
 }
-
-export const Dark: Story = {
-  decorators: [ThemeDecorator(Theme.DARK)],
-}
-
-export const Orange: Story = {
-  decorators: [ThemeDecorator(Theme.ORANGE)],
+export const WithTitleRedesigned: Story = {
+  args: {
+    block: withTitle,
+  },
 }

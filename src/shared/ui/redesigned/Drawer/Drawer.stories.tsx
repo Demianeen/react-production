@@ -6,7 +6,7 @@ import { VStack } from '../Stack'
 import { Drawer } from './Drawer'
 
 export default {
-  title: 'shared/Drawer',
+  title: 'shared/redesigned/Drawer',
   component: Drawer,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -14,19 +14,13 @@ export default {
   args: {
     isOpen: true,
     children: (
-      <VStack gap={2} maxWidth maxHeight>
+      <VStack gap={1} maxWidth maxHeight>
         <Card maxWidth>Drawer content</Card>
         <Card maxWidth>Drawer content</Card>
         <Card maxWidth>Drawer content</Card>
         <Card maxWidth>Drawer content</Card>
       </VStack>
     ),
-  },
-  parameters: {
-    // because drawer uses portal
-    loki: {
-      skip: true,
-    },
   },
 } as Meta<typeof Drawer>
 

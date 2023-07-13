@@ -4,7 +4,7 @@ import { ParentDecorator } from '@/shared/lib/storybook/ParentDecorator'
 import { ArticleListItemSkeletonDeprecated } from './ArticleListItemSkeletonDeprecated'
 
 export default {
-  title: 'entities/Article/ArticleListItem',
+  title: 'entities/Article/ArticleListItem/deprecated',
   component: ArticleListItemSkeletonDeprecated,
   argTypes: {
     backgroundColor: { control: 'color' },

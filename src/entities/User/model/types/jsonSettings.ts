@@ -3,7 +3,7 @@ import type { Theme } from '@/shared/const/theme'
 export interface OriginalJsonSettings {
   theme: Theme
   language: string
-  isArticlePageWasOpened: boolean
+  isArticlesPageWasOpened: boolean
 }
 
 export type JsonSettings = Partial<OriginalJsonSettings>

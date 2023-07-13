@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { InputSkeleton } from './InputSkeleton'
 
 export default {
-  title: 'shared/Input',
+  title: 'shared/redesigned/Input',
   component: InputSkeleton,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -13,4 +13,10 @@ export default {
 
 type Story = StoryObj<typeof InputSkeleton>
 
-export const Light: Story = {}
+export const Skeleton: Story = {}
+
+export const SkeletonWithoutLabel: Story = {
+  args: {
+    withoutLabel: true,
+  },
+}

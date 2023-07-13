@@ -2,6 +2,8 @@ import CircleArrowUpIcon from '@/shared/assets/icons/redesigned/circle-arrow-up.
 import { useWindowScroll } from '@/shared/lib/scroll/useWindowScroll'
 import { Icon } from '@/shared/ui/redesigned/Icon'
 import { memo, useCallback, useEffect, useState } from 'react'
+import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
+import styles from './ScrollToTopButton.module.scss'
 
 interface ScrollToTopButtonProps {
   className?: string
@@ -20,10 +22,15 @@ export const ScrollToTopButton = memo(
     }, [windowElement])
 
     useEffect(() => {
+      console.log(windowElement)
       const onScroll = () => {
         if (!windowElement) {
           return
         }
+        console.log(
+          'windowElement.scrollTop',
+          windowElement.scrollTop
+        )
         if (windowElement.scrollTop > 0) {
           setWasScrolled(true)
         } else {
@@ -46,7 +53,7 @@ export const ScrollToTopButton = memo(
       <Icon
         onClick={onScrollUp}
         Svg={CircleArrowUpIcon}
-        className={className}
+        className={classNamesNew(styles.button, className)}
       />
     )
   }

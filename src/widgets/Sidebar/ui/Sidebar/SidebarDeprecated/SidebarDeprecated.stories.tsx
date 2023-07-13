@@ -1,8 +1,9 @@
 import type { StoryObj, Meta } from '@storybook/react'
+import { InitUserDecorator } from '@/shared/lib/storybook/InitUserDecorator'
 import { SidebarDeprecated } from './SidebarDeprecated'
 
 export default {
-  title: 'AFiletemplate/SidebarDeprecated',
+  title: 'widgets/Sidebar/Sidebar/deprecated',
   component: SidebarDeprecated,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -11,6 +12,10 @@ export default {
 
 type Story = StoryObj<typeof SidebarDeprecated>
 
-export const Primary: Story = {
-  args: {},
+export const Light: Story = {
+  decorators: [],
+}
+
+export const Unauthorized: Story = {
+  decorators: [InitUserDecorator(null)],
 }

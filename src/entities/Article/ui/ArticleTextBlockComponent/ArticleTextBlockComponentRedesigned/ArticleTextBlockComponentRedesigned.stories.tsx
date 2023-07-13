@@ -15,7 +15,7 @@ const block: ArticleTextBlock = {
 }
 
 export default {
-  title: 'entities/Article/ArticleTextBlockComponent',
+  title: 'entities/Article/ArticleTextBlockComponent/redesigned',
   component: ArticleTextBlockComponentRedesigned,
   argTypes: {
     backgroundColor: { control: 'color' },

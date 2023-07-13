@@ -17,11 +17,7 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
     <ToggleFeature
       name='isAppRedesigned'
       on={
-        <Page
-          ref={setPageRef}
-          className={className}
-          data-testid='ArticlesPage'
-        >
+        <Page className={className} data-testid='ArticlesPage'>
           <ArticleInfiniteList scrollParent={windowScroll} />
           <ArticlePageGreeting />
         </Page>

@@ -21,7 +21,7 @@ const tabs: TabItem<string>[] = [
 ]
 
 export default {
-  title: 'shared/Tabs',
+  title: 'shared/redesigned/Tabs',
   component: Tabs,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -35,7 +35,13 @@ export default {
 
 type Story = StoryObj<typeof Tabs>
 
-export const Light: Story = {}
+export const Primary: Story = {}
+
+export const DirectionColumn: Story = {
+  args: {
+    direction: 'column',
+  },
+}
 
 export const Dark: Story = {
   decorators: [ThemeDecorator(Theme.DARK)],

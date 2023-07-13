@@ -4,7 +4,7 @@ import { Theme } from '@/shared/const/theme'
 import { ArticleDetailsRedesigned } from './ArticleDetailsRedesigned'
 
 export default {
-  title: 'entities/Article/ArticleDetails',
+  title: 'entities/Article/ArticleDetails/redesigned',
   component: ArticleDetailsRedesigned,
   argTypes: {
     backgroundColor: { control: 'color' },

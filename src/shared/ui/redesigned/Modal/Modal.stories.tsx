@@ -4,7 +4,7 @@ import { Theme } from '@/shared/const/theme'
 import { Modal } from './Modal'
 
 export default {
-  title: 'shared/Modal',
+  title: 'shared/redesigned/Modal',
   component: Modal,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -13,12 +13,6 @@ export default {
     isOpen: true,
     children:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam quae quod, voluptas, quibusdam, voluptates voluptatibus quidem quos v oluptatum quia quod. Quisquam quae quod, voluptas, quibusdam, voluptates voluptatibus quidem quos v oluptatum quia quod. Quisquam quae quod, voluptas, quibusdam, voluptates voluptatibus quidem quos v oluptatum quia quod. Quisquam quae quod, voluptas, quibusdam, voluptates voluptatibus quidem quos v oluptatum quia quod. Quisquam quae quod, voluptas, quibusdam, voluptates voluptatibus quidem quos v',
-  },
-  parameters: {
-    // because modal uses portal
-    loki: {
-      skip: true,
-    },
   },
 } as Meta<typeof Modal>
 

@@ -70,13 +70,13 @@ const ArticleRating = memo(
       [handleRateArticle]
     )
 
-    if (isGetRatingLoading) {
+    if (isGetRatingLoading || isUninitialized) {
       return (
         <RatingCardSkeleton squared maxWidth className={className} />
       )
     }
 
-    if (isError || isUninitialized) {
+    if (isError) {
       return (
         <ToggleFeature
           name='isAppRedesigned'

@@ -1,6 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
-import { Theme } from '@/shared/const/theme'
 import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 import { InitUserDecorator } from '@/shared/lib/storybook/InitUserDecorator'
 import { ProfileValidationError } from '../../model/const/profileValidationError'
@@ -20,9 +18,10 @@ export default {
 
 type Story = StoryObj<typeof EditableProfileCard>
 
-export const Light: Story = {}
+export const PrimaryDeprecated: Story = {}
+export const PrimaryRedesigned: Story = {}
 
-export const Loading: Story = {
+const loading = {
   parameters: {
     reactRouter: {
       searchParams: { isLoading: 'true' },
@@ -30,7 +29,10 @@ export const Loading: Story = {
   },
 }
 
-export const Error: Story = {
+export const LoadingDeprecated: Story = loading
+export const LoadingRedesigned: Story = loading
+
+const error = {
   decorators: [
     StoreDecorator({
       profile: {
@@ -49,10 +51,5 @@ export const Error: Story = {
   ],
 }
 
-export const Dark: Story = {
-  decorators: [ThemeDecorator(Theme.DARK)],
-}
-
-export const Orange: Story = {
-  decorators: [ThemeDecorator(Theme.ORANGE)],
-}
+export const ErrorDeprecated: Story = error
+export const ErrorRedesigned: Story = error

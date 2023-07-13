@@ -15,10 +15,14 @@ export default {
 
 type Story = StoryObj<typeof ProfileRating>
 
-export const Rated: Story = {}
+export const RatedDeprecated: Story = {}
+export const RatedRedesigned: Story = {}
 
-export const Unrated: Story = {}
+export const UnratedDeprecated: Story = {}
+export const UnratedRedesigned: Story = {}
 
-export const Loading: Story = {}
+export const LoadingDeprecated: Story = {}
+export const LoadingRedesigned: Story = {}
 
-export const Error: Story = {}
+export const ErrorDeprecated: Story = {}
+export const ErrorRedesigned: Story = {}

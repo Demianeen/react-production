@@ -5,7 +5,7 @@ import { mockComments } from '../../../model/mocks/mockCommentEntities'
 import { CommentCardRedesigned } from './CommentCard'
 
 export default {
-  title: 'entities/Comment/CommentCard',
+  title: 'entities/Comment/CommentCard/redesigned',
   component: CommentCardRedesigned,
   argTypes: {
     backgroundColor: { control: 'color' },

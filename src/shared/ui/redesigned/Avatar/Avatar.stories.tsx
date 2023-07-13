@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
-// import AvatarImg from '@/shared/assets/mocks/avatar.jpeg'
+// eslint-disable-next-line netliukh-demian-fsd-plugin/layer-imports
+import { mockUser } from '@/entities/User/testing'
 import { Avatar } from './Avatar'
 
 export default {
-  title: 'shared/Avatar',
+  title: 'shared/redesigned/Avatar',
   component: Avatar,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -16,6 +17,26 @@ export default {
 type Story = StoryObj<typeof Avatar>
 
 export const Default: Story = {}
+
+export const WithUsernameClickable: Story = {
+  args: {
+    user: mockUser,
+  },
+}
+
+export const ClickableWithoutUsername: Story = {
+  args: {
+    user: mockUser,
+    notShowUsername: true,
+  },
+}
+
+export const WithUsernameNotClickable: Story = {
+  args: {
+    user: mockUser,
+    noWrapInLink: true,
+  },
+}
 
 export const CustomSize: Story = {
   args: {

@@ -12,4 +12,5 @@ export default {
 
 type Story = StoryObj<typeof LoaderLayout>
 
-export const Default: Story = {}
+export const PrimaryDeprecated: Story = {}
+export const PrimaryRedesigned: Story = {}

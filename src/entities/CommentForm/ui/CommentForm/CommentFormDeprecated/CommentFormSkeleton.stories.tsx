@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { CommentFormDeprecatedSkeleton } from './CommentFormSkeleton'
 
 export default {
-  title: 'entities/CommentForm',
+  title: 'entities/CommentForm/deprecated',
   component: CommentFormDeprecatedSkeleton,
   argTypes: {
     backgroundColor: { control: 'color' },

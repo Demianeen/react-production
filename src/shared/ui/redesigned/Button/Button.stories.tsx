@@ -1,10 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { Theme } from '@/shared/const/theme'
+import ArrowDownIcon from '@/shared/assets/icons/redesigned/arrow-down.svg'
+import { Icon } from '../Icon'
 import { Button } from './Button'
 
 export default {
-  title: 'shared/Button',
+  title: 'shared/redesigned/Button',
   component: Button,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -34,6 +36,13 @@ export const Filled: Template = {
 export const Outline: Template = {
   args: {
     variant: 'outline',
+  },
+}
+
+export const WithAddons: Template = {
+  args: {
+    addonLeft: <Icon Svg={ArrowDownIcon} />,
+    addonRight: <Icon Svg={ArrowDownIcon} />,
   },
 }
 

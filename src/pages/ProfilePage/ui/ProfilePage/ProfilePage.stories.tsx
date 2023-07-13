@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
-import { Theme } from '@/shared/const/theme'
 import { RoutePath } from '@/shared/const/router/routePath'
 import { routes } from '@/shared/lib/router/routes'
+import { LayoutDecorator } from '@/shared/lib/storybook/LayoutDecorator'
 import ProfilePage from './ProfilePage'
 
 export default {
@@ -16,28 +15,22 @@ export default {
       routePath: RoutePath.profile,
       routeParams: { id: '1' },
     },
-    loki: {
-      skip: true,
-    },
   },
 } as Meta<typeof ProfilePage>
 
 type Story = StoryObj<typeof ProfilePage>
 
-export const Light: Story = {}
+export const PrimaryDeprecated: Story = {}
+export const PrimaryRedesigned: Story = {}
 
-export const NotFound: Story = {
+const notFound = {
   parameters: {
     reactRouter: {
       routePath: routes.profile({ id: '' }),
     },
   },
+  decorators: [LayoutDecorator('fullpage')],
 }
 
-export const Dark: Story = {
-  decorators: [ThemeDecorator(Theme.DARK)],
-}
-
-export const Orange: Story = {
-  decorators: [ThemeDecorator(Theme.ORANGE)],
-}
+export const NotFoundDeprecated: Story = notFound
+export const NotFoundRedesigned: Story = notFound

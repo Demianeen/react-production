@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
-import { Theme } from '@/shared/const/theme'
+import { LayoutDecorator } from '@/shared/lib/storybook/LayoutDecorator'
 import { PageError } from './PageError'
 
 export default {
@@ -9,15 +8,9 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  decorators: [LayoutDecorator('fullpage')],
 } as Meta<typeof PageError>
 
 type Story = StoryObj<typeof PageError>
-export const Light: Story = {}
-
-export const Dark: Story = {
-  decorators: [ThemeDecorator(Theme.DARK)],
-}
-
-export const Orange: Story = {
-  decorators: [ThemeDecorator(Theme.ORANGE)],
-}
+export const PrimaryDeprecated: Story = {}
+export const PrimaryRedesigned: Story = {}

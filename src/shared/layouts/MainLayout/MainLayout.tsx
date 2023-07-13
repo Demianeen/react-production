@@ -1,13 +1,13 @@
 import { classNames } from '@/shared/lib/classNames/classNames'
-import type { ReactElement } from 'react'
+import type { ReactNode } from 'react'
 import styles from './MainLayout.module.scss'
 
 export interface MainLayoutProps {
   className?: string
-  header: ReactElement
-  content: ReactElement
-  sidebar: ReactElement
-  toolbar?: ReactElement
+  header: ReactNode
+  content: ReactNode
+  sidebar: ReactNode
+  toolbar?: ReactNode
 }
 
 export const MainLayout = ({

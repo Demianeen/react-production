@@ -1,6 +1,5 @@
 import { Navigate, useLocation } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import { getUserAuthData } from '@/entities/User'
+import { useUserAuthData } from '@/entities/User'
 
 import { routes } from '@/shared/lib/router/routes'
 
@@ -9,7 +8,7 @@ export const RequireAuth = ({
 }: {
   children: JSX.Element
 }) => {
-  const auth = useSelector(getUserAuthData)
+  const auth = useUserAuthData()
   const location = useLocation()
 
   if (auth === undefined) {

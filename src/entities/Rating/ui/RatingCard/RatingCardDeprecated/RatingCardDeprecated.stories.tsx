@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { RatingCardDeprecated } from './RatingCardDeprecated'
 
 export default {
-  title: 'entities/Rating/RatingCard',
+  title: 'entities/Rating/RatingCard/deprecated',
   component: RatingCardDeprecated,
   argTypes: {
     backgroundColor: { control: 'color' },

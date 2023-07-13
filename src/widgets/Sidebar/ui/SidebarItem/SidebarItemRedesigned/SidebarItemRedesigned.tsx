@@ -1,8 +1,7 @@
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
-import { getUserAuthData } from '@/entities/User'
+import { useUserAuthData } from '@/entities/User'
 import { useTranslation } from 'react-i18next'
-import { useSelector } from 'react-redux'
 import { HStack } from '@/shared/ui/redesigned/Stack'
 import { AppLink } from '@/shared/ui/redesigned/AppLink'
 import { Icon } from '@/shared/ui/redesigned/Icon'
@@ -20,7 +19,7 @@ export interface SidebarItemRedesignedProps {
 export const SidebarItemRedesigned = typedMemo(
   ({ className, item, isCollapsed }: SidebarItemRedesignedProps) => {
     const { t } = useTranslation()
-    const isAuth = useSelector(getUserAuthData)
+    const isAuth = useUserAuthData()
 
     if (item.authOnly && !isAuth) {
       return null

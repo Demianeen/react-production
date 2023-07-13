@@ -1,3 +1,4 @@
+import { getApp } from '@/shared/lib/react/getApp'
 import type { ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 
@@ -8,7 +9,7 @@ interface PortalProps {
 
 export const Portal = ({
   children,
-  element = document.getElementById('app') ?? document.body,
+  element = getApp() ?? document.body,
 }: PortalProps) => {
   return createPortal(children, element)
 }

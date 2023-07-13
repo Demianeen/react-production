@@ -15,4 +15,5 @@ export default {
 
 type Story = StoryObj<typeof UserDropdown>
 
-export const Light: Story = {}
+export const PrimaryDeprecated: Story = {}
+export const PrimaryRedesigned: Story = {}

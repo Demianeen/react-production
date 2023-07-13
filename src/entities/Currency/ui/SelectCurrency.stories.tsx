@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
-import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
-import { Theme } from '@/shared/const/theme'
+import { LayoutDecorator } from '@/shared/lib/storybook/LayoutDecorator'
 import { Currency } from '../model/const/currency'
 import { SelectCurrency } from './SelectCurrency'
 
@@ -15,21 +14,21 @@ export default {
     value: Currency.USD,
     onChange: action('onChange'),
   },
+  decorators: [LayoutDecorator('centered')],
 } as Meta<typeof SelectCurrency>
 
 type Story = StoryObj<typeof SelectCurrency>
-export const Light: Story = {}
 
-export const Readonly: Story = {
-  args: {
-    readonly: true,
-  },
+export const PrimaryDeprecated: Story = {}
+export const PrimaryRedesigned: Story = {}
+
+const readonlyArgs = {
+  readonly: true,
 }
 
-export const Dark: Story = {
-  decorators: [ThemeDecorator(Theme.DARK)],
+export const ReadonlyDeprecated: Story = {
+  args: readonlyArgs,
 }
-
-export const Orange: Story = {
-  decorators: [ThemeDecorator(Theme.ORANGE)],
+export const ReadonlyRedesigned: Story = {
+  args: readonlyArgs,
 }

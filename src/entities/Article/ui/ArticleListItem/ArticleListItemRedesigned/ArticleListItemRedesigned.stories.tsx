@@ -5,7 +5,7 @@ import { mockArticle } from '../../../model/mocks/mockArticle'
 import { ArticleListItemRedesigned } from './ArticleListItemRedesigned'
 
 export default {
-  title: 'entities/Article/ArticleListItem',
+  title: 'entities/Article/ArticleListItem/redesigned',
   component: ArticleListItemRedesigned,
   argTypes: {
     backgroundColor: { control: 'color' },

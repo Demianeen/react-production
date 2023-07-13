@@ -4,7 +4,7 @@ import { Theme } from '@/shared/const/theme'
 import { Search } from './Search'
 
 export default {
-  title: 'shared/Search',
+  title: 'shared/redesigned/Search',
   component: Search,
   argTypes: {
     backgroundColor: { control: 'color' },

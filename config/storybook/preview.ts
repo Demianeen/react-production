@@ -5,6 +5,10 @@ import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 import { InitUserDecorator } from '@/shared/lib/storybook/InitUserDecorator'
 import { userHandlers } from '@/entities/User/testing'
 import { I18NextDecorator } from '@/shared/lib/storybook/I18NextDecorator'
+import { ToggleDesignDecorator } from '@/shared/lib/storybook/ToggleDesignDecorator'
+import { Theme } from '@/shared/const/theme'
+import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
+import { AppDecorator } from '@/shared/lib/storybook/AppDecorator'
 import { articleDetailsHandlers } from '../../src/entities/Article/model/mocks/articleDetailsHandlers'
 import { commentHandlers } from '../../src/entities/Comment/model/mocks/commentHandlers'
 import { imageHandlers } from '../../src/shared/lib/mock-server/imageHandlers'
@@ -14,7 +18,6 @@ import { SuspenseDecorator } from '../../src/shared/lib/storybook/SuspenseDecora
 import { profileHandlers } from '../../src/entities/Profile/model/mocks/profileHandlers'
 import { articleHandlers } from '../../src/entities/Article/model/mocks/articleHandlers'
 import { ratingHandlers } from '../../src/entities/Rating/model/mocks/ratingHandlers'
-import { Theme } from '../../src/shared/const/theme'
 
 // Initialize MSW
 initialize({
@@ -49,40 +52,25 @@ const preview: Preview = {
         user: userHandlers,
       },
     },
-    themes: {
-      default: 'light',
-      list: [
-        {
-          name: 'light',
-          class: ['app', Theme.LIGHT],
-          color: '#fffbfe',
-        },
-        {
-          name: 'dark',
-          class: ['app', Theme.DARK],
-          color: '#1c1b1f',
-        },
-        {
-          name: 'red',
-          class: ['app', Theme.ORANGE],
-          color: '#de2560',
-        },
-      ],
-    },
+    layout: 'fullscreen',
   },
   decorators: [
+    AppDecorator,
     StyleDecorator,
     withRouter,
-    mswDecorator,
     SuspenseDecorator,
     InitUserDecorator(2),
+    ThemeDecorator(),
+    ToggleDesignDecorator(),
     StoreDecorator(),
     I18NextDecorator,
+    mswDecorator,
   ],
   globalTypes: {
     locale: {
       name: 'Locale',
       description: 'Internationalization locale',
+      defaultValue: 'en',
       toolbar: {
         icon: 'globe',
         items: [
@@ -90,6 +78,29 @@ const preview: Preview = {
           { value: 'ua', title: 'Ukrainian' },
         ],
         showName: false,
+      },
+    },
+    theme: {
+      name: 'Theme',
+      description: 'Theme for components',
+      defaultValue: Theme.LIGHT,
+      toolbar: {
+        icon: 'mirror',
+        showName: false,
+        items: [
+          {
+            title: 'Light',
+            value: Theme.LIGHT,
+          },
+          {
+            title: 'Dark',
+            value: Theme.DARK,
+          },
+          {
+            title: 'Orange',
+            value: Theme.ORANGE,
+          },
+        ],
       },
     },
   },

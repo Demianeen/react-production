@@ -45,6 +45,7 @@ export const ArticleInfiniteListRedesigned = ({
   useDynamicModuleLoader(reducers, {
     removeOnUnmount: false,
   })
+  console.log('scrollParent', scrollParent)
 
   const { t } = useTranslation('articles')
   const dispatch = useAppDispatch()

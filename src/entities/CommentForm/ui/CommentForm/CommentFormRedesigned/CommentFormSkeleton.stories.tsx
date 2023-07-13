@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { CommentFormRedesignedSkeleton } from './CommentFormSkeleton'
 
 export default {
-  title: 'entities/CommentForm',
+  title: 'entities/CommentForm/redesigned',
   component: CommentFormRedesignedSkeleton,
   argTypes: {
     backgroundColor: { control: 'color' },

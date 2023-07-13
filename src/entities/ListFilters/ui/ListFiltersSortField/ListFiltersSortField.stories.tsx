@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
-import { Theme } from '@/shared/const/theme'
+import { action } from '@storybook/addon-actions'
 import { SortField } from '../../model/const/sortField'
 import { ListFiltersSortField } from './ListFiltersSortField'
 
@@ -13,16 +12,11 @@ export default {
 
   args: {
     sortField: SortField.CREATED_AT,
+    onChangeSortField: action('onChangeSortField'),
   },
 } as Meta<typeof ListFiltersSortField>
 
 type Story = StoryObj<typeof ListFiltersSortField>
-export const Light: Story = {}
 
-export const Dark: Story = {
-  decorators: [ThemeDecorator(Theme.DARK)],
-}
-
-export const Orange: Story = {
-  decorators: [ThemeDecorator(Theme.ORANGE)],
-}
+export const PrimaryDeprecated: Story = {}
+export const PrimaryRedesigned: Story = {}

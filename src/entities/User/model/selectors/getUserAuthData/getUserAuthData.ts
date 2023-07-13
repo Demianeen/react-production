@@ -1,7 +1,7 @@
-import { createSelector } from '@reduxjs/toolkit'
+import { buildSelector } from '@/shared/lib/store'
 import { getUserState } from '../getUserState/getUserState'
 
-export const getUserAuthData = createSelector(
+export const [useUserAuthData, getUserAuthData] = buildSelector(
   getUserState,
   (user) => user?.authData
 )

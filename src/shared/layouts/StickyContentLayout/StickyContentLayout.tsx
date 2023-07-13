@@ -1,13 +1,13 @@
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
-import type { ReactElement } from 'react'
+import type { ReactNode } from 'react'
 import styles from './StickyContentLayout.module.scss'
 
 export interface StickyContentLayoutProps {
   className?: string
-  right?: ReactElement
-  left?: ReactElement
-  content: ReactElement
+  right?: ReactNode
+  left?: ReactNode
+  content: ReactNode
   leftContainerClassName?: string
   rightContainerClassName?: string
 }

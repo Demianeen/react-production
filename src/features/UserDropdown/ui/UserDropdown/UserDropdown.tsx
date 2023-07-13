@@ -6,8 +6,8 @@ import { Avatar as AvatarDeprecated } from '@/shared/ui/deprecated/Avatar'
 import {
   getIsUserAdmin,
   getIsUserManager,
-  getUserAuthData,
   useUserActions,
+  useUserAuthData,
 } from '@/entities/User'
 import { routes } from '@/shared/lib/router/routes'
 import { ToggleFeature } from '@/shared/lib/features'
@@ -23,7 +23,7 @@ export const UserDropdown = memo(
   ({ className }: UserDropdownProps) => {
     const { t } = useTranslation()
 
-    const authData = useSelector(getUserAuthData)
+    const authData = useUserAuthData()
 
     const isAdmin = useSelector(getIsUserAdmin)
     const isManager = useSelector(getIsUserManager)

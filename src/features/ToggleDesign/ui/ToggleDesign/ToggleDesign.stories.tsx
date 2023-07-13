@@ -13,4 +13,5 @@ export default {
 
 type Story = StoryObj<typeof ToggleDesign>
 
-export const Light: Story = {}
+export const PrimaryDeprecated: Story = {}
+export const PrimaryRedesigned: Story = {}

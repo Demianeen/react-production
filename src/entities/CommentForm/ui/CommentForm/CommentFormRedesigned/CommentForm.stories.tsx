@@ -6,7 +6,7 @@ import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 import CommentFormRedesigned from './CommentFormRedesigned'
 
 export default {
-  title: 'entities/CommentForm',
+  title: 'entities/CommentForm/redesigned',
   component: CommentFormRedesigned,
   argTypes: {
     backgroundColor: { control: 'color' },

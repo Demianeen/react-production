@@ -1,6 +1,5 @@
 import type { FC, ReactNode } from 'react'
 import { useMemo, useState } from 'react'
-import { useJsonSettingOnUserInit } from '@/entities/User'
 import { Theme } from '../../../../shared/const/theme'
 import { ThemeContext } from '../../../../shared/lib/context/ThemeContext/ThemeContext'
 
@@ -17,8 +16,6 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({
     initialTheme ?? Theme.DARK
   )
   document.body.className = theme
-
-  useJsonSettingOnUserInit('theme', setTheme)
 
   const defaultProps = useMemo(
     () => ({

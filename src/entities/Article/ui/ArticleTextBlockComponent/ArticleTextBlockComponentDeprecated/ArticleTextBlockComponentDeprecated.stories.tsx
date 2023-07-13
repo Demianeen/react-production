@@ -15,7 +15,7 @@ const block: ArticleTextBlock = {
 }
 
 export default {
-  title: 'entities/Article/ArticleTextBlockComponent',
+  title: 'entities/Article/ArticleTextBlockComponent/deprecated',
   component: ArticleTextBlockComponentDeprecated,
   argTypes: {
     backgroundColor: { control: 'color' },

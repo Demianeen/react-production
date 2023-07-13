@@ -15,7 +15,9 @@ export default {
 type Story = StoryObj<typeof Title>
 
 export const Level1: Story = {
-  args: {},
+  args: {
+    level: 1,
+  },
 }
 
 export const Level2: Story = {

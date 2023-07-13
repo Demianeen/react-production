@@ -3,7 +3,7 @@ import { mockNotification } from '../../../model/mocks/mockNotification'
 import { NotificationItemDeprecated } from './NotificationItemDeprecated'
 
 export default {
-  title: 'entities/Notification/NotificationItem',
+  title: 'entities/Notification/NotificationItem/deprecated',
   component: NotificationItemDeprecated,
   argTypes: {
     backgroundColor: { control: 'color' },

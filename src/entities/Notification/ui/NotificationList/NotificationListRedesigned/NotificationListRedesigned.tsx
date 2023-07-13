@@ -19,14 +19,12 @@ export const NotificationListRedesigned = typedMemo(
   ({ className }: NotificationListRedesignedProps) => {
     const { t } = useTranslation()
     const userId = useSelector(getUserId)
-    const { data, isLoading, isError } = useGetNotificationsQuery(
-      userId ?? skipToken,
-      {
+    const { data, isLoading, isError, isUninitialized } =
+      useGetNotificationsQuery(userId ?? skipToken, {
         pollingInterval: 10000,
-      }
-    )
+      })
 
-    if (isLoading) {
+    if (isLoading || isUninitialized) {
       return (
         <VStack
           className={classNames('', {}, [

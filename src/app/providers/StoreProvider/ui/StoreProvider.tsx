@@ -25,5 +25,11 @@ export const StoreProvider = ({
     [preloadedAsyncReducers, preloadedState]
   )
 
+  // @ts-expect-error expose store when run in Cypress
+  if (window.Cypress) {
+    // @ts-expect-error store type for window is added only for Cypress
+    window.store = store
+  }
+
   return <Provider store={store}>{children}</Provider>
 }

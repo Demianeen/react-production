@@ -4,7 +4,7 @@ import { Theme } from '@/shared/const/theme'
 import { CommentCardRedesignedSkeleton } from './CommentCardSkeleton'
 
 export default {
-  title: 'entities/Comment/CommentCardIsLoading',
+  title: 'entities/Comment/CommentCardIsLoading/redesigned',
   component: CommentCardRedesignedSkeleton,
   argTypes: {
     backgroundColor: { control: 'color' },

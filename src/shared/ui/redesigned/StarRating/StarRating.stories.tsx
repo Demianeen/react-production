@@ -5,7 +5,7 @@ import { Theme } from '@/shared/const/theme'
 import { StarRating } from './StarRating'
 
 export default {
-  title: 'shared/StarRating',
+  title: 'shared/redesigned/StarRating',
   component: StarRating,
   argTypes: {
     backgroundColor: { control: 'color' },

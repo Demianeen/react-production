@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { ButtonSkeleton } from './ButtonSkeleton'
 
 export default {
-  title: 'shared/Button',
+  title: 'shared/deprecated/Button',
   component: ButtonSkeleton,
   argTypes: {
     backgroundColor: { control: 'color' },

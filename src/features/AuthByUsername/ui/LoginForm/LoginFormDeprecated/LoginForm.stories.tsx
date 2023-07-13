@@ -5,7 +5,7 @@ import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 import LoginFormDeprecated from './LoginFormDeprecated'
 
 export default {
-  title: 'features/LoginForm',
+  title: 'features/LoginForm/deprecated',
   component: LoginFormDeprecated,
   argTypes: {
     backgroundColor: { control: 'color' },

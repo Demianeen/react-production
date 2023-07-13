@@ -9,9 +9,8 @@ import {
   TextTheme,
   Text,
 } from '@/shared/ui/deprecated/Text'
-import { getUserAuthData } from '@/entities/User'
+import { useUserAuthData } from '@/entities/User'
 import { useTranslation } from 'react-i18next'
-import { useSelector } from 'react-redux'
 import styles from './SidebarItemDeprecated.module.scss'
 import type { SidebarItemArgs } from '../../../model/types/sidebar'
 
@@ -24,7 +23,7 @@ export interface SidebarItemDeprecatedProps {
 export const SidebarItemDeprecated = typedMemo(
   ({ className, item, isCollapsed }: SidebarItemDeprecatedProps) => {
     const { t } = useTranslation()
-    const isAuth = useSelector(getUserAuthData)
+    const isAuth = useUserAuthData()
 
     const mods: Mods = {
       [styles.collapsed]: isCollapsed,

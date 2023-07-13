@@ -13,8 +13,10 @@ import { LoaderLayout } from '@/widgets/LoaderLayout'
 import { ToggleFeature } from '@/shared/lib/features'
 import { MainLayout } from '@/shared/layouts/MainLayout'
 import { useAppToolbar } from '@/app/lib/useAppToolbar'
+import { withTheme } from '@/app/providers/ThemeProvider'
+import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
 
-const App = () => {
+const App = typedMemo(() => {
   const isUserInitialized = useSelector(getUserIsInitialized)
   const initAuthData = useInitAuthData()
   const toolbar = useAppToolbar()
@@ -56,6 +58,6 @@ const App = () => {
       }
     />
   )
-}
+})
 
-export default App
+export default withTheme(App)

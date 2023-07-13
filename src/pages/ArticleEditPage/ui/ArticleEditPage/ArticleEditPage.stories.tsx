@@ -1,6 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
-import { Theme } from '@/shared/const/theme'
 import ArticleEditPage from './ArticleEditPage'
 
 export default {
@@ -13,12 +11,5 @@ export default {
 
 type Story = StoryObj<typeof ArticleEditPage>
 
-export const Light: Story = {}
-
-export const Dark: Story = {
-  decorators: [ThemeDecorator(Theme.DARK)],
-}
-
-export const Orange: Story = {
-  decorators: [ThemeDecorator(Theme.ORANGE)],
-}
+export const PrimaryDeprecated: Story = {}
+export const PrimaryRedesigned: Story = {}

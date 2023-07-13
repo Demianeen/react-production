@@ -12,14 +12,24 @@ export default {
 } as Meta<typeof ThemeSwitcher>
 
 type Story = StoryObj<typeof ThemeSwitcher>
-export const Light: Story = {
+
+const light = {
   decorators: [ThemeDecorator(Theme.LIGHT)],
 }
 
-export const Dark: Story = {
+export const LightDeprecated: Story = light
+export const LightRedesigned: Story = light
+
+const dark = {
   decorators: [ThemeDecorator(Theme.DARK)],
 }
 
-export const Orange: Story = {
+export const DarkDeprecated: Story = dark
+export const DarkRedesigned: Story = dark
+
+const orange = {
   decorators: [ThemeDecorator(Theme.ORANGE)],
 }
+
+export const OrangeDeprecated: Story = orange
+export const OrangeRedesigned: Story = orange

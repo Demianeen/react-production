@@ -21,7 +21,7 @@ const tabs: TabItem<string>[] = [
 ]
 
 export default {
-  title: 'shared/Tabs',
+  title: 'shared/deprecated/Tabs',
   component: Tabs,
   argTypes: {
     backgroundColor: { control: 'color' },

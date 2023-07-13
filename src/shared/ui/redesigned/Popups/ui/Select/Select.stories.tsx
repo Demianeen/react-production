@@ -6,7 +6,7 @@ import { LayoutDecorator } from '@/shared/lib/storybook/LayoutDecorator'
 import { Select } from './Select'
 
 export default {
-  title: 'shared/Popups/redesigned/Select',
+  title: 'shared/redesigned/Popups/Select',
   component: Select,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -20,6 +20,7 @@ export default {
     onChange: action('onChange'),
     defaultValue: 'default value',
   },
+  decorators: [LayoutDecorator('centered')],
 } as Meta<typeof Select>
 
 type Story = StoryObj<typeof Select>
@@ -35,7 +36,6 @@ export const DirectionDownRight: Story = {
     label: 'label',
     direction: 'down-right',
   },
-  decorators: [LayoutDecorator('centered')],
 }
 
 export const DirectionUpLeft: Story = {
@@ -43,7 +43,7 @@ export const DirectionUpLeft: Story = {
     label: 'label',
     direction: 'up-left',
   },
-  decorators: [LayoutDecorator('centered')],
+  decorators: [LayoutDecorator('fullpage')],
 }
 
 export const DirectionUpRight: Story = {
@@ -51,7 +51,6 @@ export const DirectionUpRight: Story = {
     label: 'label',
     direction: 'up-right',
   },
-  decorators: [LayoutDecorator('centered')],
 }
 
 export const WithoutLabel: Story = {}

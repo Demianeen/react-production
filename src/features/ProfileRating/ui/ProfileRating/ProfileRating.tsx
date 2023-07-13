@@ -71,7 +71,7 @@ const ProfileRating = memo(
       [handleRateProfile]
     )
 
-    if (isGetRatingLoading) {
+    if (isGetRatingLoading || isUninitialized) {
       return (
         <ToggleFeature
           name='isAppRedesigned'
@@ -87,7 +87,7 @@ const ProfileRating = memo(
       )
     }
 
-    if (isError || isUninitialized) {
+    if (isError) {
       return (
         <ToggleFeature
           name='isAppRedesigned'

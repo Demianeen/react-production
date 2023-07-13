@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { InputSkeleton } from './InputSkeleton'
 
 export default {
-  title: 'shared/Input',
+  title: 'shared/deprecated/Input',
   component: InputSkeleton,
   argTypes: {
     backgroundColor: { control: 'color' },

@@ -4,17 +4,12 @@ import { Theme } from '@/shared/const/theme'
 import { NotificationListDeprecated } from './NotificationListDeprecated'
 
 export default {
-  title: 'entities/Notification/NotificationList',
+  title: 'entities/Notification/NotificationList/deprecated',
   component: NotificationListDeprecated,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
   args: {},
-  parameters: {
-    loki: {
-      skip: true,
-    },
-  },
 } as Meta<typeof NotificationListDeprecated>
 
 type Story = StoryObj<typeof NotificationListDeprecated>

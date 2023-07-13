@@ -4,7 +4,7 @@ import { Theme } from '@/shared/const/theme'
 import { Overlay } from './Overlay'
 
 export default {
-  title: 'shared/Overlay',
+  title: 'shared/redesigned/Overlay',
   component: Overlay,
   argTypes: {
     backgroundColor: { control: 'color' },

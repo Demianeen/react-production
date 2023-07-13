@@ -10,4 +10,5 @@ export default {
 } as Meta<typeof ArticleRecommendationsList>
 
 type Story = StoryObj<typeof ArticleRecommendationsList>
-export const Light: Story = {}
+export const PrimaryDeprecated: Story = {}
+export const PrimaryRedesigned: Story = {}

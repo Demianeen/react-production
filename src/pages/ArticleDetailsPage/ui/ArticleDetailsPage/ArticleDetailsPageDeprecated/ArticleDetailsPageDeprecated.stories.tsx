@@ -3,10 +3,11 @@ import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { Theme } from '@/shared/const/theme'
 import { RoutePath } from '@/shared/const/router/routePath'
 import { routes } from '@/shared/lib/router/routes'
+import { LayoutDecorator } from '@/shared/lib/storybook/LayoutDecorator'
 import ArticleDetailsPageDeprecated from './ArticleDetailsPageDeprecated'
 
 export default {
-  title: 'pages/ArticleDetailsPage/ArticleDetailsPage',
+  title: 'pages/ArticleDetailsPage/ArticleDetailsPage/deprecated',
   component: ArticleDetailsPageDeprecated,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -27,6 +28,7 @@ export const Light: Story = {
 }
 
 export const NotFound: Story = {
+  decorators: [LayoutDecorator('fullpage')],
   parameters: {
     reactRouter: {
       routePath: routes.articleDetails({ id: '' }),

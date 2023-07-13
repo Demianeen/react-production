@@ -19,10 +19,14 @@ export default {
 
 type Story = StoryObj<typeof NotificationDrawer>
 
-export const Light: Story = {}
+export const PrimaryDeprecated: Story = {}
+export const PrimaryRedesigned: Story = {}
 
-export const Loading: Story = {}
+export const LoadingDeprecated: Story = {}
+export const LoadingRedesigned: Story = {}
 
-export const Empty: Story = {}
+export const EmptyDeprecated: Story = {}
+export const EmptyRedesigned: Story = {}
 
-export const Error: Story = {}
+export const ErrorDeprecated: Story = {}
+export const ErrorRedesigned: Story = {}

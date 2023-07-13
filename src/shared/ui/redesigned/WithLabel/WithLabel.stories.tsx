@@ -4,7 +4,7 @@ import { Theme } from '@/shared/const/theme'
 import { WithLabel } from './WithLabel'
 
 export default {
-  title: 'shared/WithLabel',
+  title: 'shared/redesigned/WithLabel',
   component: WithLabel,
   argTypes: {
     backgroundColor: { control: 'color' },

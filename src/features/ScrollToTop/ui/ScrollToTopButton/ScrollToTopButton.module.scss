@@ -1,0 +1,12 @@
+.button {
+  svg {
+    color: var(--text-redesigned) !important;
+    opacity: 0.8;
+  }
+
+  &:hover {
+    svg {
+      opacity: 1;
+    }
+  }
+}

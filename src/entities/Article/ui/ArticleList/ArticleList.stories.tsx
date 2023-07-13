@@ -1,6 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
-import { Theme } from '@/shared/const/theme'
 import { View } from '@/entities/ListFilters'
 import { mockArticle } from '../../model/mocks/mockArticle'
 import { ArticleList } from './ArticleList'
@@ -24,72 +22,60 @@ const articlesList = new Array(2).fill(null).map((array, index) => ({
   id: index,
 }))
 
-export const List: Story = {
-  args: {
-    articles: articlesList,
-    view: View.LIST,
-    limit: 4,
-  },
+const listArgs = {
+  articles: articlesList,
+  view: View.LIST,
+  limit: 4,
 }
 
-export const Grid: Story = {
-  args: {
-    articles: articlesGrid,
-    view: View.GRID,
-    limit: 12,
-  },
+export const ListDeprecated: Story = {
+  args: listArgs,
 }
 
-export const IsLoadingList: Story = {
-  args: {
-    articles: articlesList,
-    isLoading: true,
-    view: View.LIST,
-    limit: 4,
-  },
+export const ListRedesigned: Story = {
+  args: listArgs,
 }
 
-export const IsLoadingGrid: Story = {
-  args: {
-    articles: articlesGrid,
-    isLoading: true,
-    view: View.GRID,
-    limit: 12,
-  },
+const gridArgs = {
+  articles: articlesGrid,
+  view: View.GRID,
+  limit: 12,
 }
 
-export const DarkList: Story = {
-  args: {
-    articles: articlesList,
-    view: View.LIST,
-    limit: 4,
-  },
-  decorators: [ThemeDecorator(Theme.DARK)],
+export const GridDeprecated: Story = {
+  args: gridArgs,
 }
 
-export const DarkGrid: Story = {
-  args: {
-    articles: articlesGrid,
-    view: View.GRID,
-    limit: 12,
-  },
-  decorators: [ThemeDecorator(Theme.DARK)],
+export const GridRedesigned: Story = {
+  args: gridArgs,
 }
 
-export const OrangeList: Story = {
-  args: {
-    articles: articlesList,
-    view: View.LIST,
-    limit: 4,
-  },
-  decorators: [ThemeDecorator(Theme.ORANGE)],
+const isLoadingListArgs = {
+  articles: articlesList,
+  isLoading: true,
+  view: View.LIST,
+  limit: 4,
 }
 
-export const OrangeGrid: Story = {
-  args: {
-    articles: articlesGrid,
-    view: View.GRID,
-    limit: 12,
-  },
-  decorators: [ThemeDecorator(Theme.ORANGE)],
+export const IsLoadingListDeprecated: Story = {
+  args: isLoadingListArgs,
+}
+
+export const IsLoadingListRedesigned: Story = {
+  args: isLoadingListArgs,
+}
+
+const isLoadingGridArgs = {
+  articles: articlesGrid,
+  isLoading: true,
+  view: View.GRID,
+  limit: 12,
+}
+
+export const IsLoadingGridDeprecated: Story = {
+  args: isLoadingGridArgs,
+}
+
+export const IsLoadingGridRedesigned: Story = {
+  args: isLoadingGridArgs,
 }

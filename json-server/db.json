@@ -1077,9 +1077,8 @@
       "password": "123",
       "roles": ["ADMIN"],
       "jsonSettings": {
-        "theme": "appDarkTheme",
+        "theme": "appLightTheme",
         "language": "en",
-        "isArticlePageWasOpened": true,
         "isArticlesPageWasOpened": true
       },
       "features": {
@@ -1097,8 +1096,8 @@
       "roles": ["USER"],
       "jsonSettings": {
         "theme": "appOrangeTheme",
-        "language": "uk",
-        "isArticlePageWasOpened": true
+        "language": "en",
+        "isArticlesPageWasOpened": true
       },
       "features": {
         "isArticleRatingEnabled": false,
@@ -1120,7 +1119,7 @@
         "isAppRedesigned": false
       },
       "jsonSettings": {
-        "isArticlePageWasOpened": true
+        "isArticlesPageWasOpened": true
       }
     },
     {
@@ -1131,7 +1130,7 @@
       "jsonSettings": {
         "theme": "appRedTheme",
         "language": "en",
-        "isArticlePageWasOpened": true
+        "isArticlesPageWasOpened": true
       },
       "features": {
         "isArticleRatingEnabled": true,

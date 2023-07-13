@@ -1,6 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
-import { Theme } from '@/shared/const/theme'
 import { ArticleBlockType } from '../../model/const/articleBlockType'
 import { ArticleCodeBlockComponent } from './ArticleCodeBlockComponent'
 
@@ -49,12 +47,5 @@ function double(n: number): number {
 } as Meta<typeof ArticleCodeBlockComponent>
 
 type Story = StoryObj<typeof ArticleCodeBlockComponent>
-export const Light: Story = {}
-
-export const Dark: Story = {
-  decorators: [ThemeDecorator(Theme.DARK)],
-}
-
-export const Orange: Story = {
-  decorators: [ThemeDecorator(Theme.ORANGE)],
-}
+export const LightDeprecated: Story = {}
+export const LightRedesigned: Story = {}

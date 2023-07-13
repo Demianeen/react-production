@@ -6,7 +6,7 @@ import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 import CommentFormDeprecated from './CommentFormDeprecated'
 
 export default {
-  title: 'entities/CommentForm',
+  title: 'entities/CommentForm/deprecated',
   component: CommentFormDeprecated,
   argTypes: {
     backgroundColor: { control: 'color' },

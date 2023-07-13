@@ -1,14 +1,42 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { LayoutDecorator } from '@/shared/lib/storybook/LayoutDecorator'
+// eslint-disable-next-line netliukh-demian-fsd-plugin/layer-imports
+import { Page } from '@/widgets/Page'
+import { useState } from 'react'
 import { ArticleInfiniteListRedesigned } from './ArticleInfiniteListRedesigned'
 
 export default {
   title: 'widgets/ArticleInfiniteList/ArticleInfiniteList/redesigned',
-  component: ArticleInfiniteListRedesigned,
+  component: (...props) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [pageRef, setPageRef] = useState<HTMLDivElement | null>(
+      null
+    )
+
+    return (
+      <Page ref={setPageRef}>
+        <ArticleInfiniteListRedesigned
+          scrollParent={pageRef}
+          {...props}
+        />
+      </Page>
+    )
+  },
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  decorators: [LayoutDecorator('fullpage')],
+  decorators: [
+    (StoryComponent) => {
+      const [pageRef, setPageRef] = useState<HTMLDivElement | null>(
+        null
+      )
+
+      return (
+        <Page ref={setPageRef}>
+          <StoryComponent scrollParent={pageRef} />
+        </Page>
+      )
+    },
+  ],
 } as Meta<typeof ArticleInfiniteListRedesigned>
 
 type Story = StoryObj<typeof ArticleInfiniteListRedesigned>

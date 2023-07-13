@@ -10,7 +10,13 @@ const loadingSettings = JSON.parse(
 // if user is not logged in, feature flags will be set to null in userSlice
 let featureFlags: FeatureFlags | null = loadingSettings
 
-export const setFeatureFlags = (flags: FeatureFlags | null) => {
+export const setFeatureFlags = (
+  flags: FeatureFlags | null | undefined
+) => {
+  if (flags === undefined) {
+    return
+  }
+
   featureFlags = flags
   localStorage.setItem(
     FEATURE_FLAGS_LOCALSTORAGE_KEY,

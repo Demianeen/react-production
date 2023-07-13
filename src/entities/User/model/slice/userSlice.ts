@@ -64,14 +64,19 @@ export const userSlice = buildSlice({
       })
       .addCase(initAuthData.fulfilled, (state, action) => {
         state.authData = action.payload
-        setFeatureFlags(action.payload?.features)
         state._isInitialized = true
+
+        if (action.payload?.features)
+          setFeatureFlags(action.payload?.features)
       })
       .addCase(initAuthData.rejected, (state) => {
         // we need to set flag to true to load app
         state._isInitialized = true
         state.authData = undefined
-        setFeatureFlags(null)
+
+        if (__PROJECT__ !== 'storybook') {
+          setFeatureFlags(null)
+        }
       })
   },
 })

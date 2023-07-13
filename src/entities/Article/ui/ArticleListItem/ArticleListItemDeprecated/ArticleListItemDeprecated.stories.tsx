@@ -5,7 +5,7 @@ import { mockArticle } from '../../../model/mocks/mockArticle'
 import { ArticleListItemDeprecated } from './ArticleListItemDeprecated'
 
 export default {
-  title: 'entities/Article/ArticleListItem',
+  title: 'entities/Article/ArticleListItem/deprecated',
   component: ArticleListItemDeprecated,
   argTypes: {
     backgroundColor: { control: 'color' },

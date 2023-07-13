@@ -5,7 +5,7 @@ import { mockComments } from '../../../model/mocks/mockCommentEntities'
 import { CommentCardDeprecated } from './CommentCard'
 
 export default {
-  title: 'entities/Comment/CommentCard',
+  title: 'entities/Comment/CommentCard/deprecated',
   component: CommentCardDeprecated,
   argTypes: {
     backgroundColor: { control: 'color' },

@@ -5,7 +5,7 @@ import { InitUserDecorator } from '@/shared/lib/storybook/InitUserDecorator'
 import { NavbarDeprecated } from './NavbarDeprecated'
 
 export default {
-  title: 'widgets/Navbar',
+  title: 'widgets/Navbar/deprecated',
   component: NavbarDeprecated,
   argTypes: {
     backgroundColor: { control: 'color' },

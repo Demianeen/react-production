@@ -4,19 +4,25 @@ import { Theme } from '@/shared/const/theme'
 import { Card } from './Card'
 
 export default {
-  title: 'shared/Card',
+  title: 'shared/redesigned/Card',
   component: Card,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
   args: {
-    children: <p>Text</p>,
+    children: 'Text',
   },
 } as Meta<typeof Card>
 
 type Story = StoryObj<typeof Card>
 
-export const Light: Story = {}
+export const Primary: Story = {}
+
+export const BackgroundLight: Story = {
+  args: {
+    background: 'light',
+  },
+}
 
 export const MaxWidth: Story = {
   args: {

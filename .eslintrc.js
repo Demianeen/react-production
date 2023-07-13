@@ -214,8 +214,8 @@ module.exports = {
         'i18next/no-literal-string': 0,
         // we use props spreading in stories
         'react/jsx-props-no-spreading': 0,
-        // we can use dev dependencies in development
-        // 'import/no-extraneous-dependencies': 0,
+        // it gives error when using hook in a storybook component as `() => <Component />` instead of `Component`
+        'react-hooks/rules-of-hooks': 0,
       },
     },
     {

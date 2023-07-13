@@ -5,7 +5,7 @@ import CalendarIcon from '@/shared/assets/icons/deprecated/calendar-20-20.svg'
 import { Icon } from './Icon'
 
 export default {
-  title: 'shared/Icon',
+  title: 'shared/deprecated/Icon',
   component: Icon,
   argTypes: {
     backgroundColor: { control: 'color' },

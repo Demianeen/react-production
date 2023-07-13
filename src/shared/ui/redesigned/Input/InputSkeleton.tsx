@@ -6,16 +6,29 @@ interface InputSkeletonProps {
   className?: string
   wrapperClassName?: string
   maxWidth?: boolean
+  withoutLabel?: boolean
 }
 
 export const InputSkeleton = memo(
-  ({ className, wrapperClassName, maxWidth }: InputSkeletonProps) => {
+  ({
+    className,
+    wrapperClassName,
+    maxWidth,
+    withoutLabel = false,
+  }: InputSkeletonProps) => {
+    const inputSkeleton = (
+      <Skeleton className={className} height='2.5rem' />
+    )
+    if (withoutLabel) {
+      return inputSkeleton
+    }
+
     return (
       <WithLabelSkeleton
         wrapperClassName={wrapperClassName}
         maxWidth={maxWidth}
       >
-        <Skeleton className={className} height='2.5rem' />
+        {inputSkeleton}
       </WithLabelSkeleton>
     )
   }

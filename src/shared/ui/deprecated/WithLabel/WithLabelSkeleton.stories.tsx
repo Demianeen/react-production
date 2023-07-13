@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { WithLabelSkeleton } from './WithLabelSkeleton'
 
 export default {
-  title: 'shared/WithLabel',
+  title: 'shared/deprecated/WithLabel',
   component: WithLabelSkeleton,
   argTypes: {
     backgroundColor: { control: 'color' },

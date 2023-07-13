@@ -10,6 +10,8 @@ import { Page } from '@/widgets/Page'
 import { VStack } from '@/shared/ui/redesigned/Stack'
 import { ProfileRating } from '@/features/ProfileRating'
 import { useSelector } from 'react-redux'
+import { Title } from '@/shared/ui/redesigned/Title'
+import { ToggleFeature } from '@/shared/lib/features'
 
 const ProfilePage = () => {
   const { t } = useTranslation('profile')
@@ -19,9 +21,19 @@ const ProfilePage = () => {
   if (id === undefined) {
     return (
       <VStack maxHeight maxWidth justify='center' align='center'>
-        <Text
-          theme={TextTheme.ERROR}
-          title={t('Profile not found')}
+        <ToggleFeature
+          name='isAppRedesigned'
+          on={
+            <Title level={2} tag='h1'>
+              {t('Profile not found')}
+            </Title>
+          }
+          off={
+            <Text
+              theme={TextTheme.ERROR}
+              title={t('Profile not found')}
+            />
+          }
         />
       </VStack>
     )

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
-import { Theme } from '@/shared/const/theme'
+import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
+import { withJsonSettings } from '@/entities/User/testing'
+import { LayoutDecorator } from '@/shared/lib/storybook/LayoutDecorator'
 import ArticlesPage from './ArticlesPage'
 
 export default {
@@ -15,15 +16,29 @@ export default {
       skip: true,
     },
   },
+  decorators: [
+    StoreDecorator(
+      withJsonSettings({
+        isArticlesPageWasOpened: true,
+      })
+    ),
+    LayoutDecorator('fullpage'),
+  ],
 } as Meta<typeof ArticlesPage>
 
 type Story = StoryObj<typeof ArticlesPage>
-export const Light: Story = {}
 
-export const Dark: Story = {
-  decorators: [ThemeDecorator(Theme.DARK)],
-}
+export const PrimaryDeprecated: Story = {}
+export const PrimaryRedesigned: Story = {}
 
-export const Orange: Story = {
-  decorators: [ThemeDecorator(Theme.ORANGE)],
+const firstOpen = {
+  decorators: [
+    StoreDecorator(
+      withJsonSettings({
+        isArticlesPageWasOpened: false,
+      })
+    ),
+  ],
 }
+export const FirstOpenDeprecated: Story = firstOpen
+export const FirstOpenRedesigned: Story = firstOpen

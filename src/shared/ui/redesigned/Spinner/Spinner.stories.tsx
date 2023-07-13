@@ -4,7 +4,7 @@ import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { Spinner } from './Spinner'
 
 export default {
-  title: 'shared/Spinner',
+  title: 'shared/redesigned/Spinner',
   component: Spinner,
   argTypes: {
     backgroundColor: { control: 'color' },

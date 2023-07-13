@@ -2,7 +2,7 @@ import type { StoryObj, Meta } from '@storybook/react'
 import { NavbarRedesigned } from './NavbarRedesigned'
 
 export default {
-  title: 'AFiletemplate/NavbarRedesigned',
+  title: 'widgets/Navbar/Redesigned',
   component: NavbarRedesigned,
   argTypes: {
     backgroundColor: { control: 'color' },

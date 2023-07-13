@@ -4,7 +4,7 @@ import { Theme } from '@/shared/const/theme'
 import { ArticleDetailsDeprecated } from './ArticleDetailsDeprecated'
 
 export default {
-  title: 'entities/Article/ArticleDetails',
+  title: 'entities/Article/ArticleDetails/deprecated',
   component: ArticleDetailsDeprecated,
   argTypes: {
     backgroundColor: { control: 'color' },

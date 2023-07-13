@@ -3,7 +3,7 @@ import { CardSkeleton } from './CardSkeleton'
 import type { Card } from './Card'
 
 export default {
-  title: 'shared/Card',
+  title: 'shared/deprecated/Card',
   component: CardSkeleton,
   argTypes: {
     backgroundColor: { control: 'color' },

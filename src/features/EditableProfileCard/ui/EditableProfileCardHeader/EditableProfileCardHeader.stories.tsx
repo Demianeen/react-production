@@ -1,6 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
-import { Theme } from '@/shared/const/theme'
 import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 import { EditableProfileCardHeader } from './EditableProfileCardHeader'
 
@@ -26,22 +24,12 @@ const canEditState = {
   },
 }
 
-export const CanEdit: Story = {
+const canEdit = {
   decorators: [StoreDecorator(canEditState)],
 }
 
-export const CannotEdit: Story = {}
+export const CanEditDeprecated: Story = canEdit
+export const CanEditRedesigned: Story = canEdit
 
-export const Dark: Story = {
-  decorators: [
-    ThemeDecorator(Theme.DARK),
-    StoreDecorator(canEditState),
-  ],
-}
-
-export const Orange: Story = {
-  decorators: [
-    ThemeDecorator(Theme.ORANGE),
-    StoreDecorator(canEditState),
-  ],
-}
+export const CannotEditDeprecated: Story = {}
+export const CannotEditRedesigned: Story = {}

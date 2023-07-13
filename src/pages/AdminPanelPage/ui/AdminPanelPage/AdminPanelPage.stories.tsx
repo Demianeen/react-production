@@ -10,4 +10,6 @@ export default {
 } as Meta<typeof AdminPanelPage>
 
 type Story = StoryObj<typeof AdminPanelPage>
-export const Light: Story = {}
+
+export const LightDeprecated: Story = {}
+export const LightRedesigned: Story = {}

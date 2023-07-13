@@ -4,7 +4,7 @@ import { Theme } from '@/shared/const/theme'
 import { Skeleton } from './Skeleton'
 
 export default {
-  title: 'shared/Skeleton',
+  title: 'shared/redesigned/Skeleton',
   component: Skeleton,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -22,6 +22,28 @@ export const Text: Story = {
   args: {
     variant: 'text',
     height: 'text',
+  },
+}
+
+export const Text3Lines: Story = {
+  args: {
+    variant: 'text',
+    height: 'text',
+    numberOfLines: 3,
+  },
+}
+
+export const TitleLevel1: Story = {
+  args: {
+    variant: 'text',
+    height: 'title',
+  },
+}
+
+export const TitleLevel2: Story = {
+  args: {
+    variant: 'text',
+    height: 'l2title',
   },
 }
 

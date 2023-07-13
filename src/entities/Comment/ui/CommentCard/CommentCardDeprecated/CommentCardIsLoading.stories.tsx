@@ -4,7 +4,7 @@ import { Theme } from '@/shared/const/theme'
 import { CommentCardDeprecatedSkeleton } from './CommentCardSkeleton'
 
 export default {
-  title: 'entities/Comment/CommentCardIsLoading',
+  title: 'entities/Comment/CommentCardIsLoading/deprecated',
   component: CommentCardDeprecatedSkeleton,
   argTypes: {
     backgroundColor: { control: 'color' },

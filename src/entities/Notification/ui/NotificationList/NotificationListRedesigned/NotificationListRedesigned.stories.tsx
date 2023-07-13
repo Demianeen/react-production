@@ -4,17 +4,12 @@ import { Theme } from '@/shared/const/theme'
 import { NotificationListRedesigned } from './NotificationListRedesigned'
 
 export default {
-  title: 'entities/Notification/NotificationList',
+  title: 'entities/Notification/NotificationList/redesigned',
   component: NotificationListRedesigned,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
   args: {},
-  parameters: {
-    loki: {
-      skip: true,
-    },
-  },
 } as Meta<typeof NotificationListRedesigned>
 
 type Story = StoryObj<typeof NotificationListRedesigned>

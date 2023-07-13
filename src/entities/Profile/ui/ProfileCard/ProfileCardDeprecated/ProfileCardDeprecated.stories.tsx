@@ -6,7 +6,7 @@ import { Country } from '@/entities/Country'
 import { ProfileCardDeprecated } from './ProfileCardDeprecated'
 
 export default {
-  title: 'entities/ProfileCard',
+  title: 'entities/ProfileCard/deprecated',
   component: ProfileCardDeprecated,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -22,7 +22,7 @@ const data = {
   country: Country.UK,
   city: 'London',
   username: 'admin',
-  avatar: 'https://mockapi.com/avatar',
+  avatar: 'https://mockapi.com/avatar/deprecated',
 }
 
 export const Light: Story = {

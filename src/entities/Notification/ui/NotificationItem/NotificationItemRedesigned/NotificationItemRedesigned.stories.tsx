@@ -3,7 +3,7 @@ import { mockNotification } from '../../../model/mocks/mockNotification'
 import { NotificationItemRedesigned } from './NotificationItemRedesigned'
 
 export default {
-  title: 'entities/Notification/NotificationItem',
+  title: 'entities/Notification/NotificationItem/redesigned',
   component: NotificationItemRedesigned,
   argTypes: {
     backgroundColor: { control: 'color' },
