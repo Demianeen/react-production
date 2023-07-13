@@ -2,6 +2,8 @@ import { classNames } from '@/shared/lib/classNames/classNames'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
 import { Switch } from '@headlessui/react'
 import type { ReactNode } from 'react'
+import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
+import { toggleFeature } from '@/shared/lib/features'
 import { Button } from '../Button'
 import { Typography } from '../Typography'
 import styles from './Toggle.module.scss'
@@ -30,7 +32,14 @@ export const Toggle = typedMemo(
         variant='clear'
         checked={enabled}
         onChange={setEnabled}
-        className={classNames(styles.switch, {}, [className])}
+        className={classNamesNew(
+          toggleFeature({
+            name: 'isAppRedesigned',
+            on: () => styles.switch,
+            off: () => styles.switchDeprecated,
+          }),
+          className
+        )}
       >
         <Typography variant='screenReaderOnly'>
           {screenReaderText}

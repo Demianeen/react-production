@@ -1,3 +1,5 @@
+<!-- TODO: Write here about decorators, how to write stories, msw -->
+
 In the project, story cases are described for each component.
 Server requests are mocked using _msw-storybook-addon_.
 

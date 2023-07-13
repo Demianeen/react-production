@@ -1,12 +1,12 @@
 $toggle-offset: 0.125rem;
 
-.switch {
+.switch,
+.switchDeprecated {
   position: relative;
   display: inline-block;
   width: 6.25rem;
   height: 3.25rem;
   cursor: pointer;
-  background-color: var(--dark-bg-redesigned);
   border: none;
   border-radius: 2rem;
 }
@@ -19,12 +19,6 @@ $toggle-offset: 0.125rem;
   justify-content: center;
   width: calc(50% - $toggle-offset);
   height: calc(100% - (2 * $toggle-offset));
-  color: var(--light-bg-redesigned);
-
-  &.enabled {
-    color: var(--text-redesigned);
-    background: var(--light-bg-redesigned);
-  }
 }
 
 .switchOff {
@@ -37,4 +31,32 @@ $toggle-offset: 0.125rem;
   right: $toggle-offset;
   bottom: $toggle-offset;
   border-radius: 0 2rem 2rem 0;
+}
+
+.switchDeprecated {
+  background-color: var(--card-bg);
+
+  .switchOff,
+  .switchOn {
+    color: var(--secondary-color);
+
+    &.enabled {
+      color: var(--inverted-primary-color);
+      background: var(--inverted-bg-color);
+    }
+  }
+}
+
+.switch {
+  background-color: var(--dark-bg-redesigned);
+
+  .switchOff,
+  .switchOn {
+    color: var(--light-bg-redesigned);
+
+    &.enabled {
+      color: var(--text-redesigned);
+      background: var(--light-bg-redesigned);
+    }
+  }
 }
