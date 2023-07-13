@@ -55,8 +55,6 @@ jobs:
       - name: Move unit report
         run: mkdir -p reports/${{ github.sha }}/unit/; mv reports/templates/unit/* $_
       # run ui tests
-      - name: Install GraphicsMagick Engine
-        run: sudo apt-get install -y graphicsmagick
       - name: Screenshot testing
         run: npm run test:ui:ci
       - name: Generate HTML report

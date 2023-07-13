@@ -2,6 +2,7 @@ import { memo } from 'react'
 import { ListFilters } from '@/entities/ListFilters'
 import { VStack } from '@/shared/ui/redesigned/Stack'
 import { Search } from '@/shared/ui/deprecated/Search'
+import { ArticleInfiniteListTabs } from '../ArticleInfiniteListTabs/ArticleInfiniteListTabs'
 import { useArticleFilters } from '../../lib/useArticleFilters'
 import { useArticleView } from '../../lib/useArticleView'
 
@@ -37,6 +38,7 @@ export const ArticleInfiniteListFilters = memo(
           onSearchDebounced={onSearchDebounced}
           searchQuery={search}
         />
+        <ArticleInfiniteListTabs />
       </VStack>
     )
   }

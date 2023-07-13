@@ -36,5 +36,14 @@ const canEdit = {
 export const CanEditDeprecated: Story = canEdit
 export const CanEditRedesigned: Story = canEdit
 
-export const CannotEditDeprecated: Story = {}
-export const CannotEditRedesigned: Story = {}
+const cannotEdit = {
+  parameters: {
+    loki: {
+      // because when we cannot edit, this component is not rendered
+      skip: true,
+    },
+  },
+}
+
+export const CannotEditDeprecated: Story = cannotEdit
+export const CannotEditRedesigned: Story = cannotEdit

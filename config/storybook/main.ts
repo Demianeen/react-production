@@ -18,9 +18,6 @@ const config: StorybookConfig = {
     name: '@storybook/react-webpack5',
     options: {},
   },
-  features: {
-    // storyStoreV7: false, // for loki to support storybook v7
-  },
   staticDirs: ['./public', '../../public'],
 }
 

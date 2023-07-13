@@ -104,7 +104,7 @@
     "jest-html-reporters": "^3.1.4",
     "json-server": "^0.17.0",
     "lint-staged": "^13.2.2",
-    "loki": "^0.32.0",
+    "loki": "^0.31.2",
     "mini-css-extract-plugin": "^2.7.6",
     "minimist": "^1.2.8",
     "msw": "^1.2.1",
@@ -156,10 +156,6 @@
   "loki": {
     "fetchFailIgnore": "https://mockapi.com/*",
     "skipStories": "(?<!is )loading",
-    "diffingEngine": "gm",
-    "gm": {
-      "tolerance": 0.00024
-    },
     "configurations": {
       "chrome.laptop": {
         "target": "chrome.docker",
