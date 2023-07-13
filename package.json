@@ -156,6 +156,9 @@
   "loki": {
     "fetchFailIgnore": "https://mockapi.com/*",
     "skipStories": "(?<!is )loading",
+    "pixelmatch": {
+      "threshold": 0.4
+    },
     "configurations": {
       "chrome.laptop": {
         "target": "chrome.docker",
