@@ -11,6 +11,12 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  parameters: {
+    // TODO: require msw request to be fullfilled before making a screenshot
+    loki: {
+      skip: true,
+    },
+  },
 } as Meta<typeof ProfileCardRedesigned>
 
 type Story = StoryObj<typeof ProfileCardRedesigned>
