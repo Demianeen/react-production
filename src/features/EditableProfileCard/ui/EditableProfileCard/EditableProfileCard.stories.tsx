@@ -1,12 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 import { InitUserDecorator } from '@/shared/lib/storybook/InitUserDecorator'
+import createAsyncCallback from '@loki/create-async-callback'
 import { ProfileValidationError } from '../../model/const/profileValidationError'
 import { EditableProfileCard } from './EditableProfileCard'
 
+export const AsyncStory = () => (
+  // @ts-expect-error test
+  <EditableProfileCard onDone={createAsyncCallback()} />
+)
+
 export default {
   title: 'features/EditableProfileCard/EditableProfileCard',
-  component: EditableProfileCard,
+  component: AsyncStory,
   argTypes: {
     backgroundColor: { control: 'color' },
   },

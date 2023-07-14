@@ -12,7 +12,7 @@ export const AsyncStory = () => (
 
 export default {
   title: 'pages/ProfilePage',
-  component: ProfilePage,
+  component: AsyncStory,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
