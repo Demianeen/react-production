@@ -21,6 +21,10 @@ export default {
       routePath: RoutePath.profile,
       routeParams: { id: '1' },
     },
+    // TODO: require msw request to be fullfilled before making a screenshot
+    loki: {
+      skip: true,
+    },
   },
 } as Meta<typeof ProfilePage>
 
