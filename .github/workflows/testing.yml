@@ -50,13 +50,22 @@ jobs:
       - name: Install modules
         run: npm ci
       # run unit tests
+      - name: Update package index
+        run: sudo apt-get update
+        if: always()
+      - name: Install GraphicsMagick Engine
+        run: sudo apt-get install -y graphicsmagick
+        if: always()
       - name: Unit testing
         run: npm run test:unit
+        if: always()
       - name: Move unit report
         run: mkdir -p reports/${{ github.sha }}/unit/; mv reports/templates/unit/* $_
+        if: always()
       # run ui tests
       - name: Screenshot testing
         run: npm run test:ui:ci
+        if: always()
       - name: Generate HTML report
         run: npm run test:ui:report
         if: always()

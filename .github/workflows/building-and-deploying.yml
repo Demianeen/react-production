@@ -38,6 +38,7 @@ jobs:
           script: |
             cd ~/projects/react-production
             export PATH="/home/demian/.nvm/versions/node/v20.3.0/bin:$PATH"
+            git stash
             git pull
             npm i
             .deploy/deploy.sh
