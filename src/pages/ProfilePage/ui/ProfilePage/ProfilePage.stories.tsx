@@ -2,7 +2,13 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { RoutePath } from '@/shared/const/router/routePath'
 import { routes } from '@/shared/lib/router/routes'
 import { LayoutDecorator } from '@/shared/lib/storybook/LayoutDecorator'
+import createAsyncCallback from '@loki/create-async-callback'
 import ProfilePage from './ProfilePage'
+
+export const AsyncStory = () => (
+  // @ts-expect-error test
+  <ProfilePage onDone={createAsyncCallback()} />
+)
 
 export default {
   title: 'pages/ProfilePage',

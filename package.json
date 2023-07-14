@@ -45,6 +45,7 @@
     "@babel/preset-env": "^7.22.5",
     "@babel/preset-react": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
+    "@loki/create-async-callback": "^0.32.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
     "@storybook/addon-a11y": "^7.0.12",
     "@storybook/addon-actions": "^7.0.12",
