@@ -50,6 +50,8 @@ jobs:
       - name: Install modules
         run: npm ci
       # run unit tests
+      - name: Update package index
+        run: sudo apt-get update
       - name: Install GraphicsMagick Engine
         run: sudo apt-get install -y graphicsmagick
       - name: Unit testing
