@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-// import AvatarImg from '@/shared/assets/mocks/avatar.jpeg'
+import avatar from '@/shared/assets/mocks/avatar.jpeg'
 import { Avatar } from './Avatar'
 
 export default {
@@ -9,7 +9,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   args: {
-    src: 'https://mockapi.com/avatar',
+    src: avatar,
   },
 } as Meta<typeof Avatar>
 

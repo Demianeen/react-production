@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 // eslint-disable-next-line netliukh-demian-fsd-plugin/layer-imports
 import { mockUser } from '@/entities/User/testing'
+import avatar from '@/shared/assets/mocks/avatar.jpeg'
 import { Avatar } from './Avatar'
 
 export default {
@@ -10,7 +11,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   args: {
-    src: 'https://mockapi.com/avatar',
+    src: avatar,
   },
 } as Meta<typeof Avatar>
 

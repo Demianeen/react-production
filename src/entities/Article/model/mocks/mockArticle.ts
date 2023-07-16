@@ -1,4 +1,6 @@
 import { mockUser } from '@/entities/User/testing'
+import articleImage from '@/shared/assets/mocks/article.png'
+import articleImageBlockImage from '@/shared/assets/mocks/article-image-block.png'
 import { ArticleBlockType } from '../const/articleBlockType'
 import { ArticleType } from '../const/articleType'
 import type { Article } from '../types/article'
@@ -7,7 +9,7 @@ export const mockArticle: Article = {
   id: 1,
   title: 'Javascript news - what is new in JS for 2023?',
   subtitle: 'Что нового в JS за 2022 год?',
-  img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
+  img: articleImage,
   views: 1022,
   user: mockUser,
   createdAt: '26.02.2022',
@@ -40,7 +42,7 @@ export const mockArticle: Article = {
     {
       id: 2,
       type: ArticleBlockType.IMAGE,
-      src: 'https://hsto.org/r/w1560/getpro/habr/post_images/d56/a02/ffc/d56a02ffc62949b42904ca00c63d8cc1.png',
+      src: articleImageBlockImage,
       title: 'Рисунок 1 - скриншот сайта',
     },
     {
@@ -58,7 +60,7 @@ export const mockArticle: Article = {
     {
       id: 8,
       type: ArticleBlockType.IMAGE,
-      src: 'https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?cs=srgb&dl=pexels-pixabay-268533.jpg&fm=jpg',
+      src: articleImageBlockImage,
       title: 'Рисунок 1 - скриншот сайта',
     },
     {

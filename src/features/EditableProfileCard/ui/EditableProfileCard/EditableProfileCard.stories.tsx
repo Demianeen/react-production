@@ -14,12 +14,6 @@ export default {
     id: 1,
   },
   decorators: [InitUserDecorator()],
-  parameters: {
-    // TODO: require msw request to be fullfilled before making a screenshot
-    loki: {
-      skip: true,
-    },
-  },
 } as Meta<typeof EditableProfileCard>
 
 type Story = StoryObj<typeof EditableProfileCard>

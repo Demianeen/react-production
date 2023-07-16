@@ -3,6 +3,7 @@ import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { Theme } from '@/shared/const/theme'
 import { Currency } from '@/entities/Currency'
 import { Country } from '@/entities/Country'
+import avatar from '@/shared/assets/mocks/avatar.jpeg'
 import { ProfileCardDeprecated } from './ProfileCardDeprecated'
 
 export default {
@@ -10,12 +11,6 @@ export default {
   component: ProfileCardDeprecated,
   argTypes: {
     backgroundColor: { control: 'color' },
-  },
-  parameters: {
-    // TODO: require msw request to be fullfilled before making a screenshot
-    loki: {
-      skip: true,
-    },
   },
 } as Meta<typeof ProfileCardDeprecated>
 
@@ -28,7 +23,7 @@ const data = {
   country: Country.UK,
   city: 'London',
   username: 'admin',
-  avatar: 'https://mockapi.com/avatar/deprecated',
+  avatar,
 }
 
 export const Light: Story = {
