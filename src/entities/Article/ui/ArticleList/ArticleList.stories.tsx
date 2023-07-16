@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { View } from '@/entities/ListFilters'
 import { mockArticle } from '../../model/mocks/mockArticle'
+import type { ArticleListProps } from './ArticleList'
 import { ArticleList } from './ArticleList'
 
 export default {
@@ -36,10 +37,11 @@ export const ListRedesigned: Story = {
   args: listArgs,
 }
 
-const gridArgs = {
+const gridArgs: ArticleListProps = {
+  isLoading: false,
   articles: articlesGrid,
   view: View.GRID,
-  limit: 12,
+  skeletonsAmount: 12,
 }
 
 export const GridDeprecated: Story = {
@@ -50,11 +52,11 @@ export const GridRedesigned: Story = {
   args: gridArgs,
 }
 
-const isLoadingListArgs = {
+const isLoadingListArgs: ArticleListProps = {
   articles: articlesList,
   isLoading: true,
   view: View.LIST,
-  limit: 4,
+  skeletonsAmount: 1,
 }
 
 export const IsLoadingListDeprecated: Story = {
@@ -65,11 +67,11 @@ export const IsLoadingListRedesigned: Story = {
   args: isLoadingListArgs,
 }
 
-const isLoadingGridArgs = {
+const isLoadingGridArgs: ArticleListProps = {
   articles: articlesGrid,
   isLoading: true,
   view: View.GRID,
-  limit: 12,
+  skeletonsAmount: 4,
 }
 
 export const IsLoadingGridDeprecated: Story = {
