@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:dev": "concurrently \"npm run start:dev:server\" \"npm run start:dev:client\"",
+    "start": "concurrently \"npm run start:dev:server\" \"npm run start:dev:client\"",
     "start:dev:vite": "concurrently \"npm run start:dev:server\" \"npm run start:dev:vite:client\"",
     "start:dev:client": "webpack serve --env port=3000",
     "start:dev:vite:client": "vite",
@@ -152,7 +152,7 @@
     "react-i18next": "^13.0.1",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.11.2",
-    "react-virtuoso": "^4.3.7"
+    "react-virtuoso": "^4.4.0"
   },
   "loki": {
     "fetchFailIgnore": "https://mockapi.com/*",

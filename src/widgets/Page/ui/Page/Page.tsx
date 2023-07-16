@@ -1,4 +1,4 @@
-import type { ReactNode, UIEvent } from 'react'
+import type { ReactNode } from 'react'
 import {
   forwardRef,
   useEffect,
@@ -14,7 +14,6 @@ import type { TestProps } from '@/shared/types/tests'
 import { toggleFeature } from '@/shared/lib/features'
 import { AppRoutes } from '@/shared/const/router/appRoutes'
 import { useCurrentRoutePath } from '@/shared/lib/router/useCurrentRoutePath'
-import { useWindowScroll } from '@/shared/lib/scroll/useWindowScroll'
 import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle'
 import { pageActions } from '../../model/slice/pageSlice'
 import { getPageScrollPositionByPath } from '../../selectors/getPageScrollPositionByPath/getPageScrollPositionByPath'
@@ -36,7 +35,6 @@ export const Page = forwardRef<HTMLDivElement, PageProps>(
     forwardedRef
   ) => {
     const wrapperRef = useRef<HTMLDivElement>(null)
-    const windowsScroll = useWindowScroll()
     const currentPath = useCurrentRoutePath()
 
     const { pathname } = useLocation()
@@ -51,17 +49,7 @@ export const Page = forwardRef<HTMLDivElement, PageProps>(
       () => wrapperRef.current as HTMLDivElement
     )
 
-    useEffect(() => {
-      if (wrapperRef.current !== null) {
-        wrapperRef.current.scrollTop = scrollPosition
-      }
-      if (windowsScroll !== null) {
-        windowsScroll.scrollTop = scrollPosition
-      }
-    }, [scrollPosition, windowsScroll])
-
-    // FIXME: onScroll is not working in new design because scrollParent is different
-    const onScroll = useThrottle((e: UIEvent<HTMLElement>) => {
+    const onScroll = useThrottle(() => {
       if (skipScrollPositions[currentPath]) {
         return
       }
@@ -69,10 +57,47 @@ export const Page = forwardRef<HTMLDivElement, PageProps>(
       dispatch(
         pageActions.setScrollPosition({
           path: pathname,
-          position: e.currentTarget.scrollTop,
+          position: toggleFeature({
+            name: 'isAppRedesigned',
+            on: () => window.scrollY,
+            off: () => wrapperRef.current?.scrollTop ?? 0,
+          }),
         })
       )
-    }, 500)
+    }, 300)
+
+    useEffect(() => {
+      toggleFeature({
+        name: 'isAppRedesigned',
+        on: () => {
+          window.scroll(0, 1000)
+        },
+        off: () => {
+          if (wrapperRef.current !== null) {
+            wrapperRef.current.scrollTop = scrollPosition
+          }
+        },
+      })
+      // we need that it scroll only once on mount
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    useEffect(() => {
+      toggleFeature({
+        name: 'isAppRedesigned',
+        on: () => {
+          window.addEventListener('scroll', onScroll)
+        },
+        off: () => {},
+      })
+      return () => {
+        toggleFeature({
+          name: 'isAppRedesigned',
+          on: () => window.removeEventListener('scroll', onScroll),
+          off: () => {},
+        })
+      }
+    }, [onScroll])
 
     return (
       <main

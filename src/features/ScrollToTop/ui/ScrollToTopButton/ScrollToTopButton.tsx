@@ -1,5 +1,4 @@
 import CircleArrowUpIcon from '@/shared/assets/icons/redesigned/circle-arrow-up.svg'
-import { useWindowScroll } from '@/shared/lib/scroll/useWindowScroll'
 import { Icon } from '@/shared/ui/redesigned/Icon'
 import { memo, useCallback, useEffect, useState } from 'react'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
@@ -12,38 +11,29 @@ interface ScrollToTopButtonProps {
 export const ScrollToTopButton = memo(
   ({ className }: ScrollToTopButtonProps) => {
     const [wasScrolled, setWasScrolled] = useState(false)
-    const windowElement = useWindowScroll()
 
     const onScrollUp = useCallback(() => {
-      windowElement?.scrollTo({
+      window?.scrollTo({
         top: 0,
         behavior: 'smooth',
       })
-    }, [windowElement])
+    }, [])
 
     useEffect(() => {
-      console.log(windowElement)
       const onScroll = () => {
-        if (!windowElement) {
-          return
-        }
-        console.log(
-          'windowElement.scrollTop',
-          windowElement.scrollTop
-        )
-        if (windowElement.scrollTop > 0) {
+        if (window.scrollY > 0) {
           setWasScrolled(true)
         } else {
           setWasScrolled(false)
         }
       }
 
-      windowElement?.addEventListener('scroll', onScroll)
+      window.addEventListener('scroll', onScroll)
 
       return () => {
-        windowElement?.removeEventListener('scroll', onScroll)
+        window.removeEventListener('scroll', onScroll)
       }
-    }, [windowElement])
+    }, [])
 
     if (!wasScrolled) {
       return null

@@ -1,5 +1,6 @@
 import { rest } from 'msw'
 import { isMockLoading } from '@/shared/lib/mock-server/isMockLoading'
+import { isStoryNameIncludes } from '@/shared/lib/mock-server/isStoryNameIncludes'
 import { mockArticle } from './mockArticle'
 import type { Article } from '../types/article'
 
@@ -11,6 +12,10 @@ export const articleHandlers = [
 
     if (isMockLoading()) {
       return res(ctx.status(200), ctx.json({}), ctx.delay('infinite'))
+    }
+
+    if (isStoryNameIncludes('not-found')) {
+      return res(ctx.status(200), ctx.json([]))
     }
 
     const articles: Article[] = Array.from({

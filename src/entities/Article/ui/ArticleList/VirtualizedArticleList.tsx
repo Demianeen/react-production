@@ -4,12 +4,15 @@ import type { VirtuosoGridHandle } from 'react-virtuoso'
 import { Virtuoso, VirtuosoGrid } from 'react-virtuoso'
 import { useTranslation } from 'react-i18next'
 import { View } from '@/entities/ListFilters'
-import { classNames } from '@/shared/lib/classNames/classNames'
 import { Text, TextSize } from '@/shared/ui/deprecated/Text'
+import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
+import { Title } from '@/shared/ui/redesigned/Title'
+import { ToggleFeature } from '@/shared/lib/features'
+import { HStack } from '@/shared/ui/redesigned/Stack'
 import type { Article } from '../../model/types/article'
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
-import { ArticleListSkeleton } from './ArticleListSkeleton'
 import styles from './ArticleList.module.scss'
+import { useArticleListSkeletons } from '../../model/lib/useArticleListSkeleton'
 
 export type OnOpenArticle = (arg: {
   article: Article
@@ -25,11 +28,18 @@ interface VirtualizedArticleListProps {
   className?: string
   articles: Article[]
   isLoading: boolean
-  skeletonsLimit: number
+  skeletonsAmount: number
   view: View
   target?: HTMLAttributeAnchorTarget
   onLoadNextPart?: () => void
+  /**
+   * @deprecated Not work in new layout, just specify header outside of this component
+   */
   Header?: VirtualizedArticleListHeader
+  /**
+   * Parent that will be used for scrolling
+   * @default window
+   */
   scrollParent?: HTMLElement | null
   startIndex?: number
   onOpenArticle?: OnOpenArticle
@@ -44,20 +54,25 @@ export interface VirtualizedArticleListContext {
 
 const ArticlesNotFound = memo(() => {
   const { t } = useTranslation('articles')
-  return <Text title={t('Articles not found')} size={TextSize.L} />
+  return (
+    <ToggleFeature
+      name='isAppRedesigned'
+      on={
+        <HStack
+          height='90svh'
+          maxWidth
+          justify='center'
+          align='center'
+        >
+          <Title>{t('Articles not found')}</Title>
+        </HStack>
+      }
+      off={<Text title={t('Articles not found')} size={TextSize.L} />}
+    />
+  )
 })
+
 ArticlesNotFound.displayName = 'ArticlesNotFound'
-
-const HeaderWithMargin = memo(
-  ({ context }: { context?: VirtualizedArticleListContext }) => {
-    if (!context?.Header) {
-      return null
-    }
-
-    return <context.Header className={styles.header} />
-  }
-)
-HeaderWithMargin.displayName = 'Header'
 
 // TODO: Fix keyboard navigation
 
@@ -71,7 +86,7 @@ export const VirtualizedArticleList = ({
   isLoading,
   view = View.GRID,
   target,
-  skeletonsLimit,
+  skeletonsAmount,
   onLoadNextPart,
   Header,
   scrollParent,
@@ -111,65 +126,73 @@ export const VirtualizedArticleList = ({
     [onOpenArticle, target, view]
   )
 
+  const skeletons = useArticleListSkeletons({
+    view,
+    skeletonsAmount,
+    className: styles.item,
+  })
+
   const isArticlesNotFound = !isLoading && !articles.length
 
   if (view === View.LIST) {
+    const listClassName = classNamesNew(styles.list, className)
+
     return (
-      <Virtuoso<Article, VirtualizedArticleListContext>
-        className={classNames(styles.list, {}, [className])}
-        data={articles}
-        itemContent={renderArticle}
-        endReached={onLoadNextPart}
-        components={{
-          Header: HeaderWithMargin,
-          Footer: isArticlesNotFound
-            ? ArticlesNotFound
-            : ArticleListSkeleton,
-        }}
-        context={{
-          view: View.LIST,
-          isLoading,
-          skeletonsLimit,
-          Header,
-        }}
-        overscan={500}
-        customScrollParent={scrollParent ?? undefined}
-        initialTopMostItemIndex={startIndex}
-        role='feed'
-        data-testid='VirtualizedArticleList.List'
-      />
+      <div>
+        {Header && <Header className={styles.header} />}
+        <Virtuoso<Article>
+          className={listClassName}
+          data={articles}
+          itemContent={renderArticle}
+          endReached={onLoadNextPart}
+          overscan={500}
+          customScrollParent={scrollParent ?? undefined}
+          initialTopMostItemIndex={startIndex}
+          role='feed'
+          data-testid='VirtualizedArticleList.List'
+          useWindowScroll
+        />
+        {isArticlesNotFound && <ArticlesNotFound />}
+        {isLoading && (
+          <div
+            className={classNamesNew(listClassName, {
+              [styles.listSkeleton]: articles.length !== 0,
+            })}
+          >
+            {skeletons}
+          </div>
+        )}
+      </div>
     )
   }
 
+  const listClassName = classNamesNew(styles.grid, className)
+
   return (
-    <VirtuosoGrid<Article, VirtualizedArticleListContext>
-      ref={gridRef}
-      data={articles}
-      itemContent={renderArticle}
-      endReached={onLoadNextPart}
-      components={{
-        Header: HeaderWithMargin,
-        Footer: isArticlesNotFound
-          ? ArticlesNotFound
-          : ArticleListSkeleton,
-      }}
-      listClassName={classNames(
-        styles.grid,
-        {
-          [styles.notEmpty]: articles.length !== 0,
-        },
-        [className]
+    <div>
+      {Header && <Header className={styles.header} />}
+      <VirtuosoGrid<Article>
+        ref={gridRef}
+        data={articles}
+        itemContent={renderArticle}
+        endReached={onLoadNextPart}
+        listClassName={listClassName}
+        overscan={500}
+        customScrollParent={scrollParent ?? undefined}
+        role='feed'
+        data-testid='VirtualizedArticleList.Grid'
+        useWindowScroll
+      />
+      {isArticlesNotFound && <ArticlesNotFound />}
+      {isLoading && (
+        <div
+          className={classNamesNew(listClassName, {
+            [styles.gridSkeletons]: articles.length !== 0,
+          })}
+        >
+          {skeletons}
+        </div>
       )}
-      context={{
-        view: View.GRID,
-        isLoading,
-        skeletonsLimit,
-        Header,
-      }}
-      overscan={500}
-      customScrollParent={scrollParent ?? undefined}
-      role='feed'
-      data-testid='VirtualizedArticleList.Grid'
-    />
+    </div>
   )
 }

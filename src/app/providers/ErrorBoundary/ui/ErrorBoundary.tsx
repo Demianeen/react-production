@@ -3,6 +3,7 @@ import React from 'react'
 import { PageError } from '@/widgets/PageError'
 import { SuspenseWithSpinner } from '@/shared/ui/deprecated/SuspenseWithSpinner'
 import { Page } from '@/widgets/Page'
+import { toggleFeature } from '@/shared/lib/features'
 
 interface ErrorBoundaryProps {
   children: ReactNode
@@ -34,10 +35,16 @@ class ErrorBoundary extends React.Component<
     const { hasError } = this.state
     const { children } = this.props
 
+    const className = toggleFeature({
+      name: 'isAppRedesigned',
+      on: () => 'appRedesigned',
+      off: () => 'app',
+    })
+
     if (hasError) {
       return (
         <SuspenseWithSpinner>
-          <Page>
+          <Page className={className}>
             <PageError />
           </Page>
         </SuspenseWithSpinner>

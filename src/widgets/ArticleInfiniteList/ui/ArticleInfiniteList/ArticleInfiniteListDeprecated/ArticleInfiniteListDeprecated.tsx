@@ -83,7 +83,7 @@ export const ArticleInfiniteListDeprecated = ({
       isLoading={isLoading}
       view={view}
       className={className}
-      skeletonsLimit={view === INITIAL_ARTICLE_VIEW ? 8 : 1}
+      skeletonsAmount={view === INITIAL_ARTICLE_VIEW ? 8 : 1}
       onLoadNextPart={onLoadNextPart}
       scrollParent={scrollParent}
       Header={ArticleInfiniteListFilters}

@@ -1,11 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 import { useEffect } from 'react'
 import { MainLayout } from '@/shared/layouts/MainLayout'
-import { ScrollToolbar } from './ScrollToolbar'
+import { ScrollToTopButton } from './ScrollToTopButton'
 
 export default {
-  title: 'widgets/ScrollToolbar',
-  component: (props) => {
+  title: 'shared/ScrollToTopButton',
+  component: () => {
     useEffect(() => {
       window.scrollTo({
         top: 100,
@@ -14,7 +15,7 @@ export default {
 
     return (
       <MainLayout
-        toolbar={<ScrollToolbar {...props} />}
+        toolbar={<ScrollToTopButton />}
         content={<div style={{ height: '200vh' }} />}
         header={null}
         sidebar={null}
@@ -25,9 +26,9 @@ export default {
     backgroundColor: { control: 'color' },
   },
   args: {},
-  parameters: {},
-} as Meta<typeof ScrollToolbar>
+  decorators: [StoreDecorator()],
+} as Meta<typeof ScrollToTopButton>
 
-type Story = StoryObj<typeof ScrollToolbar>
+type Story = StoryObj<typeof ScrollToTopButton>
 
-export const Light: Story = {}
+export const Primary: Story = {}

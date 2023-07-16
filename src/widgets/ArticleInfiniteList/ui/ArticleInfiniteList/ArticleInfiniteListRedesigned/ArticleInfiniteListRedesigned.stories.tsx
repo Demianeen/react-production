@@ -41,6 +41,8 @@ export default {
 
 type Story = StoryObj<typeof ArticleInfiniteListRedesigned>
 
-export const Light: Story = {}
+export const Primary: Story = {}
 
 export const Loading: Story = {}
+
+export const ArticlesNotFound: Story = {}

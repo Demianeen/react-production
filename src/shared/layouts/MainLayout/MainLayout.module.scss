@@ -2,8 +2,6 @@
   display: grid;
   grid-template-areas: 'sidebar content rightbar';
   grid-template-columns: auto 1fr auto;
-  height: 100svh;
-  overflow-y: auto;
 }
 
 .sidebar {

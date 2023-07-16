@@ -4,6 +4,16 @@
 @import 'themes/light';
 @import 'themes/orange';
 
+html {
+  height: 100vh;
+  overflow-y: auto;
+}
+
+body,
+#root {
+  height: 100%;
+}
+
 .app {
   min-height: 100svh;
   font: var(--font-m);
@@ -16,7 +26,6 @@
   ::-webkit-scrollbar {
     width: 0.55rem;
     height: 0.6rem;
-    scroll-behavior: smooth;
     scroll-padding: 0.5rem;
   }
 
@@ -50,7 +59,6 @@
   ::-webkit-scrollbar {
     width: 0.625rem;
     height: 0.625rem;
-    scroll-behavior: smooth;
     scroll-padding: 0.5rem;
   }
 

@@ -2,12 +2,18 @@
   margin-bottom: 1.5rem;
 }
 
+$list-padding: 1rem;
+
 .list {
   position: relative;
 
   .item {
-    margin-bottom: 1rem;
+    margin-bottom: $list-padding;
   }
+}
+
+.listSkeleton {
+  margin-top: $list-padding;
 }
 
 .grid {
@@ -21,4 +27,8 @@
   &.notEmpty + div {
     margin-top: 3rem;
   }
+}
+
+.gridSkeletons {
+  margin-top: 3rem;
 }

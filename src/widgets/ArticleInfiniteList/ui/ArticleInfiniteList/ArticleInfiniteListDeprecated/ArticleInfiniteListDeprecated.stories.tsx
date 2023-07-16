@@ -13,6 +13,8 @@ export default {
 
 type Story = StoryObj<typeof ArticleInfiniteListDeprecated>
 
-export const Light: Story = {}
+export const Primary: Story = {}
 
 export const Loading: Story = {}
+
+export const ArticlesNotFound: Story = {}

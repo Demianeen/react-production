@@ -1,13 +1,13 @@
 import { memo } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import { View } from '@/entities/ListFilters'
+import type { View } from '@/entities/ListFilters'
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton'
 import styles from './ArticleList.module.scss'
-import type { VirtualizedArticleListContext } from './VirtualizedArticleList'
 
 interface VirtualizedArticleListSkeletonProps {
   className?: string
-  context?: VirtualizedArticleListContext
+  view: View
+  skeletonsLimit: number
 }
 
 export const getArticleListSkeletons = (
@@ -27,17 +27,11 @@ export const getArticleListSkeletons = (
 }
 
 export const ArticleListSkeleton = memo(
-  ({ context, className }: VirtualizedArticleListSkeletonProps) => {
-    const {
-      view = View.GRID,
-      isLoading = false,
-      skeletonsLimit = 4,
-    } = context ?? {}
-
-    if (!isLoading) {
-      return null
-    }
-
+  ({
+    view,
+    skeletonsLimit,
+    className,
+  }: VirtualizedArticleListSkeletonProps) => {
     return (
       <div
         className={classNames(styles.skeleton, {}, [

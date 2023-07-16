@@ -45,7 +45,6 @@ export const ArticleInfiniteListRedesigned = ({
   useDynamicModuleLoader(reducers, {
     removeOnUnmount: false,
   })
-  console.log('scrollParent', scrollParent)
 
   const { t } = useTranslation('articles')
   const dispatch = useAppDispatch()
@@ -94,7 +93,7 @@ export const ArticleInfiniteListRedesigned = ({
           isLoading={isLoading}
           view={view}
           className={className}
-          skeletonsLimit={view === INITIAL_ARTICLE_VIEW ? 8 : 1}
+          skeletonsAmount={view === INITIAL_ARTICLE_VIEW ? 2 : 1}
           onLoadNextPart={onLoadNextPart}
           scrollParent={scrollParent}
           startIndex={startIndex}

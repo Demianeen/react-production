@@ -11,7 +11,7 @@ This repository was created as part of the UlbiTV's course "To production on Rea
 
 ## Scripts
 
-- `npm run start:dev` - Launch frontend project on webpack dev server + backend
+- `npm start` - Launch frontend project on webpack dev server + backend
 - `npm run start:dev:vite` - Launch frontend project on vite + backend
 - `npm run start:dev:client` - Launch frontend project on webpack dev server
 - `npm run start:dev:vite:client` - Launch frontend project on vite
