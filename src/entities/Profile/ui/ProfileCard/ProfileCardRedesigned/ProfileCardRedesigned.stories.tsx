@@ -13,7 +13,7 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  decorators: [LokiDelayDecorator],
+  decorators: [LokiDelayDecorator()],
 } as Meta<typeof ProfileCardRedesigned>
 
 type Story = StoryObj<typeof ProfileCardRedesigned>

@@ -1,17 +1,22 @@
 import type { StoryFn } from '@storybook/react'
 // @ts-expect-error - no types
 import createAsyncCallback from '@loki/create-async-callback'
+import isLokiRunning from '@loki/is-loki-running'
 
-const DELAY = 2000
+const DEFAULT_DELAY = 2000
 /**
  * Makes a delay between capturing a screenshot.
+ * @default 2000
  */
-export const LokiDelayDecorator = (StoryComponent: StoryFn) => {
-  const onDone = createAsyncCallback()
+export const LokiDelayDecorator = (delay = DEFAULT_DELAY) =>
+  function Decorator(StoryComponent: StoryFn) {
+    const onDone = createAsyncCallback()
 
-  setTimeout(() => {
-    onDone()
-  }, DELAY)
+    if (isLokiRunning()) {
+      setTimeout(() => {
+        onDone()
+      }, delay)
+    }
 
-  return <StoryComponent />
-}
+    return <StoryComponent />
+  }

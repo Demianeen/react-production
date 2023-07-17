@@ -14,7 +14,7 @@ export default {
   args: {
     id: 1,
   },
-  decorators: [InitUserDecorator(), LokiDelayDecorator],
+  decorators: [InitUserDecorator(), LokiDelayDecorator()],
 } as Meta<typeof EditableProfileCard>
 
 type Story = StoryObj<typeof EditableProfileCard>
