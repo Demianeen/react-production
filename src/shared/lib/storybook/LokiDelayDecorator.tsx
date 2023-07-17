@@ -1,7 +1,6 @@
 import type { StoryFn } from '@storybook/react'
 // @ts-expect-error - no types
 import createAsyncCallback from '@loki/create-async-callback'
-import { useEffect } from 'react'
 
 const DELAY = 2000
 /**
@@ -10,16 +9,9 @@ const DELAY = 2000
 export const LokiDelayDecorator = (StoryComponent: StoryFn) => {
   const onDone = createAsyncCallback()
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      onDone()
-    }, DELAY)
-
-    return () => {
-      clearTimeout(timeout)
-      onDone()
-    }
-  }, [onDone])
+  setTimeout(() => {
+    onDone()
+  }, DELAY)
 
   return <StoryComponent />
 }
