@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 import { InitUserDecorator } from '@/shared/lib/storybook/InitUserDecorator'
+import { LokiDelayDecorator } from '@/shared/lib/storybook/LokiDelayDecorator'
 import { ProfileValidationError } from '../../model/const/profileValidationError'
 import { EditableProfileCard } from './EditableProfileCard'
 
@@ -13,7 +14,7 @@ export default {
   args: {
     id: 1,
   },
-  decorators: [InitUserDecorator()],
+  decorators: [InitUserDecorator(), LokiDelayDecorator],
 } as Meta<typeof EditableProfileCard>
 
 type Story = StoryObj<typeof EditableProfileCard>

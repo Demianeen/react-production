@@ -1,5 +1,10 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+# This loads nvm.sh and sets the correct PATH before running hook if nvm is installed
+export NVM_DIR="$HOME/.nvm"
+# check if nvm is installed and load it
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
 # run all linters before each commit
 npx lint-staged

@@ -4,6 +4,7 @@ import { Theme } from '@/shared/const/theme'
 import { Currency } from '@/entities/Currency'
 import { Country } from '@/entities/Country'
 import avatar from '@/shared/assets/mocks/avatar.jpeg'
+import { LokiDelayDecorator } from '@/shared/lib/storybook/LokiDelayDecorator'
 import { ProfileCardRedesigned } from './ProfileCardRedesigned'
 
 export default {
@@ -12,6 +13,7 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  decorators: [LokiDelayDecorator],
 } as Meta<typeof ProfileCardRedesigned>
 
 type Story = StoryObj<typeof ProfileCardRedesigned>
