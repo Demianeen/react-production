@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { View } from '@/entities/ListFilters'
+import { LokiDelayDecorator } from '@/shared/lib/storybook/LokiDelayDecorator'
 import { mockArticle } from '../../model/mocks/mockArticle'
 import type { ArticleListProps } from './ArticleList'
 import { ArticleList } from './ArticleList'
@@ -10,6 +11,7 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  decorators: [LokiDelayDecorator()],
 } as Meta<typeof ArticleList>
 
 type Story = StoryObj<typeof ArticleList>

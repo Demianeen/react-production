@@ -4,7 +4,7 @@ import createAsyncCallback from '@loki/create-async-callback'
 // @ts-expect-error - no types
 import isLokiRunning from '@loki/is-loki-running'
 
-const DEFAULT_DELAY = 2000
+const DEFAULT_DELAY = 5000
 /**
  * Makes a delay between capturing a screenshot.
  * @default 2000

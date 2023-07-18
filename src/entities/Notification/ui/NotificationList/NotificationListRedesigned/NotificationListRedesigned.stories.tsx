@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { Theme } from '@/shared/const/theme'
+import { LokiDelayDecorator } from '@/shared/lib/storybook/LokiDelayDecorator'
 import { NotificationListRedesigned } from './NotificationListRedesigned'
 
 export default {
@@ -10,6 +11,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   args: {},
+  decorators: [LokiDelayDecorator()],
 } as Meta<typeof NotificationListRedesigned>
 
 type Story = StoryObj<typeof NotificationListRedesigned>
