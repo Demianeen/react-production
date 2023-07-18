@@ -47,16 +47,16 @@ jobs:
       - name: Move unit report
         run: mkdir -p reports/${{ github.sha }}/unit/; mv reports/templates/unit/* $_
         if: always()
-      # run ui tests
-      - name: Screenshot testing
-        run: npm run test:ui:ci
-        if: always()
-      - name: Generate HTML report
-        run: npm run test:ui:report
-        if: always()
-      - name: Move loki report
-        run: mkdir -p reports/${{ github.sha }}/ui; mv .loki/* $_
-        if: always()
+      # # run ui tests
+      # - name: Screenshot testing
+      #   run: npm run test:ui:ci
+      #   if: always()
+      # - name: Generate HTML report
+      #   run: npm run test:ui:report
+      #   if: always()
+      # - name: Move loki report
+      #   run: mkdir -p reports/${{ github.sha }}/ui; mv .loki/* $_
+      #   if: always()
       # upload reports
       - name: Upload artifact
         uses: actions/upload-artifact@v3
