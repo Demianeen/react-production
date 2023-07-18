@@ -22,7 +22,6 @@ jobs:
         run: npm ci
       - name: build production project
         run: npm run build:prod
-  # TODO: Add preview deployment for all other branches
   deploy:
     runs-on: ubuntu-latest
     needs: build
