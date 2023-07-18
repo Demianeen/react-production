@@ -9,6 +9,7 @@ import { ToggleDesignDecorator } from '@/shared/lib/storybook/ToggleDesignDecora
 import { Theme } from '@/shared/const/theme'
 import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { AppDecorator } from '@/shared/lib/storybook/AppDecorator'
+import { CiDelayDecorator } from '@/shared/lib/storybook/CiDelayDecorator'
 import { articleDetailsHandlers } from '../../src/entities/Article/model/mocks/articleDetailsHandlers'
 import { commentHandlers } from '../../src/entities/Comment/model/mocks/commentHandlers'
 import { imageHandlers } from '../../src/shared/lib/mock-server/imageHandlers'
@@ -55,6 +56,7 @@ const preview: Preview = {
     layout: 'fullscreen',
   },
   decorators: [
+    CiDelayDecorator,
     AppDecorator,
     StyleDecorator,
     withRouter,
