@@ -11,7 +11,8 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  decorators: [LokiDelayDecorator()],
+  // it needs more time to load than normal because it has a lot of images to load
+  decorators: [LokiDelayDecorator(10000)],
 } as Meta<typeof ArticleList>
 
 type Story = StoryObj<typeof ArticleList>
