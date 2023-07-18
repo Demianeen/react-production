@@ -78,10 +78,9 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: reports
-      - name: Add server host key to known_hosts
+      - name: Disable host key checking
         run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan ${{ secrets.HOST }} >> ~/.ssh/known_hosts
+          ssh -o UserKnownHostsFile=/dev/null
       - name: Upload report
         # -a: preserves file permissions, ownership, timestamps, and other attributes when copying files.
         # -v: verbose mode
