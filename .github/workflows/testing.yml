@@ -78,6 +78,10 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: reports
+      - name: Add server host key to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan ${{ secrets.HOST }} >> ~/.ssh/known_hosts
       - name: Upload report
         # -a: preserves file permissions, ownership, timestamps, and other attributes when copying files.
         # -v: verbose mode
