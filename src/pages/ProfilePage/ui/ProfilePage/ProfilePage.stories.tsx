@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { RoutePath } from '@/shared/const/router/routePath'
 import { routes } from '@/shared/lib/router/routes'
 import { LayoutDecorator } from '@/shared/lib/storybook/LayoutDecorator'
+import { LokiDelayDecorator } from '@/shared/lib/storybook/LokiDelayDecorator'
 import ProfilePage from './ProfilePage'
 
 export default {
@@ -15,11 +16,8 @@ export default {
       routePath: RoutePath.profile,
       routeParams: { id: '1' },
     },
-    // TODO: require msw request to be fullfilled before making a screenshot
-    loki: {
-      skip: true,
-    },
   },
+  decorators: [LokiDelayDecorator()],
 } as Meta<typeof ProfilePage>
 
 type Story = StoryObj<typeof ProfilePage>
