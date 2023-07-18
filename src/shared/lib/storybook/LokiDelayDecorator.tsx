@@ -7,7 +7,7 @@ import isLokiRunning from '@loki/is-loki-running'
 const DEFAULT_DELAY = 5000
 /**
  * Makes a delay between capturing a screenshot.
- * @default 2000
+ * @default 5000
  */
 export const LokiDelayDecorator = (delay = DEFAULT_DELAY) =>
   function Decorator(StoryComponent: StoryFn) {
