@@ -77,16 +77,16 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Make dir from commit hash
-        run: mkdir -p reports/${{ github.sha }}
+        run: mkdir -p ${{ github.sha }}
 
       - name: Copy report index.html
-        run: cp reports/templates/index.html reports/${{ github.sha }}/index.html
+        run: cp reports/templates/index.html ${{ github.sha }}/index.html
 
       - name: Download unit report artifact
         uses: actions/download-artifact@v3
         with:
           name: unit-report
-          path: reports/${{ github.sha }}/unit
+          path: ${{ github.sha }}/unit
 
       - name: Ls reports
         run: ls -la reports
@@ -98,7 +98,7 @@ jobs:
       #   uses: actions/download-artifact@v3
       #   with:
       #     name: loki-report
-      #     path: reports/${{ github.sha }}/unit
+      #     path: ${{ github.sha }}/unit
 
       - name: Upload report
         uses: appleboy/scp-action@v0.1.4
@@ -107,7 +107,7 @@ jobs:
           username: ${{ secrets.USER }}
           password: ${{ secrets.PASSWORD }}
           key: ${{ env.KEY }}
-          source: 'reports/., !reports/templates/*'
+          source: '${{ github.sha }}/*'
           target: '/var/www/reports.mybrandview.co.uk/html'
 
       - name: Output
