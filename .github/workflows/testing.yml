@@ -88,12 +88,6 @@ jobs:
           name: unit-report
           path: ${{ github.sha }}/unit
 
-      - name: Ls reports
-        run: ls -la reports
-
-      - name: Ls reports/sha
-        run: ls -la reports/${{ github.sha }}
-
       # - name: Download ui report artifact
       #   uses: actions/download-artifact@v3
       #   with:
