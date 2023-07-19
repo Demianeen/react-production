@@ -60,7 +60,7 @@ jobs:
           path: reports
 
   reports:
-    needs: tests
+    # needs: tests
     if: always()
     runs-on: ubuntu-latest
     concurrency: ci-${{ github.ref }}
