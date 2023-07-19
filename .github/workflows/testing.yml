@@ -123,6 +123,9 @@ jobs:
         with:
           name: reports
 
+      - name: List reports directory
+        run: ls -al reports
+
       - name: Upload report
         uses: appleboy/scp-action@v0.1.4
         with:
