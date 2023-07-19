@@ -6,23 +6,12 @@ on:
     branches: [main]
 
 jobs:
-  tests:
+  unit:
     runs-on: ubuntu-latest
     # TODO: add cypress tests in ci
     steps:
-      # prepare reports
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Make dir from commit hash
-        run: mkdir -p reports/${{ github.sha }}
-      - name: Copy report index.html
-        run: cp reports/templates/index.html reports/${{ github.sha }}/index.html
-      - name: Upload created folder
-        uses: actions/upload-pages-artifact@v1
-        if: always()
-        with:
-          path: reports
-      # prepare tests
       - name: Cache deps
         uses: actions/cache@v3
         with:
@@ -34,33 +23,39 @@ jobs:
           node-version: ${{ vars.NODE_VERSION }}
       - name: Install modules
         run: npm ci
-      # run unit tests
       - name: Unit testing
         run: npm run test:unit
         if: always()
-      - name: Move unit report
-        run: mkdir -p reports/${{ github.sha }}/unit/; mv reports/templates/unit/* $_
-        if: always()
-      # # run ui tests
-      # - name: Screenshot testing
-      #   run: npm run test:ui:ci
-      #   if: always()
-      # - name: Generate HTML report
-      #   run: npm run test:ui:report
-      #   if: always()
-      # - name: Move loki report
-      #   run: mkdir -p reports/${{ github.sha }}/ui; mv .loki/* $_
-      #   if: always()
-      # upload reports
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         if: always()
         with:
-          name: reports
-          path: reports
+          name: unit-report
+          path: reports/templates/unit
+  ui:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Starting Node.js ${{ vars.NODE_VERSION }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ vars.NODE_VERSION }}
+      - name: Screenshot testing
+        run: npm run test:ui:ci
+        if: always()
+      - name: Generate HTML report
+        run: npm run test:ui:report
+        if: always()
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: loki-report
+          path: .loki
 
   report:
-    needs: tests
+    needs: [unit]
     if: always()
     runs-on: ubuntu-latest
     environment:
@@ -76,14 +71,25 @@ jobs:
           OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
           KEY: 'op://online-store/Time4vps demian key/private key'
 
-      - name: Download reports artifact
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Copy report index.html
+        run: cp reports/templates/index.html reports/${{ github.sha }}/index.html
+
+      - name: Make dir from commit hash
+        run: mkdir -p reports/${{ github.sha }}
+
+      - name: Download unit report artifact
         uses: actions/download-artifact@v3
         with:
-          name: reports
-          path: reports
+          name: unit-report
+          path: reports/${{ github.sha }}/unit
 
-      - name: List reports directory
-        run: ls
+      # - name: Download ui report artifact
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: loki-report
+      #     path: reports/${{ github.sha }}/unit
 
       - name: Upload report
         uses: appleboy/scp-action@v0.1.4
@@ -93,7 +99,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           key: ${{ env.KEY }}
           source: 'reports/*'
-          target: '/var/www/reports.mybrandview.co.uk/html/${{ github.sha }}'
+          target: '/var/www/reports.mybrandview.co.uk/html'
 
       - name: Output
         run: printf "# Report \nReport is deployed to ${{ vars.REPORTS_WEBSITE_URL }}/${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
