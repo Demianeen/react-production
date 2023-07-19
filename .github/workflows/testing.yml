@@ -35,12 +35,6 @@ jobs:
       - name: Install modules
         run: npm ci
       # run unit tests
-      - name: Update package index
-        run: sudo apt-get update
-        if: always()
-      - name: Install GraphicsMagick Engine
-        run: sudo apt-get install -y graphicsmagick
-        if: always()
       - name: Unit testing
         run: npm run test:unit
         if: always()
