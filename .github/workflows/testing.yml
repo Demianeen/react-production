@@ -88,6 +88,12 @@ jobs:
           name: unit-report
           path: reports/${{ github.sha }}/unit
 
+      - name: Ls reports
+        run: ls -la reports
+
+      - name: Ls reports/sha
+        run: ls -la reports/${{ github.sha }}
+
       # - name: Download ui report artifact
       #   uses: actions/download-artifact@v3
       #   with:
@@ -101,7 +107,7 @@ jobs:
           username: ${{ secrets.USER }}
           password: ${{ secrets.PASSWORD }}
           key: ${{ env.KEY }}
-          source: 'reports/.'
+          source: 'reports/., !reports/templates/*'
           target: '/var/www/reports.mybrandview.co.uk/html'
 
       - name: Output
