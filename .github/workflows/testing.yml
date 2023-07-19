@@ -116,12 +116,18 @@ jobs:
         env:
           OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
           KEY: 'op://online-store/Time4vps demian key/private key'
-      - name: Test
-        uses: appleboy/ssh-action@v0.1.10
+
+      - name: Download reports artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: reports
+
+      - name: Upload report
+        uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
+          password: ${{ secrets.PASSWORD }}
           key: ${{ env.KEY }}
-          debug: true
-          script: |
-            echo "Test"
+          source: 'reports/*'
+          target: '/var/www/reports.mybrandview.co.uk/html/${{ github.sha }}'
