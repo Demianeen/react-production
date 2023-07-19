@@ -41,6 +41,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ vars.NODE_VERSION }}
+      - name: Install modules
+        run: npm ci
       - name: Screenshot testing
         run: npm run test:ui:ci
         if: always()
@@ -73,11 +75,12 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Copy report index.html
-        run: cp reports/templates/index.html reports/${{ github.sha }}/index.html
 
       - name: Make dir from commit hash
         run: mkdir -p reports/${{ github.sha }}
+
+      - name: Copy report index.html
+        run: cp reports/templates/index.html reports/${{ github.sha }}/index.html
 
       - name: Download unit report artifact
         uses: actions/download-artifact@v3
@@ -98,7 +101,7 @@ jobs:
           username: ${{ secrets.USER }}
           password: ${{ secrets.PASSWORD }}
           key: ${{ env.KEY }}
-          source: 'reports/*'
+          source: 'reports/.'
           target: '/var/www/reports.mybrandview.co.uk/html'
 
       - name: Output
