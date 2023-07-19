@@ -95,12 +95,13 @@ jobs:
         env:
           OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
           KEY: 'op://online-store/Time4vps demian key/private key'
+
       - name: Deploy to production
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
-          key: $KEY
+          key: ${{ env.KEY }}
           debug: true
           script: |
             echo "Test"
