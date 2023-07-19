@@ -99,6 +99,7 @@ jobs:
           remote_key: ${{ env.KEY }}
 
   test_reports:
+    needs: tests
     if: always()
     runs-on: ubuntu-latest
     concurrency: ci-${{ github.ref }}
