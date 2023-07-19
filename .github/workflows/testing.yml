@@ -97,3 +97,13 @@ jobs:
           remote_host: ${{ secrets.HOST }}
           remote_user: ${{ secrets.USER }}
           remote_key: ${{ env.KEY }}
+
+      - name: Test
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ env.KEY }}
+          debug: true
+          script: |
+            echo "Test"
