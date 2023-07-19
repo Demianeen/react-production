@@ -57,7 +57,7 @@ jobs:
           path: .loki
 
   report:
-    needs: [unit]
+    needs: [unit, ui]
     if: always()
     runs-on: ubuntu-latest
     environment:
@@ -88,21 +88,30 @@ jobs:
           name: unit-report
           path: ${{ github.sha }}/unit
 
-      # - name: Download ui report artifact
-      #   uses: actions/download-artifact@v3
-      #   with:
-      #     name: loki-report
-      #     path: ${{ github.sha }}/unit
+      - name: Download ui report artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: loki-report
+          path: ${{ github.sha }}/ui
 
       - name: Upload report
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
-          password: ${{ secrets.PASSWORD }}
           key: ${{ env.KEY }}
           source: '${{ github.sha }}/*'
           target: '/var/www/reports.mybrandview.co.uk/html'
 
       - name: Output
         run: printf "# Report \nReport is deployed to ${{ vars.REPORTS_WEBSITE_URL }}/${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+
+      - name: Remove old reports
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ env.KEY }}
+          debug: true
+          script: |
+            find /var/www/reports.mybrandview.co.uk/html/* -mtime +7 -type d -exec rmdir {} \;
