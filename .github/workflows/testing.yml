@@ -74,10 +74,33 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: reports
-      - name: Upload report
-        # -a: preserves file permissions, ownership, timestamps, and other attributes when copying files.
-        # -v: verbose mode
-        # -z: enables compression, which can speed up the transfer of large files over slow network connections
-        run: rsync -avz -e "ssh -o StrictHostKeyChecking=no" reports/* ${{ secrets.USER }}@${{ secrets.HOST }}:/var/www/reports.mybrandview.co.uk/html/${{ github.sha }}
+      # - name: Upload report
+      # -a: preserves file permissions, ownership, timestamps, and other attributes when copying files.
+      # -v: verbose mode
+      # -z: enables compression, which can speed up the transfer of large files over slow network connections
+      # run: rsync -avz -e "ssh -o StrictHostKeyChecking=no" reports/* ${{ secrets.USER }}@${{ secrets.HOST }}:/var/www/reports.mybrandview.co.uk/html/${{ github.sha }}
+      - name: Ssh connect
+        run: ssh ${{ secrets.USER }}@${{ secrets.HOST }}
       - name: Output
         run: printf "# Reports \Report is deployed to ${{ env.URL }}" >> $GITHUB_STEP_SUMMARY
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Load secret
+        uses: 1password/load-secrets-action@v1
+        with:
+          # Export loaded secrets as environment variables
+          export-env: true
+        env:
+          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
+          KEY: op://Personal/Time4vps demian key/private key
+      - name: Deploy to production
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: $KEY
+          debug: true
+          script: |
+            echo "Test"
