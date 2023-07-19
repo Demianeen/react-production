@@ -87,7 +87,7 @@ jobs:
           eval "$(ssh-agent -s)"
           ssh-add ~/.ssh/id_rsa
 
-      - name: Upload reports artifact
+      - name: Download reports artifact
         uses: actions/download-artifact@v3
         with:
           name: reports
@@ -96,5 +96,12 @@ jobs:
       # -v: verbose mode
       # -z: enables compression, which can speed up the transfer of large files over slow network connections
       # run: rsync -avz -e "ssh -o StrictHostKeyChecking=no" reports/* ${{ secrets.USER }}@${{ secrets.HOST }}:/var/www/reports.mybrandview.co.uk/html/${{ github.sha }}
-      - name: Ssh connect
-        run: ssh ${{ secrets.USER }}@${{ secrets.HOST }}
+      - name: Upload report
+        uses: burnett01/rsync-deployments@6.0.0
+        with:
+          switches: -avzr
+          path: reports/*
+          remote_path: /var/www/reports.mybrandview.co.uk/html/${{ github.sha }}
+          remote_host: ${{ secrets.HOST }}
+          remote_user: ${{ secrets.USER }}
+          remote_key: ${{ env.KEY }}
