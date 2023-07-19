@@ -63,12 +63,9 @@ jobs:
     needs: tests
     if: always()
     runs-on: ubuntu-latest
-    concurrency: ci-${{ github.ref }}
-    env:
-      url: ${{ vars.REPORTS_WEBSITE_URL }}/${{ github.sha }}
     environment:
       name: github-pages
-      url: ${{ env.URL }}
+      url: ${{ vars.REPORTS_WEBSITE_URL }}/${{ github.sha }}
     steps:
       - name: Load secret
         uses: 1password/load-secrets-action@v1
@@ -99,4 +96,4 @@ jobs:
           target: '/var/www/reports.mybrandview.co.uk/html/${{ github.sha }}'
 
       - name: Output
-        run: printf "# Report \nReport is deployed to ${{ env.URL }}" >> $GITHUB_STEP_SUMMARY
+        run: printf "# Report \nReport is deployed to ${{ vars.REPORTS_WEBSITE_URL }}/${{ github.sha }}" >> $GITHUB_STEP_SUMMARY

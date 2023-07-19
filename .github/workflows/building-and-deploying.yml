@@ -49,7 +49,7 @@ jobs:
             git stash
             git pull
             npm i
-            .deploy/deploy.sh
+            npm run deploy
             pm2 restart json-server/index.js
 
       - name: Output
