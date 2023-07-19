@@ -1,4 +1,5 @@
 import { Currency } from '@/entities/Currency'
+import avatar from '@/shared/assets/mocks/avatar.jpeg'
 import { Country } from '@/entities/Country'
 import type { Profile } from '../types/profile'
 
@@ -11,5 +12,5 @@ export const mockProfile: Profile = {
   country: Country.UK,
   city: 'London',
   username: 'admin',
-  avatar: 'https://mockapi.com/avatar',
+  avatar,
 }

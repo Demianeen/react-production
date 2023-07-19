@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import { LokiDelayDecorator } from '@/shared/lib/storybook/LokiDelayDecorator'
 import { mockComments } from '../../model/mocks/mockCommentEntities'
 import { CommentList } from './CommentList'
 
@@ -8,6 +9,7 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  decorators: [LokiDelayDecorator()],
 } as Meta<typeof CommentList>
 
 type Story = StoryObj<typeof CommentList>

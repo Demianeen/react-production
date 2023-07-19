@@ -3,6 +3,7 @@ import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
 import { mockArticle } from '@/entities/Article/testing'
 import { RoutePath } from '@/shared/const/router/routePath'
 import { ToggleDesignDecorator } from '@/shared/lib/storybook/ToggleDesignDecorator'
+import { LokiDelayDecorator } from '@/shared/lib/storybook/LokiDelayDecorator'
 import { AdditionalInfoContainer } from './AdditionalInfoContainer'
 
 export default {
@@ -17,7 +18,7 @@ export default {
       routeParams: { id: '1' },
     },
   },
-  decorators: [ToggleDesignDecorator(true)],
+  decorators: [ToggleDesignDecorator(true), LokiDelayDecorator()],
 } as Meta<typeof AdditionalInfoContainer>
 
 type Story = StoryObj<typeof AdditionalInfoContainer>

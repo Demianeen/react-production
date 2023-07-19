@@ -3,6 +3,8 @@ import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { Theme } from '@/shared/const/theme'
 import { Currency } from '@/entities/Currency'
 import { Country } from '@/entities/Country'
+import avatar from '@/shared/assets/mocks/avatar.jpeg'
+import { LokiDelayDecorator } from '@/shared/lib/storybook/LokiDelayDecorator'
 import { ProfileCardRedesigned } from './ProfileCardRedesigned'
 
 export default {
@@ -11,12 +13,7 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  parameters: {
-    // TODO: require msw request to be fullfilled before making a screenshot
-    loki: {
-      skip: true,
-    },
-  },
+  decorators: [LokiDelayDecorator()],
 } as Meta<typeof ProfileCardRedesigned>
 
 type Story = StoryObj<typeof ProfileCardRedesigned>
@@ -28,7 +25,7 @@ const data = {
   country: Country.UK,
   city: 'London',
   username: 'admin',
-  avatar: 'https://mockapi.com/avatar/redesigned',
+  avatar,
 }
 
 export const Light: Story = {

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { View } from '@/entities/ListFilters'
 import { ParentDecorator } from '@/shared/lib/storybook/ParentDecorator'
+import { LokiDelayDecorator } from '@/shared/lib/storybook/LokiDelayDecorator'
 import { mockArticle } from '../../../model/mocks/mockArticle'
 import { ArticleListItemDeprecated } from './ArticleListItemDeprecated'
 
@@ -13,6 +14,7 @@ export default {
   args: {
     article: mockArticle,
   },
+  decorators: [LokiDelayDecorator()],
 } as Meta<typeof ArticleListItemDeprecated>
 
 type Story = StoryObj<typeof ArticleListItemDeprecated>

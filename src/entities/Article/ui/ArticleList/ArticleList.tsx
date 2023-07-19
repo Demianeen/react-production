@@ -8,7 +8,7 @@ import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
 import type { Article } from '../../model/types/article'
 import styles from './ArticleList.module.scss'
 
-interface ArticleListProps extends TestProps {
+export interface ArticleListProps extends TestProps {
   className?: string
   articles: Article[]
   isLoading: boolean

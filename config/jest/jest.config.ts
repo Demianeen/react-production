@@ -46,7 +46,8 @@ export default {
     // enables css modules
     '\\.s?css$': 'identity-obj-proxy',
     // enable svg
-    '\\.svg$': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+    '\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+      path.resolve(__dirname, 'jestEmptyComponent.tsx'),
     // enables absolute imports
     '^@/(.*)$': '<rootDir>src/$1',
   },

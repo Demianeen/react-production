@@ -22,7 +22,7 @@
     "test:e2e": "cypress open",
     "test:ui": "npx loki test",
     "test:ui:ok": "npx loki approve",
-    "test:ui:ci": "concurrently -s first -k \"npm run storybook\" \"npm run test:ui -- --diffingEngine gm\"",
+    "test:ui:ci": "concurrently -s first -k \"npm run storybook\" \"npm run test:ui\"",
     "test:ui:json": "node scripts/generate-visual-json-report.js",
     "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
     "test:ui:report": "npm run test:ui:json && npm run test:ui:html",
@@ -46,6 +46,7 @@
     "@babel/preset-react": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
     "@loki/create-async-callback": "^0.32.0",
+    "@loki/is-loki-running": "^0.32.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
     "@storybook/addon-a11y": "^7.0.12",
     "@storybook/addon-actions": "^7.0.12",
@@ -157,8 +158,9 @@
   "loki": {
     "fetchFailIgnore": "https://mockapi.com/*",
     "skipStories": "(?<!is )loading",
-    "gm": {
-      "tolerance": 0.00024
+    "diffingEngine": "pixelmatch",
+    "pixelmatch": {
+      "threshold": 0.15
     },
     "configurations": {
       "chrome.laptop": {

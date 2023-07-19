@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import { LokiDelayDecorator } from '@/shared/lib/storybook/LokiDelayDecorator'
 import { ArticleDetailsPageFooter } from './ArticleDetailsPageFooter'
 
 export default {
@@ -7,6 +8,7 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  decorators: [LokiDelayDecorator()],
 } as Meta<typeof ArticleDetailsPageFooter>
 
 type Story = StoryObj<typeof ArticleDetailsPageFooter>

@@ -4,6 +4,7 @@ import { Theme } from '@/shared/const/theme'
 import { RoutePath } from '@/shared/const/router/routePath'
 import { routes } from '@/shared/lib/router/routes'
 import { LayoutDecorator } from '@/shared/lib/storybook/LayoutDecorator'
+import { LokiDelayDecorator } from '@/shared/lib/storybook/LokiDelayDecorator'
 import ArticleDetailsPageRedesigned from './ArticleDetailsPageRedesigned'
 
 export default {
@@ -12,13 +13,13 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-
   parameters: {
     reactRouter: {
       routePath: RoutePath.articleDetails,
       routeParams: { id: '1' },
     },
   },
+  decorators: [LokiDelayDecorator()],
 } as Meta<typeof ArticleDetailsPageRedesigned>
 
 type Story = StoryObj<typeof ArticleDetailsPageRedesigned>
