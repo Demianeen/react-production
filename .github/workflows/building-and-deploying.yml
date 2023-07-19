@@ -27,12 +27,21 @@ jobs:
     needs: build
     if: github.ref == 'refs/heads/main'
     steps:
+      - name: Load secret
+        uses: 1password/load-secrets-action@v1
+        with:
+          # Export loaded secrets as environment variables
+          export-env: true
+        env:
+          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
+          KEY: 'op://online-store/Time4vps demian key/private key'
+
       - name: Deploy to production
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
-          password: ${{ secrets.PASSWORD }}
+          key: ${{ env.KEY }}
           debug: true
           script: |
             cd ~/projects/react-production

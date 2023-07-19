@@ -70,7 +70,24 @@ jobs:
       name: github-pages
       url: ${{ env.URL }}
     steps:
-      - name: Download reports artifact
+      - name: Load secret
+        uses: 1password/load-secrets-action@v1
+        with:
+          # Export loaded secrets as environment variables
+          export-env: true
+        env:
+          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
+          KEY: 'op://online-store/Time4vps demian key/private key'
+
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ env.KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          eval "$(ssh-agent -s)"
+          ssh-add ~/.ssh/id_rsa
+
+      - name: Upload reports artifact
         uses: actions/download-artifact@v3
         with:
           name: reports
@@ -81,27 +98,3 @@ jobs:
       # run: rsync -avz -e "ssh -o StrictHostKeyChecking=no" reports/* ${{ secrets.USER }}@${{ secrets.HOST }}:/var/www/reports.mybrandview.co.uk/html/${{ github.sha }}
       - name: Ssh connect
         run: ssh ${{ secrets.USER }}@${{ secrets.HOST }}
-      - name: Output
-        run: printf "# Reports \Report is deployed to ${{ env.URL }}" >> $GITHUB_STEP_SUMMARY
-
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Load secret
-        uses: 1password/load-secrets-action@v1
-        with:
-          # Export loaded secrets as environment variables
-          export-env: true
-        env:
-          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
-          KEY: 'op://online-store/Time4vps demian key/private key'
-
-      - name: Deploy to production
-        uses: appleboy/ssh-action@v0.1.10
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USER }}
-          key: ${{ env.KEY }}
-          debug: true
-          script: |
-            echo "Test"
