@@ -98,6 +98,16 @@ jobs:
           remote_user: ${{ secrets.USER }}
           remote_key: ${{ env.KEY }}
 
+  test_reports:
+    if: always()
+    runs-on: ubuntu-latest
+    concurrency: ci-${{ github.ref }}
+    env:
+      url: ${{ vars.REPORTS_WEBSITE_URL }}${{ github.sha }}
+    environment:
+      name: github-pages
+      url: ${{ env.URL }}
+    steps:
       - name: Test
         uses: appleboy/ssh-action@v0.1.10
         with:
