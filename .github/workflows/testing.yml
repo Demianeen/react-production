@@ -59,46 +59,7 @@ jobs:
           name: reports
           path: reports
 
-  reports:
-    needs: tests
-    if: always()
-    runs-on: ubuntu-latest
-    concurrency: ci-${{ github.ref }}
-    env:
-      url: ${{ vars.REPORTS_WEBSITE_URL }}${{ github.sha }}
-    environment:
-      name: github-pages
-      url: ${{ env.URL }}
-    steps:
-      - name: Load secret
-        uses: 1password/load-secrets-action@v1
-        with:
-          # Export loaded secrets as environment variables
-          export-env: true
-        env:
-          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
-          KEY: 'op://online-store/Time4vps demian key/private key'
-
-      - name: Download reports artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: reports
-
-      - name: Upload report
-        uses: burnett01/rsync-deployments@6.0.0
-        with:
-          # -a: preserves file permissions, ownership, timestamps, and other attributes when copying files.
-          # -v: verbose mode
-          # -z: enables compression, which can speed up the transfer of large files over slow network connections
-          # -r: recursive
-          switches: -avzr
-          path: reports/*
-          remote_path: /var/www/reports.mybrandview.co.uk/html/${{ github.sha }}
-          remote_host: ${{ secrets.HOST }}
-          remote_user: ${{ secrets.USER }}
-          remote_key: ${{ env.KEY }}
-
-  test_reports:
+  report:
     needs: tests
     if: always()
     runs-on: ubuntu-latest
@@ -136,3 +97,6 @@ jobs:
           key: ${{ env.KEY }}
           source: 'reports/*'
           target: '/var/www/reports.mybrandview.co.uk/html/${{ github.sha }}'
+
+      - name: Output
+        run: printf "# Report \nReport is deployed to ${{ env.URL }}" >> $GITHUB_STEP_SUMMARY
