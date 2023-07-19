@@ -65,7 +65,7 @@ jobs:
     runs-on: ubuntu-latest
     concurrency: ci-${{ github.ref }}
     env:
-      url: ${{ vars.REPORTS_WEBSITE_URL }}${{ github.sha }}
+      url: ${{ vars.REPORTS_WEBSITE_URL }}/${{ github.sha }}
     environment:
       name: github-pages
       url: ${{ env.URL }}
