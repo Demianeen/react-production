@@ -17,7 +17,7 @@ describe('getArticleInfiniteListLimit', () => {
     const state: DeepPartial<StateSchema> = {}
 
     expect(getArticleInfiniteListLimit(state as StateSchema)).toEqual(
-      12
+      0
     )
   })
 })

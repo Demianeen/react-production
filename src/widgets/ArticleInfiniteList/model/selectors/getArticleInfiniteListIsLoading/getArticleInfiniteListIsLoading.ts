@@ -1,7 +1,10 @@
-import { createSelector } from '@reduxjs/toolkit'
+import { buildSelector } from '@/shared/lib/store'
 import { getArticleInfiniteListState } from '../getArticleInfiniteListState/getArticleInfiniteListState'
 
-export const getArticleInfiniteListIsLoading = createSelector(
+export const [
+  useArticleInfiniteListIsLoading,
+  getArticleInfiniteListIsLoading,
+] = buildSelector(
   getArticleInfiniteListState,
   (state) => state?.isLoading ?? false
 )

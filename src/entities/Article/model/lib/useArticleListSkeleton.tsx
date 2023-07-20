@@ -1,19 +1,29 @@
 import type { View } from '@/entities/ListFilters'
 import { useMemo } from 'react'
+import type { UseComputeListItemsLimitArgs } from './useComputeListItemsLimit'
+import { useComputeListItemsLimit } from './useComputeListItemsLimit'
 import { ArticleListItemSkeleton } from '../../ui/ArticleListItem/ArticleListItemSkeleton'
 
-interface useArticleListSkeletonsArgs {
+interface useArticleListSkeletonsArgs
+  extends UseComputeListItemsLimitArgs {
   view: View
-  skeletonsAmount: number
   className?: string
 }
 
 export const useArticleListSkeletons = ({
   view,
-  skeletonsAmount,
   className,
+  ...computeListLimitProps
 }: useArticleListSkeletonsArgs) => {
-  const articleSkeletons = new Array(skeletonsAmount).fill(null)
+  const skeletonAmountCalc = useComputeListItemsLimit({
+    view,
+    ...computeListLimitProps,
+  })
+
+  const articleSkeletons = useMemo(
+    () => new Array(skeletonAmountCalc).fill(null),
+    [skeletonAmountCalc]
+  )
 
   return useMemo(
     () =>

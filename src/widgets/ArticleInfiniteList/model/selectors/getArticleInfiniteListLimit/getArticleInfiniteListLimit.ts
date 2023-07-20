@@ -1,7 +1,10 @@
-import { createSelector } from '@reduxjs/toolkit'
+import { buildSelector } from '@/shared/lib/store'
 import { getArticleInfiniteListState } from '../getArticleInfiniteListState/getArticleInfiniteListState'
 
-export const getArticleInfiniteListLimit = createSelector(
+export const [
+  useArticleInfiniteListLimit,
+  getArticleInfiniteListLimit,
+] = buildSelector(
   getArticleInfiniteListState,
-  (state) => state?.limit ?? 12
+  (state) => state?.limit ?? 0
 )

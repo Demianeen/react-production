@@ -1,8 +1,11 @@
-import { createSelector } from '@reduxjs/toolkit'
 import { SortOrder } from '@/shared/const/sort'
+import { buildSelector } from '@/shared/lib/store'
 import { getArticleInfiniteListState } from '../getArticleInfiniteListState/getArticleInfiniteListState'
 
-export const getArticleInfiniteListOrder = createSelector(
+export const [
+  useArticleInfiniteListOrder,
+  getArticleInfiniteListOrder,
+] = buildSelector(
   getArticleInfiniteListState,
   (state) => state?.order ?? SortOrder.ASC
 )

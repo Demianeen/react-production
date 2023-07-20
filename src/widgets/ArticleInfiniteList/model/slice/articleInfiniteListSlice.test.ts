@@ -41,7 +41,6 @@ describe('articleInfiniteListSlice', () => {
         articleInfiniteListActions.initState()
       )
     ).toEqual({
-      limit: 12,
       _isInitialized: true,
       view: View.GRID,
     })
@@ -56,7 +55,6 @@ describe('articleInfiniteListSlice', () => {
         articleInfiniteListActions.initState()
       )
     ).toEqual({
-      limit: 4,
       _isInitialized: true,
       view: View.LIST,
     })
@@ -73,7 +71,7 @@ describe('articleInfiniteListSlice', () => {
       )
     ).toEqual({
       view: View.LIST,
-      limit: 4,
+      limit: 0,
       startIndex: 0,
     })
   })

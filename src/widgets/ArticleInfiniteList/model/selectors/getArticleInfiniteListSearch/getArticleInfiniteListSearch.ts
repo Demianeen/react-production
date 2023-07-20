@@ -1,7 +1,10 @@
-import { createSelector } from '@reduxjs/toolkit'
+import { buildSelector } from '@/shared/lib/store'
 import { getArticleInfiniteListState } from '../getArticleInfiniteListState/getArticleInfiniteListState'
 
-export const getArticleInfiniteListSearch = createSelector(
+export const [
+  useArticleInfiniteListSearch,
+  getArticleInfiniteListSearch,
+] = buildSelector(
   getArticleInfiniteListState,
   (state) => state?.search ?? ''
 )

@@ -1,11 +1,13 @@
+import { buildSlice } from '@/shared/lib/store'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { createEntityAdapter, createSlice } from '@reduxjs/toolkit'
+import { createEntityAdapter } from '@reduxjs/toolkit'
 import type { StateSchema } from '@/app/providers/StoreProvider'
 import type { Article } from '@/entities/Article'
 import { ArticleType } from '@/entities/Article'
 import { ARTICLE_VIEW_LOCALSTORAGE_KEY } from '@/shared/const/localstorage'
 import { SortOrder } from '@/shared/const/sort'
-import { SortField, View } from '@/entities/ListFilters'
+import type { View } from '@/entities/ListFilters'
+import { SortField } from '@/entities/ListFilters'
 import { fetchArticles } from '../services/fetchArticles/fetchArticles'
 import type { ArticleInfiniteListSchema } from '../types/articleInfiniteListSchema'
 import { INITIAL_ARTICLE_VIEW } from '../const/view'
@@ -19,7 +21,7 @@ const initialState: ArticleInfiniteListSchema =
     hasMore: true,
     _isInitialized: false,
     view: INITIAL_ARTICLE_VIEW,
-    limit: 12,
+    limit: 0,
     startIndex: 0,
     order: SortOrder.ASC,
     search: '',
@@ -27,7 +29,7 @@ const initialState: ArticleInfiniteListSchema =
     type: ArticleType.ALL,
   })
 
-export const articleInfiniteListSlice = createSlice({
+export const articleInfiniteListSlice = buildSlice({
   name: 'articleInfiniteList',
   initialState,
   reducers: {
@@ -48,12 +50,16 @@ export const articleInfiniteListSlice = createSlice({
     },
     setView: (state, action: PayloadAction<View>) => {
       state.view = action.payload
-      state.limit = action.payload === View.GRID ? 12 : 4
+      // we calculate limit in the component, so we need to wait until it is set
+      state.limit = 0
       state.startIndex = 0
       localStorage.setItem(
         ARTICLE_VIEW_LOCALSTORAGE_KEY,
         action.payload
       )
+    },
+    setLimit: (state, action: PayloadAction<number>) => {
+      state.limit = action.payload
     },
     setType: (state, action: PayloadAction<ArticleType>) => {
       state.type = action.payload
@@ -63,7 +69,6 @@ export const articleInfiniteListSlice = createSlice({
         (localStorage.getItem(
           ARTICLE_VIEW_LOCALSTORAGE_KEY
         ) as View) ?? INITIAL_ARTICLE_VIEW
-      state.limit = view === View.GRID ? 12 : 4
       state.view = view
       state._isInitialized = true
     },
@@ -95,10 +100,11 @@ export const articleInfiniteListSlice = createSlice({
   },
 })
 
-export const { actions: articleInfiniteListActions } =
-  articleInfiniteListSlice
-export const { reducer: articleInfiniteListReducer } =
-  articleInfiniteListSlice
+export const {
+  actions: articleInfiniteListActions,
+  useActions: useArticleInfiniteListActions,
+  reducer: articleInfiniteListReducer,
+} = articleInfiniteListSlice
 
 export const getArticles = articlesAdapter.getSelectors(
   (state: StateSchema) => state.articleInfiniteList ?? initialState

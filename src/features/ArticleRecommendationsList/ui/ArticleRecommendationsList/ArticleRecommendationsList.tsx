@@ -36,7 +36,6 @@ export const ArticleRecommendationsList = ({
       isLoading={isLoading}
       className={classNames(styles.recommendations, {}, [className])}
       target='_blank'
-      skeletonsAmount={4}
       view={View.GRID}
       data-testid='ArticleRecommendationsList'
     />

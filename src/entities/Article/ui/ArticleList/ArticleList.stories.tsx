@@ -26,10 +26,10 @@ const articlesList = new Array(2).fill(null).map((array, index) => ({
   id: index,
 }))
 
-const listArgs = {
+const listArgs: ArticleListProps = {
   articles: articlesList,
   view: View.LIST,
-  limit: 4,
+  isLoading: false,
 }
 
 export const ListDeprecated: Story = {
@@ -44,7 +44,6 @@ const gridArgs: ArticleListProps = {
   isLoading: false,
   articles: articlesGrid,
   view: View.GRID,
-  skeletonsAmount: 12,
 }
 
 export const GridDeprecated: Story = {
@@ -59,7 +58,6 @@ const isLoadingListArgs: ArticleListProps = {
   articles: articlesList,
   isLoading: true,
   view: View.LIST,
-  skeletonsAmount: 1,
 }
 
 export const IsLoadingListDeprecated: Story = {
@@ -74,7 +72,6 @@ const isLoadingGridArgs: ArticleListProps = {
   articles: articlesGrid,
   isLoading: true,
   view: View.GRID,
-  skeletonsAmount: 4,
 }
 
 export const IsLoadingGridDeprecated: Story = {

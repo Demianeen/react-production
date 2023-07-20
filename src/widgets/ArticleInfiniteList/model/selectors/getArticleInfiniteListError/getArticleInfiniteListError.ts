@@ -1,7 +1,10 @@
-import { createSelector } from '@reduxjs/toolkit'
+import { buildSelector } from '@/shared/lib/store'
 import { getArticleInfiniteListState } from '../getArticleInfiniteListState/getArticleInfiniteListState'
 
-export const getArticleInfiniteListError = createSelector(
+export const [
+  useArticleInfiniteListError,
+  getArticleInfiniteListError,
+] = buildSelector(
   getArticleInfiniteListState,
   (state) => state?.error
 )

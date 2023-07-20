@@ -1,5 +1,5 @@
 import type { HTMLAttributeAnchorTarget } from 'react'
-import { memo, useCallback } from 'react'
+import { memo, useCallback, useState } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { View } from '@/entities/ListFilters'
 import type { TestProps } from '@/shared/types/tests'
@@ -12,7 +12,6 @@ export interface ArticleListProps extends TestProps {
   className?: string
   articles: Article[]
   isLoading: boolean
-  skeletonsAmount: number
   view: View
   target?: HTMLAttributeAnchorTarget
 }
@@ -24,7 +23,6 @@ export const ArticleList = memo(
     isLoading,
     view = View.GRID,
     target,
-    skeletonsAmount,
     'data-testid': testId = 'ArticleList',
   }: ArticleListProps) => {
     const renderArticle = useCallback(
@@ -41,16 +39,21 @@ export const ArticleList = memo(
       [target, testId, view]
     )
 
+    const [skeletonRef, setSkeletonRef] =
+      useState<HTMLDivElement | null>(null)
+
     const skeletons = useArticleListSkeletons({
       view,
-      skeletonsAmount,
       className: styles.item,
+      widthContainerRef: skeletonRef,
+      heightContainerRef: skeletonRef,
     })
 
     return (
       <div
         className={classNames('', {}, [className, styles[view]])}
         data-testid={testId}
+        ref={setSkeletonRef}
       >
         {articles.length > 0 ? articles.map(renderArticle) : null}
         {isLoading && skeletons}

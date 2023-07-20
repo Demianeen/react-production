@@ -1,6 +1,17 @@
 import type { FC, HTMLAttributeAnchorTarget } from 'react'
-import { memo, useCallback, useEffect, useRef } from 'react'
-import type { VirtuosoGridHandle } from 'react-virtuoso'
+import {
+  forwardRef,
+  memo,
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from 'react'
+import type {
+  VirtuosoGridHandle,
+  VirtuosoHandle,
+} from 'react-virtuoso'
 import { Virtuoso, VirtuosoGrid } from 'react-virtuoso'
 import { useTranslation } from 'react-i18next'
 import { View } from '@/entities/ListFilters'
@@ -28,7 +39,6 @@ interface VirtualizedArticleListProps {
   className?: string
   articles: Article[]
   isLoading: boolean
-  skeletonsAmount: number
   view: View
   target?: HTMLAttributeAnchorTarget
   onLoadNextPart?: () => void
@@ -80,84 +90,139 @@ ArticlesNotFound.displayName = 'ArticlesNotFound'
  * Every component that wraps this component needs to have a height.
  * @return {React.NamedExoticComponent<VirtualizedArticleListProps>}
  */
-export const VirtualizedArticleList = ({
-  className,
-  articles,
-  isLoading,
-  view = View.GRID,
-  target,
-  skeletonsAmount,
-  onLoadNextPart,
-  Header,
-  scrollParent,
-  startIndex,
-  onOpenArticle,
-}: VirtualizedArticleListProps) => {
-  const gridRef = useRef<VirtuosoGridHandle | null>(null)
+export const VirtualizedArticleList = forwardRef<
+  VirtuosoGridHandle | VirtuosoHandle,
+  VirtualizedArticleListProps
+>(
+  (
+    {
+      className,
+      articles,
+      isLoading,
+      view = View.GRID,
+      target,
+      onLoadNextPart,
+      Header,
+      scrollParent,
+      startIndex,
+      onOpenArticle,
+    },
+    ref
+  ) => {
+    const gridRef = useRef<VirtuosoGridHandle | null>(null)
+    const listRef = useRef<VirtuosoHandle | null>(null)
 
-  useEffect(() => {
-    let timeout: NodeJS.Timeout
+    useImperativeHandle(
+      ref,
+      () => {
+        if (view === View.LIST) {
+          return listRef.current as VirtuosoHandle
+        }
+        return gridRef.current as VirtuosoGridHandle
+      },
+      [view]
+    )
 
-    if (gridRef.current && startIndex && view === View.GRID) {
-      timeout = setTimeout(() => {
-        gridRef.current?.scrollToIndex(10)
-      }, 100)
-    }
+    useEffect(() => {
+      let timeout: NodeJS.Timeout
 
-    return () => {
-      if (timeout) {
-        clearTimeout(timeout)
+      if (gridRef.current && startIndex && view === View.GRID) {
+        timeout = setTimeout(() => {
+          gridRef.current?.scrollToIndex(10)
+        }, 100)
       }
+
+      return () => {
+        if (timeout) {
+          clearTimeout(timeout)
+        }
+      }
+    }, [startIndex, view])
+
+    const renderArticle = useCallback(
+      (index: number, article: Article) => (
+        <ArticleListItem
+          article={article}
+          view={view}
+          key={article.id}
+          target={target}
+          className={styles.item}
+          onOpenArticle={onOpenArticle}
+          index={index}
+        />
+      ),
+      [onOpenArticle, target, view]
+    )
+
+    const [skeletonRef, setSkeletonRef] =
+      useState<HTMLDivElement | null>(null)
+
+    const skeletons = useArticleListSkeletons({
+      view,
+      className: styles.item,
+      widthContainerRef: skeletonRef,
+    })
+
+    const isArticlesNotFound = !isLoading && !articles.length
+
+    if (view === View.LIST) {
+      const listClassName = classNamesNew(styles.list, className)
+
+      return (
+        <div>
+          {Header && <Header className={styles.header} />}
+          <Virtuoso<Article>
+            ref={listRef}
+            className={listClassName}
+            data={articles}
+            itemContent={renderArticle}
+            endReached={onLoadNextPart}
+            overscan={500}
+            customScrollParent={scrollParent ?? undefined}
+            initialTopMostItemIndex={startIndex}
+            role='feed'
+            data-testid='VirtualizedArticleList.List'
+            useWindowScroll
+          />
+          {isArticlesNotFound && <ArticlesNotFound />}
+          {isLoading && (
+            <div
+              className={classNamesNew(listClassName, {
+                [styles.listSkeleton]: articles.length !== 0,
+              })}
+              ref={setSkeletonRef}
+            >
+              {skeletons}
+            </div>
+          )}
+        </div>
+      )
     }
-  }, [startIndex, view])
 
-  const renderArticle = useCallback(
-    (index: number, article: Article) => (
-      <ArticleListItem
-        article={article}
-        view={view}
-        key={article.id}
-        target={target}
-        className={styles.item}
-        onOpenArticle={onOpenArticle}
-        index={index}
-      />
-    ),
-    [onOpenArticle, target, view]
-  )
-
-  const skeletons = useArticleListSkeletons({
-    view,
-    skeletonsAmount,
-    className: styles.item,
-  })
-
-  const isArticlesNotFound = !isLoading && !articles.length
-
-  if (view === View.LIST) {
-    const listClassName = classNamesNew(styles.list, className)
+    const listClassName = classNamesNew(styles.grid, className)
 
     return (
       <div>
         {Header && <Header className={styles.header} />}
-        <Virtuoso<Article>
-          className={listClassName}
+        <VirtuosoGrid<Article>
+          ref={gridRef}
           data={articles}
           itemContent={renderArticle}
           endReached={onLoadNextPart}
+          listClassName={listClassName}
           overscan={500}
           customScrollParent={scrollParent ?? undefined}
-          initialTopMostItemIndex={startIndex}
           role='feed'
-          data-testid='VirtualizedArticleList.List'
+          data-testid='VirtualizedArticleList.Grid'
           useWindowScroll
         />
         {isArticlesNotFound && <ArticlesNotFound />}
         {isLoading && (
           <div
             className={classNamesNew(listClassName, {
-              [styles.listSkeleton]: articles.length !== 0,
+              [styles.gridSkeletonsPadding]: articles.length !== 0,
             })}
+            ref={setSkeletonRef}
           >
             {skeletons}
           </div>
@@ -165,34 +230,6 @@ export const VirtualizedArticleList = ({
       </div>
     )
   }
+)
 
-  const listClassName = classNamesNew(styles.grid, className)
-
-  return (
-    <div>
-      {Header && <Header className={styles.header} />}
-      <VirtuosoGrid<Article>
-        ref={gridRef}
-        data={articles}
-        itemContent={renderArticle}
-        endReached={onLoadNextPart}
-        listClassName={listClassName}
-        overscan={500}
-        customScrollParent={scrollParent ?? undefined}
-        role='feed'
-        data-testid='VirtualizedArticleList.Grid'
-        useWindowScroll
-      />
-      {isArticlesNotFound && <ArticlesNotFound />}
-      {isLoading && (
-        <div
-          className={classNamesNew(listClassName, {
-            [styles.gridSkeletons]: articles.length !== 0,
-          })}
-        >
-          {skeletons}
-        </div>
-      )}
-    </div>
-  )
-}
+VirtualizedArticleList.displayName = 'VirtualizedArticleList'
