@@ -5,39 +5,13 @@ on:
   pull_request:
     branches: [main]
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: write
-  pages: write
-  id-token: write
-
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-concurrency:
-  group: 'pages'
-  cancel-in-progress: false
-
 jobs:
-  tests:
+  unit:
     runs-on: ubuntu-latest
     # TODO: add cypress tests in ci
     steps:
-      # prepare reports
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Make dir from commit hash
-        run: mkdir -p reports/${{ github.sha }}
-      - name: Copy report index.html
-        run: cp reports/templates/index.html reports/${{ github.sha }}/index.html
-      - name: Upload created folder
-        uses: actions/upload-pages-artifact@v1
-        if: always()
-        with:
-          path: reports
-      # prepare tests
       - name: Cache deps
         uses: actions/cache@v3
         with:
@@ -49,52 +23,92 @@ jobs:
           node-version: ${{ vars.NODE_VERSION }}
       - name: Install modules
         run: npm ci
-      # run unit tests
-      - name: Update package index
-        run: sudo apt-get update
-        if: always()
-      - name: Install GraphicsMagick Engine
-        run: sudo apt-get install -y graphicsmagick
-        if: always()
       - name: Unit testing
         run: npm run test:unit
         if: always()
-      - name: Move unit report
-        run: mkdir -p reports/${{ github.sha }}/unit/; mv reports/templates/unit/* $_
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
         if: always()
-      # run ui tests
+        with:
+          name: unit-report
+          path: reports/templates/unit
+  ui:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Starting Node.js ${{ vars.NODE_VERSION }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ vars.NODE_VERSION }}
+      - name: Install modules
+        run: npm ci
       - name: Screenshot testing
         run: npm run test:ui:ci
         if: always()
       - name: Generate HTML report
         run: npm run test:ui:report
         if: always()
-      - name: Move loki report
-        run: mkdir -p reports/${{ github.sha }}/ui; mv .loki/* $_
-        if: always()
-      # upload reports
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-artifact@v3
         if: always()
         with:
-          path: reports
-      # - name: Commit reports
-      #   uses: stefanzweifel/git-auto-commit-action@v4
-      #   if: always()
-      #   with:
-      #     commit_message: 'Add reports for ${{ github.sha }}'
+          name: loki-report
+          path: .loki
 
-  reports:
-    needs: tests
+  report:
+    needs: [unit, ui]
     if: always()
     runs-on: ubuntu-latest
-    concurrency: ci-${{ github.ref }}
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}/${{ github.sha }}
     steps:
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+      - name: Load secret
+        uses: 1password/load-secrets-action@v1
+        with:
+          # Export loaded secrets as environment variables
+          export-env: true
+        env:
+          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
+          KEY: 'op://online-store/Time4vps demian key/private key'
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Make dir from commit hash
+        run: mkdir -p ${{ github.sha }}
+
+      - name: Copy report index.html
+        run: cp reports/templates/index.html ${{ github.sha }}/index.html
+
+      - name: Download unit report artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: unit-report
+          path: ${{ github.sha }}/unit
+
+      - name: Download ui report artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: loki-report
+          path: ${{ github.sha }}/ui
+
+      - name: Upload report
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ env.KEY }}
+          source: '${{ github.sha }}/*'
+          target: '/var/www/reports.mybrandview.co.uk/html'
+
+      - name: Output
+        run: printf "# Report \nReport is deployed to ${{ vars.REPORTS_WEBSITE_URL }}/${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+
+      - name: Remove old reports
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ env.KEY }}
+          debug: true
+          script: |
+            find /var/www/reports.mybrandview.co.uk/html/* -mtime +7 -type d -exec rmdir {} \;
