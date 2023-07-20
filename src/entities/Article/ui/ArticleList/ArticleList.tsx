@@ -3,12 +3,15 @@ import { memo, useCallback, useState } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { View } from '@/entities/ListFilters'
 import type { TestProps } from '@/shared/types/tests'
+import type { UseComputeListItemsLimitItemArgs } from '../../model/lib/useComputeListItemsLimit'
 import { useArticleListSkeletons } from '../../model/lib/useArticleListSkeleton'
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
 import type { Article } from '../../model/types/article'
 import styles from './ArticleList.module.scss'
 
-export interface ArticleListProps extends TestProps {
+export interface ArticleListProps
+  extends TestProps,
+    UseComputeListItemsLimitItemArgs {
   className?: string
   articles: Article[]
   isLoading: boolean
@@ -24,6 +27,7 @@ export const ArticleList = memo(
     view = View.GRID,
     target,
     'data-testid': testId = 'ArticleList',
+    ...computeListItemArgs
   }: ArticleListProps) => {
     const renderArticle = useCallback(
       (article: Article) => (
@@ -47,6 +51,7 @@ export const ArticleList = memo(
       className: styles.item,
       widthContainerRef: skeletonRef,
       heightContainerRef: skeletonRef,
+      ...computeListItemArgs,
     })
 
     return (

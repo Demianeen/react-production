@@ -1,8 +1,21 @@
 import { View } from '@/entities/ListFilters'
 import { useMemo } from 'react'
-import styles from '../../ui/ArticleList/ArticleList.module.scss'
 
-export interface UseComputeListItemsLimitArgs {
+export interface UseComputeListItemsLimitItemArgs {
+  /**
+   * Item width used in computations
+   * @default 200
+   */
+  itemWidth?: number
+  /**
+   * Item height used in computations
+   * @default 320
+   */
+  itemHeight?: number
+}
+
+export interface UseComputeListItemsLimitArgs
+  extends UseComputeListItemsLimitItemArgs {
   view: View
   /**
    * This ref is used to calculate the width for amount of skeletons to render.
@@ -13,10 +26,6 @@ export interface UseComputeListItemsLimitArgs {
    * @default window
    */
   heightContainerRef?: HTMLDivElement | null
-  /**
-   * Computes from item className by default. If provided, will be used instead.
-   */
-  itemWidth?: number
 }
 
 /**
@@ -27,7 +36,8 @@ export const useComputeListItemsLimit = ({
   view,
   widthContainerRef,
   heightContainerRef,
-  itemWidth,
+  itemWidth = 200,
+  itemHeight = 320,
 }: UseComputeListItemsLimitArgs) => {
   return useMemo(() => {
     if (view === View.LIST) {
@@ -40,13 +50,6 @@ export const useComputeListItemsLimit = ({
 
     const elementWidth = widthContainerRef.scrollWidth
 
-    const listElement = widthContainerRef.querySelector(
-      `.${styles.item}`
-    )
-    const listElementWidth =
-      itemWidth ?? listElement?.clientWidth ?? 200
-    const listElementHeight = listElement?.clientHeight ?? 320
-
     let elementHeight
     if (heightContainerRef != null) {
       const heightComputedStyle = getComputedStyle(heightContainerRef)
@@ -55,13 +58,18 @@ export const useComputeListItemsLimit = ({
         parseFloat(heightComputedStyle.paddingTop) +
         parseFloat(heightComputedStyle.paddingBottom)
     } else {
-      elementHeight = window.innerHeight
+      elementHeight = window.innerHeight - 32
     }
 
-    const widthAmount = Math.floor(elementWidth / listElementWidth)
-    const heightAmount =
-      Math.floor((elementHeight - 32) / listElementHeight) || 1
+    const widthAmount = Math.floor(elementWidth / itemWidth)
+    const heightAmount = Math.floor(elementHeight / itemHeight) || 1
 
     return widthAmount * heightAmount
-  }, [view, widthContainerRef, itemWidth, heightContainerRef])
+  }, [
+    view,
+    widthContainerRef,
+    heightContainerRef,
+    itemWidth,
+    itemHeight,
+  ])
 }
