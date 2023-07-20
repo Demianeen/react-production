@@ -60,9 +60,6 @@ jobs:
     needs: [unit, ui]
     if: always()
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ vars.REPORTS_WEBSITE_URL }}/${{ github.sha }}
     steps:
       - name: Load secret
         uses: 1password/load-secrets-action@v1
