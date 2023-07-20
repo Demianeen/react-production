@@ -70,7 +70,9 @@ export const Page = forwardRef<HTMLDivElement, PageProps>(
       toggleFeature({
         name: 'isAppRedesigned',
         on: () => {
-          window.scroll(0, 1000)
+          if (!skipScrollPositions[currentPath]) {
+            window.scroll(0, scrollPosition)
+          }
         },
         off: () => {
           if (wrapperRef.current !== null) {

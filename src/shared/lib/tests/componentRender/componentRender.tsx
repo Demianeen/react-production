@@ -1,19 +1,12 @@
 import type { ReactNode } from 'react'
 import { render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import type { StateSchema } from '@/app/providers/StoreProvider'
-import type { ReducersList } from '../../hooks/useDynamicModuleLoader/useDynamicModuleLoader'
+import type { TestProviderOptions } from './TestProvider'
 import { TestProvider } from './TestProvider'
-
-export interface ComponentRenderOptions {
-  route?: string
-  preloadedState?: DeepPartial<StateSchema>
-  asyncReducers?: ReducersList
-}
 
 export const componentRender = (
   Component: ReactNode,
-  options: ComponentRenderOptions = {}
+  options: TestProviderOptions = {}
 ) => {
   return {
     user: userEvent.setup(),
