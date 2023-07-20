@@ -38,7 +38,6 @@ export const useArticleInfiniteList = (
 
   useEffect(() => {
     if (limitCalculated) {
-      console.log('limit', limitCalculated)
       setLimit(limitCalculated * 3)
     }
   }, [limitCalculated, setLimit])
@@ -57,7 +56,6 @@ export const useArticleInfiniteList = (
   useEffect(() => {
     // limit intended to change only once
     if (limit) {
-      console.log('limit initArticleInfiniteList', limit)
       initArticleInfiniteList()
     }
   }, [initArticleInfiniteList, limit])

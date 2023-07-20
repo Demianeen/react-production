@@ -112,15 +112,17 @@ export const VirtualizedArticleList = forwardRef<
     const gridRef = useRef<VirtuosoGridHandle | null>(null)
     const listRef = useRef<VirtuosoHandle | null>(null)
 
+    const isListView = view === View.LIST
+
     useImperativeHandle(
       ref,
       () => {
-        if (view === View.LIST) {
+        if (isListView) {
           return listRef.current as VirtuosoHandle
         }
         return gridRef.current as VirtuosoGridHandle
       },
-      [view]
+      [isListView]
     )
 
     useEffect(() => {
@@ -165,7 +167,7 @@ export const VirtualizedArticleList = forwardRef<
 
     const isArticlesNotFound = !isLoading && !articles.length
 
-    if (view === View.LIST) {
+    if (isListView) {
       const listClassName = classNamesNew(styles.list, className)
 
       return (

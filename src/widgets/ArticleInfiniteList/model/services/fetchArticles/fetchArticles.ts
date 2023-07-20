@@ -28,7 +28,6 @@ export const fetchArticles = createAsyncThunk<
   ) => {
     const page = getArticleInfiniteListPage(getState())
     const limit = getArticleInfiniteListLimit(getState())
-    console.log('limit fetch', limit)
     const order = getArticleInfiniteListOrder(getState())
     const sortField = getArticleInfiniteListSortField(getState())
     const search = getArticleInfiniteListSearch(getState())
