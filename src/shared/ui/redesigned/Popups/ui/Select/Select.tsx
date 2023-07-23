@@ -43,6 +43,7 @@ interface SelectProps<T extends string> extends TestProps {
    */
   direction?: Direction
   name?: string
+  required?: boolean
 }
 
 export const Select = typedMemo(
@@ -58,6 +59,7 @@ export const Select = typedMemo(
     direction = 'down-left',
     name,
     'data-testid': testId = 'Select',
+    required = false,
   }: SelectProps<T>) => {
     const selectedOption = useMemo(
       () =>
@@ -90,6 +92,7 @@ export const Select = typedMemo(
             maxWidth={maxWidth}
             className={classNames(styles.button, className)}
             data-testid={`${testId}.Button`}
+            aria-required={required}
           >
             {selectedOption?.label ?? defaultValue}
           </Listbox.Button>

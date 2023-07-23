@@ -102,6 +102,7 @@ export const ProfileCardRedesigned = ({
           readonly={readonly}
           data-testid='ProfileCard.firstName'
           maxWidth
+          required
         />
         <Input
           value={data?.username}
@@ -111,6 +112,7 @@ export const ProfileCardRedesigned = ({
           readonly={readonly}
           data-testid='ProfileCard.username'
           maxWidth
+          required
         />
         <Input
           value={data?.lastName}
@@ -120,6 +122,7 @@ export const ProfileCardRedesigned = ({
           readonly={readonly}
           data-testid='ProfileCard.lastName'
           maxWidth
+          required
         />
         <Input
           value={data?.avatar}
@@ -129,6 +132,7 @@ export const ProfileCardRedesigned = ({
           readonly={readonly}
           data-testid='ProfileCard.avatar'
           maxWidth
+          required
         />
         <Input
           value={data?.age}
@@ -138,6 +142,7 @@ export const ProfileCardRedesigned = ({
           readonly={readonly}
           data-testid='ProfileCard.age'
           maxWidth
+          required
         />
         <SelectCurrency
           value={data?.currency}
@@ -155,6 +160,7 @@ export const ProfileCardRedesigned = ({
           readonly={readonly}
           data-testid='ProfileCard.city'
           maxWidth
+          required
         />
         <SelectCountry
           value={data?.country}

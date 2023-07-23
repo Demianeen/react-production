@@ -3,13 +3,13 @@ import { memo, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import type { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { Skeleton } from '@/shared/ui/redesigned/Skeleton'
 import { VStack } from '@/shared/ui/redesigned/Stack'
 import { AppImage } from '@/shared/ui/redesigned/AppImage'
 import { Title } from '@/shared/ui/redesigned/Title'
+import type { AsyncReducersList } from '@/app/providers/StoreProvider/config/stateSchema'
 import { renderArticleBlock } from './renderBlock'
 import { articleDetailsReducer } from '../../../model/slice/articleDetailsSlice'
 import { getArticleDetailsData } from '../../../model/selectors/getArticleDetailsData/getArticleDetailsData'
@@ -23,7 +23,7 @@ export interface ArticleDetailsRedesignedProps {
   id: number
 }
 
-const reducers: ReducersList = {
+const reducers: AsyncReducersList = {
   articleDetails: articleDetailsReducer,
 }
 

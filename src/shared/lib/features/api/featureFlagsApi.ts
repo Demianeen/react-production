@@ -7,7 +7,7 @@ import { getAllFeatureFlags } from '../lib/setGetFeatures'
 
 interface UpdateFeatureFlagsArgs {
   userId: EntityId
-  featureFlags: Partial<FeatureFlags>
+  featureFlags: FeatureFlags
 }
 
 const userApi = rtkApi.injectEndpoints({

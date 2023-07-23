@@ -26,7 +26,7 @@ export const setFeatureFlags = (
 
 export const getFeatureFlag = <K extends keyof FeatureFlags>(
   key: K
-): FeatureFlags[K] => {
+): boolean => {
   return featureFlags?.[key] ?? false
 }
 

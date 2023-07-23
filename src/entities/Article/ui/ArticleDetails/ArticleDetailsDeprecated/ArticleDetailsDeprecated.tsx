@@ -3,7 +3,6 @@ import { memo, useCallback, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import type { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import EyeIcon from '@/shared/assets/icons/deprecated/eye-20-20.svg'
@@ -17,6 +16,7 @@ import { Skeleton } from '@/shared/ui/deprecated/Skeleton'
 import { Icon } from '@/shared/ui/deprecated/Icon'
 import { HStack } from '@/shared/ui/redesigned/Stack'
 import { AppImage } from '@/shared/ui/redesigned/AppImage'
+import type { AsyncReducersList } from '@/app/providers/StoreProvider/config/stateSchema'
 import { articleDetailsReducer } from '../../../model/slice/articleDetailsSlice'
 import { ArticleBlockType } from '../../../model/const/articleBlockType'
 import { getArticleDetailsData } from '../../../model/selectors/getArticleDetailsData/getArticleDetailsData'
@@ -34,7 +34,7 @@ interface ArticleDetailsDeprecatedProps {
   id: number
 }
 
-const reducers: ReducersList = {
+const reducers: AsyncReducersList = {
   articleDetails: articleDetailsReducer,
 }
 

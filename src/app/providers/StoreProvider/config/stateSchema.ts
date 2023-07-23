@@ -15,23 +15,37 @@ import type { PageSchema } from '@/widgets/Page'
 import type { rtkApi } from '@/shared/api/rtkApi'
 import type { ArticleCommentListSchema } from '@/features/ArticleCommentList'
 import type { ArticleInfiniteListSchema } from 'src/widgets/ArticleInfiniteList'
+import type { RegistrationFormSchema } from '../../../../features/AuthByUsername/model/types/registrationFormSchema'
 
-export interface StateSchema {
+export interface AsyncReducers {
+  loginForm: LoginFormSchema
+  registrationForm: RegistrationFormSchema
+  profile: ProfileSchema
+  articleDetails: ArticleDetailsSchema
+  articleCommentList: ArticleCommentListSchema
+  commentForm: CommentFormSchema
+  articleInfiniteList: ArticleInfiniteListSchema
+}
+
+export type AsyncReducersList = {
+  [Name in keyof AsyncReducers]?: Reducer<
+    NonNullable<AsyncReducers[Name]>
+  >
+}
+
+export interface StateSchema extends Partial<AsyncReducers> {
   counter: CounterSchema
   user: UserSchema
   page: PageSchema
   [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
-
-  // Async reducers
-  loginForm?: LoginFormSchema
-  profile?: ProfileSchema
-  articleDetails?: ArticleDetailsSchema
-  articleCommentList?: ArticleCommentListSchema
-  commentForm?: CommentFormSchema
-  articleInfiniteList?: ArticleInfiniteListSchema
 }
 
 export type StateSchemaKey = keyof StateSchema
+
+export type ReducersList = {
+  [Name in StateSchemaKey]?: Reducer<NonNullable<StateSchema[Name]>>
+}
+
 export type StateReducer = Reducer<StateSchema>
 
 export interface ReducerManager {
@@ -58,4 +72,5 @@ export interface ThunkConfig<E> {
   rejectValue: E
   extra: ThunkExtraArg
   state: StateSchema
+  meta: any
 }

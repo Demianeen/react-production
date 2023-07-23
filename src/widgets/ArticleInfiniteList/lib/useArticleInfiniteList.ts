@@ -1,8 +1,8 @@
 import type { OnOpenArticle } from '@/entities/Article'
 import { useComputeListItemsLimit } from '@/entities/Article'
 import { useEffect, useCallback } from 'react'
-import type { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
+import type { AsyncReducersList } from '@/app/providers/StoreProvider/config/stateSchema'
 import { useArticleInfiniteListLimit } from '../model/selectors/getArticleInfiniteListLimit/getArticleInfiniteListLimit'
 import { useArticleInfiniteListView } from '../model/selectors/getArticleInfiniteListView/getArticleInfiniteListView'
 import { useFetchArticlesNextPage } from '../model/services/fetchArticlesNextPage/fetchArticlesNextPage'
@@ -12,7 +12,7 @@ import {
   useArticleInfiniteListActions,
 } from '../model/slice/articleInfiniteListSlice'
 
-const reducers: ReducersList = {
+const reducers: AsyncReducersList = {
   articleInfiniteList: articleInfiniteListReducer,
 }
 

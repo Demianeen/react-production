@@ -1,23 +1,18 @@
 import { useEffect } from 'react'
 import { useStore } from 'react-redux'
-import type { Reducer } from 'redux'
+import type { ReduxStoreWithReducerManager } from '@/app/providers/StoreProvider'
 import type {
-  ReduxStoreWithReducerManager,
-  StateSchema,
-} from '@/app/providers/StoreProvider'
-import type { StateSchemaKey } from '@/app/providers/StoreProvider/config/stateSchema'
+  AsyncReducersList,
+  StateSchemaKey,
+} from '@/app/providers/StoreProvider/config/stateSchema'
 import { useAppDispatch } from '../useAppDispatch/useAppDispatch'
-
-export type ReducersList = {
-  [Name in StateSchemaKey]?: Reducer<NonNullable<StateSchema[Name]>>
-}
 
 interface DynamicModuleLoaderOptions {
   removeOnUnmount?: boolean
 }
 
 export const useDynamicModuleLoader = (
-  reducers: ReducersList,
+  reducers: AsyncReducersList,
   { removeOnUnmount = true }: DynamicModuleLoaderOptions = {}
 ) => {
   const dispatch = useAppDispatch()

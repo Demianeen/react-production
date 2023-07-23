@@ -1,9 +1,9 @@
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
-import type { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import type { FormEvent } from 'react'
 import { useCallback } from 'react'
 import { useSelector } from 'react-redux'
+import type { AsyncReducersList } from '@/app/providers/StoreProvider/config/stateSchema'
 import {
   loginActions,
   loginReducer,
@@ -12,7 +12,7 @@ import { loginByUsername } from '../model/services/loginByUsername/loginByUserna
 import { getLoginFormUsername } from '../model/selectors/getLoginFormUsername/getLoginFormUsername'
 import { getLoginFormPassword } from '../model/selectors/getLoginFormPassword/getLoginFormPassword'
 
-const reducersList: ReducersList = {
+const reducersList: AsyncReducersList = {
   loginForm: loginReducer,
 }
 

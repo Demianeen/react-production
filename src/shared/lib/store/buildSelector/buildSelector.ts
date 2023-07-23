@@ -15,11 +15,16 @@ const isSingleSelector = <
   ARGS extends unknown[],
   S extends SelectorArray
 >(
-  selector:
+  combiner:
+    | ((...args: SelectorResultArray<S>) => FR)
+    | SingleSelector<FR, ARGS>
+    | S[number]
+    | undefined,
+  selectors:
     | [...S, (...args: SelectorResultArray<S>) => FR]
     | [SingleSelector<FR, ARGS>]
-): selector is [SingleSelector<FR, ARGS>] => {
-  return selector[0].length > 1
+): selectors is [SingleSelector<FR, ARGS>] => {
+  return combiner === undefined
 }
 
 /**
@@ -65,7 +70,7 @@ export function buildSelector<
   | ResultSelector<FR, ARGS> {
   const combiner = selectors.length > 1 ? selectors.pop() : undefined
 
-  if (!isSingleSelector(selectors)) {
+  if (!isSingleSelector(combiner, selectors)) {
     const selector =
       // @ts-expect-error selectors.pop() not change type
       createSelector<SelectorArray, FR>(selectors, combiner)

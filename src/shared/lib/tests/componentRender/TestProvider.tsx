@@ -7,14 +7,14 @@ import {
 import { I18nextProvider } from 'react-i18next'
 import i18nForTests from '@/shared/config/i18n/i18nForTests'
 import type { FeatureFlags } from '@/shared/types/featureFlags'
+import type { AsyncReducersList } from '@/app/providers/StoreProvider/config/stateSchema'
 import { setFeatureFlags } from '../../features'
-import type { ReducersList } from '../../hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 
 export interface TestProviderOptions {
   route?: string
   preloadedState?: DeepPartial<StateSchema>
-  asyncReducers?: ReducersList
-  featureFlags?: Partial<FeatureFlags>
+  asyncReducers?: AsyncReducersList
+  featureFlags?: FeatureFlags
 }
 
 interface TestProviderProps {

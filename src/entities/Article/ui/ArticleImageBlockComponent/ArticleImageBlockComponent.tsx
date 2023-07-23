@@ -21,7 +21,12 @@ export const ArticleImageBlockComponent = memo(
     'data-testid': dataTestId,
   }: ArticleImageBlockComponentProps) => {
     return (
-      <VStack className={className} justify='center' align='stretch'>
+      <VStack
+        className={className}
+        justify='center'
+        align='center'
+        maxWidth
+      >
         <AppImage
           className={styles.img}
           src={block.src}

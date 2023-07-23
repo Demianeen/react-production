@@ -4,9 +4,10 @@ import { counterReducer } from '@/entities/Counter'
 import { userReducer } from '@/entities/User'
 import { $api } from '@/shared/api/api'
 import { pageReducer } from '@/widgets/Page'
-import type { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { rtkApi } from '@/shared/api/rtkApi'
 import type {
+  AsyncReducersList,
+  ReducersList,
   StateSchema,
   StateSchemaKey,
   ThunkExtraArg,
@@ -15,7 +16,7 @@ import { createReducerManager } from './reducerManager'
 
 interface CreateReduxStoreProps {
   preloadedState?: StateSchema
-  preloadedAsyncReducers?: ReducersList
+  preloadedAsyncReducers?: AsyncReducersList
 }
 
 export function createReduxStore({

@@ -13,6 +13,7 @@ interface SelectCurrencyProps {
   readonly?: boolean
   direction?: Direction
   maxWidth?: boolean
+  required?: boolean
 }
 
 export const SelectCurrency = memo(
@@ -23,6 +24,7 @@ export const SelectCurrency = memo(
     readonly,
     direction,
     maxWidth,
+    required,
   }: SelectCurrencyProps) => {
     const { t } = useTranslation()
 
@@ -50,6 +52,7 @@ export const SelectCurrency = memo(
       readonly,
       defaultValue: t('Your currency'),
       direction,
+      required,
     }
 
     return (

@@ -57,38 +57,6 @@
       "userId": 1
     }
   ],
-  "posts": [
-    {
-      "id": 1,
-      "title": "json-server 1",
-      "author": "typicode"
-    },
-    {
-      "id": 2,
-      "title": "json-server 2",
-      "author": "typicode"
-    },
-    {
-      "id": 3,
-      "title": "json-server 3",
-      "author": "typicode"
-    },
-    {
-      "id": 4,
-      "title": "json-server 4",
-      "author": "typicode"
-    },
-    {
-      "id": 5,
-      "title": "json-server 5",
-      "author": "typicode"
-    },
-    {
-      "id": 6,
-      "title": "json-server 6",
-      "author": "typicode"
-    }
-  ],
   "articles": [
     {
       "id": 1,
@@ -98,9 +66,7 @@
       "views": 1022,
       "userId": 1,
       "createdAt": "30.02.2022",
-      "types": [
-        "IT"
-      ],
+      "types": ["IT"],
       "blocks": [
         {
           "id": 1,
@@ -168,9 +134,7 @@
       "views": 1022,
       "userId": 1,
       "createdAt": "26.02.2013",
-      "types": [
-        "IT"
-      ],
+      "types": ["IT"],
       "blocks": [
         {
           "id": 1,
@@ -192,9 +156,7 @@
       "views": 1022,
       "userId": 1,
       "createdAt": "26.02.2014",
-      "types": [
-        "IT"
-      ],
+      "types": ["IT"],
       "blocks": [
         {
           "id": 1,
@@ -216,9 +178,7 @@
       "views": 1022,
       "userId": 1,
       "createdAt": "22.02.2022",
-      "types": [
-        "IT"
-      ],
+      "types": ["IT"],
       "blocks": [
         {
           "id": 1,
@@ -244,9 +204,7 @@
       "views": 1022,
       "userId": 1,
       "createdAt": "26.02.2015",
-      "types": [
-        "IT"
-      ],
+      "types": ["IT"],
       "blocks": [
         {
           "id": 1,
@@ -268,9 +226,7 @@
       "views": 1022,
       "userId": 1,
       "createdAt": "26.02.2016",
-      "types": [
-        "IT"
-      ],
+      "types": ["IT"],
       "blocks": [
         {
           "id": 1,
@@ -292,9 +248,7 @@
       "views": 1022,
       "userId": 1,
       "createdAt": "24.02.2016",
-      "types": [
-        "IT"
-      ],
+      "types": ["IT"],
       "blocks": [
         {
           "id": 1,
@@ -316,9 +270,7 @@
       "views": 7422,
       "userId": 1,
       "createdAt": "26.02.2017",
-      "types": [
-        "IT"
-      ],
+      "types": ["IT"],
       "blocks": [
         {
           "id": 1,
@@ -340,9 +292,7 @@
       "views": 1722,
       "userId": 1,
       "createdAt": "26.02.2017",
-      "types": [
-        "IT"
-      ],
+      "types": ["IT"],
       "blocks": [
         {
           "id": 1,
@@ -364,9 +314,7 @@
       "views": 1922,
       "userId": 1,
       "createdAt": "26.02.2018",
-      "types": [
-        "IT"
-      ],
+      "types": ["IT"],
       "blocks": [
         {
           "id": 1,
@@ -388,9 +336,7 @@
       "views": 1022,
       "userId": 1,
       "createdAt": "26.02.2018",
-      "types": [
-        "IT"
-      ],
+      "types": ["IT"],
       "blocks": [
         {
           "id": 1,
@@ -412,9 +358,7 @@
       "views": 1022,
       "userId": 1,
       "createdAt": "26.02.2019",
-      "types": [
-        "IT"
-      ],
+      "types": ["IT"],
       "blocks": [
         {
           "id": 1,
@@ -436,9 +380,7 @@
       "views": 1022,
       "userId": 1,
       "createdAt": "26.02.2019",
-      "types": [
-        "IT"
-      ],
+      "types": ["IT"],
       "blocks": [
         {
           "id": 1,
@@ -460,9 +402,7 @@
       "views": 1022,
       "userId": 1,
       "createdAt": "25.02.2020",
-      "types": [
-        "IT"
-      ],
+      "types": ["IT"],
       "blocks": [
         {
           "id": 1,
@@ -484,9 +424,7 @@
       "views": 1848,
       "userId": 1,
       "createdAt": "28.02.2020",
-      "types": [
-        "IT"
-      ],
+      "types": ["IT"],
       "blocks": [
         {
           "id": 1,
@@ -508,9 +446,7 @@
       "views": 1544,
       "userId": 1,
       "createdAt": "26.02.2021",
-      "types": [
-        "IT"
-      ],
+      "types": ["IT"],
       "blocks": [
         {
           "id": 1,
@@ -532,9 +468,7 @@
       "views": 1234,
       "userId": 1,
       "createdAt": "26.02.2021",
-      "types": [
-        "IT"
-      ],
+      "types": ["IT"],
       "blocks": [
         {
           "id": 1,
@@ -556,9 +490,7 @@
       "views": 1022,
       "userId": 1,
       "createdAt": "26.02.2023",
-      "types": [
-        "IT"
-      ],
+      "types": ["IT"],
       "blocks": [
         {
           "id": 1,
@@ -580,9 +512,7 @@
       "views": 1022,
       "userId": 1,
       "createdAt": "26.02.2022",
-      "types": [
-        "IT"
-      ],
+      "types": ["IT"],
       "blocks": [
         {
           "id": 1,
@@ -604,9 +534,7 @@
       "views": 1022,
       "userId": 1,
       "createdAt": "26.02.2021",
-      "types": [
-        "IT"
-      ],
+      "types": ["IT"],
       "blocks": [
         {
           "id": 1,
@@ -628,9 +556,7 @@
       "views": 1048,
       "userId": 1,
       "createdAt": "26.02.2023",
-      "types": [
-        "IT"
-      ],
+      "types": ["IT"],
       "blocks": [
         {
           "id": 1,
@@ -652,9 +578,7 @@
       "views": 3824,
       "userId": 2,
       "createdAt": "26.02.2023",
-      "types": [
-        "SCIENCE"
-      ],
+      "types": ["SCIENCE"],
       "blocks": [
         {
           "id": 1,
@@ -712,9 +636,7 @@
       "views": 3824,
       "userId": 2,
       "createdAt": "26.02.2023",
-      "types": [
-        "IT"
-      ],
+      "types": ["IT"],
       "blocks": [
         {
           "id": 1,
@@ -744,10 +666,7 @@
       "views": 1820,
       "userId": 1,
       "createdAt": "28.12.2020",
-      "types": [
-        "ECONOMICS",
-        "IT"
-      ],
+      "types": ["ECONOMICS", "IT"],
       "blocks": [
         {
           "id": 1,
@@ -808,9 +727,7 @@
       "views": 1022,
       "userId": 1,
       "createdAt": "30.02.2022",
-      "types": [
-        "IT"
-      ],
+      "types": ["IT"],
       "blocks": [
         {
           "id": 1,
@@ -878,9 +795,7 @@
       "views": 1022,
       "userId": 1,
       "createdAt": "26.02.2013",
-      "types": [
-        "IT"
-      ],
+      "types": ["IT"],
       "blocks": [
         {
           "id": 1,
@@ -902,9 +817,7 @@
       "views": 1022,
       "userId": 1,
       "createdAt": "26.02.2014",
-      "types": [
-        "IT"
-      ],
+      "types": ["IT"],
       "blocks": [
         {
           "id": 1,
@@ -926,9 +839,7 @@
       "views": 1022,
       "userId": 1,
       "createdAt": "22.02.2022",
-      "types": [
-        "IT"
-      ],
+      "types": ["IT"],
       "blocks": [
         {
           "id": 1,
@@ -954,9 +865,7 @@
       "views": 1022,
       "userId": 1,
       "createdAt": "26.02.2015",
-      "types": [
-        "IT"
-      ],
+      "types": ["IT"],
       "blocks": [
         {
           "id": 1,
@@ -978,9 +887,7 @@
       "views": 1022,
       "userId": 1,
       "createdAt": "26.02.2016",
-      "types": [
-        "IT"
-      ],
+      "types": ["IT"],
       "blocks": [
         {
           "id": 1,
@@ -1002,9 +909,7 @@
       "views": 1022,
       "userId": 1,
       "createdAt": "24.02.2016",
-      "types": [
-        "IT"
-      ],
+      "types": ["IT"],
       "blocks": [
         {
           "id": 1,
@@ -1026,9 +931,7 @@
       "views": 7422,
       "userId": 1,
       "createdAt": "26.02.2017",
-      "types": [
-        "IT"
-      ],
+      "types": ["IT"],
       "blocks": [
         {
           "id": 1,
@@ -1140,9 +1043,7 @@
       "id": 1,
       "username": "admin",
       "password": "123",
-      "roles": [
-        "ADMIN"
-      ],
+      "roles": ["ADMIN"],
       "jsonSettings": {
         "theme": "appLightTheme",
         "language": "en",
@@ -1160,9 +1061,7 @@
       "id": 2,
       "username": "Ukrainer",
       "password": "123",
-      "roles": [
-        "USER"
-      ],
+      "roles": ["USER"],
       "jsonSettings": {
         "theme": "appOrangeTheme",
         "language": "en",
@@ -1180,9 +1079,7 @@
       "id": 3,
       "username": "manager",
       "password": "123",
-      "roles": [
-        "MANAGER"
-      ],
+      "roles": ["MANAGER"],
       "features": {
         "isArticleRatingEnabled": false,
         "isArticleCreationEnabled": true,
@@ -1197,9 +1094,7 @@
       "id": 4,
       "username": "testUser",
       "password": "123",
-      "roles": [
-        "USER"
-      ],
+      "roles": ["USER"],
       "jsonSettings": {
         "theme": "appRedTheme",
         "language": "en",
@@ -1213,23 +1108,36 @@
       }
     },
     {
-      "body": "fdfsf",
-      "articleId": 4,
-      "userId": 1,
-      "id": 16
+      "id": 5,
+      "username": "user",
+      "password": "12345678",
+      "roles": ["USER"]
     },
     {
-      "body": "Программа, которую по традиции называют «Hello, world!», очень проста. Она выводит куда-либо фразу «Hello, world!», или другую подобную, средствами некоего языка. JavaScript — это язык, программы на котором можно выполнять в разных средах. В нашем случае речь идёт о браузерах и о серверной платформе Node.js. Если до сих пор вы не написали ни строчки кода на JS и читаете этот текст в браузере, на настольном компьютере, это значит, что вы буквально в считанных секундах от своей первой JavaScript-программы. Существуют и другие способы запуска JS-кода в браузере. Так, если говорить об обычном использовании программ на JavaScript, они загружаются в браузер для обеспечения работы веб-страниц. Как правило, код оформляют в виде отдельных файлов с расширением .js, которые подключают к веб-страницам, но программный код можно включать и непосредственно в код страницы. Всё это делается с помощью тега <script>. Когда браузер обнаруживает такой код, он выполняет его. Подробности о теге script можно посмотреть на сайте w3school.com. В частности, рассмотрим пример, демонстрирующий работу с веб-страницей средствами JavaScript, приведённый на этом ресурсе. Этот пример можно запустить и средствами данного ресурса (ищите кнопку Try it Yourself), но мы поступим немного иначе. А именно, создадим в каком-нибудь текстовом редакторе (например — в VS Code или в Notepad++) новый файл, который назовём hello.html, и добавим в него следующий код:",
-      "articleId": 4,
-      "userId": 1,
-      "id": 17,
+      "id": 6,
+      "username": "user1",
+      "password": "12345678",
+      "roles": ["USER"]
+    },
+    {
+      "id": 7,
+      "username": "user2",
+      "password": "12345678",
+      "roles": ["USER"],
+      "jsonSettings": {},
       "features": {
-        "isArticleRatingEnabled": true,
-        "isArticleCreationEnabled": true,
-        "isCounterEnabled": true,
-        "isAppRedesigned": false
-      },
-      "avatar": "https://i.pinimg.com/564x/db/6b/a8/db6ba8c0e0244f71230e6aae953e57be.jpg"
+        "isAppRedesigned": true
+      }
+    },
+    {
+      "id": 8,
+      "username": "user3",
+      "password": "12345678",
+      "roles": ["USER"],
+      "jsonSettings": {},
+      "features": {
+        "isAppRedesigned": true
+      }
     }
   ],
   "profile": [
@@ -1274,6 +1182,41 @@
       "country": "Ukraine",
       "city": "Kyiv",
       "username": "testUser"
+    },
+    {
+      "id": 5,
+      "username": "user",
+      "firstName": "",
+      "lastName": "",
+      "age": 30,
+      "currency": "",
+      "country": "",
+      "city": "",
+      "avatar": ""
+    },
+    {
+      "id": 6,
+      "username": "user1",
+      "firstName": "",
+      "lastName": "",
+      "age": "",
+      "currency": "",
+      "country": "",
+      "city": "",
+      "avatar": ""
+    },
+    {
+      "id": 7,
+      "username": "Demianeen",
+      "firstName": "Feliche-Demian",
+      "lastName": "Netliukh",
+      "city": "Corsham",
+      "avatar": "sadasd",
+      "age": 30
+    },
+    {
+      "id": 8,
+      "username": "user3"
     }
   ],
   "article-rating": [

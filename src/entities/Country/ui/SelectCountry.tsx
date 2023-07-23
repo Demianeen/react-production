@@ -13,6 +13,7 @@ interface SelectCountryProps {
   readonly?: boolean
   direction?: Direction
   maxWidth?: boolean
+  required?: boolean
 }
 
 export const SelectCountry = memo(
@@ -23,6 +24,7 @@ export const SelectCountry = memo(
     readonly,
     direction,
     maxWidth,
+    required,
   }: SelectCountryProps) => {
     const { t } = useTranslation()
 
@@ -50,6 +52,7 @@ export const SelectCountry = memo(
       readonly,
       defaultValue: t('Your country'),
       direction,
+      required,
     }
 
     return (

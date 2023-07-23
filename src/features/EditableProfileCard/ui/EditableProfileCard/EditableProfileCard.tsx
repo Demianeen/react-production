@@ -1,7 +1,6 @@
 import { memo, useCallback, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-import type { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { ProfileCard } from '@/entities/Profile'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
@@ -11,6 +10,7 @@ import { Text, TextTheme } from '@/shared/ui/deprecated/Text'
 import { VStack } from '@/shared/ui/redesigned/Stack'
 import { Typography } from '@/shared/ui/redesigned/Typography'
 import { ToggleFeature } from '@/shared/lib/features'
+import type { AsyncReducersList } from '@/app/providers/StoreProvider/config/stateSchema'
 import { ProfileValidationError } from '../../model/const/profileValidationError'
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData'
 import { fetchProfileDataById } from '../../model/services/fetchProfileDataById/fetchProfileDataById'
@@ -29,7 +29,7 @@ interface EditableProfileCardProps {
   id: number
 }
 
-const reducersList: ReducersList = {
+const reducersList: AsyncReducersList = {
   profile: profileReducer,
 }
 

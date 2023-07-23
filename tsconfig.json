@@ -27,6 +27,7 @@
     "config/**/*.ts",
     "config/**/*.tsx",
     "scripts/**/*.ts",
-    "utils/**/*.ts"
+    "utils/**/*.ts",
+    "server"
   ]
 }

@@ -1,5 +1,5 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { createSlice } from '@reduxjs/toolkit'
+import { buildSlice } from '@/shared/lib/store'
 import type { LoginFormSchema } from '../types/loginFormSchema'
 import { loginByUsername } from '../services/loginByUsername/loginByUsername'
 
@@ -9,7 +9,7 @@ const initialState: LoginFormSchema = {
   username: '',
 }
 
-export const loginFormSlice = createSlice({
+export const loginFormSlice = buildSlice({
   name: 'loginForm',
   initialState,
   reducers: {
@@ -38,5 +38,8 @@ export const loginFormSlice = createSlice({
   },
 })
 
-export const { actions: loginActions } = loginFormSlice
-export const { reducer: loginReducer } = loginFormSlice
+export const {
+  actions: loginActions,
+  reducer: loginReducer,
+  useActions: useLoginActions,
+} = loginFormSlice

@@ -1,8 +1,8 @@
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
-import type { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useCallback, type FormEvent, useMemo } from 'react'
 import { useSelector } from 'react-redux'
+import type { AsyncReducersList } from '@/app/providers/StoreProvider/config/stateSchema'
 import {
   commentFormActions,
   commentFormReducer,
@@ -11,7 +11,7 @@ import { getCommentFormBody } from '../model/selectors/getCommentFormBody/getCom
 
 export type OnSendComment = (body: string) => void
 
-const reducers: ReducersList = {
+const reducers: AsyncReducersList = {
   commentForm: commentFormReducer,
 }
 

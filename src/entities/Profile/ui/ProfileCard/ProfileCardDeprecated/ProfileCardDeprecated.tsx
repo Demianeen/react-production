@@ -120,6 +120,7 @@ export const ProfileCardDeprecated = ({
           onChange={onChangeFirstName}
           readonly={readonly}
           data-testid='ProfileCard.firstName'
+          required
         />
         <Input
           value={data?.lastName}
@@ -128,6 +129,7 @@ export const ProfileCardDeprecated = ({
           onChange={onChangeLastName}
           readonly={readonly}
           data-testid='ProfileCard.lastName'
+          required
         />
         <Input
           value={data?.age}
@@ -136,6 +138,7 @@ export const ProfileCardDeprecated = ({
           onChange={onChangeAge}
           readonly={readonly}
           data-testid='ProfileCard.age'
+          required
         />
         <Input
           value={data?.city}
@@ -144,6 +147,7 @@ export const ProfileCardDeprecated = ({
           onChange={onChangeCity}
           readonly={readonly}
           data-testid='ProfileCard.city'
+          required
         />
         <Input
           value={data?.username}
@@ -152,6 +156,7 @@ export const ProfileCardDeprecated = ({
           onChange={onChangeUsername}
           readonly={readonly}
           data-testid='ProfileCard.username'
+          required
         />
         <Input
           value={data?.avatar}
@@ -160,6 +165,7 @@ export const ProfileCardDeprecated = ({
           onChange={onChangeAvatar}
           readonly={readonly}
           data-testid='ProfileCard.avatar'
+          required
         />
         <SelectCurrency
           value={data?.currency}

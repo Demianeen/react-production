@@ -4,9 +4,7 @@ import { useEffect } from 'react'
 import { getAllFeatureFlags } from '../features/lib/setGetFeatures'
 import { setFeatureFlags } from '../features'
 
-export const FeatureFlagsDecorator = (
-  featureFlags: Partial<FeatureFlags>
-) =>
+export const FeatureFlagsDecorator = (featureFlags: FeatureFlags) =>
   function Decorator(StoryComponent: StoryFn) {
     const oldFeatureFlags = getAllFeatureFlags()
     setFeatureFlags({

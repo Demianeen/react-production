@@ -1,6 +1,5 @@
 import { memo, Suspense, useCallback, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import type { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { CommentList } from '@/entities/Comment'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
@@ -9,6 +8,7 @@ import {
   CommentFormSkeleton,
 } from '@/entities/CommentForm'
 import { VStack } from '@/shared/ui/redesigned/Stack'
+import type { AsyncReducersList } from '@/app/providers/StoreProvider/config/stateSchema'
 import { sendArticleComment } from '../../model/services/sendArticleComment/sendArticleComment'
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId'
 import { getArticleCommentListIsLoading } from '../../model/selectors/getArticleCommentListIsLoading/getArticleCommentListIsLoading'
@@ -22,7 +22,7 @@ export interface ArticleCommentListProps {
   articleId: number
 }
 
-const reducers: ReducersList = {
+const reducers: AsyncReducersList = {
   articleCommentList: articleCommentListReducer,
 }
 

@@ -123,6 +123,7 @@ module.exports = {
           '**/mocks/**', // mocks
           '**/mock-server/**', // mock server
           'cypress/**', // cypress
+          'server/**', // json-server
         ],
       },
     ],
