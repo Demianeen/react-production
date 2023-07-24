@@ -4,11 +4,12 @@ import { useArticleView } from '../../lib/useArticleView'
 
 export interface ArticleViewSelectorContainerProps {
   className?: string
+  listRef: HTMLDivElement | null
 }
 
 export const ArticleViewSelectorContainer = typedMemo(
-  ({ className }: ArticleViewSelectorContainerProps) => {
-    const viewProps = useArticleView()
+  ({ className, listRef }: ArticleViewSelectorContainerProps) => {
+    const viewProps = useArticleView(listRef)
 
     return <ListFiltersView className={className} {...viewProps} />
   }

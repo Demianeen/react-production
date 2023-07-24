@@ -156,13 +156,13 @@ export const VirtualizedArticleList = forwardRef<
       [onOpenArticle, target, view]
     )
 
-    const [skeletonRef, setSkeletonRef] =
+    const [containerRef, setContainerRef] =
       useState<HTMLDivElement | null>(null)
 
     const skeletons = useArticleListSkeletons({
       view,
       className: styles.item,
-      widthContainerRef: skeletonRef,
+      containerRef,
     })
 
     const isArticlesNotFound = !isLoading && !articles.length
@@ -171,7 +171,7 @@ export const VirtualizedArticleList = forwardRef<
       const listClassName = classNamesNew(styles.list, className)
 
       return (
-        <div>
+        <div ref={setContainerRef}>
           {Header && <Header className={styles.header} />}
           <Virtuoso<Article>
             ref={listRef}
@@ -192,7 +192,6 @@ export const VirtualizedArticleList = forwardRef<
               className={classNamesNew(listClassName, {
                 [styles.listSkeleton]: articles.length !== 0,
               })}
-              ref={setSkeletonRef}
             >
               {skeletons}
             </div>
@@ -204,7 +203,7 @@ export const VirtualizedArticleList = forwardRef<
     const listClassName = classNamesNew(styles.grid, className)
 
     return (
-      <div>
+      <div ref={setContainerRef}>
         {Header && <Header className={styles.header} />}
         <VirtuosoGrid<Article>
           ref={gridRef}
@@ -224,7 +223,6 @@ export const VirtualizedArticleList = forwardRef<
             className={classNamesNew(listClassName, {
               [styles.gridSkeletonsPadding]: articles.length !== 0,
             })}
-            ref={setSkeletonRef}
           >
             {skeletons}
           </div>

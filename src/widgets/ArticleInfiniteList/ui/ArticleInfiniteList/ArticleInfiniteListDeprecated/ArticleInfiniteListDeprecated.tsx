@@ -59,6 +59,7 @@ export const ArticleInfiniteListDeprecated = ({
         className={className}
         onLoadNextPart={onLoadNextPart}
         scrollParent={scrollParent}
+        // @ts-expect-error Problem with types
         Header={ArticleInfiniteListFilters}
         startIndex={startIndex}
         onOpenArticle={onOpenArticle}

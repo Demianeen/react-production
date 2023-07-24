@@ -1,23 +1,30 @@
 import type { View } from '@/entities/ListFilters'
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useCallback } from 'react'
 import { useSelector } from 'react-redux'
+import { computeListItemsLimit } from '@/entities/Article'
 import { getArticleInfiniteListView } from '../model/selectors/getArticleInfiniteListView/getArticleInfiniteListView'
-import { fetchArticles } from '../model/services/fetchArticles/fetchArticles'
-import { articleInfiniteListActions } from '../model/slice/articleInfiniteListSlice'
+import { useFetchArticles } from '../model/services/fetchArticles/fetchArticles'
+import { useArticleInfiniteListActions } from '../model/slice/articleInfiniteListSlice'
 
-export const useArticleView = () => {
-  const dispatch = useAppDispatch()
-
+export const useArticleView = (listRef: HTMLDivElement | null) => {
   const view = useSelector(getArticleInfiniteListView)
+  const { setView, setPage, setLimit } =
+    useArticleInfiniteListActions()
+  const fetchArticles = useFetchArticles()
 
   const onChangeView = useCallback(
     (newView: View) => {
-      dispatch(articleInfiniteListActions.setView(newView))
-      dispatch(articleInfiniteListActions.setPage(1))
-      dispatch(fetchArticles({ replace: true }))
+      setView(newView)
+      setPage(1)
+      const limit = computeListItemsLimit({
+        view: newView,
+        containerRef: listRef,
+      })
+      console.log('new limit', limit, 'new view', newView)
+      setLimit(limit * 3)
+      fetchArticles({ replace: true })
     },
-    [dispatch]
+    [fetchArticles, listRef, setLimit, setPage, setView]
   )
 
   return {

@@ -1,8 +1,7 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
-import type { ThunkConfig } from '@/app/providers/StoreProvider'
 import type { Article } from '@/entities/Article'
 import { ArticleType } from '@/entities/Article'
 import { addQueryParams } from '@/shared/lib/url/addQueryParams/addQueryParams'
+import { buildAsyncThunk } from '@/shared/lib/store/buildAsyncThunk'
 import { getArticleInfiniteListType } from '../../selectors/getArticleInfinteListType/getArticleInfiniteListType'
 import { getArticleInfiniteListOrder } from '../../selectors/getArticleInfiniteListOrder/getArticleInfiniteListOrder'
 import { getArticleInfiniteListSortField } from '../../selectors/getArticleInfiniteListSortField/getArticleInfiniteListSortField'
@@ -14,10 +13,10 @@ export interface FetchArticlesProps {
   replace?: boolean
 }
 
-export const fetchArticles = createAsyncThunk<
+export const [useFetchArticles, fetchArticles] = buildAsyncThunk<
   Article[],
   FetchArticlesProps | void,
-  ThunkConfig<string>
+  string
 >(
   'articleInfiniteList/fetchArticles',
   async (

@@ -1,11 +1,11 @@
 import type { View } from '@/entities/ListFilters'
 import { useMemo } from 'react'
-import type { UseComputeListItemsLimitArgs } from './useComputeListItemsLimit'
+import type { ComputeListItemsLimitArgs } from './useComputeListItemsLimit'
 import { useComputeListItemsLimit } from './useComputeListItemsLimit'
 import { ArticleListItemSkeleton } from '../../ui/ArticleListItem/ArticleListItemSkeleton'
 
 interface useArticleListSkeletonsArgs
-  extends UseComputeListItemsLimitArgs {
+  extends ComputeListItemsLimitArgs {
   view: View
   className?: string
 }

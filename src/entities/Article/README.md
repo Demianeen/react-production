@@ -16,7 +16,9 @@ Description: The article serves as a fundamental building block in our project, 
 
 `getArticleDetailsData` - selector that retrieves information about article
 
-`useComputeListItemsLimit` - computes width and height of the container and item and returns amount of items to render.
+`computeListItemsLimit` - computes width and height of the container and item and returns amount of items to render.
+
+`useComputeListItemsLimit` - memoized `computeListItemsLimit`
 
 - Const
 

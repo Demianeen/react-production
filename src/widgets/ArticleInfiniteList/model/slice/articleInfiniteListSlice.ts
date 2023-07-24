@@ -53,6 +53,7 @@ export const articleInfiniteListSlice = buildSlice({
       // we calculate limit in the component, so we need to wait until it is set
       state.limit = 0
       state.startIndex = 0
+      state.hasMore = true
       localStorage.setItem(
         ARTICLE_VIEW_LOCALSTORAGE_KEY,
         action.payload
@@ -85,11 +86,14 @@ export const articleInfiniteListSlice = buildSlice({
       })
       .addCase(fetchArticles.fulfilled, (state, action) => {
         state.isLoading = false
-        state.hasMore = action.payload.length === state.limit
+        state.hasMore = action.payload.length >= state.limit
 
         if (action?.meta?.arg?.replace === true) {
+          console.log('replace')
           articlesAdapter.setAll(state, action.payload)
         } else {
+          console.log('add', action.payload)
+          console.log('limit', state.limit)
           articlesAdapter.addMany(state, action.payload)
         }
       })

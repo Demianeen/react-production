@@ -32,15 +32,15 @@ export const useArticleInfiniteList = (
 
   const limitCalculated = useComputeListItemsLimit({
     view,
-    widthContainerRef: virtualizedListRef,
-    itemWidth: 200,
+    containerRef: virtualizedListRef,
   })
 
   useEffect(() => {
-    if (limitCalculated) {
+    // limit intended to change only once
+    if (limitCalculated && !limit) {
       setLimit(limitCalculated * 3)
     }
-  }, [limitCalculated, setLimit])
+  }, [limitCalculated, setLimit, limit])
 
   const onLoadNextPart = useCallback(() => {
     fetchArticlesNextPage()

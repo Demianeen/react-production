@@ -38,7 +38,7 @@ export const ArticleRecommendationsList = ({
       target='_blank'
       view={View.GRID}
       data-testid='ArticleRecommendationsList'
-      itemWidth={240}
+      gridItemWidth={240}
     />
   )
 }

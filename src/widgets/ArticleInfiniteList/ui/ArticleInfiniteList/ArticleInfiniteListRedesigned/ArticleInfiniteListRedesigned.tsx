@@ -57,7 +57,9 @@ export const ArticleInfiniteListRedesigned = ({
       className={styles.stickyContentLayout}
       right={
         <VStack gap={1}>
-          <ArticleViewSelectorContainer />
+          <ArticleViewSelectorContainer
+            listRef={virtualizedListRef}
+          />
           <ArticleFiltersContainer />
         </VStack>
       }

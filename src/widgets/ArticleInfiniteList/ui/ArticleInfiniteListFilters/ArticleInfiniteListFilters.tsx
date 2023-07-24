@@ -8,11 +8,12 @@ import { useArticleView } from '../../lib/useArticleView'
 
 interface ArticleInfiniteListFiltersProps {
   className?: string
+  listRef: HTMLDivElement | null
 }
 
 export const ArticleInfiniteListFilters = memo(
-  ({ className }: ArticleInfiniteListFiltersProps) => {
-    const viewProps = useArticleView()
+  ({ className, listRef }: ArticleInfiniteListFiltersProps) => {
+    const viewProps = useArticleView(listRef)
 
     const {
       sortField,
