@@ -4,6 +4,12 @@
   height: 100%;
 }
 
+.logoWrapper {
+  padding: 0.125rem 0 0;
+  clip-path: inset(0 0 -100vh round 2rem 2rem);
+  border-radius: var(--border-radius-redesigned);
+}
+
 .logo {
   margin: 1.36rem 0 2.6rem;
 }

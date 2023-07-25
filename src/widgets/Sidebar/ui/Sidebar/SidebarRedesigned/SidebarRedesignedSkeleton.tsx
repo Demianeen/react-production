@@ -32,7 +32,9 @@ export const SidebarRedesignedSkeleton = typedMemo(
         className={classNamesNew(styles.sidebarRedesigned, className)}
         padding={0}
       >
-        <AppLogo size='3.5rem' className={styles.logo} />
+        <div className={styles.logoWrapper}>
+          <AppLogo size='3.5rem' className={styles.logo} />
+        </div>
         <nav>
           <VStack
             gap={1.25}

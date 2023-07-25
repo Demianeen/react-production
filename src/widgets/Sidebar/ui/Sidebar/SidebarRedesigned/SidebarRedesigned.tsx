@@ -47,11 +47,14 @@ export const SidebarRedesigned = typedMemo(
         )}
         padding={0}
       >
-        <AppLogo
-          size={isCollapsed ? '2rem' : '3.5rem'}
-          className={styles.logo}
-          showGradientBig={!isCollapsed}
-        />
+        <div className={styles.logoWrapper}>
+          <AppLogo
+            size={isCollapsed ? '2rem' : '3.5rem'}
+            className={styles.logo}
+            showGradientBig={!isCollapsed}
+          />
+        </div>
+
         <nav>
           <VStack gap={1} className={styles.items} as='ul'>
             {itemsList}
