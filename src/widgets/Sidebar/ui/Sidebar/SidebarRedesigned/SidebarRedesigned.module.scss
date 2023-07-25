@@ -57,3 +57,15 @@
 .skeletonNav {
   padding: 1rem;
 }
+
+@media screen and (width <= 1175px) {
+  .toggleBtn {
+    display: none;
+  }
+}
+
+@media screen and (width <= 768px) {
+  .sidebarRedesigned {
+    display: none;
+  }
+}

@@ -63,6 +63,7 @@ export const ArticleInfiniteListRedesigned = ({
           <ArticleFiltersContainer />
         </VStack>
       }
+      rightContainerClassName={styles.rightContainer}
       content={
         <div ref={setVirtualizedListRef}>
           <VirtualizedArticleList

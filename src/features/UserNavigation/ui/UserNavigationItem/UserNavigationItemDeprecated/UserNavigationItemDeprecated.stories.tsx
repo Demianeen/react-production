@@ -1,24 +1,24 @@
 import type { StoryObj, Meta } from '@storybook/react'
-import HomeIcon from '@/shared/assets/icons/redesigned/home.svg'
+import HomeIconDeprecated from '@/shared/assets/icons/deprecated/home-20-20.svg'
 import { routes } from '@/shared/lib/router/routes'
-import { SidebarItemRedesigned } from './SidebarItemRedesigned'
+import { UserNavigationItemDeprecated } from './UserNavigationItemDeprecated'
 
 export default {
-  title: 'widgets/Sidebar/SidebarItem/redesigned',
-  component: SidebarItemRedesigned,
+  title: 'features/UserNavigation/UserNavigationItem/deprecated',
+  component: UserNavigationItemDeprecated,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
   args: {
     item: {
-      Icon: HomeIcon,
+      Icon: HomeIconDeprecated,
       path: routes.home(),
       text: 'Home',
     },
   },
-} as Meta<typeof SidebarItemRedesigned>
+} as Meta<typeof UserNavigationItemDeprecated>
 
-type Story = StoryObj<typeof SidebarItemRedesigned>
+type Story = StoryObj<typeof UserNavigationItemDeprecated>
 
 export const Primary: Story = {
   args: {

@@ -10,11 +10,10 @@ import AboutIcon from '@/shared/assets/icons/redesigned/info.svg'
 import ProfileIcon from '@/shared/assets/icons/redesigned/avatar.svg'
 import ArticlesIcon from '@/shared/assets/icons/redesigned/articles.svg'
 import { toggleFeature } from '@/shared/lib/features'
-import type { SidebarItemArgs } from '../../types/sidebar'
+import type { SidebarItemArgs } from '../../types/userNavigation'
 
-export const [useSidebarItems, getSidebarItems] = buildSelector(
-  getUserAuthData,
-  (authData) => {
+export const [useUserNavigationItems, getUserNavigationItems] =
+  buildSelector(getUserAuthData, (authData) => {
     const items: SidebarItemArgs[] = [
       {
         path: routes.home(),
@@ -58,5 +57,4 @@ export const [useSidebarItems, getSidebarItems] = buildSelector(
       },
     ]
     return items
-  }
-)
+  })

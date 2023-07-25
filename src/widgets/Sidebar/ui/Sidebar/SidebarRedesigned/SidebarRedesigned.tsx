@@ -1,15 +1,15 @@
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
 import { AppLogo } from '@/shared/ui/redesigned/AppLogo'
-import { useState, useMemo } from 'react'
-import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
+import { useState, useCallback } from 'react'
+import { HStack } from '@/shared/ui/redesigned/Stack'
 import { Icon } from '@/shared/ui/redesigned/Icon'
 import ArrowIcon from '@/shared/assets/icons/redesigned/arrow-down.svg'
 import { LangSwitcher } from '@/features/LangSwitcher'
 import { ThemeSwitcher } from '@/features/ThemeSwitcher'
 import { Card } from '@/shared/ui/redesigned/Card'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
-import { useSidebarItems } from '../../../model/selectors/getSidebarItems/getSidebarItems'
-import { SidebarItem } from '../../SidebarItem/SidebarItem'
+import { useMedia } from '@/shared/lib/hooks/useMedia/useMedia'
+import { UserNavigation } from '@/features/UserNavigation'
 import styles from './SidebarRedesigned.module.scss'
 
 export interface SidebarRedesignedProps {
@@ -19,21 +19,18 @@ export interface SidebarRedesignedProps {
 export const SidebarRedesigned = typedMemo(
   ({ className }: SidebarRedesignedProps) => {
     const [isCollapsed, setIsCollapsed] = useState(false)
-    const sidebarItems = useSidebarItems()
 
     const onToggle = () => {
       setIsCollapsed((prev) => !prev)
     }
 
-    const itemsList = useMemo(() => {
-      return sidebarItems.map((item) => (
-        <SidebarItem
-          item={item}
-          isCollapsed={isCollapsed}
-          key={item.path}
-        />
-      ))
-    }, [isCollapsed, sidebarItems])
+    const onResize = useCallback(() => {
+      if (window.innerWidth < 1175) {
+        setIsCollapsed(true)
+      }
+    }, [])
+
+    useMedia(onResize)
 
     return (
       <Card
@@ -54,12 +51,7 @@ export const SidebarRedesigned = typedMemo(
             showGradientBig={!isCollapsed}
           />
         </div>
-
-        <nav>
-          <VStack gap={1} className={styles.items} as='ul'>
-            {itemsList}
-          </VStack>
-        </nav>
+        <UserNavigation isCollapsed={isCollapsed} />
         <Icon
           Svg={ArrowIcon}
           data-testid='sidebar-toggle'

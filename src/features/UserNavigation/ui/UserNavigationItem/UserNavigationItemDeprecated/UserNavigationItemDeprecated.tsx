@@ -11,17 +11,21 @@ import {
 } from '@/shared/ui/deprecated/Text'
 import { useUserAuthData } from '@/entities/User'
 import { useTranslation } from 'react-i18next'
-import styles from './SidebarItemDeprecated.module.scss'
-import type { SidebarItemArgs } from '../../../model/types/sidebar'
+import styles from './UserNavigationItemDeprecated.module.scss'
+import type { SidebarItemArgs } from '../../../model/types/userNavigation'
 
-export interface SidebarItemDeprecatedProps {
+export interface UserNavigationItemDeprecatedProps {
   className?: string
   item: SidebarItemArgs
   isCollapsed: boolean
 }
 
-export const SidebarItemDeprecated = typedMemo(
-  ({ className, item, isCollapsed }: SidebarItemDeprecatedProps) => {
+export const UserNavigationItemDeprecated = typedMemo(
+  ({
+    className,
+    item,
+    isCollapsed,
+  }: UserNavigationItemDeprecatedProps) => {
     const { t } = useTranslation()
     const isAuth = useUserAuthData()
 
@@ -40,7 +44,7 @@ export const SidebarItemDeprecated = typedMemo(
           theme={AppLinkTheme.INVERTED}
           to={item.path}
           className={classNames('', mods, [className])}
-          gap={1.25}
+          gap={isCollapsed ? undefined : 1.25}
         >
           <Icon Svg={item.Icon} className={styles.icon} />
           <Text

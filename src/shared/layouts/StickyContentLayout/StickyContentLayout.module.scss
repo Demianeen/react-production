@@ -1,9 +1,21 @@
 .stickyContentLayout {
   display: grid;
   grid-template-areas: 'left content right';
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 1fr;
   gap: 1rem;
   height: 100%;
+
+  &.hasLeft {
+    grid-template-columns: auto 1fr;
+  }
+
+  &.hasRight {
+    grid-template-columns: 1fr auto;
+  }
+
+  &.hasLeft.hasRight {
+    grid-template-columns: auto 1fr auto;
+  }
 }
 
 .left {

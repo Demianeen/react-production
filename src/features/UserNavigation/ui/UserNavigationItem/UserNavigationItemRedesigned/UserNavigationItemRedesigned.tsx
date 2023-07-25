@@ -9,10 +9,10 @@ import { Icon } from '@/shared/ui/redesigned/Icon'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
 import { TooltipButton } from '@/shared/ui/redesigned/TooltipButton'
 import { AppLink } from '@/shared/ui/redesigned/AppLink'
-import styles from './SidebarItemRedesigned.module.scss'
-import type { SidebarItemArgs } from '../../../model/types/sidebar'
+import styles from './UserNavigationItemRedesigned.module.scss'
+import type { SidebarItemArgs } from '../../../model/types/userNavigation'
 
-export interface SidebarItemRedesignedProps {
+export interface UserNavigationItemRedesignedProps {
   className?: string
   item: SidebarItemArgs
   isCollapsed: boolean
@@ -20,8 +20,12 @@ export interface SidebarItemRedesignedProps {
 
 // TODO: write a linter that won't allow to use deprecated components in the redesigned
 
-export const SidebarItemRedesigned = typedMemo(
-  ({ className, item, isCollapsed }: SidebarItemRedesignedProps) => {
+export const UserNavigationItemRedesigned = typedMemo(
+  ({
+    className,
+    item,
+    isCollapsed,
+  }: UserNavigationItemRedesignedProps) => {
     const { t } = useTranslation()
     const isAuth = useUserAuthData()
 

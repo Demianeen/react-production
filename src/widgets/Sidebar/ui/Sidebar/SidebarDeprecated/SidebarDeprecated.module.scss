@@ -15,12 +15,6 @@
     color: var(--inverted-primary-color);
   }
 
-  .items {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-
   &.collapsed {
     align-items: center;
     width: var(--sidebar-width-collapsed);

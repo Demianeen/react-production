@@ -3491,6 +3491,12 @@
       "userId": 1,
       "rating": 0,
       "id": 387
+    },
+    {
+      "articleId": 2,
+      "userId": 1,
+      "rating": 3,
+      "id": 388
     }
   ],
   "profile-rating": [
@@ -3655,6 +3661,36 @@
       "userId": 1,
       "rating": 5,
       "id": 27
+    },
+    {
+      "profileId": 1,
+      "userId": 1,
+      "rating": 5,
+      "id": 346
+    },
+    {
+      "profileId": 1,
+      "userId": 1,
+      "rating": 5,
+      "id": 347
+    },
+    {
+      "profileId": 1,
+      "userId": 1,
+      "rating": 5,
+      "id": 348
+    },
+    {
+      "profileId": 1,
+      "userId": 1,
+      "rating": 5,
+      "id": 349
+    },
+    {
+      "profileId": 1,
+      "userId": 1,
+      "rating": 5,
+      "id": 350
     }
   ]
 }

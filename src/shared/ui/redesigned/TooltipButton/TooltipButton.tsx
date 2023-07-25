@@ -3,6 +3,7 @@ import { useCallback } from 'react'
 import type { MouseEvent, ForwardedRef } from 'react'
 import type { Position } from '@/shared/types/position'
 import { typedForwardRef } from '@/shared/lib/react/typedForwardRef/typedForwardRef'
+import { DesktopView } from '@/shared/lib/components/UserAgent/DesktopView'
 import { Button } from '../Button'
 import type {
   ButtonProps,
@@ -75,17 +76,19 @@ export const TooltipButton = typedForwardRef(
         onClick={handleClick}
       >
         {children}
-        {!hideTooltip && (
-          <span
-            className={classNamesNew(
-              styles.tooltip,
-              styles[tooltipPosition],
-              tooltipClassName
-            )}
-          >
-            {tooltipText}
-          </span>
-        )}
+        <DesktopView>
+          {!hideTooltip && (
+            <span
+              className={classNamesNew(
+                styles.tooltip,
+                styles[tooltipPosition],
+                tooltipClassName
+              )}
+            >
+              {tooltipText}
+            </span>
+          )}
+        </DesktopView>
       </Button>
     )
   }

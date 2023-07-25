@@ -1,5 +1,6 @@
 import { memo, useMemo } from 'react'
-import { VStack } from '@/shared/ui/redesigned/Stack'
+import type { FlexDirection } from '@/shared/ui/redesigned/Stack'
+import { Flex, VStack } from '@/shared/ui/redesigned/Stack'
 import type { SortOrder } from '@/shared/const/sort'
 import { Card } from '@/shared/ui/redesigned/Card'
 import type { SortField } from '@/entities/ListFilters'
@@ -7,12 +8,12 @@ import {
   ListFiltersOrder,
   ListFiltersSortField,
 } from '@/entities/ListFilters'
-import { classNames } from '@/shared/lib/classNames/classNames'
 import { ArticleType } from '@/entities/Article'
 import type { TabItem } from '@/shared/ui/deprecated/Tabs'
 import { Tabs } from '@/shared/ui/redesigned/Tabs'
 import { useTranslation } from 'react-i18next'
 import { Search } from '@/shared/ui/redesigned/Search'
+import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
 import styles from './ArticleListFilters.module.scss'
 
 interface ArticleListFiltersProps {
@@ -26,6 +27,10 @@ interface ArticleListFiltersProps {
   search: string
   tab: ArticleType
   onChangeTab: (type: ArticleType) => void
+  /**
+   * @default 'column'
+   */
+  direction?: FlexDirection
 }
 
 export const ArticleListFilters = memo(
@@ -40,6 +45,7 @@ export const ArticleListFilters = memo(
     search,
     tab,
     onChangeTab,
+    direction = 'column',
   }: ArticleListFiltersProps) => {
     const { t } = useTranslation('articles')
 
@@ -56,9 +62,13 @@ export const ArticleListFilters = memo(
       <VStack
         as={Card}
         gap={2}
-        className={classNames(styles.articleListFilters, {}, [
-          className,
-        ])}
+        className={classNamesNew(
+          {
+            [styles.column]: direction === 'column',
+            [styles.row]: direction === 'row',
+          },
+          className
+        )}
         maxWidth
         padding={1.5}
       >
@@ -68,13 +78,13 @@ export const ArticleListFilters = memo(
           searchQuery={search}
         />
         <Tabs
-          direction='column'
+          direction={direction}
           tabs={tabs}
           value={tab}
           onTabClick={onChangeTab}
           className={className}
         />
-        <VStack gap={1.25}>
+        <Flex direction={direction} gap={1.25}>
           <ListFiltersSortField
             onChangeSortField={onChangeSortField}
             sortField={sortField}
@@ -83,7 +93,7 @@ export const ArticleListFilters = memo(
             onChangeOrder={onChangeOrder}
             order={order}
           />
-        </VStack>
+        </Flex>
       </VStack>
     )
   }

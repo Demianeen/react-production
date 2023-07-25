@@ -1,3 +1,15 @@
 .stickyContentLayout {
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr;
+}
+
+@media screen and (width <= 1000px) {
+  .stickyContentLayout {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rightContainer {
+    position: relative !important;
+    top: 0;
+  }
 }

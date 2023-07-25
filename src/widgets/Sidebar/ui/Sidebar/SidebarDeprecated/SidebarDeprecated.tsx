@@ -8,9 +8,8 @@ import {
   ButtonSize,
 } from '@/shared/ui/deprecated/Button'
 import { VStack, HStack } from '@/shared/ui/redesigned/Stack'
-import { useMemo, useState } from 'react'
-import { SidebarItem } from '../../SidebarItem/SidebarItem'
-import { useSidebarItems } from '../../../model/selectors/getSidebarItems/getSidebarItems'
+import { useState } from 'react'
+import { UserNavigation } from '@/features/UserNavigation'
 import styles from './SidebarDeprecated.module.scss'
 
 export interface SidebarDeprecatedProps {
@@ -21,21 +20,10 @@ export interface SidebarDeprecatedProps {
 export const SidebarDeprecated = typedMemo(
   ({ className }: SidebarDeprecatedProps) => {
     const [isCollapsed, setIsCollapsed] = useState(false)
-    const sidebarItems = useSidebarItems()
 
     const onToggle = () => {
       setIsCollapsed((prev) => !prev)
     }
-
-    const itemsList = useMemo(() => {
-      return sidebarItems.map((item) => (
-        <SidebarItem
-          item={item}
-          isCollapsed={isCollapsed}
-          key={item.path}
-        />
-      ))
-    }, [isCollapsed, sidebarItems])
 
     return (
       <VStack
@@ -61,11 +49,7 @@ export const SidebarDeprecated = typedMemo(
         >
           {isCollapsed ? '>' : '<'}
         </Button>
-        <nav>
-          <VStack gap={1} className={styles.items} as='ul'>
-            {itemsList}
-          </VStack>
-        </nav>
+        <UserNavigation isCollapsed={isCollapsed} />
         <HStack
           justify='center'
           gap={1.25}

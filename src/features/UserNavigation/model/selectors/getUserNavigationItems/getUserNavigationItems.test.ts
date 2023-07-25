@@ -4,7 +4,7 @@ import AboutIcon from '@/shared/assets/icons/deprecated/about-us-20-20.svg'
 import ProfileIcon from '@/shared/assets/icons/deprecated/profile-17-20.svg'
 import ArticlesIcon from '@/shared/assets/icons/deprecated/articles-20-20.svg'
 import { routes } from '@/shared/lib/router/routes'
-import { getSidebarItems } from './getSidebarItems'
+import { getUserNavigationItems } from './getUserNavigationItems'
 
 describe('getSidebarItems', () => {
   it('should work when user is logged', () => {
@@ -15,7 +15,7 @@ describe('getSidebarItems', () => {
         },
       },
     }
-    expect(getSidebarItems(state as StateSchema)).toEqual([
+    expect(getUserNavigationItems(state as StateSchema)).toEqual([
       {
         path: routes.home(),
         text: 'Home',
@@ -45,7 +45,7 @@ describe('getSidebarItems', () => {
     const state: DeepPartial<StateSchema> = {}
 
     // we need to get even authOnly items because we need to redirect from them
-    expect(getSidebarItems(state as StateSchema)).toEqual([
+    expect(getUserNavigationItems(state as StateSchema)).toEqual([
       {
         path: routes.home(),
         text: 'Home',
