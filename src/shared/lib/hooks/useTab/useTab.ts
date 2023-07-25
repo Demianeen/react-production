@@ -1,18 +1,23 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useEffect, useRef } from 'react'
 
+/**
+ * Tracks tab state in the browser.
+ * @returns refs due to performance reasons
+ */
 export const useTab = () => {
-  const [isTabLastKey, setIsTabLastKey] = useState(false)
+  const isTabLastKey = useRef(false)
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Tab') {
-        setIsTabLastKey(true)
+        isTabLastKey.current = true
       } else {
-        setIsTabLastKey(false)
+        isTabLastKey.current = false
       }
     }
 
     const handleMouseDown = () => {
-      setIsTabLastKey(false)
+      isTabLastKey.current = false
     }
 
     window.addEventListener('keydown', handleKeyDown)
@@ -25,10 +30,5 @@ export const useTab = () => {
     }
   }, [])
 
-  return useMemo(
-    () => ({
-      isTabLastKey,
-    }),
-    [isTabLastKey]
-  )
+  return { isTabLastKey }
 }

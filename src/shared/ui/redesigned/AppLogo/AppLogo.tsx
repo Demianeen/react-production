@@ -19,22 +19,24 @@ export const AppLogo = typedMemo(
     showGradientBig = true,
   }: AppLogoProps) => {
     return (
-      <HStack
-        maxWidth
-        justify='center'
-        className={classNames(styles.appLogo, {}, [className])}
-      >
-        {showGradientSmall && (
-          <div className={styles.gradientSmall} />
-        )}
-        {showGradientBig && <div className={styles.gradientBig} />}
-        <AppLogoIcon
-          className={styles.logo}
-          width={size}
-          height={size}
-          color='black'
-        />
-      </HStack>
+      <div className={styles.wrapper}>
+        <HStack
+          maxWidth
+          justify='center'
+          className={classNames(styles.appLogo, {}, [className])}
+        >
+          {showGradientSmall && (
+            <div className={styles.gradientSmall} />
+          )}
+          {showGradientBig && <div className={styles.gradientBig} />}
+          <AppLogoIcon
+            className={styles.logo}
+            width={size}
+            height={size}
+            color='black'
+          />
+        </HStack>
+      </div>
     )
   }
 )

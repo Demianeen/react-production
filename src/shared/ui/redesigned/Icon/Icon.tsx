@@ -1,11 +1,11 @@
 import type { Mods } from '@/shared/lib/classNames/classNames'
-import { classNames } from '@/shared/lib/classNames/classNames'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
 import { typedForwardRef } from '@/shared/lib/react/typedForwardRef/typedForwardRef'
 import type { ForwardedRef } from 'react'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
+import type { Position } from '@/shared/types/position'
+import { TooltipButton } from '../TooltipButton'
 import type { ButtonProps } from '../Button'
-import { Button } from '../Button'
 import styles from './Icon.module.scss'
 
 type SVGProps = Omit<React.SVGProps<SVGSVGElement>, 'onClick'>
@@ -19,21 +19,36 @@ interface IconBaseProps extends SVGProps {
   disabled?: boolean
 }
 
-interface NonClickableIconProps extends IconBaseProps {
-  clickable?: false
-  onClick?: never
-  noWrapWithButton?: never
-  iconClassName?: never
-  buttonProps?: never
+type NonClickableIconProps = IconBaseProps &
+  AllPropsNever<ButtonIconProps> & {
+    clickable?: false
+  }
+
+interface ButtonIconProps {
+  onClick?: () => void
+  noWrapWithButton?: false
+  iconClassName?: string
+  buttonProps?: Partial<Omit<ButtonProps<'button'>, 'children'>>
+  // tooltip
+  tooltipPosition?: Position
+  tooltipText: string
+  disableTooltip?: boolean
 }
 
-interface ClickableIconProps extends IconBaseProps {
-  clickable?: true
+interface NoWrappedButtonProps {
   onClick?: () => void
-  noWrapWithButton?: boolean
-  iconClassName?: string
-  buttonProps?: Partial<Omit<ButtonProps, 'children'>>
+  noWrapWithButton: true
+  buttonProps?: never
+  tooltipPosition?: never
+  tooltipText?: never
+  disableTooltip?: never
+  iconClassName?: never
 }
+
+type ClickableIconProps = IconBaseProps &
+  (ButtonIconProps | NoWrappedButtonProps) & {
+    clickable?: true
+  }
 
 export type IconProps = NonClickableIconProps | ClickableIconProps
 
@@ -51,6 +66,9 @@ export const Icon = typedMemo(
         noWrapWithButton = false,
         iconClassName,
         buttonProps,
+        tooltipText,
+        tooltipPosition,
+        disableTooltip,
         ...props
       }: IconProps,
       ref: ForwardedRef<'button' | SVGSVGElement>
@@ -69,10 +87,12 @@ export const Icon = typedMemo(
         if (noWrapWithButton) {
           return (
             <Svg
-              className={classNames(styles.icon, mods, [
+              className={classNamesNew(
+                styles.icon,
+                mods,
                 styles.iconButton,
-                className,
-              ])}
+                className
+              )}
               onClick={onClick}
               {...defaultSvgProps}
             />
@@ -80,10 +100,13 @@ export const Icon = typedMemo(
         }
 
         return (
-          <Button
+          <TooltipButton
+            tooltipText={tooltipText as string}
+            tooltipPosition={tooltipPosition}
+            disableTooltip={disableTooltip}
             type='button'
             onClick={onClick}
-            className={classNames(styles.button, {}, [className])}
+            className={classNamesNew(styles.button, className)}
             variant='clear'
             style={{
               width,
@@ -100,13 +123,13 @@ export const Icon = typedMemo(
               )}
               {...defaultSvgProps}
             />
-          </Button>
+          </TooltipButton>
         )
       }
 
       return (
         <Svg
-          className={classNames(styles.icon, mods, [className])}
+          className={classNamesNew(styles.icon, mods, className)}
           ref={ref as ForwardedRef<SVGSVGElement>}
           aria-hidden='true'
           {...defaultSvgProps}

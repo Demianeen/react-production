@@ -2,7 +2,6 @@
   position: relative;
   width: 13.75rem;
   height: 100%;
-  overflow: hidden;
 }
 
 .logo {
@@ -18,7 +17,10 @@
   position: absolute;
   top: 50%;
   right: 0;
-  transform: rotate(90deg);
+
+  svg {
+    transform: rotate(90deg);
+  }
 }
 
 .collapsed {
@@ -40,7 +42,9 @@
   }
 
   .toggleBtn {
-    transform: rotate(-90deg);
+    svg {
+      transform: rotate(-90deg);
+    }
   }
 }
 

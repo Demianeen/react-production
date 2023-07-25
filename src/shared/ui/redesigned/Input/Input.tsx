@@ -81,7 +81,7 @@ export const Input = memo(
     const mods: Mods = {
       [styles.readonly]: readonly,
       [styles.focused]: isInputFocused,
-      [styles.focusedByTab]: isInputFocused && isTabLastKey,
+      [styles.focusedByTab]: isInputFocused && isTabLastKey.current,
       [styles.withAddonLeft]: Boolean(addonLeft),
       [styles.withAddonRight]: Boolean(addonRight),
     }
@@ -114,6 +114,7 @@ export const Input = memo(
             /* eslint-disable-next-line jsx-a11y/no-autofocus */
             autoFocus={autoFocus}
             readOnly={readonly}
+            aria-disabled={readonly}
             {...props}
           />
           {addonRight && (

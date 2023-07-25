@@ -8,13 +8,15 @@ import { Icon as IconDeprecated } from '@/shared/ui/deprecated/Icon'
 import ThemeIcon from '@/shared/assets/icons/redesigned/theme.svg'
 import ThemeIconDeprecated from '@/shared/assets/icons/deprecated/theme-40-41.svg'
 import { ToggleFeature } from '@/shared/lib/features'
+import type { Position } from '@/shared/types/position'
 
 interface ThemeSwitcherProps {
   className?: string
+  tooltipPosition?: Position
 }
 
 export const ThemeSwitcher = memo(
-  ({ className }: ThemeSwitcherProps) => {
+  ({ className, tooltipPosition }: ThemeSwitcherProps) => {
     const { toggleTheme } = useTheme()
     const saveJsonSettings = useSaveJsonSettings()
 
@@ -29,7 +31,14 @@ export const ThemeSwitcher = memo(
     return (
       <ToggleFeature
         name='isAppRedesigned'
-        on={<Icon Svg={ThemeIcon} onClick={onToggleTheme} />}
+        on={
+          <Icon
+            Svg={ThemeIcon}
+            tooltipText='Toggle theme'
+            onClick={onToggleTheme}
+            tooltipPosition={tooltipPosition}
+          />
+        }
         off={
           <Button
             type='button'

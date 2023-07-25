@@ -26,6 +26,7 @@ export const NotificationIcon = typedMemo(
               className={className}
               onClick={onClick}
               ref={ref}
+              tooltipText='Notifications'
             />
           }
           off={

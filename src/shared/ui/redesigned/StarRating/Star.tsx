@@ -19,6 +19,16 @@ interface StarProps {
   onMouseLeave: () => void
 }
 
+const mapStarRatingToTooltipText: Record<number, string> = {
+  /* eslint-disable @typescript-eslint/naming-convention */
+  1: 'Bad',
+  2: 'Poor',
+  3: 'Average',
+  4: 'Good',
+  5: 'Excellent',
+  /* eslint-enable @typescript-eslint/naming-convention */
+}
+
 export const Star = typedMemo(
   ({
     value,
@@ -62,6 +72,7 @@ export const Star = typedMemo(
           onMouseLeave,
           noBorderRadius: true,
         }}
+        tooltipText={mapStarRatingToTooltipText[value]}
       />
     )
   }

@@ -1,5 +1,8 @@
 export type Mods = Record<string, boolean | undefined>
 
+/**
+ * @deprecated use `classNamesNew` instead
+ */
 export function classNames(
   className: string,
   mods: Mods = {},

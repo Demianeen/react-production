@@ -28,6 +28,7 @@ export const Code = memo(
             onClick={onCopy}
             data-testid={`${dataTestId}.CopyBtn`}
             className={styles.copyBtn}
+            tooltipText='Copy code'
           />
           <code data-testid={`${dataTestId}.Code`}>{text}</code>
         </pre>

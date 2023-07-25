@@ -6,7 +6,6 @@ import { HStack } from '@/shared/ui/redesigned/Stack'
 import { useSelector } from 'react-redux'
 import { getUserId } from '@/entities/User'
 import { useUpdateFeatureFlagsMutation } from '@/shared/lib/features/api/featureFlagsApi'
-import { Skeleton } from '@/shared/ui/redesigned/Skeleton'
 
 interface ToggleDesignProps {
   className?: string
@@ -38,17 +37,14 @@ export const ToggleDesign = memo(
 
     return (
       <HStack gap={0.5}>
-        {t('Enable new design')}:{' '}
-        {isUpdatingFeatureFlags ? (
-          <Skeleton width='5rem' />
-        ) : (
-          <Toggle
-            className={className}
-            enabled={isNewDesign}
-            setEnabled={handleToggle}
-            screenReaderText={t('Enable new design')}
-          />
-        )}
+        <Toggle
+          className={className}
+          enabled={isNewDesign}
+          setEnabled={handleToggle}
+          screenReaderText={t('Enable new design')}
+          label={`${t('Enable new design')}: `}
+          isLoading={isUpdatingFeatureFlags}
+        />
       </HStack>
     )
   }

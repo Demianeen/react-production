@@ -4,7 +4,7 @@ import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import TickIcon from '@/shared/assets/icons/deprecated/tick-20-20.svg'
 import ArrowDownIcon from '@/shared/assets/icons/deprecated/arrows-up-down-20-20.svg'
-import type { Direction } from '@/shared/types/ui'
+import type { DiagonalDirection } from '@/shared/types/position'
 import type { TestProps } from '@/shared/types/tests'
 import { mapDirection } from '../../const/mapDirection'
 import { Button, ButtonTheme } from '../../../Button/Button'
@@ -41,7 +41,7 @@ interface SelectProps<T extends string> extends TestProps {
    * @description Direction of dropdown
    * @default 'down-left'
    */
-  direction?: Direction
+  direction?: DiagonalDirection
   name?: string
   required?: boolean
 }

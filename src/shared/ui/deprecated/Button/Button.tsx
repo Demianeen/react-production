@@ -2,7 +2,10 @@ import type { ElementType, ForwardedRef, ReactNode } from 'react'
 import type { Mods } from '@/shared/lib/classNames/classNames'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
-import type { Props, WithDefaultTag } from '@/shared/types/ui'
+import type {
+  Props,
+  WithDefaultTag,
+} from '@/shared/types/asComponent'
 import { typedForwardRef } from '@/shared/lib/react/typedForwardRef/typedForwardRef'
 import type { AppLink } from '../AppLink/AppLink'
 import styles from './Button.module.scss'

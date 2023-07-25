@@ -1,20 +1,19 @@
-import type { ForwardedRef } from 'react'
-import type { ReactTag } from '@/shared/types/ui'
+import type { ElementType, ForwardedRef } from 'react'
 import { typedForwardRef } from '@/shared/lib/react/typedForwardRef/typedForwardRef'
-import type { FlexProps } from '../Flex/Flex'
+import { vStackDefaultValue } from '../lib/getVStackClassName'
+import type { FlexPropsWithDefaultTag } from '../Flex/Flex'
 import { Flex } from '../Flex/Flex'
 
-type VStackProps<TTag extends ReactTag> = Omit<
-  FlexProps<TTag>,
+type VStackProps<TTag extends ElementType> = Omit<
+  FlexPropsWithDefaultTag<TTag>,
   'direction'
 >
 
 export const VStack = typedForwardRef(
-  <TTag extends ReactTag = 'div'>(
+  <TTag extends ElementType>(
     props: VStackProps<TTag>,
     ref: ForwardedRef<HTMLDivElement>
   ) => {
-    // eslint-disable-next-line react/jsx-props-no-spreading
-    return <Flex direction='column' ref={ref} {...props} />
+    return <Flex {...vStackDefaultValue} ref={ref} {...props} />
   }
 )

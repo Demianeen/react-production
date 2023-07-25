@@ -5,12 +5,6 @@ import type {
   ReactNode,
 } from 'react'
 
-export type Direction =
-  | 'up-left'
-  | 'up-right'
-  | 'down-left'
-  | 'down-right'
-
 export type ReactTag =
   | keyof JSX.IntrinsicElements
   | JSXElementConstructor<any>
@@ -38,7 +32,6 @@ type OurProps<TTag extends ReactTag> = {
   refName?: string
 }
 
-// Provide clean TypeScript props, which exposes some of our custom API's.
 export type Props<
   TTag extends ReactTag,
   TOmitableProps extends PropertyKey = never,
@@ -48,6 +41,6 @@ export type Props<
   Overrides
 
 export type WithDefaultTag<
-  TTag extends ElementType | undefined,
+  TTag extends ElementType,
   DefaultTag extends ElementType
 > = TTag extends ElementType ? TTag : DefaultTag

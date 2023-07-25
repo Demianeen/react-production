@@ -1,4 +1,3 @@
-import { classNames } from '@/shared/lib/classNames/classNames'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
 import { AppLogo } from '@/shared/ui/redesigned/AppLogo'
 import { useState, useMemo } from 'react'
@@ -8,6 +7,7 @@ import ArrowIcon from '@/shared/assets/icons/redesigned/arrow-down.svg'
 import { LangSwitcher } from '@/features/LangSwitcher'
 import { ThemeSwitcher } from '@/features/ThemeSwitcher'
 import { Card } from '@/shared/ui/redesigned/Card'
+import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
 import { useSidebarItems } from '../../../model/selectors/getSidebarItems/getSidebarItems'
 import { SidebarItem } from '../../SidebarItem/SidebarItem'
 import styles from './SidebarRedesigned.module.scss'
@@ -38,12 +38,12 @@ export const SidebarRedesigned = typedMemo(
     return (
       <Card
         background='light'
-        className={classNames(
+        className={classNamesNew(
           styles.sidebarRedesigned,
           {
             [styles.collapsed]: isCollapsed,
           },
-          [className]
+          className
         )}
         padding={0}
       >
@@ -62,6 +62,8 @@ export const SidebarRedesigned = typedMemo(
           data-testid='sidebar-toggle'
           className={styles.toggleBtn}
           onClick={onToggle}
+          tooltipPosition='right'
+          tooltipText='Toggle sidebar'
         />
         <HStack
           justify='center'
@@ -69,8 +71,13 @@ export const SidebarRedesigned = typedMemo(
           maxWidth
           className={styles.switchers}
         >
-          <ThemeSwitcher />
-          <LangSwitcher short={isCollapsed} />
+          <ThemeSwitcher
+            tooltipPosition={isCollapsed ? 'right' : 'top'}
+          />
+          <LangSwitcher
+            short={isCollapsed}
+            tooltipPosition={isCollapsed ? 'right' : 'top'}
+          />
         </HStack>
       </Card>
     )

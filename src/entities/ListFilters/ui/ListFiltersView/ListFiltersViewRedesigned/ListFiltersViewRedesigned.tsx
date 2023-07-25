@@ -65,6 +65,7 @@ export const ListFiltersViewRedesigned = memo(
           screenReaderText={t('Enable grid view')}
           onContent={gridIcon}
           offContent={listIcon}
+          tooltipText={t('Toggle list/grid view')}
         />
       </div>
     )

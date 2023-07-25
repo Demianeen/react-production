@@ -12,6 +12,7 @@ export const ScrollToolbar = memo(
     return (
       <ScrollToTop
         className={classNamesNew(styles.button, className)}
+        tooltipPosition='left'
       />
     )
   }

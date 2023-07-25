@@ -3,7 +3,7 @@ import { Fragment, useMemo } from 'react'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
 import { classNamesNew as classNames } from '@/shared/lib/classNames/classNamesNew'
 import TickIcon from '@/shared/assets/icons/deprecated/tick-20-20.svg'
-import type { Direction } from '@/shared/types/ui'
+import type { DiagonalDirection } from '@/shared/types/position'
 import type { TestProps } from '@/shared/types/tests'
 import ArrowDownIcon from '@/shared/assets/icons/redesigned/arrow-down.svg'
 import { WithLabel } from '../../../WithLabel'
@@ -41,7 +41,7 @@ interface SelectProps<T extends string> extends TestProps {
    * @description Direction of dropdown
    * @default 'down-left'
    */
-  direction?: Direction
+  direction?: DiagonalDirection
   name?: string
   required?: boolean
 }

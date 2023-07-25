@@ -2,7 +2,10 @@ import type { ElementType, ForwardedRef, ReactNode } from 'react'
 import type { Mods } from '@/shared/lib/classNames/classNames'
 import { classNamesNew as classNames } from '@/shared/lib/classNames/classNamesNew'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
-import type { Props, WithDefaultTag } from '@/shared/types/ui'
+import type {
+  Props,
+  WithDefaultTag,
+} from '@/shared/types/asComponent'
 import { typedForwardRef } from '@/shared/lib/react/typedForwardRef/typedForwardRef'
 import type { AppLink } from '../AppLink/AppLink'
 import styles from './Button.module.scss'
@@ -87,19 +90,25 @@ type ButtonOwnProps<TTag extends ElementType> = {
   noBorderRadius?: boolean
 } & AdditionalProps<TTag>
 
-export type ButtonProps<
-  TTag extends ElementType = typeof DEFAULT_TAG
-> = Props<TTag, keyof ButtonOwnProps<TTag>, ButtonOwnProps<TTag>>
+export type WithDefaultButtonTag<TTag extends ElementType> =
+  WithDefaultTag<TTag, typeof DEFAULT_BUTTON_TAG>
+
+export type ButtonProps<TTag extends ElementType> = Props<
+  WithDefaultButtonTag<TTag>,
+  keyof ButtonOwnProps<WithDefaultButtonTag<TTag>>,
+  ButtonOwnProps<WithDefaultButtonTag<TTag>>
+>
 
 const isButton = (Component: ElementType): Component is 'button' => {
   return Component === 'button'
 }
 
-const DEFAULT_TAG = 'button'
+export const DEFAULT_BUTTON_TAG = 'button'
+export type ButtonTags = typeof AppLink | 'button'
 
 export const Button = typedMemo(
   typedForwardRef(function Button<
-    TTag extends typeof AppLink | 'button' = typeof DEFAULT_TAG
+    TTag extends ButtonTags = typeof DEFAULT_BUTTON_TAG
   >(
     {
       className,
@@ -115,8 +124,8 @@ export const Button = typedMemo(
       noBorderRadius = false,
       actionColor: color = 'primary',
       ...props
-    }: ButtonProps<WithDefaultTag<TTag, typeof DEFAULT_TAG>>,
-    ref: ForwardedRef<WithDefaultTag<TTag, typeof DEFAULT_TAG>>
+    }: ButtonProps<TTag>,
+    ref: ForwardedRef<WithDefaultButtonTag<TTag>>
   ) {
     const isDisabled = disabled ?? disabledButton
 
@@ -137,7 +146,7 @@ export const Button = typedMemo(
       className
     )
 
-    const Tag = as ?? DEFAULT_TAG
+    const Tag = as ?? DEFAULT_BUTTON_TAG
 
     const childrenWithAddons = (
       <>

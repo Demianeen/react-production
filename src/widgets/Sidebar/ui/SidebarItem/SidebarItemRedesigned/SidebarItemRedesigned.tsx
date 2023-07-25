@@ -1,10 +1,14 @@
-import { classNames } from '@/shared/lib/classNames/classNames'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
 import { useUserAuthData } from '@/entities/User'
 import { useTranslation } from 'react-i18next'
-import { HStack } from '@/shared/ui/redesigned/Stack'
-import { AppLink } from '@/shared/ui/redesigned/AppLink'
+import {
+  HStack,
+  getHStackClassName,
+} from '@/shared/ui/redesigned/Stack'
 import { Icon } from '@/shared/ui/redesigned/Icon'
+import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
+import { TooltipButton } from '@/shared/ui/redesigned/TooltipButton'
+import { AppLink } from '@/shared/ui/redesigned/AppLink'
 import styles from './SidebarItemRedesigned.module.scss'
 import type { SidebarItemArgs } from '../../../model/types/sidebar'
 
@@ -27,27 +31,35 @@ export const SidebarItemRedesigned = typedMemo(
 
     return (
       <HStack as='li' maxWidth>
-        <HStack
+        <TooltipButton
           as={AppLink}
           to={item.path}
-          className={classNames(
+          activeClassName={styles.active}
+          tooltipPosition='right'
+          tooltipText={t(item.text)}
+          variant='clear'
+          className={classNamesNew(
+            getHStackClassName({
+              justify: isCollapsed ? 'center' : undefined,
+              maxWidth: true,
+            }),
             styles.sidebarItem,
             {
               [styles.collapsed]: isCollapsed,
             },
-            [className]
+            className
           )}
-          activeClassName={styles.active}
-          justify={isCollapsed ? 'center' : undefined}
-          maxWidth
+          noBorderRadius
+          disableTooltip={!isCollapsed}
         >
           <Icon
             className={styles.icon}
             Svg={item.Icon}
-            clickable={isCollapsed}
+            clickable={isCollapsed as true}
+            noWrapWithButton
           />
           <span className={styles.text}>{t(item.text)}</span>
-        </HStack>
+        </TooltipButton>
       </HStack>
     )
   }

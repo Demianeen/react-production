@@ -1045,7 +1045,7 @@
       "password": "123",
       "roles": ["ADMIN"],
       "jsonSettings": {
-        "theme": "appLightTheme",
+        "theme": "appDarkTheme",
         "language": "en",
         "isArticlesPageWasOpened": true
       },
@@ -1117,7 +1117,13 @@
       "id": 6,
       "username": "user1",
       "password": "12345678",
-      "roles": ["USER"]
+      "roles": ["USER"],
+      "jsonSettings": {
+        "isArticlesPageWasOpened": true
+      },
+      "features": {
+        "isAppRedesigned": true
+      }
     },
     {
       "id": 7,

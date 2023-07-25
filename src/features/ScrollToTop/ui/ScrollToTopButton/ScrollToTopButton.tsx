@@ -2,14 +2,16 @@ import CircleArrowUpIcon from '@/shared/assets/icons/redesigned/circle-arrow-up.
 import { Icon } from '@/shared/ui/redesigned/Icon'
 import { memo, useCallback, useEffect, useState } from 'react'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
+import type { Position } from '@/shared/types/position'
 import styles from './ScrollToTopButton.module.scss'
 
 interface ScrollToTopButtonProps {
   className?: string
+  tooltipPosition?: Position
 }
 
 export const ScrollToTopButton = memo(
-  ({ className }: ScrollToTopButtonProps) => {
+  ({ className, tooltipPosition }: ScrollToTopButtonProps) => {
     const [wasScrolled, setWasScrolled] = useState(false)
 
     const onScrollUp = useCallback(() => {
@@ -44,6 +46,8 @@ export const ScrollToTopButton = memo(
         onClick={onScrollUp}
         Svg={CircleArrowUpIcon}
         className={classNamesNew(styles.button, className)}
+        tooltipText='Scroll to top'
+        tooltipPosition={tooltipPosition}
       />
     )
   }

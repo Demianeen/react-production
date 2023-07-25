@@ -1,6 +1,5 @@
 import type { StoryFn, StoryContext } from '@storybook/react'
 import type { FeatureFlags } from '@/shared/types/featureFlags'
-import { useLayoutEffect } from 'react'
 import { getAllFeatureFlags } from '../features/lib/setGetFeatures'
 import { setFeatureFlags, toggleFeature } from '../features'
 
@@ -10,28 +9,26 @@ export const ToggleDesignDecorator = (newDesign?: boolean) =>
     StoryComponent: StoryFn,
     { title, name }: StoryContext
   ) {
-    useLayoutEffect(() => {
-      const lowerCaseTitle = title.toLowerCase() + name.toLowerCase()
-      const isAppRedesigned =
-        newDesign ?? lowerCaseTitle.includes('redesigned')
+    const lowerCaseTitle = title.toLowerCase() + name.toLowerCase()
+    const isAppRedesigned =
+      newDesign ?? lowerCaseTitle.includes('redesigned')
 
-      document.body.classList.remove('appRedesigned', 'app')
+    document.body.classList.remove('appRedesigned', 'app')
 
-      const featureFlags = getAllFeatureFlags()
+    const featureFlags = getAllFeatureFlags()
 
-      setFeatureFlags({
-        ...featureFlags,
-        isAppRedesigned,
-      } as FeatureFlags)
+    setFeatureFlags({
+      ...featureFlags,
+      isAppRedesigned,
+    } as FeatureFlags)
 
-      const className = toggleFeature({
-        name: 'isAppRedesigned',
-        on: () => 'appRedesigned',
-        off: () => 'app',
-      })
+    const className = toggleFeature({
+      name: 'isAppRedesigned',
+      on: () => 'appRedesigned',
+      off: () => 'app',
+    })
 
-      document.body.classList.add(className)
-    }, [title, name])
+    document.body.classList.add(className)
 
     return <StoryComponent />
   }

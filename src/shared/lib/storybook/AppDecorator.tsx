@@ -1,3 +1,4 @@
+import { VStack } from '@/shared/ui/redesigned/Stack'
 import type { StoryFn } from '@storybook/react'
 
 /**
@@ -5,8 +6,8 @@ import type { StoryFn } from '@storybook/react'
  */
 export const AppDecorator = (StoryComponent: StoryFn) => {
   return (
-    <div id='app'>
+    <VStack id='app' height='100vh' maxWidth>
       <StoryComponent />
-    </div>
+    </VStack>
   )
 }

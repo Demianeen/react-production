@@ -12,6 +12,14 @@
     box-shadow: none;
   }
 
+  &.readonly {
+    border-color: var(--hint-redesigned);
+
+    &.focusedByTab {
+      outline: none;
+    }
+  }
+
   &.withAddonLeft,
   &.withAddonRight {
     padding: 0 0.5rem;
@@ -23,7 +31,7 @@
   width: 100%;
 
   &:focus {
-    outline: none;
+    outline: none !important;
   }
 
   &::placeholder {

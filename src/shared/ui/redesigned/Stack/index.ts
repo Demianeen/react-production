@@ -1,3 +1,6 @@
 export { VStack } from './VStack/VStack'
 export { HStack } from './HStack/HStack'
 export * from './Flex/Flex'
+export { getHStackClassName } from './lib/getHStackClassName'
+export { getVStackClassName } from './lib/getVStackClassName'
+export * from './lib/getFlexClassName'

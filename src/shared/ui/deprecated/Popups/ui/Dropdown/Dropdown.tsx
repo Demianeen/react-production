@@ -1,7 +1,7 @@
 import { Menu } from '@headlessui/react'
 import type { ReactNode } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import type { Direction } from '@/shared/types/ui'
+import type { DiagonalDirection } from '@/shared/types/position'
 import { mapDirection } from '../../const/mapDirection'
 import { HStack } from '../../../../redesigned/Stack'
 import { AppLink, AppLinkTheme } from '../../../AppLink/AppLink'
@@ -38,7 +38,7 @@ interface DropdownProps {
    * @description Direction of dropdown
    * @default 'down-left'
    */
-  direction?: Direction
+  direction?: DiagonalDirection
 }
 
 /**

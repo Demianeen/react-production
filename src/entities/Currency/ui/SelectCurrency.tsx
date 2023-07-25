@@ -1,7 +1,7 @@
 import { memo, useCallback, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Select as SelectDeprecated } from '@/shared/ui/deprecated/Popups'
-import type { Direction } from '@/shared/types/ui'
+import type { DiagonalDirection } from '@/shared/types/position'
 import { ToggleFeature } from '@/shared/lib/features'
 import { Select } from '@/shared/ui/redesigned/Popups'
 import { Currency } from '../model/const/currency'
@@ -11,7 +11,7 @@ interface SelectCurrencyProps {
   value?: Currency
   onChange?: (value: Currency) => void
   readonly?: boolean
-  direction?: Direction
+  direction?: DiagonalDirection
   maxWidth?: boolean
   required?: boolean
 }

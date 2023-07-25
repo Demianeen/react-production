@@ -43,6 +43,7 @@ export const CommentFormRedesigned = ({
         Svg={SendIcon}
         data-testid='CommentForm.SubmitButton'
         clickable
+        tooltipText='Send'
         buttonProps={{
           type: 'submit',
           noBorderRadius: true,

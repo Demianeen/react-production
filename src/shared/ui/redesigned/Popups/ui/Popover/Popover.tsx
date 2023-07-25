@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import React, { Fragment } from 'react'
 import { Popover as HPopover } from '@headlessui/react'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import type { Direction } from '@/shared/types/ui'
+import type { DiagonalDirection } from '@/shared/types/position'
 import { mapDirection } from '../../const/mapDirection'
 import styles from './Popover.module.scss'
 import popupStyles from '../../styles/Popup.module.scss'
@@ -18,7 +18,7 @@ interface PopoverProps {
    * Direction of dropdown
    * @default 'down-left'
    */
-  direction?: Direction
+  direction?: DiagonalDirection
 }
 
 export const Popover = ({
@@ -32,7 +32,6 @@ export const Popover = ({
       className={classNames(popupStyles.popup, {}, [className])}
     >
       <HPopover.Button as={Fragment}>{trigger}</HPopover.Button>
-
       <HPopover.Panel
         className={classNames(styles.panel, {}, [
           mapDirection[direction],

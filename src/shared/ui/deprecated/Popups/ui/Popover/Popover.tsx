@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import React from 'react'
 import { Popover as HPopover } from '@headlessui/react'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import type { Direction } from '@/shared/types/ui'
+import type { DiagonalDirection } from '@/shared/types/position'
 import { Button, ButtonTheme } from '../../../Button'
 import { mapDirection } from '../../const/mapDirection'
 import styles from './Popover.module.scss'
@@ -21,7 +21,7 @@ interface PopoverProps {
    * @description Direction of dropdown
    * @default 'down-left'
    */
-  direction?: Direction
+  direction?: DiagonalDirection
 }
 
 /**

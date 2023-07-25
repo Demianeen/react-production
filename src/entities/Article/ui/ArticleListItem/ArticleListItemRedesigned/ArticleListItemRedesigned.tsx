@@ -159,7 +159,7 @@ export const ArticleListItemRedesigned = memo(
           className={classNames(
             '',
             {
-              [styles.focused]: isLinkFocused && isTabLastKey,
+              [styles.focused]: isLinkFocused && isTabLastKey.current,
             },
             [className, styles[view]]
           )}

@@ -13,7 +13,7 @@ import { routes } from '@/shared/lib/router/routes'
 import { ToggleFeature } from '@/shared/lib/features'
 import { Avatar } from '@/shared/ui/redesigned/Avatar'
 import { Dropdown } from '@/shared/ui/redesigned/Popups'
-import { Button } from '@/shared/ui/redesigned/Button'
+import { TooltipButton } from '@/shared/ui/redesigned/TooltipButton'
 
 interface UserDropdownProps {
   className?: string
@@ -74,16 +74,17 @@ export const UserDropdown = memo(
             className={className}
             items={items}
             trigger={
-              <Button
+              <TooltipButton
                 style={{
                   height: avatarSize,
                   width: avatarSize,
                 }}
                 type='button'
                 variant='clear'
+                tooltipText={authData.username}
               >
                 <Avatar size={avatarSize} src={authData.avatar} />
-              </Button>
+              </TooltipButton>
             }
           />
         }
