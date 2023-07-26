@@ -18,6 +18,7 @@ export interface UserNavigationItemDeprecatedProps {
   className?: string
   item: SidebarItemArgs
   isCollapsed: boolean
+  onClick?: () => void
 }
 
 export const UserNavigationItemDeprecated = typedMemo(
@@ -25,6 +26,7 @@ export const UserNavigationItemDeprecated = typedMemo(
     className,
     item,
     isCollapsed,
+    onClick,
   }: UserNavigationItemDeprecatedProps) => {
     const { t } = useTranslation()
     const isAuth = useUserAuthData()
@@ -45,6 +47,7 @@ export const UserNavigationItemDeprecated = typedMemo(
           to={item.path}
           className={classNames('', mods, [className])}
           gap={isCollapsed ? undefined : 1.25}
+          onClick={onClick}
         >
           <Icon Svg={item.Icon} className={styles.icon} />
           <Text

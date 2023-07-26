@@ -1,19 +1,36 @@
 import { VStack } from '@/shared/ui/redesigned/Stack'
-import { memo, useMemo } from 'react'
+import { memo, useCallback, useMemo } from 'react'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
 import { toggleFeature } from '@/shared/lib/features'
+import type { SidebarItemArgs } from '../../model/types/userNavigation'
 import { useUserNavigationItems } from '../../model/selectors/getUserNavigationItems/getUserNavigationItems'
 import styles from './UserNavigation.module.scss'
 import { UserNavigationItem } from '../UserNavigationItem/UserNavigationItem'
 
+export type OnUserNavigationItemClick = (
+  item: SidebarItemArgs
+) => void
+
 interface UserNavigationProps {
   className?: string
   isCollapsed?: boolean
+  onItemClick?: OnUserNavigationItemClick
 }
 
 export const UserNavigation = memo(
-  ({ className, isCollapsed = false }: UserNavigationProps) => {
+  ({
+    className,
+    isCollapsed = false,
+    onItemClick: onClick,
+  }: UserNavigationProps) => {
     const items = useUserNavigationItems()
+
+    const handleClick = useCallback(
+      (userNavigationItem: SidebarItemArgs) => {
+        return () => onClick?.(userNavigationItem)
+      },
+      [onClick]
+    )
 
     const itemsList = useMemo(() => {
       return items.map((item) => (
@@ -21,9 +38,10 @@ export const UserNavigation = memo(
           item={item}
           isCollapsed={isCollapsed}
           key={item.path}
+          onClick={handleClick(item)}
         />
       ))
-    }, [isCollapsed, items])
+    }, [handleClick, isCollapsed, items])
 
     return (
       <nav>

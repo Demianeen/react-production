@@ -1,2 +1,2 @@
-export { DesktopMedia } from './DesktopMedia'
-export { MobileMedia } from './MobileMedia'
+export { DesktopViewport } from './DesktopViewport'
+export { MobileViewport } from './MobileViewport'

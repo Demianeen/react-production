@@ -17,6 +17,9 @@ import styles from './LangSwitcher.module.scss'
 
 interface LangSwitcherProps {
   className?: string
+  /**
+   * @deprecated Not work in new design
+   */
   short?: boolean
   tooltipPosition?: Position
 }

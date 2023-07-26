@@ -33,6 +33,7 @@ interface ButtonIconProps {
   tooltipPosition?: Position
   tooltipText: string
   disableTooltip?: boolean
+  text?: string
 }
 
 interface NoWrappedButtonProps {
@@ -43,6 +44,7 @@ interface NoWrappedButtonProps {
   tooltipText?: never
   disableTooltip?: never
   iconClassName?: never
+  text?: never
 }
 
 type ClickableIconProps = IconBaseProps &

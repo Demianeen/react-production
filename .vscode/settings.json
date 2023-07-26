@@ -11,5 +11,89 @@
   "i18n-ally.pathMatcher": "{locale}/{namespace}.json",
   "i18n-ally.translate.promptSource": true,
   "i18n-ally.enabledFrameworks": ["react-i18next"],
-  "i18n-ally.extract.autoDetect": true
+  "i18n-ally.extract.autoDetect": true,
+  "folderTemplates.structures": [
+    {
+      "name": "Ts component",
+      "customVariables": [],
+      "omitParentDirectory": true,
+      "structure": [
+        {
+          "fileName": "<FTName>/<FTName>.tsx",
+          "template": "Typescript Functional Component"
+        },
+        {
+          "fileName": "<FTName>/<FTName>.module.scss",
+          "template": "SCSS File"
+        },
+        {
+          "fileName": "<FTName>/<FTName>.stories.tsx",
+          "template": "Story File"
+        }
+      ]
+    },
+    {
+      "name": "Ts component with index",
+      "customVariables": [],
+      "omitParentDirectory": true,
+      "structure": [
+        {
+          "fileName": "<FTName>/<FTName>.tsx",
+          "template": "Typescript Functional Component"
+        },
+        {
+          "fileName": "<FTName>/<FTName>.module.scss",
+          "template": "SCSS File"
+        },
+        {
+          "fileName": "<FTName>/<FTName>.stories.tsx",
+          "template": "Story File"
+        },
+        {
+          "fileName": "<FTName>/index.ts",
+          "template": "Index File"
+        }
+      ]
+    }
+  ],
+  "folderTemplates.fileTemplates": {
+    "Typescript Functional Component": [
+      "import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'",
+      "import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'",
+      "import styles from './<FTName>.module.scss'",
+      "",
+      "export interface <FTName>Props {",
+      "  className?: string",
+      "}",
+      "",
+      "export const <FTName> = typedMemo(({ className }: <FTName>Props) => {",
+      "  return (",
+      "    <div className={classNamesNew(styles.<FTName | camelcase>, className)}>",
+      "      Text",
+      "    </div>",
+      "  );",
+      "});",
+      ""
+    ],
+    "SCSS File": [".<FTName | camelcase> {", "  ", "}"],
+    "Story File": [
+      "import type { StoryObj, Meta } from '@storybook/react'",
+      "import { <FTName> } from './<FTName>'",
+      "",
+      "export default {",
+      "  title: 'AFiletemplate/<FTName>',",
+      "  component: <FTName>,",
+      "  argTypes: {",
+      "    backgroundColor: { control: 'color' },",
+      "  },",
+      "} as Meta<typeof <FTName>>;",
+      "",
+      "type Story = StoryObj<typeof <FTName>>",
+      "",
+      "export const Primary: Story = {",
+      "  args: {}",
+      "}"
+    ],
+    "Index File": ["export * from './<FTName>'"]
+  }
 }

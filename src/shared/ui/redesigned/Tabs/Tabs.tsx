@@ -1,8 +1,10 @@
 import { useCallback } from 'react'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
+import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
 import type { FlexDirection } from '../Stack'
 import { Flex } from '../Stack'
 import { Button } from '../Button'
+import styles from './Tabs.module.scss'
 
 export interface TabItem<T extends string> {
   value: T
@@ -47,7 +49,7 @@ export const Tabs = typedMemo(
       <Flex
         direction={direction}
         align={direction === 'row' ? 'center' : undefined}
-        className={className}
+        className={classNamesNew(styles.tabs, className)}
         gap={0.5}
       >
         {tabs.map((tab) => {
@@ -59,6 +61,7 @@ export const Tabs = typedMemo(
               variant={isSelected ? 'filled' : 'clear'}
               paddings='all'
               onClick={onClick(tab.value)}
+              className={styles.tab}
             >
               {tab.label}
             </Button>

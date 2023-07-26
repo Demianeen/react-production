@@ -16,6 +16,7 @@ export interface UserNavigationItemRedesignedProps {
   className?: string
   item: SidebarItemArgs
   isCollapsed: boolean
+  onClick?: () => void
 }
 
 // TODO: write a linter that won't allow to use deprecated components in the redesigned
@@ -25,6 +26,7 @@ export const UserNavigationItemRedesigned = typedMemo(
     className,
     item,
     isCollapsed,
+    onClick,
   }: UserNavigationItemRedesignedProps) => {
     const { t } = useTranslation()
     const isAuth = useUserAuthData()
@@ -55,6 +57,7 @@ export const UserNavigationItemRedesigned = typedMemo(
           )}
           noBorderRadius
           disableTooltip={!isCollapsed}
+          onClick={onClick}
         >
           <Icon
             className={styles.icon}

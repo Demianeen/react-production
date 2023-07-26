@@ -14,6 +14,7 @@ import { ToggleFeature } from '@/shared/lib/features'
 import { Avatar } from '@/shared/ui/redesigned/Avatar'
 import { Dropdown } from '@/shared/ui/redesigned/Popups'
 import { TooltipButton } from '@/shared/ui/redesigned/TooltipButton'
+import { useViewport } from '@/shared/lib/hooks/useViewport/useViewport'
 
 interface UserDropdownProps {
   className?: string
@@ -34,6 +35,9 @@ export const UserDropdown = memo(
     const onLogout = useCallback(() => {
       logout()
     }, [logout])
+
+    const { isMobile } = useViewport()
+    const avatarSize = isMobile ? '2rem' : '3rem'
 
     if (!authData) {
       return null
@@ -63,8 +67,6 @@ export const UserDropdown = memo(
         onClick: onLogout,
       },
     ]
-
-    const avatarSize = '3rem'
 
     return (
       <ToggleFeature

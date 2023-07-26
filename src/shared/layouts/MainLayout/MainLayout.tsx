@@ -1,10 +1,10 @@
-import { classNames } from '@/shared/lib/classNames/classNames'
 import type { ReactNode } from 'react'
-
 import {
-  DesktopMedia,
-  MobileMedia,
+  DesktopViewport,
+  MobileViewport,
 } from '@/shared/lib/components/Media'
+import { useViewport } from '@/shared/lib/hooks/useViewport/useViewport'
+import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
 import styles from './MainLayout.module.scss'
 
 export interface MainLayoutProps {
@@ -22,21 +22,29 @@ export const MainLayout = ({
   content,
   toolbar,
 }: MainLayoutProps) => {
+  const { isMobile } = useViewport()
+
   return (
     <div
       id='mainLayout'
-      className={classNames(styles.mainLayout, {}, [className])}
+      className={classNamesNew(
+        styles.mainLayout,
+        {
+          [styles.mobile]: isMobile,
+        },
+        className
+      )}
     >
-      <DesktopMedia>
+      <DesktopViewport>
         <div className={styles.sidebar}>{sidebar}</div>
         <div className={styles.rightbar}>
           <div className={styles.header}>{header}</div>
           <div className={styles.toolbar}>{toolbar}</div>
         </div>
-      </DesktopMedia>
-      <MobileMedia>
+      </DesktopViewport>
+      <MobileViewport>
         <div className={styles.header}>{header}</div>
-      </MobileMedia>
+      </MobileViewport>
       <div className={styles.content}>{content}</div>
     </div>
   )

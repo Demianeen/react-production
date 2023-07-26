@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "concurrently \"npm run start:dev:server\" \"npm run start:dev:client\"",
+    "storybook": "storybook dev -p 6006 -c ./config/storybook --no-open",
     "start:dev:vite": "concurrently \"npm run start:dev:server\" \"npm run start:dev:vite:client\"",
     "start:dev:client": "webpack serve --env port=3000",
     "start:dev:vite:client": "vite",
@@ -28,7 +29,6 @@
     "test:ui:report": "npm run test:ui:json && npm run test:ui:html",
     "test:ui:report:chrome": "npm run test:ui:json && npm run test:ui:html && open -a 'Google Chrome' .loki/report.html",
     "test:ui:report:arc": "npm run test:ui:json && npm run test:ui:html && open -a 'Arc' .loki/report.html",
-    "storybook": "storybook dev -p 6006 -c ./config/storybook --no-open",
     "build:storybook": "storybook build -c ./config/storybook",
     "generate:slice": "ts-node ./scripts/createSlice/index.ts",
     "rename:slice": "ts-node ./scripts/renameSlice/index.ts",

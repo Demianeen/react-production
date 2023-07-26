@@ -70,7 +70,7 @@ export const SidebarRedesigned = typedMemo(
             tooltipPosition={isCollapsed ? 'right' : 'top'}
           />
           <LangSwitcher
-            short={isCollapsed}
+            short
             tooltipPosition={isCollapsed ? 'right' : 'top'}
           />
         </HStack>

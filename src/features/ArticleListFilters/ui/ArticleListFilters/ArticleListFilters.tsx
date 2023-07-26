@@ -84,7 +84,12 @@ export const ArticleListFilters = memo(
           onTabClick={onChangeTab}
           className={className}
         />
-        <Flex direction={direction} gap={1.25}>
+        <Flex
+          direction={direction}
+          gap={1.25}
+          className={styles.sortWrapper}
+          wrap='wrap'
+        >
           <ListFiltersSortField
             onChangeSortField={onChangeSortField}
             sortField={sortField}
