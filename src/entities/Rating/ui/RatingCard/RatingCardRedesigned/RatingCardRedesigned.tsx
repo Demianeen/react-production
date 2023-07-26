@@ -1,8 +1,10 @@
 import type { FormEvent } from 'react'
 import { memo, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { DesktopView } from '@/shared/lib/components/UserAgent/DesktopView'
-import { MobileView } from '@/shared/lib/components/UserAgent/MobileView'
+import {
+  DesktopView,
+  MobileView,
+} from '@/shared/lib/components/UserAgent'
 import { Card } from '@/shared/ui/redesigned/Card'
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
 import { Modal } from '@/shared/ui/redesigned/Modal'

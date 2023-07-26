@@ -42,7 +42,7 @@ export const ToggleDesign = memo(
           enabled={isNewDesign}
           setEnabled={handleToggle}
           screenReaderText={t('Enable new design')}
-          label={`${t('Enable new design')}: `}
+          label={t('Enable new design')}
           isLoading={isUpdatingFeatureFlags}
         />
       </HStack>

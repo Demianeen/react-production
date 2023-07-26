@@ -6,11 +6,14 @@ interface UserAgentProps {
   mobileView: boolean
 }
 
+/**
+ * @returns checks if the device has a touch screen and compares it with the mobileView prop to return the component if the condition is true
+ */
 export const UserAgent = ({
   children,
   mobileView,
 }: UserAgentProps) => {
-  const isMobile = useDevice()
+  const { isMobile } = useDevice()
 
   if (mobileView === isMobile) {
     return <>{children}</>

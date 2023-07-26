@@ -37,3 +37,23 @@
   width: 100%;
   height: 100%;
 }
+
+@media screen and (width <= 768px) {
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    grid-area: header;
+  }
+
+  .mainLayout {
+    grid-template-areas:
+      'header'
+      'content';
+    grid-template-columns: 1fr;
+  }
+
+  .content {
+    padding: 1rem;
+  }
+}

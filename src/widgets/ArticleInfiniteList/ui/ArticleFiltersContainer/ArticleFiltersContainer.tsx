@@ -4,8 +4,13 @@ import type { ArticleType } from '@/entities/Article'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useCallback, useState } from 'react'
 import { useSelector } from 'react-redux'
-import type { FlexDirection } from '@/shared/ui/redesigned/Stack'
+import {
+  VStack,
+  type FlexDirection,
+} from '@/shared/ui/redesigned/Stack'
 import { useMedia } from '@/shared/lib/hooks/useMedia/useMedia'
+import { ListFiltersView } from '@/entities/ListFilters'
+import { useArticleView } from '../../lib/useArticleView'
 import { getArticleInfiniteListType } from '../../model/selectors/getArticleInfinteListType/getArticleInfiniteListType'
 import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles'
 import { articleInfiniteListActions } from '../../model/slice/articleInfiniteListSlice'
@@ -13,10 +18,11 @@ import { useArticleFilters } from '../../lib/useArticleFilters'
 
 export interface ArticleFiltersContainerProps {
   className?: string
+  listRef: HTMLDivElement | null
 }
 
 export const ArticleFiltersContainer = typedMemo(
-  ({ className }: ArticleFiltersContainerProps) => {
+  ({ className, listRef }: ArticleFiltersContainerProps) => {
     const {
       sortField,
       order,
@@ -28,7 +34,7 @@ export const ArticleFiltersContainer = typedMemo(
     } = useArticleFilters()
 
     const dispatch = useAppDispatch()
-    const [tabDirection, setTabDirection] =
+    const [direction, setDirection] =
       useState<FlexDirection>('column')
 
     const onChangeType = useCallback(
@@ -42,29 +48,38 @@ export const ArticleFiltersContainer = typedMemo(
 
     const onResize = useCallback(() => {
       if (window.innerWidth < 1000) {
-        setTabDirection('row')
+        setDirection('row')
       } else {
-        setTabDirection('column')
+        setDirection('column')
       }
     }, [])
     useMedia(onResize)
 
     const tab = useSelector(getArticleInfiniteListType)
 
+    const viewProps = useArticleView(listRef)
+
     return (
-      <ArticleListFilters
-        className={className}
-        onChangeSortField={onChangeSortField}
-        onChangeOrder={onChangeOrder}
-        onSearch={onSearch}
-        onSearchDebounced={onSearchDebounced}
-        sortField={sortField}
-        order={order}
-        search={search}
-        onChangeTab={onChangeType}
-        tab={tab}
-        direction={tabDirection}
-      />
+      <VStack gap={1}>
+        <ListFiltersView
+          className={className}
+          showLabel={direction === 'row'}
+          {...viewProps}
+        />
+        <ArticleListFilters
+          className={className}
+          onChangeSortField={onChangeSortField}
+          onChangeOrder={onChangeOrder}
+          onSearch={onSearch}
+          onSearchDebounced={onSearchDebounced}
+          sortField={sortField}
+          order={order}
+          search={search}
+          onChangeTab={onChangeType}
+          tab={tab}
+          direction={direction}
+        />
+      </VStack>
     )
   }
 )

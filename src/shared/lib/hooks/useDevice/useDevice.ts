@@ -1,17 +1,18 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
+import { useMedia } from '../useMedia/useMedia'
 
+/**
+ * Check if the device has a touch screen
+ * @returns {isMobile: boolean}
+ */
 export const useDevice = () => {
   const [isMobile, setIsMobile] = useState(false)
 
-  useEffect(() => {
-    const handleResize = () =>
-      setIsMobile(window.matchMedia('(pointer:coarse)').matches)
-
-    handleResize()
-    window.addEventListener('resize', handleResize)
-
-    return () => window.removeEventListener('resize', handleResize)
+  const handleResize = useCallback(() => {
+    setIsMobile(window.matchMedia('(pointer:coarse)').matches)
   }, [])
 
-  return isMobile
+  useMedia(handleResize)
+
+  return { isMobile }
 }

@@ -5,8 +5,10 @@ import {
 import { useTranslation } from 'react-i18next'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
-import { MobileView } from '@/shared/lib/components/UserAgent/MobileView'
-import { DesktopView } from '@/shared/lib/components/UserAgent/DesktopView'
+import {
+  MobileView,
+  DesktopView,
+} from '@/shared/lib/components/UserAgent'
 import { Text } from '@/shared/ui/deprecated/Text'
 import { Modal } from '@/shared/ui/deprecated/Modal'
 import { Drawer } from '@/shared/ui/deprecated/Drawer'

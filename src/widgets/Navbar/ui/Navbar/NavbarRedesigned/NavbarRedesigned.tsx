@@ -9,6 +9,7 @@ import { NotificationButton } from '@/features/NotificationButton'
 import { UserDropdown } from '@/features/UserDropdown'
 import { Button } from '@/shared/ui/redesigned/Button'
 import { HStack } from '@/shared/ui/redesigned/Stack'
+import { useViewport } from '@/shared/lib/hooks/useViewport/useViewport'
 import styles from './NavbarRedesigned.module.scss'
 
 export interface NavbarRedesignedProps {
@@ -20,6 +21,7 @@ export const NavbarRedesigned = typedMemo(
     const { t } = useTranslation()
     const [isAuthModalOpened, setIsAuthModalOpened] = useState(false)
     const isUserLogged = useSelector(getIsUserLogged)
+    const { isMobile } = useViewport()
 
     const onOpenModal = useCallback(() => {
       setIsAuthModalOpened(true)
@@ -32,27 +34,34 @@ export const NavbarRedesigned = typedMemo(
     return (
       <HStack
         as='header'
-        gap={1}
-        className={classNames(styles.navbarRedesigned, {}, [
-          className,
-        ])}
+        justify='between'
+        className={classNames(
+          styles.navbarRedesigned,
+          {
+            [styles.mobile]: isMobile,
+          },
+          [className]
+        )}
         maxWidth
       >
-        {isUserLogged ? (
-          <>
-            <NotificationButton />
-            <UserDropdown />
-          </>
-        ) : (
-          <Button
-            type='button'
-            variant='clear'
-            onClick={onOpenModal}
-            className={styles.loginBtn}
-          >
-            {t('Login')}
-          </Button>
-        )}
+        <HStack gap={1}>
+          {isUserLogged ? (
+            <>
+              <NotificationButton />
+              <UserDropdown />
+            </>
+          ) : (
+            <Button
+              type='button'
+              variant='clear'
+              onClick={onOpenModal}
+              className={styles.loginBtn}
+            >
+              {t('Login')}
+            </Button>
+          )}
+        </HStack>
+
         {isAuthModalOpened && (
           <LoginModal
             isOpen={isAuthModalOpened}

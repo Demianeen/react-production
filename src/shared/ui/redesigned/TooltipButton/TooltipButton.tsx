@@ -3,7 +3,7 @@ import { useCallback } from 'react'
 import type { MouseEvent, ForwardedRef } from 'react'
 import type { Position } from '@/shared/types/position'
 import { typedForwardRef } from '@/shared/lib/react/typedForwardRef/typedForwardRef'
-import { DesktopView } from '@/shared/lib/components/UserAgent/DesktopView'
+import { DesktopView } from '@/shared/lib/components/UserAgent'
 import { Button } from '../Button'
 import type {
   ButtonProps,

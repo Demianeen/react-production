@@ -12,6 +12,7 @@ export interface ListFiltersViewRedesignedProps {
   className?: string
   onChangeView: (view: View) => void
   view?: View
+  showLabel?: boolean
 }
 
 export const ListFiltersViewRedesigned = memo(
@@ -19,6 +20,7 @@ export const ListFiltersViewRedesigned = memo(
     className,
     onChangeView,
     view,
+    showLabel = false,
   }: ListFiltersViewRedesignedProps) => {
     const { t } = useTranslation()
     const [enabled, setEnabled] = useState(view === View.GRID)
@@ -66,6 +68,7 @@ export const ListFiltersViewRedesigned = memo(
           onContent={gridIcon}
           offContent={listIcon}
           tooltipText={t('Toggle list/grid view')}
+          label={showLabel ? 'Toggle list view' : undefined}
         />
       </div>
     )

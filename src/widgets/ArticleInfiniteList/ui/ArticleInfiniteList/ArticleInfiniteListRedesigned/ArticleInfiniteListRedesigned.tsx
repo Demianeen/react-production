@@ -3,13 +3,12 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { VirtualizedArticleList } from '@/entities/Article'
-import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
+import { HStack } from '@/shared/ui/redesigned/Stack'
 import { Title } from '@/shared/ui/redesigned/Title'
 import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout'
 
 import { useArticleInfiniteListStartIndex } from '../../../model/selectors/getArticleInfiniteListStartIndex/getArticleInfiniteListStartIndex'
 import { ArticleFiltersContainer } from '../../ArticleFiltersContainer/ArticleFiltersContainer'
-import { ArticleViewSelectorContainer } from '../../ArticleViewSelectorContainer/ArticleViewSelectorContainer'
 import { useArticleInfiniteListView } from '../../../model/selectors/getArticleInfiniteListView/getArticleInfiniteListView'
 import { getArticles } from '../../../model/slice/articleInfiniteListSlice'
 import styles from './ArticleInfiniteListRedesigned.module.scss'
@@ -55,14 +54,7 @@ export const ArticleInfiniteListRedesigned = ({
   return (
     <StickyContentLayout
       className={styles.stickyContentLayout}
-      right={
-        <VStack gap={1}>
-          <ArticleViewSelectorContainer
-            listRef={virtualizedListRef}
-          />
-          <ArticleFiltersContainer />
-        </VStack>
-      }
+      right={<ArticleFiltersContainer listRef={virtualizedListRef} />}
       rightContainerClassName={styles.rightContainer}
       content={
         <div ref={setVirtualizedListRef}>

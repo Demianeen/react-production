@@ -1,7 +1,9 @@
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
 import { NotificationList } from '@/entities/Notification'
-import { DesktopView } from '@/shared/lib/components/UserAgent/DesktopView'
-import { MobileView } from '@/shared/lib/components/UserAgent/MobileView'
+import {
+  DesktopView,
+  MobileView,
+} from '@/shared/lib/components/UserAgent'
 import { Popover } from '@/shared/ui/deprecated/Popups'
 import { NotificationIcon } from '../../NotificationIcon/NotificationIcon'
 import { NotificationDrawer } from '../../NotificationDrawer/NotificationDrawer'

@@ -4,6 +4,7 @@ import { Switch } from '@headlessui/react'
 import type { ReactNode } from 'react'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
 import { ToggleFeature, toggleFeature } from '@/shared/lib/features'
+import { HStack } from '../Stack'
 import { Skeleton as SkeletonDeprecated } from '../../deprecated/Skeleton'
 import { Skeleton } from '../Skeleton'
 import { Typography } from '../Typography'
@@ -39,8 +40,8 @@ export const Toggle = typedMemo(
     tooltipText,
   }: ToggleProps) => {
     return (
-      <Switch.Group>
-        {label && <Switch.Label>{label}</Switch.Label>}
+      <Switch.Group as={HStack} gap={0.5}>
+        {label && <Switch.Label>{`${label}: `}</Switch.Label>}
         {isLoading ? (
           <ToggleFeature
             name='isAppRedesigned'
