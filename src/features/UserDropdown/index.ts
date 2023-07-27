@@ -1,1 +1,4 @@
-export { UserDropdown } from './ui/UserDropdown/UserDropdown'
+export {
+  UserDropdown,
+  UserDropdownAvatarSize,
+} from './ui/UserDropdown/UserDropdown'

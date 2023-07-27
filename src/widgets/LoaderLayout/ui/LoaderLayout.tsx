@@ -7,6 +7,7 @@ import { SidebarSkeleton } from '@/widgets/Sidebar'
 import { NavbarSkeleton } from '@/widgets/Navbar'
 import { MainLayout } from '@/shared/layouts/MainLayout'
 import { ToggleFeature } from '@/shared/lib/features'
+import { DesktopViewport } from '@/shared/lib/components/Media'
 
 export interface LoaderLayoutProps {
   className?: string
@@ -29,7 +30,9 @@ export const LoaderLayout = ({ className }: LoaderLayoutProps) => {
         <div className={classNames('app', {}, [className])}>
           <NavbarSkeleton />
           <HStack>
-            <SidebarSkeleton />
+            <DesktopViewport>
+              <SidebarSkeleton />
+            </DesktopViewport>
             <PageLoader />
           </HStack>
         </div>

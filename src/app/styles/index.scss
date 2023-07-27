@@ -15,6 +15,7 @@ body,
 }
 
 .app {
+  width: 100%;
   min-height: 100svh;
   font: var(--font-m);
   color: var(--primary-color);
@@ -42,6 +43,7 @@ body,
 }
 
 .appRedesigned {
+  width: 100%;
   min-height: 100svh;
   font: var(--font-text-redesigned);
   color: var(--text-redesigned);

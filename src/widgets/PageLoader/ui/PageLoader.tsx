@@ -1,7 +1,9 @@
 import { memo } from 'react'
-import { classNames } from '@/shared/lib/classNames/classNames'
-import { Spinner } from '@/shared/ui/deprecated/Spinner'
+import { Spinner as SpinnerDeprecated } from '@/shared/ui/deprecated/Spinner'
+import { Spinner } from '@/shared/ui/redesigned/Spinner'
 import { HStack } from '@/shared/ui/redesigned/Stack'
+import { ToggleFeature } from '@/shared/lib/features'
+import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
 import styles from './PageLoader.module.scss'
 
 interface PageLoaderProps {
@@ -10,14 +12,33 @@ interface PageLoaderProps {
 
 export const PageLoader = memo(({ className }: PageLoaderProps) => {
   return (
-    <HStack
-      className={classNames(styles.pageLoader, {}, [className])}
-      justify='center'
-      align='center'
-      maxWidth
-    >
-      <Spinner />
-    </HStack>
+    <ToggleFeature
+      name='isAppRedesigned'
+      on={
+        <HStack
+          className={classNamesNew(styles.pageLoader, className)}
+          justify='center'
+          align='center'
+          maxWidth
+          maxHeight
+        >
+          <Spinner />
+        </HStack>
+      }
+      off={
+        <HStack
+          className={classNamesNew(
+            styles.pageLoaderDeprecated,
+            className
+          )}
+          justify='center'
+          align='center'
+          maxWidth
+        >
+          <SpinnerDeprecated />
+        </HStack>
+      }
+    />
   )
 })
 

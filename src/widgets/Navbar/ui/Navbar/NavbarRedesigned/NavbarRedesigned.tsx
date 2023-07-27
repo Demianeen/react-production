@@ -9,7 +9,7 @@ import { UserDropdown } from '@/features/UserDropdown'
 import { Button } from '@/shared/ui/redesigned/Button'
 import { HStack } from '@/shared/ui/redesigned/Stack'
 import { useViewport } from '@/shared/lib/hooks/useViewport/useViewport'
-import { MobileViewport } from '@/shared/lib/components/Viewport'
+import { MobileViewport } from '@/shared/lib/components/Media'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
 import styles from './NavbarRedesigned.module.scss'
 

@@ -15,7 +15,7 @@ import { MainLayout } from '@/shared/layouts/MainLayout'
 import { useAppToolbar } from '@/app/lib/useAppToolbar'
 import { withTheme } from '@/app/providers/ThemeProvider'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
-import { DesktopViewport } from '@/shared/lib/components/Viewport'
+import { DesktopViewport } from '@/shared/lib/components/Media'
 
 const App = typedMemo(() => {
   const isUserInitialized = useSelector(getUserIsInitialized)

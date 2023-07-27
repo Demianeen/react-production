@@ -4,6 +4,7 @@ import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
 import styles from './Skeleton.module.scss'
 
 type SkeletonVariant = 'text' | 'rounded' | 'circular'
+export type SkeletonBackgroundColor = 'light' | 'normal'
 interface SkeletonPropsBase {
   className?: string
   /**
@@ -14,7 +15,7 @@ interface SkeletonPropsBase {
    * Skeleton bg color
    * @default 'light'
    */
-  backgroundColor?: 'light' | 'normal'
+  backgroundColor?: SkeletonBackgroundColor
 }
 
 interface SkeletonPropsVariantText extends SkeletonPropsBase {

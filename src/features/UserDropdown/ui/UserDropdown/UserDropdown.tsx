@@ -20,6 +20,9 @@ interface UserDropdownProps {
   className?: string
 }
 
+export const UserDropdownAvatarSize = (isMobile: boolean) =>
+  isMobile ? '2rem' : '3rem'
+
 export const UserDropdown = memo(
   ({ className }: UserDropdownProps) => {
     const { t } = useTranslation()
@@ -37,7 +40,7 @@ export const UserDropdown = memo(
     }, [logout])
 
     const { isMobile } = useViewport()
-    const avatarSize = isMobile ? '2rem' : '3rem'
+    const avatarSize = UserDropdownAvatarSize(isMobile)
 
     if (!authData) {
       return null

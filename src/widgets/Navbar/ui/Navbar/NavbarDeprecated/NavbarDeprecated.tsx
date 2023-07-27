@@ -15,7 +15,7 @@ import { getFeatureFlag } from '@/shared/lib/features'
 import {
   DesktopViewport,
   MobileViewport,
-} from '@/shared/lib/components/Viewport'
+} from '@/shared/lib/components/Media'
 import { NavbarBurger } from '../../NavbarBurger/NavbarBurger'
 import styles from './NavbarDeprecated.module.scss'
 
