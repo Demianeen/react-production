@@ -1,14 +1,13 @@
 import { memo } from 'react'
 import {
-  getArticleDetailsCanEdit,
-  getArticleDetailsError,
+  useArticleDetailsCanEdit,
+  useArticleDetailsError,
 } from '@/entities/Article'
 import { ToggleFeature } from '@/shared/lib/features'
 import { routes } from '@/shared/lib/router/routes'
 import { AppLink } from '@/shared/ui/deprecated/AppLink'
 import { Button as ButtonDeprecated } from '@/shared/ui/deprecated/Button'
 import { useTranslation } from 'react-i18next'
-import { useSelector } from 'react-redux'
 import { Button } from '@/shared/ui/redesigned/Button'
 import type { EntityId } from '@reduxjs/toolkit'
 
@@ -20,8 +19,8 @@ interface EditArticleProps {
 export const EditArticle = memo(
   ({ className, id }: EditArticleProps) => {
     const { t } = useTranslation('article-details')
-    const canEdit = useSelector(getArticleDetailsCanEdit)
-    const error = useSelector(getArticleDetailsError)
+    const canEdit = useArticleDetailsCanEdit()
+    const error = useArticleDetailsError()
 
     if (!canEdit || error !== undefined) {
       return null

@@ -3,15 +3,14 @@ import { ArticleListFilters } from '@/features/ArticleListFilters'
 import type { ArticleType } from '@/entities/Article'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useCallback, useState } from 'react'
-import { useSelector } from 'react-redux'
 import {
   VStack,
   type FlexDirection,
 } from '@/shared/ui/redesigned/Stack'
 import { useMedia } from '@/shared/lib/hooks/useMedia/useMedia'
 import { ListFiltersView } from '@/entities/ListFilters'
+import { useArticleInfiniteListType } from '../../model/selectors/getArticleInfinteListType/getArticleInfiniteListType'
 import { useArticleView } from '../../lib/useArticleView'
-import { getArticleInfiniteListType } from '../../model/selectors/getArticleInfinteListType/getArticleInfiniteListType'
 import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles'
 import { articleInfiniteListActions } from '../../model/slice/articleInfiniteListSlice'
 import { useArticleFilters } from '../../lib/useArticleFilters'
@@ -55,7 +54,7 @@ export const ArticleFiltersContainer = typedMemo(
     }, [])
     useMedia(onResize)
 
-    const tab = useSelector(getArticleInfiniteListType)
+    const tab = useArticleInfiniteListType()
 
     const viewProps = useArticleView(listRef)
 

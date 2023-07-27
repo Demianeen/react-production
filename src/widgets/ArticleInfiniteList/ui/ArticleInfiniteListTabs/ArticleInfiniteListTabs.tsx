@@ -1,11 +1,10 @@
 import { memo, useCallback, useMemo } from 'react'
-import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import type { TabItem } from '@/shared/ui/deprecated/Tabs'
 import { Tabs } from '@/shared/ui/deprecated/Tabs'
 import { ArticleType } from '@/entities/Article'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { getArticleInfiniteListType } from '../../model/selectors/getArticleInfinteListType/getArticleInfiniteListType'
+import { useArticleInfiniteListType } from '../../model/selectors/getArticleInfinteListType/getArticleInfiniteListType'
 import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles'
 import { articleInfiniteListActions } from '../../model/slice/articleInfiniteListSlice'
 
@@ -27,7 +26,7 @@ export const ArticleInfiniteListTabs = memo(
       [dispatch]
     )
 
-    const tab = useSelector(getArticleInfiniteListType)
+    const tab = useArticleInfiniteListType()
 
     const tabs = useMemo<TabItem<ArticleType>[]>(
       () =>

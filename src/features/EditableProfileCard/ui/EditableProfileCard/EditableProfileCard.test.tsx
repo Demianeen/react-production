@@ -136,9 +136,9 @@ describe('features/EditableProfileCard', () => {
       )
     )
 
-    await user.clear(
-      await screen.getByTestId('ProfileCard.firstName')
-    )
+    await user.clear(await screen.getByTestId('ProfileCard.age'))
+
+    await user.type(await screen.getByTestId('ProfileCard.age'), '1')
 
     await user.click(
       await screen.getByTestId(

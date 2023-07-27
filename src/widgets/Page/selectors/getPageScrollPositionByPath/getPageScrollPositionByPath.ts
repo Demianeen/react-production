@@ -1,9 +1,12 @@
-import { createSelector } from '@reduxjs/toolkit'
 import type { StateSchema } from '@/app/providers/StoreProvider'
+import { buildSelector } from '@/shared/lib/store'
 import { getPageScrollPosition } from '../getPageScrollPosition/getPageScrollPosition'
 
-export const getPageScrollPositionByPath = createSelector(
+export const [
+  usePageScrollPositionByPath,
+  getPageScrollPositionByPath,
+] = buildSelector(
   getPageScrollPosition,
-  (state: StateSchema, path: string) => path,
+  (_: StateSchema, path: string) => path,
   (scrollPosition, path) => scrollPosition[path] ?? 0
 )

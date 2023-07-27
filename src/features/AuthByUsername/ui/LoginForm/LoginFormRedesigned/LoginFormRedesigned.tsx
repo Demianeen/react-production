@@ -5,19 +5,18 @@ import { Input } from '@/shared/ui/redesigned/Input'
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
 
 import { useTranslation } from 'react-i18next'
-import { useSelector } from 'react-redux'
 import { Spinner } from '@/shared/ui/redesigned/Spinner'
 import { Title } from '@/shared/ui/redesigned/Title'
 import { Typography } from '@/shared/ui/redesigned/Typography'
-import { getLoginFormError } from '../../../model/selectors/getLoginFormError/getLoginFormError'
-import { getLoginFormIsLoading } from '../../../model/selectors/getLoginFormIsLoading/getLoginFormIsLoading'
-import { getLoginFormPassword } from '../../../model/selectors/getLoginFormPassword/getLoginFormPassword'
-import { getLoginFormUsername } from '../../../model/selectors/getLoginFormUsername/getLoginFormUsername'
+import { useLoginFormError } from '../../../model/selectors/getLoginFormError/getLoginFormError'
+import { useLoginFormIsLoading } from '../../../model/selectors/getLoginFormIsLoading/getLoginFormIsLoading'
+import { useLoginFormPassword } from '../../../model/selectors/getLoginFormPassword/getLoginFormPassword'
+import { useLoginFormUsername } from '../../../model/selectors/getLoginFormUsername/getLoginFormUsername'
+import styles from './LoginForm.module.scss'
 import {
   useLoginForm,
   type OnSuccess,
 } from '../../../lib/useLoginForm'
-import styles from './LoginForm.module.scss'
 
 export interface LoginFormRedesignedProps {
   className?: string
@@ -30,10 +29,10 @@ const LoginFormRedesigned = memo(
     const { onLogin, onChangeUsername, onChangePassword } =
       useLoginForm(onSuccess)
 
-    const username = useSelector(getLoginFormUsername)
-    const password = useSelector(getLoginFormPassword)
-    const error = useSelector(getLoginFormError)
-    const isLoading = useSelector(getLoginFormIsLoading)
+    const username = useLoginFormUsername()
+    const password = useLoginFormPassword()
+    const error = useLoginFormError()
+    const isLoading = useLoginFormIsLoading()
 
     return (
       <VStack

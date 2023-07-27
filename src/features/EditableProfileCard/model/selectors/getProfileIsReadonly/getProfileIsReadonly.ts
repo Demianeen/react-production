@@ -1,7 +1,5 @@
-import { createSelector } from '@reduxjs/toolkit'
+import { buildSelector } from '@/shared/lib/store'
 import { getProfileState } from '../getProfileState/getProfileState'
 
-export const getProfileIsReadonly = createSelector(
-  getProfileState,
-  (state) => state?.isReadonly ?? true
-)
+export const [useProfileIsReadonly, getProfileIsReadonly] =
+  buildSelector(getProfileState, (state) => state?.isReadonly ?? true)

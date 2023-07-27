@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react'
 import { memo, useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
@@ -10,13 +9,13 @@ import { VStack } from '@/shared/ui/redesigned/Stack'
 import { AppImage } from '@/shared/ui/redesigned/AppImage'
 import { Title } from '@/shared/ui/redesigned/Title'
 import type { AsyncReducersList } from '@/app/providers/StoreProvider/config/stateSchema'
+import { useArticleDetailsData } from '../../../model/selectors/getArticleDetailsData/getArticleDetailsData'
 import { renderArticleBlock } from './renderBlock'
 import { articleDetailsReducer } from '../../../model/slice/articleDetailsSlice'
-import { getArticleDetailsData } from '../../../model/selectors/getArticleDetailsData/getArticleDetailsData'
-import { getArticleDetailsError } from '../../../model/selectors/getArticleDetailsError/getArticleDetailsError'
-import { getArticleDetailsIsLoading } from '../../../model/selectors/getArticleDetailsIsLoading/getArticleDetailsIsLoading'
 import { fetchArticleById } from '../../../model/services/fetchArticleById/fetchArticleById'
 import styles from './ArticleDetailsRedesigned.module.scss'
+import { useArticleDetailsError } from '../../../model/selectors/getArticleDetailsError/getArticleDetailsError'
+import { useArticleDetailsIsLoading } from '../../../model/selectors/getArticleDetailsIsLoading/getArticleDetailsIsLoading'
 
 export interface ArticleDetailsRedesignedProps {
   className?: string
@@ -32,9 +31,9 @@ export const ArticleDetailsRedesigned = memo(
     useDynamicModuleLoader(reducers)
     const { t } = useTranslation('article-details')
     const dispatch = useAppDispatch()
-    const isLoading = useSelector(getArticleDetailsIsLoading)
-    const error = useSelector(getArticleDetailsError)
-    const article = useSelector(getArticleDetailsData)
+    const isLoading = useArticleDetailsIsLoading()
+    const error = useArticleDetailsError()
+    const article = useArticleDetailsData()
 
     useEffect(() => {
       dispatch(fetchArticleById(id))

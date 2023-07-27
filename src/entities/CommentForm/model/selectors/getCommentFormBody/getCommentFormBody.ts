@@ -1,7 +1,7 @@
-import { createSelector } from '@reduxjs/toolkit'
+import { buildSelector } from '@/shared/lib/store'
 import { getCommentFormState } from '../getCommentFormState/getCommentFormState'
 
-export const getCommentFormBody = createSelector(
+export const [useCommentFormBody, getCommentFormBody] = buildSelector(
   getCommentFormState,
   (state) => state?.body ?? ''
 )

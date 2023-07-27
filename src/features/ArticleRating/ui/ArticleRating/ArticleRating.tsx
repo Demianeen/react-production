@@ -1,8 +1,7 @@
 import React, { memo, useCallback } from 'react'
 import { RatingCard, RatingCardSkeleton } from '@/entities/Rating'
 import { useTranslation } from 'react-i18next'
-import { useSelector } from 'react-redux'
-import { getUserId } from '@/entities/User'
+import { useUserId } from '@/entities/User'
 import { Card as CardDeprecated } from '@/shared/ui/deprecated/Card'
 import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text'
 import { ToggleFeature } from '@/shared/lib/features'
@@ -21,7 +20,7 @@ const ArticleRating = memo(
   ({ className, articleId }: ArticleRatingProps) => {
     const { t } = useTranslation('article-details')
 
-    const userId = useSelector(getUserId)
+    const userId = useUserId()
     const {
       data,
       isLoading: isGetRatingLoading,

@@ -1,7 +1,5 @@
-import { createSelector } from '@reduxjs/toolkit'
+import { buildSelector } from '@/shared/lib/store'
 import { getCommentFormState } from '../getCommentFormState/getCommentFormState'
 
-export const getCommentFormError = createSelector(
-  getCommentFormState,
-  (state) => state?.error
-)
+export const [useCommentFormError, getCommentFormError] =
+  buildSelector(getCommentFormState, (state) => state?.error)

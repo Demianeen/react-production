@@ -6,17 +6,15 @@ import {
   useRef,
 } from 'react'
 import { useLocation } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
-import type { StateSchema } from '@/app/providers/StoreProvider'
 import type { TestProps } from '@/shared/types/tests'
 import { toggleFeature } from '@/shared/lib/features'
 import { AppRoutes } from '@/shared/const/router/appRoutes'
 import { useCurrentRoutePath } from '@/shared/lib/router/useCurrentRoutePath'
 import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle'
+import { usePageScrollPositionByPath } from '../../selectors/getPageScrollPositionByPath/getPageScrollPositionByPath'
 import { pageActions } from '../../model/slice/pageSlice'
-import { getPageScrollPositionByPath } from '../../selectors/getPageScrollPositionByPath/getPageScrollPositionByPath'
 import styles from './Page.module.scss'
 
 interface PageProps extends TestProps {
@@ -40,9 +38,7 @@ export const Page = forwardRef<HTMLDivElement, PageProps>(
     const { pathname } = useLocation()
 
     const dispatch = useAppDispatch()
-    const scrollPosition = useSelector((state: StateSchema) =>
-      getPageScrollPositionByPath(state, pathname)
-    )
+    const scrollPosition = usePageScrollPositionByPath(pathname)
 
     useImperativeHandle(
       forwardedRef,

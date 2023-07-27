@@ -1,8 +1,7 @@
 import { useMemo } from 'react'
-import { useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import type { UserRole } from '@/entities/User'
-import { getUserRoles } from '@/entities/User'
+import { useUserRoles } from '@/entities/User'
 
 import { routes } from '@/shared/lib/router/routes'
 
@@ -15,7 +14,7 @@ export const RequireRoles = ({
   children,
   requiredRoles,
 }: RequireRolesProps) => {
-  const userRoles = useSelector(getUserRoles)
+  const userRoles = useUserRoles()
   const hasRequiredRoles = useMemo(() => {
     if (requiredRoles === undefined) {
       return true

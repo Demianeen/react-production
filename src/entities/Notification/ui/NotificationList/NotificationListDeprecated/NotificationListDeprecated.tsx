@@ -1,12 +1,11 @@
 import React, { memo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useSelector } from 'react-redux'
 import { skipToken } from '@reduxjs/toolkit/query'
 import { VStack } from '@/shared/ui/redesigned/Stack'
 import { CardSkeleton } from '@/shared/ui/deprecated/Card'
 import { Text, TextAlign } from '@/shared/ui/deprecated/Text'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import { getUserId } from '@/entities/User'
+import { useUserId } from '@/entities/User'
 import { NotificationItem } from '../../NotificationItem/NotificationItem'
 import { useGetNotificationsQuery } from '../../../api/notificationApi'
 import styles from './NotificationListDeprecated.module.scss'
@@ -18,7 +17,7 @@ interface NotificationListDeprecatedProps {
 export const NotificationListDeprecated = memo(
   ({ className }: NotificationListDeprecatedProps) => {
     const { t } = useTranslation()
-    const userId = useSelector(getUserId)
+    const userId = useUserId()
     const { data, isLoading, isError, isUninitialized } =
       useGetNotificationsQuery(userId ?? skipToken, {
         pollingInterval: 10000,

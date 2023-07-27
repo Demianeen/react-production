@@ -1,11 +1,10 @@
-import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { memo, useCallback } from 'react'
 import { Dropdown as DropdownDeprecated } from '@/shared/ui/deprecated/Popups'
 import { Avatar as AvatarDeprecated } from '@/shared/ui/deprecated/Avatar'
 import {
-  getIsUserAdmin,
-  getIsUserManager,
+  useIsUserAdmin,
+  useIsUserManager,
   useUserActions,
   useUserAuthData,
 } from '@/entities/User'
@@ -29,8 +28,8 @@ export const UserDropdown = memo(
 
     const authData = useUserAuthData()
 
-    const isAdmin = useSelector(getIsUserAdmin)
-    const isManager = useSelector(getIsUserManager)
+    const isAdmin = useIsUserAdmin()
+    const isManager = useIsUserManager()
     const isAdminPanelAvailable = isAdmin || isManager
 
     const { logout } = useUserActions()

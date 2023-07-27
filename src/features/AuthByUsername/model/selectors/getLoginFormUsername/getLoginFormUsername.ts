@@ -1,7 +1,5 @@
-import { createSelector } from '@reduxjs/toolkit'
+import { buildSelector } from '@/shared/lib/store'
 import { getLoginFormState } from '../getLoginFormState/getLoginFormState'
 
-export const getLoginFormUsername = createSelector(
-  getLoginFormState,
-  (state) => state?.username ?? ''
-)
+export const [useLoginFormUsername, getLoginFormUsername] =
+  buildSelector(getLoginFormState, (state) => state?.username ?? '')

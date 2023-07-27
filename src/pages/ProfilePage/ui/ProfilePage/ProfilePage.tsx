@@ -3,20 +3,19 @@ import { useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import {
   EditableProfileCard,
-  getProfileError,
+  useProfileError,
 } from '@/features/EditableProfileCard'
 import { Text, TextTheme } from '@/shared/ui/deprecated/Text'
 import { Page } from '@/widgets/Page'
 import { VStack } from '@/shared/ui/redesigned/Stack'
 import { ProfileRating } from '@/features/ProfileRating'
-import { useSelector } from 'react-redux'
 import { Title } from '@/shared/ui/redesigned/Title'
 import { ToggleFeature } from '@/shared/lib/features'
 
 const ProfilePage = () => {
   const { t } = useTranslation('profile')
   const { id } = useParams()
-  const error = useSelector(getProfileError)
+  const error = useProfileError()
 
   if (id === undefined) {
     return (

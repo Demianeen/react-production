@@ -1,7 +1,10 @@
-import { createSelector } from '@reduxjs/toolkit'
+import { buildSelector } from '@/shared/lib/store'
 import { getArticleDetailsState } from '../getArticleDetailsState/getArticleDetailsState'
 
-export const getArticleDetailsIsLoading = createSelector(
+export const [
+  useArticleDetailsIsLoading,
+  getArticleDetailsIsLoading,
+] = buildSelector(
   getArticleDetailsState,
   (state) => state?.isLoading ?? false
 )

@@ -1,5 +1,4 @@
 import { memo, useCallback, useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { ProfileCard } from '@/entities/Profile'
@@ -11,6 +10,7 @@ import { VStack } from '@/shared/ui/redesigned/Stack'
 import { Typography } from '@/shared/ui/redesigned/Typography'
 import { ToggleFeature } from '@/shared/lib/features'
 import type { AsyncReducersList } from '@/app/providers/StoreProvider/config/stateSchema'
+import { useProfileForm } from '../../model/selectors/getProfileForm/getProfileForm'
 import { ProfileValidationError } from '../../model/const/profileValidationError'
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData'
 import { fetchProfileDataById } from '../../model/services/fetchProfileDataById/fetchProfileDataById'
@@ -18,12 +18,11 @@ import {
   profileActions,
   profileReducer,
 } from '../../model/slice/profileSlice'
-import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm'
-import { getProfileIsReadonly } from '../../model/selectors/getProfileIsReadonly/getProfileIsReadonly'
-import { getProfileValidationErrors } from '../../model/selectors/getProfileValidationErrors/getProfileValidationErrors'
 import { EditableProfileCardHeader } from '../EditableProfileCardHeader/EditableProfileCardHeader'
-import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading'
-import { getProfileError } from '../../model/selectors/getProfileError/getProfileError'
+import { useProfileError } from '../../model/selectors/getProfileError/getProfileError'
+import { useProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading'
+import { useProfileIsReadonly } from '../../model/selectors/getProfileIsReadonly/getProfileIsReadonly'
+import { useProfileValidationErrors } from '../../model/selectors/getProfileValidationErrors/getProfileValidationErrors'
 
 interface EditableProfileCardProps {
   id: number
@@ -39,11 +38,11 @@ export const EditableProfileCard = memo(
     const { t } = useTranslation('profile')
 
     const dispatch = useAppDispatch()
-    const formData = useSelector(getProfileForm)
-    const isLoading = useSelector(getProfileIsLoading)
-    const error = useSelector(getProfileError)
-    const isReadonly = useSelector(getProfileIsReadonly)
-    const validationErrors = useSelector(getProfileValidationErrors)
+    const formData = useProfileForm()
+    const isLoading = useProfileIsLoading()
+    const error = useProfileError()
+    const isReadonly = useProfileIsReadonly()
+    const validationErrors = useProfileValidationErrors()
 
     const validationErrorMessage: Record<
       ProfileValidationError,

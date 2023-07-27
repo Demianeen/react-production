@@ -1,18 +1,17 @@
 import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useSelector } from 'react-redux'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button'
 import { Input } from '@/shared/ui/deprecated/Input'
 import { Text, TextTheme } from '@/shared/ui/deprecated/Text'
 import { Spinner } from '@/shared/ui/deprecated/Spinner'
 import { VStack } from '@/shared/ui/redesigned/Stack'
-import { useLoginForm } from '../../../lib/useLoginForm'
-import { getLoginFormError } from '../../../model/selectors/getLoginFormError/getLoginFormError'
-import { getLoginFormIsLoading } from '../../../model/selectors/getLoginFormIsLoading/getLoginFormIsLoading'
-import { getLoginFormPassword } from '../../../model/selectors/getLoginFormPassword/getLoginFormPassword'
-import { getLoginFormUsername } from '../../../model/selectors/getLoginFormUsername/getLoginFormUsername'
+import { useLoginFormError } from '../../../model/selectors/getLoginFormError/getLoginFormError'
+import { useLoginFormIsLoading } from '../../../model/selectors/getLoginFormIsLoading/getLoginFormIsLoading'
+import { useLoginFormPassword } from '../../../model/selectors/getLoginFormPassword/getLoginFormPassword'
+import { useLoginFormUsername } from '../../../model/selectors/getLoginFormUsername/getLoginFormUsername'
 import styles from './LoginForm.module.scss'
+import { useLoginForm } from '../../../lib/useLoginForm'
 
 interface LoginFormProps {
   className?: string
@@ -25,10 +24,10 @@ const LoginFormDeprecated = memo(
     const { onLogin, onChangeUsername, onChangePassword } =
       useLoginForm(onSuccess)
 
-    const username = useSelector(getLoginFormUsername)
-    const password = useSelector(getLoginFormPassword)
-    const error = useSelector(getLoginFormError)
-    const isLoading = useSelector(getLoginFormIsLoading)
+    const username = useLoginFormUsername()
+    const password = useLoginFormPassword()
+    const error = useLoginFormError()
+    const isLoading = useLoginFormIsLoading()
 
     return (
       <VStack

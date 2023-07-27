@@ -1,7 +1,6 @@
 import { Suspense, useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import {
-  getUserIsInitialized,
+  useUserIsInitialized,
   useInitAuthData,
 } from '@/entities/User'
 import { PageLoader } from '@/widgets/PageLoader'
@@ -18,7 +17,7 @@ import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
 import { DesktopViewport } from '@/shared/lib/components/Media'
 
 const App = typedMemo(() => {
-  const isUserInitialized = useSelector(getUserIsInitialized)
+  const isUserInitialized = useUserIsInitialized()
   const initAuthData = useInitAuthData()
   const toolbar = useAppToolbar()
 

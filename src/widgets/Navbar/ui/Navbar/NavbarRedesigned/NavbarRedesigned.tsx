@@ -1,8 +1,7 @@
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
-import { getIsUserLogged } from '@/entities/User'
+import { useIsUserLogged } from '@/entities/User'
 import { useState, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useSelector } from 'react-redux'
 import { LoginModal } from '@/features/AuthByUsername'
 import { NotificationButton } from '@/features/NotificationButton'
 import { UserDropdown } from '@/features/UserDropdown'
@@ -23,7 +22,7 @@ export const NavbarRedesigned = typedMemo(
   ({ className }: NavbarRedesignedProps) => {
     const { t } = useTranslation()
     const [isAuthModalOpened, setIsAuthModalOpened] = useState(false)
-    const isUserLogged = useSelector(getIsUserLogged)
+    const isUserLogged = useIsUserLogged()
     const { isMobile } = useViewport()
 
     const onOpenModal = useCallback(() => {

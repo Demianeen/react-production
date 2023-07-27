@@ -1,7 +1,5 @@
-import { createSelector } from '@reduxjs/toolkit'
+import { buildSelector } from '@/shared/lib/store'
 import { getArticleDetailsState } from '../getArticleDetailsState/getArticleDetailsState'
 
-export const getArticleDetailsData = createSelector(
-  getArticleDetailsState,
-  (state) => state?.data
-)
+export const [useArticleDetailsData, getArticleDetailsData] =
+  buildSelector(getArticleDetailsState, (state) => state?.data)

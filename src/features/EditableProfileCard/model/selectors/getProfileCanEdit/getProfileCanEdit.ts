@@ -1,8 +1,8 @@
-import { createSelector } from '@reduxjs/toolkit'
 import { getUserAuthData } from '@/entities/User'
+import { buildSelector } from '@/shared/lib/store'
 import { getProfileData } from '../getProfileData/getProfileData'
 
-export const getProfileCanEdit = createSelector(
+export const [useProfileCanEdit, getProfileCanEdit] = buildSelector(
   getProfileData,
   getUserAuthData,
   (profileData, userData) => {

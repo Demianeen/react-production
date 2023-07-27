@@ -1,6 +1,5 @@
 import { memo, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useSelector } from 'react-redux'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button'
 import { LoginModal } from '@/features/AuthByUsername'
@@ -9,13 +8,13 @@ import { AppLink, AppLinkTheme } from '@/shared/ui/deprecated/AppLink'
 import { HStack } from '@/shared/ui/redesigned/Stack'
 import { NotificationButton } from '@/features/NotificationButton'
 import { UserDropdown } from '@/features/UserDropdown'
-import { getIsUserLogged } from '@/entities/User'
+import { useIsUserLogged } from '@/entities/User'
 import { routes } from '@/shared/lib/router/routes'
-import { getFeatureFlag } from '@/shared/lib/features'
 import {
   DesktopViewport,
   MobileViewport,
 } from '@/shared/lib/components/Media'
+import { getFeatureFlag } from '@/shared/lib/features'
 import { NavbarBurger } from '../../NavbarBurger/NavbarBurger'
 import styles from './NavbarDeprecated.module.scss'
 
@@ -27,7 +26,7 @@ export const NavbarDeprecated = memo(
   ({ className }: NavbarDeprecatedProps) => {
     const { t } = useTranslation()
     const [isAuthModalOpened, setIsAuthModalOpened] = useState(false)
-    const isUserLogged = useSelector(getIsUserLogged)
+    const isUserLogged = useIsUserLogged()
     const isArticleCreationEnabled = getFeatureFlag(
       'isArticleCreationEnabled'
     )

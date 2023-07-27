@@ -1,6 +1,6 @@
 import {
-  getArticleDetailsData,
-  getArticleDetailsIsLoading,
+  useArticleDetailsData,
+  useArticleDetailsIsLoading,
 } from '@/entities/Article'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
 import { Card } from '@/shared/ui/redesigned/Card'
@@ -8,7 +8,6 @@ import {
   ArticleAdditionalInfo,
   ArticleAdditionalInfoSkeleton,
 } from '@/widgets/ArticleAdditionalInfo'
-import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
 export interface AdditionalInfoContainerProps {
@@ -18,8 +17,8 @@ export interface AdditionalInfoContainerProps {
 export const AdditionalInfoContainer = typedMemo(
   ({ className }: AdditionalInfoContainerProps) => {
     const { id } = useParams()
-    const article = useSelector(getArticleDetailsData)
-    const isLoading = useSelector(getArticleDetailsIsLoading)
+    const article = useArticleDetailsData()
+    const isLoading = useArticleDetailsIsLoading()
 
     if (isLoading) {
       return (

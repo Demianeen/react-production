@@ -1,7 +1,7 @@
-import { createSelector } from '@reduxjs/toolkit'
+import { buildSelector } from '@/shared/lib/store'
 import { getProfileState } from '../getProfileState/getProfileState'
 
-export const getProfileValidationErrors = createSelector(
-  getProfileState,
-  (state) => state?.validationErrors
-)
+export const [
+  useProfileValidationErrors,
+  getProfileValidationErrors,
+] = buildSelector(getProfileState, (state) => state?.validationErrors)

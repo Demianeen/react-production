@@ -1,7 +1,5 @@
-import { createSelector } from '@reduxjs/toolkit'
+import { buildSelector } from '@/shared/lib/store'
 import { getUserState } from '../getUserState/getUserState'
 
-export const getUserIsInitialized = createSelector(
-  getUserState,
-  (user) => user._isInitialized
-)
+export const [useUserIsInitialized, getUserIsInitialized] =
+  buildSelector(getUserState, (user) => user._isInitialized)

@@ -1,7 +1,7 @@
-import { createSelector } from '@reduxjs/toolkit'
+import { buildSelector } from '@/shared/lib/store'
 import { getProfileState } from '../getProfileState/getProfileState'
 
-export const getProfileForm = createSelector(
+export const [useProfileForm, getProfileForm] = buildSelector(
   getProfileState,
   (profile) => profile?.form
 )

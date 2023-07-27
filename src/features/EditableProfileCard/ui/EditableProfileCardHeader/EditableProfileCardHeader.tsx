@@ -1,6 +1,5 @@
 import { memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useSelector } from 'react-redux'
 import {
   Button as ButtonDeprecated,
   ButtonTheme,
@@ -11,8 +10,8 @@ import { HStack } from '@/shared/ui/redesigned/Stack'
 import { Title } from '@/shared/ui/redesigned/Title'
 import { ToggleFeature } from '@/shared/lib/features'
 import { Button } from '@/shared/ui/redesigned/Button'
-import { getProfileCanEdit } from '../../model/selectors/getProfileCanEdit/getProfileCanEdit'
-import { getProfileIsReadonly } from '../../model/selectors/getProfileIsReadonly/getProfileIsReadonly'
+import { useProfileCanEdit } from '../../model/selectors/getProfileCanEdit/getProfileCanEdit'
+import { useProfileIsReadonly } from '../../model/selectors/getProfileIsReadonly/getProfileIsReadonly'
 import { profileActions } from '../../model/slice/profileSlice'
 
 interface ProfilePageHeaderProps {
@@ -24,8 +23,8 @@ export const EditableProfileCardHeader = memo(
     const { t } = useTranslation('profile')
 
     const dispatch = useAppDispatch()
-    const isReadonly = useSelector(getProfileIsReadonly)
-    const canEdit = useSelector(getProfileCanEdit)
+    const isReadonly = useProfileIsReadonly()
+    const canEdit = useProfileCanEdit()
 
     const onEdit = useCallback(() => {
       dispatch(profileActions.setIsReadonly(false))

@@ -1,7 +1,5 @@
-import { createSelector } from '@reduxjs/toolkit'
+import { buildSelector } from '@/shared/lib/store'
 import { getProfileState } from '../getProfileState/getProfileState'
 
-export const getProfileIsLoading = createSelector(
-  getProfileState,
-  (state) => state?.isLoading ?? false
-)
+export const [useProfileIsLoading, getProfileIsLoading] =
+  buildSelector(getProfileState, (state) => state?.isLoading ?? false)

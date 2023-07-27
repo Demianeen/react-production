@@ -1,10 +1,9 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { useSelector } from 'react-redux'
 import { skipToken } from '@reduxjs/toolkit/query'
 import { VStack } from '@/shared/ui/redesigned/Stack'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import { getUserId } from '@/entities/User'
+import { useUserId } from '@/entities/User'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
 import { Skeleton } from '@/shared/ui/redesigned/Skeleton'
 import { NotificationItem } from '../../NotificationItem/NotificationItem'
@@ -18,7 +17,7 @@ interface NotificationListRedesignedProps {
 export const NotificationListRedesigned = typedMemo(
   ({ className }: NotificationListRedesignedProps) => {
     const { t } = useTranslation()
-    const userId = useSelector(getUserId)
+    const userId = useUserId()
     const { data, isLoading, isError, isUninitialized } =
       useGetNotificationsQuery(userId ?? skipToken, {
         pollingInterval: 10000,

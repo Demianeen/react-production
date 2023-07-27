@@ -1,7 +1,8 @@
-import { createSelector } from '@reduxjs/toolkit'
+import { buildSelector } from '@/shared/lib/store'
 import { getLoginFormState } from '../getLoginFormState/getLoginFormState'
 
-export const getLoginFormIsLoading = createSelector(
-  getLoginFormState,
-  (state) => state?.isLoading ?? false
-)
+export const [useLoginFormIsLoading, getLoginFormIsLoading] =
+  buildSelector(
+    getLoginFormState,
+    (state) => state?.isLoading ?? false
+  )
