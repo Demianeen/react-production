@@ -36,7 +36,6 @@ describe('getSidebarItems', () => {
         path: routes.articles(),
         text: 'Articles',
         Icon: ArticlesIcon,
-        authOnly: true,
       },
     ])
   })
@@ -66,7 +65,6 @@ describe('getSidebarItems', () => {
         path: routes.articles(),
         text: 'Articles',
         Icon: ArticlesIcon,
-        authOnly: true,
       },
     ])
   })

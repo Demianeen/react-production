@@ -53,7 +53,6 @@ export const [useUserNavigationItems, getUserNavigationItems] =
           on: () => ArticlesIcon,
           off: () => ArticlesIconDeprecated,
         }),
-        authOnly: true,
       },
     ]
     return items

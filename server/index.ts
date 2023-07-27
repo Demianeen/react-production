@@ -111,6 +111,10 @@ server.post('/register', (req, res) => {
 
 // check if the user is authorized
 server.use((req, res, next) => {
+  if (req.path === '/articles' && req.method === 'GET') {
+    return next()
+  }
+
   if (!req.headers.authorization) {
     return res.status(403).json({ message: 'AUTH ERROR' })
   }

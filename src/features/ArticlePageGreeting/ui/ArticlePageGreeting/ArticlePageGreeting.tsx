@@ -1,4 +1,5 @@
 import {
+  useIsUserLogged,
   useSaveJsonSettings,
   useUserJsonSettings,
 } from '@/entities/User'
@@ -21,15 +22,16 @@ export const ArticlePageGreeting = typedMemo(() => {
   const [isOpen, setIsOpen] = useState(false)
   const { isArticlesPageWasOpened } = useUserJsonSettings()
   const saveJsonSettings = useSaveJsonSettings()
+  const isUserLogged = useIsUserLogged()
 
   useEffect(() => {
-    if (!isArticlesPageWasOpened) {
+    if (!isArticlesPageWasOpened && isUserLogged) {
       setIsOpen(true)
       saveJsonSettings({
         isArticlesPageWasOpened: true,
       })
     }
-  }, [isArticlesPageWasOpened, saveJsonSettings])
+  }, [isArticlesPageWasOpened, isUserLogged, saveJsonSettings])
 
   const onClose = useCallback(() => {
     setIsOpen(false)

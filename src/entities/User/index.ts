@@ -12,7 +12,10 @@ export {
 } from './model/selectors/getUserAuthData/getUserAuthData'
 export { getUserIsInitialized } from './model/selectors/getUserIsInitialized/getUserIsInitialized'
 export { getUserId } from './model/selectors/getUserId/getUserId'
-export { getIsUserLogged } from './model/selectors/getIsUserLogged/getIsUserLogged'
+export {
+  getIsUserLogged,
+  useIsUserLogged,
+} from './model/selectors/getIsUserLogged/getIsUserLogged'
 export { getUserRoles } from './model/selectors/getUserRoles/getUserRoles'
 export { getIsUserAdmin } from './model/selectors/getIsUserAdmin/getIsUserAdmin'
 export { getIsUserManager } from './model/selectors/getIsUserManager/getIsUserManager'
