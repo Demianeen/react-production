@@ -45,7 +45,7 @@ export const computeListItemsLimit = ({
     return 1
   }
 
-  if (containerRef === null) {
+  if (containerRef == null) {
     return 0
   }
 

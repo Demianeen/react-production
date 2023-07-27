@@ -8,5 +8,7 @@
 .fullPagePanelDeprecated {
   position: fixed;
   inset: 0;
+  z-index: 1;
+  padding: 1.5rem;
   background: var(--inverted-bg-color);
 }

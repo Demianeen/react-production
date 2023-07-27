@@ -12,6 +12,11 @@ import { UserDropdown } from '@/features/UserDropdown'
 import { getIsUserLogged } from '@/entities/User'
 import { routes } from '@/shared/lib/router/routes'
 import { getFeatureFlag } from '@/shared/lib/features'
+import {
+  DesktopViewport,
+  MobileViewport,
+} from '@/shared/lib/components/Viewport'
+import { NavbarBurger } from '../../NavbarBurger/NavbarBurger'
 import styles from './NavbarDeprecated.module.scss'
 
 interface NavbarDeprecatedProps {
@@ -44,11 +49,17 @@ export const NavbarDeprecated = memo(
         ])}
         maxWidth
       >
-        <Text
-          className={styles.appName}
-          theme={TextTheme.INVERTED}
-          title={t('Netliukh Demian')}
-        />
+        <MobileViewport>
+          <NavbarBurger className={styles.burgerMenu} />
+        </MobileViewport>
+        <DesktopViewport>
+          <Text
+            className={styles.appName}
+            theme={TextTheme.INVERTED}
+            title={t('Netliukh App')}
+          />
+        </DesktopViewport>
+
         {isUserLogged ? (
           <>
             {isArticleCreationEnabled && (

@@ -1,6 +1,7 @@
 import { memo } from 'react'
-import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
+import { Flex, HStack, VStack } from '@/shared/ui/redesigned/Stack'
 import type { SortOrder } from '@/shared/const/sort'
+import { useViewport } from '@/shared/lib/hooks/useViewport/useViewport'
 import type { SortField } from '../../model/const/sortField'
 import type { View } from '../../model/const/view'
 import { ListFiltersSortField } from '../ListFiltersSortField/ListFiltersSortField'
@@ -31,10 +32,16 @@ export const ListFilters = memo(
     onChangeView,
     view,
   }: ListFiltersProps) => {
+    const { isMobile } = useViewport()
     return (
       <VStack gap={1.25} className={className} maxWidth>
         <HStack justify='between' align='center' gap={1} maxWidth>
-          <HStack align='center' gap={1} wrap='nowrap'>
+          <Flex
+            direction={isMobile ? 'column' : 'row'}
+            align={isMobile ? undefined : 'center'}
+            gap={1}
+            wrap='nowrap'
+          >
             {onChangeSortField && (
               <ListFiltersSortField
                 onChangeSortField={onChangeSortField}
@@ -47,7 +54,7 @@ export const ListFilters = memo(
                 order={order}
               />
             )}
-          </HStack>
+          </Flex>
           {onChangeView && (
             <ListFiltersView
               onChangeView={onChangeView}

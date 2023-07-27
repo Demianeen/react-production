@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import {
   DesktopViewport,
   MobileViewport,
-} from '@/shared/lib/components/Media'
+} from '@/shared/lib/components/Viewport'
 import { useViewport } from '@/shared/lib/hooks/useViewport/useViewport'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
 import styles from './MainLayout.module.scss'

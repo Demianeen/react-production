@@ -15,6 +15,7 @@ import { MainLayout } from '@/shared/layouts/MainLayout'
 import { useAppToolbar } from '@/app/lib/useAppToolbar'
 import { withTheme } from '@/app/providers/ThemeProvider'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
+import { DesktopViewport } from '@/shared/lib/components/Viewport'
 
 const App = typedMemo(() => {
   const isUserInitialized = useSelector(getUserIsInitialized)
@@ -50,7 +51,9 @@ const App = typedMemo(() => {
           <Suspense fallback={<PageLoader />}>
             <Navbar />
             <HStack>
-              <Sidebar />
+              <DesktopViewport>
+                <Sidebar />
+              </DesktopViewport>
               <AppRouter />
             </HStack>
           </Suspense>
