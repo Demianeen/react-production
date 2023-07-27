@@ -1,40 +1,39 @@
+.content {
+  width: 100%;
+  overflow-y: inherit;
+}
+
 .stickyContentLayout {
   display: grid;
   grid-template-areas: 'left content right';
-  grid-template-columns: 1fr;
+  grid-template-columns: min-content 1fr min-content;
   gap: 1rem;
   height: 100%;
 
-  &.hasLeft {
-    grid-template-columns: auto 1fr;
+  .left {
+    grid-area: left;
   }
 
-  &.hasRight {
-    grid-template-columns: 1fr auto;
+  .right {
+    grid-area: right;
   }
 
-  &.hasLeft.hasRight {
-    grid-template-columns: auto 1fr auto;
+  .content {
+    grid-area: content;
+    width: 100%;
+  }
+
+  .left,
+  .right {
+    position: sticky;
+    top: 2rem;
+    height: fit-content;
   }
 }
 
-.left {
-  grid-area: left;
-}
-
-.content {
-  grid-area: content;
-  width: 100%;
+.disabled {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
   height: 100%;
-}
-
-.right {
-  grid-area: right;
-}
-
-.left,
-.right {
-  position: sticky;
-  top: 2rem;
-  height: fit-content;
 }

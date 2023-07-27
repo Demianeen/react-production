@@ -1,9 +1,10 @@
-import { useEffect } from 'react'
+import { useLayoutEffect } from 'react'
 
 type OnResize = () => void
 
 export const useMedia = (onResize: OnResize) => {
-  useEffect(() => {
+  // we need to use useLayoutEffect here because our computations and design depends on this hook
+  useLayoutEffect(() => {
     onResize()
     window.addEventListener('resize', onResize)
 

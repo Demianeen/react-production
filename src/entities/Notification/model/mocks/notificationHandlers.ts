@@ -6,9 +6,6 @@ import { mockNotifications } from './mockNotifications'
 
 export const notificationHandlers = [
   rest.get('/notifications', (req, res, ctx) => {
-    console.log('isMockLoading', isMockLoading())
-    console.log('isMockError', isMockError())
-    console.log('isMockEmpty', isMockEmpty())
     if (isMockLoading()) {
       return res(ctx.status(200), ctx.json({}), ctx.delay('infinite'))
     }

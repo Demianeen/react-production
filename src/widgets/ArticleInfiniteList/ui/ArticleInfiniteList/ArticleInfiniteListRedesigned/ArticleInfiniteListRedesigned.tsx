@@ -11,7 +11,6 @@ import { useArticleInfiniteListStartIndex } from '../../../model/selectors/getAr
 import { ArticleFiltersContainer } from '../../ArticleFiltersContainer/ArticleFiltersContainer'
 import { useArticleInfiniteListView } from '../../../model/selectors/getArticleInfiniteListView/getArticleInfiniteListView'
 import { getArticles } from '../../../model/slice/articleInfiniteListSlice'
-import styles from './ArticleInfiniteListRedesigned.module.scss'
 import { useArticleInfiniteList } from '../../../lib/useArticleInfiniteList'
 import { useArticleInfiniteListError } from '../../../model/selectors/getArticleInfiniteListError/getArticleInfiniteListError'
 import { useArticleInfiniteListIsLoading } from '../../../model/selectors/getArticleInfiniteListIsLoading/getArticleInfiniteListIsLoading'
@@ -53,11 +52,10 @@ export const ArticleInfiniteListRedesigned = ({
 
   return (
     <StickyContentLayout
-      className={styles.stickyContentLayout}
+      layoutDisableWidth={1000}
       right={<ArticleFiltersContainer listRef={virtualizedListRef} />}
-      rightContainerClassName={styles.rightContainer}
       content={
-        <div ref={setVirtualizedListRef}>
+        <div style={{ width: '100%' }} ref={setVirtualizedListRef}>
           <VirtualizedArticleList
             articles={articles}
             isLoading={isLoading}

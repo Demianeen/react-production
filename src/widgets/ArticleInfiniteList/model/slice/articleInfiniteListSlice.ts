@@ -89,11 +89,8 @@ export const articleInfiniteListSlice = buildSlice({
         state.hasMore = action.payload.length >= state.limit
 
         if (action?.meta?.arg?.replace === true) {
-          console.log('replace')
           articlesAdapter.setAll(state, action.payload)
         } else {
-          console.log('add', action.payload)
-          console.log('limit', state.limit)
           articlesAdapter.addMany(state, action.payload)
         }
       })

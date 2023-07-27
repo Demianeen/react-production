@@ -45,6 +45,8 @@ const ArticleDetailsPageRedesigned = ({
 
   return (
     <StickyContentLayout
+      layoutDisableWidth={1000}
+      contentContainerClassName={styles.contentContainer}
       content={
         <Page
           className={classNamesNew(

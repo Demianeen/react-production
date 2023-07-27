@@ -20,7 +20,6 @@ export const useArticleView = (listRef: HTMLDivElement | null) => {
         view: newView,
         containerRef: listRef,
       })
-      console.log('new limit', limit, 'new view', newView)
       setLimit(limit * 3)
       fetchArticles({ replace: true })
     },

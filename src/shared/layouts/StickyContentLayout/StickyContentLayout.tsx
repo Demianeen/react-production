@@ -1,6 +1,7 @@
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
-import type { ReactNode } from 'react'
+import { useCallback, useState, type ReactNode } from 'react'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
+import { useMedia } from '@/shared/lib/hooks/useMedia/useMedia'
 import styles from './StickyContentLayout.module.scss'
 
 export interface StickyContentLayoutProps {
@@ -10,6 +11,12 @@ export interface StickyContentLayoutProps {
   content: ReactNode
   leftContainerClassName?: string
   rightContainerClassName?: string
+  contentContainerClassName?: string
+  /**
+   * When the viewport width equal to it, layout will be rendered with display flex and flex direction column
+   * @default false
+   */
+  layoutDisableWidth?: number
 }
 
 export const StickyContentLayout = typedMemo(
@@ -20,14 +27,30 @@ export const StickyContentLayout = typedMemo(
     content,
     leftContainerClassName,
     rightContainerClassName,
+    contentContainerClassName,
+    layoutDisableWidth,
   }: StickyContentLayoutProps) => {
+    const [disableLayout, setDisableLayout] = useState(false)
+
+    const onResize = useCallback(() => {
+      if (layoutDisableWidth !== undefined) {
+        if (window.innerWidth < layoutDisableWidth) {
+          setDisableLayout(true)
+        } else {
+          setDisableLayout(false)
+        }
+      }
+    }, [layoutDisableWidth])
+    useMedia(onResize)
+
     return (
       <div
         className={classNamesNew(
-          styles.stickyContentLayout,
           {
             [styles.hasLeft]: left !== undefined,
             [styles.hasRight]: right !== undefined,
+            [styles.disabled]: disableLayout,
+            [styles.stickyContentLayout]: !disableLayout,
           },
           className
         )}
@@ -52,7 +75,14 @@ export const StickyContentLayout = typedMemo(
             {right}
           </div>
         )}
-        {content}
+        <div
+          className={classNamesNew(
+            styles.content,
+            contentContainerClassName
+          )}
+        >
+          {content}
+        </div>
       </div>
     )
   }
