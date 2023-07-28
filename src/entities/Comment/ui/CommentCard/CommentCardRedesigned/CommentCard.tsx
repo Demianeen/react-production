@@ -24,14 +24,12 @@ export const CommentCardRedesigned = memo(
         align='start'
         maxWidth
       >
-        {comment.user.avatar && (
-          <Avatar
-            size='2rem'
-            src={comment.user.avatar}
-            user={comment.user}
-            notShowUsername
-          />
-        )}
+        <Avatar
+          size='2rem'
+          src={comment.user.avatar}
+          user={comment.user}
+          notShowUsername
+        />
         {comment.body}
       </HStack>
     )

@@ -70,8 +70,12 @@ export const ArticleDetailsRedesigned = memo(
     } else {
       content = (
         <>
-          <Title level={1}>{article?.title}</Title>
-          <Title>{article?.subtitle}</Title>
+          <Title level={1} data-testid='ArticleDetails.Title'>
+            {article?.title}
+          </Title>
+          <Title data-testid='ArticleDetails.Subtitle'>
+            {article?.subtitle}
+          </Title>
           <AppImage
             alt={article?.title ?? ''}
             src={article?.img}

@@ -11,7 +11,6 @@ describe('User enters article details page', () => {
   })
 
   afterEach(() => {
-    cy.log('articleId', articleId)
     cy.removeArticle(articleId)
   })
 
@@ -25,15 +24,15 @@ describe('User enters article details page', () => {
       'have.text',
       'Test title'
     )
-    cy.getByTestId('ArticleDetails.Paragraph').should(
+    cy.getByTestId('ArticleDetails.Subtitle').should(
       'have.text',
       'Test subtitle'
     )
-    cy.getByTestId('ArticleDetails.views.Paragraph').should(
+    cy.getByTestId('ArticleAdditionalInfo.Views').should(
       'have.text',
-      String(1022)
+      '1022 views'
     )
-    cy.getByTestId('ArticleDetails.createdAt.Paragraph').should(
+    cy.getByTestId('ArticleAdditionalInfo.CreatedAt').should(
       'have.text',
       '26.02.2013'
     )
@@ -77,12 +76,10 @@ describe('User enters article details page', () => {
     cy.getByTestId('ArticleDetails.logo')
     cy.getByTestId('CommentList').scrollIntoView()
     cy.getByTestId('CommentList.Item').should('have.length', 0)
-    cy.getByTestId('CommentList.NoComments.Paragraph').should('exist')
+    cy.getByTestId('CommentList.NoComments').should('exist')
 
     cy.addComment()
     cy.getByTestId('CommentList.Item').should('have.length', 1)
-    cy.getByTestId('CommentList.NoComments.Paragraph').should(
-      'not.exist'
-    )
+    cy.getByTestId('CommentList.NoComments').should('not.exist')
   })
 })

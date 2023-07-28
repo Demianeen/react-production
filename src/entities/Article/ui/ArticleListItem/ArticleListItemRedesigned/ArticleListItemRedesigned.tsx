@@ -17,6 +17,7 @@ import { AppImage } from '@/shared/ui/redesigned/AppImage'
 import { Title } from '@/shared/ui/redesigned/Title'
 import { useFocus } from '@/shared/lib/hooks/useFocus/useFocus'
 import { useTab } from '@/shared/lib/hooks/useTab/useTab'
+import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
 import { ArticleBlockType } from '../../../model/const/articleBlockType'
 import type { OnOpenArticle } from '../../ArticleList/VirtualizedArticleList'
 import type {
@@ -156,12 +157,12 @@ export const ArticleListItemRedesigned = memo(
         {...bindFocus}
       >
         <Card
-          className={classNames(
-            '',
+          className={classNamesNew(
             {
               [styles.focused]: isLinkFocused && isTabLastKey.current,
             },
-            [className, styles[view]]
+            className,
+            styles[view]
           )}
           padding={0}
         >
@@ -176,7 +177,7 @@ export const ArticleListItemRedesigned = memo(
               maxWidth
             >
               <span className={styles.date}>{article.createdAt}</span>
-              {views}
+              <span data-testid='ArticleListItem.Views'>{views}</span>
             </HStack>
             <HStack gap={0.25} className={styles.avatar}>
               <Avatar

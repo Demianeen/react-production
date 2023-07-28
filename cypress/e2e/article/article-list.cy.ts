@@ -65,13 +65,11 @@ describe('User enters the articles page', () => {
 
     // should have ascending amount of views
     let previousViewsAmount = 0
-    cy.getByTestId('ArticleListItem.Views.Paragraph').each(
-      (views) => {
-        const viewsAmounts = Number(views.text())
-        cy.wrap(viewsAmounts).should('be.gte', previousViewsAmount)
-        previousViewsAmount = viewsAmounts
-      }
-    )
+    cy.getByTestId('ArticleListItem.Views').each((views) => {
+      const viewsAmounts = Number(views.text())
+      cy.wrap(viewsAmounts).should('be.gte', previousViewsAmount)
+      previousViewsAmount = viewsAmounts
+    })
   })
 
   it('user changes sort order to "desc"', () => {
@@ -91,14 +89,12 @@ describe('User enters the articles page', () => {
 
     // should have descending amount of views
     let previousViewsAmount = Infinity
-    cy.getByTestId('ArticleListItem.Views.Paragraph').each(
-      (views) => {
-        const viewsAmounts = Number(views.text())
-        cy.log('viewsAmounts', views)
-        cy.wrap(viewsAmounts).should('be.lte', previousViewsAmount)
-        previousViewsAmount = viewsAmounts
-      }
-    )
+    cy.getByTestId('ArticleListItem.Views').each((views) => {
+      const viewsAmounts = Number(views.text())
+      cy.log('viewsAmounts', views)
+      cy.wrap(viewsAmounts).should('be.lte', previousViewsAmount)
+      previousViewsAmount = viewsAmounts
+    })
   })
 
   it.skip('skipped test example', () => {

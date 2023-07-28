@@ -24,13 +24,18 @@ export const ArticleAdditionalInfo = memo(
           styles.articleAdditionalInfo,
           className
         )}
+        data-testid='ArticleAdditionalInfo'
       >
         <HStack gap={0.5}>
           <Avatar src={user.avatar} user={user} />
-          {createdAt}
+          <span data-testid='ArticleAdditionalInfo.CreatedAt'>
+            {createdAt}
+          </span>
         </HStack>
         <EditArticle id={id} />
-        {t('views', { count: views })}
+        <span data-testid='ArticleAdditionalInfo.Views'>
+          {t('views', { count: views })}
+        </span>
       </VStack>
     )
   }

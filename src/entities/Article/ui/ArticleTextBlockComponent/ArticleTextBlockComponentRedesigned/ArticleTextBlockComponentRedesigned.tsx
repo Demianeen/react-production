@@ -1,8 +1,8 @@
 import { memo } from 'react'
-import { classNames } from '@/shared/lib/classNames/classNames'
 import { VStack } from '@/shared/ui/redesigned/Stack'
 import type { TestProps } from '@/shared/types/tests'
 import { Title } from '@/shared/ui/redesigned/Title'
+import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
 import type { ArticleTextBlock } from '../../../model/types/article'
 import styles from './ArticleTextBlockComponentRedesigned.module.scss'
 
@@ -21,9 +21,10 @@ export const ArticleTextBlockComponentRedesigned = memo(
     return (
       <VStack
         gap={1}
-        className={classNames(styles.articleTextBlockComponent, {}, [
-          className,
-        ])}
+        className={classNamesNew(
+          styles.articleTextBlockComponent,
+          className
+        )}
         as='section'
       >
         {block.title && (

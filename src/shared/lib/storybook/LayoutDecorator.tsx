@@ -23,7 +23,7 @@ export const LayoutDecorator = (
 
     if (layout === 'fullpage') {
       return (
-        <div style={{ height: '95vh', ...style }}>
+        <div style={{ height: '100vh', width: '100vw', ...style }}>
           <StoryComponent />
         </div>
       )

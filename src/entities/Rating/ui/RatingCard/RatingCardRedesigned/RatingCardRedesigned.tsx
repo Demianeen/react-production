@@ -78,7 +78,7 @@ export const RatingCardRedesigned = memo(
     )
 
     return (
-      <Card className={className} maxWidth>
+      <Card className={className} maxWidth data-testid='RatingCard'>
         <VStack align='center' gap={1} maxWidth>
           <Title>
             {starCount !== 0 ? t('Thank you for assessment!') : title}

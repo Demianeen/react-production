@@ -1,3 +1,4 @@
+import { setFeatureFlags } from '@/shared/lib/features'
 import type { Profile } from '../../src/entities/Profile'
 import { EditableProfileCard } from '../../src/features/EditableProfileCard/ui/EditableProfileCard/EditableProfileCard'
 
@@ -20,6 +21,9 @@ describe('EditableProfileCard.cy.tsx', () => {
             },
           },
         })
+      })
+      setFeatureFlags({
+        isAppRedesigned: true,
       })
     })
 
@@ -94,13 +98,12 @@ describe('EditableProfileCard.cy.tsx', () => {
     it('should show validation errors', () => {
       cy.getByTestId('EditableProfileCardHeader.EditButton').click()
 
-      cy.getByTestId('ProfileCard.firstName').clear()
+      cy.getByTestId('ProfileCard.age').clear()
+      cy.getByTestId('ProfileCard.age').type('1')
 
       cy.getByTestId('EditableProfileCardHeader.SubmitButton').click()
 
-      cy.getByTestId('EditableProfileCard.Error.Paragraph').should(
-        'be.visible'
-      )
+      cy.getByTestId('EditableProfileCard.Error').should('be.visible')
     })
   })
 })
