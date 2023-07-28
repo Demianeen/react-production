@@ -138,7 +138,7 @@ export const ProfileCardDeprecated = ({
           onChange={onChangeAge}
           readonly={readonly}
           data-testid='ProfileCard.age'
-          required
+          // required
         />
         <Input
           value={data?.city}
@@ -165,7 +165,6 @@ export const ProfileCardDeprecated = ({
           onChange={onChangeAvatar}
           readonly={readonly}
           data-testid='ProfileCard.avatar'
-          required
         />
         <SelectCurrency
           value={data?.currency}

@@ -30,9 +30,26 @@ describe('features/EditableProfileCard', () => {
       )
     )
 
-    expect(
-      screen.getByTestId('EditableProfileCardHeader.CancelButton')
-    ).toBeInTheDocument()
+    await waitFor(async () => {
+      expect(
+        screen.getByTestId('EditableProfileCardHeader.CancelButton')
+      ).toBeInTheDocument()
+      expect(
+        screen.getByTestId('EditableProfileCardHeader.SubmitButton')
+      ).toBeInTheDocument()
+    })
+
+    await user.click(
+      await screen.findByTestId(
+        'EditableProfileCardHeader.CancelButton'
+      )
+    )
+
+    await waitFor(async () => {
+      expect(
+        screen.getByTestId('EditableProfileCardHeader.EditButton')
+      ).toBeInTheDocument()
+    })
   })
 
   it('should reset data after cancel', async () => {
@@ -47,17 +64,15 @@ describe('features/EditableProfileCard', () => {
       )
     )
 
-    await user.clear(
-      await screen.getByTestId('ProfileCard.firstName')
-    )
-    await user.clear(await screen.getByTestId('ProfileCard.lastName'))
+    await user.clear(screen.getByTestId('ProfileCard.firstName'))
+    await user.clear(screen.getByTestId('ProfileCard.lastName'))
 
     await user.type(
-      await screen.getByTestId('ProfileCard.firstName'),
+      screen.getByTestId('ProfileCard.firstName'),
       'test'
     )
     await user.type(
-      await screen.getByTestId('ProfileCard.lastName'),
+      screen.getByTestId('ProfileCard.lastName'),
       'test'
     )
 
@@ -69,17 +84,17 @@ describe('features/EditableProfileCard', () => {
     )
 
     await user.click(
-      await screen.getByTestId(
-        'EditableProfileCardHeader.CancelButton'
-      )
+      screen.getByTestId('EditableProfileCardHeader.CancelButton')
     )
 
-    expect(screen.getByTestId('ProfileCard.firstName')).toHaveValue(
-      mockProfile.firstName
-    )
-    expect(screen.getByTestId('ProfileCard.lastName')).toHaveValue(
-      mockProfile.lastName
-    )
+    await waitFor(async () => {
+      expect(screen.getByTestId('ProfileCard.firstName')).toHaveValue(
+        mockProfile.firstName
+      )
+      expect(screen.getByTestId('ProfileCard.lastName')).toHaveValue(
+        mockProfile.lastName
+      )
+    })
   })
 
   it('should submit data', async () => {
@@ -94,24 +109,20 @@ describe('features/EditableProfileCard', () => {
       )
     )
 
-    await user.clear(
-      await screen.getByTestId('ProfileCard.firstName')
-    )
-    await user.clear(await screen.getByTestId('ProfileCard.lastName'))
+    await user.clear(screen.getByTestId('ProfileCard.firstName'))
+    await user.clear(screen.getByTestId('ProfileCard.lastName'))
 
     await user.type(
-      await screen.getByTestId('ProfileCard.firstName'),
+      screen.getByTestId('ProfileCard.firstName'),
       'test'
     )
     await user.type(
-      await screen.getByTestId('ProfileCard.lastName'),
+      screen.getByTestId('ProfileCard.lastName'),
       'test'
     )
 
     await user.click(
-      await screen.getByTestId(
-        'EditableProfileCardHeader.SubmitButton'
-      )
+      screen.getByTestId('EditableProfileCardHeader.SubmitButton')
     )
 
     await waitFor(async () => {
@@ -121,6 +132,33 @@ describe('features/EditableProfileCard', () => {
       expect(
         await screen.findByTestId('ProfileCard.lastName')
       ).toHaveValue('test')
+    })
+  })
+
+  it('should not submit form with empty fields', async () => {
+    const { user } = componentRender(
+      <EditableProfileCard id={1} />,
+      options
+    )
+
+    await user.click(
+      await screen.findByTestId(
+        'EditableProfileCardHeader.EditButton'
+      )
+    )
+
+    await user.clear(screen.getByTestId('ProfileCard.age'))
+
+    await user.click(
+      screen.getByTestId('EditableProfileCardHeader.SubmitButton')
+    )
+
+    await waitFor(async () => {
+      expect(
+        await screen.findByTestId(
+          'EditableProfileCardHeader.SubmitButton'
+        )
+      ).toBeInTheDocument()
     })
   })
 
@@ -136,18 +174,40 @@ describe('features/EditableProfileCard', () => {
       )
     )
 
-    await user.clear(await screen.getByTestId('ProfileCard.age'))
-
-    await user.type(await screen.getByTestId('ProfileCard.age'), '1')
-
-    await user.click(
-      await screen.getByTestId(
-        'EditableProfileCardHeader.SubmitButton'
-      )
+    await user.clear(screen.getByTestId('ProfileCard.firstName'))
+    await user.type(
+      screen.getByTestId('ProfileCard.firstName'),
+      'test'
     )
 
-    expect(
-      screen.getByTestId('EditableProfileCard.Error.Paragraph')
-    ).toBeInTheDocument()
+    await user.clear(screen.getByTestId('ProfileCard.username'))
+    await user.type(
+      screen.getByTestId('ProfileCard.username'),
+      'test'
+    )
+
+    await user.clear(screen.getByTestId('ProfileCard.lastName'))
+    await user.type(
+      screen.getByTestId('ProfileCard.lastName'),
+      'test'
+    )
+
+    await user.clear(screen.getByTestId('ProfileCard.city'))
+    await user.type(screen.getByTestId('ProfileCard.city'), 'test')
+
+    await user.clear(screen.getByTestId('ProfileCard.age'))
+    await user.type(screen.getByTestId('ProfileCard.age'), '1')
+
+    await user.click(
+      screen.getByTestId('EditableProfileCardHeader.SubmitButton')
+    )
+
+    await waitFor(async () => {
+      expect(
+        await screen.findByTestId(
+          'EditableProfileCard.Error.Paragraph'
+        )
+      ).toBeInTheDocument()
+    })
   })
 })

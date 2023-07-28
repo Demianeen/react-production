@@ -70,6 +70,7 @@ describe('articleInfiniteListSlice', () => {
         articleInfiniteListActions.setView(View.LIST)
       )
     ).toEqual({
+      hasMore: true,
       view: View.LIST,
       limit: 0,
       startIndex: 0,

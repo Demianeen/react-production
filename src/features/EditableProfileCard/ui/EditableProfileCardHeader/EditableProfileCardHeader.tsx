@@ -124,5 +124,3 @@ export const EditableProfileCardHeader = memo(
 )
 
 EditableProfileCardHeader.displayName = 'EditableProfileCardHeader'
-
-EditableProfileCardHeader.displayName = 'EditableProfileCardHeader'

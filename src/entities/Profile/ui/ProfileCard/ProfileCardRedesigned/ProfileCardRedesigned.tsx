@@ -132,7 +132,6 @@ export const ProfileCardRedesigned = ({
           readonly={readonly}
           data-testid='ProfileCard.avatar'
           maxWidth
-          required
         />
         <Input
           value={data?.age}
@@ -149,7 +148,7 @@ export const ProfileCardRedesigned = ({
           onChange={onChangeCurrency}
           readonly={readonly}
           className={styles.select}
-          direction='up-left'
+          direction='up-right'
           data-testid='ProfileCard.currency'
         />
         <Input
@@ -167,7 +166,7 @@ export const ProfileCardRedesigned = ({
           onChange={onChangeCountry}
           readonly={readonly}
           className={styles.select}
-          direction='up-left'
+          direction='up-right'
           data-testid='ProfileCard.country'
         />
       </form>
