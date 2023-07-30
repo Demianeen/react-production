@@ -21,6 +21,7 @@ export const Code = memo(
       <Card
         className={classNamesNew(styles.code, className)}
         background='light'
+        maxWidth
       >
         <pre>
           <Icon

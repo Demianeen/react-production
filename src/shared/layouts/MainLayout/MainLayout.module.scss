@@ -2,7 +2,7 @@
   display: grid;
   grid-template-areas: 'sidebar content rightbar';
   grid-template-columns: auto 1fr auto;
-  max-width: 100%;
+  width: 100%;
 }
 
 .sidebar {

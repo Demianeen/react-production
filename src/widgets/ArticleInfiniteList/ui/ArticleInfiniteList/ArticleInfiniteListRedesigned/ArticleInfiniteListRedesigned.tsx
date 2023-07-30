@@ -14,6 +14,7 @@ import { useArticleInfiniteListView } from '../../../model/selectors/getArticleI
 import { useArticleInfiniteList } from '../../../lib/useArticleInfiniteList'
 import { useArticleInfiniteListError } from '../../../model/selectors/getArticleInfiniteListError/getArticleInfiniteListError'
 import { useArticleInfiniteListIsLoading } from '../../../model/selectors/getArticleInfiniteListIsLoading/getArticleInfiniteListIsLoading'
+import styles from './ArticleInfiniteListRedesigned.module.scss'
 
 export interface ArticleInfiniteListRedesignedProps {
   className?: string
@@ -54,6 +55,7 @@ export const ArticleInfiniteListRedesigned = ({
     <StickyContentLayout
       layoutDisableWidth={1000}
       right={<ArticleFiltersContainer listRef={virtualizedListRef} />}
+      rightContainerClassName={styles.rightContainer}
       content={
         <div style={{ width: '100%' }} ref={setVirtualizedListRef}>
           <VirtualizedArticleList

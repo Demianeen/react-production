@@ -20,6 +20,7 @@ export const ArticleListItemSkeletonDeprecated = memo(
             className,
             styles[view],
           ])}
+          maxWidth
           aria-busy
         >
           <VStack gap={0.5}>
@@ -28,6 +29,7 @@ export const ArticleListItemSkeletonDeprecated = memo(
                 width='2rem'
                 height='2rem'
                 borderRadius='50%'
+                noShrink
               />
               <Skeleton
                 height='var(--font-size-m)'

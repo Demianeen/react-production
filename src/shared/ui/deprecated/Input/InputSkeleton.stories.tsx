@@ -13,4 +13,10 @@ export default {
 
 type Story = StoryObj<typeof InputSkeleton>
 
-export const Light: Story = {}
+export const LightSkeleton: Story = {}
+
+export const MaxWidthSkeleton: Story = {
+  args: {
+    maxWidth: true,
+  },
+}

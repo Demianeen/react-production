@@ -65,14 +65,14 @@ export const ProfileCardDeprecated = ({
           <HStack justify='center' className={styles.avatarWrapper}>
             <Skeleton width='8rem' height='8rem' borderRadius='50%' />
           </HStack>
-          <InputSkeleton />
-          <InputSkeleton />
-          <InputSkeleton />
-          <InputSkeleton />
-          <InputSkeleton />
-          <InputSkeleton />
-          <InputSkeleton />
-          <InputSkeleton />
+          <InputSkeleton maxWidth />
+          <InputSkeleton maxWidth />
+          <InputSkeleton maxWidth />
+          <InputSkeleton maxWidth />
+          <InputSkeleton maxWidth />
+          <InputSkeleton maxWidth />
+          <InputSkeleton maxWidth />
+          <InputSkeleton maxWidth />
         </div>
       </HStack>
     )

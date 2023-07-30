@@ -16,7 +16,12 @@ export const ArticleDetailsPageHeader = memo(
     const { t } = useTranslation('article-details')
 
     return (
-      <HStack justify='between' className={className} as='header'>
+      <HStack
+        justify='between'
+        className={className}
+        as='header'
+        maxWidth
+      >
         <Button as={AppLink} to={routes.articles()}>
           {t('Back to list')}
         </Button>

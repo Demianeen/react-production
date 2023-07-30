@@ -6,7 +6,7 @@ import type { StoryFn } from '@storybook/react'
  */
 export const AppDecorator = (StoryComponent: StoryFn) => {
   return (
-    <VStack id='app' height='100vh' maxWidth>
+    <VStack id='app' maxHeight maxWidth>
       <StoryComponent />
     </VStack>
   )
