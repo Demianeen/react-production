@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import { CiDelayDecorator } from '@/shared/lib/storybook/CiDelayDecorator'
 import { RatingCardRedesigned } from './RatingCardRedesigned'
 
 export default {
@@ -11,7 +12,7 @@ export default {
     title: 'Rate this article',
     feedbackTitle: 'Tell us what you think',
   },
-  parameters: {},
+  decorators: [CiDelayDecorator],
 } as Meta<typeof RatingCardRedesigned>
 
 type Story = StoryObj<typeof RatingCardRedesigned>

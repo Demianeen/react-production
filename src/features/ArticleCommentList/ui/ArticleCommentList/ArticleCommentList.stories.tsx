@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import { CiDelayDecorator } from '@/shared/lib/storybook/CiDelayDecorator'
 import { ArticleCommentList } from './ArticleCommentList'
 
 export default {
@@ -10,6 +11,7 @@ export default {
   args: {
     articleId: 1,
   },
+  decorators: [CiDelayDecorator],
 } as Meta<typeof ArticleCommentList>
 
 type Story = StoryObj<typeof ArticleCommentList>
