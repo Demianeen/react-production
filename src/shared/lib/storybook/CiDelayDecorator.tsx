@@ -7,7 +7,7 @@ import { LokiDelayDecorator } from './LokiDelayDecorator'
 export const CiDelayDecorator = (StoryComponent: StoryFn) => {
   // runs only on CI
   if (process.env.STORYBOOK_CI === 'true') {
-    return LokiDelayDecorator(10000)(StoryComponent)
+    return LokiDelayDecorator()(StoryComponent)
   }
 
   return <StoryComponent />
