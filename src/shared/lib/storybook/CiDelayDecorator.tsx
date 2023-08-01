@@ -1,6 +1,7 @@
 import type { StoryFn } from '@storybook/react'
 import { LokiDelayDecorator } from './LokiDelayDecorator'
 
+// FIXME: This is a workaround for now, it increases the testing time 2 times.
 /**
  * Makes a delay between capturing screenshot. Works only in CI environment. Otherwise just renders the story component.
  */
