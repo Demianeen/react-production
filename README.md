@@ -136,19 +136,27 @@ In the `scripts` folder there are various scripts for refactoring/simplifying co
 The github actions configuration is located in [/.github/workflows](./.github/workflows).
 In ci, all types of tests are run, project and storybook build, linting.
 
-In pre-commit hooks we check the project with [lint-staged](https://github.com/okonet/lint-staged), config in /.husky
+In pre-commit hooks we check the project with [lint-staged](https://github.com/okonet/lint-staged), config in /.husky.
 
 ---
 
 ### Working with data
 
 Interaction with data is carried out using Redux Toolkit.
-If possible, reusable entities must be normalized using EntityAdapter
 
-Requests to the server are sent using [RTK query](./src/shared/api/rtkApi.ts)
+If possible, reusable entities must be normalized using EntityAdapter.
 
-For asynchronous connection of reducers (to avoid bundling them together in one bundle) use
-[useDynamicModuleLoader](./src/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader.ts)
+Requests to the server are sent using [RTK query](./src/shared/api/rtkApi.ts).
+
+For asynchronous connection of reducers (to avoid bundling them together in one bundle) use [useDynamicModuleLoader](./src/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader.ts).
+
+---
+
+### Mocking request
+
+Mock service worker (msw) is used to mock requests during tests and storybook stories.
+
+More about [msw](./docs/msw.md).
 
 ---
 
