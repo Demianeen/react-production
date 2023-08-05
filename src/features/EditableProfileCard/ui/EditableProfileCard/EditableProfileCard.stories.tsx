@@ -22,13 +22,7 @@ type Story = StoryObj<typeof EditableProfileCard>
 export const PrimaryDeprecated: Story = {}
 export const PrimaryRedesigned: Story = {}
 
-const loading = {
-  parameters: {
-    reactRouter: {
-      searchParams: { isLoading: 'true' },
-    },
-  },
-}
+const loading = {}
 
 export const LoadingDeprecated: Story = loading
 export const LoadingRedesigned: Story = loading
