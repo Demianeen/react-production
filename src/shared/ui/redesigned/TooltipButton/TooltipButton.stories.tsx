@@ -1,19 +1,16 @@
 import type { StoryObj, Meta } from '@storybook/react'
 import { LayoutDecorator } from '@/shared/lib/storybook/LayoutDecorator'
-import { ToggleDesignDecorator } from '@/shared/lib/storybook/ToggleDesignDecorator'
-import { Button as ButtonDeprecated } from '../../deprecated/Button'
-import { Button } from '../Button'
 import { TooltipButton } from './TooltipButton'
 
 export default {
-  title: 'shared/redesigned/WithTooltip',
+  title: 'shared/redesigned/TooltipButton',
   component: TooltipButton,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
   args: {
     tooltipText: 'Tooltip text',
-    children: <Button type='button'>Hover me</Button>,
+    children: 'Hover me',
   },
   decorators: [LayoutDecorator('centered')],
 } as Meta<typeof TooltipButton>
@@ -46,13 +43,4 @@ export const Disabled: Story = {
   args: {
     disableTooltip: true,
   },
-}
-
-export const Deprecated: Story = {
-  args: {
-    children: (
-      <ButtonDeprecated type='button'>Hover me</ButtonDeprecated>
-    ),
-  },
-  decorators: [ToggleDesignDecorator(false)],
 }

@@ -69,14 +69,15 @@ export const ArticleListItemDeprecated = memo(
 
     const views = useMemo(
       () => (
-        <>
+        <HStack gap={0.25}>
           <Text
             text={String(article.views)}
+            TextTag='span'
             className={styles.views}
             data-testid={`${testId}.Views`}
           />
-          <Icon Svg={EyeIcon} />
-        </>
+          <Icon Svg={EyeIcon} height='1.25rem' width='1.25rem' />
+        </HStack>
       ),
       [article.views, testId]
     )
@@ -102,6 +103,7 @@ export const ArticleListItemDeprecated = memo(
             styles[view],
           ])}
           data-testid={`${testId}.List`}
+          maxWidth
         >
           <VStack gap={1}>
             <HStack as='header' gap={0.5} maxWidth>
@@ -167,7 +169,11 @@ export const ArticleListItemDeprecated = memo(
             {image}
             <Text text={article.createdAt} className={styles.date} />
           </div>
-          <HStack className={styles.infoWrapper} maxWidth>
+          <HStack
+            className={styles.infoWrapper}
+            justify='between'
+            maxWidth
+          >
             {types}
             {views}
           </HStack>

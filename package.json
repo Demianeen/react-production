@@ -23,7 +23,7 @@
     "test:e2e": "cypress open",
     "test:ui": "npx loki test",
     "test:ui:ok": "npx loki approve",
-    "test:ui:ci": "concurrently -s first -k \"npm run storybook\" \"npm run test:ui\"",
+    "test:ui:ci": "concurrently -s first -k \"STORYBOOK_CI=true npm run storybook\" \"npm run test:ui\"",
     "test:ui:json": "node scripts/generate-visual-json-report.js",
     "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
     "test:ui:report": "npm run test:ui:json && npm run test:ui:html",

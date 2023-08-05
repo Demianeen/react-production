@@ -89,7 +89,7 @@ const ArticleRating = memo(
             </HStack>
           }
           off={
-            <CardDeprecated squared>
+            <CardDeprecated squared maxWidth>
               <TextDeprecated
                 text={t(
                   'Article rating is unavailable right now. Try again later'

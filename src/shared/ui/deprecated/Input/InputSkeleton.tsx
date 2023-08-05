@@ -22,6 +22,7 @@ export const InputSkeleton = memo(
         <Skeleton
           height='calc(var(--font-line-m) + 1rem)'
           className={className}
+          width={maxWidth ? '100%' : '11.5rem'}
         />
       </WithLabelSkeleton>
     )

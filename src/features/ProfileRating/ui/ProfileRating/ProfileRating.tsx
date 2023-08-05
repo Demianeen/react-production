@@ -100,7 +100,7 @@ const ProfileRating = memo(
             </HStack>
           }
           off={
-            <CardDeprecated squared>
+            <CardDeprecated squared maxWidth>
               <TextDeprecated
                 text={t(
                   'Profile rating is unavailable right now. Try again later'

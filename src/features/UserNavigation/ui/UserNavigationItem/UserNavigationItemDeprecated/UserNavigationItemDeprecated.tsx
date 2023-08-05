@@ -49,7 +49,12 @@ export const UserNavigationItemDeprecated = typedMemo(
           gap={isCollapsed ? undefined : 1.25}
           onClick={onClick}
         >
-          <Icon Svg={item.Icon} className={styles.icon} />
+          <Icon
+            Svg={item.Icon}
+            className={styles.icon}
+            height={18}
+            width={18}
+          />
           <Text
             TitleTag='span'
             title={t(item.text)}

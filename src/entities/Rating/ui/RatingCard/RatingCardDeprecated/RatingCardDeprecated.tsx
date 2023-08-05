@@ -34,7 +34,7 @@ export const RatingCardDeprecated = memo(
     onCancel,
     squared,
     rating = 0,
-    maxWidth = false,
+    maxWidth = true,
   }: RatingCardDeprecatedProps) => {
     const { t } = useTranslation()
 

@@ -98,6 +98,7 @@ export const ArticleDetailsRedesigned = memo(
     return (
       <VStack
         gap={1}
+        maxWidth
         className={classNames(styles.articleDetails, {}, [className])}
         data-testid='ArticleDetails'
       >

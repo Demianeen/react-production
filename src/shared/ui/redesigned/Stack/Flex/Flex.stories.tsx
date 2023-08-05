@@ -78,5 +78,6 @@ export const ColumnAlignEnd = {
     direction: 'column',
     align: 'end',
     children,
+    maxWidth: true,
   },
 }

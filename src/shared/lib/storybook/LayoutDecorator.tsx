@@ -3,7 +3,7 @@ import { HStack } from '@/shared/ui/redesigned/Stack'
 import type { CSSProperties } from 'react'
 
 export const LayoutDecorator = (
-  layout: 'centered' | 'fullpage',
+  layout: 'centered' | 'fullpage' = 'centered',
   style?: CSSProperties
 ) =>
   function Decorator(StoryComponent: StoryFn) {
@@ -13,21 +13,19 @@ export const LayoutDecorator = (
           justify='center'
           align='center'
           maxWidth
-          maxHeight
-          style={style}
+          style={{
+            height: '100svh',
+            ...style,
+          }}
         >
           <StoryComponent />
         </HStack>
       )
     }
 
-    if (layout === 'fullpage') {
-      return (
-        <div style={{ height: '100vh', width: '100vw', ...style }}>
-          <StoryComponent />
-        </div>
-      )
-    }
-
-    return <StoryComponent />
+    return (
+      <div style={{ height: '100vh', width: '100vw', ...style }}>
+        <StoryComponent />
+      </div>
+    )
   }

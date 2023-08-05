@@ -25,6 +25,12 @@ export const WithValue: Story = {
   },
 }
 
+export const MaxWidth: Story = {
+  args: {
+    maxWidth: true,
+  },
+}
+
 export const Dark: Story = {
   args: {
     value: 'Value',

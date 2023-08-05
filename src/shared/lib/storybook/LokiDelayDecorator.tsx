@@ -8,7 +8,7 @@ const DEFAULT_DELAY = 6000
 /**
  * Makes a delay between capturing a screenshot. Useful when you need to wait until some async actions are done or image is loaded.
  * @param delay - Delay in milliseconds.
- * @default 6000
+ * @default 6000 - 6 seconds.
  */
 export const LokiDelayDecorator = (delay = DEFAULT_DELAY) =>
   function Decorator(StoryComponent: StoryFn) {

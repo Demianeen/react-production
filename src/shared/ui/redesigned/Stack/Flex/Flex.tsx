@@ -51,7 +51,6 @@ export const Flex = typedForwardRef(
     ref: ForwardedRef<HTMLDivElement>
   ) => {
     const Tag = as ?? DEFAULT_TAG
-
     return (
       <Tag
         style={{ height }}

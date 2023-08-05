@@ -11,6 +11,7 @@ interface SkeletonProps {
    * @description Border radius of skeleton
    */
   borderRadius?: string
+  noShrink?: boolean
 }
 
 /**
@@ -18,11 +19,18 @@ interface SkeletonProps {
  * @deprecated
  */
 export const Skeleton = memo(
-  ({ className, height, width, borderRadius }: SkeletonProps) => {
+  ({
+    className,
+    height,
+    width,
+    borderRadius,
+    noShrink,
+  }: SkeletonProps) => {
     const style: CSSProperties = {
       height,
       width,
       borderRadius,
+      flexShrink: noShrink ? 0 : undefined,
     }
 
     return (

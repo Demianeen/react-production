@@ -34,7 +34,7 @@ jobs:
           export-env: true
         env:
           OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
-          KEY: 'op://online-store/Time4vps demian key/private key'
+          KEY: 'op://online-store/time4vps-demian-key/private key'
 
       - name: Deploy to production
         uses: appleboy/ssh-action@v0.1.10
