@@ -16,23 +16,29 @@ Description: The user is the general entity for user.
 
 `useJsonSettingOnUserInit` - Hook that used to get data from json settings on user init. It ensures that there won't be any jumps in state.
 
+`useUserActions` - Hooks that returns all user actions that are wrapped in dispatch.
+
 - Selectors
 
 `getUserAuthData` - Selector that returns user auth data.
 
-`getUserIsInitialized` - Selector that returns is user state was initialized.
+`useUserAuthData` - Hook that wraps `getUserAuthData` in useSelector.
+
+`useUserIsInitialized` - Hook that returns is user state was initialized.
 
 `getUserId` - Selector that returns user id.
 
-`getIsUserLogged` - Selector that returns is user logged.
+`useUserId` - Hook that wraps `getUserId` in useSelector.
 
-`getUserRoles` - Selector that returns user roles.
+`useIsUserLogged` - Hook that returns is user logged.
 
-`getIsUserAdmin` - Selector that returns is user admin.
+`useUserRoles` - Hook that returns user roles.
 
-`getIsUserManager` - Selector that returns is user manager.
+`useIsUserAdmin` - Hook that returns is user admin.
 
-`useJsonSettings` - Hook that returns is json settings.
+`useIsUserManager` - Hook that returns is user manager.
+
+`useUserJsonSettings` - Hook that returns is json settings.
 
 - Const
 

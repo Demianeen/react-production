@@ -8,7 +8,7 @@ import type { CounterSchema } from '@/entities/Counter'
 import type { UserSchema } from '@/entities/User'
 import type { LoginFormSchema } from '@/features/AuthByUsername'
 import type { createReduxStore } from '@/app/providers/StoreProvider'
-import type { ProfileSchema } from '@/features/EditableProfileCard'
+import type { EditableProfileSchema } from '@/features/EditableProfileCard'
 import type { ArticleDetailsSchema } from '@/entities/Article'
 import type { CommentFormSchema } from '@/entities/CommentForm'
 import type { PageSchema } from '@/widgets/Page'
@@ -20,7 +20,7 @@ import type { RegistrationFormSchema } from '../../../../features/AuthByUsername
 export interface AsyncReducers {
   loginForm: LoginFormSchema
   registrationForm: RegistrationFormSchema
-  profile: ProfileSchema
+  profile: EditableProfileSchema
   articleDetails: ArticleDetailsSchema
   articleCommentList: ArticleCommentListSchema
   commentForm: CommentFormSchema

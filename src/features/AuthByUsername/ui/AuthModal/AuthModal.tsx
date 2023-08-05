@@ -22,7 +22,7 @@ interface LoginModalProps {
 }
 
 // TODO: remake it with redux
-export const LoginModal = ({
+export const AuthModal = ({
   className,
   isOpen,
   onClose,

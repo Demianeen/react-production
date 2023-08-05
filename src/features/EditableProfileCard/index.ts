@@ -1,3 +1,3 @@
 export { EditableProfileCard } from './ui/EditableProfileCard/EditableProfileCard'
-export type { ProfileSchema } from './model/types/profileSchema'
+export type { EditableProfileSchema } from './model/types/editableProfileSchema'
 export { useProfileError } from './model/selectors/getProfileError/getProfileError'

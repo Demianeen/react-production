@@ -1,12 +1,13 @@
 ### Entity CommentForm
 
-Description:       
+Description: Form to send comments.
 
 #### Public api
 
 - Components
 
 `CommentForm` - Form for creating a comment.
+
 `CommentFormSkeleton` - Skeleton for comment form.
 
 - Types

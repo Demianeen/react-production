@@ -2,8 +2,8 @@
   "compilerOptions": {
     "target": "ES6",
     "jsx": "react-jsx",
-    "module": "ESNext",
-    "moduleResolution": "node",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
@@ -14,11 +14,6 @@
     "strict": true,
     "skipLibCheck": true,
     "isolatedModules": true
-  },
-  "ts-node": {
-    "compilerOptions": {
-      "module": "CommonJS"
-    }
   },
   "include": [
     "src/**/*.ts",

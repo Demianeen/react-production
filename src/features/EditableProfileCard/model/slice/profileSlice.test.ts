@@ -2,7 +2,7 @@ import { Currency } from '@/entities/Currency'
 import { Country } from '@/entities/Country'
 import { ProfileValidationError } from '../const/profileValidationError'
 import { updateProfileData } from '../services/updateProfileData/updateProfileData'
-import type { ProfileSchema } from '../types/profileSchema'
+import type { EditableProfileSchema } from '../types/editableProfileSchema'
 import { profileActions, profileReducer } from './profileSlice'
 
 const data = {
@@ -17,19 +17,19 @@ const data = {
 
 describe('profileSlice', () => {
   test('setIsReadonly', () => {
-    const state: DeepPartial<ProfileSchema> = {
+    const state: DeepPartial<EditableProfileSchema> = {
       isReadonly: true,
     }
     expect(
       profileReducer(
-        state as ProfileSchema,
+        state as EditableProfileSchema,
         profileActions.setIsReadonly(false)
       )
     ).toEqual({ isReadonly: false })
   })
 
   test('cancelEdit', () => {
-    const state: DeepPartial<ProfileSchema> = {
+    const state: DeepPartial<EditableProfileSchema> = {
       isReadonly: false,
       validationErrors: [ProfileValidationError.MISSING_AGE],
       data,
@@ -38,7 +38,7 @@ describe('profileSlice', () => {
 
     expect(
       profileReducer(
-        state as ProfileSchema,
+        state as EditableProfileSchema,
         profileActions.cancelEdit()
       )
     ).toEqual({
@@ -50,14 +50,14 @@ describe('profileSlice', () => {
   })
 
   test('updateProfileForm', () => {
-    const state: DeepPartial<ProfileSchema> = {
+    const state: DeepPartial<EditableProfileSchema> = {
       form: {
         username: 'username',
       },
     }
     expect(
       profileReducer(
-        state as ProfileSchema,
+        state as EditableProfileSchema,
         profileActions.updateProfileForm({
           username: 'newUsername',
         })
@@ -66,14 +66,14 @@ describe('profileSlice', () => {
   })
 
   test('updateProfileData service pending', () => {
-    const state: DeepPartial<ProfileSchema> = {
+    const state: DeepPartial<EditableProfileSchema> = {
       isLoading: false,
       validationErrors: [ProfileValidationError.MISSING_AGE],
     }
 
     expect(
       profileReducer(
-        state as ProfileSchema,
+        state as EditableProfileSchema,
         updateProfileData.pending
       )
     ).toEqual({
@@ -83,14 +83,14 @@ describe('profileSlice', () => {
   })
 
   test('updateProfileData service fulfilled', () => {
-    const state: DeepPartial<ProfileSchema> = {
+    const state: DeepPartial<EditableProfileSchema> = {
       isLoading: false,
       validationErrors: [ProfileValidationError.MISSING_AGE],
     }
 
     expect(
       profileReducer(
-        state as ProfileSchema,
+        state as EditableProfileSchema,
         updateProfileData.fulfilled(data, '')
       )
     ).toEqual({

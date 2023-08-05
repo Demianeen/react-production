@@ -2,7 +2,7 @@ import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
 import { useIsUserLogged } from '@/entities/User'
 import { useState, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { LoginModal } from '@/features/AuthByUsername'
+import { AuthModal } from '@/features/AuthByUsername'
 import { NotificationButton } from '@/features/NotificationButton'
 import { UserDropdown } from '@/features/UserDropdown'
 import { Button } from '@/shared/ui/redesigned/Button'
@@ -68,7 +68,7 @@ export const NavbarRedesigned = typedMemo(
         </HStack>
 
         {isAuthModalOpened && (
-          <LoginModal
+          <AuthModal
             isOpen={isAuthModalOpened}
             onClose={onCloseModal}
           />

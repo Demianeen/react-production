@@ -1,17 +1,17 @@
 ### Feature EditableProfileCard
 
-Description: Implements handling of profile editing from `ProfileCard`. All redux logic is implemented in this feature. 
+Description: Implements handling of profile editing from `ProfileCard`. All redux logic is implemented in this feature.
 
 #### Public api
 
 - Components
 
-`EditableProfileCard` - 
+`EditableProfileCard` - Component that implements the logic from description.
 
-- Selectors
+- Functions
 
-`getProfileError` - Selector for profile error.
+`useProfileError` - Hook that returns the profile error.
 
 - Types
 
-`EditableProfileCardSchema` - Describes redux store type for editable profile card.
+`EditableProfileSchema` - Describes redux store type for editable profile card.

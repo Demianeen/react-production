@@ -1,4 +1,4 @@
-import type { SourceFile } from 'ts-morph'
+import type { ExportSpecifierStructure, SourceFile } from 'ts-morph'
 import { Project } from 'ts-morph'
 
 interface GetPublicApiExportsOptions<F extends boolean | undefined> {
@@ -8,27 +8,19 @@ interface GetPublicApiExportsOptions<F extends boolean | undefined> {
 type FlatReturnType<F extends boolean | undefined> = F extends
   | true
   | undefined
-  ? PublicApiExport[]
-  : PublicApiExport[][]
-
-interface PublicApiExport {
-  name: string
-  isTypeOnly: boolean
-}
+  ? ExportSpecifierStructure[]
+  : ExportSpecifierStructure[][]
 
 export const getPublicApiExportNamesFromFile = (
   file: SourceFile
-): PublicApiExport[][] => {
+): ExportSpecifierStructure[][] => {
   const exportDeclarations = file.getExportDeclarations()
   const namedExports = exportDeclarations.map((exportDeclaration) =>
     exportDeclaration.getNamedExports()
   )
 
   return namedExports.map((namedExport) =>
-    namedExport.map((oneExport) => ({
-      name: oneExport.getName().toString(),
-      isTypeOnly: oneExport.isTypeOnly(),
-    }))
+    namedExport.map((oneExport) => oneExport.getStructure())
   )
 }
 

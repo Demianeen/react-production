@@ -1,6 +1,6 @@
 import { Project } from 'ts-morph'
-import { resolveRoot } from '../../utils/resolveRoot'
-import { getPublicApiExports } from '../../utils/getPublicApiExports'
+import { resolveRoot } from '../../../utils/resolveRoot'
+import { getPublicApiExports } from '../../../utils/getPublicApiExports'
 
 const project = new Project({})
 

@@ -1,6 +1,6 @@
 ### Entity Profile
 
-Description:       
+Description: Contains all reusable profile logic/components that can later be used in features/widgets.
 
 #### Public api
 
@@ -11,4 +11,3 @@ Description:
 - Types
 
 `Profile` - Describes profile
-

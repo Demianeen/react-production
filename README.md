@@ -12,6 +12,7 @@ This repository was created as part of the UlbiTV's course "To production on Rea
 ## Scripts
 
 - `npm start` - Launch frontend project on webpack dev server + backend
+- `npm run storybook` - Launch Storybook
 - `npm run start:dev:vite` - Launch frontend project on vite + backend
 - `npm run start:dev:client` - Launch frontend project on webpack dev server
 - `npm run start:dev:vite:client` - Launch frontend project on vite
@@ -19,6 +20,7 @@ This repository was created as part of the UlbiTV's course "To production on Rea
 - `npm run build:prod` - Build in prod mode
 - `npm run build:dev` - Build in dev mode (not minimized)
 - `npm run build:prod:analyze` - Build in prod mode and open bundle analyzer
+- `npm run build:storybook` - Build storybook
 - `npm run lint:ts` - Check ts files with linter
 - `npm run lint:ts:fix` - Fix ts files with linter
 - `npm run lint:scss` - Check scss files with style linter
@@ -32,11 +34,10 @@ This repository was created as part of the UlbiTV's course "To production on Rea
 - `npm run test:ui:report:arc` - Generate full report for screenshot tests and open it in Arc
 - `npm run test:ui:json` - Generate json report for screenshot tests
 - `npm run test:ui:html` - Generate HTML report for screenshot tests
-- `npm run storybook` - Launch Storybook
-- `npm run storybook:build` - Build storybook
+- `npm run generate:slice` - Script for generating FSD slices,
 - `npm run prepare` - Pre-commit hooks
 - `npm run remove:feature` - Removes feature using feature flag name, and state on/off (read more about feature flags [here](#working-with-feature-flags))
-- `npm run generate:slice` - Script for generating FSD slices,
+- `npm run check:layerDocs` - Checks if README.md files in each layer in src/ are up to date with the public API. Read more [here](scripts/checkLayerDocs/index.ts)
 - `npm run postinstall` - Apply patches after npm i
 
 ---

@@ -1,6 +1,6 @@
 ### Entity Rating
 
-Description:       
+Description: Contains all reusable rating logic/components that can later be used in features/widgets.
 
 #### Public api
 

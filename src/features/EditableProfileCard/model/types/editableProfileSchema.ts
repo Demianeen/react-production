@@ -1,7 +1,7 @@
 import type { Profile } from '@/entities/Profile'
 import type { ProfileValidationError } from '../const/profileValidationError'
 
-export interface ProfileSchema {
+export interface EditableProfileSchema {
   data?: Profile
   form?: Profile
   isLoading: boolean

@@ -16,6 +16,14 @@ Description: The article serves as a fundamental building block in our project, 
 
 `getArticleDetailsData` - selector that retrieves information about article
 
+`useArticleDetailsData` - hook that wraps `getArticleDetailsData` with useSelector
+
+`useArticleDetailsError` - hook that returns article details error or undefined if there is no error.
+
+`useArticleDetailsIsLoading` - hook that returns if article details data is loading
+
+`useArticleDetailsCanEdit` - hook that returns if user can edit opened article
+
 `computeListItemsLimit` - computes width and height of the container and item and returns amount of items to render.
 
 `useComputeListItemsLimit` - memoized `computeListItemsLimit`

@@ -1,6 +1,6 @@
 ### Entity Notification
 
-Description:       
+Description: Contains all reusable notification logic/components that can later be used in features/widgets.
 
 #### Public api
 

@@ -3,9 +3,9 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { Profile } from '@/entities/Profile'
 import { fetchProfileDataById } from '../services/fetchProfileDataById/fetchProfileDataById'
 import { updateProfileData } from '../services/updateProfileData/updateProfileData'
-import type { ProfileSchema } from '../types/profileSchema'
+import type { EditableProfileSchema } from '../types/editableProfileSchema'
 
-const initialState: ProfileSchema = {
+const initialState: EditableProfileSchema = {
   isLoading: false,
   isReadonly: true,
   error: undefined,

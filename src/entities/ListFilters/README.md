@@ -1,6 +1,6 @@
 ### Entity ListFilters
 
-Description: The list filters is the general entity for list filters.     
+Description: Contains all reusable filters logic/components that can later be used in features/widgets.
 
 #### Public api
 
@@ -8,8 +8,14 @@ Description: The list filters is the general entity for list filters.
 
 `ListFilters` - Block for list filters. Accepts callback for each filter change.
 
+`ListFiltersView` - The button that allows toggle view.
+
+`ListFiltersOrder` - Select component to select list order.
+
+`ListFiltersSortField` - Select component to select field to sort the list.
+
 - Const
 
 `SortField` - Sort field (e.g. VIEW, TITLE, CREATED_AT).
-`View` - List view (e.g. LIST, GRID).
 
+`View` - List view (e.g. LIST, GRID).
