@@ -1,4 +1,3 @@
-import { setFeatureFlags } from '@/shared/lib/features'
 import type { Profile } from '../../src/entities/Profile'
 import { EditableProfileCard } from '../../src/features/EditableProfileCard/ui/EditableProfileCard/EditableProfileCard'
 
@@ -20,10 +19,10 @@ describe('EditableProfileCard.cy.tsx', () => {
               },
             },
           },
+          featureFlags: {
+            isAppRedesigned: true,
+          },
         })
-      })
-      setFeatureFlags({
-        isAppRedesigned: true,
       })
     })
 

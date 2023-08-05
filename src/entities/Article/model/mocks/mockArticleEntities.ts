@@ -1,14 +1,14 @@
-import { getMockArray } from '@/shared/lib/tests/entities/getMockArray'
-import { getMockEntities } from '@/shared/lib/tests/entities/getMockEntities'
-import { getMockIds } from '@/shared/lib/tests/entities/getMockIds'
+import { getMockEntityAdapterData } from '@/shared/lib/tests/getMockEntityAdapterData/getMockEntityAdapterData'
 import { mockArticle } from './mockArticle'
 
-export const mockArticles = getMockArray(mockArticle, 12)
-export const mockArticleEntities = getMockEntities(mockArticles)
-export const mockArticleIds = getMockIds(mockArticles)
+export const {
+  array: mockArticles,
+  entities: mockArticleEntities,
+  ids: mockArticleIds,
+} = getMockEntityAdapterData(mockArticle, 12)
 
-export const anotherMockArticles = getMockArray(mockArticle, 12, 12)
-export const anotherMockArticleEntities = getMockEntities(
-  anotherMockArticles
-)
-export const anotherMockArticleIds = getMockIds(anotherMockArticles)
+export const {
+  array: anotherMockArticles,
+  entities: anotherMockArticleEntities,
+  ids: anotherMockArticleIds,
+} = getMockEntityAdapterData(mockArticle, 12, 2)

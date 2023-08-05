@@ -22,6 +22,20 @@ interface TestProviderProps {
   options?: TestProviderOptions
 }
 
+/**
+ * This component is used to wrap the component that is being tested. It wraps with providers required for the component to work. Also it accepts options to configure the test.
+ *
+ *
+ * @options
+ * ```md
+ * preloadedState - initial state for the store,
+ * asyncReducers - reducers that are not loaded by default,
+ * route - route to be used for the test,
+ * featureFlags - feature flags to be used for the test,
+ * ```
+ *
+ * @returns {ReactNode} wrapped component
+ */
 export const TestProvider = ({
   children,
   options: {
