@@ -42,6 +42,17 @@ This repository was created as part of the UlbiTV's course "To production on Rea
 
 ---
 
+## Recommended Extensions for Visual Studio Code
+
+To improve your development experience, we recommend installing the following extensions for Visual Studio Code:
+
+- **ESLint** (`dbaeumer.vscode-eslint`): Integrates ESLint into VS Code to provide linting for JavaScript and TypeScript code.
+- **Prettier** (`esbenp.prettier-vscode`): An opinionated code formatter that integrates with VS Code to automatically format your code.
+
+You can install these extensions by searching for their names in the Extensions tab in Visual Studio Code or by using the `@recommended:workspace` filter to see a list of recommended extensions.
+
+---
+
 ## Project architecture
 
 The project is written in accordance with the Feature sliced design methodology
