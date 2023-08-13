@@ -43,6 +43,9 @@ export const DrawerContent = ({
 }: DrawerProps) => {
   const { Spring, Gesture } = useAnimationLibs()
 
+  // to run animation
+  const [isClosed, setIsClosed] = useState(true)
+
   const contentRef = useRef<HTMLDivElement>(null)
 
   const [drawerRef, setDrawerRef] = useState<HTMLDivElement | null>(
@@ -58,6 +61,7 @@ export const DrawerContent = ({
   )
 
   const handleClose = useCallback(() => {
+    setIsClosed(true)
     onClose?.()
   }, [onClose])
 
@@ -72,15 +76,16 @@ export const DrawerContent = ({
   const close = useCallback(() => {
     console.log('close')
     api.start({
-      y: height,
+      y: screenHeight,
       immediate: false,
       config: Spring.config.wobbly,
-      onResolve: handleClose,
+      onRest: handleClose,
     })
-  }, [Spring.config.wobbly, api, handleClose, height])
+  }, [Spring.config.wobbly, api, handleClose])
 
   useEffect(() => {
     if (isOpen) {
+      setIsClosed(false)
       openDrawer()
     }
   }, [api, close, isOpen, openDrawer])
@@ -92,8 +97,17 @@ export const DrawerContent = ({
       velocity: [, vy],
       direction: [, dy],
     }: FullGestureState<'drag'>) => {
+      console.log(
+        'my > height * 0.5 || (vy > 0 && dy === -1)',
+        my,
+        height * 0.5,
+        vy,
+        dy
+      )
+
+      console.log('last', last)
       if (last) {
-        if (my > height * 0.5 || (vy > 0 && dy === -1)) {
+        if (my > height * 0.65 || (vy > 0.6 && dy === 1)) {
           close()
         } else {
           openDrawer()
@@ -125,6 +139,10 @@ export const DrawerContent = ({
     onDrag(props)
   }, dragConfig)
 
+  if (isClosed) {
+    return null
+  }
+
   return (
     <Portal>
       <div
@@ -137,9 +155,6 @@ export const DrawerContent = ({
           }),
           className
         )}
-        style={{
-          display: isOpen ? 'block' : 'none',
-        }}
       >
         <Overlay onClick={close} />
 
