@@ -8,24 +8,46 @@
 
 .sheet {
   position: fixed;
-  left: 2vw;
   z-index: var(--modal-z-index);
-  width: 96vw;
+  width: 100%;
   max-height: 100svh;
-  padding: 1rem 1rem 7rem;
-  touch-action: none;
-  background: var(--bg-redesigned);
   border-radius: 12px 12px 0;
 }
 
+.drawerHandler {
+  height: 3rem;
+  touch-action: none;
+}
+
 .handle {
-  position: absolute;
-  top: 0.3rem;
-  right: 0;
-  left: 0;
   width: 3rem;
-  height: 0.25rem;
-  margin: 0 auto;
-  background-color: var(--accent-redesigned);
+  height: 0.3rem;
   border-radius: 0.25rem;
+}
+
+.content {
+  max-height: min(90svh, 35rem);
+  padding: 0 1rem 2rem;
+  overflow-y: auto;
+  touch-action: pan-y;
+}
+
+.redesigned {
+  .sheet {
+    background: var(--bg-redesigned);
+  }
+
+  .handle {
+    background-color: var(--hint-redesigned);
+  }
+}
+
+.deprecated {
+  .sheet {
+    background: var(--bg-color);
+  }
+
+  .handle {
+    background-color: var(--secondary-color);
+  }
 }

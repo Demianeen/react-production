@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/lib/storybook/ThemeDecorator'
 import { Theme } from '@/shared/const/theme'
+import { ToggleDesignDecorator } from '@/shared/lib/storybook/ToggleDesignDecorator'
 import { Card } from '../Card'
 import { VStack } from '../Stack'
 import { Drawer } from './Drawer'
@@ -26,7 +27,10 @@ export default {
 
 type Story = StoryObj<typeof Drawer>
 
-export const Light: Story = {}
+export const Primary: Story = {}
+export const PrimaryDeprecated: Story = {
+  decorators: [ToggleDesignDecorator(false)],
+}
 
 export const Dark: Story = {
   decorators: [ThemeDecorator(Theme.DARK)],

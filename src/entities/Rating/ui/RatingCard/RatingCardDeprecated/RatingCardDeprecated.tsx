@@ -12,7 +12,7 @@ import { Modal } from '@/shared/ui/deprecated/Modal'
 import { Input } from '@/shared/ui/deprecated/Input'
 import { Text } from '@/shared/ui/deprecated/Text'
 import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button'
-import { Drawer } from '@/shared/ui/deprecated/Drawer'
+import { Drawer } from '@/shared/ui/redesigned/Drawer'
 
 export interface RatingCardDeprecatedProps {
   className?: string

@@ -1,7 +1,7 @@
 import { Modal as ModalDeprecated } from '@/shared/ui/deprecated/Modal'
 import { SuspenseWithSpinner } from '@/shared/ui/deprecated/SuspenseWithSpinner'
 import { Modal } from '@/shared/ui/redesigned/Modal'
-import { ToggleFeature } from '@/shared/lib/features'
+import { ToggleFeature, toggleFeature } from '@/shared/lib/features'
 import { Spinner } from '@/shared/ui/redesigned/Spinner'
 import { Suspense, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -12,8 +12,10 @@ import {
 } from '@/shared/ui/deprecated/Button'
 import { Text } from '@/shared/ui/deprecated/Text'
 import { HStack } from '@/shared/ui/redesigned/Stack'
-import { LoginFormAsync } from '../LoginForm/LoginForm.async'
+import { useDevice } from '@/shared/lib/hooks/useDevice/useDevice'
+import { Drawer } from '@/shared/ui/redesigned/Drawer'
 import RegistrationFormAsync from '../RegistrationForm/RegistrationForm'
+import { LoginFormAsync } from '../LoginForm/LoginForm.async'
 
 interface LoginModalProps {
   className?: string
@@ -36,11 +38,20 @@ export const AuthModal = ({
     }
   }, [])
 
+  const { isMobile } = useDevice()
+  const Wrapper = isMobile
+    ? Drawer
+    : toggleFeature({
+        name: 'isAppRedesigned',
+        on: () => Modal,
+        off: () => ModalDeprecated,
+      })
+
   return (
     <ToggleFeature
       name='isAppRedesigned'
       on={
-        <Modal
+        <Wrapper
           isOpen={isOpen}
           onClose={onClose}
           className={className}
@@ -77,10 +88,10 @@ export const AuthModal = ({
               </>
             )}
           </Suspense>
-        </Modal>
+        </Wrapper>
       }
       off={
-        <ModalDeprecated
+        <Wrapper
           isOpen={isOpen}
           onClose={onClose}
           className={className}
@@ -117,7 +128,7 @@ export const AuthModal = ({
               </>
             )}
           </SuspenseWithSpinner>
-        </ModalDeprecated>
+        </Wrapper>
       }
     />
   )

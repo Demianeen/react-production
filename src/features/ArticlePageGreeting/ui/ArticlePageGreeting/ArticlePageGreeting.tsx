@@ -11,10 +11,11 @@ import {
   DesktopView,
 } from '@/shared/lib/components/UserAgent'
 import { Text } from '@/shared/ui/deprecated/Text'
-import { Modal } from '@/shared/ui/deprecated/Modal'
-import { Drawer } from '@/shared/ui/deprecated/Drawer'
+import { Modal as ModalDeprecated } from '@/shared/ui/deprecated/Modal'
+import { Drawer } from '@/shared/ui/redesigned/Drawer'
 import { Title } from '@/shared/ui/redesigned/Title'
 import { ToggleFeature } from '@/shared/lib/features'
+import { Modal } from '@/shared/ui/redesigned/Modal'
 
 export const ArticlePageGreeting = typedMemo(() => {
   const { t } = useTranslation('articles')
@@ -63,6 +64,19 @@ export const ArticlePageGreeting = typedMemo(() => {
         <Modal lazy isOpen={isOpen} onClose={onClose}>
           {text}
         </Modal>
+        <ToggleFeature
+          name='isAppRedesigned'
+          on={
+            <Modal lazy isOpen={isOpen} onClose={onClose}>
+              {text}
+            </Modal>
+          }
+          off={
+            <ModalDeprecated lazy isOpen={isOpen} onClose={onClose}>
+              {text}
+            </ModalDeprecated>
+          }
+        />
       </DesktopView>
       <MobileView>
         <Drawer isOpen={isOpen} onClose={onClose}>

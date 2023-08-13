@@ -4,7 +4,6 @@ import {
   Button as ButtonDeprecated,
   ButtonTheme,
 } from '@/shared/ui/deprecated/Button'
-import { Drawer as DrawerDeprecated } from '@/shared/ui/deprecated/Drawer'
 import { Drawer } from '@/shared/ui/redesigned/Drawer'
 import { ToggleFeature } from '@/shared/lib/features'
 import { NotificationIcon } from '../NotificationIcon/NotificationIcon'
@@ -45,9 +44,9 @@ export const NotificationDrawer = memo(
             >
               <NotificationIcon />
             </ButtonDeprecated>
-            <DrawerDeprecated isOpen={isOpen} onClose={onCloseDrawer}>
+            <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
               <NotificationList />
-            </DrawerDeprecated>
+            </Drawer>
           </>
         }
       />

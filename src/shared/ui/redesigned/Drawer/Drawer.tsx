@@ -1,10 +1,22 @@
 import type { ReactNode } from 'react'
-import React, { memo, useCallback, useEffect, useState } from 'react'
-import { classNames } from '@/shared/lib/classNames/classNames'
+import React, {
+  memo,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import {
   AnimationProvider,
   useAnimationLibs,
 } from '@/shared/lib/components/AnimationProvider'
+import { toggleFeature } from '@/shared/lib/features'
+import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
+import type {
+  FullGestureState,
+  UserDragConfig,
+} from '@use-gesture/react'
+import { HStack } from '../Stack'
 import { Overlay } from '../Overlay/Overlay'
 import styles from './Drawer.module.scss'
 import { Portal } from '../Portal/Portal'
@@ -21,10 +33,7 @@ interface DrawerProps {
    */
   onClose?: () => void
 }
-
-const height = window.innerHeight - 100
-
-// TODO: fix drawer scroll
+const screenHeight = window.innerHeight
 
 export const DrawerContent = ({
   className,
@@ -33,55 +42,58 @@ export const DrawerContent = ({
   isOpen,
 }: DrawerProps) => {
   const { Spring, Gesture } = useAnimationLibs()
-  const [{ y }, api] = Spring.useSpring(() => ({
-    y: height,
-  }))
 
-  // for close animation
-  const [isClosed, setIsClosed] = useState(!isOpen)
+  const contentRef = useRef<HTMLDivElement>(null)
+
+  const [drawerRef, setDrawerRef] = useState<HTMLDivElement | null>(
+    null
+  )
+  const height = drawerRef?.clientHeight || 0
+
+  const [{ y }, api] = Spring.useSpring(
+    () => ({
+      y: screenHeight,
+    }),
+    []
+  )
 
   const handleClose = useCallback(() => {
-    setIsClosed(true)
     onClose?.()
   }, [onClose])
 
   const openDrawer = useCallback(() => {
-    api.start({ y: 0, immediate: false })
-  }, [api])
+    api.start({
+      y: 0,
+      immediate: false,
+      config: { ...Spring.config.stiff },
+    })
+  }, [Spring.config.stiff, api])
 
-  const close = useCallback(
-    (velocity = 0) => {
-      api.start({
-        y: height,
-        immediate: false,
-        config: { ...Spring.config.stiff, velocity },
-        onResolve: handleClose,
-      })
-    },
-    [Spring.config.stiff, api, handleClose]
-  )
+  const close = useCallback(() => {
+    console.log('close')
+    api.start({
+      y: height,
+      immediate: false,
+      config: Spring.config.wobbly,
+      onResolve: handleClose,
+    })
+  }, [Spring.config.wobbly, api, handleClose, height])
 
   useEffect(() => {
     if (isOpen) {
-      setIsClosed(false)
       openDrawer()
-    } else {
-      close()
     }
   }, [api, close, isOpen, openDrawer])
 
-  const bind = Gesture.useDrag(
+  const onDrag = useCallback(
     ({
       last,
+      movement: [, my],
       velocity: [, vy],
       direction: [, dy],
-      movement: [, my],
-      cancel,
-    }) => {
-      if (my < -70) cancel()
-
+    }: FullGestureState<'drag'>) => {
       if (last) {
-        if (my > height * 0.5 || (vy > 0.5 && dy > 0)) {
+        if (my > height * 0.5 || (vy > 0 && dy === -1)) {
           close()
         } else {
           openDrawer()
@@ -90,35 +102,70 @@ export const DrawerContent = ({
         api.start({ y: my, immediate: true })
       }
     },
-    {
-      from: () => [0, y.get()],
-      filterTaps: true,
-      bounds: { top: 0 },
-      rubberband: true,
-    }
+    [api, close, height, openDrawer]
   )
 
-  if (isClosed) {
-    return null
+  const dragConfig: UserDragConfig = {
+    axis: 'y',
+    bounds: { top: 0 },
   }
 
-  const display = y.to((py) => (py < height ? 'block' : 'none'))
+  const handlerBind = Gesture.useDrag((props) => {
+    onDrag(props)
+  }, dragConfig)
+
+  const contentBind = Gesture.useDrag((props) => {
+    if (contentRef?.current?.scrollTop !== 0) {
+      // Prevent dragging if content is not scrolled to top
+      // eslint-disable-next-line react/prop-types
+      props.cancel()
+      return
+    }
+
+    onDrag(props)
+  }, dragConfig)
 
   return (
     <Portal>
-      <div className={classNames(styles.drawer, {}, [className])}>
-        <Overlay onClick={() => close()} />
+      <div
+        className={classNamesNew(
+          styles.drawer,
+          toggleFeature({
+            name: 'isAppRedesigned',
+            on: () => styles.redesigned,
+            off: () => styles.deprecated,
+          }),
+          className
+        )}
+        style={{
+          display: isOpen ? 'block' : 'none',
+        }}
+      >
+        <Overlay onClick={close} />
+
         <Spring.a.div
           className={styles.sheet}
+          ref={setDrawerRef}
           style={{
-            display,
-            bottom: `calc(-100svh + ${height}px)`,
+            bottom: 0,
             y,
           }}
-          {...bind()}
         >
-          <div className={styles.handle} />
-          {children}
+          <HStack
+            maxWidth
+            justify='center'
+            className={styles.drawerHandler}
+            {...handlerBind()}
+          >
+            <div className={styles.handle} />
+          </HStack>
+          <Spring.a.div
+            ref={contentRef}
+            className={styles.content}
+            {...contentBind()}
+          >
+            {children}
+          </Spring.a.div>
         </Spring.a.div>
       </div>
     </Portal>

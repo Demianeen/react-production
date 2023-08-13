@@ -37,7 +37,7 @@ export default ({
     }),
   ]
 
-  const devPlugins = [
+  const devPlugins: webpack.WebpackPluginInstance[] = [
     new ReactRefreshWebpackPlugin(),
     new CircularDependencyPlugin({
       exclude: /node_modules/,
@@ -45,7 +45,7 @@ export default ({
     }),
   ]
 
-  const prodPlugins = [
+  const prodPlugins: webpack.WebpackPluginInstance[] = [
     new MiniCSSExtractPlugin({
       filename: 'css/[name].[contenthash:8].css',
       chunkFilename: 'css/[name].[contenthash:8].css',
