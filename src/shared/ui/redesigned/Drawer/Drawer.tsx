@@ -74,7 +74,6 @@ export const DrawerContent = ({
   }, [Spring.config.stiff, api])
 
   const close = useCallback(() => {
-    console.log('close')
     api.start({
       y: screenHeight,
       immediate: false,
@@ -87,8 +86,10 @@ export const DrawerContent = ({
     if (isOpen) {
       setIsClosed(false)
       openDrawer()
+    } else if (!isClosed) {
+      close()
     }
-  }, [api, close, isOpen, openDrawer])
+  }, [api, close, isClosed, isOpen, openDrawer])
 
   const onDrag = useCallback(
     ({
@@ -97,15 +98,6 @@ export const DrawerContent = ({
       velocity: [, vy],
       direction: [, dy],
     }: FullGestureState<'drag'>) => {
-      console.log(
-        'my > height * 0.5 || (vy > 0 && dy === -1)',
-        my,
-        height * 0.5,
-        vy,
-        dy
-      )
-
-      console.log('last', last)
       if (last) {
         if (my > height * 0.65 || (vy > 0.6 && dy === 1)) {
           close()
