@@ -10,12 +10,17 @@ import styles from './NavbarBurgerMenu.module.scss'
 export interface NavbarBurgerMenuProps {
   className?: string
   onClose?: () => void
+  isOpen?: boolean
 }
 
 export const NavbarBurgerMenu = typedMemo(
-  ({ className, onClose }: NavbarBurgerMenuProps) => {
+  ({ className, onClose, isOpen }: NavbarBurgerMenuProps) => {
     return (
-      <FullPagePanel onClose={onClose} className={className}>
+      <FullPagePanel
+        onClose={onClose}
+        isOpen={isOpen}
+        className={className}
+      >
         <HStack maxWidth justify='between' className={styles.actions}>
           <ThemeSwitcher withText />
           <LangSwitcher />

@@ -48,7 +48,10 @@ export const NavbarBurger = typedMemo(
             </Button>
           }
         />
-        {isMenuOpened && <NavbarBurgerMenu onClose={toggleMenu} />}
+        <NavbarBurgerMenu
+          isOpen={isMenuOpened}
+          onClose={toggleMenu}
+        />
       </>
     )
   }

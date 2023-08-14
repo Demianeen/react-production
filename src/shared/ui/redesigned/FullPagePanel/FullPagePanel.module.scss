@@ -2,6 +2,7 @@
   position: fixed;
   inset: 0;
   z-index: 1;
+  touch-action: none;
   background: var(--dark-bg-redesigned);
 }
 
@@ -10,5 +11,6 @@
   inset: 0;
   z-index: 1;
   padding: 1.5rem;
+  touch-action: none;
   background: var(--inverted-bg-color);
 }
