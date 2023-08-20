@@ -63,7 +63,7 @@ export const Modal = ({
           'appStyles',
         ])}
       >
-        <Overlay onClick={close} />
+        <Overlay onClick={close} className={styles.overlay} />
         <div className={styles.content}>{children}</div>
       </HStack>
     </Portal>

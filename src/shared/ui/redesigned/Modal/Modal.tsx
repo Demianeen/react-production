@@ -57,7 +57,7 @@ export const Modal = ({
         align='center'
         className={classNames(styles.modal, mods, [className])}
       >
-        <Overlay onClick={close} />
+        <Overlay onClick={close} className={styles.overlay} />
         <Card background='light' className={styles.content}>
           {children}
         </Card>

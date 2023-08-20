@@ -5,7 +5,7 @@ import { MainLayout } from '@/shared/layouts/MainLayout'
 import { ScrollToTopButton } from './ScrollToTopButton'
 
 export default {
-  title: 'shared/ScrollToTopButton',
+  title: 'features/ScrollToTopButton',
   component: () => {
     useEffect(() => {
       window.scrollTo({
@@ -15,9 +15,9 @@ export default {
 
     return (
       <MainLayout
-        toolbar={<ScrollToTopButton />}
+        toolbar={null}
         content={<div style={{ height: '200vh' }} />}
-        header={null}
+        header={<ScrollToTopButton />}
         sidebar={null}
       />
     )

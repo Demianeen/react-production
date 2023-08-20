@@ -61,9 +61,6 @@ export const ArticlePageGreeting = typedMemo(() => {
   return (
     <>
       <DesktopView>
-        <Modal lazy isOpen={isOpen} onClose={onClose}>
-          {text}
-        </Modal>
         <ToggleFeature
           name='isAppRedesigned'
           on={

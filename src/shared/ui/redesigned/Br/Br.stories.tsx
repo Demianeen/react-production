@@ -2,7 +2,7 @@ import type { StoryObj, Meta } from '@storybook/react'
 import { Br } from './Br'
 
 export default {
-  title: 'AFiletemplate/Br',
+  title: 'shared/redesigned/Br',
   component: Br,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -11,6 +11,5 @@ export default {
 
 type Story = StoryObj<typeof Br>
 
-export const Primary: Story = {
-  args: {},
-}
+export const PrimaryRedesigned: Story = {}
+export const PrimaryDeprecated: Story = {}

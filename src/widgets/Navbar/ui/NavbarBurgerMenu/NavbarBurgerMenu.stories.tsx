@@ -1,8 +1,9 @@
 import type { StoryObj, Meta } from '@storybook/react'
+import { action } from '@storybook/addon-actions'
 import { NavbarBurgerMenu } from './NavbarBurgerMenu'
 
 export default {
-  title: 'AFiletemplate/NavbarBurgerMenu',
+  title: 'widgets/Navbar/NavbarBurgerMenu',
   component: NavbarBurgerMenu,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -11,6 +12,12 @@ export default {
 
 type Story = StoryObj<typeof NavbarBurgerMenu>
 
-export const Primary: Story = {
-  args: {},
+const primary = {
+  args: {
+    isOpen: true,
+    onClose: action('onClose'),
+  },
 }
+
+export const PrimaryRedesigned: Story = primary
+export const PrimaryDeprecated: Story = primary

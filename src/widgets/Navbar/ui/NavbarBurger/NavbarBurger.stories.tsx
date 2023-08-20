@@ -2,7 +2,7 @@ import type { StoryObj, Meta } from '@storybook/react'
 import { NavbarBurger } from './NavbarBurger'
 
 export default {
-  title: 'AFiletemplate/NavbarBurger',
+  title: 'widgets/Navbar/NavbarBurger',
   component: NavbarBurger,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -11,6 +11,5 @@ export default {
 
 type Story = StoryObj<typeof NavbarBurger>
 
-export const Primary: Story = {
-  args: {},
-}
+export const PrimaryRedesigned: Story = {}
+export const PrimaryDeprecated: Story = {}

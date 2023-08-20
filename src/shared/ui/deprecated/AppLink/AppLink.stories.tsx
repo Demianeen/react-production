@@ -25,7 +25,7 @@ export const Inverted: Story = {
   },
 }
 
-export const Orange: Story = {
+export const Red: Story = {
   args: {
     theme: AppLinkTheme.RED,
   },
@@ -42,25 +42,25 @@ export const InvertedDark: Story = {
   decorators: [ThemeDecorator(Theme.DARK)],
 }
 
-export const OrangeDark: Story = {
+export const RedDark: Story = {
   args: {
     theme: AppLinkTheme.RED,
   },
   decorators: [ThemeDecorator(Theme.DARK)],
 }
 
-export const PrimaryRed: Story = {
+export const PrimaryOrange: Story = {
   decorators: [ThemeDecorator(Theme.ORANGE)],
 }
 
-export const InvertedRed: Story = {
+export const InvertedOrange: Story = {
   args: {
     theme: AppLinkTheme.INVERTED,
   },
   decorators: [ThemeDecorator(Theme.ORANGE)],
 }
 
-export const OrangeRed: Story = {
+export const RedOrange: Story = {
   args: {
     theme: AppLinkTheme.RED,
   },

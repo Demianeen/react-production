@@ -1,8 +1,10 @@
 import type { StoryObj, Meta } from '@storybook/react'
+import { action } from '@storybook/addon-actions'
+import { ToggleDesignDecorator } from '@/shared/lib/storybook/ToggleDesignDecorator'
 import { FullPagePanel } from './FullPagePanel'
 
 export default {
-  title: 'AFiletemplate/FullPagePanel',
+  title: 'shared/redesigned/FullPagePanel',
   component: FullPagePanel,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -11,6 +13,16 @@ export default {
 
 type Story = StoryObj<typeof FullPagePanel>
 
-export const Primary: Story = {
-  args: {},
+const primary = {
+  args: {
+    isOpen: true,
+    onClose: action('onClose'),
+    children: 'FullPagePanel content',
+  },
+}
+
+export const PrimaryRedesigned: Story = primary
+export const PrimaryDeprecated: Story = {
+  ...primary,
+  decorators: [ToggleDesignDecorator(false)],
 }

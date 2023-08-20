@@ -4,6 +4,10 @@
   z-index: var(--modal-z-index);
 }
 
+.overlay {
+  z-index: -1;
+}
+
 .content {
   min-width: 25rem;
   max-width: 60%;

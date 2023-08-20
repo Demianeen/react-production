@@ -69,7 +69,7 @@ export const DrawerContent = ({
     api.start({
       y: 0,
       immediate: false,
-      config: { ...Spring.config.stiff },
+      config: { ...Spring.config.stiff, clamp: true },
     })
   }, [Spring.config.stiff, api])
 
