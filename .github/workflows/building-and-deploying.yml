@@ -50,7 +50,7 @@ jobs:
             git pull
             npm i
             npm run deploy
-            pm2 restart react-production
+            pm2 restart .deploy/pm2.config.js
 
       - name: Output
         run: printf "# Deployment \nWebsite is deployed to ${{ vars.WEBSITE_URL }}" >> $GITHUB_STEP_SUMMARY
