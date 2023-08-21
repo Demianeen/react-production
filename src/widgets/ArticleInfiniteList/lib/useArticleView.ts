@@ -1,4 +1,4 @@
-import type { View } from '@/entities/ListFilters'
+import type { View } from '@/entities/View'
 import { useCallback } from 'react'
 import { useSelector } from 'react-redux'
 import { computeListItemsLimit } from '@/entities/Article'

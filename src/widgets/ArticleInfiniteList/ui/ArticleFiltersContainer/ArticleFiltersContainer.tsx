@@ -8,7 +8,8 @@ import {
   type FlexDirection,
 } from '@/shared/ui/redesigned/Stack'
 import { useMedia } from '@/shared/lib/hooks/useMedia/useMedia'
-import { ListFiltersView } from '@/entities/ListFilters'
+import { SelectView } from '@/entities/View'
+import { ToggleFeature } from '@/shared/lib/features'
 import { useArticleInfiniteListType } from '../../model/selectors/getArticleInfinteListType/getArticleInfiniteListType'
 import { useArticleView } from '../../lib/useArticleView'
 import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles'
@@ -22,15 +23,7 @@ export interface ArticleFiltersContainerProps {
 
 export const ArticleFiltersContainer = typedMemo(
   ({ className, listRef }: ArticleFiltersContainerProps) => {
-    const {
-      sortField,
-      order,
-      search,
-      onChangeSortField,
-      onChangeOrder,
-      onSearch,
-      onSearchDebounced,
-    } = useArticleFilters()
+    const articleFiltersProps = useArticleFilters()
 
     const dispatch = useAppDispatch()
     const [direction, setDirection] =
@@ -59,24 +52,32 @@ export const ArticleFiltersContainer = typedMemo(
     const viewProps = useArticleView(listRef)
 
     return (
-      <VStack gap={1}>
-        <ListFiltersView
-          className={className}
-          showLabel={direction === 'row'}
-          {...viewProps}
-        />
-        <ArticleListFilters
-          className={className}
-          onChangeSortField={onChangeSortField}
-          onChangeOrder={onChangeOrder}
-          onSearch={onSearch}
-          onSearchDebounced={onSearchDebounced}
-          sortField={sortField}
-          order={order}
-          search={search}
-          onChangeTab={onChangeType}
-          tab={tab}
-          direction={direction}
+      <VStack gap={1} className={className}>
+        <ToggleFeature
+          name='isAppRedesigned'
+          on={
+            <>
+              <SelectView
+                showLabel={direction === 'row'}
+                {...viewProps}
+              />
+              <ArticleListFilters
+                {...articleFiltersProps}
+                onChangeTab={onChangeType}
+                tab={tab}
+                direction={direction}
+              />
+            </>
+          }
+          off={
+            <ArticleListFilters
+              {...articleFiltersProps}
+              {...viewProps}
+              onChangeTab={onChangeType}
+              tab={tab}
+              direction={direction}
+            />
+          }
         />
       </VStack>
     )

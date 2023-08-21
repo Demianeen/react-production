@@ -1,4 +1,4 @@
-import { SortField } from '@/entities/ListFilters'
+import { SortField } from '@/entities/SortField'
 import { buildSelector } from '@/shared/lib/store'
 import { getArticleInfiniteListState } from '../getArticleInfiniteListState/getArticleInfiniteListState'
 

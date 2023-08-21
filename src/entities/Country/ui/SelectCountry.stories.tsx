@@ -5,7 +5,7 @@ import { Country } from '../model/const/country'
 import { SelectCountry } from './SelectCountry'
 
 export default {
-  title: 'entities/SelectCountry',
+  title: 'entities/Country/SelectCountry',
   component: SelectCountry,
   argTypes: {
     backgroundColor: { control: 'color' },

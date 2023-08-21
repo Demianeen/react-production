@@ -14,7 +14,7 @@ import type {
 } from 'react-virtuoso'
 import { Virtuoso, VirtuosoGrid } from 'react-virtuoso'
 import { useTranslation } from 'react-i18next'
-import { View } from '@/entities/ListFilters'
+import { View } from '@/entities/View'
 import { Text, TextSize } from '@/shared/ui/deprecated/Text'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
 import { Title } from '@/shared/ui/redesigned/Title'

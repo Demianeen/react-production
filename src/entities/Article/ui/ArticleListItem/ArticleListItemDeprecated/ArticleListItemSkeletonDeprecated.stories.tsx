@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { View } from '@/entities/ListFilters'
+import { View } from '@/entities/View'
 import { ParentDecorator } from '@/shared/lib/storybook/ParentDecorator'
 import { ArticleListItemSkeletonDeprecated } from './ArticleListItemSkeletonDeprecated'
 

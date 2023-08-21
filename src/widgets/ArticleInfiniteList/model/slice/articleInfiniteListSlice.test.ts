@@ -1,5 +1,5 @@
 import { ARTICLE_VIEW_LOCALSTORAGE_KEY } from '@/shared/const/localstorage'
-import { View } from '@/entities/ListFilters'
+import { View } from '@/entities/View'
 import {
   anotherMockArticleEntities,
   anotherMockArticleIds,

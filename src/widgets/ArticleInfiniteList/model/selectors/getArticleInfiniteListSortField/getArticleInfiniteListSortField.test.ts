@@ -1,5 +1,5 @@
 import type { StateSchema } from '@/app/providers/StoreProvider'
-import { SortField } from '@/entities/ListFilters'
+import { SortField } from '@/entities/SortField'
 import { getArticleInfiniteListSortField } from './getArticleInfiniteListSortField'
 
 describe('getArticleInfiniteListSortField', () => {

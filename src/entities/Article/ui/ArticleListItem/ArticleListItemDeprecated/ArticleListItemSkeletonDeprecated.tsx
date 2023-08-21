@@ -2,7 +2,7 @@ import { memo } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { Card } from '@/shared/ui/deprecated/Card'
 import { Skeleton } from '@/shared/ui/deprecated/Skeleton'
-import { View } from '@/entities/ListFilters'
+import { View } from '@/entities/View'
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
 import styles from './ArticleListItemDeprecated.module.scss'
 

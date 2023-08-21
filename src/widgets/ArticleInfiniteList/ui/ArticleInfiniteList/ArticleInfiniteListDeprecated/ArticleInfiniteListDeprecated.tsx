@@ -5,12 +5,12 @@ import { VirtualizedArticleList } from '@/entities/Article'
 import { Text, TextSize } from '@/shared/ui/deprecated/Text'
 import { HStack } from '@/shared/ui/redesigned/Stack'
 import { useSelector } from 'react-redux'
+import { ArticleFiltersContainer } from '../../ArticleFiltersContainer/ArticleFiltersContainer'
 import { getArticles } from '../../../model/slice/articleInfiniteListSlice'
 import { useArticleInfiniteListError } from '../../../model/selectors/getArticleInfiniteListError/getArticleInfiniteListError'
 import { useArticleInfiniteListIsLoading } from '../../../model/selectors/getArticleInfiniteListIsLoading/getArticleInfiniteListIsLoading'
 import { useArticleInfiniteListStartIndex } from '../../../model/selectors/getArticleInfiniteListStartIndex/getArticleInfiniteListStartIndex'
 import { useArticleInfiniteListView } from '../../../model/selectors/getArticleInfiniteListView/getArticleInfiniteListView'
-import { ArticleInfiniteListFilters } from '../../ArticleInfiniteListFilters/ArticleInfiniteListFilters'
 import { useArticleInfiniteList } from '../../../lib/useArticleInfiniteList'
 
 interface ArticleInfiniteListDeprecatedProps {
@@ -60,7 +60,7 @@ export const ArticleInfiniteListDeprecated = ({
         onLoadNextPart={onLoadNextPart}
         scrollParent={scrollParent}
         // @ts-expect-error Problem with types
-        Header={ArticleInfiniteListFilters}
+        Header={ArticleFiltersContainer}
         startIndex={startIndex}
         onOpenArticle={onOpenArticle}
         target={target}

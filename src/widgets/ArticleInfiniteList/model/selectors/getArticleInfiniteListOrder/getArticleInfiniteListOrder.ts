@@ -1,4 +1,4 @@
-import { SortOrder } from '@/shared/const/sort'
+import { SortOrder } from '@/entities/Order'
 import { buildSelector } from '@/shared/lib/store'
 import { getArticleInfiniteListState } from '../getArticleInfiniteListState/getArticleInfiniteListState'
 

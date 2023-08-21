@@ -1,7 +1,7 @@
 import type { HTMLAttributeAnchorTarget } from 'react'
 import { memo, useCallback, useState } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import { View } from '@/entities/ListFilters'
+import { View } from '@/entities/View'
 import type { TestProps } from '@/shared/types/tests'
 import type { ComputeListItemsLimitItemArgs } from '../../model/lib/useComputeListItemsLimit'
 import { useArticleListSkeletons } from '../../model/lib/useArticleListSkeleton'

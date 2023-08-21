@@ -1,5 +1,5 @@
-import { SortOrder } from '../../../src/shared/const/sort'
-import { SortField } from '../../../src/entities/ListFilters/model/const/sortField'
+import { SortOrder } from '../../../src/entities/Order/model/const/order'
+import { SortField } from '../../../src/entities/SortField/model/const/sortField'
 import { routes } from '../../../src/shared/lib/router/routes'
 
 let articleId = 0
@@ -57,7 +57,7 @@ describe('User enters the articles page', () => {
       'have.length.greaterThan',
       3
     )
-    cy.selectFromSelect('ListFiltersSortField', SortField.VIEWS)
+    cy.selectFromSelect('SelectSortField', SortField.VIEWS)
 
     // Wait for new articles to be returned by the server
     cy.wait('@getArticles')
@@ -79,8 +79,8 @@ describe('User enters the articles page', () => {
       'have.length.greaterThan',
       3
     )
-    cy.selectFromSelect('ListFiltersOrder', SortOrder.DESC)
-    cy.selectFromSelect('ListFiltersSortField', SortField.VIEWS)
+    cy.selectFromSelect('SelectOrder', SortOrder.DESC)
+    cy.selectFromSelect('SelectSortField', SortField.VIEWS)
 
     // Wait for new articles to be returned by the server
     cy.wait('@getArticles')

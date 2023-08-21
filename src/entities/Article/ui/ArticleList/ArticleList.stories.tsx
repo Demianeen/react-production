@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { View } from '@/entities/ListFilters'
+import { View } from '@/entities/View'
 import { LokiDelayDecorator } from '@/shared/lib/storybook/LokiDelayDecorator'
 import { mockArticle } from '../../model/mocks/mockArticle'
 import type { ArticleListProps } from './ArticleList'

@@ -1,5 +1,5 @@
-import type { View } from '@/entities/ListFilters'
 import { useMemo } from 'react'
+import type { View } from '@/entities/View'
 import type { ComputeListItemsLimitArgs } from './useComputeListItemsLimit'
 import { useComputeListItemsLimit } from './useComputeListItemsLimit'
 import { ArticleListItemSkeleton } from '../../ui/ArticleListItem/ArticleListItemSkeleton'

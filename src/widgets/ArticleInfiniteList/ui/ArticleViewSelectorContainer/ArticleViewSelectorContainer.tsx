@@ -1,5 +1,5 @@
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
-import { ListFiltersView } from '@/entities/ListFilters'
+import { SelectView } from '@/entities/View'
 import { useArticleView } from '../../lib/useArticleView'
 
 export interface ArticleViewSelectorContainerProps {
@@ -11,6 +11,6 @@ export const ArticleViewSelectorContainer = typedMemo(
   ({ className, listRef }: ArticleViewSelectorContainerProps) => {
     const viewProps = useArticleView(listRef)
 
-    return <ListFiltersView className={className} {...viewProps} />
+    return <SelectView className={className} {...viewProps} />
   }
 )

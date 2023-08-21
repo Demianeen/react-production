@@ -1,5 +1,5 @@
-import type { SortField } from '@/entities/ListFilters'
-import type { SortOrder } from '@/shared/const/sort'
+import type { SortField } from '@/entities/SortField'
+import type { SortOrder } from '@/entities/Order'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useCallback } from 'react'
 import { useSelector } from 'react-redux'

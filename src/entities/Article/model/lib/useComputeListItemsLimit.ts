@@ -1,4 +1,4 @@
-import { View } from '@/entities/ListFilters'
+import { View } from '@/entities/View'
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce'
 import { useMedia } from '@/shared/lib/hooks/useMedia/useMedia'
 import { useCallback, useEffect } from 'react'

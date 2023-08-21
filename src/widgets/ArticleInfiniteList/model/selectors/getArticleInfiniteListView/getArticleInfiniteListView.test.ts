@@ -1,5 +1,5 @@
 import type { StateSchema } from '@/app/providers/StoreProvider'
-import { View } from '@/entities/ListFilters'
+import { View } from '@/entities/View'
 import { getArticleInfiniteListView } from './getArticleInfiniteListView'
 import { INITIAL_ARTICLE_VIEW } from '../../const/view'
 
