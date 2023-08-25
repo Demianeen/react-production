@@ -6,12 +6,10 @@ import styles from './Title.module.scss'
 type AvaliableTags = 'h1' | 'h2' | 'h3'
 const defaultTagArray: AvaliableTags[] = ['h1', 'h2']
 
-/* eslint-disable @typescript-eslint/naming-convention */
 const mapLevel = {
   1: styles.level1,
   2: styles.level2,
 }
-/* eslint-enable @typescript-eslint/naming-convention */
 
 export interface TitleProps
   extends HTMLAttributes<HTMLHeadingElement> {

@@ -21,9 +21,7 @@ interface DbSchema {
   articles: Article[]
   notifications: Notification[]
   comments: Comment[]
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   'article-rating': (typeof ArticleRating)[]
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   'profile-rating': (typeof ProfileRating)[]
 }
 

@@ -83,23 +83,47 @@ module.exports = {
     ],
     // we use underlines for webpack env variables
     'no-underscore-dangle': 0,
+
+    // enforces consistent naming
     '@typescript-eslint/naming-convention': [
-      2,
+      1,
       {
         selector: 'default',
+        format: ['camelCase', 'PascalCase'],
+        leadingUnderscore: 'allowSingleOrDouble',
+        trailingUnderscore: 'allowDouble',
+      },
+      {
+        selector: 'variable',
         format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
         leadingUnderscore: 'allowSingleOrDouble',
         trailingUnderscore: 'allowDouble',
       },
       {
-        selector: 'enum',
+        selector: 'typeLike',
         format: ['PascalCase'],
       },
       {
         selector: 'enumMember',
         format: ['UPPER_CASE'],
       },
+      // ignores names with quotes like 'data-testid'
+      {
+        selector: [
+          'classProperty',
+          'objectLiteralProperty',
+          'typeProperty',
+          'classMethod',
+          'objectLiteralMethod',
+          'typeMethod',
+          'accessor',
+          'enumMember',
+        ],
+        format: null,
+        modifiers: ['requiresQuotes'],
+      },
     ],
+
     // to import dev dependencies in some files
     'import/no-extraneous-dependencies': [
       'error',

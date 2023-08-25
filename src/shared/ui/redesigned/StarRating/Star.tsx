@@ -20,13 +20,11 @@ interface StarProps {
 }
 
 const mapStarRatingToTooltipText: Record<number, string> = {
-  /* eslint-disable @typescript-eslint/naming-convention */
   1: 'Bad',
   2: 'Poor',
   3: 'Average',
   4: 'Good',
   5: 'Excellent',
-  /* eslint-enable @typescript-eslint/naming-convention */
 }
 
 export const Star = typedMemo(
@@ -64,7 +62,6 @@ export const Star = typedMemo(
         data-selected={isHighlighted}
         onClick={onClick}
         buttonProps={{
-          // eslint-disable-next-line @typescript-eslint/naming-convention
           'aria-label': `Star ${value}`,
           tabIndex: isSelected ? -1 : 0,
           onKeyDown,

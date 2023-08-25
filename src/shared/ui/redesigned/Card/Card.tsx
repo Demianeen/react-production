@@ -16,13 +16,11 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
   background?: 'light' | 'dark'
 }
 
-/* eslint-disable @typescript-eslint/naming-convention */
 const mapPadding = {
   0: styles.padding0,
   1: styles.padding1,
   1.5: styles.padding1_5,
 }
-/* eslint-enable @typescript-eslint/naming-convention */
 
 export const Card = typedMemo(
   typedForwardRef(

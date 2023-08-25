@@ -4,7 +4,7 @@ import { Theme } from '@/shared/const/theme'
 export const ThemeDecorator = (theme?: Theme) =>
   function Decorator(
     StoryComponent: StoryFn,
-    { globals: { theme: defaultTheme }, name }: StoryContext
+    { globals: { theme: defaultTheme } }: StoryContext
   ) {
     document.body.classList.remove(
       Theme.LIGHT,

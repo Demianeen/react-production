@@ -5,7 +5,6 @@ import { VirtualizedArticleList } from '@/entities/Article'
 import { HStack } from '@/shared/ui/redesigned/Stack'
 import { Title } from '@/shared/ui/redesigned/Title'
 import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout'
-
 import { useSelector } from 'react-redux'
 import { getArticles } from '../../../model/slice/articleInfiniteListSlice'
 import { useArticleInfiniteListStartIndex } from '../../../model/selectors/getArticleInfiniteListStartIndex/getArticleInfiniteListStartIndex'
