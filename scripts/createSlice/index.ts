@@ -9,6 +9,7 @@ let [layer, sliceName] = argv._
 const options: CreateSliceOptions = {
   model: argv.model === true ? sliceName : argv.model,
   api: argv.api === true ? sliceName : argv.api,
+  dryRun: argv['dry-run'] === true,
 }
 
 const layers: Layer[] = ['pages', 'widgets', 'features', 'entities']

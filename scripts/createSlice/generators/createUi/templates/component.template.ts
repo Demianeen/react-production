@@ -1,4 +1,4 @@
-import { capitalize } from '../../../../../utils/capitalize'
+import { capitalize } from 'utils/capitalize'
 import type { Layer } from '../../../types/createSlice'
 
 export const componentTemplate = (
@@ -12,7 +12,7 @@ export const componentTemplate = (
     !isDefaultExport ? 'export ' : ''
   }const`
 
-  return `import { classNames } from "@/shared/lib/classNames/classNames"
+  return `import { classNamesNew } from "@/shared/lib/classNames/classNamesNew"
 import styles from "./${capitalizedSliceName}.module.scss"
 
 interface ${capitalizedSliceName}Props {
@@ -21,7 +21,7 @@ interface ${capitalizedSliceName}Props {
 
 ${componentDeclaration} ${capitalizedSliceName} = memo(({ className }: ${capitalizedSliceName}Props) => {
   return (
-    <div className={classNames(styles.${sliceName}, {}, [className])}>
+    <div className={classNamesNew(styles.${sliceName}, className)}>
        
     </div>
   )

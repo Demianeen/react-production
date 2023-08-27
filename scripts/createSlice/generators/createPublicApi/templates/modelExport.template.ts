@@ -1,4 +1,4 @@
-import { capitalize } from '../../../../../utils/capitalize'
+import { capitalize } from 'utils/capitalize'
 import type { Layer } from '../../../types/createSlice'
 
 export const modelExportTemplate = (

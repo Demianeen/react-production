@@ -1,4 +1,4 @@
-import { capitalize } from '../../../../../utils/capitalize'
+import { capitalize } from 'utils/capitalize'
 
 export const reduxSchemaTemplate = (sliceName: string) => {
   const schemaName = `${sliceName}Schema`

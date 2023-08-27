@@ -1,9 +1,9 @@
 import fs from 'fs'
 import path from 'path'
+import { capitalize } from 'utils/capitalize'
+import { decapitalize } from 'utils/decapitalize'
 import { renameFile } from './renameFile'
 import { renameDir } from './renameDir'
-import { decapitalize } from '../../../utils/decapitalize'
-import { capitalize } from '../../../utils/capitalize'
 
 export const renameFilesAndDirectories = (
   dir: string,
