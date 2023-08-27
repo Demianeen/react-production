@@ -50,15 +50,10 @@ export const computeListItemsLimit = ({
   }
 
   const elementWidth = containerRef.scrollWidth
-  console.log(containerRef.offsetWidth)
-  console.log(containerRef.clientWidth)
   const elementHeight = Math.min(
     containerRef.clientHeight,
     window.innerHeight
   )
-
-  console.log('elementWidth', elementWidth)
-  console.log('elementHeight', elementHeight)
 
   // 48 is a grid gap
   const widthGridGap = 48
@@ -74,9 +69,6 @@ export const computeListItemsLimit = ({
       (elementHeight + heightGridGap) /
         (gridItemHeight + heightGridGap)
     ) || 1
-
-  console.log('widthAmount', widthAmount)
-  console.log('heightAmount', heightAmount)
 
   return widthAmount * heightAmount
 }

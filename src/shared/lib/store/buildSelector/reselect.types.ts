@@ -17,11 +17,11 @@ export type ReverseHead<S extends readonly unknown[][]> =
  * Recursion makes this work also when rest syntax has been used
  * Runs _ReverseTail twice, because first pass turns last element into "never", and second pass removes it.
  * */
-export type ReverseTail<S> = _ReverseTail<_ReverseTail<S>>
-type _ReverseTail<S> = Tail<S> extends [unknown]
+export type ReverseTail<S> = ReverseTailInside<ReverseTailInside<S>>
+type ReverseTailInside<S> = Tail<S> extends [unknown]
   ? [Head<S>]
   : Tail<S> extends unknown[]
-  ? [Head<S>, ..._ReverseTail<Tail<S>>]
+  ? [Head<S>, ...ReverseTailInside<Tail<S>>]
   : never
 
 type Intersect<T extends readonly unknown[]> = T extends []

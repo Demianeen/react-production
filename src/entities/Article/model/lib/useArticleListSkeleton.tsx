@@ -4,7 +4,7 @@ import type { ComputeListItemsLimitArgs } from './useComputeListItemsLimit'
 import { useComputeListItemsLimit } from './useComputeListItemsLimit'
 import { ArticleListItemSkeleton } from '../../ui/ArticleListItem/ArticleListItemSkeleton'
 
-interface useArticleListSkeletonsArgs
+interface UseArticleListSkeletonsArgs
   extends ComputeListItemsLimitArgs {
   view: View
   className?: string
@@ -14,7 +14,7 @@ export const useArticleListSkeletons = ({
   view,
   className,
   ...computeListLimitProps
-}: useArticleListSkeletonsArgs) => {
+}: UseArticleListSkeletonsArgs) => {
   const skeletonAmountCalc = useComputeListItemsLimit({
     view,
     ...computeListLimitProps,
