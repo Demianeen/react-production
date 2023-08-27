@@ -5,7 +5,7 @@ import type { ComponentType } from 'react'
 import { useState } from 'react'
 
 export const withTheme = (Component: ComponentType) => {
-  return function WithTheme() {
+  return () => {
     const [initialTheme, setInitialTheme] = useState<Theme>()
     useJsonSettingOnUserInit('theme', setInitialTheme)
 

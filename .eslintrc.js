@@ -34,6 +34,7 @@ module.exports = {
     '@typescript-eslint',
     'netliukh-demian-fsd-plugin',
     'unused-imports',
+    'prefer-arrow',
   ],
   ignorePatterns: ['.eslintrc.js', 'cypress.config.ts'],
   settings: {
@@ -58,7 +59,7 @@ module.exports = {
     'import/prefer-default-export': 0,
     // ensure that every unused variable have underscore in the front
     '@typescript-eslint/no-unused-vars': [
-      1,
+      2,
       {
         argsIgnorePattern: '^_',
         varsIgnorePattern: '^_',
@@ -86,7 +87,7 @@ module.exports = {
 
     // enforces consistent naming
     '@typescript-eslint/naming-convention': [
-      1,
+      2,
       {
         selector: 'default',
         format: ['camelCase', 'PascalCase'],
@@ -224,6 +225,28 @@ module.exports = {
 
     // TODO: turn on later
     'react/no-unstable-nested-components': 0,
+
+    // enforce arrow function
+    'react/function-component-definition': [
+      2,
+      {
+        namedComponents: 'arrow-function',
+        unnamedComponents: 'arrow-function',
+      },
+    ],
+    'prefer-arrow/prefer-arrow-functions': [
+      2,
+      {
+        classPropertiesAllowed: false,
+      },
+    ],
+    'arrow-body-style': ['error', 'as-needed'],
+
+    // enforce to use style function typing in one way
+    '@typescript-eslint/prefer-function-type': 2,
+
+    // TODO: enforce later
+    'react/display-name': 1,
   },
   overrides: [
     {
@@ -261,6 +284,14 @@ module.exports = {
       },
     },
     {
+      files: ['src/**/*'],
+      excludedFiles: ['src/**/*.stories.tsx'],
+      rules: {
+        // no console in production
+        'no-console': 2,
+      },
+    },
+    {
       // override rules for slice services
       files: ['src/**/model/services/**/*.ts'],
       rules: {
@@ -292,11 +323,25 @@ module.exports = {
       },
     },
     {
+      // we don't need to add display name for storybook decorators
+      files: ['src/shared/lib/storybook/*'],
+      rules: {
+        'react/display-name': 0,
+      },
+    },
+    {
       // override rules for cypress
       files: ['cypress/**/*.{ts,tsx}'],
       extends: ['plugin:cypress/recommended'],
       rules: {
         '@typescript-eslint/no-namespace': 0,
+      },
+    },
+    {
+      // allows as to use react components without transforming them into shorthand arrow function syntax
+      files: ['**/*.tsx'],
+      rules: {
+        'arrow-body-style': 0,
       },
     },
   ],

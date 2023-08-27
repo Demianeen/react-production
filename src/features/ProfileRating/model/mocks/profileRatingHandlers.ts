@@ -20,7 +20,7 @@ export const profileRatingHandlers = [
 
     return res(ctx.status(200), ctx.json([mockProfileRating]))
   }),
-  rest.post('/profile-rating', (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(mockProfileRating))
-  }),
+  rest.post('/profile-rating', (req, res, ctx) =>
+    res(ctx.status(200), ctx.json(mockProfileRating))
+  ),
 ]

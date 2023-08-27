@@ -1,5 +1,3 @@
 import { isStoryNameIncludes } from './isStoryNameIncludes'
 
-export const isMockLoading = () => {
-  return isStoryNameIncludes('loading')
-}
+export const isMockLoading = () => isStoryNameIncludes('loading')

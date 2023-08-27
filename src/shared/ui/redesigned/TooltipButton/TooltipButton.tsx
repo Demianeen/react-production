@@ -33,9 +33,7 @@ export type TooltipButtonProps<TTag extends ButtonTags> = {
 
 // TODO: Fix z-index for tooltip. Article list shows over tooltip.
 export const TooltipButton = typedForwardRef(
-  function TooltipButtonInside<
-    TTag extends ButtonTags = typeof DEFAULT_BUTTON_TAG
-  >(
+  <TTag extends ButtonTags = typeof DEFAULT_BUTTON_TAG>(
     {
       className,
       children,
@@ -47,13 +45,9 @@ export const TooltipButton = typedForwardRef(
       ...props
     }: TooltipButtonProps<TTag>,
     ref: ForwardedRef<WithDefaultButtonTag<TTag>>
-  ) {
-    // const [isButtonFocused, bindFocus] = useFocus()
-    // const { isTabLastKey } = useTab()
-
+  ) => {
     const handleClick = useCallback(
       (e: MouseEvent<HTMLButtonElement>) => {
-        // setWasButtonClicked(true)
         if (
           'onClick' in props &&
           typeof props.onClick === 'function'

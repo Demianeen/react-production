@@ -1,5 +1,6 @@
-export const rtkApiTemplate = (apiName: string) => {
-  return `import { rtkApi } from '@/shared/api/rtkApi'
+export const rtkApiTemplate = (
+  apiName: string
+) => `import { rtkApi } from '@/shared/api/rtkApi'
 import type { Article } from 'entities/Article'
 
 const ${apiName}Api = rtkApi.injectEndpoints({
@@ -21,4 +22,3 @@ const ${apiName}Api = rtkApi.injectEndpoints({
 export const { } =
   ${apiName}Api
 `
-}

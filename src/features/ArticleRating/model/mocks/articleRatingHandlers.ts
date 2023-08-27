@@ -20,7 +20,7 @@ export const articleRatingHandlers = [
 
     return res(ctx.status(200), ctx.json([mockArticleRating]))
   }),
-  rest.post('/article-rating', (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(mockArticleRating))
-  }),
+  rest.post('/article-rating', (req, res, ctx) =>
+    res(ctx.status(200), ctx.json(mockArticleRating))
+  ),
 ]

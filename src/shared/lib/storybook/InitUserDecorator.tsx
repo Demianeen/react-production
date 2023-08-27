@@ -7,8 +7,9 @@ import { useInitAuthData } from '@/entities/User'
  * @param userId number or null to remove user data
  * @returns
  */
-export const InitUserDecorator = (userId: number | null = 1) =>
-  function Decorator(StoryComponent: StoryFn) {
+export const InitUserDecorator =
+  (userId: number | null = 1) =>
+  (StoryComponent: StoryFn) => {
     const initAuthData = useInitAuthData()
 
     localStorage.setItem(USER_ID_LOCALSTORAGE_KEY, String(userId))

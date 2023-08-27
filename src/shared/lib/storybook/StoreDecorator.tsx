@@ -26,12 +26,13 @@ const defaultAsyncReducers: Required<AsyncReducersList> = {
   registrationForm: registrationFormReducer,
 }
 
-export const StoreDecorator = (
-  initialState?: DeepPartial<StateSchema>,
-  asyncReducers?: AsyncReducersList
-) =>
-  function decorator(StoryComponent: StoryFn) {
-    return (
+export const StoreDecorator =
+  (
+    initialState?: DeepPartial<StateSchema>,
+    asyncReducers?: AsyncReducersList
+  ) =>
+  (StoryComponent: StoryFn) =>
+    (
       <StoreProvider
         preloadedState={initialState}
         preloadedAsyncReducers={{
@@ -45,4 +46,3 @@ export const StoreDecorator = (
         <StoryComponent />
       </StoreProvider>
     )
-  }

@@ -105,76 +105,76 @@ const isButton = (Component: ElementType): Component is 'button' => {
 export const DEFAULT_BUTTON_TAG = 'button'
 export type ButtonTags = typeof AppLink | 'button'
 
-export const Button = typedForwardRef(function Button<
-  TTag extends ButtonTags = typeof DEFAULT_BUTTON_TAG
->(
-  {
-    className,
-    children,
-    variant = 'outline',
-    disabled = false,
-    disabledButton = false,
-    as,
-    maxWidth = false,
-    paddings = variant === 'clear' ? 'none' : 'all',
-    addonLeft,
-    addonRight,
-    noBorderRadius = false,
-    actionColor: color = 'primary',
-    ...props
-  }: ButtonProps<TTag>,
-  ref: ForwardedRef<WithDefaultButtonTag<TTag>>
-) {
-  const isDisabled = disabled ?? disabledButton
+export const Button = typedForwardRef(
+  <TTag extends ButtonTags = typeof DEFAULT_BUTTON_TAG>(
+    {
+      className,
+      children,
+      variant = 'outline',
+      disabled = false,
+      disabledButton = false,
+      as,
+      maxWidth = false,
+      paddings = variant === 'clear' ? 'none' : 'all',
+      addonLeft,
+      addonRight,
+      noBorderRadius = false,
+      actionColor: color = 'primary',
+      ...props
+    }: ButtonProps<TTag>,
+    ref: ForwardedRef<WithDefaultButtonTag<TTag>>
+  ) => {
+    const isDisabled = disabled ?? disabledButton
 
-  const mods: Mods = {
-    [styles.disabled]: isDisabled,
-    [styles.maxWidth]: maxWidth,
-    [styles.withAddonLeft]: Boolean(addonLeft),
-    [styles.withAddonRight]: Boolean(addonRight),
-    [styles.borderRadius]: !noBorderRadius,
-  }
+    const mods: Mods = {
+      [styles.disabled]: isDisabled,
+      [styles.maxWidth]: maxWidth,
+      [styles.withAddonLeft]: Boolean(addonLeft),
+      [styles.withAddonRight]: Boolean(addonRight),
+      [styles.borderRadius]: !noBorderRadius,
+    }
 
-  const classes = classNames(
-    styles.button,
-    mods,
-    styles[variant],
-    mapPaddings[paddings],
-    styles[color],
-    className
-  )
+    const classes = classNames(
+      styles.button,
+      mods,
+      styles[variant],
+      mapPaddings[paddings],
+      styles[color],
+      className
+    )
 
-  const Tag = as ?? DEFAULT_BUTTON_TAG
+    const Tag = as ?? DEFAULT_BUTTON_TAG
 
-  const childrenWithAddons = (
-    <>
-      {addonLeft && (
-        <span className={styles.addonLeft}>{addonLeft}</span>
-      )}
-      {children}
-      {addonRight && (
-        <span className={styles.addonRight}>{addonRight}</span>
-      )}
-    </>
-  )
+    const childrenWithAddons = (
+      <>
+        {addonLeft && (
+          <span className={styles.addonLeft}>{addonLeft}</span>
+        )}
+        {children}
+        {addonRight && (
+          <span className={styles.addonRight}>{addonRight}</span>
+        )}
+      </>
+    )
 
-  if (isButton(Tag)) {
+    if (isButton(Tag)) {
+      return (
+        <button
+          className={classes}
+          ref={ref as ForwardedRef<HTMLButtonElement>}
+          disabled={isDisabled}
+          {...props}
+        >
+          {childrenWithAddons}
+        </button>
+      )
+    }
+
     return (
-      <button
-        className={classes}
-        ref={ref as ForwardedRef<HTMLButtonElement>}
-        disabled={isDisabled}
-        {...props}
-      >
-        {childrenWithAddons}
-      </button>
+      // @ts-expect-error FIXME: fix button typing
+      <Tag className={classes} ref={ref} {...props}>
+        {children}
+      </Tag>
     )
   }
-
-  return (
-    // @ts-expect-error FIXME: fix button typing
-    <Tag className={classes} ref={ref} {...props}>
-      {children}
-    </Tag>
-  )
-})
+)

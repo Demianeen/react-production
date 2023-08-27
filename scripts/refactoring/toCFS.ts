@@ -51,7 +51,7 @@ const transformStoryFile = (sourceFilePath: string) => {
   })
 }
 
-function processFiles(directory: string) {
+const processFiles = (directory: string) => {
   fs.readdir(directory, (dirErr, files) => {
     if (dirErr) {
       console.error('Error reading the directory:', dirErr)

@@ -4,6 +4,4 @@ export interface ErrorWithCode extends Error {
 
 export const isErrorWithCode = (
   error: Error
-): error is ErrorWithCode => {
-  return 'code' in error
-}
+): error is ErrorWithCode => 'code' in error
