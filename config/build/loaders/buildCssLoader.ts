@@ -1,8 +1,8 @@
 import MiniCSSExtractPlugin from 'mini-css-extract-plugin'
 
 export const buildCssLoader = (isDev: boolean) => ({
-  test: /\.s[ac]ss$/i,
-  exclude: /node_modules/,
+  test: /\.(s?css)$/i,
+  exclude: /node_modules\/(?!react-quill)/,
   use: [
     // Creates `style` nodes from JS strings
     isDev ? 'style-loader' : MiniCSSExtractPlugin.loader,

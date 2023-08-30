@@ -15,6 +15,7 @@ import type {
 import { commentFormReducer } from '@/entities/CommentForm/testing'
 import { articleCommentListReducer } from '@/features/ArticleCommentList/testing'
 import { articleInfiniteListReducer } from '@/widgets/ArticleInfiniteList/testing'
+import { createArticleReducer } from '@/widgets/CreateArticle/testing'
 
 const defaultAsyncReducers: Required<AsyncReducersList> = {
   loginForm: loginReducer,
@@ -24,6 +25,7 @@ const defaultAsyncReducers: Required<AsyncReducersList> = {
   articleCommentList: articleCommentListReducer,
   articleInfiniteList: articleInfiniteListReducer,
   registrationForm: registrationFormReducer,
+  createArticle: createArticleReducer,
 }
 
 export const StoreDecorator =

@@ -1,0 +1,89 @@
+// /* stylelint-disable selector-class-pattern */
+// .quill {
+//   width: 100%;
+
+//   .ql-toolbar,
+//   .ql-container {
+//     border: var(--primary-color) 1px solid;
+
+//     .ql-picker {
+//       font: inherit;
+//       color: var(--secondary-color);
+//     }
+
+//     .ql-stroke {
+//       stroke: var(--secondary-color);
+//     }
+
+//     .ql-fill {
+//       fill: var(--secondary-color);
+//     }
+
+//     .ql-selected,
+//     button:hover,
+//     button.ql-active,
+//     .ql-picker-label:hover,
+//     .ql-picker-label.ql-active {
+//       color: var(--primary-color) !important;
+
+//       .ql-stroke {
+//         stroke: var(--primary-color) !important;
+//       }
+
+//       .ql-fill {
+//         fill: var(--primary-color) !important;
+//       }
+//     }
+
+//     button.ql-active {
+//       outline: 1px solid var(--primary-color);
+//     }
+//   }
+
+//   .ql-container {
+//     font: inherit;
+//     color: inherit;
+
+//     .ql-editor {
+//       &.ql-blank::before {
+//         color: var(--secondary-color);
+//         opacity: 0.6;
+//       }
+
+//       code,
+//       .ql-syntax {
+//         color: var(--primary-color);
+//         background-color: var(--code-bg);
+//       }
+//     }
+//   }
+// }
+
+$content-padding: 0.5rem;
+
+.editor {
+  position: relative;
+}
+
+.contentEditable {
+  width: 100%;
+  height: 25rem;
+  padding: $content-padding;
+  margin: 0;
+  color: var(--primary-color);
+  background: var(--bg-color);
+  border: 1px solid var(--primary-color);
+  outline: none;
+
+  &:focus {
+    outline: var(--primary-color) solid 1px;
+  }
+}
+
+.placeholder {
+  position: absolute;
+  top: $content-padding;
+  left: $content-padding;
+  pointer-events: none;
+  opacity: 0.5;
+}

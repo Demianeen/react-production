@@ -65,7 +65,6 @@ export interface GetFlexClassNameProps {
    * @description Gap between flex items
    */
   gap?: FlexGap
-  height?: string
   /**
    * @description Flag to set width: 100%
    */
