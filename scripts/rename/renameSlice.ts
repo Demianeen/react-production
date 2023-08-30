@@ -1,6 +1,6 @@
 import fs from 'fs'
 import { resolveRoot } from 'utils/resolveRoot'
-import { renameFilesAndDirectories } from './generators'
+import { renameFilesAndDirectories } from './generators/renameFilesAndDirectories'
 import type { Layer } from './types/createSlice'
 
 const layer = process.argv[2]

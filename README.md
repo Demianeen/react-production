@@ -29,13 +29,15 @@ This repository was created as part of the UlbiTV's course "To production on Rea
 - `npm run test:ui` - Run screenshot tests with loki
 - `npm run test:ui:ok` - Confirm new screenshots
 - `npm run test:ui:ci` - Run screenshot tests in CI
-- `test:ui:report` - Generate full report for screenshot tests
+- `npm run test:ui:report` - Generate full report for screenshot tests
 - `npm run test:ui:report:chrome` - Generate full report for screenshot tests and open it in Chrome
 - `npm run test:ui:report:arc` - Generate full report for screenshot tests and open it in Arc
 - `npm run test:ui:json` - Generate json report for screenshot tests
 - `npm run test:ui:html` - Generate HTML report for screenshot tests
 - `npm run generate:slice` - Script for generating FSD slices,
 - `npm run prepare` - Pre-commit hooks
+- `npm run rename:slice` - Script for renaming FSD slices, Takes 3 arguments: 1. layer, 2. old slice name, 3. new slice name.
+- `npm run rename:folder` - Script for renaming folders. Takes 3 arguments: 1. pathToFolder, 2. old name, 3. new name.
 - `npm run remove:feature` - Removes feature using feature flag name, and state on/off (read more about feature flags [here](#working-with-feature-flags))
 - `npm run check:layerDocs` - Checks if README.md files in each layer in src/ are up to date with the public API. Read more [here](scripts/checkLayerDocs/index.ts)
 - `npm run postinstall` - Apply patches after npm i
@@ -258,7 +260,7 @@ Widgets merge reusable entity blocks with features, creating meaningful blocks.
 - [PageLoader](./src/widgets/PageLoader/README.md): displays a full page loading spinner while a page is being loaded.
 - [ScrollToolbar](./src/widgets/ScrollToolbar/README.md): displays a toolbar to go to the top of the page that appears when the user scrolls down the page.
 - [Sidebar](./src/widgets/Sidebar/README.md): displays a sidebar with links to different sections of the website.
-- [CreateArticle](./src/widgets/CreateArticle/README.md): 
+- [CreateArticle](./src/widgets/CreateArticle/README.md):
 
 ### Pages
 
