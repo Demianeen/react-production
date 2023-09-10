@@ -23,7 +23,6 @@ import {
   ToolbarNodes,
   ToolbarPlugin,
 } from '../ToolbarPlugin/ToolbarPlugin'
-import { BannerNode } from '../plugins/BannerPlugin/BannerNode'
 
 const theme: EditorThemeClasses = {
   imageBlock: styles.imageBlock,
@@ -47,7 +46,6 @@ export const WriteArticle = memo(() => {
       HeadingNode,
       LinkNode,
       QuoteNode,
-      BannerNode,
     ],
   }
 

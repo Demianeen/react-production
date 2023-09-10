@@ -3,7 +3,6 @@ import { HeadingNode } from '@lexical/rich-text'
 import { ListItemNode, ListNode } from '@lexical/list'
 import { HStack } from '@/shared/ui/redesigned/Stack'
 import { ImageToolbarPlugin } from './plugins/ImageToolbarPlugin/ImageToolbarPlugin'
-import { BannerToolbarPlugin } from './plugins/BannerToolbarPlugin/BannerToolbarPlugin'
 import { ListToolbarPlugin } from './plugins/ListToolbarPlugin/ListToolbarPlugin'
 import { HeadingToolbarPlugin } from './plugins/HeadingToolbarPlugin/HeadingToolbarPlugin'
 import { ImageBlockNode } from '../plugins/imageBlock/nodes/ImageBlockNode'
@@ -25,7 +24,6 @@ export const ToolbarPlugin = typedMemo(
       <HStack className={className} gap={0.5}>
         <HeadingToolbarPlugin />
         <ListToolbarPlugin />
-        <BannerToolbarPlugin />
         <ImageToolbarPlugin />
       </HStack>
     )
