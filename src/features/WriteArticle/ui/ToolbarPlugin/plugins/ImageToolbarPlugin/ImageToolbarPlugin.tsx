@@ -1,8 +1,9 @@
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
-import { Button } from '@/shared/ui/deprecated/Button'
+import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button'
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
 import { useCallback } from 'react'
 import ImageIcon from '@/shared/assets/icons/redesigned/textEditor/image.svg'
+import { Icon, IconType } from '@/shared/ui/deprecated/Icon'
 import {
   INSERT_IMAGE_BLOCK_COMMAND,
   ImageBlockPlugin,
@@ -28,8 +29,17 @@ export const ImageToolbarPlugin = typedMemo(
 
     return (
       <div className={className}>
-        <Button type='button' onClick={onClick}>
-          <ImageIcon />
+        <Button
+          type='button'
+          onClick={onClick}
+          theme={ButtonTheme.CLEAR}
+        >
+          <Icon
+            Svg={ImageIcon}
+            type={IconType.STROKE}
+            width={24}
+            height={24}
+          />
         </Button>
         <ImageBlockPlugin />
       </div>

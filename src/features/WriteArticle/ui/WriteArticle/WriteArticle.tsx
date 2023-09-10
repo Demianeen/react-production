@@ -15,7 +15,6 @@ import { CodeNode } from '@lexical/code'
 import { HeadingNode, QuoteNode } from '@lexical/rich-text'
 import { HorizontalRuleNode } from '@lexical/react/LexicalHorizontalRuleNode'
 import { useTranslation } from 'react-i18next'
-import { EnterPlugin } from '../plugins/EnterPlugin/EnterPlugin'
 import { Placeholder } from '../Placeholder/Placeholder'
 import { AutoLinkPlugin } from '../plugins/AutoLinkPlugin/AutoLinkPlugin'
 import styles from './WriteArticle.module.scss'
@@ -23,9 +22,15 @@ import {
   ToolbarNodes,
   ToolbarPlugin,
 } from '../ToolbarPlugin/ToolbarPlugin'
+import { getArticleStylesClassName } from '../../lib/getArticleStylesClassName/getArticleStylesClassName'
 
 const theme: EditorThemeClasses = {
   imageBlock: styles.imageBlock,
+  list: {
+    ul: 'ul',
+    ol: 'ol',
+    listitem: 'li',
+  },
 }
 
 const onError = (error: Error, _editor: LexicalEditor) => {
@@ -52,7 +57,13 @@ export const WriteArticle = memo(() => {
   return (
     <LexicalComposer initialConfig={initialConfig}>
       <ToolbarPlugin />
-      <HStack className={styles.editor} maxWidth>
+      <HStack
+        className={classNamesNew(
+          styles.editor,
+          getArticleStylesClassName()
+        )}
+        maxWidth
+      >
         <RichTextPlugin
           contentEditable={
             <ContentEditable
@@ -67,7 +78,6 @@ export const WriteArticle = memo(() => {
           }
           ErrorBoundary={LexicalErrorBoundary}
         />
-        <EnterPlugin />
         <HistoryPlugin />
         <AutoLinkPlugin />
         <MarkdownShortcutPlugin transformers={TRANSFORMERS} />

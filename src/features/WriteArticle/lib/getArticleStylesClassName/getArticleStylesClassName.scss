@@ -1,0 +1,13 @@
+$list-padding: 0 0 0 1.5rem;
+
+.withArticleStyles {
+  .ul {
+    padding: $list-padding;
+    list-style: disc;
+  }
+
+  .ol {
+    padding: $list-padding;
+    list-style: decimal;
+  }
+}
