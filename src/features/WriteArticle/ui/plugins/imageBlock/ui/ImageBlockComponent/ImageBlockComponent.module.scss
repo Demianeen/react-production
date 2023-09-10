@@ -1,0 +1,46 @@
+.imageWrapper {
+  &:focus {
+    outline: var(--outline-redesigned);
+  }
+}
+
+.img {
+  max-width: 100%;
+
+  &:focus,
+  &.focused {
+    outline: var(--outline-redesigned);
+  }
+}
+
+.placeholder {
+  display: none;
+}
+
+.contentEditable {
+  width: 100%;
+  outline: none;
+}
+
+.editor {
+  position: relative;
+
+  &:not(.withPlaceholder) {
+    width: 100%;
+
+    .contentEditable {
+      text-align: center;
+    }
+  }
+
+  &.withPlaceholder {
+    .contentEditable {
+      position: absolute;
+      top: 0;
+    }
+
+    .placeholder {
+      display: block;
+    }
+  }
+}

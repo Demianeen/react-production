@@ -21,3 +21,5 @@ export {
   useComputeListItemsLimit,
   computeListItemsLimit,
 } from './model/lib/useComputeListItemsLimit'
+
+export { ArticleImageBlockComponent } from './ui/ArticleImageBlockComponent/ArticleImageBlockComponent'

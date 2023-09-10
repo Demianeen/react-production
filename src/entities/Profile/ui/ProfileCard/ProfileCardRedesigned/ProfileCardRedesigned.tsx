@@ -1,6 +1,5 @@
 import type { FormEvent } from 'react'
 import { useTranslation } from 'react-i18next'
-
 import { Input, InputSkeleton } from '@/shared/ui/redesigned/Input'
 import { Avatar } from '@/shared/ui/redesigned/Avatar'
 import type { Currency } from '@/entities/Currency'

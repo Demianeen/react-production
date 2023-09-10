@@ -2,7 +2,6 @@ import { useMemo } from 'react'
 import { Navigate } from 'react-router-dom'
 import type { UserRole } from '@/entities/User'
 import { useUserRoles } from '@/entities/User'
-
 import { routes } from '@/shared/lib/router/routes'
 
 interface RequireRolesProps {

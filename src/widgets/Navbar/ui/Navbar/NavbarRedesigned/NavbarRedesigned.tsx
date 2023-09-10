@@ -11,7 +11,6 @@ import { useViewport } from '@/shared/lib/hooks/useViewport/useViewport'
 import { MobileViewport } from '@/shared/lib/components/Media'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
 import styles from './NavbarRedesigned.module.scss'
-
 import { NavbarBurger } from '../../NavbarBurger/NavbarBurger'
 
 export interface NavbarRedesignedProps {

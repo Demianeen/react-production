@@ -7,11 +7,13 @@ import type {
 } from 'react'
 import { useLayoutEffect, useState } from 'react'
 
-interface AppImageProps extends ImgHTMLAttributes<HTMLImageElement> {
+interface AppImageProps
+  extends Omit<ImgHTMLAttributes<HTMLImageElement>, 'onLoad'> {
   className?: string
   alt: string
   fallback?: ReactElement
   errorFallback?: ReactElement
+  onLoad?: (isLoaded: boolean) => void
 }
 
 // TODO: Add ui kit
@@ -24,6 +26,7 @@ export const AppImage = typedMemo(
         alt,
         fallback,
         errorFallback,
+        onLoad,
         ...props
       }: AppImageProps,
       ref: ForwardedRef<HTMLImageElement>
@@ -37,12 +40,13 @@ export const AppImage = typedMemo(
         image.src = src ?? ''
         image.onload = () => {
           setIsLoading(false)
+          onLoad?.(true)
         }
         image.onerror = () => {
           setIsLoading(false)
           setHasError(true)
         }
-      }, [src])
+      }, [onLoad, src])
 
       if (isLoading && fallback) {
         return fallback

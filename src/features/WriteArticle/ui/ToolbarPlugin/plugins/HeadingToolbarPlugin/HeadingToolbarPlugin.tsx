@@ -12,14 +12,14 @@ import {
 } from 'lexical'
 import { memo, useCallback } from 'react'
 
-export interface HeadingPluginProps {
+export interface HeadingToolbarPluginProps {
   className?: string
 }
 
 type HeadingLevel = 1 | 2
 
-export const HeadingPlugin = memo(
-  ({ className }: HeadingPluginProps) => {
+export const HeadingToolbarPlugin = memo(
+  ({ className }: HeadingToolbarPluginProps) => {
     const [editor] = useLexicalComposerContext()
 
     const headingList: HeadingLevel[] = [1, 2]
@@ -31,6 +31,7 @@ export const HeadingPlugin = memo(
 
           if ($isRangeSelection(selection)) {
             const nodes = selection.getNodes()
+
             const isHeadingNode = nodes.some((node) =>
               $isHeadingNode(node)
             )
@@ -61,4 +62,4 @@ export const HeadingPlugin = memo(
   }
 )
 
-HeadingPlugin.displayName = 'HeadingPlugin'
+HeadingToolbarPlugin.displayName = 'HeadingToolbarPlugin'

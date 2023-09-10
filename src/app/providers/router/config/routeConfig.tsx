@@ -44,10 +44,12 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
   [AppRoutes.ARTICLE_CREATE]: {
     path: RoutePath.articleCreate,
     element: <ArticleEditPage />,
+    authOnly: true,
   },
   [AppRoutes.ARTICLE_EDIT]: {
     path: RoutePath.articleEdit,
     element: <ArticleEditPage />,
+    authOnly: true,
   },
   [AppRoutes.ADMIN_PANEL]: {
     path: RoutePath.adminPanel,

@@ -2,7 +2,6 @@ import { View } from '@/entities/View'
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce'
 import { useMedia } from '@/shared/lib/hooks/useMedia/useMedia'
 import { useCallback, useEffect } from 'react'
-
 /**
  * Computes width and height of the container and item and returns amount of items to render.
  * @returns amount of items to render
