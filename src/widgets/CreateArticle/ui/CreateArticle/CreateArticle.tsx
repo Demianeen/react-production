@@ -1,20 +1,20 @@
 import { VStack } from '@/shared/ui/redesigned/Stack'
-import { WriteArticle } from '@/features/WriteArticle'
 import { memo } from 'react'
 import type { AsyncReducersList } from '@/app/providers/StoreProvider/config/stateSchema'
 import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { Input as InputDeprecated } from '@/shared/ui/deprecated/Input'
 import { Input } from '@/shared/ui/redesigned/Input'
 import { toggleFeature } from '@/shared/lib/features'
-import {
-  createArticleReducer,
-  useCreateArticleActions,
-} from '../../model/slice/createArticleSlice'
+import { ArticleEditor } from '@/features/ArticleEditor'
 import {
   useCreateArticleFormImage,
   useCreateArticleFormSubTitle,
   useCreateArticleFormTitle,
 } from '../../model/selectors/createArticleSelectors'
+import {
+  createArticleReducer,
+  useCreateArticleActions,
+} from '../../model/slice/createArticleSlice'
 
 interface CreateArticleProps {
   className?: string
@@ -78,7 +78,7 @@ export const CreateArticle = memo(
             onChange={updateContent}
           />
         </WithLabelComponent> */}
-        <WriteArticle />
+        <ArticleEditor />
       </VStack>
     )
   }
