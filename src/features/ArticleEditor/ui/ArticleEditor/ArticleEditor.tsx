@@ -11,12 +11,13 @@ import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
 import { memo } from 'react'
 import { AutoLinkNode, LinkNode } from '@lexical/link'
 import { TRANSFORMERS } from '@lexical/markdown'
-import { CodeNode } from '@lexical/code'
 import { HeadingNode, QuoteNode } from '@lexical/rich-text'
 import { HorizontalRuleNode } from '@lexical/react/LexicalHorizontalRuleNode'
 import { useTranslation } from 'react-i18next'
 import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import type { ReducersList } from '@/app/providers/StoreProvider/config/stateSchema'
+import { CodeHighlightNode } from '@lexical/code'
+import { CodeHighlightPlugin } from '../plugins/CodeHighlightPlugin/CodeHighlightPlugin'
 import { UpdateEditorBlockTypePlugin } from '../plugins/UpdateEditorBlockType/UpdateEditorBlockType'
 import { Placeholder } from '../Placeholder/Placeholder'
 import { AutoLinkPlugin } from '../plugins/AutoLinkPlugin/AutoLinkPlugin'
@@ -34,6 +35,39 @@ const theme: EditorThemeClasses = {
     ul: 'ul',
     ol: 'ol',
     listitem: 'li',
+  },
+  code: 'code',
+  codeHighlight: {
+    atrule: 'tokenAttr',
+    attr: 'tokenAttr',
+    boolean: 'tokenProperty',
+    builtin: 'tokenSelector',
+    cdata: 'tokenComment',
+    char: 'tokenSelector',
+    class: 'tokenFunction',
+    'class-name': 'tokenFunction',
+    comment: 'tokenComment',
+    constant: 'tokenProperty',
+    deleted: 'tokenProperty',
+    doctype: 'tokenComment',
+    entity: 'tokenOperator',
+    function: 'tokenFunction',
+    important: 'tokenVariable',
+    inserted: 'tokenSelector',
+    keyword: 'tokenAttr',
+    namespace: 'tokenVariable',
+    number: 'tokenProperty',
+    operator: 'tokenOperator',
+    prolog: 'tokenComment',
+    property: 'tokenProperty',
+    punctuation: 'tokenPunctuation',
+    regex: 'tokenVariable',
+    selector: 'tokenSelector',
+    string: 'tokenSelector',
+    symbol: 'tokenProperty',
+    tag: 'tokenProperty',
+    url: 'tokenOperator',
+    variable: 'tokenVariable',
   },
 }
 
@@ -59,10 +93,10 @@ export const ArticleEditor = memo(() => {
       ...ToolbarNodes,
       AutoLinkNode,
       HorizontalRuleNode,
-      CodeNode,
       HeadingNode,
       LinkNode,
       QuoteNode,
+      CodeHighlightNode,
     ],
   }
 
@@ -94,6 +128,7 @@ export const ArticleEditor = memo(() => {
         <AutoLinkPlugin />
         <UpdateEditorBlockTypePlugin />
         <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
+        <CodeHighlightPlugin />
       </HStack>
     </LexicalComposer>
   )

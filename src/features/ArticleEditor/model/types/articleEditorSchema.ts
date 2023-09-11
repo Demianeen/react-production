@@ -4,6 +4,7 @@ export enum BlockType {
   H2 = 'h2',
   UL = 'ul',
   OL = 'ol',
+  CODE = 'code',
 }
 
 export interface ArticleEditorSchema {

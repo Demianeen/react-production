@@ -10,4 +10,63 @@ $list-padding: 0 0 0 1.5rem;
     padding: $list-padding;
     list-style: decimal;
   }
+
+  .code {
+    position: relative;
+    display: block;
+    padding: 8px 8px 8px 52px;
+    margin: 8px 0;
+    overflow-x: auto;
+    font-family: Menlo, Consolas, Monaco, monospace;
+    font-size: 13px;
+    line-height: 1.53;
+    color: var(--code-text);
+    tab-size: 2;
+    background-color: var(--code-bg);
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 25px;
+      padding: 8px;
+      color: #777;
+      text-align: right;
+      white-space: pre-wrap;
+      content: attr(data-gutter);
+    }
+  }
+
+  // code highlighting
+  .tokenComment {
+    color: var(--token-comment-color);
+  }
+
+  .tokenPunctuation {
+    color: var(--token-punctuation-color);
+  }
+
+  .tokenProperty {
+    color: var(--token-property-color);
+  }
+
+  .tokenSelector {
+    color: var(--token-selector-color);
+  }
+
+  .tokenOperator {
+    color: var(--token-operator-color);
+  }
+
+  .tokenAttr {
+    color: var(--token-attr-color);
+  }
+
+  .tokenVariable {
+    color: var(--token-variable-color);
+  }
+
+  .tokenFunction {
+    color: var(--token-function-color);
+  }
 }

@@ -5,10 +5,15 @@ import {
   INSERT_ORDERED_LIST_COMMAND,
   INSERT_UNORDERED_LIST_COMMAND,
 } from '@lexical/list'
+import type { LexicalCommand } from 'lexical'
 import { INSERT_PARAGRAPH_COMMAND } from 'lexical'
 import { useCallback } from 'react'
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
 import { ListPlugin } from '@lexical/react/LexicalListPlugin'
+import {
+  CodeBlockPlugin,
+  INSERT_CODE_BLOCK_COMMAND,
+} from '../../../plugins/CodeBlockPlugin/CodeBlockPlugin'
 import { BlockType } from '../../../../model/types/articleEditorSchema'
 import { useArticleEditorActions } from '../../../../model/slice/articleEditorSlice'
 import { useArticleEditorBlockType } from '../../../../model/selectors/articleEditorSchemaSelectors'
@@ -22,12 +27,16 @@ export interface SelectBlockTypeToolbarPluginProps {
   className?: string
 }
 
-const mapValueToCommandMap = {
+const mapValueToCommandMap: Record<
+  BlockType,
+  LexicalCommand<void>
+> = {
   paragraph: INSERT_PARAGRAPH_COMMAND,
   h1: INSERT_HEADING1_COMMAND,
   h2: INSERT_HEADING2_COMMAND,
   ul: INSERT_UNORDERED_LIST_COMMAND,
   ol: INSERT_ORDERED_LIST_COMMAND,
+  code: INSERT_CODE_BLOCK_COMMAND,
 }
 
 const selectOptions: SelectOption<BlockType>[] = [
@@ -50,6 +59,10 @@ const selectOptions: SelectOption<BlockType>[] = [
   {
     label: 'Ordered List',
     value: BlockType.OL,
+  },
+  {
+    label: 'Code',
+    value: BlockType.CODE,
   },
 ]
 
@@ -82,6 +95,7 @@ export const SelectBlockTypeToolbarPlugin = typedMemo(
         />
         <HeadingPlugin />
         <ListPlugin />
+        <CodeBlockPlugin />
       </>
     )
   }
