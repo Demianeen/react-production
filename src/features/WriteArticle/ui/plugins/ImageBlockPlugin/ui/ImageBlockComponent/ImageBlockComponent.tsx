@@ -16,7 +16,6 @@ import { useTranslation } from 'react-i18next'
 import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
 import { useFocus } from '@/shared/lib/hooks/useFocus/useFocus'
-import { EnterPlugin } from '../../../EnterPlugin/EnterPlugin'
 import { Placeholder } from '../../../../Placeholder/Placeholder'
 import styles from './ImageBlockComponent.module.scss'
 import { OneLinePlugin } from '../../../OneLinePlugin/OneLinePlugin'
@@ -148,7 +147,6 @@ export const ImageBlockComponent = memo(
                   ErrorBoundary={LexicalErrorBoundary}
                 />
                 <OneLinePlugin nodeKey={nodeKey} />
-                <EnterPlugin />
                 <AutoFocusPlugin />
                 <DeleteEditorPlugin onDelete={deleteImage} />
               </figcaption>

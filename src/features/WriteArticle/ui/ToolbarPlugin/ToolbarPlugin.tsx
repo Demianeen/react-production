@@ -4,7 +4,7 @@ import { ListItemNode, ListNode } from '@lexical/list'
 import { HStack } from '@/shared/ui/redesigned/Stack'
 import { SelectBlockTypeToolbarPlugin } from './plugins/SelectBlockTypeToolbarPlugin/SelectBlockTypeToolbarPlugin'
 import { ImageToolbarPlugin } from './plugins/ImageToolbarPlugin/ImageToolbarPlugin'
-import { ImageBlockNode } from '../plugins/imageBlock/nodes/ImageBlockNode'
+import { ImageBlockNode } from '../plugins/ImageBlockPlugin/nodes/ImageBlockNode'
 
 export interface ToolbarPluginProps {
   className?: string

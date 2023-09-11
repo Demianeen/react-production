@@ -7,7 +7,7 @@ import { Icon, IconType } from '@/shared/ui/deprecated/Icon'
 import {
   INSERT_IMAGE_BLOCK_COMMAND,
   ImageBlockPlugin,
-} from '../../../plugins/imageBlock/plugins/ImageBlockPlugin/ImageBlockPlugin'
+} from '../../../plugins/ImageBlockPlugin/plugins/ImageBlockPlugin/ImageBlockPlugin'
 
 export interface ImageToolbarPluginProps {
   className?: string
