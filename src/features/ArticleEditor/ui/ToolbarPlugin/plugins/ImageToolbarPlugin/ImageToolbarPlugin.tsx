@@ -1,9 +1,11 @@
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
 import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button'
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import { Icon, IconType } from '@/shared/ui/deprecated/Icon'
 import ImageIcon from '@/shared/assets/icons/redesigned/textEditor/image.svg'
+import type { ImagePromptValues } from './ImagePrompt'
+import { ImagePrompt } from './ImagePrompt'
 import {
   INSERT_IMAGE_BLOCK_COMMAND,
   ImageBlockPlugin,
@@ -16,22 +18,28 @@ export interface ImageToolbarPluginProps {
 export const ImageToolbarPlugin = typedMemo(
   ({ className }: ImageToolbarPluginProps) => {
     const [editor] = useLexicalComposerContext()
+    const [isPromptOpen, setIsPromptOpen] = useState(false)
 
-    const onClick = useCallback(
-      (_: React.MouseEvent) => {
+    const createImage = useCallback(
+      ({ src, altText }: ImagePromptValues) => {
         editor.dispatchCommand(INSERT_IMAGE_BLOCK_COMMAND, {
-          src: 'https://images.pexels.com/photos/5656637/pexels-photo-5656637.jpeg?auto=compress&cs=tinysrgb&w=200',
-          altText: 'alt text',
+          src,
+          altText,
         })
+        setIsPromptOpen(false)
       },
       [editor]
     )
+
+    const onOpenPrompt = useCallback((_: React.MouseEvent) => {
+      setIsPromptOpen(true)
+    }, [])
 
     return (
       <div className={className}>
         <Button
           type='button'
-          onClick={onClick}
+          onClick={onOpenPrompt}
           theme={ButtonTheme.CLEAR}
         >
           <Icon
@@ -42,6 +50,7 @@ export const ImageToolbarPlugin = typedMemo(
           />
         </Button>
         <ImageBlockPlugin />
+        {isPromptOpen && <ImagePrompt onSubmit={createImage} />}
       </div>
     )
   }
