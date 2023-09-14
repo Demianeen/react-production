@@ -19,11 +19,13 @@ export interface ImagePromptValues {
 export interface ImagePromptProps {
   className?: string
   onSubmit: ({ src, altText }: ImagePromptValues) => void
+  onClose: () => void
 }
 
 export const ImagePrompt = ({
   className,
   onSubmit,
+  onClose,
 }: ImagePromptProps) => {
   const { t } = useTranslation()
   const [src, setSrc] = useState('')
@@ -59,7 +61,7 @@ export const ImagePrompt = ({
   }
 
   return (
-    <ModalComponent isOpen className={className}>
+    <ModalComponent onClose={onClose} isOpen className={className}>
       <VStack as='form' gap={1} onSubmit={handleSubmit}>
         <InputComponent
           type='url'
@@ -78,7 +80,7 @@ export const ImagePrompt = ({
         />
         {ToggleFeature({
           name: 'isAppRedesigned',
-          on: <Button {...buttonProps}>{t('Insert')}</Button>,
+          on: <Button {...buttonProps} />,
           off: <ButtonDeprecated {...buttonProps} />,
         })}
       </VStack>

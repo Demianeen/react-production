@@ -20,15 +20,19 @@ export const ImageToolbarPlugin = typedMemo(
     const [editor] = useLexicalComposerContext()
     const [isPromptOpen, setIsPromptOpen] = useState(false)
 
+    const onClosePrompt = useCallback(() => {
+      setIsPromptOpen(false)
+    }, [])
+
     const createImage = useCallback(
       ({ src, altText }: ImagePromptValues) => {
         editor.dispatchCommand(INSERT_IMAGE_BLOCK_COMMAND, {
           src,
           altText,
         })
-        setIsPromptOpen(false)
+        onClosePrompt()
       },
-      [editor]
+      [editor, onClosePrompt]
     )
 
     const onOpenPrompt = useCallback((_: React.MouseEvent) => {
@@ -50,7 +54,12 @@ export const ImageToolbarPlugin = typedMemo(
           />
         </Button>
         <ImageBlockPlugin />
-        {isPromptOpen && <ImagePrompt onSubmit={createImage} />}
+        {isPromptOpen && (
+          <ImagePrompt
+            onSubmit={createImage}
+            onClose={onClosePrompt}
+          />
+        )}
       </div>
     )
   }

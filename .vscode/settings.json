@@ -101,5 +101,6 @@
       "}"
     ],
     "Index File": ["export * from './<FTName>'"]
-  }
+  },
+  "storyExplorer.storybookConfigDir": "config/storybook"
 }
