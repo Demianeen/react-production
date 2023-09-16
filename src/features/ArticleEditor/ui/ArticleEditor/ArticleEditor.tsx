@@ -8,7 +8,7 @@ import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary'
 import { ContentEditable } from '@lexical/react/LexicalContentEditable'
 import { HStack } from '@/shared/ui/redesigned/Stack'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
-import { memo } from 'react'
+import { memo, useState } from 'react'
 import { AutoLinkNode, LinkNode } from '@lexical/link'
 import { TRANSFORMERS } from '@lexical/markdown'
 import { HeadingNode, QuoteNode } from '@lexical/rich-text'
@@ -17,6 +17,7 @@ import { useTranslation } from 'react-i18next'
 import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import type { ReducersList } from '@/app/providers/StoreProvider/config/stateSchema'
 import { CodeHighlightNode } from '@lexical/code'
+import { DraggableBlockPlugin } from '../plugins/DraggableBlockPlugin/DraggableBlockPlugin'
 import { CodeHighlightPlugin } from '../plugins/CodeHighlightPlugin/CodeHighlightPlugin'
 import { UpdateEditorBlockTypePlugin } from '../plugins/UpdateEditorBlockType/UpdateEditorBlockType'
 import { Placeholder } from '../Placeholder/Placeholder'
@@ -100,6 +101,9 @@ export const ArticleEditor = memo(() => {
     ],
   }
 
+  const [floatingAnchorElem, setFloatingAnchorElem] =
+    useState<HTMLDivElement | null>(null)
+
   return (
     <LexicalComposer initialConfig={initialConfig}>
       <ToolbarPlugin />
@@ -112,9 +116,16 @@ export const ArticleEditor = memo(() => {
       >
         <RichTextPlugin
           contentEditable={
-            <ContentEditable
-              className={classNamesNew(styles.contentEditable)}
-            />
+            <div className={styles.editorScroller}>
+              <div
+                className={styles.editor}
+                ref={setFloatingAnchorElem}
+              >
+                <ContentEditable
+                  className={classNamesNew(styles.contentEditable)}
+                />
+              </div>
+            </div>
           }
           placeholder={
             <Placeholder
@@ -129,6 +140,9 @@ export const ArticleEditor = memo(() => {
         <UpdateEditorBlockTypePlugin />
         <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
         <CodeHighlightPlugin />
+        {floatingAnchorElem && (
+          <DraggableBlockPlugin anchorElem={floatingAnchorElem} />
+        )}
       </HStack>
     </LexicalComposer>
   )

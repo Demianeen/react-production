@@ -1,0 +1,29 @@
+.draggableMenu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 2px 1px;
+  cursor: grab;
+  border-radius: 4px;
+  opacity: 0;
+  will-change: transform;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  &:hover {
+    background-color: var(--inverted-bg-color);
+  }
+}
+
+.targetLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4px;
+  pointer-events: none;
+  background: deepskyblue;
+  opacity: 0;
+  will-change: transform;
+}
