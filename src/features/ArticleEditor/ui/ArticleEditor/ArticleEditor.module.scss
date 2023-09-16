@@ -10,7 +10,7 @@ $content-padding: 0.5rem;
   display: flex;
   width: 100%;
   min-height: 25rem;
-  overflow: auto;
+  overflow-y: scroll;
   resize: vertical;
   border: 0;
   outline: 0;

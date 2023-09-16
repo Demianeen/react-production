@@ -1,7 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { eventFiles } from '@lexical/rich-text'
 import { mergeRegister } from '@lexical/utils'
-import type { LexicalEditor } from 'lexical'
 import {
   $getNearestNodeFromDOMNode,
   $getNodeByKey,
@@ -18,16 +17,16 @@ import { Icon } from '@/shared/ui/deprecated/Icon'
 import DraggableIcon from '@/shared/assets/icons/redesigned/textEditor/draggable.svg'
 import { isHTMLElement } from '@/shared/lib/html/isHTMLElement'
 import { isSVG } from '@/shared/lib/html/isSvg'
-import { getCollapsedMargins } from '../getCollapsedMargins/getCollapsedMargins'
+import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
+import { useTargetLine } from '../../../../../lib/drag/useTargetLine/useTargetLine'
 import { getBlockElement } from '../getBlockElement/getBlockElement'
 import styles from './useDraggableBlockPlugin.module.scss'
 
 const SPACE = 4
-const TARGET_LINE_HALF_HEIGHT = 2
 const DRAGGABLE_BLOCK_MENU_ID = 'draggable-block-menu'
 const DRAG_BLOCK = 'application/x-lexical-drag-block'
-const TEXT_BOX_HORIZONTAL_PADDING = 28
 
+/** checks if the element closest node is block menu */
 const isOnMenu = (element: HTMLElement | SVGElement): boolean => {
   return Boolean(element.closest(`#${DRAGGABLE_BLOCK_MENU_ID}`))
 }
@@ -60,7 +59,7 @@ const setMenuPosition = (
   floatingElem.style.transform = `translate(${left}px, ${top}px)`
 }
 
-const setDragImage = (
+const updateDragImage = (
   dataTransfer: DataTransfer,
   draggableBlockElem: HTMLElement
 ) => {
@@ -75,52 +74,20 @@ const setDragImage = (
   })
 }
 
-const setTargetLine = (
-  targetLineElem: HTMLElement,
-  targetBlockElem: HTMLElement,
-  mouseY: number,
-  anchorElem: HTMLElement
-) => {
-  const { top: targetBlockElemTop, height: targetBlockElemHeight } =
-    targetBlockElem.getBoundingClientRect()
-  const { top: anchorTop, width: anchorWidth } =
-    anchorElem.getBoundingClientRect()
-
-  const { marginTop, marginBottom } =
-    getCollapsedMargins(targetBlockElem)
-  let lineTop = targetBlockElemTop
-  if (mouseY >= targetBlockElemTop) {
-    lineTop += targetBlockElemHeight + marginBottom / 2
-  } else {
-    lineTop -= marginTop / 2
-  }
-
-  const top = lineTop - anchorTop - TARGET_LINE_HALF_HEIGHT
-  const left = TEXT_BOX_HORIZONTAL_PADDING - SPACE
-
-  targetLineElem.style.transform = `translate(${left}px, ${top}px)`
-  targetLineElem.style.width = `${
-    anchorWidth - (TEXT_BOX_HORIZONTAL_PADDING - SPACE) * 2
-  }px`
-  targetLineElem.style.opacity = '.4'
-}
-
-const hideTargetLine = (targetLineElem: HTMLElement | null) => {
-  if (targetLineElem) {
-    targetLineElem.style.opacity = '0'
-    targetLineElem.style.transform = 'translate(-10000px, -10000px)'
-  }
-}
-
 export const useDraggableBlockMenu = (
-  editor: LexicalEditor,
-  anchorElem: HTMLElement,
-  isEditable: boolean
+  anchorElem: HTMLElement
 ): JSX.Element => {
+  const [editor] = useLexicalComposerContext()
+  const [
+    targetLine,
+    { showTargetLine, hideTargetLine, isTargetLineNull },
+  ] = useTargetLine(anchorElem, {
+    space: SPACE,
+  })
+
   const scrollerElem = anchorElem.parentElement
 
   const menuRef = useRef<HTMLDivElement>(null)
-  const targetLineRef = useRef<HTMLDivElement>(null)
   const isDraggingBlockRef = useRef<boolean>(false)
   const [draggableBlockElem, setDraggableBlockElem] =
     useState<HTMLElement | null>(null)
@@ -187,16 +154,13 @@ export const useDraggableBlockMenu = (
             event,
             true
           )
-          const targetLineElem = targetLineRef.current
-          if (targetBlockElem === null || targetLineElem === null) {
+          if (targetBlockElem === null || isTargetLineNull) {
             return false
           }
-          setTargetLine(
-            targetLineElem,
+          showTargetLine({
             targetBlockElem,
-            pageY,
-            anchorElem
-          )
+            mouseY: pageY,
+          })
           // Prevent default event to be able to trigger onDrop events
           event.preventDefault()
           return true
@@ -254,7 +218,7 @@ export const useDraggableBlockMenu = (
         COMMAND_PRIORITY_HIGH
       )
     )
-  }, [anchorElem, editor])
+  }, [anchorElem, editor, isTargetLineNull, showTargetLine])
 
   const onDragStart = (
     event: ReactDragEvent<HTMLDivElement>
@@ -263,7 +227,7 @@ export const useDraggableBlockMenu = (
     if (!dataTransfer || !draggableBlockElem) {
       return
     }
-    setDragImage(dataTransfer, draggableBlockElem)
+    updateDragImage(dataTransfer, draggableBlockElem)
     let nodeKey = ''
     editor.update(() => {
       const node = $getNearestNodeFromDOMNode(draggableBlockElem)
@@ -277,7 +241,7 @@ export const useDraggableBlockMenu = (
 
   const onDragEnd = (): void => {
     isDraggingBlockRef.current = false
-    hideTargetLine(targetLineRef.current)
+    hideTargetLine()
   }
 
   return createPortal(
@@ -290,7 +254,7 @@ export const useDraggableBlockMenu = (
         onDragStart={onDragStart}
         onDragEnd={onDragEnd}
       >
-        {isEditable && (
+        {editor.isEditable() && (
           <Icon
             Svg={DraggableIcon}
             height={16}
@@ -299,7 +263,7 @@ export const useDraggableBlockMenu = (
           />
         )}
       </div>
-      <div className={styles.targetLine} ref={targetLineRef} />
+      {targetLine}
     </>,
     anchorElem
   )
