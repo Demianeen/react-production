@@ -1,8 +1,8 @@
 import type { LexicalEditor } from 'lexical'
 import { $getRoot } from 'lexical'
 import { getCollapsedMargins } from '../getCollapsedMargins/getCollapsedMargins'
-import { Point } from '../../../../../lib/shapes/point'
-import { Rect } from '../../../../../lib/shapes/rect'
+import { Point } from '../../shapes/point'
+import { Rect } from '../../shapes/rect'
 
 enum Direction {
   UPWARD = -1,

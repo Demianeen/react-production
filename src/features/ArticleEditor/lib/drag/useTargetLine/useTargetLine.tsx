@@ -1,5 +1,5 @@
 import { useCallback, useRef } from 'react'
-import { getCollapsedMargins } from '../../../ui/plugins/DraggableBlockPlugin/lib/getCollapsedMargins/getCollapsedMargins'
+import { getCollapsedMargins } from '../getCollapsedMargins/getCollapsedMargins'
 import styles from './useTargetLine.module.scss'
 
 const TARGET_LINE_HALF_HEIGHT = 2
