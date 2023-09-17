@@ -35,9 +35,11 @@ export const InsertImagePlugin = typedMemo(() => {
       editor.registerCommand<ImageBlockPayload>(
         INSERT_IMAGE_BLOCK_COMMAND,
         (payload) => {
-          const imageNode = $createImageBlockNode(payload)
-          const paragraphNode = $createParagraphNode()
-          $insertNodes([imageNode, paragraphNode])
+          editor.update(() => {
+            const imageNode = $createImageBlockNode(payload)
+            const paragraphNode = $createParagraphNode()
+            $insertNodes([imageNode, paragraphNode])
+          })
 
           return true
         },

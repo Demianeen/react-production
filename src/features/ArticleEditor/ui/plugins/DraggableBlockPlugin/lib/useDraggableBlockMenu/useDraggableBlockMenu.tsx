@@ -3,12 +3,12 @@ import { $getNearestNodeFromDOMNode } from 'lexical'
 import * as React from 'react'
 import type { DragEvent as ReactDragEvent } from 'react'
 import { useEffect, useRef, useState } from 'react'
-import { createPortal } from 'react-dom'
 import { Icon } from '@/shared/ui/deprecated/Icon'
 import DraggableIcon from '@/shared/assets/icons/redesigned/textEditor/draggable.svg'
 import { isHTMLElement } from '@/shared/lib/html/isHTMLElement'
 import { isSVG } from '@/shared/lib/html/isSvg'
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
+import { Portal } from '@/shared/ui/redesigned/Portal'
 import { useDraggable } from '../../../../../lib/drag/useDraggable/useDraggable'
 import { getBlockElement } from '../../../../../lib/drag/getBlockElement/getBlockElement'
 import styles from './useDraggableBlockPlugin.module.scss'
@@ -62,14 +62,15 @@ export const useDraggableBlockMenu = (
   const [draggableBlockElem, setDraggableBlockElem] =
     useState<HTMLElement | null>(null)
 
-  const [targetLine, { handleDragStart, handleDragEnd }] =
-    useDraggable({
+  const { targetLine, handleDragStart, handleDragEnd } = useDraggable(
+    {
       anchorElem,
       space: SPACE,
       onDropStart: () => {
         setDraggableBlockElem(null)
       },
-    })
+    }
+  )
 
   useEffect(() => {
     const onMouseMove = (event: MouseEvent) => {
@@ -133,27 +134,28 @@ export const useDraggableBlockMenu = (
     })
   }
 
-  return createPortal(
+  return (
     <>
-      <div
-        className={styles.draggableMenu}
-        id={DRAGGABLE_BLOCK_MENU_ID}
-        ref={menuRef}
-        draggable
-        onDragStart={onDragStart}
-        onDragEnd={handleDragEnd}
-      >
-        {editor.isEditable() && (
-          <Icon
-            Svg={DraggableIcon}
-            height={16}
-            width={16}
-            color='invertedPrimary'
-          />
-        )}
-      </div>
+      <Portal element={anchorElem}>
+        <div
+          className={styles.draggableMenu}
+          id={DRAGGABLE_BLOCK_MENU_ID}
+          ref={menuRef}
+          draggable
+          onDragStart={onDragStart}
+          onDragEnd={handleDragEnd}
+        >
+          {editor.isEditable() && (
+            <Icon
+              Svg={DraggableIcon}
+              height={16}
+              width={16}
+              color='invertedPrimary'
+            />
+          )}
+        </div>
+      </Portal>
       {targetLine}
-    </>,
-    anchorElem
+    </>
   )
 }

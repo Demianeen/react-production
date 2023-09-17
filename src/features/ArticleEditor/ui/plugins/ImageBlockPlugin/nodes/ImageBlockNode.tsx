@@ -1,4 +1,5 @@
 import type {
+  DOMExportOutput,
   EditorConfig,
   LexicalEditor,
   NodeKey,
@@ -9,10 +10,18 @@ import type {
 } from 'lexical'
 import {
   $createParagraphNode,
+  $getNodeByKey,
+  $getRoot,
   DecoratorNode,
   createEditor,
 } from 'lexical'
-import { ImageBlockComponent } from '../ui/ImageBlockComponent/ImageBlockComponent'
+import {
+  ImageBlockComponent,
+  captionClassnames,
+  captionWrapperClassnames,
+  imageClassnames,
+  imageWrapperClassnames,
+} from '../ui/ImageBlockComponent/ImageBlockComponent'
 
 export interface ImageBlockPayload {
   src: string
@@ -162,6 +171,43 @@ export class ImageBlockNode extends DecoratorNode<JSX.Element> {
 
   getAltText(): string {
     return this.__altText
+  }
+
+  exportDOM(): DOMExportOutput {
+    const figure = document.createElement('figure')
+    figure.className = imageWrapperClassnames
+
+    const image = document.createElement('img')
+    image.className = imageClassnames
+    image.src = this.getSrc()
+    image.alt = this.getAltText()
+    figure.appendChild(image)
+
+    let captionText: string | undefined
+    this.__caption.getEditorState().read(() => {
+      const keys = $getRoot().getChildrenKeys()
+      const captionNode = $getNodeByKey(keys[0])
+      captionText = captionNode?.getTextContent()
+    })
+    if (captionText === undefined) {
+      return {
+        element: figure,
+      }
+    }
+
+    const captionWrapper = document.createElement('div')
+    captionWrapper.className = captionWrapperClassnames
+
+    const caption = document.createElement('figure')
+    caption.className = captionClassnames
+    caption.textContent = captionText
+
+    captionWrapper.appendChild(caption)
+    figure.appendChild(captionWrapper)
+
+    return {
+      element: figure,
+    }
   }
 }
 

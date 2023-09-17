@@ -1,4 +1,5 @@
-import { useCallback, useRef } from 'react'
+import { useCallback, useMemo, useRef } from 'react'
+import { Portal } from '@/shared/ui/redesigned/Portal'
 import { getCollapsedMargins } from '../getCollapsedMargins/getCollapsedMargins'
 import styles from './useTargetLine.module.scss'
 
@@ -10,14 +11,12 @@ export interface ShowTargetLineArgs {
   mouseY: number
 }
 
-type TargetLineReturnType = [
-  JSX.Element,
-  {
-    showTargetLine: (args: ShowTargetLineArgs) => void
-    hideTargetLine: () => void
-    isTargetLineNull: boolean
-  }
-]
+interface TargetLineReturnType {
+  showTargetLine: (args: ShowTargetLineArgs) => void
+  hideTargetLine: () => void
+  isTargetLineNull: boolean
+  targetLine: JSX.Element
+}
 
 export interface TargetLineOptions {
   space: number
@@ -68,13 +67,19 @@ export const useTargetLine = (
       'translate(-10000px, -10000px)'
   }, [])
 
-  return [
-    // eslint-disable-next-line react/jsx-key
-    <div className={styles.targetLine} ref={targetLineRef} />,
-    {
-      showTargetLine,
-      hideTargetLine,
-      isTargetLineNull: targetLineRef.current === null,
-    },
-  ]
+  const targetLine = useMemo(
+    () => (
+      <Portal element={anchorElem}>
+        <div className={styles.targetLine} ref={targetLineRef} />
+      </Portal>
+    ),
+    [anchorElem]
+  )
+
+  return {
+    showTargetLine,
+    hideTargetLine,
+    isTargetLineNull: targetLineRef.current === null,
+    targetLine,
+  }
 }

@@ -1,6 +1,9 @@
 import type { KeyboardEventHandler } from 'react'
 import { memo, useCallback, useRef, useState } from 'react'
-import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
+import {
+  getHStackClassName,
+  getVStackClassName,
+} from '@/shared/ui/redesigned/Stack'
 import { AppImage } from '@/shared/ui/redesigned/AppImage'
 import {
   $createParagraphNode,
@@ -16,7 +19,6 @@ import { useTranslation } from 'react-i18next'
 import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
 import { useFocus } from '@/shared/lib/hooks/useFocus/useFocus'
-import { createPortal } from 'react-dom'
 import { useDraggable } from '../../../../../lib/drag/useDraggable/useDraggable'
 import { Placeholder } from '../../../../Placeholder/Placeholder'
 import styles from './ImageBlockComponent.module.scss'
@@ -25,7 +27,6 @@ import { AutoFocusPlugin } from '../../../AutoFocusPlugin/AutoFocusPlugin'
 import { DeleteArticleEditorPlugin } from '../../../DeleteArticleEditorPlugin/DeleteArticleEditorPlugin'
 
 interface ImageBlockComponentProps {
-  className?: string
   src: string
   altText: string
   caption: LexicalEditor
@@ -33,9 +34,24 @@ interface ImageBlockComponentProps {
   anchorElem: HTMLElement
 }
 
+export const imageWrapperClassnames = classNamesNew(
+  getVStackClassName({
+    justify: 'center',
+    align: 'center',
+    maxWidth: true,
+  }),
+  styles.imageWrapper
+)
+export const imageClassnames = styles.img
+export const captionWrapperClassnames = getHStackClassName({
+  justify: 'center',
+  align: 'center',
+  maxWidth: true,
+})
+export const captionClassnames = styles.articleEditor
+
 export const ImageBlockComponent = memo(
   ({
-    className,
     altText,
     src,
     caption,
@@ -44,7 +60,7 @@ export const ImageBlockComponent = memo(
   }: ImageBlockComponentProps) => {
     const { t } = useTranslation()
     const [isFocused, bindFocus] = useFocus()
-    const [targetLine, { handleDragStart, handleDragEnd }] =
+    const { targetLine, handleDragStart, handleDragEnd } =
       useDraggable({
         anchorElem,
         space: 4,
@@ -111,16 +127,10 @@ export const ImageBlockComponent = memo(
     )
 
     return (
-      <VStack
-        className={classNamesNew(styles.imageWrapper, className)}
-        as='figure'
-        justify='center'
-        align='center'
-        maxWidth
-      >
-        {createPortal(targetLine, anchorElem)}
+      <figure className={imageWrapperClassnames}>
+        {targetLine}
         <AppImage
-          className={classNamesNew(styles.img, {
+          className={classNamesNew(imageClassnames, {
             [styles.focused]: isFocused,
           })}
           src={src}
@@ -150,9 +160,9 @@ export const ImageBlockComponent = memo(
           //   }
           // />
           <LexicalNestedComposer initialEditor={caption}>
-            <HStack maxWidth justify='center' align='center'>
+            <div className={captionWrapperClassnames}>
               <figcaption
-                className={classNamesNew(styles.articleEditor, {
+                className={classNamesNew(captionClassnames, {
                   [styles.withPlaceholder]: isPlaceholderMounted,
                 })}
               >
@@ -177,10 +187,10 @@ export const ImageBlockComponent = memo(
                 <AutoFocusPlugin />
                 <DeleteArticleEditorPlugin onDelete={deleteImage} />
               </figcaption>
-            </HStack>
+            </div>
           </LexicalNestedComposer>
         )}
-      </VStack>
+      </figure>
     )
   }
 )

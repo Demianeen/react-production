@@ -30,18 +30,14 @@ interface HandleStartArgs {
 }
 
 // return types
-interface UseDraggableReturnFunctions {
+interface UseDraggableReturnType {
   handleDragStart: (
     event: React.DragEvent,
     args: HandleStartArgs
   ) => void
   handleDragEnd: () => void
+  targetLine: JSX.Element
 }
-
-type UseDraggableReturnType = [
-  JSX.Element,
-  UseDraggableReturnFunctions
-]
 
 // props
 interface UseDraggableProps {
@@ -83,10 +79,12 @@ export const useDraggable = ({
   onDropStart,
 }: UseDraggableProps): UseDraggableReturnType => {
   const [editor] = useLexicalComposerContext()
-  const [
+  const {
     targetLine,
-    { showTargetLine, hideTargetLine, isTargetLineNull },
-  ] = useTargetLine(anchorElem, {
+    showTargetLine,
+    hideTargetLine,
+    isTargetLineNull,
+  } = useTargetLine(anchorElem, {
     space,
   })
   const isDraggingBlockRef = useRef<boolean>(false)
@@ -232,11 +230,9 @@ export const useDraggable = ({
     onDropStart,
   ])
 
-  return [
+  return {
     targetLine,
-    {
-      handleDragStart,
-      handleDragEnd,
-    },
-  ]
+    handleDragStart,
+    handleDragEnd,
+  }
 }

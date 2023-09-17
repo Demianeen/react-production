@@ -4,11 +4,12 @@ import { LexicalComposer } from '@lexical/react/LexicalComposer'
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin'
 import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin'
 import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin'
+import { EditorRefPlugin } from '@lexical/react/LexicalEditorRefPlugin'
 import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary'
 import { ContentEditable } from '@lexical/react/LexicalContentEditable'
-import { HStack } from '@/shared/ui/redesigned/Stack'
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
-import { memo, useState } from 'react'
+import { forwardRef, memo, useState } from 'react'
 import { AutoLinkNode, LinkNode } from '@lexical/link'
 import { TRANSFORMERS } from '@lexical/markdown'
 import { HeadingNode, QuoteNode } from '@lexical/rich-text'
@@ -80,72 +81,79 @@ const reducers: ReducersList = {
   articleEditor: articleEditorReducer,
 }
 
-export const ArticleEditor = memo(() => {
-  useDynamicModuleLoader(reducers, {
-    removeOnUnmount: true,
-  })
+export const ArticleEditor = memo(
+  forwardRef<LexicalEditor>((_, editorRef) => {
+    useDynamicModuleLoader(reducers, {
+      removeOnUnmount: true,
+    })
 
-  const { t } = useTranslation()
-  const initialConfig: InitialConfigType = {
-    namespace: 'MyArticleEditor',
-    theme,
-    onError,
-    nodes: [
-      ...ToolbarNodes,
-      AutoLinkNode,
-      HorizontalRuleNode,
-      HeadingNode,
-      LinkNode,
-      QuoteNode,
-      CodeHighlightNode,
-    ],
-  }
+    const { t } = useTranslation()
+    const initialConfig: InitialConfigType = {
+      namespace: 'MyArticleEditor',
+      theme,
+      onError,
+      nodes: [
+        ...ToolbarNodes,
+        AutoLinkNode,
+        HorizontalRuleNode,
+        HeadingNode,
+        LinkNode,
+        QuoteNode,
+        CodeHighlightNode,
+      ],
+    }
 
-  const [floatingAnchorElem, setFloatingAnchorElem] =
-    useState<HTMLDivElement | null>(null)
+    const [floatingAnchorElem, setFloatingAnchorElem] =
+      useState<HTMLDivElement | null>(null)
 
-  return (
-    <LexicalComposer initialConfig={initialConfig}>
-      <ToolbarPlugin anchorElem={floatingAnchorElem} />
-      <HStack
-        className={classNamesNew(
-          styles.articleEditor,
-          getArticleStylesClassName()
-        )}
-        maxWidth
-      >
-        <RichTextPlugin
-          contentEditable={
-            <div className={styles.editorScroller}>
-              <div
-                className={styles.editor}
-                ref={setFloatingAnchorElem}
-              >
-                <ContentEditable
-                  className={classNamesNew(styles.contentEditable)}
+    return (
+      <LexicalComposer initialConfig={initialConfig}>
+        <VStack gap={1} maxWidth>
+          <ToolbarPlugin anchorElem={floatingAnchorElem} />
+          <HStack
+            className={classNamesNew(
+              styles.articleEditor,
+              getArticleStylesClassName()
+            )}
+            maxWidth
+          >
+            <RichTextPlugin
+              contentEditable={
+                <div className={styles.editorScroller}>
+                  <div
+                    className={styles.editor}
+                    ref={setFloatingAnchorElem}
+                  >
+                    <ContentEditable
+                      className={classNamesNew(
+                        styles.contentEditable
+                      )}
+                    />
+                  </div>
+                </div>
+              }
+              placeholder={
+                <Placeholder
+                  className={styles.placeholder}
+                  text={t('Enter text here')}
                 />
-              </div>
-            </div>
-          }
-          placeholder={
-            <Placeholder
-              className={styles.placeholder}
-              text={t('Enter text here')}
+              }
+              ErrorBoundary={LexicalErrorBoundary}
             />
-          }
-          ErrorBoundary={LexicalErrorBoundary}
-        />
-        <HistoryPlugin />
-        <AutoLinkPlugin />
-        <UpdateEditorBlockTypePlugin />
-        <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
-        <CodeHighlightPlugin />
-        {floatingAnchorElem !== null && (
-          <DraggableBlockPlugin anchorElem={floatingAnchorElem} />
-        )}
-      </HStack>
-    </LexicalComposer>
-  )
-})
+            <HistoryPlugin />
+            <AutoLinkPlugin />
+            <UpdateEditorBlockTypePlugin />
+            <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
+            <CodeHighlightPlugin />
+            {floatingAnchorElem !== null && (
+              <DraggableBlockPlugin anchorElem={floatingAnchorElem} />
+            )}
+            <EditorRefPlugin editorRef={editorRef as any} />
+          </HStack>
+        </VStack>
+      </LexicalComposer>
+    )
+  })
+)
 
 ArticleEditor.displayName = 'ArticleEditor'

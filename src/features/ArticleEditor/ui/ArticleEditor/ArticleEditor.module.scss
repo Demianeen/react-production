@@ -1,4 +1,6 @@
-$content-padding: 0.5rem;
+$editor-padding: 0.5rem;
+$content-editable-y-padding: 0.5rem;
+$content-editable-x-padding: 1rem;
 
 .articleEditor {
   position: relative;
@@ -20,14 +22,14 @@ $content-padding: 0.5rem;
   position: relative;
   flex: auto;
   width: 100%;
-  padding: $content-padding;
+  padding: $editor-padding;
   resize: vertical;
   border: 1px solid var(--primary-color);
 }
 
 .contentEditable {
   flex: auto;
-  padding: 0.5rem 1rem;
+  padding: $content-editable-y-padding $content-editable-x-padding;
   color: var(--primary-color);
   background: var(--bg-color);
   border: none;
@@ -36,8 +38,8 @@ $content-padding: 0.5rem;
 
 .placeholder {
   position: absolute;
-  top: $content-padding;
-  left: $content-padding;
+  top: calc($editor-padding + $content-editable-y-padding);
+  left: calc($editor-padding + $content-editable-x-padding);
 }
 
 .ul {

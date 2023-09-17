@@ -1,5 +1,6 @@
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
 import { mergeRegister } from '@lexical/utils'
+import type { LexicalNode, ParagraphNode } from 'lexical'
 import {
   $createParagraphNode,
   $getNodeByKey,
@@ -67,10 +68,14 @@ export const OneLinePlugin = ({ nodeKey }: OneLinePluginProps) => {
         KEY_ENTER_COMMAND,
         (event) => {
           if (event?.shiftKey) {
+            let imageNode: LexicalNode | null
+            let paragraphNode: ParagraphNode
             parentArticleEditor?.update(() => {
-              const imageNode = $getNodeByKey(nodeKey)
-              const paragraphNode = $createParagraphNode()
+              imageNode = $getNodeByKey(nodeKey)
+              paragraphNode = $createParagraphNode()
               imageNode?.getLatest().insertBefore(paragraphNode)
+            })
+            parentArticleEditor?.update(() => {
               paragraphNode.select()
             })
             return true

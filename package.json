@@ -151,6 +151,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.14",
     "@lexical/code": "^0.12.2",
+    "@lexical/html": "^0.12.2",
     "@lexical/link": "^0.12.2",
     "@lexical/list": "^0.12.2",
     "@lexical/markdown": "^0.12.2",
