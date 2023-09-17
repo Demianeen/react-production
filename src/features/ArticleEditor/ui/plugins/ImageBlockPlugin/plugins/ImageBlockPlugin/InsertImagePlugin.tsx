@@ -21,7 +21,7 @@ import {
 export const INSERT_IMAGE_BLOCK_COMMAND =
   createCommand<ImageBlockPayload>('INSERT_IMAGE_COMMAND')
 
-export const ImageBlockPlugin = typedMemo(() => {
+export const InsertImagePlugin = typedMemo(() => {
   const [editor] = useLexicalComposerContext()
 
   useEffect(() => {
@@ -61,27 +61,6 @@ export const ImageBlockPlugin = typedMemo(() => {
         },
         COMMAND_PRIORITY_NORMAL
       )
-      // articleEditor.registerCommand<DragEvent>(
-      //   DRAGSTART_COMMAND,
-      //   (event) => {
-      //     return onDragStart(event)
-      //   },
-      //   COMMAND_PRIORITY_HIGH
-      // ),
-      // articleEditor.registerCommand<DragEvent>(
-      //   DRAGOVER_COMMAND,
-      //   (event) => {
-      //     return onDragover(event)
-      //   },
-      //   COMMAND_PRIORITY_LOW
-      // ),
-      // articleEditor.registerCommand<DragEvent>(
-      //   DROP_COMMAND,
-      //   (event) => {
-      //     return onDrop(event, articleEditor)
-      //   },
-      //   COMMAND_PRIORITY_HIGH
-      // )
     )
   }, [editor])
 

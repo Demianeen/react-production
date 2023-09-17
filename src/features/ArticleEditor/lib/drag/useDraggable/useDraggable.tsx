@@ -1,9 +1,17 @@
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
-import { useCallback, useRef } from 'react'
-import { $getNearestNodeFromDOMNode, $getNodeByKey } from 'lexical'
+import { useCallback, useEffect, useRef } from 'react'
+import {
+  $getNearestNodeFromDOMNode,
+  $getNodeByKey,
+  COMMAND_PRIORITY_HIGH,
+  COMMAND_PRIORITY_LOW,
+  DRAGOVER_COMMAND,
+  DROP_COMMAND,
+} from 'lexical'
 import { isSVG } from '@/shared/lib/html/isSvg'
 import { isHTMLElement } from '@/shared/lib/html/isHTMLElement'
 import { eventFiles } from '@lexical/rich-text'
+import { mergeRegister } from '@lexical/utils'
 import { getBlockElement } from '../getBlockElement/getBlockElement'
 import { useTargetLine } from '../useTargetLine/useTargetLine'
 
@@ -28,8 +36,6 @@ interface UseDraggableReturnFunctions {
     args: HandleStartArgs
   ) => void
   handleDragEnd: () => void
-  handleDragover: (event: DragEvent) => boolean
-  handleDrop: (event: DragEvent) => boolean
 }
 
 type UseDraggableReturnType = [
@@ -41,6 +47,8 @@ type UseDraggableReturnType = [
 interface UseDraggableProps {
   anchorElem: HTMLElement
   space: number
+  onDragoverStart?: (event: DragEvent) => void
+  onDropStart?: (event: DragEvent) => void
 }
 
 /* eslint-disable no-param-reassign */
@@ -71,6 +79,8 @@ const updateDragImage = (
 export const useDraggable = ({
   anchorElem,
   space,
+  onDragoverStart,
+  onDropStart,
 }: UseDraggableProps): UseDraggableReturnType => {
   const [editor] = useLexicalComposerContext()
   const [
@@ -192,13 +202,41 @@ export const useDraggable = ({
     [anchorElem, editor]
   )
 
+  useEffect(() => {
+    return mergeRegister(
+      editor.registerCommand(
+        DRAGOVER_COMMAND,
+        (event) => {
+          onDragoverStart?.(event)
+
+          return handleDragover(event)
+        },
+        COMMAND_PRIORITY_LOW
+      ),
+      editor.registerCommand(
+        DROP_COMMAND,
+        (event) => {
+          onDropStart?.(event)
+
+          return handleDrop(event)
+        },
+        COMMAND_PRIORITY_HIGH
+      )
+    )
+  }, [
+    anchorElem,
+    editor,
+    handleDragover,
+    handleDrop,
+    onDragoverStart,
+    onDropStart,
+  ])
+
   return [
     targetLine,
     {
       handleDragStart,
       handleDragEnd,
-      handleDragover,
-      handleDrop,
     },
   ]
 }

@@ -4,5 +4,11 @@ import { buildSelector } from '@/shared/lib/store'
 export const getArticleEditorState = (state: StateSchema) =>
   state.articleEditor
 
+export const [useArticleEditorSelection, getArticleEditorSelection] =
+  buildSelector(getArticleEditorState, (state) => state?.selection)
+
 export const [useArticleEditorBlockType, getArticleEditorBlockType] =
-  buildSelector(getArticleEditorState, (state) => state?.blockType)
+  buildSelector(
+    getArticleEditorSelection,
+    (state) => state?.blockType
+  )

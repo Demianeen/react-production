@@ -1,5 +1,5 @@
 import type { KeyboardEventHandler } from 'react'
-import { memo, useCallback, useState } from 'react'
+import { memo, useCallback, useRef, useState } from 'react'
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
 import { AppImage } from '@/shared/ui/redesigned/AppImage'
 import {
@@ -16,6 +16,8 @@ import { useTranslation } from 'react-i18next'
 import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
 import { useFocus } from '@/shared/lib/hooks/useFocus/useFocus'
+import { createPortal } from 'react-dom'
+import { useDraggable } from '../../../../../lib/drag/useDraggable/useDraggable'
 import { Placeholder } from '../../../../Placeholder/Placeholder'
 import styles from './ImageBlockComponent.module.scss'
 import { OneLinePlugin } from '../../../OneLinePlugin/OneLinePlugin'
@@ -28,6 +30,7 @@ interface ImageBlockComponentProps {
   altText: string
   caption: LexicalEditor
   nodeKey: string
+  anchorElem: HTMLElement
 }
 
 export const ImageBlockComponent = memo(
@@ -37,9 +40,16 @@ export const ImageBlockComponent = memo(
     src,
     caption,
     nodeKey,
+    anchorElem,
   }: ImageBlockComponentProps) => {
     const { t } = useTranslation()
     const [isFocused, bindFocus] = useFocus()
+    const [targetLine, { handleDragStart, handleDragEnd }] =
+      useDraggable({
+        anchorElem,
+        space: 4,
+      })
+    const imageRef = useRef<HTMLImageElement>(null)
 
     const deleteImage = useCallback(() => {
       caption?._parentEditor?.update(() => {
@@ -87,6 +97,19 @@ export const ImageBlockComponent = memo(
 
     const [isImageLoaded, setIsImageLoaded] = useState(false)
 
+    const onDragStart = useCallback(
+      (event: React.DragEvent) => {
+        if (imageRef.current === null) {
+          return
+        }
+        handleDragStart(event, {
+          nodeKey,
+          draggableBlockElem: imageRef.current,
+        })
+      },
+      [handleDragStart, nodeKey]
+    )
+
     return (
       <VStack
         className={classNamesNew(styles.imageWrapper, className)}
@@ -95,6 +118,7 @@ export const ImageBlockComponent = memo(
         align='center'
         maxWidth
       >
+        {createPortal(targetLine, anchorElem)}
         <AppImage
           className={classNamesNew(styles.img, {
             [styles.focused]: isFocused,
@@ -104,7 +128,10 @@ export const ImageBlockComponent = memo(
           data-testid='ImageBlockComponent'
           onLoad={setIsImageLoaded}
           onKeyDown={handleKeydown}
+          onDragStart={onDragStart}
+          onDragEnd={handleDragEnd}
           tabIndex={0}
+          ref={imageRef}
         />
         {isImageLoaded && (
           // <ToggleFeature

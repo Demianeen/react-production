@@ -6,7 +6,9 @@ import {
 } from '../types/articleEditorSchema'
 
 const initialState: ArticleEditorSchema = {
-  blockType: BlockType.P,
+  selection: {
+    blockType: BlockType.P,
+  },
 }
 
 export const articleEditorSlice = buildSlice({
@@ -14,7 +16,7 @@ export const articleEditorSlice = buildSlice({
   initialState,
   reducers: {
     setBlockType: (state, action: PayloadAction<BlockType>) => {
-      state.blockType = action.payload
+      state.selection.blockType = action.payload
     },
   },
 })

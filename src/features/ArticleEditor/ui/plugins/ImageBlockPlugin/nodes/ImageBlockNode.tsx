@@ -3,6 +3,9 @@ import type {
   LexicalEditor,
   NodeKey,
   RangeSelection,
+  SerializedEditor,
+  SerializedLexicalNode,
+  Spread,
 } from 'lexical'
 import {
   $createParagraphNode,
@@ -14,9 +17,20 @@ import { ImageBlockComponent } from '../ui/ImageBlockComponent/ImageBlockCompone
 export interface ImageBlockPayload {
   src: string
   altText: string
+  anchorElem: HTMLElement
   caption?: LexicalEditor
   key?: NodeKey
 }
+
+export type SerializedImageNode = Spread<
+  {
+    altText: string
+    caption: SerializedEditor
+    src: string
+    anchorElem: HTMLElement
+  },
+  SerializedLexicalNode
+>
 
 export class ImageBlockNode extends DecoratorNode<JSX.Element> {
   private __src: string
@@ -25,10 +39,19 @@ export class ImageBlockNode extends DecoratorNode<JSX.Element> {
 
   private __caption: LexicalEditor
 
-  constructor({ src, key, altText, caption }: ImageBlockPayload) {
+  private __anchorElem: HTMLElement
+
+  constructor({
+    src,
+    key,
+    altText,
+    caption,
+    anchorElem,
+  }: ImageBlockPayload) {
     super(key)
     this.__src = src
     this.__altText = altText
+    this.__anchorElem = anchorElem
     this.__caption = caption || createEditor()
   }
 
@@ -38,10 +61,11 @@ export class ImageBlockNode extends DecoratorNode<JSX.Element> {
 
   static clone(node: ImageBlockNode): ImageBlockNode {
     return new ImageBlockNode({
-      src: node.__src,
-      altText: node.__altText,
+      src: node.getSrc(),
+      altText: node.getAltText(),
       caption: node.__caption,
       key: node.__key,
+      anchorElem: node.__anchorElem,
     })
   }
 
@@ -52,6 +76,37 @@ export class ImageBlockNode extends DecoratorNode<JSX.Element> {
       dom.className = className
     }
     return dom
+  }
+
+  static importJSON(
+    serializedNode: SerializedImageNode
+  ): ImageBlockNode {
+    const { altText, caption, src, anchorElem } = serializedNode
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+    const node = $createImageBlockNode({
+      altText,
+      src,
+      anchorElem,
+    })
+    const nestedEditor = node.__caption
+    const editorState = nestedEditor.parseEditorState(
+      caption.editorState
+    )
+    if (!editorState.isEmpty()) {
+      nestedEditor.setEditorState(editorState)
+    }
+    return node
+  }
+
+  exportJSON(): SerializedImageNode {
+    return {
+      altText: this.getAltText(),
+      caption: this.__caption.toJSON(),
+      src: this.getSrc(),
+      type: this.getType(),
+      anchorElem: this.__anchorElem,
+      version: 1,
+    }
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -82,12 +137,31 @@ export class ImageBlockNode extends DecoratorNode<JSX.Element> {
   ): JSX.Element {
     return (
       <ImageBlockComponent
-        altText={this.__altText}
+        altText={this.getAltText()}
         caption={this.__caption}
-        src={this.__src}
+        src={this.getSrc()}
         nodeKey={this.__key}
+        anchorElem={this.__anchorElem}
       />
     )
+  }
+
+  getData(): ImageBlockPayload {
+    return {
+      altText: this.getAltText(),
+      caption: this.__caption,
+      src: this.getSrc(),
+      key: this.getKey(),
+      anchorElem: this.__anchorElem,
+    }
+  }
+
+  getSrc(): string {
+    return this.__src
+  }
+
+  getAltText(): string {
+    return this.__altText
   }
 }
 

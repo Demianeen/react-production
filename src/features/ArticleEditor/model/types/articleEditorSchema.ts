@@ -8,5 +8,7 @@ export enum BlockType {
 }
 
 export interface ArticleEditorSchema {
-  blockType: BlockType
+  selection: {
+    blockType: BlockType
+  }
 }

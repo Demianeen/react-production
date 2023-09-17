@@ -106,7 +106,7 @@ export const ArticleEditor = memo(() => {
 
   return (
     <LexicalComposer initialConfig={initialConfig}>
-      <ToolbarPlugin />
+      <ToolbarPlugin anchorElem={floatingAnchorElem} />
       <HStack
         className={classNamesNew(
           styles.articleEditor,
@@ -140,7 +140,7 @@ export const ArticleEditor = memo(() => {
         <UpdateEditorBlockTypePlugin />
         <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
         <CodeHighlightPlugin />
-        {floatingAnchorElem && (
+        {floatingAnchorElem !== null && (
           <DraggableBlockPlugin anchorElem={floatingAnchorElem} />
         )}
       </HStack>

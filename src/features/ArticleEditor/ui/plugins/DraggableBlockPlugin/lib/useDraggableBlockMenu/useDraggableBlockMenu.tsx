@@ -1,12 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { mergeRegister } from '@lexical/utils'
-import {
-  $getNearestNodeFromDOMNode,
-  COMMAND_PRIORITY_HIGH,
-  COMMAND_PRIORITY_LOW,
-  DRAGOVER_COMMAND,
-  DROP_COMMAND,
-} from 'lexical'
+import { $getNearestNodeFromDOMNode } from 'lexical'
 import * as React from 'react'
 import type { DragEvent as ReactDragEvent } from 'react'
 import { useEffect, useRef, useState } from 'react'
@@ -62,19 +55,21 @@ export const useDraggableBlockMenu = (
   anchorElem: HTMLElement
 ): JSX.Element => {
   const [editor] = useLexicalComposerContext()
-  const [
-    targetLine,
-    { handleDragStart, handleDragEnd, handleDragover, handleDrop },
-  ] = useDraggable({
-    anchorElem,
-    space: SPACE,
-  })
 
   const scrollerElem = anchorElem.parentElement
 
   const menuRef = useRef<HTMLDivElement>(null)
   const [draggableBlockElem, setDraggableBlockElem] =
     useState<HTMLElement | null>(null)
+
+  const [targetLine, { handleDragStart, handleDragEnd }] =
+    useDraggable({
+      anchorElem,
+      space: SPACE,
+      onDropStart: () => {
+        setDraggableBlockElem(null)
+      },
+    })
 
   useEffect(() => {
     const onMouseMove = (event: MouseEvent) => {
@@ -118,25 +113,6 @@ export const useDraggableBlockMenu = (
       )
     }
   }, [anchorElem, draggableBlockElem])
-
-  useEffect(() => {
-    return mergeRegister(
-      editor.registerCommand(
-        DRAGOVER_COMMAND,
-        handleDragover,
-        COMMAND_PRIORITY_LOW
-      ),
-      editor.registerCommand(
-        DROP_COMMAND,
-        (event) => {
-          setDraggableBlockElem(null)
-
-          return handleDrop(event)
-        },
-        COMMAND_PRIORITY_HIGH
-      )
-    )
-  }, [anchorElem, editor, handleDragover, handleDrop])
 
   const onDragStart = (
     event: ReactDragEvent<HTMLDivElement>

@@ -8,15 +8,16 @@ import type { ImagePromptValues } from './ImagePrompt'
 import { ImagePrompt } from './ImagePrompt'
 import {
   INSERT_IMAGE_BLOCK_COMMAND,
-  ImageBlockPlugin,
-} from '../../../plugins/ImageBlockPlugin/plugins/ImageBlockPlugin/ImageBlockPlugin'
+  InsertImagePlugin,
+} from '../../../plugins/ImageBlockPlugin/plugins/ImageBlockPlugin/InsertImagePlugin'
 
 export interface ImageToolbarPluginProps {
   className?: string
+  anchorElem: HTMLElement
 }
 
 export const ImageToolbarPlugin = typedMemo(
-  ({ className }: ImageToolbarPluginProps) => {
+  ({ className, anchorElem }: ImageToolbarPluginProps) => {
     const [editor] = useLexicalComposerContext()
     const [isPromptOpen, setIsPromptOpen] = useState(false)
 
@@ -29,10 +30,11 @@ export const ImageToolbarPlugin = typedMemo(
         editor.dispatchCommand(INSERT_IMAGE_BLOCK_COMMAND, {
           src,
           altText,
+          anchorElem,
         })
         onClosePrompt()
       },
-      [editor, onClosePrompt]
+      [anchorElem, editor, onClosePrompt]
     )
 
     const onOpenPrompt = useCallback((_: React.MouseEvent) => {
@@ -53,7 +55,7 @@ export const ImageToolbarPlugin = typedMemo(
             height={24}
           />
         </Button>
-        <ImageBlockPlugin />
+        <InsertImagePlugin />
         {isPromptOpen && (
           <ImagePrompt
             onSubmit={createImage}
