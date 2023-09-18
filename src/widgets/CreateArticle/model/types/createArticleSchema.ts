@@ -1,8 +1,10 @@
-interface CreateArticleForm {
+import type { ArticleType } from '@/entities/Article'
+
+export interface CreateArticleForm {
   title: string
-  img: string
   subtitle: string
-  content: string
+  img: string
+  types: ArticleType[]
 }
 
 export interface CreateArticleSchema {

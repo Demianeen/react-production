@@ -15,12 +15,8 @@ import { Button } from '@/shared/ui/deprecated/Button'
 import { Avatar } from '@/shared/ui/deprecated/Avatar'
 import { Card } from '@/shared/ui/deprecated/Card'
 import { AppImage } from '@/shared/ui/redesigned/AppImage'
-import { ArticleBlockType } from '../../../model/const/articleBlockType'
 import type { OnOpenArticle } from '../../ArticleList/VirtualizedArticleList'
-import type {
-  Article,
-  ArticleTextBlock,
-} from '../../../model/types/article'
+import type { Article } from '../../../model/types/article'
 import styles from './ArticleListItemDeprecated.module.scss'
 import { ArticleTextBlockComponent } from '../../ArticleTextBlockComponent/ArticleTextBlockComponent'
 
@@ -87,13 +83,13 @@ export const ArticleListItemDeprecated = memo(
     }
 
     const textBlock = useMemo(() => {
-      if (view === View.LIST) {
-        return article.blocks.find(
-          (block) => block.type === ArticleBlockType.TEXT
-        ) as ArticleTextBlock | undefined
-      }
+      // if (view === View.LIST) {
+      //   return article.blocks.find(
+      //     (block) => block.type === ArticleBlockType.TEXT
+      //   ) as ArticleTextBlock | undefined
+      // }
       return undefined
-    }, [article.blocks, view])
+    }, [])
 
     if (view === View.LIST) {
       return (

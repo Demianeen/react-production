@@ -18,12 +18,8 @@ import { Title } from '@/shared/ui/redesigned/Title'
 import { useFocus } from '@/shared/lib/hooks/useFocus/useFocus'
 import { useTab } from '@/shared/lib/hooks/useTab/useTab'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
-import { ArticleBlockType } from '../../../model/const/articleBlockType'
 import type { OnOpenArticle } from '../../ArticleList/VirtualizedArticleList'
-import type {
-  Article,
-  ArticleTextBlock,
-} from '../../../model/types/article'
+import type { Article } from '../../../model/types/article'
 import styles from './ArticleListItemRedesigned.module.scss'
 
 export interface ArticleListItemRedesignedProps extends TestProps {
@@ -81,14 +77,14 @@ export const ArticleListItemRedesigned = memo(
       vStackRef.current?.scrollIntoView()
     }, [isTabLastKey])
 
-    const textBlock = useMemo(() => {
-      if (view === View.LIST) {
-        return article.blocks.find(
-          (block) => block.type === ArticleBlockType.TEXT
-        ) as ArticleTextBlock | undefined
-      }
-      return undefined
-    }, [article.blocks, view])
+    // const textBlock = useMemo(() => {
+    //   // if (view === View.LIST) {
+    //   //   return article.blocks.find(
+    //   //     (block) => block.type === ArticleBlockType.TEXT
+    //   //   ) as ArticleTextBlock | undefined
+    //   // }
+    //   return undefined
+    // }, [])
 
     if (view === View.LIST) {
       return (
@@ -117,11 +113,12 @@ export const ArticleListItemRedesigned = memo(
             {article.subtitle}
           </Title>
           {image}
-          {textBlock !== undefined && (
+          {/* FIXME: show first paragraph */}
+          {/* {textBlock !== undefined && (
             <p className={styles.textBlock}>
               {textBlock.paragraphs.slice(0, 2).join(' ')}
             </p>
-          )}
+          )} */}
           <HStack
             as='footer'
             justify='between'

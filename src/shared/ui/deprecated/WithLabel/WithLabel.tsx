@@ -1,6 +1,5 @@
 import type { LabelHTMLAttributes, ReactNode } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
 import { VStack } from '../../redesigned/Stack'
 import styles from './WithLabel.module.scss'
 
@@ -21,28 +20,26 @@ interface WithLabelProps extends HTMLLabelProps {
  * Use components from redesigned folder
  * @deprecated
  */
-export const WithLabel = typedMemo(
-  ({
-    className,
-    wrapperClassName,
-    label,
-    children,
-    maxWidth,
-    ...props
-  }: WithLabelProps) => {
-    return (
-      <VStack className={wrapperClassName} maxWidth={maxWidth}>
-        {label && (
-          <label
-            htmlFor={label}
-            className={classNames(styles.label, {}, [className])}
-            {...props}
-          >
-            {label}:{' '}
-          </label>
-        )}
-        {children}
-      </VStack>
-    )
-  }
-)
+export const WithLabel = ({
+  className,
+  wrapperClassName,
+  label,
+  children,
+  maxWidth,
+  ...props
+}: WithLabelProps) => {
+  return (
+    <VStack className={wrapperClassName} maxWidth={maxWidth}>
+      {label && (
+        <label
+          htmlFor={label}
+          className={classNames(styles.label, {}, [className])}
+          {...props}
+        >
+          {label}:{' '}
+        </label>
+      )}
+      {children}
+    </VStack>
+  )
+}

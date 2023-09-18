@@ -21,10 +21,5 @@ export const [
 export const [useCreateArticleFormImage, getCreateArticleFormImage] =
   buildSelector(getCreateArticleForm, (state) => state?.img ?? '')
 
-export const [
-  useCreateArticleFormContent,
-  getCreateArticleFormContent,
-] = buildSelector(
-  getCreateArticleForm,
-  (state) => state?.content ?? ''
-)
+export const [useCreateArticleFormTypes, getCreateArticleFormTypes] =
+  buildSelector(getCreateArticleForm, (state) => state?.types ?? [])

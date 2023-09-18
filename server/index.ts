@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import fs from 'fs'
 import path from 'path'
 import https from 'https'
@@ -57,11 +58,34 @@ server.post('/login', (req, res) => {
 
     return res.status(403).json({ message: 'User not found' })
   } catch (e) {
-    console.log(e)
+    console.error(e)
     if (e instanceof Error) {
       return res.status(500).json({ message: e.message })
     }
 
+    return res.status(500).json({ message: 'UNKNOWN_SERVER_ERROR' })
+  }
+})
+
+// Create article endpoint
+server.post('/articles', (req, res) => {
+  try {
+    const createdAt = new Date().toString()
+    const views = Math.floor(Math.random() * 10000)
+
+    const newArticleId = router.db.get('articles').size().value() + 1
+    const newArticle = {
+      id: newArticleId,
+      ...req.body,
+      createdAt,
+      views,
+    }
+
+    router.db.get('articles').push(newArticle).write()
+
+    return res.json(newArticle)
+  } catch (e) {
+    console.error(e)
     return res.status(500).json({ message: 'UNKNOWN_SERVER_ERROR' })
   }
 })
@@ -102,7 +126,7 @@ server.post('/register', (req, res) => {
 
     return res.json(newUser)
   } catch (e) {
-    console.log(e)
+    console.error(e)
     return res.status(500).json({ message: 'UNKNOWN_SERVER_ERROR' })
   }
 })

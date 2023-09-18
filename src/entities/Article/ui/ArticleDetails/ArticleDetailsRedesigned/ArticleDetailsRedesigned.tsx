@@ -9,8 +9,9 @@ import { VStack } from '@/shared/ui/redesigned/Stack'
 import { AppImage } from '@/shared/ui/redesigned/AppImage'
 import { Title } from '@/shared/ui/redesigned/Title'
 import type { AsyncReducersList } from '@/app/providers/StoreProvider/config/stateSchema'
+// eslint-disable-next-line netliukh-demian-fsd-plugin/public-api-imports, netliukh-demian-fsd-plugin/layer-imports
+import { getArticleStylesClassName } from '@/features/ArticleEditor/lib/getArticleStylesClassName/getArticleStylesClassName'
 import { useArticleDetailsData } from '../../../model/selectors/getArticleDetailsData/getArticleDetailsData'
-import { renderArticleBlock } from './renderBlock'
 import { articleDetailsReducer } from '../../../model/slice/articleDetailsSlice'
 import { fetchArticleById } from '../../../model/services/fetchArticleById/fetchArticleById'
 import styles from './ArticleDetailsRedesigned.module.scss'
@@ -90,7 +91,13 @@ export const ArticleDetailsRedesigned = memo(
             }
           />
 
-          {article?.blocks?.map(renderArticleBlock)}
+          <div
+            className={getArticleStylesClassName()}
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{
+              __html: article?.contentHtmlString ?? '',
+            }}
+          />
         </>
       )
     }

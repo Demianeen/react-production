@@ -1,4 +1,5 @@
 export { ArticleDetails } from './ui/ArticleDetails/ArticleDetails'
+export { ArticleThumbnail } from '@/entities/Article/ui/ArticleThumbnail/ArticleThumbnail'
 
 export type { Article } from './model/types/article'
 export type { ArticleDetailsSchema } from './model/types/articleDetailsSchema'
@@ -21,5 +22,3 @@ export {
   useComputeListItemsLimit,
   computeListItemsLimit,
 } from './model/lib/useComputeListItemsLimit'
-
-export { ArticleImageBlockComponent } from './ui/ArticleImageBlockComponent/ArticleImageBlockComponent'

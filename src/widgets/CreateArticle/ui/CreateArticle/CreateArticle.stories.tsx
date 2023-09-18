@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import ArticleImage from '@/shared/assets/mocks/article.png'
 import { CreateArticle } from './CreateArticle'
 
 export default {
@@ -7,7 +8,9 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  args: {},
+  args: {
+    src: ArticleImage,
+  },
   parameters: {},
 } as Meta<typeof CreateArticle>
 

@@ -1,13 +1,11 @@
 import type { LinkMatcher } from '@lexical/react/LexicalAutoLinkPlugin'
 import { AutoLinkPlugin as LexicalAutoLinkPlugin } from '@lexical/react/LexicalAutoLinkPlugin'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
-
-const URL_MATCHER =
-  /((https?:\/\/(www\.)?)|(www\.))[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/
+import { findUrl } from '@/shared/lib/url/findUrl/findUrl'
 
 const MATCHERS: LinkMatcher[] = [
   (text: string) => {
-    const match = URL_MATCHER.exec(text)
+    const match = findUrl(text)
     if (match === null) {
       return null
     }

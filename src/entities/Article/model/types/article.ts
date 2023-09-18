@@ -35,8 +35,8 @@ export interface Article {
   title: string
   subtitle: string
   img: string
-  views: 1022
+  views: number
   createdAt: string
   types: ArticleType[]
-  blocks: ArticleBlock[]
+  contentHtmlString: string
 }
