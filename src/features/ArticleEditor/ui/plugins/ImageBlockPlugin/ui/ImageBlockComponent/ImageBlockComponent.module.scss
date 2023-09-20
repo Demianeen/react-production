@@ -1,4 +1,6 @@
 .imageWrapper {
+  width: 100%;
+
   &:focus {
     outline: var(--outline-redesigned);
   }
@@ -11,6 +13,12 @@
   &.focused {
     outline: var(--outline-redesigned);
   }
+}
+
+.captionWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .placeholder {
@@ -27,10 +35,7 @@
 
   &:not(.withPlaceholder) {
     width: 100%;
-
-    .contentEditable {
-      text-align: center;
-    }
+    text-align: center;
   }
 
   &.withPlaceholder {

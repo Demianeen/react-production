@@ -20,6 +20,8 @@ import type { SelectOption } from '@/shared/ui/redesigned/Popups'
 import { isUrl } from '@/shared/lib/url/findUrl/isUrl'
 import { AppImage } from '@/shared/ui/redesigned/AppImage'
 import { useUserId } from '@/entities/User'
+import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton'
+import { Skeleton } from '@/shared/ui/redesigned/Skeleton'
 import { useCreateArticleMutation } from '../../model/api/createArticleApi'
 import {
   useCreateArticleFormImage,
@@ -104,6 +106,12 @@ export const CreateArticle = memo(
       [createArticle, img, subtitle, title, types, userId]
     )
 
+    const SkeletonComponent = toggleFeature({
+      name: 'isAppRedesigned',
+      on: () => Skeleton,
+      off: () => SkeletonDeprecated,
+    })
+
     const buttonProps = {
       type: 'submit' as const,
       children: t('Publish'),
@@ -149,6 +157,9 @@ export const CreateArticle = memo(
               src={img}
               alt='preview grid thumbnail'
               className={styles.imgPreviewGrid}
+              fallback={
+                <SkeletonComponent width='15rem' height='15rem' />
+              }
             />
           </>
         )}

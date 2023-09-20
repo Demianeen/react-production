@@ -1,4 +1,4 @@
-import { memo, useEffect } from 'react'
+import { memo, useLayoutEffect } from 'react'
 import { Text } from '@/shared/ui/deprecated/Text'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
 import styles from './Placeholder.module.scss'
@@ -11,7 +11,8 @@ export interface PlaceholderProps {
 
 export const Placeholder = memo(
   ({ className, text, onPlaceholderChange }: PlaceholderProps) => {
-    useEffect(() => {
+    // if we use useEffect instead of useLayoutEffect, we will see a flickering
+    useLayoutEffect(() => {
       onPlaceholderChange?.(true)
       return () => {
         onPlaceholderChange?.(false)

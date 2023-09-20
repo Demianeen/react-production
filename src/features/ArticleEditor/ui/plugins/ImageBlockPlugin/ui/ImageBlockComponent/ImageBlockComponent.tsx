@@ -1,9 +1,5 @@
 import type { KeyboardEventHandler } from 'react'
 import { memo, useCallback, useRef, useState } from 'react'
-import {
-  getHStackClassName,
-  getVStackClassName,
-} from '@/shared/ui/redesigned/Stack'
 import { AppImage } from '@/shared/ui/redesigned/AppImage'
 import {
   $createParagraphNode,
@@ -21,7 +17,7 @@ import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
 import { useFocus } from '@/shared/lib/hooks/useFocus/useFocus'
 import { useDraggable } from '../../../../../lib/drag/useDraggable/useDraggable'
 import { Placeholder } from '../../../../Placeholder/Placeholder'
-import styles from './ImageBlockComponent.module.scss'
+import './ImageBlockComponent.module.scss'
 import { OneLinePlugin } from '../../../OneLinePlugin/OneLinePlugin'
 import { AutoFocusPlugin } from '../../../AutoFocusPlugin/AutoFocusPlugin'
 import { DeleteArticleEditorPlugin } from '../../../DeleteArticleEditorPlugin/DeleteArticleEditorPlugin'
@@ -34,21 +30,10 @@ interface ImageBlockComponentProps {
   anchorElem: HTMLElement
 }
 
-export const imageWrapperClassnames = classNamesNew(
-  getVStackClassName({
-    justify: 'center',
-    align: 'center',
-    maxWidth: true,
-  }),
-  styles.imageWrapper
-)
-export const imageClassnames = styles.img
-export const captionWrapperClassnames = getHStackClassName({
-  justify: 'center',
-  align: 'center',
-  maxWidth: true,
-})
-export const captionClassnames = styles.articleEditor
+export const imageWrapperClassnames = 'imageWrapper'
+export const imageClassnames = 'img'
+export const captionWrapperClassnames = 'captionWrapper'
+export const captionClassnames = 'articleEditor'
 
 export const ImageBlockComponent = memo(
   ({
@@ -131,7 +116,7 @@ export const ImageBlockComponent = memo(
         {targetLine}
         <AppImage
           className={classNamesNew(imageClassnames, {
-            [styles.focused]: isFocused,
+            focused: isFocused,
           })}
           src={src}
           alt={altText}
@@ -163,20 +148,20 @@ export const ImageBlockComponent = memo(
             <div className={captionWrapperClassnames}>
               <figcaption
                 className={classNamesNew(captionClassnames, {
-                  [styles.withPlaceholder]: isPlaceholderMounted,
+                  withPlaceholder: isPlaceholderMounted,
                 })}
               >
                 <RichTextPlugin
                   contentEditable={
                     <ContentEditable
-                      className={styles.contentEditable}
+                      className='contentEditable'
                       autoFocus
                       {...bindFocus}
                     />
                   }
                   placeholder={
                     <Placeholder
-                      className={styles.placeholder}
+                      className='placeholder'
                       text={t('Enter a caption')}
                       onPlaceholderChange={setIsPlaceholderMounted}
                     />

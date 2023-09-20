@@ -2,7 +2,6 @@ import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
 import {
   $createParagraphNode,
   $getSelection,
-  $insertNodes,
   COMMAND_PRIORITY_EDITOR,
   COMMAND_PRIORITY_NORMAL,
   KEY_ENTER_COMMAND,
@@ -36,9 +35,10 @@ export const InsertImagePlugin = typedMemo(() => {
         INSERT_IMAGE_BLOCK_COMMAND,
         (payload) => {
           editor.update(() => {
+            const selection = $getSelection()
+            const node = selection?.getNodes()[0]
             const imageNode = $createImageBlockNode(payload)
-            const paragraphNode = $createParagraphNode()
-            $insertNodes([imageNode, paragraphNode])
+            node?.replace(imageNode)
           })
 
           return true

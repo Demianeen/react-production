@@ -1,3 +1,5 @@
+@import '../../ui/plugins/ImageBlockPlugin/ui/ImageBlockComponent/ImageBlockComponent.module';
+
 $list-padding: 0 0 0 1.5rem;
 
 .withArticleStyles {
@@ -11,25 +13,29 @@ $list-padding: 0 0 0 1.5rem;
     list-style: decimal;
   }
 
-  .code {
+  .code,
+  pre {
     position: relative;
     display: block;
-    padding: 8px 8px 8px 52px;
-    margin: 8px 0;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
     overflow-x: auto;
     font-family: Menlo, Consolas, Monaco, monospace;
-    font-size: 13px;
     line-height: 1.53;
     color: var(--code-text);
     tab-size: 2;
     background-color: var(--code-bg);
+  }
+
+  .code {
+    padding-left: 3.25rem;
 
     &::before {
       position: absolute;
       top: 0;
       left: 0;
-      min-width: 25px;
-      padding: 8px;
+      min-width: 1.5625rem;
+      padding: 0.5rem;
       color: #777;
       text-align: right;
       white-space: pre-wrap;
