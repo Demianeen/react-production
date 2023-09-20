@@ -42,6 +42,14 @@ server.use(async (_req, _res, next) => {
   next()
 })
 
+const getNewId = (collectionName: keyof DbSchema) => {
+  const maxArticleId = Math.max(
+    ...router.db.get(collectionName).map('id').value(),
+    0
+  )
+  return maxArticleId + 1
+}
+
 // Login endpoint
 server.post('/login', (req, res) => {
   try {
@@ -67,29 +75,6 @@ server.post('/login', (req, res) => {
   }
 })
 
-// Create article endpoint
-server.post('/articles', (req, res) => {
-  try {
-    const createdAt = new Date().toString()
-    const views = Math.floor(Math.random() * 10000)
-
-    const newArticleId = router.db.get('articles').size().value() + 1
-    const newArticle = {
-      id: newArticleId,
-      ...req.body,
-      createdAt,
-      views,
-    }
-
-    router.db.get('articles').push(newArticle).write()
-
-    return res.json(newArticle)
-  } catch (e) {
-    console.error(e)
-    return res.status(500).json({ message: 'UNKNOWN_SERVER_ERROR' })
-  }
-})
-
 // Register endpoint
 server.post('/register', (req, res) => {
   try {
@@ -104,7 +89,7 @@ server.post('/register', (req, res) => {
       return res.status(403).json({ message: 'USER_ALREADY_EXIST' })
     }
 
-    const newUserId = router.db.get('users').size().value() + 1
+    const newUserId = getNewId('users')
     const newUser = {
       id: newUserId,
       username,
@@ -125,6 +110,29 @@ server.post('/register', (req, res) => {
       .write()
 
     return res.json(newUser)
+  } catch (e) {
+    console.error(e)
+    return res.status(500).json({ message: 'UNKNOWN_SERVER_ERROR' })
+  }
+})
+
+// Create article endpoint
+server.post('/articles', (req, res) => {
+  try {
+    const createdAt = new Date().toString()
+    const views = Math.floor(Math.random() * 10000)
+
+    const newArticleId = getNewId('articles')
+    const newArticle = {
+      id: newArticleId,
+      ...req.body,
+      createdAt,
+      views,
+    }
+
+    router.db.get('articles').push(newArticle).write()
+
+    return res.json(newArticle)
   } catch (e) {
     console.error(e)
     return res.status(500).json({ message: 'UNKNOWN_SERVER_ERROR' })
