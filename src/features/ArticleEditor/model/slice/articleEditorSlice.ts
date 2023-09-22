@@ -8,6 +8,7 @@ import {
 const initialState: ArticleEditorSchema = {
   selection: {
     blockType: BlockType.P,
+    nodeKey: null,
   },
   mouse: {
     topLevelNodeKey: null,
@@ -23,6 +24,12 @@ export const articleEditorSlice = buildSlice({
       action: PayloadAction<BlockType>
     ) => {
       state.selection.blockType = action.payload
+    },
+    setSelectionNodeKey: (
+      state,
+      action: PayloadAction<string | null>
+    ) => {
+      state.selection.nodeKey = action.payload
     },
     setMouseTopLevelNodeKey: (
       state,

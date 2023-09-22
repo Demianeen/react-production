@@ -55,6 +55,7 @@ type SelectProps<T extends string> = {
   direction?: DiagonalDirection
   name?: string
   required?: boolean
+  clear?: boolean
 } & TestProps &
   (MultiplePropsTrue<T> | MultiplePropsFalse<T>)
 
@@ -77,6 +78,7 @@ export const Select = typedMemo(
     'data-testid': testId = 'Select',
     required = false,
     multiple = false,
+    clear = false,
   }: SelectProps<T>) => {
     const selectedOptionLabel = useMemo(() => {
       if (multiple) {
@@ -112,12 +114,13 @@ export const Select = typedMemo(
           <Listbox.Button
             as={Button}
             type='button'
-            theme={ButtonTheme.OUTLINE}
+            theme={clear ? ButtonTheme.CLEAR : ButtonTheme.OUTLINE}
             disabledButton={readonly}
             className={classNames(
               styles.button,
               {
                 [popupStyles.maxWidth]: maxWidth,
+                [styles.clear]: clear,
               },
               [className]
             )}
@@ -127,7 +130,9 @@ export const Select = typedMemo(
             <span className={styles.label}>
               {selectedOptionLabel ?? defaultValue}
             </span>
-            <Icon Svg={ArrowDownIcon} className={styles.icon} />
+            {!clear && (
+              <Icon Svg={ArrowDownIcon} className={styles.icon} />
+            )}
           </Listbox.Button>
           <Listbox.Options
             className={classNames(

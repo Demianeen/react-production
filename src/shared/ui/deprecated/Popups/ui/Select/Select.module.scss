@@ -3,14 +3,17 @@ $option-padding: 0.6rem;
 .button {
   display: flex;
   align-items: center;
-  padding: 0.5rem;
 
-  .label {
-    margin-right: 1rem;
-  }
+  &:not(.clear) {
+    padding: 0.5rem;
 
-  .icon {
-    margin-left: auto;
+    .label {
+      margin-right: 1rem;
+    }
+
+    .icon {
+      margin-left: auto;
+    }
   }
 }
 

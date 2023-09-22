@@ -1,0 +1,8 @@
+.codeActionMenu {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+  background: var(--code-bg);
+}

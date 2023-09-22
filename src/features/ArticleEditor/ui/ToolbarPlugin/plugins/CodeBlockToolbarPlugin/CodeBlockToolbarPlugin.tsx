@@ -3,7 +3,10 @@ import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext
 import { memo } from 'react'
 import CodeIcon from '@/shared/assets/icons/redesigned/textEditor/code.svg'
 import { Icon } from '@/shared/ui/deprecated/Icon'
-import { INSERT_CODE_BLOCK_COMMAND } from '../../../plugins/CodeBlockPlugin/CodeBlockPlugin'
+import {
+  CodeBlockPlugin,
+  INSERT_CODE_BLOCK_COMMAND,
+} from '../../../plugins/CodeBlockPlugin/CodeBlockPlugin'
 
 export const CodeBlockToolbarPlugin = memo(() => {
   const [editor] = useLexicalComposerContext()
@@ -19,6 +22,7 @@ export const CodeBlockToolbarPlugin = memo(() => {
       theme={ButtonTheme.CLEAR}
     >
       <Icon Svg={CodeIcon} />
+      <CodeBlockPlugin />
     </Button>
   )
 })

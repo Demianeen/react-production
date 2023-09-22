@@ -39,9 +39,7 @@ export const ImageBlockComponent = memo(
     const { t } = useTranslation()
     const [isFocused, bindFocus] = useFocus()
     const { targetLine, handleDragStart, handleDragEnd } =
-      useDraggable({
-        space: 4,
-      })
+      useDraggable()
     const imageRef = useRef<HTMLImageElement>(null)
 
     const deleteImage = useCallback(() => {

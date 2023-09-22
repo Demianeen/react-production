@@ -10,6 +10,7 @@ export enum BlockType {
 export interface ArticleEditorSchema {
   selection: {
     blockType: BlockType
+    nodeKey: string | null
   }
   mouse: {
     topLevelNodeKey: string | null

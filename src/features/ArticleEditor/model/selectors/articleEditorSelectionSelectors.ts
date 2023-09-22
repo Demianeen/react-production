@@ -11,3 +11,11 @@ export const [
   getArticleEditorSelection,
   (state) => state?.blockType
 )
+
+export const [
+  useArticleEditorSelectionNodeKey,
+  getArticleEditorSelectionNodeKey,
+] = buildSelector(
+  getArticleEditorSelection,
+  (state) => state?.nodeKey
+)

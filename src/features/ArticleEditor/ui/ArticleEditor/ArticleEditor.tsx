@@ -18,10 +18,11 @@ import { useTranslation } from 'react-i18next'
 import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import type { ReducersList } from '@/app/providers/StoreProvider/config/stateSchema'
 import { CodeHighlightNode } from '@lexical/code'
-import { UpdateSelectionBlockTypePlugin } from '../plugins/UpdateSelectionBlockTypePlugin/UpdateSelectionBlockTypePlugin'
+import { CodeActionMenuPlugin } from '../plugins/CodeActionMenuPlugin'
+import { UpdateSelectionBlockTypePlugin } from '../plugins/UpdateSelectionStatePlugin/UpdateSelectionStatePlugin'
 import { DraggableBlockPlugin } from '../plugins/DraggableBlockPlugin/DraggableBlockPlugin'
 import { CodeHighlightPlugin } from '../plugins/CodeHighlightPlugin/CodeHighlightPlugin'
-import { UpdateMouseBlockTypePlugin } from '../plugins/UpdateMouseBlockTypePlugin/UpdateMouseBlockTypePlugin'
+import { UpdateMouseBlockTypePlugin } from '../plugins/UpdateMouseStatePlugin/UpdateMouseStatePlugin'
 import { Placeholder } from '../Placeholder/Placeholder'
 import { AutoLinkPlugin } from '../plugins/AutoLinkPlugin/AutoLinkPlugin'
 import styles from './ArticleEditor.module.scss'
@@ -143,6 +144,7 @@ export const ArticleEditor = memo(
             <UpdateMouseBlockTypePlugin />
             <UpdateSelectionBlockTypePlugin />
             <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
+            <CodeActionMenuPlugin />
             <CodeHighlightPlugin />
             <DraggableBlockPlugin />
             <EditorRefPlugin editorRef={editorRef as any} />

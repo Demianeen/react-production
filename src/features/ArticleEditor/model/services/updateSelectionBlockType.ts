@@ -25,7 +25,7 @@ export const [useUpdateSelectionBlockType, updateSelectionBlockType] =
       const selection = $getSelection()
       if ($isRangeSelection(selection)) {
         const anchorNode = selection.anchor.getNode()
-        let element =
+        let node =
           anchorNode.getKey() === 'root'
             ? anchorNode
             : $findMatchingParent(anchorNode, (e) => {
@@ -33,19 +33,23 @@ export const [useUpdateSelectionBlockType, updateSelectionBlockType] =
                 return parent !== null && $isRootOrShadowRoot(parent)
               })
 
-        if (element === null) {
-          element = anchorNode.getTopLevelElementOrThrow()
+        if (node === null) {
+          node = anchorNode.getTopLevelElementOrThrow()
         }
 
-        const elementKey = element.getKey()
+        dispatch(
+          articleEditorActions.setSelectionNodeKey(node.getKey())
+        )
+
+        const elementKey = node.getKey()
         const elementDOM =
           activeArticleEditor.getElementByKey(elementKey)
 
         if (elementDOM !== null) {
-          if ($isListNode(element)) {
+          if ($isListNode(node)) {
             const parentList =
               $getNearestNodeOfType<ListNode>(anchorNode, ListNode) ??
-              element
+              node
             const type = parentList.getTag()
 
             if (isEnumInclude(BlockType, type)) {
@@ -54,9 +58,9 @@ export const [useUpdateSelectionBlockType, updateSelectionBlockType] =
               )
             }
           } else {
-            const type = $isHeadingNode(element)
-              ? element.getTag()
-              : element.getType()
+            const type = $isHeadingNode(node)
+              ? node.getTag()
+              : node.getType()
             if (isEnumInclude(BlockType, type)) {
               dispatch(
                 articleEditorActions.setSelectionBlockType(type)

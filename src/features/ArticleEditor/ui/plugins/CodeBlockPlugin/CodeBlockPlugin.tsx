@@ -8,7 +8,7 @@ import {
   COMMAND_PRIORITY_EDITOR,
   createCommand,
 } from 'lexical'
-import { useArticleEditorBlockType } from '../../../model/selectors/articleEditorSchemaSelectors'
+import { useArticleEditorSelectionBlockType } from '../../../model/selectors/articleEditorSelectionSelectors'
 import { useArticleEditorActions } from '../../../model/slice/articleEditorSlice'
 import { BlockType } from '../../../model/types/articleEditorSchema'
 
@@ -18,9 +18,9 @@ export const INSERT_CODE_BLOCK_COMMAND = createCommand(
 
 export const CodeBlockPlugin = memo(() => {
   const [editor] = useLexicalComposerContext()
-  const blockType = useArticleEditorBlockType()
+  const blockType = useArticleEditorSelectionBlockType()
 
-  const { setBlockType } = useArticleEditorActions()
+  const { setSelectionBlockType } = useArticleEditorActions()
 
   useEffect(() => {
     return editor.registerCommand(
@@ -44,7 +44,7 @@ export const CodeBlockPlugin = memo(() => {
               if ($isRangeSelection(selection))
                 selection.insertRawText(textContent)
             }
-            setBlockType(BlockType.CODE)
+            setSelectionBlockType(BlockType.CODE)
           })
         }
 
@@ -52,7 +52,7 @@ export const CodeBlockPlugin = memo(() => {
       },
       COMMAND_PRIORITY_EDITOR
     )
-  }, [blockType, editor, setBlockType])
+  }, [blockType, editor, setSelectionBlockType])
 
   return null
 })

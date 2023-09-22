@@ -12,16 +12,16 @@ import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext
 import { ListPlugin } from '@lexical/react/LexicalListPlugin'
 import {
   CodeBlockPlugin,
-  INSERT_DECORATED_CODE_COMMAND,
-} from '../../../plugins/CodeBlockPlugin/DecoratedCodePlugin'
-import { BlockType } from '../../../../model/types/articleEditorSchema'
-import { useArticleEditorActions } from '../../../../model/slice/articleEditorSlice'
-import { useArticleEditorSelectionBlockType } from '../../../../model/selectors/articleEditorSelectionSelectors'
+  INSERT_CODE_BLOCK_COMMAND,
+} from '../CodeBlockPlugin/CodeBlockPlugin'
+import { BlockType } from '../../../model/types/articleEditorSchema'
+import { useArticleEditorActions } from '../../../model/slice/articleEditorSlice'
+import { useArticleEditorSelectionBlockType } from '../../../model/selectors/articleEditorSelectionSelectors'
 import {
   HeadingPlugin,
   INSERT_HEADING1_COMMAND,
   INSERT_HEADING2_COMMAND,
-} from '../../../plugins/HeadingPlugin/HeadingPlugin'
+} from '../HeadingPlugin/HeadingPlugin'
 
 export interface SelectBlockTypeToolbarPluginProps {
   className?: string
@@ -36,7 +36,7 @@ const mapValueToCommandMap: Record<
   h2: INSERT_HEADING2_COMMAND,
   ul: INSERT_UNORDERED_LIST_COMMAND,
   ol: INSERT_ORDERED_LIST_COMMAND,
-  code: INSERT_DECORATED_CODE_COMMAND,
+  code: INSERT_CODE_BLOCK_COMMAND,
 }
 
 const selectOptions: SelectOption<BlockType>[] = [

@@ -19,10 +19,11 @@ $list-padding: 0 0 0 1.5rem;
     display: block;
     padding: 0.5rem;
     margin: 0.5rem 0;
-    overflow-x: auto;
+    overflow-y: auto;
     font-family: Menlo, Consolas, Monaco, monospace;
     line-height: 1.53;
     color: var(--code-text);
+    text-wrap: nowrap;
     tab-size: 2;
     background-color: var(--code-bg);
   }

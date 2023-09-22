@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { isSVG } from '@/shared/lib/html/isSvg'
 import { isHTMLElement } from '@/shared/lib/html/isHTMLElement'
 import { $getNearestNodeFromDOMNode } from 'lexical'
+import { useArticleEditorMouseTopLevelNodeKey } from '../../../model/selectors/articleEditorMouseSelectors'
 import { getBlockElement } from '../../../lib/drag/getBlockElement/getBlockElement'
 import { getArticleEditorAnchor } from '../../../lib/getArticleEditorAnchor/getArticleEditorAnchor'
 import { useArticleEditorActions } from '../../../model/slice/articleEditorSlice'
@@ -10,6 +11,9 @@ import { useArticleEditorActions } from '../../../model/slice/articleEditorSlice
 export const UpdateMouseBlockTypePlugin = () => {
   const [editor] = useLexicalComposerContext()
   const { setMouseTopLevelNodeKey } = useArticleEditorActions()
+
+  const editorNodes = editor._nodes
+  const topLevelNodeKey = useArticleEditorMouseTopLevelNodeKey()
 
   useEffect(() => {
     const anchorElem = getArticleEditorAnchor()
@@ -44,6 +48,18 @@ export const UpdateMouseBlockTypePlugin = () => {
       scrollerElem?.removeEventListener('mouseleave', onMouseLeave)
     }
   }, [editor, setMouseTopLevelNodeKey])
+
+  useEffect(() => {
+    editorNodes.forEach((node) => {
+      editor.registerMutationListener(node.klass, (nodes) => {
+        if (!topLevelNodeKey) return
+
+        if (nodes.get(topLevelNodeKey) === 'destroyed') {
+          setMouseTopLevelNodeKey(null)
+        }
+      })
+    })
+  })
 
   return null
 }
