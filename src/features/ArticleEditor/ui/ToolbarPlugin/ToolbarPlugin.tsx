@@ -10,7 +10,6 @@ import { ImageBlockNode } from '../plugins/ImageBlockPlugin/nodes/ImageBlockNode
 
 export interface ToolbarPluginProps {
   className?: string
-  anchorElem: HTMLElement | null
 }
 
 export const ToolbarNodes = [
@@ -22,13 +21,11 @@ export const ToolbarNodes = [
 ]
 
 export const ToolbarPlugin = typedMemo(
-  ({ className, anchorElem }: ToolbarPluginProps) => {
+  ({ className }: ToolbarPluginProps) => {
     return (
       <HStack className={className} gap={0.5}>
         <SelectBlockTypeToolbarPlugin />
-        {anchorElem !== null && (
-          <ImageToolbarPlugin anchorElem={anchorElem} />
-        )}
+        <ImageToolbarPlugin />
         <CodeBlockToolbarPlugin />
       </HStack>
     )

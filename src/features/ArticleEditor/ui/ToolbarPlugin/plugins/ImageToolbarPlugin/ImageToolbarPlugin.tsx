@@ -13,11 +13,10 @@ import {
 
 export interface ImageToolbarPluginProps {
   className?: string
-  anchorElem: HTMLElement
 }
 
 export const ImageToolbarPlugin = typedMemo(
-  ({ className, anchorElem }: ImageToolbarPluginProps) => {
+  ({ className }: ImageToolbarPluginProps) => {
     const [editor] = useLexicalComposerContext()
     const [isPromptOpen, setIsPromptOpen] = useState(false)
 
@@ -30,11 +29,10 @@ export const ImageToolbarPlugin = typedMemo(
         editor.dispatchCommand(INSERT_IMAGE_BLOCK_COMMAND, {
           src,
           altText,
-          anchorElem,
         })
         onClosePrompt()
       },
-      [anchorElem, editor, onClosePrompt]
+      [editor, onClosePrompt]
     )
 
     const onOpenPrompt = useCallback((_: React.MouseEvent) => {

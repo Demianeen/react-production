@@ -1,5 +1,6 @@
-import { useCallback, useMemo, useRef } from 'react'
+import { useCallback, useRef } from 'react'
 import { Portal } from '@/shared/ui/redesigned/Portal'
+import { getArticleEditorAnchor } from '../../getArticleEditorAnchor/getArticleEditorAnchor'
 import { getCollapsedMargins } from '../getCollapsedMargins/getCollapsedMargins'
 import styles from './useTargetLine.module.scss'
 
@@ -22,10 +23,9 @@ export interface TargetLineOptions {
   space: number
 }
 
-export const useTargetLine = (
-  anchorElem: HTMLElement,
-  { space: SPACE }: TargetLineOptions
-): TargetLineReturnType => {
+export const useTargetLine = ({
+  space: SPACE,
+}: TargetLineOptions): TargetLineReturnType => {
   const targetLineRef = useRef<HTMLDivElement>(null)
 
   const showTargetLine = useCallback(
@@ -34,6 +34,9 @@ export const useTargetLine = (
         top: targetBlockElemTop,
         height: targetBlockElemHeight,
       } = targetBlockElem.getBoundingClientRect()
+      const anchorElem = getArticleEditorAnchor()
+      if (!anchorElem) return
+
       const { top: anchorTop, width: anchorWidth } =
         anchorElem.getBoundingClientRect()
 
@@ -56,7 +59,7 @@ export const useTargetLine = (
       }px`
       targetLineRef.current.style.opacity = '.4'
     },
-    [SPACE, anchorElem]
+    [SPACE]
   )
 
   const hideTargetLine = useCallback(() => {
@@ -67,19 +70,14 @@ export const useTargetLine = (
       'translate(-10000px, -10000px)'
   }, [])
 
-  const targetLine = useMemo(
-    () => (
-      <Portal element={anchorElem}>
-        <div className={styles.targetLine} ref={targetLineRef} />
-      </Portal>
-    ),
-    [anchorElem]
-  )
-
   return {
     showTargetLine,
     hideTargetLine,
     isTargetLineNull: targetLineRef.current === null,
-    targetLine,
+    targetLine: (
+      <Portal element={getArticleEditorAnchor() ?? undefined}>
+        <div className={styles.targetLine} ref={targetLineRef} />
+      </Portal>
+    ),
   }
 }

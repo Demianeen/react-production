@@ -12,6 +12,7 @@ import { isSVG } from '@/shared/lib/html/isSvg'
 import { isHTMLElement } from '@/shared/lib/html/isHTMLElement'
 import { eventFiles } from '@lexical/rich-text'
 import { mergeRegister } from '@lexical/utils'
+import { getArticleEditorAnchor } from '../../getArticleEditorAnchor/getArticleEditorAnchor'
 import { getBlockElement } from '../getBlockElement/getBlockElement'
 import { useTargetLine } from '../useTargetLine/useTargetLine'
 
@@ -41,7 +42,6 @@ interface UseDraggableReturnType {
 
 // props
 interface UseDraggableProps {
-  anchorElem: HTMLElement
   space: number
   onDragoverStart?: (event: DragEvent) => void
   onDropStart?: (event: DragEvent) => void
@@ -73,7 +73,6 @@ const updateDragImage = (
 /* eslint-enable no-param-reassign */
 
 export const useDraggable = ({
-  anchorElem,
   space,
   onDragoverStart,
   onDropStart,
@@ -84,7 +83,7 @@ export const useDraggable = ({
     showTargetLine,
     hideTargetLine,
     isTargetLineNull,
-  } = useTargetLine(anchorElem, {
+  } = useTargetLine({
     space,
   })
   const isDraggingBlockRef = useRef<boolean>(false)
@@ -122,6 +121,12 @@ export const useDraggable = ({
       if (!isHTMLElement(event.target) && !isSVG(event.target)) {
         return false
       }
+
+      const anchorElem = getArticleEditorAnchor()
+      if (!anchorElem) {
+        return false
+      }
+
       const targetBlockElem = getBlockElement(
         anchorElem,
         editor,
@@ -142,7 +147,7 @@ export const useDraggable = ({
 
       return true
     },
-    [anchorElem, editor, isTargetLineNull, showTargetLine]
+    [editor, isTargetLineNull, showTargetLine]
   )
 
   const handleDrop = useCallback(
@@ -163,6 +168,11 @@ export const useDraggable = ({
       }
 
       if (!isHTMLElement(event.target) && !isSVG(event.target)) {
+        return false
+      }
+
+      const anchorElem = getArticleEditorAnchor()
+      if (!anchorElem) {
         return false
       }
 
@@ -197,7 +207,7 @@ export const useDraggable = ({
 
       return true
     },
-    [anchorElem, editor]
+    [editor]
   )
 
   useEffect(() => {
@@ -222,7 +232,6 @@ export const useDraggable = ({
       )
     )
   }, [
-    anchorElem,
     editor,
     handleDragover,
     handleDrop,

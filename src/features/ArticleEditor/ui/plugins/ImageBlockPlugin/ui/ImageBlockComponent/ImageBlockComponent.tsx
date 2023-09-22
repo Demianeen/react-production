@@ -27,7 +27,6 @@ interface ImageBlockComponentProps {
   altText: string
   caption: LexicalEditor
   nodeKey: string
-  anchorElem: HTMLElement
 }
 
 export const imageWrapperClassnames = 'imageWrapper'
@@ -36,18 +35,11 @@ export const captionWrapperClassnames = 'captionWrapper'
 export const captionClassnames = 'articleEditor'
 
 export const ImageBlockComponent = memo(
-  ({
-    altText,
-    src,
-    caption,
-    nodeKey,
-    anchorElem,
-  }: ImageBlockComponentProps) => {
+  ({ altText, src, caption, nodeKey }: ImageBlockComponentProps) => {
     const { t } = useTranslation()
     const [isFocused, bindFocus] = useFocus()
     const { targetLine, handleDragStart, handleDragEnd } =
       useDraggable({
-        anchorElem,
         space: 4,
       })
     const imageRef = useRef<HTMLImageElement>(null)

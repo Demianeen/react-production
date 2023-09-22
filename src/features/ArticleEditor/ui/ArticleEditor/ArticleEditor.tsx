@@ -9,7 +9,7 @@ import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary'
 import { ContentEditable } from '@lexical/react/LexicalContentEditable'
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
-import { forwardRef, memo, useState } from 'react'
+import { forwardRef, memo } from 'react'
 import { AutoLinkNode, LinkNode } from '@lexical/link'
 import { TRANSFORMERS } from '@lexical/markdown'
 import { HeadingNode, QuoteNode } from '@lexical/rich-text'
@@ -103,13 +103,10 @@ export const ArticleEditor = memo(
       ],
     }
 
-    const [floatingAnchorElem, setFloatingAnchorElem] =
-      useState<HTMLDivElement | null>(null)
-
     return (
       <LexicalComposer initialConfig={initialConfig}>
         <VStack gap={1} maxWidth>
-          <ToolbarPlugin anchorElem={floatingAnchorElem} />
+          <ToolbarPlugin />
           <HStack
             className={classNamesNew(
               styles.articleEditor,
@@ -122,7 +119,7 @@ export const ArticleEditor = memo(
                 <div className={styles.editorScroller}>
                   <div
                     className={styles.editor}
-                    ref={setFloatingAnchorElem}
+                    id='article-editor-anchor'
                   >
                     <ContentEditable
                       className={classNamesNew(
@@ -145,9 +142,7 @@ export const ArticleEditor = memo(
             <UpdateEditorBlockTypePlugin />
             <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
             <CodeHighlightPlugin />
-            {floatingAnchorElem !== null && (
-              <DraggableBlockPlugin anchorElem={floatingAnchorElem} />
-            )}
+            <DraggableBlockPlugin />
             <EditorRefPlugin editorRef={editorRef as any} />
           </HStack>
         </VStack>

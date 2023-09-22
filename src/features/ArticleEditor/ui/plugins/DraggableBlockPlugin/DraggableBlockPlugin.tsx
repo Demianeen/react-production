@@ -1,11 +1,5 @@
 import { useDraggableBlockMenu } from './lib/useDraggableBlockMenu/useDraggableBlockMenu'
 
-interface DraggableBlockPluginProps {
-  anchorElem?: HTMLElement
-}
-
-export const DraggableBlockPlugin = ({
-  anchorElem = document.body,
-}: DraggableBlockPluginProps): JSX.Element => {
-  return useDraggableBlockMenu(anchorElem)
+export const DraggableBlockPlugin = (): JSX.Element => {
+  return useDraggableBlockMenu()
 }

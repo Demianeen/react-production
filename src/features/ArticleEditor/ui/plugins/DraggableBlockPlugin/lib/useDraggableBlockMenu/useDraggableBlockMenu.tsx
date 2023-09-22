@@ -9,6 +9,7 @@ import { isHTMLElement } from '@/shared/lib/html/isHTMLElement'
 import { isSVG } from '@/shared/lib/html/isSvg'
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
 import { Portal } from '@/shared/ui/redesigned/Portal'
+import { getArticleEditorAnchor } from '../../../../../lib/getArticleEditorAnchor/getArticleEditorAnchor'
 import { useDraggable } from '../../../../../lib/drag/useDraggable/useDraggable'
 import { getBlockElement } from '../../../../../lib/drag/getBlockElement/getBlockElement'
 import styles from './useDraggableBlockPlugin.module.scss'
@@ -51,12 +52,8 @@ const updateMenuPosition = (
   floatingElem.style.transform = `translate(${left}px, ${top}px)`
 }
 
-export const useDraggableBlockMenu = (
-  anchorElem: HTMLElement
-): JSX.Element => {
+export const useDraggableBlockMenu = (): JSX.Element => {
   const [editor] = useLexicalComposerContext()
-
-  const scrollerElem = anchorElem.parentElement
 
   const menuRef = useRef<HTMLDivElement>(null)
   const [draggableBlockElem, setDraggableBlockElem] =
@@ -64,7 +61,6 @@ export const useDraggableBlockMenu = (
 
   const { targetLine, handleDragStart, handleDragEnd } = useDraggable(
     {
-      anchorElem,
       space: SPACE,
       onDropStart: () => {
         setDraggableBlockElem(null)
@@ -72,7 +68,12 @@ export const useDraggableBlockMenu = (
     }
   )
 
+  // eslint-disable-next-line consistent-return
   useEffect(() => {
+    const anchorElem = getArticleEditorAnchor()
+    if (!anchorElem) return
+
+    const scrollerElem = anchorElem.parentElement
     const onMouseMove = (event: MouseEvent) => {
       if (!isHTMLElement(event.target) && !isSVG(event.target)) {
         setDraggableBlockElem(null)
@@ -99,21 +100,25 @@ export const useDraggableBlockMenu = (
     scrollerElem?.addEventListener('mousemove', onMouseMove)
     scrollerElem?.addEventListener('mouseleave', onMouseLeave)
 
+    // eslint-disable-next-line consistent-return
     return () => {
       scrollerElem?.removeEventListener('mousemove', onMouseMove)
       scrollerElem?.removeEventListener('mouseleave', onMouseLeave)
     }
-  }, [scrollerElem, anchorElem, editor])
+  }, [editor])
 
   useEffect(() => {
-    if (menuRef.current) {
-      updateMenuPosition(
-        draggableBlockElem,
-        menuRef.current,
-        anchorElem
-      )
-    }
-  }, [anchorElem, draggableBlockElem])
+    if (!menuRef.current) return
+
+    const anchorElem = getArticleEditorAnchor()
+    if (!anchorElem) return
+
+    updateMenuPosition(
+      draggableBlockElem,
+      menuRef.current,
+      anchorElem
+    )
+  }, [draggableBlockElem])
 
   const onDragStart = (
     event: ReactDragEvent<HTMLDivElement>
@@ -134,9 +139,11 @@ export const useDraggableBlockMenu = (
     })
   }
 
+  const anchorElem = getArticleEditorAnchor()
+
   return (
     <>
-      <Portal element={anchorElem}>
+      <Portal element={anchorElem ?? undefined}>
         <div
           className={styles.draggableMenu}
           id={DRAGGABLE_BLOCK_MENU_ID}

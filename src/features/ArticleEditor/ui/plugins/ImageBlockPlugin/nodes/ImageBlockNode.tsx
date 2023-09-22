@@ -26,7 +26,6 @@ import {
 export interface ImageBlockPayload {
   src: string
   altText: string
-  anchorElem: HTMLElement
   caption?: LexicalEditor
   key?: NodeKey
 }
@@ -48,19 +47,10 @@ export class ImageBlockNode extends DecoratorNode<JSX.Element> {
 
   private __caption: LexicalEditor
 
-  private __anchorElem: HTMLElement
-
-  constructor({
-    src,
-    key,
-    altText,
-    caption,
-    anchorElem,
-  }: ImageBlockPayload) {
+  constructor({ src, key, altText, caption }: ImageBlockPayload) {
     super(key)
     this.__src = src
     this.__altText = altText
-    this.__anchorElem = anchorElem
     this.__caption = caption || createEditor()
   }
 
@@ -74,7 +64,6 @@ export class ImageBlockNode extends DecoratorNode<JSX.Element> {
       altText: node.getAltText(),
       caption: node.__caption,
       key: node.__key,
-      anchorElem: node.__anchorElem,
     })
   }
 
@@ -90,12 +79,11 @@ export class ImageBlockNode extends DecoratorNode<JSX.Element> {
   static importJSON(
     serializedNode: SerializedImageNode
   ): ImageBlockNode {
-    const { altText, caption, src, anchorElem } = serializedNode
+    const { altText, caption, src } = serializedNode
     // eslint-disable-next-line @typescript-eslint/no-use-before-define
     const node = $createImageBlockNode({
       altText,
       src,
-      anchorElem,
     })
     const nestedEditor = node.__caption
     const editorState = nestedEditor.parseEditorState(
@@ -150,7 +138,6 @@ export class ImageBlockNode extends DecoratorNode<JSX.Element> {
         caption={this.__caption}
         src={this.getSrc()}
         nodeKey={this.__key}
-        anchorElem={this.__anchorElem}
       />
     )
   }
@@ -161,7 +148,6 @@ export class ImageBlockNode extends DecoratorNode<JSX.Element> {
       caption: this.__caption,
       src: this.getSrc(),
       key: this.getKey(),
-      anchorElem: this.__anchorElem,
     }
   }
 
