@@ -18,7 +18,9 @@ $option-padding: 0.6rem;
   position: absolute;
   z-index: 1;
   min-width: max-content;
+  max-height: 20rem;
   padding: 0.5rem 0;
+  overflow-y: auto;
   background: var(--select-bg);
   border-radius: 0.5rem;
   box-shadow: 0 10px 15px -3px rgb(0 0 0/30%),

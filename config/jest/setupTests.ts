@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom'
+// enables async await in tests
 import 'regenerator-runtime/runtime'
 import 'whatwg-fetch'
 import { server } from '../../src/app/mocks/server'

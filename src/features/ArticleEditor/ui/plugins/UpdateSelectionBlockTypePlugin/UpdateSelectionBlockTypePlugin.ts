@@ -4,12 +4,12 @@ import {
   SELECTION_CHANGE_COMMAND,
 } from 'lexical'
 import { useEffect } from 'react'
-import { useUpdateBlockType } from '../../../model/services/updateBlockType'
+import { useUpdateSelectionBlockType } from '../../../model/services/updateSelectionBlockType'
 
-export const UpdateEditorBlockTypePlugin = () => {
+export const UpdateSelectionBlockTypePlugin = () => {
   const [editor] = useLexicalComposerContext()
 
-  const updateBlockType = useUpdateBlockType()
+  const updateBlockType = useUpdateSelectionBlockType()
 
   useEffect(
     () =>

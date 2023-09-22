@@ -3,6 +3,7 @@ import { HeadingNode } from '@lexical/rich-text'
 import { ListItemNode, ListNode } from '@lexical/list'
 import { HStack } from '@/shared/ui/redesigned/Stack'
 import { CodeNode } from '@lexical/code'
+import { DecoratedCodeNode } from '../plugins/CodeBlockPlugin/nodes/DecoratedCodeNode'
 import { CodeBlockToolbarPlugin } from './plugins/CodeBlockToolbarPlugin/CodeBlockToolbarPlugin'
 import { SelectBlockTypeToolbarPlugin } from './plugins/SelectBlockTypeToolbarPlugin/SelectBlockTypeToolbarPlugin'
 import { ImageToolbarPlugin } from './plugins/ImageToolbarPlugin/ImageToolbarPlugin'
@@ -18,6 +19,7 @@ export const ToolbarNodes = [
   ListNode,
   ImageBlockNode,
   CodeNode,
+  DecoratedCodeNode,
 ]
 
 export const ToolbarPlugin = typedMemo(

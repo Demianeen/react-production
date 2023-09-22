@@ -11,9 +11,6 @@ interface DeleteArticleEditorPluginProps {
   onDelete: () => void
 }
 
-/**
- * Prevent to enter new paragraph node in articleEditor
- */
 export const DeleteArticleEditorPlugin = ({
   onDelete,
 }: DeleteArticleEditorPluginProps) => {

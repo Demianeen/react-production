@@ -11,4 +11,7 @@ export interface ArticleEditorSchema {
   selection: {
     blockType: BlockType
   }
+  mouse: {
+    topLevelNodeKey: string | null
+  }
 }

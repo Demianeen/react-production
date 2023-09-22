@@ -18,9 +18,10 @@ import { useTranslation } from 'react-i18next'
 import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import type { ReducersList } from '@/app/providers/StoreProvider/config/stateSchema'
 import { CodeHighlightNode } from '@lexical/code'
+import { UpdateSelectionBlockTypePlugin } from '../plugins/UpdateSelectionBlockTypePlugin/UpdateSelectionBlockTypePlugin'
 import { DraggableBlockPlugin } from '../plugins/DraggableBlockPlugin/DraggableBlockPlugin'
 import { CodeHighlightPlugin } from '../plugins/CodeHighlightPlugin/CodeHighlightPlugin'
-import { UpdateEditorBlockTypePlugin } from '../plugins/UpdateEditorBlockType/UpdateEditorBlockType'
+import { UpdateMouseBlockTypePlugin } from '../plugins/UpdateMouseBlockTypePlugin/UpdateMouseBlockTypePlugin'
 import { Placeholder } from '../Placeholder/Placeholder'
 import { AutoLinkPlugin } from '../plugins/AutoLinkPlugin/AutoLinkPlugin'
 import styles from './ArticleEditor.module.scss'
@@ -139,7 +140,8 @@ export const ArticleEditor = memo(
             />
             <HistoryPlugin />
             <AutoLinkPlugin />
-            <UpdateEditorBlockTypePlugin />
+            <UpdateMouseBlockTypePlugin />
+            <UpdateSelectionBlockTypePlugin />
             <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
             <CodeHighlightPlugin />
             <DraggableBlockPlugin />

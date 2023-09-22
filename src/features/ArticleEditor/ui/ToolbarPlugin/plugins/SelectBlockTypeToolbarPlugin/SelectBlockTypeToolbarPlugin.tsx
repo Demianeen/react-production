@@ -12,11 +12,11 @@ import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext
 import { ListPlugin } from '@lexical/react/LexicalListPlugin'
 import {
   CodeBlockPlugin,
-  INSERT_CODE_BLOCK_COMMAND,
-} from '../../../plugins/CodeBlockPlugin/CodeBlockPlugin'
+  INSERT_DECORATED_CODE_COMMAND,
+} from '../../../plugins/CodeBlockPlugin/DecoratedCodePlugin'
 import { BlockType } from '../../../../model/types/articleEditorSchema'
 import { useArticleEditorActions } from '../../../../model/slice/articleEditorSlice'
-import { useArticleEditorBlockType } from '../../../../model/selectors/articleEditorSchemaSelectors'
+import { useArticleEditorSelectionBlockType } from '../../../../model/selectors/articleEditorSelectionSelectors'
 import {
   HeadingPlugin,
   INSERT_HEADING1_COMMAND,
@@ -36,7 +36,7 @@ const mapValueToCommandMap: Record<
   h2: INSERT_HEADING2_COMMAND,
   ul: INSERT_UNORDERED_LIST_COMMAND,
   ol: INSERT_ORDERED_LIST_COMMAND,
-  code: INSERT_CODE_BLOCK_COMMAND,
+  code: INSERT_DECORATED_CODE_COMMAND,
 }
 
 const selectOptions: SelectOption<BlockType>[] = [
@@ -70,8 +70,8 @@ export const SelectBlockTypeToolbarPlugin = typedMemo(
   ({ className }: SelectBlockTypeToolbarPluginProps) => {
     const [editor] = useLexicalComposerContext()
 
-    const blockType = useArticleEditorBlockType()
-    const { setBlockType } = useArticleEditorActions()
+    const blockType = useArticleEditorSelectionBlockType()
+    const { setSelectionBlockType } = useArticleEditorActions()
 
     const onChangeBlockType = useCallback(
       (newBlockType: BlockType) => {
@@ -79,9 +79,9 @@ export const SelectBlockTypeToolbarPlugin = typedMemo(
           mapValueToCommandMap[newBlockType],
           undefined
         )
-        setBlockType(newBlockType)
+        setSelectionBlockType(newBlockType)
       },
-      [editor, setBlockType]
+      [editor, setSelectionBlockType]
     )
 
     return (
