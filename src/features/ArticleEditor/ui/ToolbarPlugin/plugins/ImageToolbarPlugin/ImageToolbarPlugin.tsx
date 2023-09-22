@@ -1,9 +1,10 @@
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
-import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button'
+import { Button } from '@/shared/ui/deprecated/Button'
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
 import { useCallback, useState } from 'react'
 import { Icon, IconType } from '@/shared/ui/deprecated/Icon'
 import ImageIcon from '@/shared/assets/icons/redesigned/textEditor/image.svg'
+import { getHStackClassName } from '@/shared/ui/redesigned/Stack'
 import type { ImagePromptValues } from './ImagePrompt'
 import { ImagePrompt } from './ImagePrompt'
 import {
@@ -44,7 +45,10 @@ export const ImageToolbarPlugin = typedMemo(
         <Button
           type='button'
           onClick={onOpenPrompt}
-          theme={ButtonTheme.CLEAR}
+          className={getHStackClassName({
+            justify: 'center',
+            align: 'center',
+          })}
         >
           <Icon
             Svg={ImageIcon}

@@ -988,6 +988,28 @@
       "userId": 1,
       "createdAt": "Fri Sep 22 2023 10:26:23 GMT+0100 (British Summer Time)",
       "views": 4751
+    },
+    {
+      "id": 46,
+      "title": "",
+      "subtitle": "",
+      "img": "",
+      "contentHtmlString": "<p><br></p>",
+      "types": [],
+      "userId": 1,
+      "createdAt": "Fri Sep 22 2023 14:13:18 GMT+0100 (British Summer Time)",
+      "views": 1232
+    },
+    {
+      "id": 47,
+      "title": "",
+      "subtitle": "",
+      "img": "",
+      "contentHtmlString": "<p><br></p>",
+      "types": [],
+      "userId": 1,
+      "createdAt": "Fri Sep 22 2023 14:13:49 GMT+0100 (British Summer Time)",
+      "views": 5144
     }
   ],
   "comments": [
