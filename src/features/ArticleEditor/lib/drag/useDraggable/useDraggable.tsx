@@ -42,7 +42,6 @@ interface UseDraggableReturnType {
 
 // props
 interface UseDraggableProps {
-  space: number
   onDragoverStart?: (event: DragEvent) => void
   onDropStart?: (event: DragEvent) => void
 }
@@ -73,19 +72,16 @@ const updateDragImage = (
 /* eslint-enable no-param-reassign */
 
 export const useDraggable = ({
-  space,
   onDragoverStart,
   onDropStart,
-}: UseDraggableProps): UseDraggableReturnType => {
+}: UseDraggableProps = {}): UseDraggableReturnType => {
   const [editor] = useLexicalComposerContext()
   const {
     targetLine,
     showTargetLine,
     hideTargetLine,
     isTargetLineNull,
-  } = useTargetLine({
-    space,
-  })
+  } = useTargetLine()
   const isDraggingBlockRef = useRef<boolean>(false)
 
   const handleDragStart = useCallback(

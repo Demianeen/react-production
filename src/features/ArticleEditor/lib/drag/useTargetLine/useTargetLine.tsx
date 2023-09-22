@@ -19,13 +19,9 @@ interface TargetLineReturnType {
   targetLine: JSX.Element
 }
 
-export interface TargetLineOptions {
-  space: number
-}
+const SPACE = 4
 
-export const useTargetLine = ({
-  space: SPACE,
-}: TargetLineOptions): TargetLineReturnType => {
+export const useTargetLine = (): TargetLineReturnType => {
   const targetLineRef = useRef<HTMLDivElement>(null)
 
   const showTargetLine = useCallback(
@@ -59,7 +55,7 @@ export const useTargetLine = ({
       }px`
       targetLineRef.current.style.opacity = '.4'
     },
-    [SPACE]
+    []
   )
 
   const hideTargetLine = useCallback(() => {

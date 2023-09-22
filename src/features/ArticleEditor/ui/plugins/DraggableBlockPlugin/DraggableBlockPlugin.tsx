@@ -13,14 +13,6 @@ import { getArticleEditorAnchor } from '../../../lib/getArticleEditorAnchor/getA
 import styles from './DraggableBlockPlugin.module.scss'
 
 const SPACE = 4
-const DRAGGABLE_BLOCK_MENU_ID = 'draggable-block-menu'
-
-/** checks if the element closest node is block menu */
-// const isElementOnDraggableBlockMenu = (
-//   element: HTMLElement | SVGElement
-// ): boolean => {
-//   return Boolean(element.closest(`#${DRAGGABLE_BLOCK_MENU_ID}`))
-// }
 
 const updateMenuPosition = (
   targetElem: HTMLElement | null,
@@ -57,11 +49,8 @@ export const DraggableBlockPlugin = (): JSX.Element => {
 
   const menuRef = useRef<HTMLDivElement>(null)
 
-  const { targetLine, handleDragStart, handleDragEnd } = useDraggable(
-    {
-      space: SPACE,
-    }
-  )
+  const { targetLine, handleDragStart, handleDragEnd } =
+    useDraggable()
 
   const topLevelNodeKey = useArticleEditorMouseTopLevelNodeKey()
   let draggableBlockElem: HTMLElement | null = null
@@ -111,7 +100,6 @@ export const DraggableBlockPlugin = (): JSX.Element => {
       <Portal element={anchorElem ?? undefined}>
         <div
           className={styles.draggableMenu}
-          id={DRAGGABLE_BLOCK_MENU_ID}
           ref={menuRef}
           draggable
           onDragStart={onDragStart}
