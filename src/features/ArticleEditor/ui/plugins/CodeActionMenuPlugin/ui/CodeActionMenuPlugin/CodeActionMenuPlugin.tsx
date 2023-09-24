@@ -3,12 +3,14 @@ import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext
 import { $getNodeByKey } from 'lexical'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Portal } from '@/shared/ui/redesigned/Portal'
+import { canBePrettier } from '@/shared/lib/components/PrettierProvider/lib/canBePrettier'
+import { PrettierButton } from '../PrettierButton/PrettierButton'
 import { SelectLanguage } from '../SelectLanguage/SelectLanguage'
 import type { CodeActionMenuPosition } from '../CodeActionMenu/CodeActionMenu'
 import { CodeActionMenu } from '../CodeActionMenu/CodeActionMenu'
 import { getArticleEditorAnchor } from '../../../../../lib/getArticleEditorAnchor/getArticleEditorAnchor'
 import { useArticleEditorMouseTopLevelNodeKey } from '../../../../../model/selectors/articleEditorMouseSelectors'
-import { CopyButton } from '../CopyButton'
+import { CopyButton } from '../CopyButton/CopyButton'
 
 const CODE_PADDING = 8
 
@@ -73,14 +75,13 @@ export const CodeActionMenuPlugin = () => {
           language={normalizedLang}
           setLanguage={setLanguage}
         />
-        <CopyButton editor={editor} getCodeElem={getCodeElem} />
-        {/* {canBePrettier(normalizedLang) ? (
-            <PrettierButton
-              editor={editor}
-              getCodeDOMNode={codeDOMNodeRef.current}
-              lang={normalizedLang}
-            />
-          ) : null} */}
+        <CopyButton getCodeElem={getCodeElem} />
+        {canBePrettier(normalizedLang) && (
+          <PrettierButton
+            getCodeElem={getCodeElem}
+            lang={normalizedLang}
+          />
+        )}
       </CodeActionMenu>
     </Portal>
   )

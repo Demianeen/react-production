@@ -11,7 +11,7 @@
   "jest.jestCommandLine": "npm run test:unit --",
   "i18n-ally.dirStructure": "dir",
   "i18n-ally.keystyle": "flat",
-  "cSpell.words": ["Avaliable", "rightbar", "Scroller"],
+  "cSpell.words": ["Avaliable", "Estree", "rightbar", "Scroller"],
   "figma.assetExportDirectory": "src/shared/assets/icons/redesigned",
   "i18n-ally.namespace": true,
   "i18n-ally.pathMatcher": "{locale}/{namespace}.json",

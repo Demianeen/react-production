@@ -167,6 +167,7 @@
     "i18next-browser-languagedetector": "^7.1.0",
     "i18next-http-backend": "^2.2.1",
     "lexical": "^0.12.2",
+    "prettier": "^3.0.3",
     "react": "18.2",
     "react-dom": "^18.2.0",
     "react-i18next": "^13.0.1",

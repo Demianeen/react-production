@@ -1,17 +1,15 @@
-import type { ReactNode } from 'react'
+import type { PropsWithChildren } from 'react'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { getAsyncAnimationModules } from './lib/getAsyncAnimationModules'
-import type { Gesture, Spring } from './lib/AnimationContext'
-import { AnimationContext } from './lib/AnimationContext'
+import { getAsyncAnimationModules } from '../lib/getAsyncAnimationModules'
+import type { Gesture, Spring } from './AnimationContext'
+import { AnimationContext } from './AnimationContext'
 
 // animation provider not in app because we use it not globally, but only where we need animations
 
-// asynchronously load animation libs
+/** Asynchronously load animation libs */
 export const AnimationProvider = ({
   children,
-}: {
-  children: ReactNode
-}) => {
+}: PropsWithChildren) => {
   const SpringRef = useRef<Spring>()
   const GestureRef = useRef<Gesture>()
 
@@ -31,7 +29,7 @@ export const AnimationProvider = ({
       Gesture: GestureRef.current,
       isLoaded,
     }),
-    [isLoaded]
+    [isLoaded],
   )
 
   return (

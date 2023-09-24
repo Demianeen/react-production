@@ -4,6 +4,7 @@ import {
 } from '@lexical/code'
 import type { SelectOption } from '@/shared/ui/deprecated/Popups'
 import { Select } from '@/shared/ui/deprecated/Popups'
+import type { MouseEventHandler } from 'react'
 import { useCallback, useEffect, useState } from 'react'
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
 import {
@@ -25,7 +26,7 @@ const selectLanguageOptions: SelectOption<
   ([value, name]) => ({
     value,
     label: name,
-  })
+  }),
 )
 
 export const SelectLanguage = ({
@@ -45,7 +46,7 @@ export const SelectLanguage = ({
         setActiveEditor(newEditor)
         return false
       },
-      COMMAND_PRIORITY_CRITICAL
+      COMMAND_PRIORITY_CRITICAL,
     )
   }, [editor])
 
@@ -61,8 +62,13 @@ export const SelectLanguage = ({
       })
       setLanguage(newLanguage)
     },
-    [activeEditor, setLanguage, nodeKey]
+    [activeEditor, setLanguage, nodeKey],
   )
+
+  const handleChildMouseMove: MouseEventHandler<HTMLUListElement> =
+    useCallback((event) => {
+      event.stopPropagation()
+    }, [])
 
   return (
     <Select
@@ -71,6 +77,9 @@ export const SelectLanguage = ({
       value={language}
       onChange={changeLanguage}
       clear
+      listProps={{
+        onMouseMove: handleChildMouseMove,
+      }}
     />
   )
 }

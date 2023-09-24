@@ -1,4 +1,5 @@
 import { Listbox } from '@headlessui/react'
+import type { ComponentPropsWithoutRef } from 'react'
 import { Fragment, useMemo } from 'react'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
 import { classNames } from '@/shared/lib/classNames/classNames'
@@ -56,6 +57,7 @@ type SelectProps<T extends string> = {
   name?: string
   required?: boolean
   clear?: boolean
+  listProps?: ComponentPropsWithoutRef<typeof Listbox.Options>
 } & TestProps &
   (MultiplePropsTrue<T> | MultiplePropsFalse<T>)
 
@@ -79,11 +81,12 @@ export const Select = typedMemo(
     required = false,
     multiple = false,
     clear = false,
+    listProps,
   }: SelectProps<T>) => {
     const selectedOptionLabel = useMemo(() => {
       if (multiple) {
         const selectedOptions = options.filter(
-          ({ value: optionValue }) => value?.includes(optionValue)
+          ({ value: optionValue }) => value?.includes(optionValue),
         )
         return selectedOptions
           ?.map(({ label: optionLabel }) => optionLabel)
@@ -91,7 +94,7 @@ export const Select = typedMemo(
       }
 
       const selectedOption = options.find(
-        ({ value: optionValue }) => optionValue === value
+        ({ value: optionValue }) => optionValue === value,
       )
 
       return selectedOption?.label
@@ -106,10 +109,10 @@ export const Select = typedMemo(
         <Listbox
           value={value}
           onChange={onChange}
-          disabled={readonly}
           defaultValue={defaultValue}
           name={name}
           multiple={multiple}
+          disabled={readonly}
         >
           <Listbox.Button
             as={Button}
@@ -122,7 +125,7 @@ export const Select = typedMemo(
                 [popupStyles.maxWidth]: maxWidth,
                 [styles.clear]: clear,
               },
-              [className]
+              [className],
             )}
             data-testid={`${testId}.Button`}
             aria-required={required}
@@ -140,8 +143,10 @@ export const Select = typedMemo(
               {
                 [popupStyles.maxWidth]: maxWidth,
               },
-              [mapDirection[direction]]
+              [mapDirection[direction]],
             )}
+            data-testid={`${testId}.Options`}
+            {...listProps}
           >
             {options.map((option) => (
               <Listbox.Option
@@ -170,5 +175,5 @@ export const Select = typedMemo(
         </Listbox>
       </WithLabel>
     )
-  }
+  },
 )

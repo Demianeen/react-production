@@ -6,7 +6,6 @@
  *
  */
 import { $isCodeNode } from '@lexical/code'
-import type { LexicalEditor } from 'lexical'
 import {
   $getNearestNodeFromDOMNode,
   $getSelection,
@@ -19,26 +18,27 @@ import CopyIconDeprecated from '@/shared/assets/icons/deprecated/copy-22-22.svg'
 import { Icon, IconType } from '@/shared/ui/deprecated/Icon'
 import TickIcon from '@/shared/assets/icons/deprecated/tick-20-20.svg'
 import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button'
+import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
 
 interface Props {
-  editor: LexicalEditor
   getCodeElem: () => HTMLElement | null
 }
 
-export const CopyButton = ({ editor, getCodeElem }: Props) => {
+export const CopyButton = ({ getCodeElem }: Props) => {
+  const [editor] = useLexicalComposerContext()
   const [isCopyCompleted, setCopyCompleted] = useState<boolean>(false)
 
   const handleClick = async (): Promise<void> => {
-    const codeDOMNode = getCodeElem()
+    const codeElem = getCodeElem()
 
-    if (!codeDOMNode) {
+    if (!codeElem) {
       return
     }
 
     let content = ''
 
     editor.update(() => {
-      const codeNode = $getNearestNodeFromDOMNode(codeDOMNode)
+      const codeNode = $getNearestNodeFromDOMNode(codeElem)
 
       if ($isCodeNode(codeNode)) {
         content = codeNode.getTextContent()
@@ -67,7 +67,7 @@ export const CopyButton = ({ editor, getCodeElem }: Props) => {
     >
       <Icon
         Svg={isCopyCompleted ? TickIcon : CopyIconDeprecated}
-        color='invertedPrimary'
+        color='primary'
         type={IconType.STROKE}
         width={22}
         height={22}
