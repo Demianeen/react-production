@@ -4,10 +4,11 @@ import { ListItemNode, ListNode } from '@lexical/list'
 import { HStack } from '@/shared/ui/redesigned/Stack'
 import { CodeNode } from '@lexical/code'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
+import { LinkToolbarPlugin } from './plugins/LinkToolbarPlugin'
 import { TextFormatToolbarPlugin } from './plugins/TextFormatToolbarPlugin/ui/TextFormatPlugin'
 import { CodeBlockToolbarPlugin } from './plugins/CodeBlockToolbarPlugin/CodeBlockToolbarPlugin'
 import { SelectBlockTypeToolbarPlugin } from '../plugins/SelectBlockTypeToolbarPlugin/SelectBlockTypeToolbarPlugin'
-import { ImageToolbarPlugin } from './plugins/ImageToolbarPlugin/ImageToolbarPlugin'
+import { ImageToolbarPlugin } from './plugins/ImageToolbarPlugin'
 import { ImageBlockNode } from '../plugins/ImageBlockPlugin/nodes/ImageBlockNode'
 import styles from './ToolbarPlugin.module.scss'
 
@@ -36,6 +37,7 @@ export const ToolbarPlugin = typedMemo(
           <CodeBlockToolbarPlugin />
         </HStack>
         <TextFormatToolbarPlugin />
+        <LinkToolbarPlugin />
       </HStack>
     )
   },

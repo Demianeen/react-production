@@ -77,11 +77,11 @@ export const SelectBlockTypeToolbarPlugin = typedMemo(
       (newBlockType: BlockType) => {
         editor.dispatchCommand(
           mapValueToCommandMap[newBlockType],
-          undefined
+          undefined,
         )
         setSelectionBlockType(newBlockType)
       },
-      [editor, setSelectionBlockType]
+      [editor, setSelectionBlockType],
     )
 
     return (
@@ -98,5 +98,5 @@ export const SelectBlockTypeToolbarPlugin = typedMemo(
         <CodeBlockPlugin />
       </>
     )
-  }
+  },
 )

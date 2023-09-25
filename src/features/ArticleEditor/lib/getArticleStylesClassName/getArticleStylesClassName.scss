@@ -27,6 +27,13 @@ $list-padding: 0 0 0 1.5rem;
     text-decoration: underline;
   }
 
+  // link
+  .link {
+    color: var(--primary-color);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
   // code
   .code,
   pre {

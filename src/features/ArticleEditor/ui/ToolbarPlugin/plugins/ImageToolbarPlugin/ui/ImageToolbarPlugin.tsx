@@ -10,7 +10,7 @@ import { ImagePrompt } from './ImagePrompt'
 import {
   INSERT_IMAGE_BLOCK_COMMAND,
   InsertImagePlugin,
-} from '../../../plugins/ImageBlockPlugin/plugins/ImageBlockPlugin/InsertImagePlugin'
+} from '../../../../plugins/ImageBlockPlugin/plugins/ImageBlockPlugin/InsertImagePlugin'
 
 export interface ImageToolbarPluginProps {
   className?: string
@@ -20,6 +20,10 @@ export const ImageToolbarPlugin = typedMemo(
   ({ className }: ImageToolbarPluginProps) => {
     const [editor] = useLexicalComposerContext()
     const [isPromptOpen, setIsPromptOpen] = useState(false)
+
+    const onOpenPrompt = useCallback((_: React.MouseEvent) => {
+      setIsPromptOpen(true)
+    }, [])
 
     const onClosePrompt = useCallback(() => {
       setIsPromptOpen(false)
@@ -35,10 +39,6 @@ export const ImageToolbarPlugin = typedMemo(
       },
       [editor, onClosePrompt],
     )
-
-    const onOpenPrompt = useCallback((_: React.MouseEvent) => {
-      setIsPromptOpen(true)
-    }, [])
 
     return (
       <div className={className}>

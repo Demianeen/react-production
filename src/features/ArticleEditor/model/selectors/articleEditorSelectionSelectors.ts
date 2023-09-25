@@ -9,7 +9,7 @@ export const [
   getArticleEditorSelectionBlockType,
 ] = buildSelector(
   getArticleEditorSelection,
-  (state) => state?.blockType
+  (state) => state?.blockType,
 )
 
 export const [
@@ -17,5 +17,13 @@ export const [
   getArticleEditorSelectionNodeKey,
 ] = buildSelector(
   getArticleEditorSelection,
-  (state) => state?.nodeKey
+  (state) => state?.nodeKey,
+)
+
+export const [
+  useArticleEditorSelectionSelectedNodeKey,
+  getArticleEditorSelectionSelectedNodeKey,
+] = buildSelector(
+  getArticleEditorSelection,
+  (state) => state?.selectedNodeKey,
 )

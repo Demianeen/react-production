@@ -12,6 +12,7 @@ import {
   $isRootOrShadowRoot,
   type LexicalEditor,
 } from 'lexical'
+import { getSelectedNode } from '../../lib/getSelectedNode/getSelectedNode'
 import { BlockType } from '../types/articleEditorSchema'
 import { articleEditorActions } from '../slice/articleEditorSlice'
 
@@ -37,10 +38,20 @@ export const [useUpdateSelectionBlockType, updateSelectionBlockType] =
           node = anchorNode.getTopLevelElementOrThrow()
         }
 
+        // update node key
         dispatch(
-          articleEditorActions.setSelectionNodeKey(node.getKey())
+          articleEditorActions.setSelectionNodeKey(node.getKey()),
         )
 
+        const selectedNode = getSelectedNode(selection)
+
+        dispatch(
+          articleEditorActions.setSelectionSelectedNodeKey(
+            selectedNode.getKey(),
+          ),
+        )
+
+        // update block type
         const elementKey = node.getKey()
         const elementDOM =
           activeArticleEditor.getElementByKey(elementKey)
@@ -54,7 +65,7 @@ export const [useUpdateSelectionBlockType, updateSelectionBlockType] =
 
             if (isEnumInclude(BlockType, type)) {
               dispatch(
-                articleEditorActions.setSelectionBlockType(type)
+                articleEditorActions.setSelectionBlockType(type),
               )
             }
           } else {
@@ -63,11 +74,11 @@ export const [useUpdateSelectionBlockType, updateSelectionBlockType] =
               : node.getType()
             if (isEnumInclude(BlockType, type)) {
               dispatch(
-                articleEditorActions.setSelectionBlockType(type)
+                articleEditorActions.setSelectionBlockType(type),
               )
             }
           }
         }
       }
-    }
+    },
   )

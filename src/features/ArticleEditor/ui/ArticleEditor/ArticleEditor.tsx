@@ -9,12 +9,14 @@ import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary'
 import { ContentEditable } from '@lexical/react/LexicalContentEditable'
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
+import type { MutableRefObject } from 'react'
 import { forwardRef, memo } from 'react'
 import { AutoLinkNode, LinkNode } from '@lexical/link'
 import { TRANSFORMERS } from '@lexical/markdown'
 import { HeadingNode, QuoteNode } from '@lexical/rich-text'
 import { HorizontalRuleNode } from '@lexical/react/LexicalHorizontalRuleNode'
 import { useTranslation } from 'react-i18next'
+import ClickableLinkPlugin from '@lexical/react/LexicalClickableLinkPlugin'
 import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import type { ReducersList } from '@/app/providers/StoreProvider/config/stateSchema'
 import { CodeHighlightNode } from '@lexical/code'
@@ -45,6 +47,7 @@ const theme: EditorThemeClasses = {
     italic: 'italic',
     underline: 'underline',
   },
+  link: 'link',
   code: 'code',
   codeHighlight: {
     atrule: 'tokenAttr',
@@ -145,6 +148,7 @@ export const ArticleEditor = memo(
               ErrorBoundary={LexicalErrorBoundary}
             />
             <HistoryPlugin />
+            <ClickableLinkPlugin />
             <AutoLinkPlugin />
             <UpdateMouseBlockTypePlugin />
             <UpdateSelectionBlockTypePlugin />
@@ -152,7 +156,9 @@ export const ArticleEditor = memo(
             <CodeActionMenuPlugin />
             <CodeHighlightPlugin />
             <DraggableBlockPlugin />
-            <EditorRefPlugin editorRef={editorRef as any} />
+            <EditorRefPlugin
+              editorRef={editorRef as MutableRefObject<LexicalEditor>}
+            />
           </HStack>
         </VStack>
       </LexicalComposer>

@@ -39,7 +39,7 @@ export const ImagePrompt = ({
         altText,
       })
     },
-    [altText, onSubmit, src]
+    [altText, onSubmit, src],
   )
 
   const ModalComponent = toggleFeature({

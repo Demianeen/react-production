@@ -4,7 +4,7 @@ import {
   SELECTION_CHANGE_COMMAND,
 } from 'lexical'
 import { useEffect } from 'react'
-import { useUpdateSelectionBlockType } from '../../../model/services/updateSelectionBlockType'
+import { useUpdateSelectionBlockType } from '../../../model/services/updateSelectionState'
 
 export const UpdateSelectionBlockTypePlugin = () => {
   const [editor] = useLexicalComposerContext()
@@ -19,9 +19,9 @@ export const UpdateSelectionBlockTypePlugin = () => {
           updateBlockType(activeArticleEditor)
           return false
         },
-        COMMAND_PRIORITY_CRITICAL
+        COMMAND_PRIORITY_CRITICAL,
       ),
-    [editor, updateBlockType]
+    [editor, updateBlockType],
   )
 
   return null
