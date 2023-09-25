@@ -1,5 +1,5 @@
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
-import { Button } from '@/shared/ui/deprecated/Button'
+import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button'
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
 import { useCallback, useState } from 'react'
 import { Icon, IconType } from '@/shared/ui/deprecated/Icon'
@@ -33,7 +33,7 @@ export const ImageToolbarPlugin = typedMemo(
         })
         onClosePrompt()
       },
-      [editor, onClosePrompt]
+      [editor, onClosePrompt],
     )
 
     const onOpenPrompt = useCallback((_: React.MouseEvent) => {
@@ -45,6 +45,7 @@ export const ImageToolbarPlugin = typedMemo(
         <Button
           type='button'
           onClick={onOpenPrompt}
+          theme={ButtonTheme.CLEAR}
           className={getHStackClassName({
             justify: 'center',
             align: 'center',
@@ -66,5 +67,5 @@ export const ImageToolbarPlugin = typedMemo(
         )}
       </div>
     )
-  }
+  },
 )

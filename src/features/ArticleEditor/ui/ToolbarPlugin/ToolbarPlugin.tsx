@@ -4,6 +4,7 @@ import { ListItemNode, ListNode } from '@lexical/list'
 import { HStack } from '@/shared/ui/redesigned/Stack'
 import { CodeNode } from '@lexical/code'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
+import { TextFormatToolbarPlugin } from './plugins/TextFormatToolbarPlugin/ui/TextFormatPlugin'
 import { CodeBlockToolbarPlugin } from './plugins/CodeBlockToolbarPlugin/CodeBlockToolbarPlugin'
 import { SelectBlockTypeToolbarPlugin } from '../plugins/SelectBlockTypeToolbarPlugin/SelectBlockTypeToolbarPlugin'
 import { ImageToolbarPlugin } from './plugins/ImageToolbarPlugin/ImageToolbarPlugin'
@@ -27,12 +28,15 @@ export const ToolbarPlugin = typedMemo(
     return (
       <HStack
         className={classNamesNew(styles.wrapper, className)}
-        gap={0.5}
+        gap={1}
       >
         <SelectBlockTypeToolbarPlugin />
-        <ImageToolbarPlugin />
-        <CodeBlockToolbarPlugin />
+        <HStack gap={0.5}>
+          <ImageToolbarPlugin />
+          <CodeBlockToolbarPlugin />
+        </HStack>
+        <TextFormatToolbarPlugin />
       </HStack>
     )
-  }
+  },
 )

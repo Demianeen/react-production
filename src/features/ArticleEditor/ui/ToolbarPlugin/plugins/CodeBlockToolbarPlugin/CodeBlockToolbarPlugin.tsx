@@ -1,4 +1,4 @@
-import { Button } from '@/shared/ui/deprecated/Button'
+import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button'
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
 import { memo } from 'react'
 import CodeIcon from '@/shared/assets/icons/redesigned/textEditor/code.svg'
@@ -20,8 +20,10 @@ export const CodeBlockToolbarPlugin = memo(() => {
     <Button
       type='button'
       onClick={formatCode}
+      theme={ButtonTheme.CLEAR}
       className={getHStackClassName({
-        maxHeight: true,
+        justify: 'center',
+        align: 'center',
       })}
     >
       <Icon Svg={CodeIcon} height={24} width={24} />

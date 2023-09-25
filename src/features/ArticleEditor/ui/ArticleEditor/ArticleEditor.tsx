@@ -40,6 +40,11 @@ const theme: EditorThemeClasses = {
     ol: 'ol',
     listitem: 'li',
   },
+  text: {
+    bold: 'bold',
+    italic: 'italic',
+    underline: 'underline',
+  },
   code: 'code',
   codeHighlight: {
     atrule: 'tokenAttr',
@@ -112,7 +117,7 @@ export const ArticleEditor = memo(
           <HStack
             className={classNamesNew(
               styles.articleEditor,
-              getArticleStylesClassName()
+              getArticleStylesClassName(),
             )}
             maxWidth
           >
@@ -125,7 +130,7 @@ export const ArticleEditor = memo(
                   >
                     <ContentEditable
                       className={classNamesNew(
-                        styles.contentEditable
+                        styles.contentEditable,
                       )}
                     />
                   </div>
@@ -152,7 +157,7 @@ export const ArticleEditor = memo(
         </VStack>
       </LexicalComposer>
     )
-  })
+  }),
 )
 
 ArticleEditor.displayName = 'ArticleEditor'

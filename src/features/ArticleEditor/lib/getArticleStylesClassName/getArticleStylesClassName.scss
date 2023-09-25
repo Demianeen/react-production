@@ -3,6 +3,7 @@
 $list-padding: 0 0 0 1.5rem;
 
 .withArticleStyles {
+  // list
   .ul {
     padding: $list-padding;
     list-style: disc;
@@ -13,6 +14,20 @@ $list-padding: 0 0 0 1.5rem;
     list-style: decimal;
   }
 
+  // text formatting
+  .bold {
+    font-weight: bold;
+  }
+
+  .italic {
+    font-style: italic;
+  }
+
+  .underline {
+    text-decoration: underline;
+  }
+
+  // code
   .code,
   pre {
     position: relative;
