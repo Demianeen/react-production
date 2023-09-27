@@ -64,9 +64,9 @@ export const Select = typedMemo(
     const selectedOption = useMemo(
       () =>
         options.find(
-          ({ value: optionValue }) => optionValue === value
+          ({ value: optionValue }) => optionValue === value,
         ),
-      [options, value]
+      [options, value],
     )
 
     return (
@@ -85,6 +85,7 @@ export const Select = typedMemo(
           <Listbox.Button
             as={Button}
             type='button'
+            role='combobox'
             variant='filled'
             paddings='horizontal'
             disabledButton={readonly}
@@ -103,7 +104,7 @@ export const Select = typedMemo(
               popupStyles.menu,
               {
                 [popupStyles.maxWidth]: maxWidth,
-              }
+              },
             )}
           >
             {options.map((option) => (
@@ -131,7 +132,42 @@ export const Select = typedMemo(
             ))}
           </Listbox.Options>
         </WithLabel>
+        {required && (
+          <div
+            aria-hidden='true'
+            tabIndex={-1}
+            className={styles.selectNativeWrapper}
+          >
+            <select
+              disabled={readonly}
+              onClick={() => {}}
+              onChange={() => {}}
+              tabIndex={-1}
+              value={value === null ? undefined : value}
+              name={name}
+              required={required}
+              aria-hidden='true'
+              autoCapitalize='off'
+              autoComplete='off'
+              className={styles.selectNative}
+            >
+              <option value='' defaultChecked aria-hidden='true' />
+              {options.map((option) => {
+                return (
+                  <option
+                    key={option.value}
+                    value={option.value}
+                    disabled={option.disabled}
+                    aria-hidden='true'
+                  >
+                    {option.label}
+                  </option>
+                )
+              })}
+            </select>
+          </div>
+        )}
       </Listbox>
     )
-  }
+  },
 )

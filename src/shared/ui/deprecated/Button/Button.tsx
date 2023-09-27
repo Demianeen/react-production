@@ -69,7 +69,7 @@ type ButtonOwnProps<TTag extends ElementType> = {
 } & AdditionalProps<TTag>
 
 export type ButtonProps<
-  TTag extends ElementType = typeof DEFAULT_TAG
+  TTag extends ElementType = typeof DEFAULT_TAG,
 > = Props<TTag, keyof ButtonOwnProps<TTag>, ButtonOwnProps<TTag>>
 
 const isButton = (Component: ElementType): Component is 'button' => {
@@ -97,7 +97,7 @@ export const Button = typedMemo(
         maxWidth = false,
         ...props
       }: ButtonProps<WithDefaultTag<TTag, typeof DEFAULT_TAG>>,
-      ref: ForwardedRef<WithDefaultTag<TTag, typeof DEFAULT_TAG>>
+      ref: ForwardedRef<WithDefaultTag<TTag, typeof DEFAULT_TAG>>,
     ) => {
       const isDisabled = disabled ?? disabledButton
 
@@ -140,6 +140,6 @@ export const Button = typedMemo(
           {children}
         </Tag>
       )
-    }
-  )
+    },
+  ),
 )

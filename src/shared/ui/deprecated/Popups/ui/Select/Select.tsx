@@ -58,6 +58,7 @@ type SelectProps<T extends string> = {
   required?: boolean
   clear?: boolean
   listProps?: ComponentPropsWithoutRef<typeof Listbox.Options>
+  'z-index'?: number
 } & TestProps &
   (MultiplePropsTrue<T> | MultiplePropsFalse<T>)
 
@@ -117,6 +118,7 @@ export const Select = typedMemo(
           <Listbox.Button
             as={Button}
             type='button'
+            role='combobox'
             theme={clear ? ButtonTheme.CLEAR : ButtonTheme.OUTLINE}
             disabledButton={readonly}
             className={classNames(
@@ -138,15 +140,15 @@ export const Select = typedMemo(
             )}
           </Listbox.Button>
           <Listbox.Options
+            {...listProps}
             className={classNames(
               styles.options,
               {
                 [popupStyles.maxWidth]: maxWidth,
               },
-              [mapDirection[direction]],
+              [mapDirection[direction], listProps?.className],
             )}
             data-testid={`${testId}.Options`}
-            {...listProps}
           >
             {options.map((option) => (
               <Listbox.Option
@@ -173,6 +175,41 @@ export const Select = typedMemo(
             ))}
           </Listbox.Options>
         </Listbox>
+        {required && (
+          <div
+            aria-hidden='true'
+            tabIndex={-1}
+            className={styles.selectNativeWrapper}
+          >
+            <select
+              disabled={readonly}
+              onClick={() => {}}
+              onChange={() => {}}
+              tabIndex={-1}
+              value={value === null ? undefined : value}
+              name={name}
+              required={required}
+              aria-hidden='true'
+              autoCapitalize='off'
+              autoComplete='off'
+              className={styles.selectNative}
+            >
+              <option value='' defaultChecked aria-hidden='true' />
+              {options.map((option) => {
+                return (
+                  <option
+                    key={option.value}
+                    value={option.value}
+                    disabled={option.disabled}
+                    aria-hidden='true'
+                  >
+                    {option.label}
+                  </option>
+                )
+              })}
+            </select>
+          </div>
+        )}
       </WithLabel>
     )
   },

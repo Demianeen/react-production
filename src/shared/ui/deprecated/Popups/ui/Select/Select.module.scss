@@ -26,7 +26,8 @@ $option-padding: 0.6rem;
   overflow-y: auto;
   background: var(--select-bg);
   border-radius: 0.5rem;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0/30%),
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0/30%),
     0 4px 6px -4px rgb(0 0 0/30%);
   animation: open 0.2s ease-in-out;
 
@@ -44,6 +45,18 @@ $option-padding: 0.6rem;
       padding-left: $option-padding;
     }
   }
+}
+
+// semantic
+.selectNativeWrapper {
+  position: relative;
+}
+
+.selectNative {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  opacity: 0;
 }
 
 @keyframes open {
