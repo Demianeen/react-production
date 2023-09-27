@@ -33,7 +33,7 @@ export interface Article {
   id: number
   user: User
   title: string
-  subtitle: string
+  subtitle?: string
   img: string
   views: number
   createdAt: string

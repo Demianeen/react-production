@@ -103,6 +103,7 @@ export const Select = typedMemo(
 
     return (
       <WithLabel
+        required={required}
         wrapperClassName={popupStyles.popup}
         label={label}
         maxWidth={maxWidth}

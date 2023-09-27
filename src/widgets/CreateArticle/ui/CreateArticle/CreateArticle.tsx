@@ -158,7 +158,6 @@ export const CreateArticle = memo(
           placeholder='JavaScript updates and how to run JS code in a browser'
           label='Subtitle'
           maxWidth
-          required
         />
         <InputComponent
           value={img}
@@ -194,7 +193,7 @@ export const CreateArticle = memo(
             className: styles.selectTypes,
           }}
         />
-        <WithLabelComponent label='Content' maxWidth>
+        <WithLabelComponent required={false} label='Content' maxWidth>
           <ArticleEditor ref={editorRef} />
         </WithLabelComponent>
         {ToggleFeature({

@@ -19,6 +19,12 @@ type Story = StoryObj<typeof WithLabel>
 
 export const Light: Story = {}
 
+export const Required: Story = {
+  args: {
+    required: true,
+  },
+}
+
 export const WithMaxWidth: Story = {
   args: {
     maxWidth: true,

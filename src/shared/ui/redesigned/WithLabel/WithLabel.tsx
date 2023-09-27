@@ -24,12 +24,16 @@ interface WithLabelProps<TTag extends ElementType>
    */
   direction?: FlexDirection
   as?: TTag
+  /**
+   * Adds asterisk to label
+   */
+  required: boolean
 }
 
 const DEFAULT_TAG = 'label'
 
 export const WithLabel = <
-  TTag extends ElementType = typeof DEFAULT_TAG
+  TTag extends ElementType = typeof DEFAULT_TAG,
 >({
   className,
   wrapperClassName,
@@ -38,6 +42,7 @@ export const WithLabel = <
   maxWidth,
   direction = 'column',
   as,
+  required = false,
   ...props
 }: WithLabelProps<TTag>) => {
   const Tag = as ?? DEFAULT_TAG
@@ -50,7 +55,8 @@ export const WithLabel = <
     >
       {label && (
         <Tag htmlFor={label} className={className} {...props}>
-          {label}:{' '}
+          {label}
+          {required ? '*' : ''}:{' '}
         </Tag>
       )}
       {children}

@@ -78,6 +78,7 @@ export const Select = typedMemo(
         name={name}
       >
         <WithLabel
+          required={required}
           label={label}
           as={Listbox.Label}
           wrapperClassName={popupStyles.popup}

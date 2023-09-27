@@ -14,6 +14,10 @@ interface WithLabelProps extends HTMLLabelProps {
   children: ReactNode
   wrapperClassName?: string
   maxWidth?: boolean
+  /**
+   * Adds asterisk to label
+   */
+  required: boolean
 }
 
 /**
@@ -26,6 +30,7 @@ export const WithLabel = ({
   label,
   children,
   maxWidth,
+  required = false,
   ...props
 }: WithLabelProps) => {
   return (
@@ -36,7 +41,8 @@ export const WithLabel = ({
           className={classNames(styles.label, {}, [className])}
           {...props}
         >
-          {label}:{' '}
+          {label}
+          {required ? '*' : ''}:{' '}
         </label>
       )}
       {children}
