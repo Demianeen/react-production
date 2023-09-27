@@ -3,7 +3,6 @@ import type { InitialConfigType } from '@lexical/react/LexicalComposer'
 import { LexicalComposer } from '@lexical/react/LexicalComposer'
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin'
 import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin'
-import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin'
 import { EditorRefPlugin } from '@lexical/react/LexicalEditorRefPlugin'
 import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary'
 import { ContentEditable } from '@lexical/react/LexicalContentEditable'
@@ -12,9 +11,6 @@ import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
 import type { MutableRefObject } from 'react'
 import { forwardRef, memo } from 'react'
 import { AutoLinkNode, LinkNode } from '@lexical/link'
-import { TRANSFORMERS } from '@lexical/markdown'
-import { HeadingNode, QuoteNode } from '@lexical/rich-text'
-import { HorizontalRuleNode } from '@lexical/react/LexicalHorizontalRuleNode'
 import { useTranslation } from 'react-i18next'
 import ClickableLinkPlugin from '@lexical/react/LexicalClickableLinkPlugin'
 import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
@@ -47,6 +43,7 @@ const theme: EditorThemeClasses = {
     italic: 'italic',
     underline: 'underline',
   },
+  paragraph: 'paragraph',
   link: 'link',
   code: 'code',
   codeHighlight: {
@@ -105,10 +102,7 @@ export const ArticleEditor = memo(
       nodes: [
         ...ToolbarNodes,
         AutoLinkNode,
-        HorizontalRuleNode,
-        HeadingNode,
         LinkNode,
-        QuoteNode,
         CodeHighlightNode,
       ],
     }
@@ -118,10 +112,7 @@ export const ArticleEditor = memo(
         <VStack gap={1} maxWidth>
           <ToolbarPlugin />
           <HStack
-            className={classNamesNew(
-              styles.articleEditor,
-              getArticleStylesClassName(),
-            )}
+            className={classNamesNew(styles.articleEditor)}
             maxWidth
           >
             <RichTextPlugin
@@ -134,6 +125,7 @@ export const ArticleEditor = memo(
                     <ContentEditable
                       className={classNamesNew(
                         styles.contentEditable,
+                        getArticleStylesClassName(),
                       )}
                     />
                   </div>
@@ -152,7 +144,6 @@ export const ArticleEditor = memo(
             <AutoLinkPlugin />
             <UpdateMouseBlockTypePlugin />
             <UpdateSelectionBlockTypePlugin />
-            <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
             <CodeActionMenuPlugin />
             <CodeHighlightPlugin />
             <DraggableBlockPlugin />

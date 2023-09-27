@@ -4,7 +4,8 @@
   height: calc(100svh - var(--navbar-height));
 
   // padding left equal to toggle sidebar button width
-  padding: 1.25rem 1.25rem 1.25rem calc(var(--font-line-l) + 0.1rem);
+  padding: var(--page-padding) var(--page-padding) var(--page-padding)
+    calc(var(--font-line-l) + 0.1rem);
   overflow-x: hidden;
   overflow-y: auto;
 }

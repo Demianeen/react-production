@@ -1,3 +1,8 @@
 .wrapper {
+  position: sticky;
+  top: calc(-1 * var(--page-padding));
+  z-index: 2;
   align-content: center;
+  width: 100%;
+  background: var(--bg-color);
 }

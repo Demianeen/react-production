@@ -8,25 +8,32 @@ import styles from './ArticleThumbnail.module.scss'
 
 export interface ArticleThumbnailProps {
   className?: string
-  src: string
+  src?: string
   alt?: string
+  isLoading?: boolean
 }
 
 export const ArticleThumbnail = typedMemo(
-  ({ className, src, alt }: ArticleThumbnailProps) => {
+  ({ className, src, alt, isLoading }: ArticleThumbnailProps) => {
     const SkeletonComponent = toggleFeature({
       name: 'isAppRedesigned',
       on: () => Skeleton,
       off: () => SkeletonDeprecated,
     })
 
+    const skeleton = <SkeletonComponent height='15rem' />
+
+    if (isLoading) {
+      return skeleton
+    }
+
     return (
       <AppImage
         src={src}
         alt={alt ?? 'article thumbnail'}
         className={classNamesNew(styles.articleThumbnail, className)}
-        fallback={<SkeletonComponent height='15rem' />}
+        fallback={skeleton}
       />
     )
-  }
+  },
 )

@@ -77,17 +77,17 @@ export const LinkToolbarPlugin = ({
           const node = $getNodeByKey(selectedNodeKey)
           const nodeText = node?.getTextContent()
 
-          const newUrl = sanitizeUrl(url)
+          const sanitizedUrl = sanitizeUrl(url)
 
           if (nodeText?.length === 0) {
             const selection = $getSelection()
             if (selection) {
-              selection.insertText(newUrl)
+              selection.insertText(sanitizedUrl)
             }
           }
 
-          editor.dispatchCommand(TOGGLE_LINK_COMMAND, newUrl)
-          setLinkNodeUrl(newUrl)
+          editor.dispatchCommand(TOGGLE_LINK_COMMAND, sanitizedUrl)
+          setLinkNodeUrl(sanitizedUrl)
         })
 
         onClosePrompt()

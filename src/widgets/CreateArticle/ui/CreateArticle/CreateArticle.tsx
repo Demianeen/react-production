@@ -22,6 +22,9 @@ import { AppImage } from '@/shared/ui/redesigned/AppImage'
 import { useUserId } from '@/entities/User'
 import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton'
 import { Skeleton } from '@/shared/ui/redesigned/Skeleton'
+import { useNavigate } from 'react-router-dom'
+import { routes } from '@/shared/lib/router/routes'
+import { Text, TextTheme } from '@/shared/ui/deprecated/Text'
 import { useCreateArticleMutation } from '../../model/api/createArticleApi'
 import {
   useCreateArticleFormImage,
@@ -55,10 +58,12 @@ export const CreateArticle = memo(
   ({ className }: CreateArticleProps) => {
     useDynamicModuleLoader(reducers)
 
+    const navigate = useNavigate()
+
     const { t } = useTranslation('createArticle')
     const editorRef = useRef<LexicalEditor>(null)
 
-    const [createArticle] = useCreateArticleMutation()
+    const [createArticle, { isError }] = useCreateArticleMutation()
 
     const title = useCreateArticleFormTitle()
     const subtitle = useCreateArticleFormSubTitle()
@@ -100,10 +105,18 @@ export const CreateArticle = memo(
             contentHtmlString: htmlString,
             types,
             userId,
+          }).then((response) => {
+            if ('data' in response) {
+              navigate(
+                routes.articleDetails({
+                  id: String(response.data.id),
+                }),
+              )
+            }
           })
         })
       },
-      [createArticle, img, subtitle, title, types, userId]
+      [createArticle, img, navigate, subtitle, title, types, userId],
     )
 
     const SkeletonComponent = toggleFeature({
@@ -125,6 +138,12 @@ export const CreateArticle = memo(
         gap={1}
         onSubmit={onSubmit}
       >
+        {isError && (
+          <Text
+            text='Error happened while creating article'
+            theme={TextTheme.ERROR}
+          />
+        )}
         <InputComponent
           value={title}
           onChange={updateTitle}
@@ -171,6 +190,9 @@ export const CreateArticle = memo(
           value={types}
           multiple
           required
+          listProps={{
+            className: styles.selectTypes,
+          }}
         />
         <WithLabelComponent label='Content' maxWidth>
           <ArticleEditor ref={editorRef} />
@@ -182,7 +204,7 @@ export const CreateArticle = memo(
         })}
       </VStack>
     )
-  }
+  },
 )
 
 CreateArticle.displayName = 'CreateArticle'

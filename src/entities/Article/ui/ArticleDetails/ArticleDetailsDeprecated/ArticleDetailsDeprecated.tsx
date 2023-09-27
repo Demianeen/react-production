@@ -17,6 +17,8 @@ import { HStack } from '@/shared/ui/redesigned/Stack'
 import type { AsyncReducersList } from '@/app/providers/StoreProvider/config/stateSchema'
 // eslint-disable-next-line netliukh-demian-fsd-plugin/public-api-imports, netliukh-demian-fsd-plugin/layer-imports
 import { getArticleStylesClassName } from '@/features/ArticleEditor/lib/getArticleStylesClassName/getArticleStylesClassName'
+import { getDateText } from '@/shared/lib/getDateText/getDateText'
+import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
 import { ArticleThumbnail } from '../../ArticleThumbnail/ArticleThumbnail'
 import { useArticleDetailsData } from '../../../model/selectors/getArticleDetailsData/getArticleDetailsData'
 import { articleDetailsReducer } from '../../../model/slice/articleDetailsSlice'
@@ -52,14 +54,7 @@ export const ArticleDetailsDeprecated = memo(
     if (isLoading) {
       content = (
         <>
-          <HStack justify='center' maxWidth>
-            <Skeleton
-              className={styles.avatar}
-              width='12.5rem'
-              height='12.5rem'
-              borderRadius='50%'
-            />
-          </HStack>
+          <ArticleThumbnail className={styles.thumbnail} isLoading />
           <Skeleton
             className={styles.title}
             width='41.8rem'
@@ -112,16 +107,23 @@ export const ArticleDetailsDeprecated = memo(
               data-testid='ArticleDetails.views'
             />
           </HStack>
-          <HStack gap={0.5}>
-            <Icon color='primary' Svg={CalendarIcon} />
-            <Text
-              text={article?.createdAt}
-              data-testid='ArticleDetails.createdAt'
-            />
-          </HStack>
+          {article?.createdAt && (
+            <HStack gap={0.5}>
+              <Icon color='primary' Svg={CalendarIcon} />
+              <Text
+                text={getDateText(new Date(article.createdAt), {
+                  long: true,
+                })}
+                data-testid='ArticleDetails.createdAt'
+              />
+            </HStack>
+          )}
           {/* {article?.blocks?.map(renderBlock)} */}
           <div
-            className={getArticleStylesClassName()}
+            className={classNamesNew(
+              styles.content,
+              getArticleStylesClassName(),
+            )}
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
               __html: article?.contentHtmlString ?? '',
@@ -139,7 +141,7 @@ export const ArticleDetailsDeprecated = memo(
         {content}
       </article>
     )
-  }
+  },
 )
 
 ArticleDetailsDeprecated.displayName = 'ArticleDetails'

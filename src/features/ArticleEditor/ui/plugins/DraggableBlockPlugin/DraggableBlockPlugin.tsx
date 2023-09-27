@@ -1,5 +1,9 @@
 /* eslint-disable no-param-reassign */
-import { $getNearestNodeFromDOMNode } from 'lexical'
+import {
+  $getNearestNodeFromDOMNode,
+  $getNodeByKey,
+  $isElementNode,
+} from 'lexical'
 import * as React from 'react'
 import type { DragEvent as ReactDragEvent } from 'react'
 import { useEffect, useRef } from 'react'
@@ -16,7 +20,7 @@ const SPACE = 4
 
 const updateMenuPosition = (
   targetElem: HTMLElement | null,
-  floatingElem: HTMLElement
+  floatingElem: HTMLElement,
 ) => {
   const anchorElem = getArticleEditorAnchor()
   if (!anchorElem) return
@@ -65,7 +69,7 @@ export const DraggableBlockPlugin = (): JSX.Element => {
   }, [draggableBlockElem, editor])
 
   const onDragStart = (
-    event: ReactDragEvent<HTMLDivElement>
+    event: ReactDragEvent<HTMLDivElement>,
   ): void => {
     if (draggableBlockElem === null) {
       return
@@ -93,6 +97,16 @@ export const DraggableBlockPlugin = (): JSX.Element => {
     updateMenuPosition(draggableBlockElem, menuRef.current)
   }
 
+  const onClick = (): void => {
+    editor.update(() => {
+      if (!topLevelNodeKey) return
+      const node = $getNodeByKey(topLevelNodeKey)
+      if ($isElementNode(node)) {
+        node.select(0)
+      }
+    })
+  }
+
   const anchorElem = getArticleEditorAnchor()
 
   return (
@@ -104,6 +118,7 @@ export const DraggableBlockPlugin = (): JSX.Element => {
           draggable
           onDragStart={onDragStart}
           onDragEnd={onDragEnd}
+          onClick={onClick}
         >
           {editor.isEditable() && (
             <Icon
