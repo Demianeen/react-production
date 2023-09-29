@@ -31,6 +31,13 @@ export const Default: Story = {
   },
 }
 
+export const Multiple: Story = {
+  args: {
+    label: 'label',
+    multiple: true,
+  },
+}
+
 export const DirectionDownRight: Story = {
   args: {
     label: 'label',

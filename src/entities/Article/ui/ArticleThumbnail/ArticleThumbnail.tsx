@@ -21,7 +21,9 @@ export const ArticleThumbnail = typedMemo(
       off: () => SkeletonDeprecated,
     })
 
-    const skeleton = <SkeletonComponent height='15rem' />
+    const skeleton = (
+      <SkeletonComponent height='15rem' className={className} />
+    )
 
     if (isLoading) {
       return skeleton

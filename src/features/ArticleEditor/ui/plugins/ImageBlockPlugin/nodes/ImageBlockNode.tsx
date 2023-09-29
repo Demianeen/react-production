@@ -1,4 +1,6 @@
 import type {
+  DOMConversionMap,
+  DOMConversionOutput,
   DOMExportOutput,
   EditorConfig,
   LexicalEditor,
@@ -15,6 +17,7 @@ import {
   DecoratorNode,
   createEditor,
 } from 'lexical'
+import { isUrl } from '@/shared/lib/url/findUrl/isUrl'
 import {
   ImageBlockComponent,
   captionClassnames,
@@ -76,8 +79,18 @@ export class ImageBlockNode extends DecoratorNode<JSX.Element> {
     return dom
   }
 
+  static importDOM(): DOMConversionMap | null {
+    return {
+      img: (_: Node) => ({
+        // eslint-disable-next-line @typescript-eslint/no-use-before-define
+        conversion: convertImageBlockElement,
+        priority: 0,
+      }),
+    }
+  }
+
   static importJSON(
-    serializedNode: SerializedImageNode
+    serializedNode: SerializedImageNode,
   ): ImageBlockNode {
     const { altText, caption, src } = serializedNode
     // eslint-disable-next-line @typescript-eslint/no-use-before-define
@@ -87,7 +100,7 @@ export class ImageBlockNode extends DecoratorNode<JSX.Element> {
     })
     const nestedEditor = node.__caption
     const editorState = nestedEditor.parseEditorState(
-      caption.editorState
+      caption.editorState,
     )
     if (!editorState.isEmpty()) {
       nestedEditor.setEditorState(editorState)
@@ -110,7 +123,7 @@ export class ImageBlockNode extends DecoratorNode<JSX.Element> {
   updateDOM(
     _prevNode: unknown,
     _dom: HTMLElement,
-    _config: EditorConfig
+    _config: EditorConfig,
   ): boolean {
     return false
   }
@@ -130,7 +143,7 @@ export class ImageBlockNode extends DecoratorNode<JSX.Element> {
 
   decorate(
     _articleEditor: LexicalEditor,
-    _config: EditorConfig
+    _config: EditorConfig,
   ): JSX.Element {
     return (
       <ImageBlockComponent
@@ -198,9 +211,27 @@ export class ImageBlockNode extends DecoratorNode<JSX.Element> {
 }
 
 export const $createImageBlockNode = (
-  node: ImageBlockPayload
+  node: ImageBlockPayload,
 ): ImageBlockNode => new ImageBlockNode(node)
 
 export const $isImageBlockNode = (
-  node: unknown
+  node: unknown,
 ): node is ImageBlockNode => node instanceof ImageBlockNode
+
+// eslint-disable-next-line prefer-arrow/prefer-arrow-functions
+function convertImageBlockElement(
+  domNode: Node,
+): null | DOMConversionOutput {
+  if (domNode instanceof HTMLImageElement) {
+    const { alt: altText, src } = domNode
+    if (!isUrl(src)) {
+      return null
+    }
+    const node = $createImageBlockNode({
+      altText,
+      src,
+    })
+    return { node }
+  }
+  return null
+}

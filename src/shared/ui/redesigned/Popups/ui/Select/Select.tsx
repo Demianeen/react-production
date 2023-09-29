@@ -19,7 +19,21 @@ export interface SelectOption<T extends string> {
   disabled?: boolean
 }
 
-interface SelectProps<T extends string> extends TestProps {
+interface MultiplePropsTrue<T extends string> {
+  value?: T[]
+  defaultValue?: string[] | T[]
+  onChange?: (value: T[]) => void
+  multiple: true
+}
+
+interface MultiplePropsFalse<T extends string> {
+  value?: T
+  defaultValue?: string | T
+  onChange?: (value: T) => void
+  multiple?: false
+}
+
+type SelectProps<T extends string> = {
   className?: string
   /**
    * @description Label of select block
@@ -29,9 +43,6 @@ interface SelectProps<T extends string> extends TestProps {
    * @description List of items to render in select dropdown
    */
   options: SelectOption<T>[]
-  value?: T
-  defaultValue?: string | T
-  onChange?: (value: T) => void
   readonly?: boolean
   /**
    * @description Flag that sets width to 100% for select
@@ -44,7 +55,8 @@ interface SelectProps<T extends string> extends TestProps {
   direction?: DiagonalDirection
   name?: string
   required?: boolean
-}
+} & TestProps &
+  (MultiplePropsTrue<T> | MultiplePropsFalse<T>)
 
 export const Select = typedMemo(
   <T extends string>({
@@ -59,15 +71,25 @@ export const Select = typedMemo(
     direction = 'down-left',
     name,
     'data-testid': testId = 'Select',
+    multiple,
     required = false,
   }: SelectProps<T>) => {
-    const selectedOption = useMemo(
-      () =>
-        options.find(
-          ({ value: optionValue }) => optionValue === value,
-        ),
-      [options, value],
-    )
+    const selectedOptionLabel = useMemo(() => {
+      if (multiple) {
+        const selectedOptions = options.filter(
+          ({ value: optionValue }) => value?.includes(optionValue),
+        )
+        return selectedOptions
+          ?.map(({ label: optionLabel }) => optionLabel)
+          .join(', ')
+      }
+
+      const selectedOption = options.find(
+        ({ value: optionValue }) => optionValue === value,
+      )
+
+      return selectedOption?.label
+    }, [multiple, options, value])
 
     return (
       <Listbox
@@ -96,7 +118,7 @@ export const Select = typedMemo(
             data-testid={`${testId}.Button`}
             aria-required={required}
           >
-            {selectedOption?.label ?? defaultValue}
+            {selectedOptionLabel ?? defaultValue}
           </Listbox.Button>
           <Listbox.Options
             className={classNames(
@@ -147,6 +169,7 @@ export const Select = typedMemo(
               value={value === null ? undefined : value}
               name={name}
               required={required}
+              multiple={multiple}
               aria-hidden='true'
               autoCapitalize='off'
               autoComplete='off'

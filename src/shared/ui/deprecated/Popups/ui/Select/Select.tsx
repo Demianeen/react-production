@@ -58,7 +58,6 @@ type SelectProps<T extends string> = {
   required?: boolean
   clear?: boolean
   listProps?: ComponentPropsWithoutRef<typeof Listbox.Options>
-  'z-index'?: number
 } & TestProps &
   (MultiplePropsTrue<T> | MultiplePropsFalse<T>)
 
@@ -190,6 +189,7 @@ export const Select = typedMemo(
               value={value === null ? undefined : value}
               name={name}
               required={required}
+              multiple={multiple}
               aria-hidden='true'
               autoCapitalize='off'
               autoComplete='off'
