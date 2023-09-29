@@ -35,7 +35,7 @@ export const ArticleAdditionalInfo = memo(
             })}
           </span>
         </HStack>
-        <EditArticle id={id} />
+        <EditArticle id={id} authorId={article.user.id} />
         <span data-testid='ArticleAdditionalInfo.Views'>
           {t('views', { count: views })}
         </span>

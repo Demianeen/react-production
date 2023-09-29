@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { memo, useEffect } from 'react'
+import { memo, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
@@ -19,6 +19,7 @@ import type { AsyncReducersList } from '@/app/providers/StoreProvider/config/sta
 import { getArticleStylesClassName } from '@/features/ArticleEditor/lib/getArticleStylesClassName/getArticleStylesClassName'
 import { getDateText } from '@/shared/lib/getDateText/getDateText'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
+import { sanitizeHTMLString } from '@/shared/lib/html/sanitize'
 import { ArticleThumbnail } from '../../ArticleThumbnail/ArticleThumbnail'
 import { useArticleDetailsData } from '../../../model/selectors/getArticleDetailsData/getArticleDetailsData'
 import { articleDetailsReducer } from '../../../model/slice/articleDetailsSlice'
@@ -45,9 +46,23 @@ export const ArticleDetailsDeprecated = memo(
     const error = useArticleDetailsError()
     const article = useArticleDetailsData()
 
+    const contentRef = useRef<HTMLDivElement>()
+
     useEffect(() => {
       dispatch(fetchArticleById(id))
     }, [dispatch, id])
+
+    useEffect(() => {
+      if (article?.contentHtmlString) {
+        sanitizeHTMLString(article.contentHtmlString).then(
+          (sanitizedHtmlString) => {
+            if (contentRef.current) {
+              contentRef.current.innerHTML = sanitizedHtmlString
+            }
+          },
+        )
+      }
+    })
 
     let content: ReactNode
 

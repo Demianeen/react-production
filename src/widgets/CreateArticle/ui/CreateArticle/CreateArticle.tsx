@@ -1,6 +1,6 @@
 import { VStack } from '@/shared/ui/redesigned/Stack'
 import type { FormEventHandler } from 'react'
-import { memo, useCallback, useRef } from 'react'
+import { memo, useCallback, useEffect, useRef } from 'react'
 import type { AsyncReducersList } from '@/app/providers/StoreProvider/config/stateSchema'
 import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import { Input as InputDeprecated } from '@/shared/ui/deprecated/Input'
@@ -9,12 +9,16 @@ import { ToggleFeature, toggleFeature } from '@/shared/lib/features'
 import { ArticleEditor } from '@/features/ArticleEditor'
 import { WithLabel as WithLabelDeprecated } from '@/shared/ui/deprecated/WithLabel'
 import { WithLabel } from '@/shared/ui/redesigned/WithLabel'
-import type { LexicalEditor } from 'lexical'
+import { $getRoot, $insertNodes, type LexicalEditor } from 'lexical'
 import { Button as ButtonDeprecated } from '@/shared/ui/deprecated/Button'
 import { Button } from '@/shared/ui/redesigned/Button'
 import { useTranslation } from 'react-i18next'
-import { $generateHtmlFromNodes } from '@lexical/html'
+import {
+  $generateHtmlFromNodes,
+  $generateNodesFromDOM,
+} from '@lexical/html'
 import { Select } from '@/shared/ui/deprecated/Popups'
+import type { Article } from '@/entities/Article'
 import { ArticleType, ArticleThumbnail } from '@/entities/Article'
 import type { SelectOption } from '@/shared/ui/redesigned/Popups'
 import { isUrl } from '@/shared/lib/url/findUrl/isUrl'
@@ -25,6 +29,7 @@ import { Skeleton } from '@/shared/ui/redesigned/Skeleton'
 import { useNavigate } from 'react-router-dom'
 import { routes } from '@/shared/lib/router/routes'
 import { Text, TextTheme } from '@/shared/ui/deprecated/Text'
+import { getSanitizedDomFromString } from '@/shared/lib/html/sanitize'
 import { useCreateArticleMutation } from '../../model/api/createArticleApi'
 import {
   useCreateArticleFormImage,
@@ -38,10 +43,6 @@ import {
 } from '../../model/slice/createArticleSlice'
 import styles from './CreateArticle.module.scss'
 
-interface CreateArticleProps {
-  className?: string
-}
-
 const reducers: AsyncReducersList = {
   createArticle: createArticleReducer,
 }
@@ -54,8 +55,13 @@ export const articleTypeToSelect: SelectOption<ArticleType>[] =
       value: type,
     }))
 
+interface CreateArticleProps {
+  className?: string
+  editArticle?: Article
+}
+
 export const CreateArticle = memo(
-  ({ className }: CreateArticleProps) => {
+  ({ className, editArticle }: CreateArticleProps) => {
     useDynamicModuleLoader(reducers)
 
     const navigate = useNavigate()
@@ -63,7 +69,10 @@ export const CreateArticle = memo(
     const { t } = useTranslation('createArticle')
     const editorRef = useRef<LexicalEditor>(null)
 
-    const [createArticle, { isError }] = useCreateArticleMutation()
+    const isEdit = editArticle !== undefined
+
+    const [createArticle, { isError, isSuccess, data }] =
+      useCreateArticleMutation()
 
     const title = useCreateArticleFormTitle()
     const subtitle = useCreateArticleFormSubTitle()
@@ -74,18 +83,6 @@ export const CreateArticle = memo(
 
     const { updateTitle, updateSubtitle, updateImg, updateTypes } =
       useCreateArticleActions()
-
-    const InputComponent = toggleFeature({
-      name: 'isAppRedesigned',
-      on: () => Input,
-      off: () => InputDeprecated,
-    })
-
-    const WithLabelComponent = toggleFeature({
-      name: 'isAppRedesigned',
-      on: () => WithLabel,
-      off: () => WithLabelDeprecated,
-    })
 
     const onSubmit: FormEventHandler<HTMLFormElement> = useCallback(
       (e) => {
@@ -105,19 +102,78 @@ export const CreateArticle = memo(
             contentHtmlString: htmlString,
             types,
             userId,
-          }).then((response) => {
-            if ('data' in response) {
-              navigate(
-                routes.articleDetails({
-                  id: String(response.data.id),
-                }),
-              )
-            }
+            isEdit,
+            articleId: editArticle?.id,
           })
         })
       },
-      [createArticle, img, navigate, subtitle, title, types, userId],
+      [
+        createArticle,
+        editArticle?.id,
+        img,
+        isEdit,
+        subtitle,
+        title,
+        types,
+        userId,
+      ],
     )
+
+    useEffect(() => {
+      if (isSuccess && data?.id) {
+        navigate(
+          routes.articleDetails({
+            id: String(data.id),
+          }),
+        )
+      }
+    }, [data?.id, isSuccess, navigate])
+
+    useEffect(() => {
+      if (editArticle) {
+        updateTitle(editArticle.title)
+        updateSubtitle(editArticle.subtitle ?? '')
+        updateImg(editArticle.img)
+        updateTypes(editArticle.types)
+
+        getSanitizedDomFromString(editArticle.contentHtmlString).then(
+          (dom) => {
+            editorRef.current?.update(() => {
+              if (editorRef.current === null) return
+
+              const nodes = $generateNodesFromDOM(
+                editorRef.current,
+                dom,
+              )
+
+              // Select the root
+              $getRoot().select()
+
+              // Insert them at a selection.
+              $insertNodes(nodes)
+            })
+          },
+        )
+      }
+    }, [
+      editArticle,
+      updateImg,
+      updateSubtitle,
+      updateTitle,
+      updateTypes,
+    ])
+
+    const InputComponent = toggleFeature({
+      name: 'isAppRedesigned',
+      on: () => Input,
+      off: () => InputDeprecated,
+    })
+
+    const WithLabelComponent = toggleFeature({
+      name: 'isAppRedesigned',
+      on: () => WithLabel,
+      off: () => WithLabelDeprecated,
+    })
 
     const SkeletonComponent = toggleFeature({
       name: 'isAppRedesigned',
@@ -127,7 +183,7 @@ export const CreateArticle = memo(
 
     const buttonProps = {
       type: 'submit' as const,
-      children: t('Publish'),
+      children: isEdit ? t('Edit') : t('Publish'),
     }
 
     return (
@@ -198,7 +254,7 @@ export const CreateArticle = memo(
         </WithLabelComponent>
         {ToggleFeature({
           name: 'isAppRedesigned',
-          on: <Button {...buttonProps}>{t('Insert')}</Button>,
+          on: <Button {...buttonProps} />,
           off: <ButtonDeprecated {...buttonProps} />,
         })}
       </VStack>
