@@ -157,4 +157,9 @@ export const ArticleEditor = memo(
   }),
 )
 
-ArticleEditor.displayName = 'ArticleEditor'
+ArticleEditor.displayName = 'ArticleEditorInside'
+
+// export const ArticleEditor = withProvider(
+//   ArticleEditorInside,
+//   LexicalProvider,
+// )

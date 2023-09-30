@@ -1,10 +1,10 @@
 import type { PropsWithChildren } from 'react'
-import { usePrettier } from '../lib/usePrettier'
+import { useLexicalLibs } from '../lib/useLexicalLibs'
 
-export const LoadPrettierProvider = ({
+export const LoadLexicalProvider = ({
   children,
 }: PropsWithChildren) => {
-  const { isLoaded } = usePrettier()
+  const { isLoaded } = useLexicalLibs()
 
   if (!isLoaded) {
     return null
