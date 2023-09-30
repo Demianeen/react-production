@@ -58,6 +58,7 @@ type SelectProps<T extends string> = {
   required?: boolean
   clear?: boolean
   listProps?: ComponentPropsWithoutRef<typeof Listbox.Options>
+  buttonPadding?: 'none' | 'horizontal'
 } & TestProps &
   (MultiplePropsTrue<T> | MultiplePropsFalse<T>)
 

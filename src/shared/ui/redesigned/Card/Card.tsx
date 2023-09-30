@@ -12,12 +12,16 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
    * @description Flag to make card width 100%.
    */
   maxWidth?: boolean
-  padding?: 0 | 1 | 1.5
+  /**
+   * @default 1.5
+   */
+  padding?: 0 | 0.5 | 1 | 1.5
   background?: 'light' | 'dark'
 }
 
 const mapPadding = {
   0: styles.padding0,
+  0.5: styles.padding0_5,
   1: styles.padding1,
   1.5: styles.padding1_5,
 }
@@ -33,7 +37,7 @@ export const Card = typedMemo(
         background = 'dark',
         ...props
       }: CardProps,
-      ref: ForwardedRef<HTMLDivElement>
+      ref: ForwardedRef<HTMLDivElement>,
     ) => {
       const mods: Mods = {
         [styles.maxWidth]: maxWidth,
@@ -52,6 +56,6 @@ export const Card = typedMemo(
           {children}
         </article>
       )
-    }
-  )
+    },
+  ),
 )

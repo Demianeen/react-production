@@ -11,10 +11,10 @@ import { useCallback, useEffect, useState } from 'react'
 import { sanitizeUrl } from '@/shared/lib/url/sanitizeUrl/sanitizeUrl'
 import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button'
 import { IS_APPLE } from '@/shared/const/platform'
-import { Icon } from '@/shared/ui/deprecated/Icon'
-import { getHStackClassName } from '@/shared/ui/redesigned/Stack'
+import { Icon } from '@/shared/ui/redesigned/Icon'
+import { Icon as IconDeprecated } from '@/shared/ui/deprecated/Icon'
 import LinkIcon from '@/shared/assets/icons/redesigned/textEditor/link.svg'
-import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
+import { ToggleFeature } from '@/shared/lib/features'
 import { useArticleEditorSelectionSelectedNodeKey } from '../../../../../model/selectors/articleEditorSelectionSelectors'
 import { LinkPrompt, type LinkPromptValues } from './LinkPrompt'
 import { LinkPlugin } from '../../../../plugins/LinkPlugin/ui/LinkPlugin'
@@ -55,7 +55,7 @@ export const LinkToolbarPlugin = ({
     })
   }, [editor, selectedNodeKey])
 
-  const onOpenPrompt = useCallback((_: React.MouseEvent) => {
+  const onOpenPrompt = useCallback(() => {
     setIsPromptOpen(true)
   }, [])
 
@@ -118,23 +118,42 @@ export const LinkToolbarPlugin = ({
     )
   }, [editor])
 
+  const linkShortcut = IS_APPLE ? '⌘K' : 'Ctrl+K'
+  const linkTooltip = `Link (${linkShortcut})`
+  const linkAriaLabel = `Insert a link. Shortcut: ${linkShortcut}`
+
   return (
-    <Button
-      type='button'
-      theme={ButtonTheme.CLEAR}
-      className={classNamesNew(
-        getHStackClassName({
-          maxHeight: true,
-        }),
-        className,
-      )}
-      onClick={onOpenPrompt}
-      title={IS_APPLE ? 'Italic (⌘I)' : 'Italic (Ctrl+I)'}
-      aria-label={`Format text as italics. Shortcut: ${
-        IS_APPLE ? '⌘I' : 'Ctrl+I'
-      }`}
-    >
-      <Icon Svg={LinkIcon} height={24} width={24} />
+    <>
+      <ToggleFeature
+        name='isAppRedesigned'
+        on={
+          <Icon
+            Svg={LinkIcon}
+            width={24}
+            height={24}
+            onClick={onOpenPrompt}
+            tooltipText={linkTooltip}
+            aria-label={linkAriaLabel}
+            className={className}
+          />
+        }
+        off={
+          <Button
+            type='button'
+            theme={ButtonTheme.CLEAR}
+            onClick={onOpenPrompt}
+            title={linkTooltip}
+            aria-label={linkAriaLabel}
+            className={className}
+            style={{
+              height: 24,
+              width: 24,
+            }}
+          >
+            <IconDeprecated Svg={LinkIcon} height={24} width={24} />
+          </Button>
+        }
+      />
       <LinkPlugin />
       {isPromptOpen && (
         <LinkPrompt
@@ -143,6 +162,6 @@ export const LinkToolbarPlugin = ({
           onSubmit={insertLink}
         />
       )}
-    </Button>
+    </>
   )
 }
