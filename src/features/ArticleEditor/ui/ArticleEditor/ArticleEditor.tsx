@@ -16,6 +16,9 @@ import ClickableLinkPlugin from '@lexical/react/LexicalClickableLinkPlugin'
 import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
 import type { ReducersList } from '@/app/providers/StoreProvider/config/stateSchema'
 import { CodeHighlightNode } from '@lexical/code'
+import { Card as CardDeprecated } from '@/shared/ui/deprecated/Card'
+import { Card } from '@/shared/ui/redesigned/Card'
+import { toggleFeature } from '@/shared/lib/features'
 import { CodeActionMenuPlugin } from '../plugins/CodeActionMenuPlugin'
 import { UpdateSelectionBlockTypePlugin } from '../plugins/UpdateSelectionStatePlugin/UpdateSelectionStatePlugin'
 import { DraggableBlockPlugin } from '../plugins/DraggableBlockPlugin/DraggableBlockPlugin'
@@ -107,6 +110,12 @@ export const ArticleEditor = memo(
       ],
     }
 
+    const CardComponent = toggleFeature({
+      name: 'isAppRedesigned',
+      on: () => Card,
+      off: () => CardDeprecated,
+    })
+
     return (
       <LexicalComposer initialConfig={initialConfig}>
         <VStack gap={1} maxWidth>
@@ -118,9 +127,10 @@ export const ArticleEditor = memo(
             <RichTextPlugin
               contentEditable={
                 <div className={styles.editorScroller}>
-                  <div
+                  <CardComponent
                     className={styles.editor}
                     id='article-editor-anchor'
+                    background='light'
                   >
                     <ContentEditable
                       className={classNamesNew(
@@ -128,7 +138,7 @@ export const ArticleEditor = memo(
                         getArticleStylesClassName(),
                       )}
                     />
-                  </div>
+                  </CardComponent>
                 </div>
               }
               placeholder={

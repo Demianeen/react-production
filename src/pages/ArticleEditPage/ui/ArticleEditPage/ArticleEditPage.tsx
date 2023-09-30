@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import { memo, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Page } from '@/widgets/Page'
@@ -14,6 +14,7 @@ import { skipToken } from '@reduxjs/toolkit/dist/query'
 import { Text } from '@/shared/ui/deprecated/Text'
 import { Title } from '@/shared/ui/redesigned/Title'
 import { ToggleFeature } from '@/shared/lib/features'
+import { confirmBeforeLeave } from '@/shared/lib/html/confirmBeforeLeave/confirmBeforeLeave'
 
 interface ArticleEditPageProps {
   className?: string
@@ -33,6 +34,10 @@ const ArticleEditPage = ({ className }: ArticleEditPageProps) => {
     isSuccess,
   } = useGetArticleDetailsQuery(numberId ?? skipToken)
   const canEdit = useArticleDetailsCanEdit(article?.user.id)
+
+  useEffect(() => {
+    confirmBeforeLeave()
+  }, [])
 
   if (isLoading) {
     return (

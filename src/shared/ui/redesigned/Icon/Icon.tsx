@@ -34,6 +34,7 @@ interface ButtonIconProps {
   tooltipText: string
   disableTooltip?: boolean
   text?: string
+  color?: 'default' | 'error'
 }
 
 interface NoWrappedButtonProps {
@@ -71,9 +72,10 @@ export const Icon = typedMemo(
         tooltipText,
         tooltipPosition,
         disableTooltip,
+        color = 'default',
         ...props
       }: IconProps,
-      ref: ForwardedRef<'button' | SVGSVGElement>
+      ref: ForwardedRef<'button' | SVGSVGElement>,
     ) => {
       const mods: Mods = {
         [styles.disabled]: disabled,
@@ -93,7 +95,8 @@ export const Icon = typedMemo(
                 styles.icon,
                 mods,
                 styles.iconButton,
-                className
+                className,
+                styles[color],
               )}
               onClick={onClick}
               {...defaultSvgProps}
@@ -121,7 +124,8 @@ export const Icon = typedMemo(
               className={classNamesNew(
                 styles.icon,
                 iconClassName,
-                mods
+                mods,
+                styles[color],
               )}
               {...defaultSvgProps}
             />
@@ -131,12 +135,17 @@ export const Icon = typedMemo(
 
       return (
         <Svg
-          className={classNamesNew(styles.icon, mods, className)}
+          className={classNamesNew(
+            styles.icon,
+            mods,
+            className,
+            styles[color],
+          )}
           ref={ref as ForwardedRef<SVGSVGElement>}
           aria-hidden='true'
           {...defaultSvgProps}
         />
       )
-    }
-  )
+    },
+  ),
 )

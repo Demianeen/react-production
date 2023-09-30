@@ -6,6 +6,15 @@
  *
  */
 import { $isCodeNode } from '@lexical/code'
+import { ToggleFeature } from '@/shared/lib/features'
+import {
+  Button as ButtonDeprecated,
+  ButtonTheme,
+} from '@/shared/ui/deprecated/Button'
+import {
+  Icon as IconDeprecated,
+  IconType,
+} from '@/shared/ui/deprecated/Icon'
 import {
   $getNearestNodeFromDOMNode,
   $getSelection,
@@ -15,10 +24,11 @@ import * as React from 'react'
 import { useState } from 'react'
 // import CopyIcon from '@/shared/assets/icons/redesigned/copy.svg'
 import CopyIconDeprecated from '@/shared/assets/icons/deprecated/copy-22-22.svg'
-import { Icon, IconType } from '@/shared/ui/deprecated/Icon'
-import TickIcon from '@/shared/assets/icons/deprecated/tick-20-20.svg'
-import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button'
+import CopyIconRedesigned from '@/shared/assets/icons/redesigned/copy.svg'
+import TickIconDeprecated from '@/shared/assets/icons/deprecated/tick-20-20.svg'
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
+import { Icon } from '@/shared/ui/redesigned/Icon'
+import TickIconRedesigned from '@/shared/assets/icons/redesigned/tick.svg'
 
 interface Props {
   getCodeElem: () => HTMLElement | null
@@ -59,19 +69,42 @@ export const CopyButton = ({ getCodeElem }: Props) => {
   }
 
   return (
-    <Button
-      type='button'
-      onClick={handleClick}
-      aria-label='copy'
-      theme={ButtonTheme.CLEAR_INVERTED}
-    >
-      <Icon
-        Svg={isCopyCompleted ? TickIcon : CopyIconDeprecated}
-        color='primary'
-        type={IconType.STROKE}
-        width={22}
-        height={22}
-      />
-    </Button>
+    <ToggleFeature
+      name='isAppRedesigned'
+      on={
+        <Icon
+          Svg={
+            isCopyCompleted ? TickIconRedesigned : CopyIconRedesigned
+          }
+          tooltipText='Copy'
+          onClick={handleClick}
+          aria-label='copy'
+          type='stroke'
+        />
+      }
+      off={
+        <ButtonDeprecated
+          type='button'
+          style={{
+            width: 22,
+            height: 22,
+          }}
+          onClick={handleClick}
+          aria-label='copy'
+          theme={ButtonTheme.CLEAR_INVERTED}
+        >
+          <IconDeprecated
+            Svg={
+              isCopyCompleted
+                ? TickIconDeprecated
+                : CopyIconDeprecated
+            }
+            type={IconType.STROKE}
+            width={22}
+            height={22}
+          />
+        </ButtonDeprecated>
+      }
+    />
   )
 }

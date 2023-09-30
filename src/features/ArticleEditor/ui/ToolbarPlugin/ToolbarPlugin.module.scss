@@ -8,8 +8,12 @@
 
 .wrapperRedesigned {
   top: 0;
+  padding: 0.5rem 0;
+  background: var(--bg-redesigned);
 }
 
 .wrapperDeprecated {
   top: calc(-1 * var(--page-padding));
+  padding: 0.5rem 0;
+  background: var(--bg-color);
 }

@@ -7,10 +7,14 @@ import {
 import * as React from 'react'
 import type { DragEvent as ReactDragEvent } from 'react'
 import { useEffect, useRef } from 'react'
-import { Icon } from '@/shared/ui/deprecated/Icon'
+import { Icon as IconDeprecated } from '@/shared/ui/deprecated/Icon'
+import { Icon } from '@/shared/ui/redesigned/Icon'
 import DraggableIcon from '@/shared/assets/icons/redesigned/textEditor/draggable.svg'
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
 import { Portal } from '@/shared/ui/redesigned/Portal'
+import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
+import { ToggleFeature, toggleFeature } from '@/shared/lib/features'
+import { getHStackClassName } from '@/shared/ui/redesigned/Stack'
 import { useArticleEditorMouseTopLevelNodeKey } from '../../../model/selectors/articleEditorMouseSelectors'
 import { useDraggable } from '../../../lib/drag/useDraggable/useDraggable'
 import { getArticleEditorAnchor } from '../../../lib/getArticleEditorAnchor/getArticleEditorAnchor'
@@ -113,7 +117,18 @@ export const DraggableBlockPlugin = (): JSX.Element => {
     <>
       <Portal element={anchorElem ?? undefined}>
         <div
-          className={styles.draggableMenu}
+          className={classNamesNew(
+            styles.draggableMenu,
+            getHStackClassName({
+              align: 'center',
+              justify: 'center',
+            }),
+            toggleFeature({
+              name: 'isAppRedesigned',
+              on: () => styles.redesigned,
+              off: () => styles.deprecated,
+            }),
+          )}
           ref={menuRef}
           draggable
           onDragStart={onDragStart}
@@ -121,11 +136,17 @@ export const DraggableBlockPlugin = (): JSX.Element => {
           onClick={onClick}
         >
           {editor.isEditable() && (
-            <Icon
-              Svg={DraggableIcon}
-              height={16}
-              width={16}
-              color='invertedPrimary'
+            <ToggleFeature
+              name='isAppRedesigned'
+              on={<Icon Svg={DraggableIcon} height={16} width={16} />}
+              off={
+                <IconDeprecated
+                  Svg={DraggableIcon}
+                  height={16}
+                  width={16}
+                  color='invertedPrimary'
+                />
+              }
             />
           )}
         </div>

@@ -4,8 +4,6 @@ import { ListItemNode, ListNode } from '@lexical/list'
 import { HStack } from '@/shared/ui/redesigned/Stack'
 import { CodeNode } from '@lexical/code'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
-import { Card as CardDeprecated } from '@/shared/ui/deprecated/Card'
-import { Card } from '@/shared/ui/redesigned/Card'
 import { toggleFeature } from '@/shared/lib/features'
 import { LinkToolbarPlugin } from './plugins/LinkToolbarPlugin'
 import { TextFormatToolbarPlugin } from './plugins/TextFormatToolbarPlugin/ui/TextFormatPlugin'
@@ -31,12 +29,6 @@ export const ToolbarPlugin = typedMemo(
   ({ className }: ToolbarPluginProps) => {
     return (
       <HStack
-        as={toggleFeature({
-          name: 'isAppRedesigned',
-          on: () => Card,
-          off: () => CardDeprecated,
-        })}
-        padding={0.5}
         className={classNamesNew(
           styles.wrapper,
           toggleFeature({

@@ -1,16 +1,24 @@
-import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button'
+import {
+  ButtonTheme,
+  Button as ButtonDeprecated,
+} from '@/shared/ui/deprecated/Button'
+import { ToggleFeature } from '@/shared/lib/features'
+import {
+  Icon as IconDeprecated,
+  IconType,
+} from '@/shared/ui/deprecated/Icon'
+import { Icon } from '@/shared/ui/redesigned/Icon'
 import { $isCodeNode } from '@lexical/code'
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
 import { $getNearestNodeFromDOMNode } from 'lexical'
 import { useState } from 'react'
-import PrettierIcon from '@/shared/assets/icons/redesigned/textEditor/prettier.svg'
-import { Icon } from '@/shared/ui/deprecated/Icon'
 import {
   usePrettier,
   type LanguagesType,
   PrettierProvider,
 } from '@/shared/lib/components/PrettierProvider'
 import { withProvider } from '@/shared/lib/react/withProvider/withProvider'
+import PrettierIcon from '@/shared/assets/icons/redesigned/prettier.svg'
 
 interface PrettierButtonProps {
   lang: LanguagesType
@@ -23,8 +31,6 @@ const PrettierButtonInside = ({
 }: PrettierButtonProps) => {
   const [editor] = useLexicalComposerContext()
   const [syntaxError, setSyntaxError] = useState<string>('')
-  // TODO: add tips
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [tipsVisible, setTipsVisible] = useState<boolean>(false)
 
   const { Prettier, getPrettierOptions } = usePrettier()
@@ -88,25 +94,46 @@ const PrettierButtonInside = ({
   }
 
   return (
-    <Button
-      type='button'
-      className='menu-item'
-      onClick={handleClick}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      aria-label='prettier'
-      theme={ButtonTheme.CLEAR}
-    >
-      <Icon
-        Svg={PrettierIcon}
-        color={syntaxError ? 'error' : undefined}
-        width={22}
-        height={22}
-      />
-    </Button>
-    // {tipsVisible ? (
-    //   <pre className='code-error-tips'>{syntaxError}</pre>
-    // ) : null}
+    <ToggleFeature
+      name='isAppRedesigned'
+      on={
+        <Icon
+          Svg={PrettierIcon}
+          className='menu-item'
+          tooltipText={tipsVisible ? syntaxError : 'Format code'}
+          onClick={handleClick}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          aria-label='format code with prettier'
+          color={syntaxError ? 'error' : 'default'}
+          type='stroke'
+          height={22}
+          width={22}
+        />
+      }
+      off={
+        <ButtonDeprecated
+          type='button'
+          style={{
+            width: 22,
+            height: 22,
+          }}
+          onClick={handleClick}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          className='menu-item'
+          aria-label='copy'
+          theme={ButtonTheme.CLEAR_INVERTED}
+        >
+          <IconDeprecated
+            Svg={PrettierIcon}
+            type={IconType.STROKE}
+            width={22}
+            height={22}
+          />
+        </ButtonDeprecated>
+      }
+    />
   )
 }
 

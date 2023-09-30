@@ -107,16 +107,13 @@ export const LinkToolbarPlugin = ({
           (event.ctrlKey || event.metaKey)
         ) {
           event.preventDefault()
-          return editor.dispatchCommand(
-            TOGGLE_LINK_COMMAND,
-            sanitizeUrl('https://'),
-          )
+          onOpenPrompt()
         }
         return false
       },
       COMMAND_PRIORITY_NORMAL,
     )
-  }, [editor])
+  }, [editor, onOpenPrompt])
 
   const linkShortcut = IS_APPLE ? '⌘K' : 'Ctrl+K'
   const linkTooltip = `Link (${linkShortcut})`

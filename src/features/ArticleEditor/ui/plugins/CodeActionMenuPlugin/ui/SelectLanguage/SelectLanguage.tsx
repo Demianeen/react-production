@@ -3,7 +3,8 @@ import {
   CODE_LANGUAGE_FRIENDLY_NAME_MAP,
 } from '@lexical/code'
 import type { SelectOption } from '@/shared/ui/deprecated/Popups'
-import { Select } from '@/shared/ui/deprecated/Popups'
+import { Select } from '@/shared/ui/redesigned/Popups'
+import { Select as SelectDeprecated } from '@/shared/ui/deprecated/Popups'
 import type { MouseEventHandler } from 'react'
 import { useCallback, useEffect, useState } from 'react'
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
@@ -12,6 +13,7 @@ import {
   COMMAND_PRIORITY_CRITICAL,
   SELECTION_CHANGE_COMMAND,
 } from 'lexical'
+import { toggleFeature } from '@/shared/lib/features'
 import { useArticleEditorSelectionNodeKey } from '../../../../../model/selectors/articleEditorSelectionSelectors'
 
 export interface SelectLanguageProps {
@@ -70,8 +72,14 @@ export const SelectLanguage = ({
       event.stopPropagation()
     }, [])
 
+  const SelectComponent = toggleFeature({
+    name: 'isAppRedesigned',
+    on: () => Select,
+    off: () => SelectDeprecated,
+  })
+
   return (
-    <Select
+    <SelectComponent
       className={className}
       options={selectLanguageOptions}
       value={language}
