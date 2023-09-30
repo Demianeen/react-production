@@ -1,4 +1,5 @@
 import { Listbox } from '@headlessui/react'
+import type { ComponentPropsWithoutRef } from 'react'
 import { Fragment, useMemo } from 'react'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
 import { classNamesNew as classNames } from '@/shared/lib/classNames/classNamesNew'
@@ -55,6 +56,8 @@ type SelectProps<T extends string> = {
   direction?: DiagonalDirection
   name?: string
   required?: boolean
+  clear?: boolean
+  listProps?: ComponentPropsWithoutRef<typeof Listbox.Options>
 } & TestProps &
   (MultiplePropsTrue<T> | MultiplePropsFalse<T>)
 
@@ -73,6 +76,8 @@ export const Select = typedMemo(
     'data-testid': testId = 'Select',
     multiple,
     required = false,
+    clear,
+    listProps,
   }: SelectProps<T>) => {
     const selectedOptionLabel = useMemo(() => {
       if (multiple) {
@@ -97,6 +102,7 @@ export const Select = typedMemo(
         onChange={onChange}
         disabled={readonly}
         defaultValue={defaultValue}
+        multiple={multiple}
         name={name}
       >
         <WithLabel
@@ -109,10 +115,12 @@ export const Select = typedMemo(
             as={Button}
             type='button'
             role='combobox'
-            variant='filled'
-            paddings='horizontal'
+            variant={clear ? 'clear' : 'filled'}
+            paddings={clear ? 'none' : 'horizontal'}
             disabledButton={readonly}
-            addonRight={<Icon Svg={ArrowDownIcon} />}
+            addonRight={
+              clear ? undefined : <Icon Svg={ArrowDownIcon} />
+            }
             maxWidth={maxWidth}
             className={classNames(styles.button, className)}
             data-testid={`${testId}.Button`}
@@ -121,6 +129,7 @@ export const Select = typedMemo(
             {selectedOptionLabel ?? defaultValue}
           </Listbox.Button>
           <Listbox.Options
+            {...listProps}
             className={classNames(
               styles.options,
               mapDirection[direction],
@@ -128,6 +137,7 @@ export const Select = typedMemo(
               {
                 [popupStyles.maxWidth]: maxWidth,
               },
+              listProps?.className,
             )}
           >
             {options.map((option) => (

@@ -12,6 +12,8 @@ import {
 } from '@/entities/Article'
 import { skipToken } from '@reduxjs/toolkit/dist/query'
 import { Text } from '@/shared/ui/deprecated/Text'
+import { Title } from '@/shared/ui/redesigned/Title'
+import { ToggleFeature } from '@/shared/lib/features'
 
 interface ArticleEditPageProps {
   className?: string
@@ -48,13 +50,21 @@ const ArticleEditPage = ({ className }: ArticleEditPageProps) => {
     )
   }
 
+  const titleText = isEdit
+    ? t('Edit article')
+    : t('Create new article')
+
   return (
     <Page
       className={className}
       data-testid='ArticleEditPage'
       id='articleEditPage'
     >
-      {isEdit ? t('Edit article') : t('Create new article')}
+      <ToggleFeature
+        name='isAppRedesigned'
+        on={<Title>{titleText}</Title>}
+        off={<Text title={titleText} />}
+      />
       <CreateArticle editArticle={article} />
     </Page>
   )

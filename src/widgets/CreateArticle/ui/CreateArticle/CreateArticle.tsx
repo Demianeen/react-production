@@ -17,10 +17,13 @@ import {
   $generateHtmlFromNodes,
   $generateNodesFromDOM,
 } from '@lexical/html'
-import { Select } from '@/shared/ui/deprecated/Popups'
+import { Select as SelectDeprecated } from '@/shared/ui/deprecated/Popups'
 import type { Article } from '@/entities/Article'
 import { ArticleType, ArticleThumbnail } from '@/entities/Article'
-import type { SelectOption } from '@/shared/ui/redesigned/Popups'
+import {
+  Select,
+  type SelectOption,
+} from '@/shared/ui/redesigned/Popups'
 import { isUrl } from '@/shared/lib/url/findUrl/isUrl'
 import { AppImage } from '@/shared/ui/redesigned/AppImage'
 import { useUserId } from '@/entities/User'
@@ -169,6 +172,12 @@ export const CreateArticle = memo(
       off: () => InputDeprecated,
     })
 
+    const SelectComponent = toggleFeature({
+      name: 'isAppRedesigned',
+      on: () => Select,
+      off: () => SelectDeprecated,
+    })
+
     const WithLabelComponent = toggleFeature({
       name: 'isAppRedesigned',
       on: () => WithLabel,
@@ -237,7 +246,7 @@ export const CreateArticle = memo(
             />
           </>
         )}
-        <Select
+        <SelectComponent
           options={articleTypeToSelect}
           onChange={updateTypes}
           label='Types'
@@ -249,6 +258,7 @@ export const CreateArticle = memo(
             className: styles.selectTypes,
           }}
         />
+
         <WithLabelComponent required={false} label='Content' maxWidth>
           <ArticleEditor ref={editorRef} />
         </WithLabelComponent>

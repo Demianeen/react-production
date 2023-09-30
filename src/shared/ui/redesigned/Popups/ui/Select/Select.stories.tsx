@@ -35,6 +35,14 @@ export const Multiple: Story = {
   args: {
     label: 'label',
     multiple: true,
+    value: ['1', '2'],
+  },
+}
+
+export const Clear: Story = {
+  args: {
+    clear: true,
+    direction: 'down-right',
   },
 }
 
