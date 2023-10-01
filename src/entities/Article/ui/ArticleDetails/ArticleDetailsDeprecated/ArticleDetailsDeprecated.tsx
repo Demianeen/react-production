@@ -16,7 +16,7 @@ import { Icon } from '@/shared/ui/deprecated/Icon'
 import { HStack } from '@/shared/ui/redesigned/Stack'
 import type { AsyncReducersList } from '@/app/providers/StoreProvider/config/stateSchema'
 // eslint-disable-next-line netliukh-demian-fsd-plugin/public-api-imports, netliukh-demian-fsd-plugin/layer-imports
-import { getArticleStylesClassName } from '@/features/ArticleEditor/lib/getArticleStylesClassName/getArticleStylesClassName'
+import { getArticleStylesClassName } from '@/widgets/ArticleEditor/lib/getArticleStylesClassName/getArticleStylesClassName'
 import { getDateText } from '@/shared/lib/getDateText/getDateText'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
 import { sanitizeHTMLString } from '@/shared/lib/html/sanitize'

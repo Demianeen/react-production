@@ -15,8 +15,8 @@ import type {
 import { commentFormReducer } from '@/entities/CommentForm/testing'
 import { articleCommentListReducer } from '@/features/ArticleCommentList/testing'
 import { articleInfiniteListReducer } from '@/widgets/ArticleInfiniteList/testing'
-import { createArticleReducer } from '@/widgets/CreateArticle/testing'
-import { articleEditorReducer } from '@/features/ArticleEditor/testing'
+import { createArticleReducer } from '@/pages/CreateArticlePage/testing'
+import { editorReducer } from '@/entities/Editor/testing'
 
 const defaultAsyncReducers: Required<AsyncReducersList> = {
   loginForm: loginReducer,
@@ -27,26 +27,22 @@ const defaultAsyncReducers: Required<AsyncReducersList> = {
   articleInfiniteList: articleInfiniteListReducer,
   registrationForm: registrationFormReducer,
   createArticle: createArticleReducer,
-  articleEditor: articleEditorReducer,
+  editor: editorReducer,
 }
 
 export const StoreDecorator =
   (
     initialState?: DeepPartial<StateSchema>,
-    asyncReducers?: AsyncReducersList
+    asyncReducers?: AsyncReducersList,
   ) =>
-  (StoryComponent: StoryFn) =>
-    (
-      <StoreProvider
-        preloadedState={initialState}
-        preloadedAsyncReducers={{
-          ...(defaultAsyncReducers as Record<
-            StateSchemaKey,
-            Reducer
-          >),
-          ...asyncReducers,
-        }}
-      >
-        <StoryComponent />
-      </StoreProvider>
-    )
+  (StoryComponent: StoryFn) => (
+    <StoreProvider
+      preloadedState={initialState}
+      preloadedAsyncReducers={{
+        ...(defaultAsyncReducers as Record<StateSchemaKey, Reducer>),
+        ...asyncReducers,
+      }}
+    >
+      <StoryComponent />
+    </StoreProvider>
+  )

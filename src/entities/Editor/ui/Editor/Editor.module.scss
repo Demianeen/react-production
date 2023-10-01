@@ -1,0 +1,36 @@
+$editor-padding: 0.5rem;
+$content-editable-y-padding: 1rem;
+$content-editable-x-padding: 1rem;
+
+.articleEditor {
+  position: relative;
+}
+
+.editorScroller {
+  position: relative;
+  display: flex;
+  width: 100%;
+  border: 0;
+}
+
+.editor {
+  position: relative;
+  flex: auto;
+  width: 100%;
+  padding: $editor-padding;
+  resize: vertical;
+}
+
+.contentEditable {
+  flex: auto;
+  height: 100%;
+  padding: $content-editable-y-padding $content-editable-x-padding;
+  border: none;
+  outline: none !important;
+}
+
+.placeholder {
+  position: absolute;
+  top: calc($editor-padding + $content-editable-y-padding);
+  left: calc($editor-padding + $content-editable-x-padding);
+}

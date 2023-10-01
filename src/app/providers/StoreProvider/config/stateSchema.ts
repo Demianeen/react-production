@@ -15,8 +15,8 @@ import type { PageSchema } from '@/widgets/Page'
 import type { rtkApi } from '@/shared/api/rtkApi'
 import type { ArticleCommentListSchema } from '@/features/ArticleCommentList'
 import type { ArticleInfiniteListSchema } from 'src/widgets/ArticleInfiniteList'
-import type { CreateArticleSchema } from '@/widgets/CreateArticle'
-import type { ArticleEditorSchema } from '@/features/ArticleEditor'
+import type { EditorSchema } from '@/entities/Editor'
+import type { CreateArticleSchema } from '@/pages/CreateArticlePage'
 import type { RegistrationFormSchema } from '../../../../features/AuthByUsername/model/types/registrationFormSchema'
 
 export interface AsyncReducers {
@@ -28,7 +28,7 @@ export interface AsyncReducers {
   commentForm: CommentFormSchema
   articleInfiniteList: ArticleInfiniteListSchema
   createArticle: CreateArticleSchema
-  articleEditor: ArticleEditorSchema
+  editor: EditorSchema
 }
 
 export type AsyncReducersList = {

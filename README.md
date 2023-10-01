@@ -222,6 +222,7 @@ Reusable parts that are related to particular entity. They are later merged into
 - [SortField](./src/entities/SortField/README.md): reusable sort field related components and functionality (e.g. SelectSortField).
 - [User](./src/entities/User/README.md): reusable user related components and functionality.
 - [View](./src/entities/View/README.md): reusable view related components and functionality (e.g. SelectView).
+- [Editor](./src/entities/Editor/README.md): 
 
 ### Features
 
@@ -246,6 +247,16 @@ One feature = one functionality.
 - [UserDropdown](./src/features/UserDropdown/README.md): displays a dropdown menu for the user.
 - [UserNavigation](./src/features/UserNavigation/README.md): displays navigation links for the user.
 - [CreateArticle](./src/features/CreateArticle/README.md): allows users to create or edit articles.
+- [ImageToolbarPlugin](./src/features/ImageToolbarPlugin/README.md): 
+- [AutoLinkPlugin](./src/features/AutoLinkPlugin/README.md): 
+- [CodeActionMenuPlugin](./src/features/CodeActionMenuPlugin/README.md): 
+- [CodeBlockToolbarPlugin](./src/features/CodeBlockToolbarPlugin/README.md): 
+- [SelectBlockTypeToolbarPlugin](./src/features/SelectBlockTypeToolbarPlugin/README.md): 
+- [LinkToolbarPlugin](./src/features/LinkToolbarPlugin/README.md): 
+- [TextFormatToolbarPlugin](./src/features/TextFormatToolbarPlugin/README.md): 
+- [CodeHighlightPlugin](./src/features/CodeHighlightPlugin/README.md): 
+- [HeadingPlugin](./src/features/HeadingPlugin/README.md): 
+- [DraggableBlockPlugin](./src/features/DraggableBlockPlugin/README.md): 
 
 ### Widgets
 
@@ -261,6 +272,7 @@ Widgets merge reusable entity blocks with features, creating meaningful blocks.
 - [ScrollToolbar](./src/widgets/ScrollToolbar/README.md): displays a toolbar to go to the top of the page that appears when the user scrolls down the page.
 - [Sidebar](./src/widgets/Sidebar/README.md): displays a sidebar with links to different sections of the website.
 - [CreateArticle](./src/widgets/CreateArticle/README.md):
+- [ArticleEditor](./src/widgets/ArticleEditor/README.md): 
 
 ### Pages
 

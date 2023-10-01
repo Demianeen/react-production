@@ -18,7 +18,7 @@ export default (
     isTsx: true,
   })
 
-  const cssLoader = buildCssLoader(buildOptions.isDev)
+  const cssLoader = buildCssLoader(buildOptions.isDev, buildOptions.paths.src)
 
   const fileLoader = {
     test: /\.(png|jpe?g|gif|woff2|woff)$/i,

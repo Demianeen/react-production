@@ -10,7 +10,7 @@ import { AppImage } from '@/shared/ui/redesigned/AppImage'
 import { Title } from '@/shared/ui/redesigned/Title'
 import type { AsyncReducersList } from '@/app/providers/StoreProvider/config/stateSchema'
 // eslint-disable-next-line netliukh-demian-fsd-plugin/public-api-imports, netliukh-demian-fsd-plugin/layer-imports
-import { getArticleStylesClassName } from '@/features/ArticleEditor/lib/getArticleStylesClassName/getArticleStylesClassName'
+import { getArticleStylesClassName } from '@/widgets/ArticleEditor/lib/getArticleStylesClassName/getArticleStylesClassName'
 import { Card } from '@/shared/ui/redesigned/Card'
 import { useArticleDetailsData } from '../../../model/selectors/getArticleDetailsData/getArticleDetailsData'
 import { articleDetailsReducer } from '../../../model/slice/articleDetailsSlice'

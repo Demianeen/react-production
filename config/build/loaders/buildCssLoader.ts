@@ -1,6 +1,6 @@
 import MiniCSSExtractPlugin from 'mini-css-extract-plugin'
 
-export const buildCssLoader = (isDev: boolean) => ({
+export const buildCssLoader = (isDev: boolean, pathToSrc: string) => ({
   test: /\.(s?css)$/i,
   exclude: /node_modules\/(?!react-quill)/,
   use: [
@@ -20,6 +20,13 @@ export const buildCssLoader = (isDev: boolean) => ({
       },
     },
     // Compiles Sass to CSS
-    'sass-loader',
+    {
+      loader: 'sass-loader',
+      options: {
+        sassOptions: {
+          includePaths: [pathToSrc],
+        }
+      },
+    }
   ],
 })
