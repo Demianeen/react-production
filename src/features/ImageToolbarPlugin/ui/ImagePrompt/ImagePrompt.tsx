@@ -34,6 +34,7 @@ export const ImagePrompt = ({
   const handleSubmit: FormEventHandler<HTMLFormElement> = useCallback(
     (e) => {
       e.preventDefault()
+      e.stopPropagation()
       onSubmit({
         src,
         altText,

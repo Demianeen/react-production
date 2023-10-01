@@ -120,21 +120,6 @@ export const ImageComponent = memo(
           ref={imageRef}
         />
         {isImageLoaded && (
-          // <ToggleFeature
-          //   name='isAppRedesigned'
-          //   on={
-          //     <HStack as='p' maxWidth justify='center'>
-          //       {block.title}
-          //     </HStack>
-          //   }
-          //   off={
-          //     <Text
-          //       text={block.title}
-          //       align={TextAlign.CENTER}
-          //       data-testid={`${dataTestId}.Title`}
-          //     />
-          //   }
-          // />
           <LexicalNestedComposer initialEditor={caption}>
             <div className={captionWrapperClassnames}>
               <figcaption
