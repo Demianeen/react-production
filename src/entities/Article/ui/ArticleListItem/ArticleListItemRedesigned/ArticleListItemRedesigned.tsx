@@ -18,6 +18,7 @@ import { Title } from '@/shared/ui/redesigned/Title'
 import { useFocus } from '@/shared/lib/hooks/useFocus/useFocus'
 import { useTab } from '@/shared/lib/hooks/useTab/useTab'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
+import { getDateText } from '@/shared/lib/getDateText/getDateText'
 import type { OnOpenArticle } from '../../ArticleList/VirtualizedArticleList'
 import type { Article } from '../../../model/types/article'
 import styles from './ArticleListItemRedesigned.module.scss'
@@ -55,7 +56,7 @@ export const ArticleListItemRedesigned = memo(
           fallback={<Skeleton className={styles.img} />}
         />
       ),
-      [article.img, article.title]
+      [article.img, article.title],
     )
 
     const views = useMemo(
@@ -65,7 +66,7 @@ export const ArticleListItemRedesigned = memo(
           <span data-testid={`${testId}.Views`}>{article.views}</span>
         </HStack>
       ),
-      [article.views, testId]
+      [article.views, testId],
     )
 
     const onClick = () => {
@@ -159,7 +160,7 @@ export const ArticleListItemRedesigned = memo(
               [styles.focused]: isLinkFocused && isTabLastKey.current,
             },
             className,
-            styles[view]
+            styles[view],
           )}
           padding={0}
         >
@@ -173,7 +174,9 @@ export const ArticleListItemRedesigned = memo(
               justify='between'
               maxWidth
             >
-              <span className={styles.date}>{article.createdAt}</span>
+              <span className={styles.date}>
+                {getDateText(new Date(article.createdAt))}
+              </span>
               <span data-testid='ArticleListItem.Views'>{views}</span>
             </HStack>
             <HStack gap={0.25} className={styles.avatar}>
@@ -188,7 +191,7 @@ export const ArticleListItemRedesigned = memo(
         </Card>
       </AppLink>
     )
-  }
+  },
 )
 
 ArticleListItemRedesigned.displayName = 'ArticleListItem'

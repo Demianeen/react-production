@@ -30,9 +30,7 @@ export const ArticleAdditionalInfo = memo(
         <HStack gap={0.5}>
           <Avatar src={user.avatar} user={user} />
           <span data-testid='ArticleAdditionalInfo.CreatedAt'>
-            {getDateText(new Date(createdAt), {
-              long: true,
-            })}
+            {getDateText(new Date(createdAt))}
           </span>
         </HStack>
         <EditArticle id={id} authorId={article.user.id} />
