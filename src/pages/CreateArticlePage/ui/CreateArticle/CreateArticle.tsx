@@ -69,7 +69,7 @@ export const CreateArticle = memo(
 
     const navigate = useNavigate()
 
-    const { t } = useTranslation('createArticle')
+    const { t } = useTranslation('article-edit')
     const editorRef = useRef<LexicalEditor>(null)
 
     const isEdit = editArticle !== undefined
@@ -204,31 +204,39 @@ export const CreateArticle = memo(
         onSubmit={onSubmit}
       >
         {isError && (
-          <Text
-            text='Error happened while creating article'
-            theme={TextTheme.ERROR}
+          <ToggleFeature
+            name='isAppRedesigned'
+            on={<p>{t('Error happened while creating article')}</p>}
+            off={
+              <Text
+                text={t('Error happened while creating article')}
+                theme={TextTheme.ERROR}
+              />
+            }
           />
         )}
         <InputComponent
           value={title}
           onChange={updateTitle}
-          placeholder='Javascript news 2023'
-          label='Title'
+          placeholder={t('Javascript news 2023')}
+          label={t('Title')}
           maxWidth
           required
         />
         <InputComponent
           value={subtitle}
           onChange={updateSubtitle}
-          placeholder='JavaScript updates and how to run JS code in a browser'
-          label='Subtitle'
+          placeholder={t(
+            'JavaScript updates and how to run JS code in a browser',
+          )}
+          label={t('Subtitle')}
           maxWidth
         />
         <InputComponent
           value={img}
           onChange={updateImg}
-          placeholder='Link to image'
-          label='Image'
+          placeholder={t('Link to image')}
+          label={t('Thumbnail')}
           type='url'
           maxWidth
           required
@@ -249,7 +257,7 @@ export const CreateArticle = memo(
         <SelectComponent
           options={articleTypeToSelect}
           onChange={updateTypes}
-          label='Types'
+          label={t('Types')}
           direction='down-right'
           value={types}
           multiple
@@ -259,7 +267,11 @@ export const CreateArticle = memo(
           }}
         />
 
-        <WithLabelComponent required={false} label='Content' maxWidth>
+        <WithLabelComponent
+          required={false}
+          label={t('Content')}
+          maxWidth
+        >
           <ArticleEditor ref={editorRef} />
         </WithLabelComponent>
         {ToggleFeature({

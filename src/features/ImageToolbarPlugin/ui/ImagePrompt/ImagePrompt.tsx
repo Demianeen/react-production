@@ -27,7 +27,7 @@ export const ImagePrompt = ({
   onSubmit,
   onClose,
 }: ImagePromptProps) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('editor')
   const [src, setSrc] = useState('')
   const [altText, setAltText] = useState('')
 
@@ -65,7 +65,7 @@ export const ImagePrompt = ({
       <VStack as='form' gap={1} onSubmit={handleSubmit}>
         <InputComponent
           type='url'
-          label='Image url'
+          label={t('Image url')}
           required
           maxWidth
           value={src}
@@ -73,7 +73,7 @@ export const ImagePrompt = ({
           autoFocus
         />
         <InputComponent
-          label='Alt text'
+          label={t('Alt text')}
           maxWidth
           value={altText}
           onChange={setAltText}

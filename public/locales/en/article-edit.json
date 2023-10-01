@@ -1,5 +1,18 @@
 {
   "Edit article": "Edit article",
   "Create new article": "Create new article",
-  "You cannot edit this article": "You cannot edit this article"
+  "You cannot edit this article": "You cannot edit this article",
+  "Enter text here": "Enter text here",
+  "Edit": "Edit",
+  "Publish": "Publish",
+  "Error happened while creating article": "Error happened while creating article",
+  "Javascript news 2023": "Javascript news 2023",
+  "Title": "Title",
+  "JavaScript updates and how to run JS code in a browser": "JavaScript updates and how to run JS code in a browser",
+  "Subtitle": "Subtitle",
+  "Link to image": "Link to image",
+  "Image": "Image",
+  "Thumbnail": "Thumbnail",
+  "Content": "Content",
+  "Types": "Types"
 }

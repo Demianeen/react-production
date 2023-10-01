@@ -37,7 +37,7 @@ export const captionClassnames = 'articleEditor'
 
 export const ImageComponent = memo(
   ({ altText, src, caption, nodeKey }: ImageComponentProps) => {
-    const { t } = useTranslation()
+    const { t } = useTranslation('editor')
     const [isFocused, bindFocus] = useFocus()
     const { targetLine, handleDragStart, handleDragEnd } =
       useDraggable()

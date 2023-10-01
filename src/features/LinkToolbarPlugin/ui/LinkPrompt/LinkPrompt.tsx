@@ -28,7 +28,7 @@ export const LinkPrompt = ({
   onClose,
   initialUrl,
 }: LinkPromptProps) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('editor')
   const [url, setUrl] = useState(initialUrl ?? '')
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = useCallback(
@@ -65,7 +65,7 @@ export const LinkPrompt = ({
       <VStack as='form' gap={1} onSubmit={handleSubmit}>
         <InputComponent
           type='url'
-          label='Link url'
+          label={t('Link url')}
           required
           maxWidth
           value={url}

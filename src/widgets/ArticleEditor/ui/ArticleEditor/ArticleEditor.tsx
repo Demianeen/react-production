@@ -19,7 +19,7 @@ import {
 
 export const ArticleEditor = memo(
   forwardRef<LexicalEditor>((_, editorRef) => {
-    const { t } = useTranslation('article-editor')
+    const { t } = useTranslation('article-edit')
 
     return (
       <Editor

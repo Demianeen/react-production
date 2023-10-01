@@ -34,7 +34,7 @@ const CreateArticlePage = ({ className }: CreateArticlePageProps) => {
   const canEdit = useArticleDetailsCanEdit(article?.user.id)
   const cannotEdit = isEdit && !canEdit && isSuccess
 
-  useConfirmBeforeLeave(cannotEdit)
+  useConfirmBeforeLeave(!cannotEdit)
 
   if (isLoading) {
     return (
