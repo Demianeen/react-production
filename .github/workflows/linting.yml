@@ -16,22 +16,22 @@ jobs:
           node-version: ${{ vars.NODE_VERSION }}
       - name: Install modules
         run: npm ci
-      - name: Cache deps
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+      # - name: Cache deps
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: ~/.npm
+      #     key: node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Linting typescript
         run: npm run lint:ts
 
   scss:
     runs-on: ubuntu-latest
     steps:
-      - name: Cache deps
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+      # - name: Cache deps
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: ~/.npm
+      #     key: node-modules-${{ hashFiles('**/package-lock.json') }}
       - uses: actions/checkout@v3
       - name: Starting Node.js ${{ vars.NODE_VERSION }}
         uses: actions/setup-node@v3
