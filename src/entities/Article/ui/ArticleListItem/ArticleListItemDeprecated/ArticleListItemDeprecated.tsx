@@ -19,7 +19,6 @@ import { getDateText } from '@/shared/lib/getDateText/getDateText'
 import type { OnOpenArticle } from '../../ArticleList/VirtualizedArticleList'
 import type { Article } from '../../../model/types/article'
 import styles from './ArticleListItemDeprecated.module.scss'
-import { ArticleTextBlockComponent } from '../../ArticleTextBlockComponent/ArticleTextBlockComponent'
 
 interface ArticleListItemDeprecatedProps extends TestProps {
   className?: string
@@ -83,15 +82,6 @@ export const ArticleListItemDeprecated = memo(
       return () => onOpenArticle?.({ article, index })
     }
 
-    const textBlock = useMemo(() => {
-      // if (view === View.LIST) {
-      //   return article.blocks.find(
-      //     (block) => block.type === ArticleBlockType.TEXT
-      //   ) as ArticleTextBlock | undefined
-      // }
-      return undefined
-    }, [])
-
     if (view === View.LIST) {
       return (
         <Card
@@ -116,12 +106,6 @@ export const ArticleListItemDeprecated = memo(
             <Text title={article.title} />
             {types}
             {image}
-            {textBlock !== undefined && (
-              <ArticleTextBlockComponent
-                block={textBlock}
-                className={styles.textBlock}
-              />
-            )}
             <HStack
               as='footer'
               justify='between'

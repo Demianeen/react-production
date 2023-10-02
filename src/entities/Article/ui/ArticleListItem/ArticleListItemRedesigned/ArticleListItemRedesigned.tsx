@@ -78,15 +78,7 @@ export const ArticleListItemRedesigned = memo(
       vStackRef.current?.scrollIntoView()
     }, [isTabLastKey])
 
-    // const textBlock = useMemo(() => {
-    //   // if (view === View.LIST) {
-    //   //   return article.blocks.find(
-    //   //     (block) => block.type === ArticleBlockType.TEXT
-    //   //   ) as ArticleTextBlock | undefined
-    //   // }
-    //   return undefined
-    // }, [])
-
+    // TODO: Add ability to read first paragraph of article in list view
     if (view === View.LIST) {
       return (
         <VStack
