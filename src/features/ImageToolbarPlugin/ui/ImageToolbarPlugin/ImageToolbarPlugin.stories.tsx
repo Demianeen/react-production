@@ -1,4 +1,6 @@
 import type { StoryObj, Meta } from '@storybook/react'
+import { LexicalDecorator } from '@/shared/lib/storybook/LexicalDecorator'
+import { ImageNode } from '../../lib/ImageNode/ImageNode'
 import { ImageToolbarPlugin } from './ImageToolbarPlugin'
 
 export default {
@@ -7,10 +9,10 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  decorators: [LexicalDecorator([ImageNode], true)],
 } as Meta<typeof ImageToolbarPlugin>
 
 type Story = StoryObj<typeof ImageToolbarPlugin>
 
-export const Primary: Story = {
-  args: {},
-}
+export const PrimaryRedesigned: Story = {}
+export const PrimaryDeprecated: Story = {}

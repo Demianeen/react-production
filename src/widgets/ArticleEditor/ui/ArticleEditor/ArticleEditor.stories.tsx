@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { ArticleEditor } from './ArticleEditor'
 
 export default {
-  title: 'features/ArticleEditor',
+  title: 'widgets/ArticleEditor/ArticleEditor',
   component: ArticleEditor,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -13,4 +13,5 @@ export default {
 
 type Story = StoryObj<typeof ArticleEditor>
 
-export const Light: Story = {}
+export const PrimaryRedesigned: Story = {}
+export const PrimaryDeprecated: Story = {}

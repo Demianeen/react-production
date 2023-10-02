@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
+import { LexicalDecorator } from '@/shared/lib/storybook/LexicalDecorator'
+import { ImageNode } from '../../lib/ImageNode/ImageNode'
 import { ImagePrompt } from './ImagePrompt'
 
 export default {
@@ -12,7 +13,7 @@ export default {
     isOpen: true,
   },
   parameters: {},
-  decorators: [StoreDecorator()],
+  decorators: [LexicalDecorator([ImageNode])],
 } as Meta<typeof ImagePrompt>
 
 type Story = StoryObj<typeof ImagePrompt>

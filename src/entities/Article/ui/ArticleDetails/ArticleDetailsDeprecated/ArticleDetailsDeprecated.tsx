@@ -15,6 +15,7 @@ import { Skeleton } from '@/shared/ui/deprecated/Skeleton'
 import { Icon } from '@/shared/ui/deprecated/Icon'
 import { HStack } from '@/shared/ui/redesigned/Stack'
 import type { AsyncReducersList } from '@/app/providers/StoreProvider/config/stateSchema'
+// FIXME: fix articleEditor architecture
 // eslint-disable-next-line netliukh-demian-fsd-plugin/public-api-imports, netliukh-demian-fsd-plugin/layer-imports
 import { getArticleStylesClassName } from '@/widgets/ArticleEditor/lib/getArticleStylesClassName/getArticleStylesClassName'
 import { getDateText } from '@/shared/lib/getDateText/getDateText'

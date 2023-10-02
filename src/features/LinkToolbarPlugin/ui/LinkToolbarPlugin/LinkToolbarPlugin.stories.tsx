@@ -1,19 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import { LinkNode } from '@lexical/link'
 import { LexicalDecorator } from '@/shared/lib/storybook/LexicalDecorator'
-import { TextFormatToolbarPlugin } from './TextFormatToolbarPlugin'
+import { LinkToolbarPlugin } from './LinkToolbarPlugin'
 
 export default {
-  title: 'features/TextFormatToolbarPlugin',
-  component: TextFormatToolbarPlugin,
+  title: 'features/LinkToolbarPlugin/LinkToolbarPlugin',
+  component: LinkToolbarPlugin,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
   args: {},
   parameters: {},
-  decorators: [LexicalDecorator([], true)],
-} as Meta<typeof TextFormatToolbarPlugin>
+  decorators: [LexicalDecorator([LinkNode], true)],
+} as Meta<typeof LinkToolbarPlugin>
 
-type Story = StoryObj<typeof TextFormatToolbarPlugin>
+type Story = StoryObj<typeof LinkToolbarPlugin>
 
 export const PrimaryRedesigned: Story = {}
 export const PrimaryDeprecated: Story = {}

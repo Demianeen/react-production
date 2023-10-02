@@ -1,6 +1,6 @@
 import type { EditorThemeClasses } from 'lexical'
 
-export const editorTheme: EditorThemeClasses = {
+export const articleEditorTheme: EditorThemeClasses = {
   imageBlock: 'imageBlock',
   list: {
     ul: 'ul',

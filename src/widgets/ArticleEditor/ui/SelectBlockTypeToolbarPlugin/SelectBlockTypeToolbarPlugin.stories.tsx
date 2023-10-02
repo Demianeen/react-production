@@ -2,8 +2,7 @@ import type { StoryObj, Meta } from '@storybook/react'
 import { SelectBlockTypeToolbarPlugin } from './SelectBlockTypeToolbarPlugin'
 
 export default {
-  title:
-    'features/SelectBlockTypeToolbarPlugin/SelectBlockTypeToolbarPlugin',
+  title: 'widgets/ArticleEditor/SelectBlockTypeToolbarPlugin',
   component: SelectBlockTypeToolbarPlugin,
   argTypes: {
     backgroundColor: { control: 'color' },

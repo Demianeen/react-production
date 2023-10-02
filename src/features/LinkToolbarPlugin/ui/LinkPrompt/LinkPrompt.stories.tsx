@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { StoreDecorator } from '@/shared/lib/storybook/StoreDecorator'
+import { LinkNode } from '@lexical/link'
+import { LexicalDecorator } from '@/shared/lib/storybook/LexicalDecorator'
 import { LinkPrompt } from './LinkPrompt'
 
 export default {
@@ -12,7 +13,7 @@ export default {
     isOpen: true,
   },
   parameters: {},
-  decorators: [StoreDecorator()],
+  decorators: [LexicalDecorator([LinkNode])],
 } as Meta<typeof LinkPrompt>
 
 type Story = StoryObj<typeof LinkPrompt>

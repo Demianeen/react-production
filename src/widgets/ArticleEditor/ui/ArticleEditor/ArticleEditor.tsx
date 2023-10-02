@@ -11,7 +11,7 @@ import { CodeHighlightPlugin } from '@/features/CodeHighlightPlugin'
 import { DraggableBlockPlugin } from '@/features/DraggableBlockPlugin'
 import { useTranslation } from 'react-i18next'
 import { getArticleStylesClassName } from '../../lib/getArticleStylesClassName/getArticleStylesClassName'
-import { editorTheme } from '../../config/theme'
+import { articleEditorTheme } from '../../config/theme'
 import {
   ToolbarNodes,
   ToolbarPlugin,
@@ -23,7 +23,7 @@ export const ArticleEditor = memo(
 
     return (
       <Editor
-        theme={editorTheme}
+        theme={articleEditorTheme}
         nodes={[
           ...ToolbarNodes,
           AutoLinkNode,

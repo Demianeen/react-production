@@ -12,6 +12,7 @@ import {
   ImageNode,
   ImageToolbarPlugin,
 } from '@/features/ImageToolbarPlugin'
+import { LinkNode } from '@lexical/link'
 import { SelectBlockTypeToolbarPlugin } from '../SelectBlockTypeToolbarPlugin/SelectBlockTypeToolbarPlugin'
 import styles from './ToolbarPlugin.module.scss'
 
@@ -25,6 +26,7 @@ export const ToolbarNodes = [
   ListNode,
   ImageNode,
   CodeNode,
+  LinkNode,
 ]
 
 export const ToolbarPlugin = typedMemo(

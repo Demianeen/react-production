@@ -5,7 +5,7 @@ import type { InitialConfigType } from '@lexical/react/LexicalComposer'
 import { LexicalComposer } from '@lexical/react/LexicalComposer'
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
 import type { EditorThemeClasses, LexicalEditor } from 'lexical'
-import type { MutableRefObject, ReactNode } from 'react'
+import type { ForwardedRef, ReactNode } from 'react'
 import { forwardRef } from 'react'
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin'
 import { Card as CardDeprecated } from '@/shared/ui/deprecated/Card'
@@ -42,6 +42,19 @@ const reducers: ReducersList = {
 const onError = (error: Error, _articleEditor: LexicalEditor) => {
   throw error
 }
+
+const setEditorRef =
+  (editorRef: ForwardedRef<LexicalEditor>) =>
+  (editor: LexicalEditor) => {
+    if (editorRef) {
+      if (typeof editorRef === 'function') {
+        editorRef(editor)
+      } else {
+        // eslint-disable-next-line no-param-reassign
+        editorRef.current = editor
+      }
+    }
+  }
 
 export const Editor = forwardRef<LexicalEditor, EditorProps>(
   (
@@ -111,9 +124,7 @@ export const Editor = forwardRef<LexicalEditor, EditorProps>(
               }
               ErrorBoundary={LexicalErrorBoundary}
             />
-            <EditorRefPlugin
-              editorRef={editorRef as MutableRefObject<LexicalEditor>}
-            />
+            <EditorRefPlugin editorRef={setEditorRef(editorRef)} />
             <UpdateMouseBlockTypePlugin />
             <UpdateSelectionBlockTypePlugin />
             {plugins}
