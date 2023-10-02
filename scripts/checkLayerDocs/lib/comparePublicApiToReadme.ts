@@ -2,7 +2,7 @@ import { unified } from 'unified'
 import markdown from 'remark-parse'
 import fs from 'fs'
 import path from 'path'
-import { getPublicApiExports } from '../../../utils/getPublicApiExports'
+import { getPublicApiExports } from 'utils/getPublicApiExports'
 
 export const comparePublicApiToReadme = async (
   pathToReadme: string

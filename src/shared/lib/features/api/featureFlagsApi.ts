@@ -10,7 +10,7 @@ interface UpdateFeatureFlagsArgs {
   featureFlags: FeatureFlags
 }
 
-const userApi = rtkApi.injectEndpoints({
+const featureFlagsApi = rtkApi.injectEndpoints({
   endpoints: (builder) => ({
     updateFeatureFlags: builder.mutation<
       User,
@@ -45,6 +45,6 @@ const userApi = rtkApi.injectEndpoints({
 })
 
 export const updateFeatureFlagsMutation =
-  userApi.endpoints.updateFeatureFlags.initiate
+  featureFlagsApi.endpoints.updateFeatureFlags.initiate
 
-export const { useUpdateFeatureFlagsMutation } = userApi
+export const { useUpdateFeatureFlagsMutation } = featureFlagsApi

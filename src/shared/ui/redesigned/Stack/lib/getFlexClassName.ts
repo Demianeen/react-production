@@ -36,7 +36,6 @@ const wrapMap: Record<FlexWrap, string> = {
   nowrap: styles.nowrap,
 }
 
-/* eslint-disable @typescript-eslint/naming-convention */
 const gapMap: Record<FlexGap, string> = {
   0.25: styles.gap025,
   0.5: styles.gap05,
@@ -44,8 +43,6 @@ const gapMap: Record<FlexGap, string> = {
   1.25: styles.gap125,
   2: styles.gap2,
 }
-
-/* eslint-enable @typescript-eslint/naming-convention */
 
 export interface GetFlexClassNameProps {
   /**
@@ -68,7 +65,6 @@ export interface GetFlexClassNameProps {
    * @description Gap between flex items
    */
   gap?: FlexGap
-  height?: string
   /**
    * @description Flag to set width: 100%
    */

@@ -10,9 +10,9 @@ import type {
   StateSchemaKey,
 } from './stateSchema'
 
-export function createReducerManager(
+export const createReducerManager = (
   initialReducers: ReducersMapObject<StateSchema>
-): ReducerManager {
+): ReducerManager => {
   const reducers = { ...initialReducers }
   let combinedReducer = combineReducers(reducers)
   let keysToRemove: StateSchemaKey[] = []

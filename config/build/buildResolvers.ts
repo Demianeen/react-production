@@ -7,7 +7,6 @@ export default (options: BuildOptions): ResolveOptions => ({
   modules: [options.paths.src, 'node_modules'],
   mainFiles: ['index'],
   alias: {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     '@': options.paths.src,
   },
 })

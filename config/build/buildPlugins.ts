@@ -23,9 +23,11 @@ export default ({
     }),
     new ProgressPlugin(),
     new webpack.DefinePlugin({
+      /* eslint-disable @typescript-eslint/naming-convention */
       __IS_DEV__: JSON.stringify(isDev),
       __API__: JSON.stringify(apiURL),
       __PROJECT__: JSON.stringify(project),
+      /* eslint-enable @typescript-eslint/naming-convention */
     }),
     new ForkTsCheckerWebpackPlugin({
       typescript: {

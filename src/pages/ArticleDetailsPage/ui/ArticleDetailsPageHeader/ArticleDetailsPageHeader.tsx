@@ -9,10 +9,11 @@ import { EditArticle } from '@/features/EditArticle'
 interface ArticleDetailsPageHeaderProps {
   className?: string
   id: number
+  authorId: number
 }
 
 export const ArticleDetailsPageHeader = memo(
-  ({ className, id }: ArticleDetailsPageHeaderProps) => {
+  ({ className, id, authorId }: ArticleDetailsPageHeaderProps) => {
     const { t } = useTranslation('article-details')
 
     return (
@@ -25,10 +26,10 @@ export const ArticleDetailsPageHeader = memo(
         <Button as={AppLink} to={routes.articles()}>
           {t('Back to list')}
         </Button>
-        <EditArticle id={id} />
+        <EditArticle id={id} authorId={authorId} />
       </HStack>
     )
-  }
+  },
 )
 
 ArticleDetailsPageHeader.displayName = 'ArticleDetailsPageHeader'

@@ -22,7 +22,7 @@ import { ratingHandlers } from '../../src/entities/Rating/model/mocks/ratingHand
 
 // Initialize MSW
 initialize({
-  onUnhandledRequest(request) {
+  onUnhandledRequest: (request) => {
     const url = request.url.pathname
 
     if (url.includes('localhost') || url.includes('mockapi.com'))

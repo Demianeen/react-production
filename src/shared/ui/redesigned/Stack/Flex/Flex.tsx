@@ -18,6 +18,7 @@ export interface FlexOwnProps<TTag extends ElementType>
    * @description Tag name or component
    */
   as?: TTag
+  height?: string
 }
 
 export type FlexProps<TTag extends ElementType> = Props<

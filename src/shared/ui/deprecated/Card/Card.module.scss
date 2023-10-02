@@ -1,21 +1,34 @@
-.card {
+// themes
+.filled {
+  background-color: var(--card-bg);
+}
+
+.outline {
+  border: 1px solid var(--primary-color);
+}
+
+// mods
+.border {
+  border-radius: var(--card-border-radius);
+}
+
+.maxWidth {
+  width: 100%;
+}
+
+// paddings
+.padding0 {
+  padding: 0;
+}
+
+.padding0_5 {
+  padding: 0.5rem;
+}
+
+.padding1 {
   padding: 1rem;
+}
 
-  // themes
-  &.filled {
-    background-color: var(--card-bg);
-  }
-
-  &.outline {
-    border: 1px solid var(--primary-color);
-  }
-
-  // mods
-  &.border {
-    border-radius: var(--card-border-radius);
-  }
-
-  &.maxWidth {
-    width: 100%;
-  }
+.padding1_5 {
+  padding: 1.5rem;
 }

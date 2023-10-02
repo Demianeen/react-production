@@ -10,8 +10,9 @@ const DEFAULT_DELAY = 6000
  * @param delay - Delay in milliseconds.
  * @default 6000 - 6 seconds.
  */
-export const LokiDelayDecorator = (delay = DEFAULT_DELAY) =>
-  function Decorator(StoryComponent: StoryFn) {
+export const LokiDelayDecorator =
+  (delay = DEFAULT_DELAY) =>
+  (StoryComponent: StoryFn) => {
     const onDone = createAsyncCallback()
 
     if (isLokiRunning()) {

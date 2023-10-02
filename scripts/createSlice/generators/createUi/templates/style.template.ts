@@ -1,5 +1,3 @@
-export const styleTemplate = (sliceName: string) => {
-  return `.${sliceName} {
+export const styleTemplate = (sliceName: string) => `.${sliceName} {
   
 }`
-}

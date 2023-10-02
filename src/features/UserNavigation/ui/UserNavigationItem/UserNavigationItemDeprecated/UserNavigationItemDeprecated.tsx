@@ -40,7 +40,7 @@ export const UserNavigationItemDeprecated = typedMemo(
     }
 
     return (
-      <li>
+      <li className={styles.li}>
         <HStack
           as={AppLink}
           theme={AppLinkTheme.INVERTED}
@@ -65,5 +65,5 @@ export const UserNavigationItemDeprecated = typedMemo(
         </HStack>
       </li>
     )
-  }
+  },
 )

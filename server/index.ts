@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import fs from 'fs'
 import path from 'path'
 import https from 'https'
@@ -21,9 +22,7 @@ interface DbSchema {
   articles: Article[]
   notifications: Notification[]
   comments: Comment[]
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   'article-rating': (typeof ArticleRating)[]
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   'profile-rating': (typeof ProfileRating)[]
 }
 
@@ -43,6 +42,14 @@ server.use(async (_req, _res, next) => {
   next()
 })
 
+const getNewId = (collectionName: keyof DbSchema) => {
+  const maxArticleId = Math.max(
+    ...router.db.get(collectionName).map('id').value(),
+    0
+  )
+  return maxArticleId + 1
+}
+
 // Login endpoint
 server.post('/login', (req, res) => {
   try {
@@ -59,7 +66,7 @@ server.post('/login', (req, res) => {
 
     return res.status(403).json({ message: 'User not found' })
   } catch (e) {
-    console.log(e)
+    console.error(e)
     if (e instanceof Error) {
       return res.status(500).json({ message: e.message })
     }
@@ -82,7 +89,7 @@ server.post('/register', (req, res) => {
       return res.status(403).json({ message: 'USER_ALREADY_EXIST' })
     }
 
-    const newUserId = router.db.get('users').size().value() + 1
+    const newUserId = getNewId('users')
     const newUser = {
       id: newUserId,
       username,
@@ -104,7 +111,30 @@ server.post('/register', (req, res) => {
 
     return res.json(newUser)
   } catch (e) {
-    console.log(e)
+    console.error(e)
+    return res.status(500).json({ message: 'UNKNOWN_SERVER_ERROR' })
+  }
+})
+
+// Create article endpoint
+server.post('/articles', (req, res) => {
+  try {
+    const createdAt = new Date().toString()
+    const views = Math.floor(Math.random() * 10000)
+
+    const newArticleId = getNewId('articles')
+    const newArticle = {
+      id: newArticleId,
+      ...req.body,
+      createdAt,
+      views,
+    }
+
+    router.db.get('articles').push(newArticle).write()
+
+    return res.json(newArticle)
+  } catch (e) {
+    console.error(e)
     return res.status(500).json({ message: 'UNKNOWN_SERVER_ERROR' })
   }
 })

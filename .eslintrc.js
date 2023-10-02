@@ -34,6 +34,7 @@ module.exports = {
     '@typescript-eslint',
     'netliukh-demian-fsd-plugin',
     'unused-imports',
+    'prefer-arrow',
   ],
   ignorePatterns: ['.eslintrc.js', 'cypress.config.ts'],
   settings: {
@@ -58,7 +59,7 @@ module.exports = {
     'import/prefer-default-export': 0,
     // ensure that every unused variable have underscore in the front
     '@typescript-eslint/no-unused-vars': [
-      1,
+      2,
       {
         argsIgnorePattern: '^_',
         varsIgnorePattern: '^_',
@@ -83,23 +84,53 @@ module.exports = {
     ],
     // we use underlines for webpack env variables
     'no-underscore-dangle': 0,
+
+    'padding-line-between-statements': [
+      'error',
+      // enforces no blank line between imports
+      { blankLine: 'never', prev: 'import', next: 'import' },
+    ],
+
+    // enforces consistent naming
     '@typescript-eslint/naming-convention': [
       2,
       {
         selector: 'default',
+        format: ['camelCase', 'PascalCase'],
+        leadingUnderscore: 'allowSingleOrDouble',
+        trailingUnderscore: 'allowDouble',
+      },
+      {
+        selector: 'variable',
         format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
         leadingUnderscore: 'allowSingleOrDouble',
         trailingUnderscore: 'allowDouble',
       },
       {
-        selector: 'enum',
+        selector: 'typeLike',
         format: ['PascalCase'],
       },
       {
         selector: 'enumMember',
         format: ['UPPER_CASE'],
       },
+      // ignores names with quotes like 'data-testid'
+      {
+        selector: [
+          'classProperty',
+          'objectLiteralProperty',
+          'typeProperty',
+          'classMethod',
+          'objectLiteralMethod',
+          'typeMethod',
+          'accessor',
+          'enumMember',
+        ],
+        format: null,
+        modifiers: ['requiresQuotes'],
+      },
     ],
+
     // to import dev dependencies in some files
     'import/no-extraneous-dependencies': [
       'error',
@@ -140,6 +171,7 @@ module.exports = {
       {
         prefer: 'type-imports',
         fixStyle: 'separate-type-imports',
+        disallowTypeAnnotations: false,
       },
     ],
 
@@ -200,6 +232,28 @@ module.exports = {
 
     // TODO: turn on later
     'react/no-unstable-nested-components': 0,
+
+    // enforce arrow function
+    'react/function-component-definition': [
+      2,
+      {
+        namedComponents: 'arrow-function',
+        unnamedComponents: 'arrow-function',
+      },
+    ],
+    'prefer-arrow/prefer-arrow-functions': [
+      2,
+      {
+        classPropertiesAllowed: false,
+      },
+    ],
+    'arrow-body-style': ['error', 'as-needed'],
+
+    // enforce to use style function typing in one way
+    '@typescript-eslint/prefer-function-type': 2,
+
+    // TODO: enforce later
+    'react/display-name': 1,
   },
   overrides: [
     {
@@ -237,6 +291,14 @@ module.exports = {
       },
     },
     {
+      files: ['src/**/*'],
+      excludedFiles: ['src/**/*.stories.tsx'],
+      rules: {
+        // no console in production
+        'no-console': 2,
+      },
+    },
+    {
       // override rules for slice services
       files: ['src/**/model/services/**/*.ts'],
       rules: {
@@ -268,11 +330,25 @@ module.exports = {
       },
     },
     {
+      // we don't need to add display name for storybook decorators
+      files: ['src/shared/lib/storybook/*'],
+      rules: {
+        'react/display-name': 0,
+      },
+    },
+    {
       // override rules for cypress
       files: ['cypress/**/*.{ts,tsx}'],
       extends: ['plugin:cypress/recommended'],
       rules: {
         '@typescript-eslint/no-namespace': 0,
+      },
+    },
+    {
+      // allows as to use react components without transforming them into shorthand arrow function syntax
+      files: ['**/*.tsx'],
+      rules: {
+        'arrow-body-style': 0,
       },
     },
   ],

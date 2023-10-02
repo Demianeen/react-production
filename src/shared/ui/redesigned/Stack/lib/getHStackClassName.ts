@@ -15,9 +15,8 @@ export const hStackDefaultValue: GetFlexClassNameProps = {
 
 export const getHStackClassName = ({
   ...props
-}: GetHStackClassNameProps) => {
-  return getFlexClassName({
+}: GetHStackClassNameProps) =>
+  getFlexClassName({
     ...hStackDefaultValue,
     ...props,
   })
-}

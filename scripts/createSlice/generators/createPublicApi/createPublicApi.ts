@@ -1,6 +1,6 @@
 import fs from 'fs'
-import { resolveRoot } from '../../../../utils/resolveRoot'
-import { capitalize } from '../../../../utils/capitalize'
+import { capitalize } from 'utils/capitalize'
+import { resolveRoot } from 'utils/resolveRoot'
 import type {
   CreateSliceOptions,
   Layer,

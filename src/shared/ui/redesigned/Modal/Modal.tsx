@@ -3,6 +3,8 @@ import React from 'react'
 import type { Mods } from '@/shared/lib/classNames/classNames'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { useModal } from '@/shared/lib/hooks/useModal/useModal'
+import { useDevice } from '@/shared/lib/hooks/useDevice/useDevice'
+import { Drawer } from '../Drawer'
 import { Card } from '../Card'
 import { Overlay } from '../Overlay'
 import { HStack } from '../Stack'
@@ -19,13 +21,16 @@ interface ModalProps {
   /**
    * @description Callback to close modal
    */
-  onClose?: () => void
+  onClose: () => void
   /**
    * @description Flag to render modal only when it is open
    */
   lazy?: boolean
 }
 
+/**
+ * Show modal with overlay. On mobile shows drawer.
+ */
 export const Modal = ({
   className,
   children,
@@ -44,8 +49,18 @@ export const Modal = ({
     [styles.closed]: !isOpen && !isClosing,
   }
 
+  const { isMobile } = useDevice()
+
   if (lazy && !isMounted) {
     return null
+  }
+
+  if (isMobile) {
+    return (
+      <Drawer isOpen={isOpen} className={className} onClose={onClose}>
+        {children}
+      </Drawer>
+    )
   }
 
   return (

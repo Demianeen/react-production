@@ -4,11 +4,9 @@ import { getAllFeatureFlags } from '../features/lib/setGetFeatures'
 import { setFeatureFlags, toggleFeature } from '../features'
 
 // toggle design based on story title
-export const ToggleDesignDecorator = (newDesign?: boolean) =>
-  function Decorator(
-    StoryComponent: StoryFn,
-    { title, name }: StoryContext
-  ) {
+export const ToggleDesignDecorator =
+  (newDesign?: boolean) =>
+  (StoryComponent: StoryFn, { title, name }: StoryContext) => {
     const lowerCaseTitle = title.toLowerCase() + name.toLowerCase()
     const isAppRedesigned =
       newDesign ?? lowerCaseTitle.includes('redesigned')

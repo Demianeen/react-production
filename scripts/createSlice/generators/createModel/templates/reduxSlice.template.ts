@@ -1,11 +1,11 @@
-import { capitalize } from '../../../../../utils/capitalize'
+import { capitalize } from 'utils/capitalize'
 
 export const reduxSliceTemplate = (sliceName: string) => {
   const schemaName = `${sliceName}Schema`
   const capitalizedSchemaName = capitalize(schemaName)
 
   return `import type { PayloadAction } from '@reduxjs/toolkit'
-import { createSlice } from '@reduxjs/toolkit'
+import { buildSlice } from '@/shared/lib/store'
 import type { ${capitalizedSchemaName} } from '../types/${schemaName}'
 
 const initialState: ${capitalizedSchemaName} = {
@@ -16,29 +16,12 @@ export const ${sliceName}Slice = createSlice({
   initialState,
   reducers: {
   },
-  // extraReducers: (builder) => {
-  //   builder
-  //     .addCase(loginByUsername.pending, (state) => {
-  //       state.error = undefined
-  //       state.isLoading = true
-  //     })
-  //     .addCase(loginByUsername.fulfilled, (state) => {
-  //       state.isLoading = false
-  //     })
-  //     .addCase(
-  //       loginByUsername.rejected,
-  //       (state, action) => {
-  //         state.isLoading = false
-  //         if (typeof action.payload === 'string') {
-  //           state.error = action.payload
-  //         }
-  //       }
-  //     )
-  // },
 })
 
-export const { actions: ${sliceName}Actions } =
-  ${sliceName}Slice
-export const { reducer: ${sliceName}Reducer } =
-  ${sliceName}Slice`
+export const {
+  actions: ${sliceName}Actions,
+  reducer: ${sliceName}Reducer,
+  useActions: use${sliceName}Actions,
+} = ${sliceName}Slice
+  `
 }

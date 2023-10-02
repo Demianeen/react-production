@@ -29,13 +29,15 @@ This repository was created as part of the UlbiTV's course "To production on Rea
 - `npm run test:ui` - Run screenshot tests with loki
 - `npm run test:ui:ok` - Confirm new screenshots
 - `npm run test:ui:ci` - Run screenshot tests in CI
-- `test:ui:report` - Generate full report for screenshot tests
+- `npm run test:ui:report` - Generate full report for screenshot tests
 - `npm run test:ui:report:chrome` - Generate full report for screenshot tests and open it in Chrome
 - `npm run test:ui:report:arc` - Generate full report for screenshot tests and open it in Arc
 - `npm run test:ui:json` - Generate json report for screenshot tests
 - `npm run test:ui:html` - Generate HTML report for screenshot tests
 - `npm run generate:slice` - Script for generating FSD slices,
 - `npm run prepare` - Pre-commit hooks
+- `npm run rename:slice` - Script for renaming FSD slices, Takes 3 arguments: 1. layer, 2. old slice name, 3. new slice name.
+- `npm run rename:folder` - Script for renaming folders. Takes 3 arguments: 1. pathToFolder, 2. old name, 3. new name.
 - `npm run remove:feature` - Removes feature using feature flag name, and state on/off (read more about feature flags [here](#working-with-feature-flags))
 - `npm run check:layerDocs` - Checks if README.md files in each layer in src/ are up to date with the public API. Read more [here](scripts/checkLayerDocs/index.ts)
 - `npm run postinstall` - Apply patches after npm i
@@ -197,51 +199,96 @@ Feature-flags in our app are not reactive, and will not update components during
 
 ---
 
-## Entities
+## App slices
 
-- [Article](./src/entities/Article)
-- [Comment](./src/entities/Comment)
-- [Counter](./src/entities/Counter)
-- [Country](./src/entities/Country)
-- [Currency](./src/entities/Currency)
-- [SortField](./src/entities/SortField)
-- [Order](./src/entities/Order)
-- [View](./src/entities/View)
-- [Notification](./src/entities/Notification)
-- [Profile](./src/entities/Profile)
-- [Rating](./src/entities/Rating)
-- [User](./src/entities/User)
+### Shared
 
-## Features
+Shared folder contains all shared code that can be used in any part of the app and that is not related to any particular entity.
 
-- [ArticleCommentList](./src/features/ArticleCommentList)
-- [ArticleInfiniteList](src/widgets/ArticleInfiniteList)
-- [ArticleRating](./src/features/ArticleRating)
-- [ArticleRecommendationsList](./src/features/ArticleRecommendationsList)
-- [AuthByUsername](./src/features/AuthByUsername)
-- [EditableProfileCard](./src/features/EditableProfileCard)
-- [LangSwitcher](./src/features/LangSwitcher)
-- [NotificationButton](./src/features/NotificationButton)
-- [ProfileRating](./src/features/ProfileRating)
-- [ThemeSwitcher](./src/features/ThemeSwitcher)
-- [UserDropdown](./src/features/UserDropdown)
+### Entities
 
-## Widgets
+Reusable parts that are related to particular entity. They are later merged into meaningful blocks in widgets.
 
-- [Navbar](./src/widgets/Navbar)
-- [Page](./src/widgets/Page)
-- [PageError](./src/widgets/PageError)
-- [PageLoader](./src/widgets/PageLoader)
-- [Sidebar](./src/widgets/Sidebar)
+- [Article](./src/entities/Article/README.md): reusable article related components and functionality.
+- [Comment](./src/entities/Comment/README.md): reusable comment related components and functionality.
+- [CommentForm](./src/entities/CommentForm/README.md): reusable comment form.
+- [Counter](./src/entities/Counter/README.md): counter.
+- [Country](./src/entities/Country/README.md): reusable country related components and functionality (e.g. SelectCountry).
+- [Currency](./src/entities/Currency/README.md): reusable currency related components and functionality (e.g. SelectCurrency).
+- [Notification](./src/entities/Notification/README.md): reusable notification related components and functionality.
+- [Order](./src/entities/Order/README.md): reusable sort order related components and functionality (e.g. SelectOrder).
+- [Profile](./src/entities/Profile/README.md): reusable profile related components and functionality.
+- [Rating](./src/entities/Rating/README.md): reusable rating related components and functionality.
+- [SortField](./src/entities/SortField/README.md): reusable sort field related components and functionality (e.g. SelectSortField).
+- [User](./src/entities/User/README.md): reusable user related components and functionality.
+- [View](./src/entities/View/README.md): reusable view related components and functionality (e.g. SelectView).
+- [Editor](./src/entities/Editor/README.md): 
 
-## Pages
+### Features
 
-- [AboutPage](./src/pages/AboutPage)
-- [AdminPanelPage](./src/pages/AdminPanelPage)
-- [ArticleDetailsPage](./src/pages/ArticleDetailsPage)
-- [ArticleEditPage](./src/pages/ArticleEditPage)
-- [ArticlesPage](./src/pages/ArticlesPage)
-- [ForbiddenPage](./src/pages/ForbiddenPage)
-- [HomePage](./src/pages/HomePage)
-- [NotFoundPage](./src/pages/NotFoundPage)
-- [ProfilePage](./src/pages/ProfilePage)
+Features are some functionality blocks that provide functionality for the user.
+
+One feature = one functionality.
+
+- [ArticleCommentList](./src/features/ArticleCommentList/README.md): displays a list of comments for a given article.
+- [ArticleListFilters](./src/features/ArticleListFilters/README.md): allows users to filter articles based on various criteria.
+- [ArticlePageGreeting](./src/features/ArticlePageGreeting/README.md): displays a greeting message on the article page when user first time enter it.
+- [ArticleRating](./src/features/ArticleRating/README.md): allows users to rate articles.
+- [ArticleRecommendationsList](./src/features/ArticleRecommendationsList/README.md): displays a list of recommended articles.
+- [AuthByUsername](./src/features/AuthByUsername/README.md): allows users to login or register using their username.
+- [EditArticle](./src/features/EditArticle/README.md): allows users to edit articles.
+- [EditableProfileCard](./src/features/EditableProfileCard/README.md): displays a user's profile information and if user has rights, allows to edit it.
+- [LangSwitcher](./src/features/LangSwitcher/README.md): allows users to switch between different languages.
+- [NotificationButton](./src/features/NotificationButton/README.md): displays a notifications on button click.
+- [ProfileRating](./src/features/ProfileRating/README.md): allows users to rate profiles.
+- [ScrollToTop](./src/features/ScrollToTop/README.md): allows users to scroll to the top of the page.
+- [ThemeSwitcher](./src/features/ThemeSwitcher/README.md): allows users to switch between different themes.
+- [ToggleDesign](./src/features/ToggleDesign/README.md): allows users to toggle between different designs.
+- [UserDropdown](./src/features/UserDropdown/README.md): displays a dropdown menu for the user.
+- [UserNavigation](./src/features/UserNavigation/README.md): displays navigation links for the user.
+- [CreateArticle](./src/features/CreateArticle/README.md): allows users to create or edit articles.
+- [ImageToolbarPlugin](./src/features/ImageToolbarPlugin/README.md): 
+- [AutoLinkPlugin](./src/features/AutoLinkPlugin/README.md): 
+- [CodeActionMenuPlugin](./src/features/CodeActionMenuPlugin/README.md): 
+- [CodeBlockToolbarPlugin](./src/features/CodeBlockToolbarPlugin/README.md): 
+- [SelectBlockTypeToolbarPlugin](./src/features/SelectBlockTypeToolbarPlugin/README.md): 
+- [LinkToolbarPlugin](./src/features/LinkToolbarPlugin/README.md): 
+- [TextFormatToolbarPlugin](./src/features/TextFormatToolbarPlugin/README.md): 
+- [CodeHighlightPlugin](./src/features/CodeHighlightPlugin/README.md): 
+- [HeadingPlugin](./src/features/HeadingPlugin/README.md): 
+- [DraggableBlockPlugin](./src/features/DraggableBlockPlugin/README.md): 
+
+### Widgets
+
+Widgets merge reusable entity blocks with features, creating meaningful blocks.
+
+- [ArticleAdditionalInfo](./src/widgets/ArticleAdditionalInfo/README.md): displays additional information about an article, such as the author, date, and number of views.
+- [ArticleInfiniteList](./src/widgets/ArticleInfiniteList/README.md): displays a list of articles that can be scrolled infinitely.
+- [LoaderLayout](./src/widgets/LoaderLayout/README.md): displays the whole page skeleton while content is being loaded, and then displays the content once it's ready.
+- [Navbar](./src/widgets/Navbar/README.md): displays a user related data like notifications or user panel.
+- [Page](./src/widgets/Page/README.md): a basic page component that sets default page styles(e.g. paddings, margins) and shared page functionality (e.g. restoring page scroll position).
+- [PageError](./src/widgets/PageError/README.md): displays an error blcok with message when a page fails to load.
+- [PageLoader](./src/widgets/PageLoader/README.md): displays a full page loading spinner while a page is being loaded.
+- [ScrollToolbar](./src/widgets/ScrollToolbar/README.md): displays a toolbar to go to the top of the page that appears when the user scrolls down the page.
+- [Sidebar](./src/widgets/Sidebar/README.md): displays a sidebar with links to different sections of the website.
+- [CreateArticle](./src/widgets/CreateArticle/README.md):
+- [ArticleEditor](./src/widgets/ArticleEditor/README.md): 
+
+### Pages
+
+Pages are composed of widgets and features while remaining as "thin" as possible.
+
+- [AboutPage](./src/pages/AboutPage/README.md): displays information about the website and its creators.
+- [AdminPanelPage](./src/pages/AdminPanelPage/README.md): provides access to the website's administrative tools.
+- [ArticleDetailsPage](./src/pages/ArticleDetailsPage/README.md): displays the details of a specific article.
+- [ArticleEditPage](./src/pages/ArticleEditPage/README.md): allows the user to edit an existing article.
+- [ArticlesPage](./src/pages/ArticlesPage/README.md): displays a list of articles.
+- [ForbiddenPage](./src/pages/ForbiddenPage/README.md): displays an error message when the user tries to access a forbidden page.
+- [HomePage](./src/pages/HomePage/README.md): displays the website's home page. Every user starts here.
+- [NotFoundPage](./src/pages/NotFoundPage/README.md): displays an error message when the user tries to access a non-existent page.
+- [ProfilePage](./src/pages/ProfilePage/README.md): displays the user's profile information.
+- [SettingsPage](./src/pages/SettingsPage/README.md): allows the user to modify their account settings.
+
+### App
+
+App folder contains all app related code that is not used in any other slices at any time (except types).

@@ -61,6 +61,7 @@ export const Input = memo(
 
     return (
       <WithLabel
+        required={props.required ?? false}
         label={label}
         wrapperClassName={wrapperClassName}
         maxWidth={maxWidth}
@@ -80,7 +81,7 @@ export const Input = memo(
         />
       </WithLabel>
     )
-  }
+  },
 )
 
 Input.displayName = 'Input'

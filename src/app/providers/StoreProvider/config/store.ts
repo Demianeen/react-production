@@ -19,10 +19,10 @@ interface CreateReduxStoreProps {
   preloadedAsyncReducers?: AsyncReducersList
 }
 
-export function createReduxStore({
+export const createReduxStore = ({
   preloadedState,
   preloadedAsyncReducers,
-}: CreateReduxStoreProps) {
+}: CreateReduxStoreProps) => {
   const rootReducers: ReducersList = {
     ...preloadedAsyncReducers,
     counter: counterReducer,

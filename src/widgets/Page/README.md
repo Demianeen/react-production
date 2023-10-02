@@ -1,6 +1,6 @@
 ### Widget Page
 
-Description: Make a padding for the page content. Saves and restores the scroll position. 
+Description: Make a padding for the page content. Saves and restores the scroll position.
 
 #### Public api
 

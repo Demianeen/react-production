@@ -34,7 +34,7 @@ $toggle-offset: 0.125rem;
 }
 
 .switchDeprecated {
-  background-color: var(--card-bg);
+  background-color: var(--card-bg) !important;
 
   .switchOff,
   .switchOn {
@@ -48,7 +48,7 @@ $toggle-offset: 0.125rem;
 }
 
 .switch {
-  background-color: var(--dark-bg-redesigned);
+  background-color: var(--dark-bg-redesigned) !important;
 
   .switchOff,
   .switchOn {

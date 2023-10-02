@@ -34,7 +34,7 @@ export default ({ config }: { config: webpack.Configuration }) => {
       __IS_DEV__: true,
       __API__: JSON.stringify(''),
       __PROJECT__: JSON.stringify('storybook'),
-    })
+    }),
   )
 
   if (!config.module) config.module = { rules: [] }
@@ -49,7 +49,10 @@ export default ({ config }: { config: webpack.Configuration }) => {
     return { ...rule, exclude: /.svg$/i }
   })
 
-  config.module?.rules?.push(buildSvgLoader(), buildCssLoader(true))
+  config.module?.rules?.push(
+    buildSvgLoader(),
+    buildCssLoader(true, paths.src),
+  )
 
   return config
 }

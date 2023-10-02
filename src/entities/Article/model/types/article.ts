@@ -33,10 +33,10 @@ export interface Article {
   id: number
   user: User
   title: string
-  subtitle: string
+  subtitle?: string
   img: string
-  views: 1022
+  views: number
   createdAt: string
   types: ArticleType[]
-  blocks: ArticleBlock[]
+  contentHtmlString: string
 }

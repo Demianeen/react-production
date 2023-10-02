@@ -11,9 +11,8 @@ import {
 
 const isRegistrationError = (
   value: any
-): value is RegistrationValidationError => {
-  return Object.values(RegistrationValidationError).includes(value)
-}
+): value is RegistrationValidationError =>
+  Object.values(RegistrationValidationError).includes(value)
 
 export const [useRegisterByUsername, registerByUsername] =
   buildAsyncThunk<User, undefined, RegistrationValidationError[]>(
@@ -54,7 +53,6 @@ export const [useRegisterByUsername, registerByUsername] =
 
         return data
       } catch (error) {
-        console.log(error)
         if (error instanceof AxiosError) {
           const errorMessage = error.response?.data?.message
           if (isRegistrationError(errorMessage)) {

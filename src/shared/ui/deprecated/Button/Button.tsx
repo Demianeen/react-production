@@ -69,7 +69,7 @@ type ButtonOwnProps<TTag extends ElementType> = {
 } & AdditionalProps<TTag>
 
 export type ButtonProps<
-  TTag extends ElementType = typeof DEFAULT_TAG
+  TTag extends ElementType = typeof DEFAULT_TAG,
 > = Props<TTag, keyof ButtonOwnProps<TTag>, ButtonOwnProps<TTag>>
 
 const isButton = (Component: ElementType): Component is 'button' => {
@@ -83,63 +83,63 @@ const DEFAULT_TAG = 'button'
  * @deprecated
  */
 export const Button = typedMemo(
-  typedForwardRef(function Button<
-    TTag extends typeof AppLink | 'button' = typeof DEFAULT_TAG
-  >(
-    {
-      className,
-      children,
-      theme = ButtonTheme.OUTLINE,
-      squared = false,
-      size = ButtonSize.M,
-      disabled = false,
-      disabledButton = false,
-      as,
-      maxWidth = false,
-      ...props
-    }: ButtonProps<WithDefaultTag<TTag, typeof DEFAULT_TAG>>,
-    ref: ForwardedRef<WithDefaultTag<TTag, typeof DEFAULT_TAG>>
-  ) {
-    const isDisabled = disabled ?? disabledButton
+  typedForwardRef(
+    <TTag extends typeof AppLink | 'button' = typeof DEFAULT_TAG>(
+      {
+        className,
+        children,
+        theme = ButtonTheme.OUTLINE,
+        squared = false,
+        size = ButtonSize.M,
+        disabled = false,
+        disabledButton = false,
+        as,
+        maxWidth = false,
+        ...props
+      }: ButtonProps<WithDefaultTag<TTag, typeof DEFAULT_TAG>>,
+      ref: ForwardedRef<WithDefaultTag<TTag, typeof DEFAULT_TAG>>,
+    ) => {
+      const isDisabled = disabled ?? disabledButton
 
-    const mods: Mods = {
-      [styles.squared]: squared,
-      [styles.disabled]: isDisabled,
-      [styles.maxWidth]: maxWidth,
-    }
+      const mods: Mods = {
+        [styles.squared]: squared,
+        [styles.disabled]: isDisabled,
+        [styles.maxWidth]: maxWidth,
+      }
 
-    const classes = classNames(styles.button, mods, [
-      styles[theme],
-      styles[size],
-      className,
-    ])
+      const classes = classNames(styles.button, mods, [
+        styles[theme],
+        styles[size],
+        className,
+      ])
 
-    const Tag = as ?? DEFAULT_TAG
+      const Tag = as ?? DEFAULT_TAG
 
-    if (isButton(Tag)) {
+      if (isButton(Tag)) {
+        return (
+          <button
+            className={classes}
+            ref={ref as ForwardedRef<HTMLButtonElement>}
+            disabled={isDisabled}
+            /* eslint-disable-next-line react/button-has-type */
+            {...props}
+          >
+            {children}
+          </button>
+        )
+      }
+
       return (
-        <button
+        // @ts-expect-error FIXME: fix typing
+        <Tag
           className={classes}
-          ref={ref as ForwardedRef<HTMLButtonElement>}
-          disabled={isDisabled}
-          /* eslint-disable-next-line react/button-has-type */
+          ref={ref}
+          /* eslint-disable-next-line react/jsx-props-no-spreading */
           {...props}
         >
           {children}
-        </button>
+        </Tag>
       )
-    }
-
-    return (
-      // @ts-expect-error FIXME: fix typing
-      <Tag
-        className={classes}
-        ref={ref}
-        /* eslint-disable-next-line react/jsx-props-no-spreading */
-        {...props}
-      >
-        {children}
-      </Tag>
-    )
-  })
+    },
+  ),
 )

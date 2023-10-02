@@ -26,16 +26,16 @@ export interface AppLinkProps extends LinkProps {
  * @deprecated
  */
 export const AppLink = typedMemo(
-  typedForwardRef(function AppLink(
-    {
-      className,
-      children,
-      theme = AppLinkTheme.PRIMARY,
-      ...props
-    }: AppLinkProps,
-    ref: Ref<HTMLAnchorElement>
-  ) {
-    return (
+  typedForwardRef(
+    (
+      {
+        className,
+        children,
+        theme = AppLinkTheme.PRIMARY,
+        ...props
+      }: AppLinkProps,
+      ref: Ref<HTMLAnchorElement>
+    ) => (
       <Link
         className={classNames(styles.appLink, {}, [
           className,
@@ -47,5 +47,5 @@ export const AppLink = typedMemo(
         {children}
       </Link>
     )
-  })
+  )
 )

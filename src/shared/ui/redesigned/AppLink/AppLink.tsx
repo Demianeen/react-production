@@ -22,17 +22,17 @@ export interface AppLinkProps extends LinkProps {
 }
 
 export const AppLink = typedMemo(
-  typedForwardRef(function AppLink(
-    {
-      className,
-      children,
-      variant = 'primary',
-      activeClassName = '',
-      ...props
-    }: AppLinkProps,
-    ref: Ref<HTMLAnchorElement>
-  ) {
-    return (
+  typedForwardRef(
+    (
+      {
+        className,
+        children,
+        variant = 'primary',
+        activeClassName = '',
+        ...props
+      }: AppLinkProps,
+      ref: Ref<HTMLAnchorElement>
+    ) => (
       <NavLink
         className={({ isActive }) =>
           classNames(
@@ -49,5 +49,5 @@ export const AppLink = typedMemo(
         {children}
       </NavLink>
     )
-  })
+  )
 )

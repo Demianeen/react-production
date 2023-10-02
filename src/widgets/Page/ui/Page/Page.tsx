@@ -19,6 +19,7 @@ import styles from './Page.module.scss'
 
 interface PageProps extends TestProps {
   className?: string
+  id?: string
   children?: ReactNode
 }
 
@@ -29,7 +30,7 @@ const skipScrollPositions: OptionalRecord<AppRoutes, unknown> = {
 
 export const Page = forwardRef<HTMLDivElement, PageProps>(
   (
-    { className, children, 'data-testid': dataTestId },
+    { className, children, 'data-testid': dataTestId, id },
     forwardedRef
   ) => {
     const wrapperRef = useRef<HTMLDivElement>(null)
@@ -111,6 +112,7 @@ export const Page = forwardRef<HTMLDivElement, PageProps>(
         )}
         onScroll={onScroll}
         data-testid={dataTestId}
+        id={id}
       >
         {children}
       </main>

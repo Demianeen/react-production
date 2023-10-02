@@ -10,11 +10,9 @@ export const ParentDecorator = ({
   parentWidth,
   parentHeight,
 }: ParentDecoratorProps) => {
-  return function Decorator(StoryComponent: StoryFn) {
-    return (
-      <div style={{ width: parentWidth, height: parentHeight }}>
-        <StoryComponent />
-      </div>
-    )
-  }
+  return (StoryComponent: StoryFn) => (
+    <div style={{ width: parentWidth, height: parentHeight }}>
+      <StoryComponent />
+    </div>
+  )
 }

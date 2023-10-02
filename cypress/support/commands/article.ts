@@ -22,8 +22,8 @@ const defaultArticle = {
   ],
 }
 
-export const createArticle = (article?: Omit<Article, 'id'>) => {
-  return cy
+export const createArticle = (article?: Omit<Article, 'id'>) =>
+  cy
     .request({
       method: 'POST',
       url: `http://localhost:8000/articles`,
@@ -33,15 +33,13 @@ export const createArticle = (article?: Omit<Article, 'id'>) => {
       body: article ?? defaultArticle,
     })
     .then((response) => response.body)
-}
 
-export const removeArticle = (articleId: number) => {
-  return cy.request({
+export const removeArticle = (articleId: number) =>
+  cy.request({
     method: 'DELETE',
     url: `http://localhost:8000/articles/${articleId}`,
     headers: { Authorization: 'mockAuth' },
   })
-}
 
 declare global {
   namespace Cypress {

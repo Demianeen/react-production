@@ -23,9 +23,7 @@ const isSingleSelector = <
   selectors:
     | [...S, (...args: SelectorResultArray<S>) => FR]
     | [SingleSelector<FR, ARGS>]
-): selectors is [SingleSelector<FR, ARGS>] => {
-  return combiner === undefined
-}
+): selectors is [SingleSelector<FR, ARGS>] => combiner === undefined
 
 /**
  * when only one selector is passed, the result is a selector
@@ -52,6 +50,7 @@ export function buildSelector<FR, S extends SelectorArray>(
   GetParamsFromSelectors<S>
 >
 
+// eslint-disable-next-line prefer-arrow/prefer-arrow-functions
 export function buildSelector<
   FR,
   S extends SelectorArray,
@@ -75,22 +74,16 @@ export function buildSelector<
       // @ts-expect-error selectors.pop() not change type
       createSelector<SelectorArray, FR>(selectors, combiner)
 
-    const useSelectorHook = (...args: GetParamsFromSelectors<S>) => {
-      return useSelector((state: StateSchema) =>
-        selector(state, ...args)
-      )
-    }
+    const useSelectorHook = (...args: GetParamsFromSelectors<S>) =>
+      useSelector((state: StateSchema) => selector(state, ...args))
 
     // @ts-expect-error TODO: fix types
     return [useSelectorHook, selector]
   }
 
   const selector = selectors[0]
-  const useSelectorHook = (...args: ARGS) => {
-    return useSelector((state: StateSchema) =>
-      selector(state, ...args)
-    )
-  }
+  const useSelectorHook = (...args: ARGS) =>
+    useSelector((state: StateSchema) => selector(state, ...args))
 
   return [useSelectorHook, selector]
 }

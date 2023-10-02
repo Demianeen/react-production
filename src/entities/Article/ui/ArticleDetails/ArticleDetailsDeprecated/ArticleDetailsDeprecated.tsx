@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { memo, useCallback, useEffect } from 'react'
+import { memo, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { useDynamicModuleLoader } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader'
@@ -14,16 +14,17 @@ import {
 import { Skeleton } from '@/shared/ui/deprecated/Skeleton'
 import { Icon } from '@/shared/ui/deprecated/Icon'
 import { HStack } from '@/shared/ui/redesigned/Stack'
-import { AppImage } from '@/shared/ui/redesigned/AppImage'
 import type { AsyncReducersList } from '@/app/providers/StoreProvider/config/stateSchema'
+// FIXME: fix articleEditor architecture
+// eslint-disable-next-line netliukh-demian-fsd-plugin/public-api-imports, netliukh-demian-fsd-plugin/layer-imports
+import { getArticleStylesClassName } from '@/widgets/ArticleEditor/lib/getArticleStylesClassName/getArticleStylesClassName'
+import { getDateText } from '@/shared/lib/getDateText/getDateText'
+import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
+import { sanitizeHTMLString } from '@/shared/lib/html/sanitize'
+import { ArticleThumbnail } from '../../ArticleThumbnail/ArticleThumbnail'
 import { useArticleDetailsData } from '../../../model/selectors/getArticleDetailsData/getArticleDetailsData'
 import { articleDetailsReducer } from '../../../model/slice/articleDetailsSlice'
-import { ArticleBlockType } from '../../../model/const/articleBlockType'
 import { fetchArticleById } from '../../../model/services/fetchArticleById/fetchArticleById'
-import type { ArticleBlock } from '../../../model/types/article'
-import { ArticleCodeBlockComponent } from '../../ArticleCodeBlockComponent/ArticleCodeBlockComponent'
-import { ArticleImageBlockComponent } from '../../ArticleImageBlockComponent/ArticleImageBlockComponent'
-import { ArticleTextBlockComponent } from '../../ArticleTextBlockComponent/ArticleTextBlockComponent'
 import styles from './ArticleDetailsDeprecated.module.scss'
 import { useArticleDetailsError } from '../../../model/selectors/getArticleDetailsError/getArticleDetailsError'
 import { useArticleDetailsIsLoading } from '../../../model/selectors/getArticleDetailsIsLoading/getArticleDetailsIsLoading'
@@ -46,57 +47,30 @@ export const ArticleDetailsDeprecated = memo(
     const error = useArticleDetailsError()
     const article = useArticleDetailsData()
 
-    const renderBlock = useCallback((block: ArticleBlock) => {
-      switch (block.type) {
-        case ArticleBlockType.CODE:
-          return (
-            <ArticleCodeBlockComponent
-              key={block.id}
-              className={styles.block}
-              block={block}
-              data-testid='ArticleDetails.CodeBlock'
-            />
-          )
-        case ArticleBlockType.IMAGE:
-          return (
-            <ArticleImageBlockComponent
-              key={block.id}
-              className={styles.block}
-              block={block}
-              data-testid='ArticleDetails.ImageBlock'
-            />
-          )
-        case ArticleBlockType.TEXT:
-          return (
-            <ArticleTextBlockComponent
-              key={block.id}
-              className={styles.block}
-              block={block}
-              data-testid='ArticleDetails.TextBlock'
-            />
-          )
-        default:
-          return null
-      }
-    }, [])
+    const contentRef = useRef<HTMLDivElement>()
 
     useEffect(() => {
       dispatch(fetchArticleById(id))
     }, [dispatch, id])
+
+    useEffect(() => {
+      if (article?.contentHtmlString) {
+        sanitizeHTMLString(article.contentHtmlString).then(
+          (sanitizedHtmlString) => {
+            if (contentRef.current) {
+              contentRef.current.innerHTML = sanitizedHtmlString
+            }
+          },
+        )
+      }
+    })
 
     let content: ReactNode
 
     if (isLoading) {
       content = (
         <>
-          <HStack justify='center' maxWidth>
-            <Skeleton
-              className={styles.avatar}
-              width='12.5rem'
-              height='12.5rem'
-              borderRadius='50%'
-            />
-          </HStack>
+          <ArticleThumbnail className={styles.thumbnail} isLoading />
           <Skeleton
             className={styles.title}
             width='41.8rem'
@@ -129,14 +103,12 @@ export const ArticleDetailsDeprecated = memo(
     } else {
       content = (
         <>
-          <HStack justify='center' maxWidth>
-            <AppImage
-              alt={article?.title ?? ''}
-              src={article?.img}
-              className={styles.logo}
-              data-testid='ArticleDetails.logo'
+          {article?.img && (
+            <ArticleThumbnail
+              src={article.img}
+              className={styles.thumbnail}
             />
-          </HStack>
+          )}
           <Text
             className={styles.title}
             title={article?.title}
@@ -151,27 +123,41 @@ export const ArticleDetailsDeprecated = memo(
               data-testid='ArticleDetails.views'
             />
           </HStack>
-          <HStack gap={0.5}>
-            <Icon color='primary' Svg={CalendarIcon} />
-            <Text
-              text={article?.createdAt}
-              data-testid='ArticleDetails.createdAt'
-            />
-          </HStack>
-          {article?.blocks?.map(renderBlock)}
+          {article?.createdAt && (
+            <HStack gap={0.5}>
+              <Icon color='primary' Svg={CalendarIcon} />
+              <Text
+                text={getDateText(new Date(article.createdAt), {
+                  long: true,
+                })}
+                data-testid='ArticleDetails.createdAt'
+              />
+            </HStack>
+          )}
+          {/* {article?.blocks?.map(renderBlock)} */}
+          <div
+            className={classNamesNew(
+              styles.content,
+              getArticleStylesClassName(),
+            )}
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{
+              __html: article?.contentHtmlString ?? '',
+            }}
+          />
         </>
       )
     }
 
     return (
-      <div
+      <article
         className={classNames(styles.articleDetails, {}, [className])}
         data-testid='ArticleDetails'
       >
         {content}
-      </div>
+      </article>
     )
-  }
+  },
 )
 
 ArticleDetailsDeprecated.displayName = 'ArticleDetails'

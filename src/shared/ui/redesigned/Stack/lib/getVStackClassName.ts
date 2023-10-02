@@ -14,9 +14,8 @@ export const vStackDefaultValue: GetFlexClassNameProps = {
 
 export const getVStackClassName = ({
   ...props
-}: GetVStackClassNameProps) => {
-  return getFlexClassName({
+}: GetVStackClassNameProps) =>
+  getFlexClassName({
     ...vStackDefaultValue,
     ...props,
   })
-}

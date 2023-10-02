@@ -1,5 +1,5 @@
 import { Project } from 'ts-morph'
-import { resolveRoot } from '../../utils/resolveRoot'
+import { resolveRoot } from 'utils/resolveRoot'
 
 const project = new Project()
 

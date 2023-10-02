@@ -29,7 +29,10 @@ export const NotificationDrawer = memo(
         name='isAppRedesigned'
         on={
           <>
-            <NotificationIcon onClick={onOpenDrawer} />
+            <NotificationIcon
+              onClick={onOpenDrawer}
+              className={className}
+            />
             <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
               <NotificationList />
             </Drawer>
@@ -41,6 +44,7 @@ export const NotificationDrawer = memo(
               type='button'
               theme={ButtonTheme.CLEAR}
               onClick={onOpenDrawer}
+              className={className}
             >
               <NotificationIcon />
             </ButtonDeprecated>

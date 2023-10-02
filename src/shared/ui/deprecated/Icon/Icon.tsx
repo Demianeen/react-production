@@ -17,12 +17,14 @@ export type IconColor =
   | 'secondary'
   | 'invertedPrimary'
   | 'invertedSecondary'
+  | 'error'
 
 export const colorMap: Record<IconColor, string> = {
   primary: styles.primary,
   secondary: styles.secondary,
   invertedPrimary: styles.invertedPrimary,
   invertedSecondary: styles.invertedSecondary,
+  error: styles.error,
 }
 
 interface IconProps extends SVGProps<SVGSVGElement> {
@@ -64,7 +66,7 @@ export const Icon = memo(
         {...props}
       />
     )
-  }
+  },
 )
 
 Icon.displayName = 'Icon'

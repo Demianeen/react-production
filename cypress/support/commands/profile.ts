@@ -26,8 +26,8 @@ export const updateProfile = (
   }
 }
 
-export const resetProfile = (profileId: number) => {
-  return cy.fixture('profile.json').then((profile) =>
+export const resetProfile = (profileId: number) =>
+  cy.fixture('profile.json').then((profile) =>
     cy.request({
       method: 'PUT',
       url: `http://localhost:8000/profile/${profileId}`,
@@ -37,7 +37,6 @@ export const resetProfile = (profileId: number) => {
       body: profile,
     })
   )
-}
 
 declare global {
   namespace Cypress {

@@ -171,7 +171,7 @@ export const VirtualizedArticleList = forwardRef<
       const listClassName = classNamesNew(styles.list, className)
 
       return (
-        <div ref={setContainerRef}>
+        <div ref={setContainerRef} className={styles.listContainer}>
           {Header && <Header className={styles.header} />}
           <Virtuoso<Article>
             ref={listRef}
@@ -203,7 +203,7 @@ export const VirtualizedArticleList = forwardRef<
     const listClassName = classNamesNew(styles.grid, className)
 
     return (
-      <div ref={setContainerRef}>
+      <div ref={setContainerRef} className={styles.listContainer}>
         {Header && <Header className={styles.header} />}
         <VirtuosoGrid<Article>
           ref={gridRef}

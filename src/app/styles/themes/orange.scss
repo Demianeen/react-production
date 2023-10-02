@@ -11,7 +11,18 @@
   --skeleton-shadow: rgb(148 27 61 / 48%);
 
   // code
-  --code-bg: #020000;
+  --code-bg: #f0c048;
+  --code-text: #000;
+
+  // code highlighting
+  --token-comment-color: #d35400;
+  --token-punctuation-color: #f39c12;
+  --token-property-color: #e67e22;
+  --token-selector-color: #e74c3c;
+  --token-operator-color: #c0392b;
+  --token-attr-color: #d35400;
+  --token-variable-color: #e67e22;
+  --token-function-color: #e74c3c;
 
   // card
   --card-bg: #d2d1d1;

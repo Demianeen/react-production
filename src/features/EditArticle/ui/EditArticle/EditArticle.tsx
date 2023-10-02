@@ -14,12 +14,13 @@ import type { EntityId } from '@reduxjs/toolkit'
 interface EditArticleProps {
   className?: string
   id: EntityId
+  authorId: number
 }
 
 export const EditArticle = memo(
-  ({ className, id }: EditArticleProps) => {
+  ({ className, id, authorId }: EditArticleProps) => {
     const { t } = useTranslation('article-details')
-    const canEdit = useArticleDetailsCanEdit()
+    const canEdit = useArticleDetailsCanEdit(authorId)
     const error = useArticleDetailsError()
 
     if (!canEdit || error !== undefined) {
@@ -49,7 +50,7 @@ export const EditArticle = memo(
         }
       />
     )
-  }
+  },
 )
 
 EditArticle.displayName = 'EditArticle'

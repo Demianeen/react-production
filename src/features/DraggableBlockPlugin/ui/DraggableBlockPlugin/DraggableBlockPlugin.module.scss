@@ -1,0 +1,24 @@
+.draggableMenu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.3rem 1px;
+  cursor: grab;
+  border-radius: 4px;
+  opacity: 0;
+  will-change: transform;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  &:hover {
+    &.deprecated {
+      background-color: var(--inverted-bg-color);
+    }
+
+    &.redesigned {
+      background-color: var(--hint-redesigned);
+    }
+  }
+}
