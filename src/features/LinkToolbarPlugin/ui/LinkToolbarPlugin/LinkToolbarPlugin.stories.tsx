@@ -11,7 +11,12 @@ export default {
   },
   args: {},
   parameters: {},
-  decorators: [LexicalDecorator([LinkNode], true)],
+  decorators: [
+    LexicalDecorator({
+      nodes: [LinkNode],
+      withEditor: true,
+    }),
+  ],
 } as Meta<typeof LinkToolbarPlugin>
 
 type Story = StoryObj<typeof LinkToolbarPlugin>

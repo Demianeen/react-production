@@ -13,7 +13,11 @@ export default {
     isOpen: true,
   },
   parameters: {},
-  decorators: [LexicalDecorator([LinkNode])],
+  decorators: [
+    LexicalDecorator({
+      nodes: [LinkNode],
+    }),
+  ],
 } as Meta<typeof LinkPrompt>
 
 type Story = StoryObj<typeof LinkPrompt>

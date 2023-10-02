@@ -13,7 +13,11 @@ export default {
     isOpen: true,
   },
   parameters: {},
-  decorators: [LexicalDecorator([ImageNode])],
+  decorators: [
+    LexicalDecorator({
+      nodes: [ImageNode],
+    }),
+  ],
 } as Meta<typeof ImagePrompt>
 
 type Story = StoryObj<typeof ImagePrompt>

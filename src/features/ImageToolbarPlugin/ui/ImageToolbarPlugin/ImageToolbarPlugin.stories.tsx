@@ -9,7 +9,12 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  decorators: [LexicalDecorator([ImageNode], true)],
+  decorators: [
+    LexicalDecorator({
+      nodes: [ImageNode],
+      withEditor: true,
+    }),
+  ],
 } as Meta<typeof ImageToolbarPlugin>
 
 type Story = StoryObj<typeof ImageToolbarPlugin>

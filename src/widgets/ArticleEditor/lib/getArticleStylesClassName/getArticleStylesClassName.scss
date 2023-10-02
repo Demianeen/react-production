@@ -68,21 +68,21 @@ $list-padding: 0 0 0 1.5rem;
     text-wrap: nowrap;
     tab-size: 2;
     background-color: var(--code-bg);
-  }
 
-  .code {
-    padding-left: 3.25rem;
+    &[data-gutter] {
+      padding-left: 3.25rem;
 
-    &::before {
-      position: absolute;
-      top: 0;
-      left: 0;
-      min-width: 1.5625rem;
-      padding: 0.5rem;
-      color: #777;
-      text-align: right;
-      white-space: pre-wrap;
-      content: attr(data-gutter);
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        min-width: 1.5625rem;
+        padding: 0.5rem;
+        color: #777;
+        text-align: right;
+        white-space: pre-wrap;
+        content: attr(data-gutter);
+      }
     }
   }
 

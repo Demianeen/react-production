@@ -15,7 +15,11 @@ export default {
     altText: 'altText',
     caption: createEditor(),
   },
-  decorators: [LexicalDecorator([ImageNode])],
+  decorators: [
+    LexicalDecorator({
+      nodes: [ImageNode],
+    }),
+  ],
 } as Meta<typeof ImageComponent>
 
 type Story = StoryObj<typeof ImageComponent>
