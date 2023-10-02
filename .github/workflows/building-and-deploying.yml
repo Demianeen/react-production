@@ -18,6 +18,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ vars.NODE_VERSION }}
+      - run: npm cache verify
       - name: Install modules
         run: npm ci
       - name: build production project
