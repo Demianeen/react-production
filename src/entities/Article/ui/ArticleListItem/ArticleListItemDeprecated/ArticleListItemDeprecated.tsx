@@ -100,7 +100,7 @@ export const ArticleListItemDeprecated = memo(
               <Text text={article.user.username} />
               <Text
                 className={styles.date}
-                text={getDateText(JSON.parse(article.createdAt))}
+                text={getDateText(new Date(article.createdAt))}
               />
             </HStack>
             <Text title={article.title} />

@@ -97,7 +97,7 @@ export const ArticleListItemRedesigned = memo(
               src={article.user.avatar}
               user={article.user}
             />
-            {article.createdAt}
+            {getDateText(new Date(article.createdAt))}
           </HStack>
           <Title level={1} tag='h2'>
             {article.title}
@@ -106,12 +106,6 @@ export const ArticleListItemRedesigned = memo(
             {article.subtitle}
           </Title>
           {image}
-          {/* FIXME: show first paragraph */}
-          {/* {textBlock !== undefined && (
-            <p className={styles.textBlock}>
-              {textBlock.paragraphs.slice(0, 2).join(' ')}
-            </p>
-          )} */}
           <HStack
             as='footer'
             justify='between'

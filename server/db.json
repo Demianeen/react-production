@@ -585,6 +585,17 @@
       "userId": 1,
       "createdAt": "Fri Sep 29 2023 09:46:52 GMT+0100 (British Summer Time)",
       "views": 1878
+    },
+    {
+      "id": 33,
+      "title": "How to master js?",
+      "subtitle": "Learn js in 2023!",
+      "img": "https://miro.medium.com/v2/resize:fit:1400/0*VI3EHJAfTzfaQdiu",
+      "contentHtmlString": "<p class=\"paragraph\" dir=\"ltr\" style=\"text-align: start;\"><span>A </span><b><strong class=\"bold\">promise</strong></b><span> can be created use the&nbsp;</span><a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise\" target=\"_blank\" rel=\"noopener ugc nofollow\" class=\"link\"><b><strong class=\"bold\">Promise</strong></b></a><span>&nbsp;</span><u><span class=\"underline\">object</span></u><span>. </span><i><em class=\"italic\">For instance</em></i><span>, we could make a </span><b><strong class=\"bold\">promise</strong></b><span> around&nbsp;</span><code><span>setTimeout</span></code><span>:</span></p><pre spellcheck=\"false\" data-highlight-language=\"javascript\"><span class=\"tokenAttr\">const</span><span> later </span><span class=\"tokenOperator\">=</span><span> </span><span class=\"tokenAttr\">new</span><span> </span><span class=\"tokenFunction\">Promise</span><span class=\"tokenPunctuation\">(</span><span class=\"tokenPunctuation\">(</span><span>resolve</span><span class=\"tokenPunctuation\">)</span><span> </span><span class=\"tokenOperator\">=&gt;</span><span> </span><span class=\"tokenPunctuation\">{</span><br><span>  </span><span class=\"tokenFunction\">setTimeout</span><span class=\"tokenPunctuation\">(</span><span class=\"tokenPunctuation\">(</span><span class=\"tokenPunctuation\">)</span><span> </span><span class=\"tokenOperator\">=&gt;</span><span> </span><span class=\"tokenPunctuation\">{</span><br><span>    </span><span class=\"tokenFunction\">resolve</span><span class=\"tokenPunctuation\">(</span><span class=\"tokenPunctuation\">)</span><span class=\"tokenPunctuation\">;</span><br><span>  </span><span class=\"tokenPunctuation\">}</span><span class=\"tokenPunctuation\">,</span><span> </span><span class=\"tokenProperty\">3000</span><span class=\"tokenPunctuation\">)</span><span class=\"tokenPunctuation\">;</span><br><span class=\"tokenPunctuation\">}</span><span class=\"tokenPunctuation\">)</span><span class=\"tokenPunctuation\">;</span><span>later</span><span class=\"tokenPunctuation\">.</span><span class=\"tokenFunction\">then</span><span class=\"tokenPunctuation\">(</span><span class=\"tokenPunctuation\">(</span><span class=\"tokenPunctuation\">)</span><span> </span><span class=\"tokenOperator\">=&gt;</span><span> </span><span class=\"tokenPunctuation\">{</span><br><span>  console</span><span class=\"tokenPunctuation\">.</span><span class=\"tokenFunction\">log</span><span class=\"tokenPunctuation\">(</span><span class=\"tokenSelector\">'I got called later!'</span><span class=\"tokenPunctuation\">)</span><span class=\"tokenPunctuation\">;</span><br><span class=\"tokenPunctuation\">}</span><span class=\"tokenPunctuation\">)</span><span class=\"tokenPunctuation\">;</span><span>later</span><span class=\"tokenPunctuation\">.</span><span class=\"tokenFunction\">then</span><span class=\"tokenPunctuation\">(</span><span class=\"tokenPunctuation\">(</span><span class=\"tokenPunctuation\">)</span><span> </span><span class=\"tokenOperator\">=&gt;</span><span> </span><span class=\"tokenPunctuation\">{</span><br><span>  console</span><span class=\"tokenPunctuation\">.</span><span class=\"tokenFunction\">log</span><span class=\"tokenPunctuation\">(</span><span class=\"tokenSelector\">'I got called later too!'</span><span class=\"tokenPunctuation\">)</span><span class=\"tokenPunctuation\">;</span><br><span class=\"tokenPunctuation\">}</span><span class=\"tokenPunctuation\">)</span><span class=\"tokenPunctuation\">;</span></pre><figure class=\"imageWrapper\"><img class=\"img\" src=\"https://miro.medium.com/v2/resize:fit:1400/0*VI3EHJAfTzfaQdiu\" alt=\"\"><div class=\"captionWrapper\"><figure class=\"articleEditor\"></figure></div></figure><figure class=\"imageWrapper\"><img class=\"img\" src=\"https://miro.medium.com/v2/resize:fit:1400/0*VI3EHJAfTzfaQdiu\" alt=\"\"><div class=\"captionWrapper\"><figure class=\"articleEditor\">Captions</figure></div></figure>",
+      "types": ["IT"],
+      "userId": 1,
+      "createdAt": "Mon Oct 02 2023 11:52:34 GMT+0100 (British Summer Time)",
+      "views": 7173
     }
   ],
   "comments": [
@@ -694,7 +705,7 @@
         "isArticleRatingEnabled": true,
         "isArticleCreationEnabled": true,
         "isCounterEnabled": true,
-        "isAppRedesigned": true
+        "isAppRedesigned": false
       },
       "avatar": "https://lablab.ai/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Flablab-static-eu%2Fimages%252Fusers%252Fcldzwest200dfb70s3i8pc564_5w13le5_picture.jpg&w=256&q=75"
     },
