@@ -10,7 +10,12 @@ export default {
   },
   args: {},
   parameters: {},
-  decorators: [LexicalDecorator([], true)],
+  decorators: [
+    LexicalDecorator({
+      nodes: [],
+      withEditor: true,
+    }),
+  ],
 } as Meta<typeof TextFormatToolbarPlugin>
 
 type Story = StoryObj<typeof TextFormatToolbarPlugin>

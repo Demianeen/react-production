@@ -8,7 +8,9 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  decorators: [LexicalDecorator(ToolbarNodes, true)],
+  decorators: [
+    LexicalDecorator({ nodes: ToolbarNodes, withEditor: true }),
+  ],
 } as Meta<typeof ToolbarPlugin>
 
 type Story = StoryObj<typeof ToolbarPlugin>
