@@ -4,13 +4,6 @@ import { getArticleDetailsCanEdit } from './getArticleDetailsCanEdit'
 describe('getArticleDetailsCanEdit', () => {
   it('should return the canEdit true', () => {
     const state: DeepPartial<StateSchema> = {
-      articleDetails: {
-        data: {
-          user: {
-            id: 1,
-          },
-        },
-      },
       user: {
         authData: {
           id: 1,
@@ -18,20 +11,13 @@ describe('getArticleDetailsCanEdit', () => {
       },
     }
 
-    expect(getArticleDetailsCanEdit(state as StateSchema)).toEqual(
-      true
+    expect(getArticleDetailsCanEdit(state as StateSchema, 1)).toEqual(
+      true,
     )
   })
 
   it('should return the canEdit false', () => {
     const state: DeepPartial<StateSchema> = {
-      articleDetails: {
-        data: {
-          user: {
-            id: 1,
-          },
-        },
-      },
       user: {
         authData: {
           id: 2,
@@ -39,16 +25,16 @@ describe('getArticleDetailsCanEdit', () => {
       },
     }
 
-    expect(getArticleDetailsCanEdit(state as StateSchema)).toEqual(
-      false
+    expect(getArticleDetailsCanEdit(state as StateSchema, 1)).toEqual(
+      false,
     )
   })
 
   it('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {}
 
-    expect(getArticleDetailsCanEdit(state as StateSchema)).toEqual(
-      false
-    )
+    expect(
+      getArticleDetailsCanEdit(state as StateSchema, undefined),
+    ).toEqual(false)
   })
 })

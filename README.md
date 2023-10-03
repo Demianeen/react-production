@@ -29,13 +29,15 @@ This repository was created as part of the UlbiTV's course "To production on Rea
 - `npm run test:ui` - Run screenshot tests with loki
 - `npm run test:ui:ok` - Confirm new screenshots
 - `npm run test:ui:ci` - Run screenshot tests in CI
-- `test:ui:report` - Generate full report for screenshot tests
+- `npm run test:ui:report` - Generate full report for screenshot tests
 - `npm run test:ui:report:chrome` - Generate full report for screenshot tests and open it in Chrome
 - `npm run test:ui:report:arc` - Generate full report for screenshot tests and open it in Arc
 - `npm run test:ui:json` - Generate json report for screenshot tests
 - `npm run test:ui:html` - Generate HTML report for screenshot tests
 - `npm run generate:slice` - Script for generating FSD slices,
 - `npm run prepare` - Pre-commit hooks
+- `npm run rename:slice` - Script for renaming FSD slices, Takes 3 arguments: 1. layer, 2. old slice name, 3. new slice name.
+- `npm run rename:folder` - Script for renaming folders. Takes 3 arguments: 1. pathToFolder, 2. old name, 3. new name.
 - `npm run remove:feature` - Removes feature using feature flag name, and state on/off (read more about feature flags [here](#working-with-feature-flags))
 - `npm run check:layerDocs` - Checks if README.md files in each layer in src/ are up to date with the public API. Read more [here](scripts/checkLayerDocs/index.ts)
 - `npm run postinstall` - Apply patches after npm i
@@ -220,6 +222,7 @@ Reusable parts that are related to particular entity. They are later merged into
 - [SortField](./src/entities/SortField/README.md): reusable sort field related components and functionality (e.g. SelectSortField).
 - [User](./src/entities/User/README.md): reusable user related components and functionality.
 - [View](./src/entities/View/README.md): reusable view related components and functionality (e.g. SelectView).
+- [Editor](./src/entities/Editor/README.md):
 
 ### Features
 
@@ -243,6 +246,17 @@ One feature = one functionality.
 - [ToggleDesign](./src/features/ToggleDesign/README.md): allows users to toggle between different designs.
 - [UserDropdown](./src/features/UserDropdown/README.md): displays a dropdown menu for the user.
 - [UserNavigation](./src/features/UserNavigation/README.md): displays navigation links for the user.
+- [CreateArticle](./src/features/CreateArticle/README.md): allows users to create or edit articles.
+- [ImageToolbarPlugin](./src/features/ImageToolbarPlugin/README.md):
+- [AutoLinkPlugin](./src/features/AutoLinkPlugin/README.md):
+- [CodeActionMenuPlugin](./src/features/CodeActionMenuPlugin/README.md):
+- [CodeBlockToolbarPlugin](./src/features/CodeBlockToolbarPlugin/README.md):
+- [SelectBlockTypeToolbarPlugin](./src/features/SelectBlockTypeToolbarPlugin/README.md):
+- [LinkToolbarPlugin](./src/features/LinkToolbarPlugin/README.md):
+- [TextFormatToolbarPlugin](./src/features/TextFormatToolbarPlugin/README.md):
+- [CodeHighlightPlugin](./src/features/CodeHighlightPlugin/README.md):
+- [HeadingPlugin](./src/features/HeadingPlugin/README.md):
+- [DraggableBlockPlugin](./src/features/DraggableBlockPlugin/README.md):
 
 ### Widgets
 
@@ -257,6 +271,8 @@ Widgets merge reusable entity blocks with features, creating meaningful blocks.
 - [PageLoader](./src/widgets/PageLoader/README.md): displays a full page loading spinner while a page is being loaded.
 - [ScrollToolbar](./src/widgets/ScrollToolbar/README.md): displays a toolbar to go to the top of the page that appears when the user scrolls down the page.
 - [Sidebar](./src/widgets/Sidebar/README.md): displays a sidebar with links to different sections of the website.
+- [CreateArticle](./src/widgets/CreateArticle/README.md):
+- [ArticleEditor](./src/widgets/ArticleEditor/README.md):
 
 ### Pages
 

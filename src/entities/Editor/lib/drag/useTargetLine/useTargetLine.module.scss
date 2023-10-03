@@ -1,0 +1,10 @@
+.targetLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4px;
+  pointer-events: none;
+  background: deepskyblue;
+  opacity: 0;
+  will-change: transform;
+}

@@ -5,6 +5,7 @@ import { Avatar } from '@/shared/ui/redesigned/Avatar'
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
 import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
+import { getDateText } from '@/shared/lib/getDateText/getDateText'
 import styles from './ArticleAdditionalInfo.module.scss'
 
 interface ArticleAdditionalInfoProps {
@@ -22,23 +23,23 @@ export const ArticleAdditionalInfo = memo(
         gap={2}
         className={classNamesNew(
           styles.articleAdditionalInfo,
-          className
+          className,
         )}
         data-testid='ArticleAdditionalInfo'
       >
         <HStack gap={0.5}>
           <Avatar src={user.avatar} user={user} />
           <span data-testid='ArticleAdditionalInfo.CreatedAt'>
-            {createdAt}
+            {getDateText(new Date(createdAt))}
           </span>
         </HStack>
-        <EditArticle id={id} />
+        <EditArticle id={id} authorId={article.user.id} />
         <span data-testid='ArticleAdditionalInfo.Views'>
           {t('views', { count: views })}
         </span>
       </VStack>
     )
-  }
+  },
 )
 
 ArticleAdditionalInfo.displayName = 'ArticleAdditionalInfo'

@@ -3,7 +3,6 @@ import { classNames } from '@/shared/lib/classNames/classNames'
 import { Button } from '@/shared/ui/redesigned/Button'
 import { Input } from '@/shared/ui/redesigned/Input'
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
-
 import { useTranslation } from 'react-i18next'
 import { Spinner } from '@/shared/ui/redesigned/Spinner'
 import { Title } from '@/shared/ui/redesigned/Title'
@@ -84,7 +83,7 @@ const LoginFormRedesigned = memo(
         </Button>
       </VStack>
     )
-  }
+  },
 )
 
 LoginFormRedesigned.displayName = 'LoginForm'

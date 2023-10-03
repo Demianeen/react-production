@@ -18,12 +18,9 @@ import { Title } from '@/shared/ui/redesigned/Title'
 import { useFocus } from '@/shared/lib/hooks/useFocus/useFocus'
 import { useTab } from '@/shared/lib/hooks/useTab/useTab'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
-import { ArticleBlockType } from '../../../model/const/articleBlockType'
+import { getDateText } from '@/shared/lib/getDateText/getDateText'
 import type { OnOpenArticle } from '../../ArticleList/VirtualizedArticleList'
-import type {
-  Article,
-  ArticleTextBlock,
-} from '../../../model/types/article'
+import type { Article } from '../../../model/types/article'
 import styles from './ArticleListItemRedesigned.module.scss'
 
 export interface ArticleListItemRedesignedProps extends TestProps {
@@ -59,7 +56,7 @@ export const ArticleListItemRedesigned = memo(
           fallback={<Skeleton className={styles.img} />}
         />
       ),
-      [article.img, article.title]
+      [article.img, article.title],
     )
 
     const views = useMemo(
@@ -69,7 +66,7 @@ export const ArticleListItemRedesigned = memo(
           <span data-testid={`${testId}.Views`}>{article.views}</span>
         </HStack>
       ),
-      [article.views, testId]
+      [article.views, testId],
     )
 
     const onClick = () => {
@@ -81,15 +78,7 @@ export const ArticleListItemRedesigned = memo(
       vStackRef.current?.scrollIntoView()
     }, [isTabLastKey])
 
-    const textBlock = useMemo(() => {
-      if (view === View.LIST) {
-        return article.blocks.find(
-          (block) => block.type === ArticleBlockType.TEXT
-        ) as ArticleTextBlock | undefined
-      }
-      return undefined
-    }, [article.blocks, view])
-
+    // TODO: Add ability to read first paragraph of article in list view
     if (view === View.LIST) {
       return (
         <VStack
@@ -108,7 +97,7 @@ export const ArticleListItemRedesigned = memo(
               src={article.user.avatar}
               user={article.user}
             />
-            {article.createdAt}
+            {getDateText(new Date(article.createdAt))}
           </HStack>
           <Title level={1} tag='h2'>
             {article.title}
@@ -117,11 +106,6 @@ export const ArticleListItemRedesigned = memo(
             {article.subtitle}
           </Title>
           {image}
-          {textBlock !== undefined && (
-            <p className={styles.textBlock}>
-              {textBlock.paragraphs.slice(0, 2).join(' ')}
-            </p>
-          )}
           <HStack
             as='footer'
             justify='between'
@@ -162,7 +146,7 @@ export const ArticleListItemRedesigned = memo(
               [styles.focused]: isLinkFocused && isTabLastKey.current,
             },
             className,
-            styles[view]
+            styles[view],
           )}
           padding={0}
         >
@@ -176,7 +160,9 @@ export const ArticleListItemRedesigned = memo(
               justify='between'
               maxWidth
             >
-              <span className={styles.date}>{article.createdAt}</span>
+              <span className={styles.date}>
+                {getDateText(new Date(article.createdAt))}
+              </span>
               <span data-testid='ArticleListItem.Views'>{views}</span>
             </HStack>
             <HStack gap={0.25} className={styles.avatar}>
@@ -191,7 +177,7 @@ export const ArticleListItemRedesigned = memo(
         </Card>
       </AppLink>
     )
-  }
+  },
 )
 
 ArticleListItemRedesigned.displayName = 'ArticleListItem'

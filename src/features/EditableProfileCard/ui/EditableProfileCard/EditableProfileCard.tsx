@@ -10,6 +10,7 @@ import { VStack } from '@/shared/ui/redesigned/Stack'
 import { Typography } from '@/shared/ui/redesigned/Typography'
 import { ToggleFeature } from '@/shared/lib/features'
 import type { AsyncReducersList } from '@/app/providers/StoreProvider/config/stateSchema'
+import { useConfirmBeforeLeave } from '@/shared/lib/hooks/useConfirmBeforeLeave/useConfirmBeforeLeave'
 import { useProfileForm } from '../../model/selectors/getProfileForm/getProfileForm'
 import { ProfileValidationError } from '../../model/const/profileValidationError'
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData'
@@ -44,27 +45,29 @@ export const EditableProfileCard = memo(
     const isReadonly = useProfileIsReadonly()
     const validationErrors = useProfileValidationErrors()
 
+    useConfirmBeforeLeave(!isReadonly)
+
     const validationErrorMessage: Record<
       ProfileValidationError,
       string
     > = {
       [ProfileValidationError.MISSING_FIRST_NAME]: t(
-        'First name is required'
+        'First name is required',
       ),
       [ProfileValidationError.MISSING_LAST_NAME]: t(
-        'Last name is required'
+        'Last name is required',
       ),
       [ProfileValidationError.MISSING_AGE]: t('Age is required'),
       [ProfileValidationError.INCORRECT_AGE]: t(
-        'You need to be at least 18 years old'
+        'You need to be at least 18 years old',
       ),
       [ProfileValidationError.MISSING_CITY]: t('City is required'),
       [ProfileValidationError.MISSING_USERNAME]: t(
-        'Username is required'
+        'Username is required',
       ),
       [ProfileValidationError.NO_DATA]: t('Profile data is missing'),
       [ProfileValidationError.UNKNOWN_SERVER_ERROR]: t(
-        'Unknown server error happened'
+        'Unknown server error happened',
       ),
     }
 
@@ -77,10 +80,10 @@ export const EditableProfileCard = memo(
         dispatch(
           profileActions.updateProfileForm({
             firstName: value,
-          })
+          }),
         )
       },
-      [dispatch]
+      [dispatch],
     )
 
     const onChangeLastName = useCallback(
@@ -88,10 +91,10 @@ export const EditableProfileCard = memo(
         dispatch(
           profileActions.updateProfileForm({
             lastName: value,
-          })
+          }),
         )
       },
-      [dispatch]
+      [dispatch],
     )
 
     const onChangeAge = useCallback(
@@ -100,10 +103,10 @@ export const EditableProfileCard = memo(
         dispatch(
           profileActions.updateProfileForm({
             age: Number(value),
-          })
+          }),
         )
       },
-      [dispatch]
+      [dispatch],
     )
 
     const onChangeCity = useCallback(
@@ -111,10 +114,10 @@ export const EditableProfileCard = memo(
         dispatch(
           profileActions.updateProfileForm({
             city: value,
-          })
+          }),
         )
       },
-      [dispatch]
+      [dispatch],
     )
 
     const onChangeUsername = useCallback(
@@ -122,10 +125,10 @@ export const EditableProfileCard = memo(
         dispatch(
           profileActions.updateProfileForm({
             username: value,
-          })
+          }),
         )
       },
-      [dispatch]
+      [dispatch],
     )
 
     const onChangeAvatar = useCallback(
@@ -133,10 +136,10 @@ export const EditableProfileCard = memo(
         dispatch(
           profileActions.updateProfileForm({
             avatar: value,
-          })
+          }),
         )
       },
-      [dispatch]
+      [dispatch],
     )
 
     const onChangeCurrency = useCallback(
@@ -144,10 +147,10 @@ export const EditableProfileCard = memo(
         dispatch(
           profileActions.updateProfileForm({
             currency,
-          })
+          }),
         )
       },
-      [dispatch]
+      [dispatch],
     )
 
     const onChangeCountry = useCallback(
@@ -155,15 +158,15 @@ export const EditableProfileCard = memo(
         dispatch(
           profileActions.updateProfileForm({
             country,
-          })
+          }),
         )
       },
-      [dispatch]
+      [dispatch],
     )
 
     const onSubmit = useCallback(
       () => dispatch(updateProfileData()),
-      [dispatch]
+      [dispatch],
     )
 
     return (
@@ -210,7 +213,7 @@ export const EditableProfileCard = memo(
         />
       </VStack>
     )
-  }
+  },
 )
 
 EditableProfileCard.displayName = 'EditableProfileCard'

@@ -1,5 +1,5 @@
 export const rtkApiTemplate = (
-  apiName: string
+  apiName: string,
 ) => `import { rtkApi } from '@/shared/api/rtkApi'
 import type { Article } from 'entities/Article'
 

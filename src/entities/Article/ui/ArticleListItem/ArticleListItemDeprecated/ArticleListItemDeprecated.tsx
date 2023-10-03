@@ -15,14 +15,10 @@ import { Button } from '@/shared/ui/deprecated/Button'
 import { Avatar } from '@/shared/ui/deprecated/Avatar'
 import { Card } from '@/shared/ui/deprecated/Card'
 import { AppImage } from '@/shared/ui/redesigned/AppImage'
-import { ArticleBlockType } from '../../../model/const/articleBlockType'
+import { getDateText } from '@/shared/lib/getDateText/getDateText'
 import type { OnOpenArticle } from '../../ArticleList/VirtualizedArticleList'
-import type {
-  Article,
-  ArticleTextBlock,
-} from '../../../model/types/article'
+import type { Article } from '../../../model/types/article'
 import styles from './ArticleListItemDeprecated.module.scss'
-import { ArticleTextBlockComponent } from '../../ArticleTextBlockComponent/ArticleTextBlockComponent'
 
 interface ArticleListItemDeprecatedProps extends TestProps {
   className?: string
@@ -54,7 +50,7 @@ export const ArticleListItemDeprecated = memo(
           fallback={<Skeleton className={styles.img} />}
         />
       ),
-      [article.img, article.title]
+      [article.img, article.title],
     )
 
     const types = useMemo(
@@ -64,7 +60,7 @@ export const ArticleListItemDeprecated = memo(
           className={styles.types}
         />
       ),
-      [article.types]
+      [article.types],
     )
 
     const views = useMemo(
@@ -79,21 +75,12 @@ export const ArticleListItemDeprecated = memo(
           <Icon Svg={EyeIcon} height='1.25rem' width='1.25rem' />
         </HStack>
       ),
-      [article.views, testId]
+      [article.views, testId],
     )
 
     const onClick = () => {
       return () => onOpenArticle?.({ article, index })
     }
-
-    const textBlock = useMemo(() => {
-      if (view === View.LIST) {
-        return article.blocks.find(
-          (block) => block.type === ArticleBlockType.TEXT
-        ) as ArticleTextBlock | undefined
-      }
-      return undefined
-    }, [article.blocks, view])
 
     if (view === View.LIST) {
       return (
@@ -113,18 +100,12 @@ export const ArticleListItemDeprecated = memo(
               <Text text={article.user.username} />
               <Text
                 className={styles.date}
-                text={article.createdAt}
+                text={getDateText(new Date(article.createdAt))}
               />
             </HStack>
             <Text title={article.title} />
             {types}
             {image}
-            {textBlock !== undefined && (
-              <ArticleTextBlockComponent
-                block={textBlock}
-                className={styles.textBlock}
-              />
-            )}
             <HStack
               as='footer'
               justify='between'
@@ -167,7 +148,10 @@ export const ArticleListItemDeprecated = memo(
         >
           <div className={styles.imageWrapper}>
             {image}
-            <Text text={article.createdAt} className={styles.date} />
+            <Text
+              text={getDateText(new Date(article.createdAt))}
+              className={styles.date}
+            />
           </div>
           <HStack
             className={styles.infoWrapper}
@@ -185,7 +169,7 @@ export const ArticleListItemDeprecated = memo(
         </Card>
       </AppLink>
     )
-  }
+  },
 )
 
 ArticleListItemDeprecated.displayName = 'ArticleListItem'

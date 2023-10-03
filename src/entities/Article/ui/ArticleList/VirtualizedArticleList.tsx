@@ -107,7 +107,7 @@ export const VirtualizedArticleList = forwardRef<
       startIndex,
       onOpenArticle,
     },
-    ref
+    ref,
   ) => {
     const gridRef = useRef<VirtuosoGridHandle | null>(null)
     const listRef = useRef<VirtuosoHandle | null>(null)
@@ -122,7 +122,7 @@ export const VirtualizedArticleList = forwardRef<
         }
         return gridRef.current as VirtuosoGridHandle
       },
-      [isListView]
+      [isListView],
     )
 
     useEffect(() => {
@@ -153,7 +153,7 @@ export const VirtualizedArticleList = forwardRef<
           index={index}
         />
       ),
-      [onOpenArticle, target, view]
+      [onOpenArticle, target, view],
     )
 
     const [containerRef, setContainerRef] =
@@ -171,7 +171,7 @@ export const VirtualizedArticleList = forwardRef<
       const listClassName = classNamesNew(styles.list, className)
 
       return (
-        <div ref={setContainerRef}>
+        <div ref={setContainerRef} className={styles.listContainer}>
           {Header && <Header className={styles.header} />}
           <Virtuoso<Article>
             ref={listRef}
@@ -203,7 +203,7 @@ export const VirtualizedArticleList = forwardRef<
     const listClassName = classNamesNew(styles.grid, className)
 
     return (
-      <div ref={setContainerRef}>
+      <div ref={setContainerRef} className={styles.listContainer}>
         {Header && <Header className={styles.header} />}
         <VirtuosoGrid<Article>
           ref={gridRef}
@@ -229,7 +229,7 @@ export const VirtualizedArticleList = forwardRef<
         )}
       </div>
     )
-  }
+  },
 )
 
 VirtualizedArticleList.displayName = 'VirtualizedArticleList'

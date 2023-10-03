@@ -2,22 +2,18 @@
   width: 100%;
 }
 
-.logo {
-  width: 12.5rem;
-  height: 12.5rem;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: center;
+.thumbnail {
+  margin: 1rem 0 2.75rem;
 }
 
 .title {
-  margin: 2.75rem 0 0.75rem;
+  margin: 0 0 0.75rem;
 }
 
 .skeletonTextBlock {
   margin-top: 1.5rem;
 }
 
-.block {
+.content {
   margin-top: 1rem;
 }

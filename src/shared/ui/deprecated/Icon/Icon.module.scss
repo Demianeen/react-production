@@ -32,4 +32,8 @@
   &.invertedSecondary {
     color: var(--inverted-secondary-color);
   }
+
+  &.error {
+    color: red;
+  }
 }

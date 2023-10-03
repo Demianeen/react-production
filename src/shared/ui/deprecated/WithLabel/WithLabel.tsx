@@ -1,5 +1,4 @@
 import type { LabelHTMLAttributes, ReactNode } from 'react'
-import { memo } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { VStack } from '../../redesigned/Stack'
 import styles from './WithLabel.module.scss'
@@ -15,36 +14,38 @@ interface WithLabelProps extends HTMLLabelProps {
   children: ReactNode
   wrapperClassName?: string
   maxWidth?: boolean
+  /**
+   * Adds asterisk to label
+   */
+  required: boolean
 }
 
 /**
  * Use components from redesigned folder
  * @deprecated
  */
-export const WithLabel = memo(
-  ({
-    className,
-    wrapperClassName,
-    label,
-    children,
-    maxWidth,
-    ...props
-  }: WithLabelProps) => {
-    return (
-      <VStack className={wrapperClassName} maxWidth={maxWidth}>
-        {label && (
-          <label
-            htmlFor={label}
-            className={classNames(styles.label, {}, [className])}
-            {...props}
-          >
-            {label}:{' '}
-          </label>
-        )}
-        {children}
-      </VStack>
-    )
-  }
-)
-
-WithLabel.displayName = 'WithLabel'
+export const WithLabel = ({
+  className,
+  wrapperClassName,
+  label,
+  children,
+  maxWidth,
+  required = false,
+  ...props
+}: WithLabelProps) => {
+  return (
+    <VStack className={wrapperClassName} maxWidth={maxWidth}>
+      {label && (
+        <label
+          htmlFor={label}
+          className={classNames(styles.label, {}, [className])}
+          {...props}
+        >
+          {label}
+          {required ? '*' : ''}:{' '}
+        </label>
+      )}
+      {children}
+    </VStack>
+  )
+}

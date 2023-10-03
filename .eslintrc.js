@@ -85,6 +85,12 @@ module.exports = {
     // we use underlines for webpack env variables
     'no-underscore-dangle': 0,
 
+    'padding-line-between-statements': [
+      'error',
+      // enforces no blank line between imports
+      { blankLine: 'never', prev: 'import', next: 'import' },
+    ],
+
     // enforces consistent naming
     '@typescript-eslint/naming-convention': [
       2,
@@ -165,6 +171,7 @@ module.exports = {
       {
         prefer: 'type-imports',
         fixStyle: 'separate-type-imports',
+        disallowTypeAnnotations: false,
       },
     ],
 

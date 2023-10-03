@@ -65,7 +65,6 @@ export interface GetFlexClassNameProps {
    * @description Gap between flex items
    */
   gap?: FlexGap
-  height?: string
   /**
    * @description Flag to set width: 100%
    */
@@ -96,6 +95,6 @@ export const getFlexClassName = ({
     alignMap[align],
     directionMap[direction],
     wrap && wrapMap[wrap],
-    gap && gapMap[gap]
+    gap && gapMap[gap],
   )
 }

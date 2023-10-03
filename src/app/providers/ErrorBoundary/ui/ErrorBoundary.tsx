@@ -1,12 +1,15 @@
-import type { ErrorInfo, ReactNode } from 'react'
+import type { ErrorInfo, ReactElement } from 'react'
 import React from 'react'
 import { PageError } from '@/widgets/PageError'
 import { SuspenseWithSpinner } from '@/shared/ui/deprecated/SuspenseWithSpinner'
 import { Page } from '@/widgets/Page'
 import { toggleFeature } from '@/shared/lib/features'
 
+export type OnError = (error: Error, errorInfo: ErrorInfo) => void
+
 interface ErrorBoundaryProps {
-  children: ReactNode
+  children: ReactElement
+  onError?: OnError
 }
 
 interface ErrorBoundaryState {
@@ -27,8 +30,11 @@ class ErrorBoundary extends React.Component<
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    const { onError } = this.props
+
     // eslint-disable-next-line no-console
     console.log(error, errorInfo)
+    onError?.(error, errorInfo)
   }
 
   render() {

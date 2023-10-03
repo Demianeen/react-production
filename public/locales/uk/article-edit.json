@@ -1,4 +1,18 @@
 {
   "Edit article": "Редагувати статтю",
-  "Create new article": "Створити нову статтю"
+  "Create new article": "Створити нову статтю",
+  "You cannot edit this article": "Ви не можете редагувати цю статтю",
+  "Enter text here": "Введіть текст тут",
+  "Edit": "Редагувати",
+  "Publish": "Опублікувати",
+  "Error happened while creating article": "Сталася помилка при створенні статті",
+  "Javascript news 2023": "Новини Javascript 2023",
+  "Title": "Заголовок",
+  "JavaScript updates and how to run JS code in a browser": "Оновлення JavaScript та як запустити JS-код у браузері",
+  "Subtitle": "Підзаголовок",
+  "Link to image": "Посилання на зображення",
+  "Image": "Зображення",
+  "Thumbnail": "Заставка",
+  "Content": "Контент",
+  "Types": "Типи"
 }

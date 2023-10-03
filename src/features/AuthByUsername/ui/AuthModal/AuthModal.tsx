@@ -12,8 +12,6 @@ import {
 } from '@/shared/ui/deprecated/Button'
 import { Text } from '@/shared/ui/deprecated/Text'
 import { HStack } from '@/shared/ui/redesigned/Stack'
-import { useDevice } from '@/shared/lib/hooks/useDevice/useDevice'
-import { Drawer } from '@/shared/ui/redesigned/Drawer'
 import RegistrationFormAsync from '../RegistrationForm/RegistrationForm'
 import { LoginFormAsync } from '../LoginForm/LoginForm.async'
 
@@ -38,20 +36,17 @@ export const AuthModal = ({
     }
   }, [])
 
-  const { isMobile } = useDevice()
-  const Wrapper = isMobile
-    ? Drawer
-    : toggleFeature({
-        name: 'isAppRedesigned',
-        on: () => Modal,
-        off: () => ModalDeprecated,
-      })
+  const ModalComponent = toggleFeature({
+    name: 'isAppRedesigned',
+    on: () => Modal,
+    off: () => ModalDeprecated,
+  })
 
   return (
     <ToggleFeature
       name='isAppRedesigned'
       on={
-        <Wrapper
+        <ModalComponent
           isOpen={isOpen}
           onClose={onClose}
           className={className}
@@ -88,10 +83,10 @@ export const AuthModal = ({
               </>
             )}
           </Suspense>
-        </Wrapper>
+        </ModalComponent>
       }
       off={
-        <Wrapper
+        <ModalComponent
           isOpen={isOpen}
           onClose={onClose}
           className={className}
@@ -128,7 +123,7 @@ export const AuthModal = ({
               </>
             )}
           </SuspenseWithSpinner>
-        </Wrapper>
+        </ModalComponent>
       }
     />
   )

@@ -10,7 +10,7 @@ interface UpdateFeatureFlagsArgs {
   featureFlags: FeatureFlags
 }
 
-const userApi = rtkApi.injectEndpoints({
+const featureFlagsApi = rtkApi.injectEndpoints({
   endpoints: (builder) => ({
     updateFeatureFlags: builder.mutation<
       User,
@@ -33,7 +33,7 @@ const userApi = rtkApi.injectEndpoints({
       transformResponse: (response: User) => {
         localStorage.setItem(
           FEATURE_FLAGS_LOCALSTORAGE_KEY,
-          JSON.stringify(response.features)
+          JSON.stringify(response.features),
         )
 
         window.location.reload()
@@ -45,6 +45,6 @@ const userApi = rtkApi.injectEndpoints({
 })
 
 export const updateFeatureFlagsMutation =
-  userApi.endpoints.updateFeatureFlags.initiate
+  featureFlagsApi.endpoints.updateFeatureFlags.initiate
 
-export const { useUpdateFeatureFlagsMutation } = userApi
+export const { useUpdateFeatureFlagsMutation } = featureFlagsApi

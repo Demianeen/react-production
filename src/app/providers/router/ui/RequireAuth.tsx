@@ -1,6 +1,5 @@
 import { Navigate, useLocation } from 'react-router-dom'
 import { useUserAuthData } from '@/entities/User'
-
 import { routes } from '@/shared/lib/router/routes'
 
 export const RequireAuth = ({

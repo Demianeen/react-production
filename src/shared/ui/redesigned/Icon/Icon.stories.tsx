@@ -30,6 +30,12 @@ export const Clickable: Story = {
   },
 }
 
+export const Error: Story = {
+  args: {
+    color: 'error',
+  },
+}
+
 export const Dark: Story = {
   decorators: [ThemeDecorator(Theme.DARK)],
 }

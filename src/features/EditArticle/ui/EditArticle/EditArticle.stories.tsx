@@ -8,20 +8,15 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  args: {},
+  args: {
+    authorId: 1,
+  },
   parameters: {},
 } as Meta<typeof EditArticle>
 
 type Story = StoryObj<typeof EditArticle>
 
 const store = {
-  articleDetails: {
-    data: {
-      user: {
-        id: 1,
-      },
-    },
-  },
   user: {
     authData: {
       id: 1,

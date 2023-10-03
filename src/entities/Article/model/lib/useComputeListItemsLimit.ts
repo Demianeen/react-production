@@ -2,7 +2,6 @@ import { View } from '@/entities/View'
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce'
 import { useMedia } from '@/shared/lib/hooks/useMedia/useMedia'
 import { useCallback, useEffect } from 'react'
-
 /**
  * Computes width and height of the container and item and returns amount of items to render.
  * @returns amount of items to render
@@ -52,7 +51,7 @@ export const computeListItemsLimit = ({
   const elementWidth = containerRef.scrollWidth
   const elementHeight = Math.min(
     containerRef.clientHeight,
-    window.innerHeight
+    window.innerHeight,
   )
 
   // 48 is a grid gap
@@ -61,13 +60,13 @@ export const computeListItemsLimit = ({
 
   const widthAmount = Math.floor(
     // we add grid gap to the width to make sure we have enough space for the last item
-    (elementWidth + widthGridGap) / (gridItemWidth + widthGridGap)
+    (elementWidth + widthGridGap) / (gridItemWidth + widthGridGap),
   )
   const heightAmount =
     Math.floor(
       // we add grid gap to the height to make sure we have enough space for the last item
       (elementHeight + heightGridGap) /
-        (gridItemHeight + heightGridGap)
+        (gridItemHeight + heightGridGap),
     ) || 1
 
   return widthAmount * heightAmount

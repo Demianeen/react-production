@@ -21,10 +21,18 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
    * @description Flag to make card squared.
    */
   squared?: boolean
+  padding?: 0 | 0.5 | 1 | 1.5
   /**
    * @description Flag to make card width 100%.
    */
   maxWidth?: boolean
+}
+
+const mapPadding = {
+  0: styles.padding0,
+  0.5: styles.padding0_5,
+  1: styles.padding1,
+  1.5: styles.padding1_5,
 }
 
 /**
@@ -38,6 +46,7 @@ export const Card = memo(
     theme = CardTheme.FILLED,
     squared = false,
     maxWidth = false,
+    padding = 1,
     ...props
   }: CardProps) => {
     const mods: Mods = {
@@ -50,13 +59,14 @@ export const Card = memo(
         className={classNames(styles.card, mods, [
           className,
           styles[theme],
+          mapPadding[padding],
         ])}
         {...props}
       >
         {children}
       </article>
     )
-  }
+  },
 )
 
 Card.displayName = 'Card'

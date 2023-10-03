@@ -19,6 +19,12 @@ type Story = StoryObj<typeof Card>
 
 export const Light: Story = {}
 
+export const NoPaddings: Story = {
+  args: {
+    padding: 0,
+  },
+}
+
 export const Squared: Story = {
   args: {
     squared: true,

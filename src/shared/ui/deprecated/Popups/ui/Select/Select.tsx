@@ -1,4 +1,5 @@
 import { Listbox } from '@headlessui/react'
+import type { ComponentPropsWithoutRef } from 'react'
 import { Fragment, useMemo } from 'react'
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
 import { classNames } from '@/shared/lib/classNames/classNames'
@@ -19,7 +20,21 @@ export interface SelectOption<T extends string> {
   disabled?: boolean
 }
 
-interface SelectProps<T extends string> extends TestProps {
+interface MultiplePropsTrue<T extends string> {
+  value?: T[]
+  defaultValue?: string[] | T[]
+  onChange?: (value: T[]) => void
+  multiple: true
+}
+
+interface MultiplePropsFalse<T extends string> {
+  value?: T
+  defaultValue?: string | T
+  onChange?: (value: T) => void
+  multiple?: false
+}
+
+type SelectProps<T extends string> = {
   className?: string
   /**
    * @description Label of select block
@@ -29,9 +44,6 @@ interface SelectProps<T extends string> extends TestProps {
    * @description List of items to render in select dropdown
    */
   options: SelectOption<T>[]
-  value?: T
-  defaultValue?: string | T
-  onChange?: (value: T) => void
   readonly?: boolean
   /**
    * @description Flag that sets width to 100% for select
@@ -44,7 +56,10 @@ interface SelectProps<T extends string> extends TestProps {
   direction?: DiagonalDirection
   name?: string
   required?: boolean
-}
+  clear?: boolean
+  listProps?: ComponentPropsWithoutRef<typeof Listbox.Options>
+} & TestProps &
+  (MultiplePropsTrue<T> | MultiplePropsFalse<T>)
 
 /**
  * Use components from redesigned folder
@@ -64,17 +79,30 @@ export const Select = typedMemo(
     name,
     'data-testid': testId = 'Select',
     required = false,
+    multiple = false,
+    clear = false,
+    listProps,
   }: SelectProps<T>) => {
-    const selectedOption = useMemo(
-      () =>
-        options.find(
-          ({ value: optionValue }) => optionValue === value
-        ),
-      [options, value]
-    )
+    const selectedOptionLabel = useMemo(() => {
+      if (multiple) {
+        const selectedOptions = options.filter(
+          ({ value: optionValue }) => value?.includes(optionValue),
+        )
+        return selectedOptions
+          ?.map(({ label: optionLabel }) => optionLabel)
+          .join(', ')
+      }
+
+      const selectedOption = options.find(
+        ({ value: optionValue }) => optionValue === value,
+      )
+
+      return selectedOption?.label
+    }, [multiple, options, value])
 
     return (
       <WithLabel
+        required={required}
         wrapperClassName={popupStyles.popup}
         label={label}
         maxWidth={maxWidth}
@@ -82,38 +110,45 @@ export const Select = typedMemo(
         <Listbox
           value={value}
           onChange={onChange}
-          disabled={readonly}
           defaultValue={defaultValue}
           name={name}
+          multiple={multiple}
+          disabled={readonly}
         >
           <Listbox.Button
             as={Button}
             type='button'
-            theme={ButtonTheme.OUTLINE}
+            role='combobox'
+            theme={clear ? ButtonTheme.CLEAR : ButtonTheme.OUTLINE}
             disabledButton={readonly}
             className={classNames(
               styles.button,
               {
                 [popupStyles.maxWidth]: maxWidth,
+                [styles.clear]: clear,
               },
-              [className]
+              [className],
             )}
             data-testid={`${testId}.Button`}
             aria-required={required}
           >
             <span className={styles.label}>
-              {selectedOption?.label ?? defaultValue}
+              {selectedOptionLabel ?? defaultValue}
             </span>
-            <Icon Svg={ArrowDownIcon} className={styles.icon} />
+            {!clear && (
+              <Icon Svg={ArrowDownIcon} className={styles.icon} />
+            )}
           </Listbox.Button>
           <Listbox.Options
+            {...listProps}
             className={classNames(
               styles.options,
               {
                 [popupStyles.maxWidth]: maxWidth,
               },
-              [mapDirection[direction]]
+              [mapDirection[direction], listProps?.className],
             )}
+            data-testid={`${testId}.Options`}
           >
             {options.map((option) => (
               <Listbox.Option
@@ -140,7 +175,43 @@ export const Select = typedMemo(
             ))}
           </Listbox.Options>
         </Listbox>
+        {required && (
+          <div
+            aria-hidden='true'
+            tabIndex={-1}
+            className={styles.selectNativeWrapper}
+          >
+            <select
+              disabled={readonly}
+              onClick={() => {}}
+              onChange={() => {}}
+              tabIndex={-1}
+              value={value === null ? undefined : value}
+              name={name}
+              required={required}
+              multiple={multiple}
+              aria-hidden='true'
+              autoCapitalize='off'
+              autoComplete='off'
+              className={styles.selectNative}
+            >
+              <option value='' defaultChecked aria-hidden='true' />
+              {options.map((option) => {
+                return (
+                  <option
+                    key={option.value}
+                    value={option.value}
+                    disabled={option.disabled}
+                    aria-hidden='true'
+                  >
+                    {option.label}
+                  </option>
+                )
+              })}
+            </select>
+          </div>
+        )}
       </WithLabel>
     )
-  }
+  },
 )

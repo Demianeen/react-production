@@ -36,7 +36,7 @@ export const ArticleInfiniteListDeprecated = ({
   const view = useArticleInfiniteListView()
 
   const { onLoadNextPart, onOpenArticle } = useArticleInfiniteList(
-    virtualizedListRef
+    virtualizedListRef,
   )
 
   if (error) {
@@ -51,11 +51,20 @@ export const ArticleInfiniteListDeprecated = ({
   }
 
   return (
-    <div ref={setVirtualizedListRef}>
+    <div
+      ref={setVirtualizedListRef}
+      style={{
+        height: '100%',
+      }}
+      data-engine
+    >
       <VirtualizedArticleList
         articles={articles}
         isLoading={isLoading}
         view={view}
+        style={{
+          height: '100%',
+        }}
         className={className}
         onLoadNextPart={onLoadNextPart}
         scrollParent={scrollParent}

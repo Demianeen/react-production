@@ -10,9 +10,13 @@ import { HStack } from '@/shared/ui/redesigned/Stack'
 import { useViewport } from '@/shared/lib/hooks/useViewport/useViewport'
 import { MobileViewport } from '@/shared/lib/components/Media'
 import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
-import styles from './NavbarRedesigned.module.scss'
-
+import { Icon } from '@/shared/ui/redesigned/Icon'
+import EditIcon from '@/shared/assets/icons/redesigned/edit.svg'
+import { AppLink } from '@/shared/ui/redesigned/AppLink'
+import { routes } from '@/shared/lib/router/routes'
+import { ToggleFeature } from '@/shared/lib/features'
 import { NavbarBurger } from '../../NavbarBurger/NavbarBurger'
+import styles from './NavbarRedesigned.module.scss'
 
 export interface NavbarRedesignedProps {
   className?: string
@@ -42,7 +46,7 @@ export const NavbarRedesigned = typedMemo(
           {
             [styles.mobile]: isMobile,
           },
-          className
+          className,
         )}
         maxWidth
       >
@@ -52,6 +56,15 @@ export const NavbarRedesigned = typedMemo(
         <HStack gap={1}>
           {isUserLogged ? (
             <>
+              <ToggleFeature
+                name='isArticleCreationEnabled'
+                on={
+                  <AppLink to={routes.articleCreate()}>
+                    <Icon Svg={EditIcon} clickable noWrapWithButton />
+                  </AppLink>
+                }
+                off={null}
+              />
               <NotificationButton />
               <UserDropdown />
             </>
@@ -75,5 +88,5 @@ export const NavbarRedesigned = typedMemo(
         )}
       </HStack>
     )
-  }
+  },
 )

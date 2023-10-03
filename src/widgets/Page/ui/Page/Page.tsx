@@ -19,6 +19,7 @@ import styles from './Page.module.scss'
 
 interface PageProps extends TestProps {
   className?: string
+  id?: string
   children?: ReactNode
 }
 
@@ -29,8 +30,8 @@ const skipScrollPositions: OptionalRecord<AppRoutes, unknown> = {
 
 export const Page = forwardRef<HTMLDivElement, PageProps>(
   (
-    { className, children, 'data-testid': dataTestId },
-    forwardedRef
+    { className, children, 'data-testid': dataTestId, id },
+    forwardedRef,
   ) => {
     const wrapperRef = useRef<HTMLDivElement>(null)
     const currentPath = useCurrentRoutePath()
@@ -42,7 +43,7 @@ export const Page = forwardRef<HTMLDivElement, PageProps>(
 
     useImperativeHandle(
       forwardedRef,
-      () => wrapperRef.current as HTMLDivElement
+      () => wrapperRef.current as HTMLDivElement,
     )
 
     const onScroll = useThrottle(() => {
@@ -58,7 +59,7 @@ export const Page = forwardRef<HTMLDivElement, PageProps>(
             on: () => window.scrollY,
             off: () => wrapperRef.current?.scrollTop ?? 0,
           }),
-        })
+        }),
       )
     }, 300)
 
@@ -107,15 +108,16 @@ export const Page = forwardRef<HTMLDivElement, PageProps>(
             off: () => styles.page,
           }),
           {},
-          [className]
+          [className],
         )}
         onScroll={onScroll}
         data-testid={dataTestId}
+        id={id}
       >
         {children}
       </main>
     )
-  }
+  },
 )
 
 Page.displayName = 'Page'

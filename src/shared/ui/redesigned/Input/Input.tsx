@@ -88,6 +88,7 @@ export const Input = memo(
 
     return (
       <WithLabel
+        required={props.required ?? false}
         label={label}
         wrapperClassName={wrapperClassName}
         maxWidth={maxWidth}
@@ -123,7 +124,7 @@ export const Input = memo(
         </HStack>
       </WithLabel>
     )
-  }
+  },
 )
 
 Input.displayName = 'Input'

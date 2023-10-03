@@ -1,16 +1,15 @@
 import { getUserId } from '@/entities/User'
 import { buildSelector } from '@/shared/lib/store'
-import { getArticleDetailsAuthor } from '../getArticleDetailsAuthor/getArticleDetailsAuthor'
 
 export const [useArticleDetailsCanEdit, getArticleDetailsCanEdit] =
   buildSelector(
     getUserId,
-    getArticleDetailsAuthor,
-    (userId, articleAuthor) => {
+    (_, authorId: number | undefined) => authorId,
+    (userId, authorId) => {
       // because undefined === undefined is true
-      if (!articleAuthor || !userId) {
+      if (!authorId || !userId) {
         return false
       }
-      return articleAuthor?.id === userId
-    }
+      return authorId === userId
+    },
   )

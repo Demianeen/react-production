@@ -4,7 +4,6 @@ import { NotFoundPage } from '@/pages/NotFoundPage'
 import { ProfilePage } from '@/pages/ProfilePage'
 import { ArticleDetailsPage } from '@/pages/ArticleDetailsPage'
 import { ArticlesPage } from '@/pages/ArticlesPage'
-import { ArticleEditPage } from '@/pages/ArticleEditPage'
 import { AdminPanelPage } from '@/pages/AdminPanelPage'
 import { UserRole } from '@/entities/User'
 import { ForbiddenPage } from '@/pages/ForbiddenPage'
@@ -12,6 +11,7 @@ import type { AppRouteProps } from '@/shared/types/router'
 import { AppRoutes } from '@/shared/const/router/appRoutes'
 import { RoutePath } from '@/shared/const/router/routePath'
 import { SettingsPage } from '@/pages/SettingsPage'
+import { CreateArticlePage } from '@/pages/CreateArticlePage'
 
 export const routeConfig: Record<AppRoutes, AppRouteProps> = {
   [AppRoutes.HOME]: {
@@ -43,11 +43,13 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
   },
   [AppRoutes.ARTICLE_CREATE]: {
     path: RoutePath.articleCreate,
-    element: <ArticleEditPage />,
+    element: <CreateArticlePage />,
+    authOnly: true,
   },
   [AppRoutes.ARTICLE_EDIT]: {
     path: RoutePath.articleEdit,
-    element: <ArticleEditPage />,
+    element: <CreateArticlePage />,
+    authOnly: true,
   },
   [AppRoutes.ADMIN_PANEL]: {
     path: RoutePath.adminPanel,

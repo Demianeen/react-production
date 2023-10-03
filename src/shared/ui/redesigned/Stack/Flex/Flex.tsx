@@ -18,6 +18,7 @@ export interface FlexOwnProps<TTag extends ElementType>
    * @description Tag name or component
    */
   as?: TTag
+  height?: string
 }
 
 export type FlexProps<TTag extends ElementType> = Props<
@@ -29,7 +30,7 @@ export type FlexProps<TTag extends ElementType> = Props<
 const DEFAULT_TAG = 'div'
 
 export type FlexPropsWithDefaultTag<
-  TTag extends ElementType = typeof DEFAULT_TAG
+  TTag extends ElementType = typeof DEFAULT_TAG,
 > = FlexProps<WithDefaultTag<TTag, typeof DEFAULT_TAG>>
 
 export const Flex = typedForwardRef(
@@ -48,7 +49,7 @@ export const Flex = typedForwardRef(
       as,
       ...props
     }: FlexPropsWithDefaultTag<TTag>,
-    ref: ForwardedRef<HTMLDivElement>
+    ref: ForwardedRef<HTMLDivElement>,
   ) => {
     const Tag = as ?? DEFAULT_TAG
     return (
@@ -64,7 +65,7 @@ export const Flex = typedForwardRef(
             maxWidth,
             maxHeight,
           }),
-          className
+          className,
         )}
         ref={ref}
         {...props}
@@ -72,5 +73,5 @@ export const Flex = typedForwardRef(
         {children}
       </Tag>
     )
-  }
+  },
 )

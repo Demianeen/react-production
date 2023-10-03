@@ -1,0 +1,54 @@
+.imageWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  &:focus {
+    outline: var(--outline-redesigned);
+  }
+}
+
+.img {
+  max-width: 100%;
+
+  &:focus,
+  &.focused {
+    outline: var(--outline-redesigned);
+  }
+}
+
+.captionWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.placeholder {
+  display: none;
+}
+
+.contentEditable {
+  width: 100%;
+  outline: none !important;
+}
+
+.articleEditor {
+  position: relative;
+
+  &:not(.withPlaceholder) {
+    width: 100%;
+    text-align: center;
+  }
+
+  &.withPlaceholder {
+    .contentEditable {
+      position: absolute;
+      top: 0;
+    }
+
+    .placeholder {
+      display: block;
+    }
+  }
+}

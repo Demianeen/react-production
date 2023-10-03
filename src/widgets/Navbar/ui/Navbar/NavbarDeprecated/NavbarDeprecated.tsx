@@ -14,7 +14,7 @@ import {
   DesktopViewport,
   MobileViewport,
 } from '@/shared/lib/components/Media'
-import { getFeatureFlag } from '@/shared/lib/features'
+import { ToggleFeature } from '@/shared/lib/features'
 import { NavbarBurger } from '../../NavbarBurger/NavbarBurger'
 import styles from './NavbarDeprecated.module.scss'
 
@@ -27,9 +27,6 @@ export const NavbarDeprecated = memo(
     const { t } = useTranslation()
     const [isAuthModalOpened, setIsAuthModalOpened] = useState(false)
     const isUserLogged = useIsUserLogged()
-    const isArticleCreationEnabled = getFeatureFlag(
-      'isArticleCreationEnabled'
-    )
 
     const onOpenModal = useCallback(() => {
       setIsAuthModalOpened(true)
@@ -61,15 +58,19 @@ export const NavbarDeprecated = memo(
 
         {isUserLogged ? (
           <>
-            {isArticleCreationEnabled && (
-              <AppLink
-                to={routes.articleCreate()}
-                className={styles.createLink}
-                theme={AppLinkTheme.INVERTED}
-              >
-                {t('Create article')}
-              </AppLink>
-            )}
+            <ToggleFeature
+              name='isArticleCreationEnabled'
+              on={
+                <AppLink
+                  to={routes.articleCreate()}
+                  className={styles.createLink}
+                  theme={AppLinkTheme.INVERTED}
+                >
+                  {t('Create article')}
+                </AppLink>
+              }
+              off={null}
+            />
             <HStack gap={1} className={styles.actions}>
               <NotificationButton />
               <UserDropdown />
@@ -93,7 +94,7 @@ export const NavbarDeprecated = memo(
         )}
       </HStack>
     )
-  }
+  },
 )
 
 NavbarDeprecated.displayName = 'Navbar'

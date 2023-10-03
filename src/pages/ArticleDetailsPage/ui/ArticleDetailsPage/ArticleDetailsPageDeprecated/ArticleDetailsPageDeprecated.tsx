@@ -1,7 +1,10 @@
 import { memo } from 'react'
 import { useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { ArticleDetails } from '@/entities/Article'
+import {
+  ArticleDetails,
+  useArticleDetailsAuthor,
+} from '@/entities/Article'
 import { Text, TextTheme } from '@/shared/ui/deprecated/Text'
 import { Page } from '@/widgets/Page'
 import { Button } from '@/shared/ui/deprecated/Button'
@@ -20,6 +23,7 @@ const ArticleDetailsPageDeprecated = ({
 }: ArticleDetailsPageDeprecatedProps) => {
   const { id } = useParams()
   const { t } = useTranslation('article-details')
+  const author = useArticleDetailsAuthor()
 
   if (id === undefined) {
     return (
@@ -39,7 +43,12 @@ const ArticleDetailsPageDeprecated = ({
 
   return (
     <Page className={className} data-testid='ArticleDetailsPage'>
-      <ArticleDetailsPageHeader id={numberId} />
+      {author && (
+        <ArticleDetailsPageHeader
+          id={numberId}
+          authorId={author.id}
+        />
+      )}
       <ArticleDetails id={numberId} />
       <ArticleDetailsPageFooter articleId={numberId} />
     </Page>
