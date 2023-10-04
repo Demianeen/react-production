@@ -12,6 +12,8 @@ Description: The article serves as a fundamental building block in our project, 
 
 `VirtualizedArticleList` - Virtualized list of articles. Used for large lists and infinite scroll.
 
+`ArticleTextBlockComponent` - Component for rendering text block
+
 - Functions
 
 `getArticleDetailsData` - selector that retrieves information about article
@@ -31,6 +33,8 @@ Description: The article serves as a fundamental building block in our project, 
 - Const
 
 `ArticleType` - Represents article type (e.g. IT, SCIENCE, ECONOMICS)
+
+`ArticleBlockType` - Represents article block type (e.g. TEXT, IMAGE, CODE)
 
 - Types
 

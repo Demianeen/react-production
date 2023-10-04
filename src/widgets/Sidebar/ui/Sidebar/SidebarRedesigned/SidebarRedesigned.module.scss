@@ -1,6 +1,6 @@
 .sidebarRedesigned {
   position: relative;
-  width: 13.75rem;
+  width: var(--extended-sidebar-width-redesigned);
   height: 100%;
 }
 
@@ -30,7 +30,7 @@
 }
 
 .collapsed {
-  width: 3.125rem;
+  width: var(--collapsed-sidebar-width-redesigned);
 
   .logo {
     margin: 0.7rem 0 4.7rem;

@@ -1,13 +1,16 @@
 .mainLayout {
   display: grid;
   grid-template-areas: 'sidebar content rightbar';
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: var(--full-sidebar-width-redesigned) 1fr var(
+      --full-navbar-width-redesigned
+    );
+  gap: 0;
   width: 100%;
 }
 
 .sidebar {
   grid-area: sidebar;
-  padding: 2rem;
+  padding: var(--sidebar-padding-redesigned);
 }
 
 .content {

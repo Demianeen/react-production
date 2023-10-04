@@ -1,4 +1,8 @@
-import type { HTMLAttributeAnchorTarget } from 'react'
+import type {
+  HTMLAttributeAnchorTarget,
+  MouseEvent,
+  MouseEventHandler,
+} from 'react'
 import { memo, useCallback, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { classNames } from '@/shared/lib/classNames/classNames'
@@ -70,13 +74,22 @@ export const ArticleListItemRedesigned = memo(
     )
 
     const onClick = () => {
-      return () => onOpenArticle?.({ article, index })
+      return (e: MouseEvent) => {
+        e.stopPropagation()
+        return onOpenArticle?.({ article, index })
+      }
     }
 
     const onFocus = useCallback(() => {
       if (!isTabLastKey) return
       vStackRef.current?.scrollIntoView()
     }, [isTabLastKey])
+
+    // prevents button to become focused on click
+    const onMouseDown: MouseEventHandler<HTMLAnchorElement> =
+      useCallback((e) => {
+        e.preventDefault()
+      }, [])
 
     // TODO: Add ability to read first paragraph of article in list view
     if (view === View.LIST) {
@@ -121,6 +134,7 @@ export const ArticleListItemRedesigned = memo(
               target={target}
               onClick={onClick()}
               onFocus={onFocus}
+              onMouseDown={onMouseDown}
             >
               {t('Read more...')}
             </Button>

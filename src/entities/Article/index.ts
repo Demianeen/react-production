@@ -21,7 +21,8 @@ export { ArticleList } from './ui/ArticleList/ArticleList'
 export { VirtualizedArticleList } from './ui/ArticleList/VirtualizedArticleList'
 export type { OnOpenArticle } from './ui/ArticleList/VirtualizedArticleList'
 
-export { ArticleType } from '@/entities/Article/model/const/articleType'
+export { ArticleType } from './model/const/articleType'
+export { ArticleBlockType } from './model/const/articleBlockType'
 
 export {
   useComputeListItemsLimit,

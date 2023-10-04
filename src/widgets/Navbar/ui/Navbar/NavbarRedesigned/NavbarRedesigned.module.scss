@@ -1,5 +1,7 @@
 .navbarRedesigned {
-  padding: 1rem 1rem 0;
+  box-sizing: content-box;
+  width: var(--navbar-width-redesigned);
+  padding: var(--navbar-padding-x-redesigned) 1rem 0;
 }
 
 .mobile {

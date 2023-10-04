@@ -94,4 +94,35 @@
 
   // outline
   --outline-redesigned: 2px solid var(--accent-redesigned);
+
+  // --- sizes
+
+  // sidebar
+  // --sidebar-width property will toggle between these two values
+  --extended-sidebar-width-redesigned: 13.75rem;
+  --collapsed-sidebar-width-redesigned: 3.125rem;
+  --sidebar-padding-redesigned: 2rem;
+  --full-sidebar-width-redesigned: calc(
+    var(--sidebar-width-redesigned) +
+      (var(--sidebar-padding-redesigned) * 2)
+  );
+
+  // navbar
+  --navbar-width-redesigned: 9rem;
+  --navbar-padding-x-redesigned: 1rem;
+  --full-navbar-width-redesigned: calc(
+    var(--navbar-width-redesigned) +
+      (var(--navbar-padding-x-redesigned) * 2)
+  );
+
+  // layout
+  --layout-x: calc(
+    var(--full-sidebar-width-redesigned) +
+      var(--full-navbar-width-redesigned) +
+      (var(--editor-padding-x) * 2)
+  );
+
+  // editor
+  --editor-padding-x: 1rem;
+  --editor-padding-y: 1rem;
 }

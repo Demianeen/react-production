@@ -7,6 +7,7 @@ import { typedForwardRef } from '@/shared/lib/react/typedForwardRef/typedForward
 import styles from './AppLink.module.scss'
 
 export type AppLinkVariant = 'primary' | 'cancel'
+export type UnderlineVariant = 'none' | 'always'
 
 export interface AppLinkProps extends LinkProps {
   className?: string
@@ -19,6 +20,11 @@ export interface AppLinkProps extends LinkProps {
    * @default 'primary'
    */
   variant?: AppLinkVariant
+  /**
+   * Responsible for AppLink's underline behaviour.
+   * @default 'none'
+   */
+  underline?: UnderlineVariant
 }
 
 export const AppLink = typedMemo(
@@ -31,7 +37,7 @@ export const AppLink = typedMemo(
         activeClassName = '',
         ...props
       }: AppLinkProps,
-      ref: Ref<HTMLAnchorElement>
+      ref: Ref<HTMLAnchorElement>,
     ) => (
       <NavLink
         className={({ isActive }) =>
@@ -40,7 +46,7 @@ export const AppLink = typedMemo(
             {
               [activeClassName]: isActive,
             },
-            [className, styles[variant]]
+            [className, styles[variant]],
           )
         }
         {...props}
@@ -48,6 +54,6 @@ export const AppLink = typedMemo(
       >
         {children}
       </NavLink>
-    )
-  )
+    ),
+  ),
 )

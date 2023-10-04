@@ -19,6 +19,12 @@ type Story = StoryObj<typeof AppLink>
 
 export const Primary: Story = {}
 
+export const UnderlineAlways: Story = {
+  args: {
+    underline: 'always',
+  },
+}
+
 export const DarkPrimary: Story = {
   decorators: [ThemeDecorator(Theme.DARK)],
 }

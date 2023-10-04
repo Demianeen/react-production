@@ -1,6 +1,6 @@
 import { typedMemo } from '@/shared/lib/react/typedMemo/typedMemo'
 import { AppLogo } from '@/shared/ui/redesigned/AppLogo'
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useLayoutEffect } from 'react'
 import { HStack } from '@/shared/ui/redesigned/Stack'
 import { Icon } from '@/shared/ui/redesigned/Icon'
 import ArrowIcon from '@/shared/assets/icons/redesigned/arrow-down.svg'
@@ -30,6 +30,21 @@ export const SidebarRedesigned = typedMemo(
       }
     }, [])
 
+    useLayoutEffect(() => {
+      const bodyStyles = getComputedStyle(document.documentElement)
+      const extendedSidebarWidth = bodyStyles.getPropertyValue(
+        '--extended-sidebar-width-redesigned',
+      )
+      const collapsedSidebarWidth = bodyStyles.getPropertyValue(
+        '--collapsed-sidebar-width-redesigned',
+      )
+
+      document.documentElement.style.setProperty(
+        '--sidebar-width-redesigned',
+        isCollapsed ? collapsedSidebarWidth : extendedSidebarWidth,
+      )
+    }, [isCollapsed])
+
     useMedia(onResize)
 
     return (
@@ -40,7 +55,7 @@ export const SidebarRedesigned = typedMemo(
           {
             [styles.collapsed]: isCollapsed,
           },
-          className
+          className,
         )}
         padding={0}
       >
@@ -76,5 +91,5 @@ export const SidebarRedesigned = typedMemo(
         </HStack>
       </Card>
     )
-  }
+  },
 )

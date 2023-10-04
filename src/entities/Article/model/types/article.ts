@@ -3,7 +3,7 @@ import type { ArticleBlockType } from '../const/articleBlockType'
 import type { ArticleType } from '../const/articleType'
 
 export interface ArticleBlockBase {
-  id: number
+  id?: number
   type: ArticleBlockType
 }
 
