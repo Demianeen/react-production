@@ -12,6 +12,7 @@ import type {
 } from 'lexical'
 import {
   $createParagraphNode,
+  $createTextNode,
   $getNodeByKey,
   $getRoot,
   DecoratorNode,
@@ -57,6 +58,15 @@ export class ImageNode extends DecoratorNode<JSX.Element> {
     this.__caption = caption || createEditor()
   }
 
+  setCaptionText(text: string) {
+    this.__caption.update(() => {
+      const root = $getRoot()
+      root.append(
+        $createParagraphNode().append($createTextNode(text)),
+      )
+    })
+  }
+
   static getType() {
     return 'image' as const
   }
@@ -83,7 +93,12 @@ export class ImageNode extends DecoratorNode<JSX.Element> {
     return {
       img: (_: Node) => ({
         // eslint-disable-next-line @typescript-eslint/no-use-before-define
-        conversion: convertImageElement,
+        conversion: convertImageNode,
+        priority: 0,
+      }),
+      figure: (_: Node) => ({
+        // eslint-disable-next-line @typescript-eslint/no-use-before-define
+        conversion: convertImageNode,
         priority: 0,
       }),
     }
@@ -195,7 +210,7 @@ export class ImageNode extends DecoratorNode<JSX.Element> {
     const captionWrapper = document.createElement('div')
     captionWrapper.className = captionWrapperClassnames
 
-    const caption = document.createElement('figure')
+    const caption = document.createElement('figcaption')
     caption.className = captionClassnames
     caption.textContent = captionText
 
@@ -208,26 +223,54 @@ export class ImageNode extends DecoratorNode<JSX.Element> {
   }
 }
 
-export const $createImageNode = (node: ImagePayload): ImageNode =>
-  new ImageNode(node)
+export const $createImageNode = (node: ImagePayload): ImageNode => {
+  return new ImageNode(node)
+}
 
 export const $isImageNode = (node: unknown): node is ImageNode =>
   node instanceof ImageNode
 
+const getImageNodeFromImgElement = (
+  imageNode: HTMLImageElement,
+): null | ImageNode => {
+  const { alt: altText, src } = imageNode
+  if (!isUrl(src)) {
+    return null
+  }
+  const node = $createImageNode({
+    altText,
+    src,
+  })
+  return node
+}
+
+const isFigureElement = (node: Node): node is HTMLElement =>
+  node.nodeName.toLowerCase() === 'figure'
+
 // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
-function convertImageElement(
-  domNode: Node,
-): null | DOMConversionOutput {
+function convertImageNode(domNode: Node): null | DOMConversionOutput {
   if (domNode instanceof HTMLImageElement) {
-    const { alt: altText, src } = domNode
-    if (!isUrl(src)) {
-      return null
-    }
-    const node = $createImageNode({
-      altText,
-      src,
-    })
+    const node = getImageNodeFromImgElement(domNode)
     return { node }
   }
+
+  if (isFigureElement(domNode)) {
+    const img = domNode.querySelector('img')
+    if (img === null) {
+      return null
+    }
+    const node = getImageNodeFromImgElement(img)
+    const caption = domNode.querySelector('figcaption')
+    if (
+      caption !== null &&
+      caption.textContent !== null &&
+      node !== null
+    ) {
+      node.setCaptionText(caption.textContent)
+    }
+
+    return { node }
+  }
+
   return null
 }

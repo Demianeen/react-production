@@ -8,6 +8,14 @@ $list-padding: 0 0 0 1.5rem;
   gap: 1rem;
   width: 100%;
 
+  h1 {
+    font: var(--font-title-redesigned);
+  }
+
+  h2 {
+    font: var(--font-l2title-redesigned);
+  }
+
   // list
   .ul {
     padding: $list-padding;

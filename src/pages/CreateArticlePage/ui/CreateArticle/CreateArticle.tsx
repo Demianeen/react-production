@@ -149,10 +149,8 @@ export const CreateArticle = memo(
                 dom,
               )
 
-              // Select the root
               $getRoot().select()
 
-              // Insert them at a selection.
               $insertNodes(nodes)
             })
           },
