@@ -146,7 +146,7 @@ module.exports = {
           '**/webpack.config.ts', // webpack config
           'vite.config.ts', // vite config
           'config/**', // project configuration
-          '**/storybook/*/**', // storybook configuration
+          '**/storybook/**', // storybook configuration
           'utils/**', // project utils
           'scripts/**', // project scripts
           '**/jest/**', // jest config
