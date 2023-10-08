@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import ArticleImage from '@/shared/assets/mocks/article.png'
+import { mockArticle } from '@/entities/Article/testing'
+import { LokiDelayDecorator } from '@/shared/lib/storybook/LokiDelayDecorator'
 import { CreateArticle } from './CreateArticle'
 
 export default {
@@ -11,9 +13,15 @@ export default {
   args: {
     src: ArticleImage,
   },
-  parameters: {},
+  decorators: [LokiDelayDecorator()],
 } as Meta<typeof CreateArticle>
 
 type Story = StoryObj<typeof CreateArticle>
 
 export const Light: Story = {}
+
+export const EditArticle: Story = {
+  args: {
+    editArticle: mockArticle,
+  },
+}

@@ -23,6 +23,7 @@ import { UpdateSelectionBlockTypePlugin } from '../plugins/UpdateSelectionStateP
 interface EditorProps {
   className?: string
   contentEditableClassName?: string
+  scrollerClassName?: string
   theme: EditorThemeClasses
   nodes: InitialConfigType['nodes']
   toolbar?: ReactNode
@@ -61,6 +62,7 @@ export const Editor = forwardRef<LexicalEditor, EditorProps>(
     {
       className,
       contentEditableClassName,
+      scrollerClassName,
       theme,
       nodes,
       toolbar,
@@ -97,7 +99,10 @@ export const Editor = forwardRef<LexicalEditor, EditorProps>(
             <RichTextPlugin
               contentEditable={
                 <div
-                  className={styles.editorScroller}
+                  className={classNamesNew(
+                    styles.editorScroller,
+                    scrollerClassName,
+                  )}
                   style={{
                     minHeight,
                   }}

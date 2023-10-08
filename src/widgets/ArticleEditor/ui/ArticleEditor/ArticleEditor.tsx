@@ -16,6 +16,7 @@ import {
   ToolbarNodes,
   ToolbarPlugin,
 } from '../ToolbarPlugin/ToolbarPlugin'
+import styles from './ArticleEditor.module.scss'
 
 export const ArticleEditor = memo(
   forwardRef<LexicalEditor>((_, editorRef) => {
@@ -31,6 +32,7 @@ export const ArticleEditor = memo(
           CodeHighlightNode,
         ]}
         contentEditableClassName={getArticleStylesClassName()}
+        scrollerClassName={styles.scroller}
         toolbar={<ToolbarPlugin />}
         ref={editorRef}
         minHeight='25rem'

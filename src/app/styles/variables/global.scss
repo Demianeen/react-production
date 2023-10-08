@@ -101,6 +101,10 @@
   // --sidebar-width property will toggle between these two values
   --extended-sidebar-width-redesigned: 13.75rem;
   --collapsed-sidebar-width-redesigned: 3.125rem;
+  --sidebar-width-redesigned: var(
+    --extended-sidebar-width-redesigned
+  ); // default sidebar width
+
   --sidebar-padding-redesigned: 2rem;
   --full-sidebar-width-redesigned: calc(
     var(--sidebar-width-redesigned) +

@@ -11,6 +11,6 @@ export default {
 
 type Story = StoryObj<typeof NavbarRedesigned>
 
-export const Primary: Story = {
+export const Logged: Story = {
   args: {},
 }

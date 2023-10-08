@@ -146,7 +146,7 @@ module.exports = {
           '**/webpack.config.ts', // webpack config
           'vite.config.ts', // vite config
           'config/**', // project configuration
-          '**/storybook/**', // storybook configuration
+          '**/storybook/*/**', // storybook configuration
           'utils/**', // project utils
           'scripts/**', // project scripts
           '**/jest/**', // jest config
@@ -324,14 +324,14 @@ module.exports = {
     },
     {
       // places where to turn off layer-imports
-      files: ['src/shared/lib/storybook/*'],
+      files: ['src/shared/lib/storybook/**'],
       rules: {
         'netliukh-demian-fsd-plugin/layer-imports': 0,
       },
     },
     {
       // we don't need to add display name for storybook decorators
-      files: ['src/shared/lib/storybook/*'],
+      files: ['src/shared/lib/storybook/**'],
       rules: {
         'react/display-name': 0,
       },
