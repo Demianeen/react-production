@@ -10,6 +10,7 @@ const articleDetailsApi = rtkApi.injectEndpoints({
           _expand: 'user',
         },
       }),
+      providesTags: ['ArticleDetails'],
     }),
   }),
 })

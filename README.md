@@ -89,10 +89,10 @@ More about tests - [testing documentation](./docs/tests.md)
 
 ## Linting
 
-The project uses eslint to check typescript code and stylelint to check style files.
+The project uses eslint to check typescript code, stylelint to check style files and prettier to ensure style consistency in the codebase.
 
-Also, for strict control of the main architectural principles
-uses its own eslint plugin _eslint-plugin-netliukh-demian-fsd-plugin_,
+Also, for strict control of the main architectural principles, we
+use our own eslint plugin _eslint-plugin-netliukh-demian-fsd-plugin_,
 which contains 3 rules
 
 1. path-checker - prohibits the use of absolute imports within one module. Has auto fix

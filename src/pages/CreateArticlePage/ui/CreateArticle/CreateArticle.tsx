@@ -9,7 +9,13 @@ import { ToggleFeature, toggleFeature } from '@/shared/lib/features'
 import { ArticleEditor } from '@/widgets/ArticleEditor'
 import { WithLabel as WithLabelDeprecated } from '@/shared/ui/deprecated/WithLabel'
 import { WithLabel } from '@/shared/ui/redesigned/WithLabel'
-import { $getRoot, $insertNodes, type LexicalEditor } from 'lexical'
+import {
+  $createParagraphNode,
+  $getRoot,
+  $insertNodes,
+  $isTextNode,
+  type LexicalEditor,
+} from 'lexical'
 import { Button as ButtonDeprecated } from '@/shared/ui/deprecated/Button'
 import { Button } from '@/shared/ui/redesigned/Button'
 import { useTranslation } from 'react-i18next'
@@ -151,7 +157,24 @@ export const CreateArticle = memo(
 
               $getRoot().select()
 
-              $insertNodes(nodes)
+              const noTextNodes = nodes.map((node) => {
+                if ($isTextNode(node)) {
+                  if (__IS_DEV__) {
+                    // eslint-disable-next-line no-console
+                    console.warn(
+                      'Text node found. All nodes: ',
+                      nodes,
+                    )
+                  }
+                  const paragraphNode = $createParagraphNode()
+                  paragraphNode.append(node)
+                  return paragraphNode
+                }
+
+                return node
+              })
+
+              $insertNodes(noTextNodes)
             })
           },
         )

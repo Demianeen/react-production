@@ -9,7 +9,9 @@ $list-padding: 0 0 0 1.5rem;
   width: 100%;
 
   h1 {
-    font: var(--font-title-redesigned);
+    font: var(--font-l2title-redesigned);
+    font-size: calc(var(--font-size-l2title-redesigned) + 2px);
+    font-weight: bold;
   }
 
   h2 {

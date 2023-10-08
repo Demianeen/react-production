@@ -1,11 +1,19 @@
 import { memo } from 'react'
-import { useTranslation } from 'react-i18next'
 import { Page } from '@/widgets/Page'
+import { VStack } from '@/shared/ui/redesigned/Stack'
+import { ArticleDetails } from '@/entities/Article'
+import styles from './AboutPage.module.scss'
 
 const AboutPage = memo(() => {
-  const { t } = useTranslation('about')
-
-  return <Page data-testid='AboutPage'>{t('About us')}</Page>
+  return (
+    <Page data-testid='AboutPage'>
+      <VStack maxWidth align='center'>
+        <div className={styles.cardWrapper}>
+          <ArticleDetails id={35} />
+        </div>
+      </VStack>
+    </Page>
+  )
 })
 
 AboutPage.displayName = 'AboutPage'

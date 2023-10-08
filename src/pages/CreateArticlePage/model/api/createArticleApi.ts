@@ -20,6 +20,7 @@ const createArticleApi = rtkApi.injectEndpoints({
             url: `/articles/${articleId}`,
             method: 'PATCH',
             body: form,
+            invalidatesTags: ['ArticleDetails'],
           }
         }
 

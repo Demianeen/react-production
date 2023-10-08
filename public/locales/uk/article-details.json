@@ -17,6 +17,6 @@
   "views_one": "{{count}} перегляд",
   "views_two": "{{count}} перегляди",
   "views_few": "{{count}} перегляда",
-  "views_many": "{{count}} просмотрів",
+  "views_many": "{{count}} переглядів",
   "views_other": "{{count}} переглядів"
 }
