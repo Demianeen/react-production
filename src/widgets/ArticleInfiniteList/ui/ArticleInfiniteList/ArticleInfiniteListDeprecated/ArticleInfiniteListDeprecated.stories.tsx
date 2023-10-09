@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { LayoutDecorator } from '@/shared/lib/storybook/LayoutDecorator'
+import { LokiDelayDecorator } from '@/shared/lib/storybook/LokiDelayDecorator'
 import { ArticleInfiniteListDeprecated } from './ArticleInfiniteListDeprecated'
 
 export default {
@@ -8,7 +9,7 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  decorators: [LayoutDecorator('fullpage')],
+  decorators: [LayoutDecorator('fullpage'), LokiDelayDecorator()],
 } as Meta<typeof ArticleInfiniteListDeprecated>
 
 type Story = StoryObj<typeof ArticleInfiniteListDeprecated>
