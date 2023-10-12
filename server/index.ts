@@ -141,7 +141,8 @@ server.post('/articles', (req, res) => {
 
 // check if the user is authorized
 server.use((req, res, next) => {
-  if (req.path === '/articles' && req.method === 'GET') {
+  const isArticlesRequest = /\/articles(\/\d+)?/.test(req.path)
+  if (isArticlesRequest && req.method === 'GET') {
     return next()
   }
 

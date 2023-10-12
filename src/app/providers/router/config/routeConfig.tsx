@@ -39,7 +39,6 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
   [AppRoutes.ARTICLE_DETAILS]: {
     path: RoutePath.articleDetails,
     element: <ArticleDetailsPage />,
-    authOnly: true,
   },
   [AppRoutes.ARTICLE_CREATE]: {
     path: RoutePath.articleCreate,
