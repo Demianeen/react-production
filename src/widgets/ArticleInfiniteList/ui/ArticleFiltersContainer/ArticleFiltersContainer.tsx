@@ -35,7 +35,7 @@ export const ArticleFiltersContainer = typedMemo(
         dispatch(articleInfiniteListActions.setPage(1))
         dispatch(fetchArticles({ replace: true }))
       },
-      [dispatch]
+      [dispatch],
     )
 
     const onResize = useCallback(() => {
@@ -81,5 +81,5 @@ export const ArticleFiltersContainer = typedMemo(
         />
       </VStack>
     )
-  }
+  },
 )

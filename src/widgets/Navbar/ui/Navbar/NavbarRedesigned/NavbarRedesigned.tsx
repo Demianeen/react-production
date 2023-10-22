@@ -15,6 +15,7 @@ import EditIcon from '@/shared/assets/icons/redesigned/edit.svg'
 import { AppLink } from '@/shared/ui/redesigned/AppLink'
 import { routes } from '@/shared/lib/router/routes'
 import { ToggleFeature } from '@/shared/lib/features'
+import { TooltipButton } from '@/shared/ui/redesigned/TooltipButton'
 import { NavbarBurger } from '../../NavbarBurger/NavbarBurger'
 import styles from './NavbarRedesigned.module.scss'
 
@@ -41,6 +42,7 @@ export const NavbarRedesigned = typedMemo(
       <HStack
         as='header'
         justify='between'
+        align='center'
         className={classNamesNew(
           styles.navbarRedesigned,
           {
@@ -59,9 +61,23 @@ export const NavbarRedesigned = typedMemo(
               <ToggleFeature
                 name='isArticleCreationEnabled'
                 on={
-                  <AppLink to={routes.articleCreate()}>
-                    <Icon Svg={EditIcon} clickable noWrapWithButton />
-                  </AppLink>
+                  <HStack
+                    as={AppLink}
+                    to={routes.articleCreate()}
+                    align='center'
+                  >
+                    <TooltipButton
+                      type='button'
+                      variant='clear'
+                      tooltipText={t('Create article')}
+                    >
+                      <Icon
+                        Svg={EditIcon}
+                        clickable
+                        noWrapWithButton
+                      />
+                    </TooltipButton>
+                  </HStack>
                 }
                 off={null}
               />

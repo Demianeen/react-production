@@ -1,4 +1,10 @@
 .rightContainer {
   width: 100%;
-  overflow: hidden;
+
+  &.mobile {
+    box-sizing: border-box;
+    width: calc(
+      100vw - (2 * var(--content-mobile-padding-redesigned))
+    );
+  }
 }

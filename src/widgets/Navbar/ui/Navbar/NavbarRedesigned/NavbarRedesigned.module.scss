@@ -5,6 +5,8 @@
 }
 
 .mobile {
+  box-sizing: border-box;
+  width: 100vw;
   padding: 0.5rem 1rem;
   background: var(--light-bg-redesigned);
 }

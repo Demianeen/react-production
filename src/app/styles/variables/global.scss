@@ -119,6 +119,9 @@
       (var(--navbar-padding-x-redesigned) * 2)
   );
 
+  // content
+  --content-mobile-padding-redesigned: 1rem;
+
   // layout
   --layout-x: calc(
     var(--full-sidebar-width-redesigned) +

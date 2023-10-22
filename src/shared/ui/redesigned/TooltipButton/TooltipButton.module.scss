@@ -4,7 +4,9 @@ $tooltip-margin: 0.5rem;
 .tooltip {
   position: absolute;
   left: 50%;
-  z-index: 5;
+
+  // not working because of transform translateX(-50%)
+  z-index: 999;
   display: none;
   padding: 6px;
   color: var(--text-redesigned);

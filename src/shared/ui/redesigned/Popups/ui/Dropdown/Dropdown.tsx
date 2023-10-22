@@ -49,7 +49,8 @@ export const Dropdown = ({
 }: DropdownProps) => {
   return (
     <Menu
-      as='div'
+      as={HStack}
+      align='center'
       className={classNames(popupStyles.popup, {}, [className])}
     >
       <Menu.Button as={Fragment}>{trigger}</Menu.Button>

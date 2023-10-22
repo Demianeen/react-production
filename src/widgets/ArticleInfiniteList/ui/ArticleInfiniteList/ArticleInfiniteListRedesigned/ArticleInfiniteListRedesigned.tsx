@@ -6,6 +6,8 @@ import { HStack } from '@/shared/ui/redesigned/Stack'
 import { Title } from '@/shared/ui/redesigned/Title'
 import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout'
 import { useSelector } from 'react-redux'
+import { useViewport } from '@/shared/lib/hooks/useViewport/useViewport'
+import { classNamesNew } from '@/shared/lib/classNames/classNamesNew'
 import { getArticles } from '../../../model/slice/articleInfiniteListSlice'
 import { useArticleInfiniteListStartIndex } from '../../../model/selectors/getArticleInfiniteListStartIndex/getArticleInfiniteListStartIndex'
 import { ArticleFiltersContainer } from '../../ArticleFiltersContainer/ArticleFiltersContainer'
@@ -38,8 +40,10 @@ export const ArticleInfiniteListRedesigned = ({
   const startIndex = useArticleInfiniteListStartIndex()
   const view = useArticleInfiniteListView()
 
+  const { isMobile } = useViewport()
+
   const { onLoadNextPart, onOpenArticle } = useArticleInfiniteList(
-    virtualizedListRef
+    virtualizedListRef,
   )
 
   if (error) {
@@ -54,7 +58,9 @@ export const ArticleInfiniteListRedesigned = ({
     <StickyContentLayout
       layoutDisableWidth={1000}
       right={<ArticleFiltersContainer listRef={virtualizedListRef} />}
-      rightContainerClassName={styles.rightContainer}
+      rightContainerClassName={classNamesNew(styles.rightContainer, {
+        [styles.mobile]: isMobile,
+      })}
       content={
         <div style={{ width: '100%' }} ref={setVirtualizedListRef}>
           <VirtualizedArticleList
