@@ -119,7 +119,7 @@ server.post('/register', (req, res) => {
 // Create article endpoint
 server.post('/articles', (req, res) => {
   try {
-    const createdAt = new Date().toString()
+    const createdAt = JSON.stringify(new Date())
     const views = Math.floor(Math.random() * 10000)
 
     const newArticleId = getNewId('articles')

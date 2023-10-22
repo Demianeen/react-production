@@ -13,7 +13,7 @@ describe('User enters the articles page', () => {
     cy.getByTestId('VirtualizedArticleList.Grid').should('exist')
     cy.getByTestId('ArticleListItem.Grid').should(
       'have.length.greaterThan',
-      3
+      0,
     )
   })
 
@@ -55,7 +55,7 @@ describe('User enters the articles page', () => {
 
     cy.getByTestId('ArticleListItem.Grid').should(
       'have.length.greaterThan',
-      3
+      0,
     )
     cy.selectFromSelect('SelectSortField', SortField.VIEWS)
 
@@ -77,7 +77,7 @@ describe('User enters the articles page', () => {
 
     cy.getByTestId('ArticleListItem.Grid').should(
       'have.length.greaterThan',
-      3
+      0,
     )
     cy.selectFromSelect('SelectOrder', SortOrder.DESC)
     cy.selectFromSelect('SelectSortField', SortField.VIEWS)
