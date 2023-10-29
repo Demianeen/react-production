@@ -122,7 +122,7 @@ export const Button = typedForwardRef(
       actionColor: color = 'primary',
       ...props
     }: ButtonProps<TTag>,
-    ref: ForwardedRef<WithDefaultButtonTag<TTag>>
+    ref: ForwardedRef<WithDefaultButtonTag<TTag>>,
   ) => {
     const isDisabled = disabled ?? disabledButton
 
@@ -140,7 +140,7 @@ export const Button = typedForwardRef(
       styles[variant],
       mapPaddings[paddings],
       styles[color],
-      className
+      className,
     )
 
     const Tag = as ?? DEFAULT_BUTTON_TAG
@@ -176,5 +176,5 @@ export const Button = typedForwardRef(
         {children}
       </Tag>
     )
-  }
+  },
 )

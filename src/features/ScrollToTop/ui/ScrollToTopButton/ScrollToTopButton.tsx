@@ -48,9 +48,12 @@ export const ScrollToTopButton = memo(
         className={classNamesNew(styles.button, className)}
         tooltipText='Scroll to top'
         tooltipPosition={tooltipPosition}
+        buttonProps={{
+          tabIndex: 2,
+        }}
       />
     )
-  }
+  },
 )
 
 ScrollToTopButton.displayName = 'ScrollToTop'

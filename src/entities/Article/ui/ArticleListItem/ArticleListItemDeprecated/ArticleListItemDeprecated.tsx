@@ -27,6 +27,7 @@ interface ArticleListItemDeprecatedProps extends TestProps {
   target?: HTMLAttributeAnchorTarget
   onOpenArticle?: OnOpenArticle
   index?: number
+  tabIndex?: number
 }
 
 export const ArticleListItemDeprecated = memo(
@@ -38,6 +39,7 @@ export const ArticleListItemDeprecated = memo(
     onOpenArticle,
     index = 0,
     'data-testid': testId = 'ArticleListItem',
+    tabIndex,
   }: ArticleListItemDeprecatedProps) => {
     const { t } = useTranslation('articles')
 
@@ -91,6 +93,7 @@ export const ArticleListItemDeprecated = memo(
           ])}
           data-testid={`${testId}.List`}
           maxWidth
+          tabIndex={tabIndex}
         >
           <VStack gap={1}>
             <HStack as='header' gap={0.5} maxWidth>
@@ -138,6 +141,7 @@ export const ArticleListItemDeprecated = memo(
         target={target}
         onClick={onClick()}
         data-testid={`${testId}.Grid`}
+        tabIndex={tabIndex}
       >
         <Card
           className={classNames(styles.articleListItem, {}, [

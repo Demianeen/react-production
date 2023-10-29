@@ -65,6 +65,7 @@ export const NavbarRedesigned = typedMemo(
                     as={AppLink}
                     to={routes.articleCreate()}
                     align='center'
+                    tabIndex={-1}
                   >
                     <TooltipButton
                       type='button'

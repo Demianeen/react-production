@@ -720,7 +720,7 @@
       "roles": ["ADMIN"],
       "jsonSettings": {
         "theme": "appDarkTheme",
-        "language": "uk",
+        "language": "en",
         "isArticlesPageWasOpened": true
       },
       "features": {

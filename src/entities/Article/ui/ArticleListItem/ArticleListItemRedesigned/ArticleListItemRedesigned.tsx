@@ -34,6 +34,7 @@ export interface ArticleListItemRedesignedProps extends TestProps {
   target?: HTMLAttributeAnchorTarget
   onOpenArticle?: OnOpenArticle
   index?: number
+  tabIndex?: number
 }
 
 export const ArticleListItemRedesigned = memo(
@@ -45,6 +46,7 @@ export const ArticleListItemRedesigned = memo(
     onOpenArticle,
     index = 0,
     'data-testid': testId = 'ArticleListItem',
+    tabIndex,
   }: ArticleListItemRedesignedProps) => {
     const { t } = useTranslation('articles')
     const vStackRef = useRef<HTMLDivElement>(null)
@@ -103,6 +105,7 @@ export const ArticleListItemRedesigned = memo(
             styles[view],
           ])}
           data-testid={`${testId}.List`}
+          tabIndex={tabIndex}
         >
           <HStack as='header' gap={0.5} maxWidth>
             <Avatar
@@ -152,6 +155,7 @@ export const ArticleListItemRedesigned = memo(
         target={target}
         onClick={onClick()}
         data-testid={`${testId}.Grid`}
+        tabIndex={tabIndex}
         {...bindFocus}
       >
         <Card

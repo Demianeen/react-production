@@ -77,3 +77,7 @@ body,
     border-radius: 2.375rem;
   }
 }
+
+.innerOutline {
+  outline-offset: var(--inner-outline-offset);
+}

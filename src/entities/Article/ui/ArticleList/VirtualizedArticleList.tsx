@@ -84,8 +84,6 @@ const ArticlesNotFound = memo(() => {
 
 ArticlesNotFound.displayName = 'ArticlesNotFound'
 
-// TODO: Fix keyboard navigation
-
 /**
  * Every component that wraps this component needs to have a height.
  * @return {React.NamedExoticComponent<VirtualizedArticleListProps>}
@@ -111,6 +109,8 @@ export const VirtualizedArticleList = forwardRef<
   ) => {
     const gridRef = useRef<VirtuosoGridHandle | null>(null)
     const listRef = useRef<VirtuosoHandle | null>(null)
+
+    const [currentItemIndex, setCurrentItemIndex] = useState(-1)
 
     const isListView = view === View.LIST
 
@@ -167,6 +167,67 @@ export const VirtualizedArticleList = forwardRef<
 
     const isArticlesNotFound = !isLoading && !articles.length
 
+    const listKeyDownCallback = useCallback(
+      (e: KeyboardEvent) => {
+        let nextIndex: number | null = null
+
+        if (e.code === 'ArrowUp') {
+          nextIndex = Math.max(0, currentItemIndex - 1)
+        } else if (e.code === 'ArrowDown') {
+          nextIndex = Math.min(articles.length, currentItemIndex + 1)
+        }
+
+        if (nextIndex !== null) {
+          listRef?.current?.scrollIntoView({
+            index: nextIndex,
+            behavior: 'auto',
+            done: () => {
+              setCurrentItemIndex(nextIndex as number)
+            },
+          })
+          e.preventDefault()
+        }
+      },
+      [articles.length, currentItemIndex],
+    )
+
+    const gridKeyDownCallback = useCallback(
+      (_e: KeyboardEvent) => {
+        let nextIndex: number | null = null
+
+        if (
+          document.activeElement &&
+          containerRef?.contains(document.activeElement)
+        ) {
+          const parentWithIndex =
+            document.activeElement.closest('[data-index]')
+          const focusedParentIndex =
+            parentWithIndex?.getAttribute('data-index')
+
+          if (focusedParentIndex) {
+            nextIndex = Number(focusedParentIndex)
+          }
+        }
+
+        if (nextIndex !== null) {
+          gridRef?.current?.scrollToIndex(nextIndex)
+        }
+      },
+      [containerRef],
+    )
+
+    useEffect(() => {
+      window.addEventListener(
+        'keydown',
+        isListView ? listKeyDownCallback : gridKeyDownCallback,
+      )
+
+      return () => {
+        window.removeEventListener('keydown', listKeyDownCallback)
+        window.removeEventListener('keydown', gridKeyDownCallback)
+      }
+    }, [gridKeyDownCallback, isListView, listKeyDownCallback])
+
     if (isListView) {
       const listClassName = classNamesNew(styles.list, className)
 
@@ -179,7 +240,10 @@ export const VirtualizedArticleList = forwardRef<
             data={articles}
             itemContent={renderArticle}
             endReached={onLoadNextPart}
-            overscan={500}
+            overscan={{
+              main: 2000,
+              reverse: 2000,
+            }}
             customScrollParent={scrollParent ?? undefined}
             initialTopMostItemIndex={startIndex}
             role='feed'
@@ -211,7 +275,10 @@ export const VirtualizedArticleList = forwardRef<
           itemContent={renderArticle}
           endReached={onLoadNextPart}
           listClassName={listClassName}
-          overscan={500}
+          overscan={{
+            main: 2000,
+            reverse: 2000,
+          }}
           customScrollParent={scrollParent ?? undefined}
           role='feed'
           data-testid='VirtualizedArticleList.Grid'

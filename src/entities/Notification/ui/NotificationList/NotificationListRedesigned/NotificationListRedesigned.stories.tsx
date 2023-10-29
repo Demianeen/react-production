@@ -11,7 +11,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   args: {},
-  decorators: [LokiDelayDecorator()],
+  decorators: [LokiDelayDecorator(10)],
 } as Meta<typeof NotificationListRedesigned>
 
 type Story = StoryObj<typeof NotificationListRedesigned>

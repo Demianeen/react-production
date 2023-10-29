@@ -42,7 +42,7 @@ export const Tabs = typedMemo(
       (tabValue: T) => {
         return () => onTabClick(tabValue)
       },
-      [onTabClick]
+      [onTabClick],
     )
 
     return (
@@ -61,7 +61,7 @@ export const Tabs = typedMemo(
               variant={isSelected ? 'filled' : 'clear'}
               paddings='all'
               onClick={onClick(tab.value)}
-              className={styles.tab}
+              className={classNamesNew(styles.tab, 'innerOutline')}
             >
               {tab.label}
             </Button>
@@ -69,5 +69,5 @@ export const Tabs = typedMemo(
         })}
       </Flex>
     )
-  }
+  },
 )
