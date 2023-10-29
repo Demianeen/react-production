@@ -240,10 +240,7 @@ export const VirtualizedArticleList = forwardRef<
             data={articles}
             itemContent={renderArticle}
             endReached={onLoadNextPart}
-            overscan={{
-              main: 2000,
-              reverse: 2000,
-            }}
+            overscan={500}
             customScrollParent={scrollParent ?? undefined}
             initialTopMostItemIndex={startIndex}
             role='feed'
@@ -275,10 +272,7 @@ export const VirtualizedArticleList = forwardRef<
           itemContent={renderArticle}
           endReached={onLoadNextPart}
           listClassName={listClassName}
-          overscan={{
-            main: 2000,
-            reverse: 2000,
-          }}
+          overscan={500}
           customScrollParent={scrollParent ?? undefined}
           role='feed'
           data-testid='VirtualizedArticleList.Grid'
