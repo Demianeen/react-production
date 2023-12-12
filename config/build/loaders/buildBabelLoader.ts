@@ -7,28 +7,29 @@ interface BuildBabelLoaderArgs extends BuildOptions {
 }
 
 const buildPlugins = ({ isDev, isTsx }: BuildBabelLoaderArgs) => {
-  const plugins: PluginItem[] = ['@babel/plugin-transform-runtime']
-  const isProd = !isDev
+  const plugins: PluginItem[] = [];
+  const isProd = !isDev;
 
   if (isDev) {
     if (isTsx) {
       plugins.push([
         babelRemovePropsPlugin(),
         {
-          props: ['data-testid'],
+          props: ["data-testid"],
         },
-      ])
+      ]);
     }
   }
 
   if (isProd) {
     if (isTsx) {
-      plugins.push([require.resolve('react-refresh/babel')])
+      plugins.push([require.resolve("react-refresh/babel")]);
     }
+    plugins.push(["@babel/plugin-transform-runtime"]);
   }
 
-  return plugins
-}
+  return plugins;
+};
 
 export const buildBabelLoader = (options: BuildBabelLoaderArgs) => {
   const { isTsx, isDev } = options
