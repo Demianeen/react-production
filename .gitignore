@@ -5,6 +5,7 @@
 /.loki/report.html
 /reports/unit
 /reports/templates
+/.vscode/vscode-chrome-debug-userdatadir
 ### macOS ###
 # General
 .DS_Store
