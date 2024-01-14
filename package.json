@@ -64,6 +64,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
+    "@types/babel__core": "^7.20.5",
     "@types/circular-dependency-plugin": "^5.0.5",
     "@types/dompurify": "^3.0.3",
     "@types/jest": "^29.5.1",
@@ -178,7 +179,8 @@
     "react-quill": "^2.0.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.11.2",
-    "react-virtuoso": "^4.4.0"
+    "react-virtuoso": "^4.4.0",
+    "redux": "^4.2.1"
   },
   "loki": {
     "fetchFailIgnore": "https://mockapi.com/*",
@@ -216,5 +218,9 @@
       "stylelint",
       "prettier --write"
     ]
+  },
+  "engines": {
+    "node": ">=20.6.0",
+    "pnpm": ">=8"
   }
 }
