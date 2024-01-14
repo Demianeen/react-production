@@ -109,6 +109,9 @@ devDependencies:
   '@loki/is-loki-running':
     specifier: ^0.32.0
     version: 0.32.0
+  '@loki/target-chrome-core':
+    specifier: ^0.32.0
+    version: 0.32.0
   '@pmmmwh/react-refresh-webpack-plugin':
     specifier: ^0.5.10
     version: 0.5.11(@types/webpack@5.28.3)(react-refresh@0.14.0)(webpack-dev-server@4.15.1)(webpack@5.83.1)
@@ -2813,8 +2816,20 @@ packages:
       '@loki/integration-core': 0.31.0
     dev: true
 
+  /@loki/browser@0.32.0:
+    resolution: {integrity: sha512-LsMFoh0X4n/Jeiyevtp/QN0mCCmhsbRhMVR1A114Cdirtrvqz08Dz8+ero9vpH8HZudorwXLhrE2wnhdhWqzsg==}
+    dependencies:
+      '@loki/integration-core': 0.32.0
+    dev: true
+
   /@loki/core@0.31.0:
     resolution: {integrity: sha512-aVFRSZkbsHYBSEj0MWQCaDbXseGgsVMJzJsxQnSuYWLdcL5eI2wEutyVcsAwOSWzeL15idnKSWZLPuLE/1Ityw==}
+    dependencies:
+      shelljs: 0.8.5
+    dev: true
+
+  /@loki/core@0.32.0:
+    resolution: {integrity: sha512-q6F5s38FIsNuVFUmFprlkSx7KTsy0UO5+1SKK04v+0orXqBsjy46eKCP4aqa6Q08WlzpA+xHVQWbwwdsaTcPyA==}
     dependencies:
       shelljs: 0.8.5
     dev: true
@@ -2975,6 +2990,17 @@ packages:
       '@loki/browser': 0.31.2
       '@loki/core': 0.31.0
       '@loki/integration-core': 0.31.0
+      debug: 4.3.4(supports-color@8.1.1)
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /@loki/target-chrome-core@0.32.0:
+    resolution: {integrity: sha512-lQwZ1yUMtdbeAa1DC66BiEhYTjthNzj6XN64yF4vTKUbPMvqHREHNego3G2d1J/uFM3WNQaiUWGB6NJXz+jpow==}
+    dependencies:
+      '@loki/browser': 0.32.0
+      '@loki/core': 0.32.0
+      '@loki/integration-core': 0.32.0
       debug: 4.3.4(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
