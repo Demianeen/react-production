@@ -10,21 +10,19 @@ jobs:
     runs-on: ubuntu-latest
     # TODO: add cypress tests in ci
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Cache deps
-        uses: actions/cache@v3
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
         with:
-          path: ~/.npm
-          key: node-modules-${{ hashFiles('**/package-lock.json') }}
-      - name: Starting Node.js ${{ vars.NODE_VERSION }}
+          version: 8
+      - name: Using Node.js ${{ vars.NODE_VERSION }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ vars.NODE_VERSION }}
-      - name: Install modules
-        run: npm ci
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
       - name: Unit testing
-        run: npm run test:unit
+        run: pnpm run test:unit
         if: always()
       - name: Upload artifact
         uses: actions/upload-artifact@v3
@@ -35,19 +33,22 @@ jobs:
   ui:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Starting Node.js ${{ vars.NODE_VERSION }}
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - name: Using Node.js ${{ vars.NODE_VERSION }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ vars.NODE_VERSION }}
-      - name: Install modules
-        run: npm ci
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
       - name: Screenshot testing
-        run: npm run test:ui:ci
+        run: pnpm run test:ui:ci
         if: always()
       - name: Generate HTML report
-        run: npm run test:ui:report
+        run: pnpm run test:ui:report
         if: always()
       - name: Upload artifact
         uses: actions/upload-artifact@v3

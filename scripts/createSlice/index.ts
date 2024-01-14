@@ -19,7 +19,7 @@ const isLayer = (value: string): value is Layer =>
 
 if (layer === undefined || sliceName === undefined) {
   throw new Error(
-    'Layer and slice name are required.\n Example: npm run createSlice features users'
+    'Layer and slice name are required.\n Example: pnpm createSlice features users',
   )
 }
 

@@ -11,7 +11,7 @@ if (
   to === undefined
 ) {
   throw new Error(
-    'This command requires path to folder, old name and new name.\n Example: npm run rename:folder src/shared/ui/redesigned/Stack/lib getFlexClassName getFlex',
+    'This command requires path to folder, old name and new name.\n Example: pnpm rename:folder src/shared/ui/redesigned/Stack/lib getFlexClassName getFlex',
   )
 }
 

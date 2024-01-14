@@ -2,10 +2,10 @@
 
 The project uses 4 types of tests:
 
-1. Regular unit tests on jest - `npm run test:unit`
-2. Component testing with React testing library -`npm run test:unit`
-3. Screenshot testing with loki `npm run test:ui`
-4. e2e testing with Cypress `npm run test:e2e`
+1. Regular unit tests on jest - `pnpm test:unit`
+2. Component testing with React testing library -`pnpm test:unit`
+3. Screenshot testing with loki `pnpm test:ui`
+4. e2e testing with Cypress `pnpm test:e2e`
 
 ## Unit tests
 
@@ -123,19 +123,19 @@ To mock requests use mock service worker. Link to the documentation [here](https
 
 ## Screenshot testing
 
-When you run `npm run test:ui` - loki opens chrome inside docker container (don't forget to open docker!) and makes screenshots from storybook stories.
+When you run `pnpm test:ui` - loki opens chrome inside docker container (don't forget to open docker!) and makes screenshots from storybook stories.
 
 If it finds some difference in screenshots it will show that tests failed.
 
 ### Reports
 
-Then you can view them using `npm run test:ui:report`. It will generate reports inside [.loki folder](../.loki/report.html).
+Then you can view them using `pnpm test:ui:report`. It will generate reports inside [.loki folder](../.loki/report.html).
 
-Or you can shortcut and open report instantly in your favorite browser and making report in one command using `npm run test:ui:report:chrome` or `npm run test:ui:report:arc`.
+Or you can shortcut and open report instantly in your favorite browser and making report in one command using `pnpm test:ui:report:chrome` or `pnpm test:ui:report:arc`.
 
 ### Approving changes
 
-If the changes were as you intended, it's time to update the reference files. Run `npm run test:ui:ok` to update reference screenshots and commit them.
+If the changes were as you intended, it's time to update the reference files. Run `pnpm test:ui:ok` to update reference screenshots and commit them.
 
 ### Handling flaky tests
 

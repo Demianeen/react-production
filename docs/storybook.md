@@ -6,7 +6,7 @@ Storybook is a tool that allows you to develop and test UI components in isolati
 
 To start Storybook, run the following command in your terminal:
 
-- `npm run storybook`
+- `pnpm storybook`
 
 ## Writing stories
 

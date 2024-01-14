@@ -4,43 +4,43 @@ This repository was created as part of the UlbiTV's course "To production on Rea
 
 ## Launching the project
 
-- `npm install` - install dependencies
-- `npm run start:dev` or `npm run start:dev:vite` - launch server + frontend project in dev mode
+- `pnpm install` - install dependencies
+- `pnpm start:dev` or `pnpm start:dev:vite` - launch server + frontend project in dev mode
 
 ---
 
 ## Scripts
 
-- `npm start` - Launch frontend project on webpack dev server + backend
-- `npm run storybook` - Launch Storybook
-- `npm run start:dev:vite` - Launch frontend project on vite + backend
-- `npm run start:dev:client` - Launch frontend project on webpack dev server
-- `npm run start:dev:vite:client` - Launch frontend project on vite
-- `npm run start:dev:server` - Launch backend server
-- `npm run build:prod` - Build in prod mode
-- `npm run build:dev` - Build in dev mode (not minimized)
-- `npm run build:prod:analyze` - Build in prod mode and open bundle analyzer
-- `npm run build:storybook` - Build storybook
-- `npm run lint:ts` - Check ts files with linter
-- `npm run lint:ts:fix` - Fix ts files with linter
-- `npm run lint:scss` - Check scss files with style linter
-- `npm run lint:scss:fix` - Fix scss files with style linter
-- `npm run test:unit` - Run unit tests with jest
-- `npm run test:ui` - Run screenshot tests with loki
-- `npm run test:ui:ok` - Confirm new screenshots
-- `npm run test:ui:ci` - Run screenshot tests in CI
-- `npm run test:ui:report` - Generate full report for screenshot tests
-- `npm run test:ui:report:chrome` - Generate full report for screenshot tests and open it in Chrome
-- `npm run test:ui:report:arc` - Generate full report for screenshot tests and open it in Arc
-- `npm run test:ui:json` - Generate json report for screenshot tests
-- `npm run test:ui:html` - Generate HTML report for screenshot tests
-- `npm run generate:slice` - Script for generating FSD slices,
-- `npm run prepare` - Pre-commit hooks
-- `npm run rename:slice` - Script for renaming FSD slices, Takes 3 arguments: 1. layer, 2. old slice name, 3. new slice name.
-- `npm run rename:folder` - Script for renaming folders. Takes 3 arguments: 1. pathToFolder, 2. old name, 3. new name.
-- `npm run remove:feature` - Removes feature using feature flag name, and state on/off (read more about feature flags [here](#working-with-feature-flags))
-- `npm run check:layerDocs` - Checks if README.md files in each layer in src/ are up to date with the public API. Read more [here](scripts/checkLayerDocs/index.ts)
-- `npm run postinstall` - Apply patches after npm i
+- `pnpm start` - Launch frontend project on webpack dev server + backend
+- `pnpm storybook` - Launch Storybook
+- `pnpm start:dev:vite` - Launch frontend project on vite + backend
+- `pnpm start:dev:client` - Launch frontend project on webpack dev server
+- `pnpm start:dev:vite:client` - Launch frontend project on vite
+- `pnpm start:dev:server` - Launch backend server
+- `pnpm build:prod` - Build in prod mode
+- `pnpm build:dev` - Build in dev mode (not minimized)
+- `pnpm build:prod:analyze` - Build in prod mode and open bundle analyzer
+- `pnpm build:storybook` - Build storybook
+- `pnpm lint:ts` - Check ts files with linter
+- `pnpm lint:ts:fix` - Fix ts files with linter
+- `pnpm lint:scss` - Check scss files with style linter
+- `pnpm lint:scss:fix` - Fix scss files with style linter
+- `pnpm test:unit` - Run unit tests with jest
+- `pnpm test:ui` - Run screenshot tests with loki
+- `pnpm test:ui:ok` - Confirm new screenshots
+- `pnpm test:ui:ci` - Run screenshot tests in CI
+- `pnpm test:ui:report` - Generate full report for screenshot tests
+- `pnpm test:ui:report:chrome` - Generate full report for screenshot tests and open it in Chrome
+- `pnpm test:ui:report:arc` - Generate full report for screenshot tests and open it in Arc
+- `pnpm test:ui:json` - Generate json report for screenshot tests
+- `pnpm test:ui:html` - Generate HTML report for screenshot tests
+- `pnpm generate:slice` - Script for generating FSD slices,
+- `pnpm prepare` - Pre-commit hooks
+- `pnpm rename:slice` - Script for renaming FSD slices, Takes 3 arguments: 1. layer, 2. old slice name, 3. new slice name.
+- `pnpm rename:folder` - Script for renaming folders. Takes 3 arguments: 1. pathToFolder, 2. old name, 3. new name.
+- `pnpm remove:feature` - Removes feature using feature flag name, and state on/off (read more about feature flags [here](#working-with-feature-flags))
+- `pnpm check:layerDocs` - Checks if README.md files in each layer in src/ are up to date with the public API. Read more [here](scripts/checkLayerDocs/index.ts)
+- `pnpm postinstall` - Apply patches after pnpm i
 
 ---
 
@@ -78,10 +78,10 @@ Link to documentation - [i18next](https://react.i18next.com/)
 
 The project uses 4 types of tests:
 
-1. Regular unit tests on jest - `npm run test:unit`
-2. Component testing with React testing library -`npm run test:unit`
-3. Screenshot testing with loki `npm run test:ui`
-4. e2e testing with Cypress `npm run test:e2e`
+1. Regular unit tests on jest - `pnpm test:unit`
+2. Component testing with React testing library -`pnpm test:unit`
+3. Screenshot testing with loki `pnpm test:ui`
+4. e2e testing with Cypress `pnpm test:e2e`
 
 More about tests - [testing documentation](./docs/tests.md)
 
@@ -102,10 +102,10 @@ which contains 3 rules
 
 ### Running linters
 
-- `npm run lint:ts` - Check ts files with linter
-- `npm run lint:ts:fix` - Fix ts files with linter
-- `npm run lint:scss` - Check scss files with style linter
-- `npm run lint:scss:fix` - Fix scss files with style linter
+- `pnpm lint:ts` - Check ts files with linter
+- `pnpm lint:ts:fix` - Fix ts files with linter
+- `pnpm lint:scss` - Check scss files with style linter
+- `pnpm lint:scss:fix` - Fix scss files with style linter
 
 ---
 
@@ -118,7 +118,7 @@ The file with story cases is created next to the component with the .stories.tsx
 
 You can start storybook with the command:
 
-- `npm run storybook`
+- `pnpm storybook`
 
 More about [Storybook](./docs/storybook.md)
 

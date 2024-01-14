@@ -18,7 +18,7 @@ if (
   newSliceName === undefined
 ) {
   throw new Error(
-    'Layer, slice name and new slice name are required.\n Example: npm run createSlice features oldName newName',
+    'Layer, slice name and new slice name are required.\n Example: pnpm createSlice features oldName newName',
   )
 }
 
