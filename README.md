@@ -4,8 +4,9 @@ This repository was created as part of the UlbiTV's course "To production on Rea
 
 ## Launching the project
 
+- [Install pnpm](https://pnpm.io/installation)
 - `pnpm install` - install dependencies
-- `pnpm start:dev` or `pnpm start:dev:vite` - launch server + frontend project in dev mode
+- `pnpm start` or `pnpm start:dev:vite` - launch server + frontend project in dev mode
 
 ---
 
